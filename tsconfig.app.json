@@ -26,7 +26,9 @@
       "@components/*": ["components/*"],
       "@pages/*": ["pages/*"],
       "@sections/*": ["sections/*"],
-      "@icons/*": ["icons/*"]
+      "@icons/*": ["icons/*"],
+      "@routes/*": ["routes/*"],
+      "@layouts/*": ["layouts/*"]
     }
   },
   "include": ["src"]
