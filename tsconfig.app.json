@@ -24,6 +24,7 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
+      "@dashboard-pages/*": ["pages/dashboard-pages/*"],
       "@pages/*": ["pages/*"],
       "@sections/*": ["sections/*"],
       "@icons/*": ["icons/*"],
