@@ -1,1 +1,98 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/Inter-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/Inter-SemiBold.woff2') format('woff2');
+}
+
+@theme {
+  --color-clickable: hsl(0, 0%, 100%);
+  --color-brand-100: hsl(264, 84%, 93%);
+  --color-brand-200: hsl(264, 88%, 84%);
+  --color-brand-300: hsl(264, 80%, 75%);
+  --color-brand-400: hsl(264, 72%, 65%);
+  --color-brand-500: hsl(264, 62%, 55%);
+  --color-brand-600: hsl(264, 63%, 45%);
+  --color-brand-700: hsl(264, 76%, 35%);
+  --color-brand-800: hsl(264, 86%, 26%);
+  --color-brand-900: hsl(265, 95%, 16%);
+  --color-neutral-100: hsl(240, 2%, 82%);
+  --color-neutral-200: hsl(220, 2%, 72%);
+  --color-neutral-300: hsl(225, 2%, 63%);
+  --color-neutral-400: hsl(228, 2%, 54%);
+  --color-neutral-500: hsl(240, 3%, 44%);
+  --color-neutral-600: hsl(240, 4%, 35%);
+  --color-neutral-700: hsl(233, 6%, 25%);
+  --color-neutral-800: hsl(233, 11%, 16%);
+  --color-neutral-900: hsl(234, 28%, 7%);
+  --color-success-100: hsl(122, 38%, 84%);
+  --color-success-200: hsl(122, 37%, 74%);
+  --color-success-300: hsl(123, 38%, 64%);
+  --color-success-400: hsl(123, 38%, 57%);
+  --color-success-500: hsl(122, 39%, 49%);
+  --color-success-600: hsl(123, 41%, 45%);
+  --color-success-700: hsl(123, 43%, 39%);
+  --color-success-800: hsl(123, 46%, 34%);
+  --color-success-900: hsl(124, 55%, 24%);
+  --color-danger-100: hsl(354, 100%, 90%);
+  --color-danger-200: hsl(0, 73%, 77%);
+  --color-danger-300: hsl(0, 69%, 67%);
+  --color-danger-400: hsl(1, 83%, 63%);
+  --color-danger-500: hsl(4, 90%, 58%);
+  --color-danger-600: hsl(1, 77%, 55%);
+  --color-danger-700: hsl(0, 65%, 51%);
+  --color-danger-800: hsl(0, 66%, 47%);
+  --color-danger-900: hsl(0, 73%, 41%);
+  --color-warning-100: hsl(54, 100%, 88%);
+  --color-warning-200: hsl(54, 100%, 81%);
+  --color-warning-300: hsl(54, 100%, 73%);
+  --color-warning-400: hsl(54, 100%, 67%);
+  --color-warning-500: hsl(54, 100%, 62%);
+  --color-warning-600: hsl(49, 98%, 60%);
+  --color-warning-700: hsl(43, 96%, 58%);
+  --color-warning-800: hsl(37, 95%, 56%);
+  --color-warning-900: hsl(28, 92%, 53%);
+  --color-background-color: hsl(233, 29%, 5%);
+  --background-gradient-starting-color: transparent;
+  --background-gradient-ending-color: hsla(0, 0%, 100%, 0.01);
+  --background-gradient: linear-gradient(
+    var(--background-gradient-starting-color),
+    var(--background-gradient-ending-color)
+  );
+  --default-font-family:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --default-font-feature-settings: 'cv06', 'cv11';
+}
+
+@layer base {
+  body {
+    min-height: 100vh;
+    background-color: var(--color-background-color);
+    background-image: var(--background-gradient);
+    color: var(--color-neutral-100);
+  }
+
+  p {
+    color: var(--color-neutral-400);
+  }
+}
