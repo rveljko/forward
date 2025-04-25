@@ -23,13 +23,17 @@
     "noUncheckedSideEffectImports": true,
     "baseUrl": "./src",
     "paths": {
+      "@dashboard-components/*": ["components/dashboard-components/*"],
+      "@ui/*": ["components/ui/*"],
       "@components/*": ["components/*"],
       "@dashboard-pages/*": ["pages/dashboard-pages/*"],
       "@pages/*": ["pages/*"],
       "@sections/*": ["sections/*"],
       "@icons/*": ["icons/*"],
       "@routes/*": ["routes/*"],
-      "@layouts/*": ["layouts/*"]
+      "@layouts/*": ["layouts/*"],
+      "@data/*": ["data/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src"]
