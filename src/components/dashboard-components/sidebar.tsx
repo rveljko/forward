@@ -3,8 +3,11 @@ import {
   primaryNavigationLinks,
   secondaryNavigationLinks,
 } from '@data/navigation-links'
+import PenIcon from '@icons/pen-icon'
+import SearchIcon from '@icons/search-icon'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
 import SidebarLeftOpenedIcon from '@icons/sidebar-left-opened-icon'
+import Button from '@ui/button'
 import Logo from '@ui/logo'
 import { useState } from 'react'
 import { Link } from 'react-router'
@@ -37,16 +40,36 @@ export default function Sidebar() {
             {isOpened ? <SidebarClosedIcon /> : <SidebarLeftOpenedIcon />}
           </button>
         </header>
-        <nav className="flex h-full flex-col justify-between gap-1 overflow-y-auto">
-          <NavigationLinksList
-            navigationLinks={primaryNavigationLinks}
-            showNavigationLinkText={isOpened}
-          />
-          <NavigationLinksList
-            navigationLinks={secondaryNavigationLinks}
-            showNavigationLinkText={isOpened}
-          />
-        </nav>
+        <div className="flex h-full flex-col gap-1 overflow-y-auto">
+          <div className="space-y-1">
+            <Button
+              variant="primary"
+              size="small"
+              leftIcon={<PenIcon />}
+              className="w-full justify-start"
+            >
+              {isOpened && 'Create New Issue'}
+            </Button>
+            <Button
+              variant="secondary"
+              size="small"
+              leftIcon={<SearchIcon />}
+              className="w-full justify-start"
+            >
+              {isOpened && 'Search'}
+            </Button>
+          </div>
+          <nav className="flex h-full flex-col justify-between gap-1">
+            <NavigationLinksList
+              navigationLinks={primaryNavigationLinks}
+              showNavigationLinkText={isOpened}
+            />
+            <NavigationLinksList
+              navigationLinks={secondaryNavigationLinks}
+              showNavigationLinkText={isOpened}
+            />
+          </nav>
+        </div>
       </div>
     </aside>
   )
