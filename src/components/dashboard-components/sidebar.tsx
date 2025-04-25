@@ -3,6 +3,7 @@ import {
   primaryNavigationLinks,
   secondaryNavigationLinks,
 } from '@data/navigation-links'
+import useMediaQuery from '@hooks/use-media-query'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
@@ -13,7 +14,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 export default function Sidebar() {
-  const isMediumSizeScreen = window.matchMedia('(min-width: 48rem)').matches
+  const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
 
   return (

@@ -33,7 +33,8 @@
       "@routes/*": ["routes/*"],
       "@layouts/*": ["layouts/*"],
       "@data/*": ["data/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"]
     }
   },
   "include": ["src"]
