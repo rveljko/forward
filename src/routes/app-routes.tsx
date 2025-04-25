@@ -3,8 +3,8 @@ import GuidesPage from '@dashboard-pages/guides-page'
 import HelpAndSupportPage from '@dashboard-pages/help-and-support-page'
 import InboxPage from '@dashboard-pages/inbox-page'
 import IssuesPage from '@dashboard-pages/issues-page'
-import SettingsPage from '@dashboard-pages/settings-page'
 import DashboardLayout from '@layouts/dashboard-layout'
+import SettingsLayout from '@layouts/settings-layout'
 import { Route, Routes } from 'react-router'
 
 export default function AppRoutes() {
@@ -16,7 +16,7 @@ export default function AppRoutes() {
         <Route path="drafts" element={<DraftsPage />} />
         <Route path="guides" element={<GuidesPage />} />
         <Route path="help-and-support" element={<HelpAndSupportPage />} />
-        <Route path="settings" element={<SettingsPage />} />
+        <Route path="settings" element={<SettingsLayout />} />
       </Route>
     </Routes>
   )
