@@ -28,6 +28,7 @@
       "@components/*": ["components/*"],
       "@dashboard-pages/*": ["pages/dashboard-pages/*"],
       "@pages/*": ["pages/*"],
+      "@dashboard-sections/*": ["sections/dashboard-sections/*"],
       "@sections/*": ["sections/*"],
       "@icons/*": ["icons/*"],
       "@routes/*": ["routes/*"],

@@ -4,3 +4,11 @@ export type NavigationLink = {
   path: string
   icon?: () => React.JSX.Element
 }
+
+export type Integration = {
+  id: number
+  name: string
+  description: string
+  logoUrl: string
+  isActive: boolean
+}
