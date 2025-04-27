@@ -1,7 +1,7 @@
 import Switch from '@ui/switch'
 import { Integration } from '@utils/types'
 import { useState } from 'react'
-import { useIntegrations } from 'services/contexts/inetgrations-context'
+import { useIntegrations } from '@services/contexts/inetgrations-context'
 
 type IntegrationCardProps = {
   integration: Integration

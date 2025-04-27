@@ -35,7 +35,8 @@
       "@layouts/*": ["layouts/*"],
       "@data/*": ["data/*"],
       "@utils/*": ["utils/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@services/*": ["services/*"]
     }
   },
   "include": ["src"]

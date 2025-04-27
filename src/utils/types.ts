@@ -12,3 +12,11 @@ export type Integration = {
   logoUrl: string
   isActive: boolean
 }
+
+export type User = {
+  firstName: string
+  lastName: string
+  emailAddress: string
+  password: string
+  isTwoStepVerificationEnabled: boolean
+}

@@ -1,7 +1,7 @@
 import IntegrationCardsList from '@dashboard-components/integration-cards-list'
 import Divider from '@dashboard-components/ui/divider'
 import Button from '@ui/button'
-import { useIntegrations } from 'services/contexts/inetgrations-context'
+import { useIntegrations } from '@services/contexts/inetgrations-context'
 
 export default function IntegrationsSection() {
   const { integrationIds, getSortedIntegrations, updateIntegrationStatuses } =

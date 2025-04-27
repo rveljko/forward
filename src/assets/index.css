@@ -71,6 +71,7 @@
   --color-warning-700: hsl(43, 96%, 58%);
   --color-warning-800: hsl(37, 95%, 56%);
   --color-warning-900: hsl(28, 92%, 53%);
+  --color-input-background: var(--color-neutral-800);
   --color-section-outline: hsl(from var(--color-clickable) h s l / 10%);
   --color-background-color: hsl(233, 29%, 5%);
   --background-gradient-starting-color: transparent;
@@ -88,6 +89,7 @@
   );
   --sidebar-opened-width: 14.375rem;
   --switch-width: 2rem;
+  --input-width: 12.5rem;
   --settings-sidebar-opened-width: 14.375rem;
   --default-font-family:
     'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
