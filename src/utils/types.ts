@@ -17,6 +17,7 @@ export type User = {
   firstName: string
   lastName: string
   emailAddress: string
+  profilePictureUrl: string
   password: string
   isTwoStepVerificationEnabled: boolean
 }

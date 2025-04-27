@@ -27,6 +27,45 @@ export default function ProfileSection() {
         }}
       >
         <FormField>
+          <p className="text-neutral-100">Profile Picture</p>
+          <div className="flex w-max flex-row-reverse items-center gap-2">
+            <FormField.Label
+              htmlFor="profile-picture"
+              className="hover:cursor-pointer"
+            >
+              Upload
+            </FormField.Label>
+            <input
+              type="file"
+              id="profile-picture"
+              accept="image/jpeg, image/png"
+              onChange={(e) => {
+                const file = e.target.files?.[0]
+                const reader = new FileReader()
+
+                if (!file) return
+
+                reader.onload = () => {
+                  reader.result &&
+                    setNewUserInformation({
+                      ...newUserInformation,
+                      profilePictureUrl: reader.result.toString(),
+                    })
+                }
+
+                reader.readAsDataURL(file)
+              }}
+              className="hidden"
+            />
+            <img
+              src={newUserInformation.profilePictureUrl}
+              alt={`${userInformation.firstName} ${userInformation.lastName} profile picture`}
+              className="size-12 rounded-full object-cover"
+            />
+          </div>
+        </FormField>
+        <Divider />
+        <FormField>
           <FormField.Label htmlFor="first-name">First Name</FormField.Label>
           <FormField.Input
             id="first-name"
