@@ -6,6 +6,6 @@ export const userInformation: User = {
   lastName: 'Williams',
   profilePictureUrl: `${IMAGE_PATH}james-williams.png`,
   emailAddress: 'james@forward.app',
-  password: '',
+  password: 'LanternMeadow4782',
   isTwoStepVerificationEnabled: true,
 }
