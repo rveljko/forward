@@ -5,8 +5,10 @@ export default function SettingsLayout() {
   return (
     <div className="relative flex h-full overflow-hidden">
       <SettingsSidebar />
-      <div className="m-4 w-full max-w-200 overflow-y-auto">
-        <Outlet />
+      <div className="w-full overflow-y-auto p-4">
+        <div className="max-w-200">
+          <Outlet />
+        </div>
       </div>
     </div>
   )
