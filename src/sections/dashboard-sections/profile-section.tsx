@@ -26,8 +26,8 @@ export default function ProfileSection() {
           updateUserInformation(newUserInformation)
         }}
       >
-        <FormField>
-          <p className="text-neutral-100">Profile Picture</p>
+        <FormField className="lg:flex-row lg:gap-16">
+          <p className="w-full max-w-50 text-neutral-100">Profile Picture</p>
           <div className="flex w-max flex-row-reverse items-center gap-2">
             <FormField.Label
               htmlFor="profile-picture"
@@ -65,8 +65,10 @@ export default function ProfileSection() {
           </div>
         </FormField>
         <Divider />
-        <FormField>
-          <FormField.Label htmlFor="first-name">First Name</FormField.Label>
+        <FormField className="lg:flex-row lg:gap-16">
+          <FormField.Label htmlFor="first-name" className="w-full max-w-50">
+            First Name
+          </FormField.Label>
           <FormField.Input
             id="first-name"
             placeholder={userInformation.firstName}
@@ -80,8 +82,10 @@ export default function ProfileSection() {
           />
         </FormField>
         <Divider />
-        <FormField>
-          <FormField.Label htmlFor="last-name">Last Name</FormField.Label>
+        <FormField className="lg:flex-row lg:gap-16">
+          <FormField.Label htmlFor="last-name" className="w-full max-w-50">
+            Last Name
+          </FormField.Label>
           <FormField.Input
             id="last-name"
             placeholder={userInformation.lastName}
@@ -95,8 +99,8 @@ export default function ProfileSection() {
           />
         </FormField>
         <Divider />
-        <FormField>
-          <FormField.Label htmlFor="email-address">
+        <FormField className="lg:flex-row lg:gap-16">
+          <FormField.Label htmlFor="email-address" className="w-full max-w-50">
             Email Address
           </FormField.Label>
           <FormField.Input
