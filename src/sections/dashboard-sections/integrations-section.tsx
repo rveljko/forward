@@ -1,7 +1,7 @@
 import IntegrationCardsList from '@dashboard-components/integration-cards-list'
 import Divider from '@dashboard-components/ui/divider'
-import Button from '@ui/button'
 import { useIntegrations } from '@services/contexts/inetgrations-context'
+import Button from '@ui/button'
 
 export default function IntegrationsSection() {
   const { integrationIds, getSortedIntegrations, updateIntegrationStatuses } =
@@ -10,14 +10,14 @@ export default function IntegrationsSection() {
   const isButtonDisabled = !integrationIds.length
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="space-y-4">
       <header>
         <h2>Integrations</h2>
         <p>Connect and manage your apps seamlessly</p>
       </header>
       <Divider />
-      <div className="flex flex-wrap justify-between gap-4">
-        <h3>Connected Applications</h3>
+      <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
+        <h3 className="w-full max-w-50">Connected Applications</h3>
         <IntegrationCardsList integrations={getSortedIntegrations()} />
       </div>
       <Divider />
