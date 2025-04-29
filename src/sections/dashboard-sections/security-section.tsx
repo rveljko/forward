@@ -30,8 +30,10 @@ export default function SecuritySection() {
           updateUserInformation(newUserInformation)
         }}
       >
-        <FormField>
-          <FormField.Label htmlFor="password">Password</FormField.Label>
+        <FormField className="lg:flex-row lg:gap-16">
+          <FormField.Label htmlFor="password" className="w-full max-w-50">
+            Password
+          </FormField.Label>
           <FormField.Input
             id="password"
             value={newUserInformation.password}
@@ -57,8 +59,10 @@ export default function SecuritySection() {
           />
         </FormField>
         <Divider />
-        <FormField>
-          <p className="text-neutral-100">2-Step Authentication</p>
+        <FormField className="items-start lg:flex-row lg:gap-16">
+          <p className="w-full max-w-50 text-neutral-100">
+            2-Step Authentication
+          </p>
           <Switch
             checked={newUserInformation.isTwoStepVerificationEnabled}
             onChange={() => {
