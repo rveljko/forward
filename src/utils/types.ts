@@ -21,3 +21,29 @@ export type User = {
   password: string
   isTwoStepVerificationEnabled: boolean
 }
+
+export type ThemeLabel = 'system' | 'dark' | 'light'
+
+export type Theme = {
+  id: number
+  name: string
+  label: ThemeLabel
+  imageUrl: string
+}
+
+export type SidebarStyleLabel = 'transparent' | 'sticky' | 'floating'
+
+export type SidebarStyle = {
+  id: number
+  name: string
+  label: SidebarStyleLabel
+  imageUrl: string
+}
+
+export type Preferences = {
+  theme: ThemeLabel
+  sidebarStyle: SidebarStyleLabel
+  isRightSideSidebar: boolean
+  areRoundedCorners: boolean
+  cornerRoundness: 'large' | 'medium' | 'small' | 'extra-small'
+}
