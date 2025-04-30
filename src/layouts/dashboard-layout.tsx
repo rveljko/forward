@@ -1,9 +1,14 @@
 import Sidebar from '@dashboard-components/sidebar'
+import { usePreferences } from '@services/contexts/preferences-context'
 import { Outlet } from 'react-router'
 
 export default function DashboardLayout() {
+  const { preferences } = usePreferences()
+
   return (
-    <div className="relative flex h-screen">
+    <div
+      className={`relative flex h-screen ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
+    >
       <Sidebar />
       <div className="w-full p-4">
         <main className="border-section-outline bg-section-background-color h-full overflow-y-auto rounded-2xl border bg-(image:--section-background-gradient)">
