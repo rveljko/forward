@@ -24,65 +24,180 @@
   src: url('./fonts/Inter-SemiBold.woff2') format('woff2');
 }
 
-@theme {
-  --color-clickable: hsl(0, 0%, 100%);
-  --color-brand-100: hsl(264, 84%, 93%);
-  --color-brand-200: hsl(264, 88%, 84%);
-  --color-brand-300: hsl(264, 80%, 75%);
-  --color-brand-400: hsl(264, 72%, 65%);
-  --color-brand-500: hsl(264, 62%, 55%);
-  --color-brand-600: hsl(264, 63%, 45%);
-  --color-brand-700: hsl(264, 76%, 35%);
-  --color-brand-800: hsl(264, 86%, 26%);
-  --color-brand-900: hsl(265, 95%, 16%);
-  --color-neutral-100: hsl(240, 2%, 82%);
-  --color-neutral-200: hsl(220, 2%, 72%);
-  --color-neutral-300: hsl(225, 2%, 63%);
-  --color-neutral-400: hsl(228, 2%, 54%);
-  --color-neutral-500: hsl(240, 3%, 44%);
-  --color-neutral-600: hsl(240, 4%, 35%);
-  --color-neutral-700: hsl(233, 6%, 25%);
-  --color-neutral-800: hsl(233, 11%, 16%);
-  --color-neutral-900: hsl(234, 28%, 7%);
-  --color-success-100: hsl(122, 38%, 84%);
-  --color-success-200: hsl(122, 37%, 74%);
-  --color-success-300: hsl(123, 38%, 64%);
-  --color-success-400: hsl(123, 38%, 57%);
-  --color-success-500: hsl(122, 39%, 49%);
-  --color-success-600: hsl(123, 41%, 45%);
-  --color-success-700: hsl(123, 43%, 39%);
-  --color-success-800: hsl(123, 46%, 34%);
-  --color-success-900: hsl(124, 55%, 24%);
-  --color-danger-100: hsl(354, 100%, 90%);
-  --color-danger-200: hsl(0, 73%, 77%);
-  --color-danger-300: hsl(0, 69%, 67%);
-  --color-danger-400: hsl(1, 83%, 63%);
-  --color-danger-500: hsl(4, 90%, 58%);
-  --color-danger-600: hsl(1, 77%, 55%);
-  --color-danger-700: hsl(0, 65%, 51%);
-  --color-danger-800: hsl(0, 66%, 47%);
-  --color-danger-900: hsl(0, 73%, 41%);
-  --color-warning-100: hsl(54, 100%, 88%);
-  --color-warning-200: hsl(54, 100%, 81%);
-  --color-warning-300: hsl(54, 100%, 73%);
-  --color-warning-400: hsl(54, 100%, 67%);
-  --color-warning-500: hsl(54, 100%, 62%);
-  --color-warning-600: hsl(49, 98%, 60%);
-  --color-warning-700: hsl(43, 96%, 58%);
-  --color-warning-800: hsl(37, 95%, 56%);
-  --color-warning-900: hsl(28, 92%, 53%);
-  --color-input-background: var(--color-neutral-800);
-  --color-section-outline: hsl(from var(--color-clickable) h s l / 10%);
-  --color-background-color: hsl(233, 29%, 5%);
+:root {
+  --clickable: hsl(0, 0%, 100%);
+  --brand-100: hsl(264, 84%, 93%);
+  --brand-200: hsl(264, 88%, 84%);
+  --brand-300: hsl(264, 80%, 75%);
+  --brand-400: hsl(264, 72%, 65%);
+  --brand-500: hsl(264, 62%, 55%);
+  --brand-600: hsl(264, 63%, 45%);
+  --brand-700: hsl(264, 76%, 35%);
+  --brand-800: hsl(264, 86%, 26%);
+  --brand-900: hsl(265, 95%, 16%);
+  --neutral-100: hsl(240, 2%, 82%);
+  --neutral-200: hsl(220, 2%, 72%);
+  --neutral-300: hsl(225, 2%, 63%);
+  --neutral-400: hsl(228, 2%, 54%);
+  --neutral-500: hsl(240, 3%, 44%);
+  --neutral-600: hsl(240, 4%, 35%);
+  --neutral-700: hsl(233, 6%, 25%);
+  --neutral-800: hsl(233, 11%, 16%);
+  --neutral-900: hsl(234, 28%, 7%);
+  --success-100: hsl(122, 38%, 84%);
+  --success-200: hsl(122, 37%, 74%);
+  --success-300: hsl(123, 38%, 64%);
+  --success-400: hsl(123, 38%, 57%);
+  --success-500: hsl(122, 39%, 49%);
+  --success-600: hsl(123, 41%, 45%);
+  --success-700: hsl(123, 43%, 39%);
+  --success-800: hsl(123, 46%, 34%);
+  --success-900: hsl(124, 55%, 24%);
+  --danger-100: hsl(354, 100%, 90%);
+  --danger-200: hsl(0, 73%, 77%);
+  --danger-300: hsl(0, 69%, 67%);
+  --danger-400: hsl(1, 83%, 63%);
+  --danger-500: hsl(4, 90%, 58%);
+  --danger-600: hsl(1, 77%, 55%);
+  --danger-700: hsl(0, 65%, 51%);
+  --danger-800: hsl(0, 66%, 47%);
+  --danger-900: hsl(0, 73%, 41%);
+  --warning-100: hsl(54, 100%, 88%);
+  --warning-200: hsl(54, 100%, 81%);
+  --warning-300: hsl(54, 100%, 73%);
+  --warning-400: hsl(54, 100%, 67%);
+  --warning-500: hsl(54, 100%, 62%);
+  --warning-600: hsl(49, 98%, 60%);
+  --warning-700: hsl(43, 96%, 58%);
+  --warning-800: hsl(37, 95%, 56%);
+  --warning-900: hsl(28, 92%, 53%);
+  --input-background: var(--neutral-800);
+  --section-outline: hsl(from var(--clickable) h s l / 10%);
+  --background-color: hsl(233, 29%, 5%);
   --background-gradient-starting-color: transparent;
-  --background-gradient-ending-color: hsla(0, 0%, 100%, 0.01);
+  --background-gradient-ending-color: hsl(from var(--clickable) h s l / 1%);
+  --section-background-color: hsl(234, 28%, 7%);
+  --section-background-gradient-starting-color: transparent;
+  --section-background-gradient-ending-color: hsl(
+    from var(--clickable) h s l / 1%
+  );
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --clickable: hsl(0, 0%, 0%);
+    --neutral-100: hsl(234, 28%, 7%);
+    --neutral-200: hsl(233, 11%, 16%);
+    --neutral-300: hsl(233, 6%, 25%);
+    --neutral-400: hsl(240, 4%, 35%);
+    --neutral-500: hsl(240, 3%, 44%);
+    --neutral-600: hsl(228, 2%, 54%);
+    --neutral-700: hsl(225, 2%, 63%);
+    --neutral-800: hsl(220, 2%, 72%);
+    --neutral-900: hsl(240, 2%, 82%);
+    --input-background: hsl(0, 0%, 100%);
+    --background-color: hsl(180, 9%, 98%);
+    --section-background-color: hsl(0, 0%, 100%);
+  }
+}
+
+[data-theme='dark'] {
+  --clickable: hsl(0, 0%, 100%);
+  --neutral-100: hsl(240, 2%, 82%);
+  --neutral-200: hsl(220, 2%, 72%);
+  --neutral-300: hsl(225, 2%, 63%);
+  --neutral-400: hsl(228, 2%, 54%);
+  --neutral-500: hsl(240, 3%, 44%);
+  --neutral-600: hsl(240, 4%, 35%);
+  --neutral-700: hsl(233, 6%, 25%);
+  --neutral-800: hsl(233, 11%, 16%);
+  --neutral-900: hsl(234, 28%, 7%);
+  --input-background: var(--neutral-800);
+  --background-color: hsl(233, 29%, 5%);
+  --section-background-color: hsl(234, 28%, 7%);
+}
+
+[data-theme='light'] {
+  --clickable: hsl(0, 0%, 0%);
+  --neutral-100: hsl(234, 28%, 7%);
+  --neutral-200: hsl(233, 11%, 16%);
+  --neutral-300: hsl(233, 6%, 25%);
+  --neutral-400: hsl(240, 4%, 35%);
+  --neutral-500: hsl(240, 3%, 44%);
+  --neutral-600: hsl(228, 2%, 54%);
+  --neutral-700: hsl(225, 2%, 63%);
+  --neutral-800: hsl(220, 2%, 72%);
+  --neutral-900: hsl(240, 2%, 82%);
+  --input-background: hsl(0, 0%, 100%);
+  --background-color: hsl(180, 9%, 98%);
+  --section-background-color: hsl(0, 0%, 100%);
+}
+
+@theme {
+  --color-clickable: var(--clickable);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-900: var(--neutral-900);
+  --color-success-100: var(--success-100);
+  --color-success-200: var(--success-200);
+  --color-success-300: var(--success-300);
+  --color-success-400: var(--success-400);
+  --color-success-500: var(--success-500);
+  --color-success-600: var(--success-600);
+  --color-success-700: var(--success-700);
+  --color-success-800: var(--success-800);
+  --color-success-900: var(--success-900);
+  --color-danger-100: var(--danger-100);
+  --color-danger-200: var(--danger-200);
+  --color-danger-300: var(--danger-300);
+  --color-danger-400: var(--danger-400);
+  --color-danger-500: var(--danger-500);
+  --color-danger-600: var(--danger-600);
+  --color-danger-700: var(--danger-700);
+  --color-danger-800: var(--danger-800);
+  --color-danger-900: var(--danger-900);
+  --color-warning-100: var(--warning-100);
+  --color-warning-200: var(--warning-200);
+  --color-warning-300: var(--warning-300);
+  --color-warning-400: var(--warning-400);
+  --color-warning-500: var(--warning-500);
+  --color-warning-600: var(--warning-600);
+  --color-warning-700: var(--warning-700);
+  --color-warning-800: var(--warning-800);
+  --color-warning-900: var(--warning-900);
+  --color-input-background: var(--input-background);
+  --color-section-outline: var(--section-outline);
+  --color-background-color: var(--background-color);
+  --background-gradient-starting-color: var(
+    --background-gradient-starting-color
+  );
+  --background-gradient-ending-color: var(--background-gradient-ending-color);
   --background-gradient: linear-gradient(
     var(--background-gradient-starting-color),
     var(--background-gradient-ending-color)
   );
-  --color-section-background-color: hsl(234, 28%, 7%);
-  --section-background-gradient-starting-color: transparent;
-  --section-background-gradient-ending-color: hsla(0, 0%, 100%, 0.01);
+  --color-section-background-color: var(--section-background-color);
+  --section-background-gradient-starting-color: var(
+    --background-gradient-starting-color
+  );
+  --section-background-gradient-ending-color: var(
+    --background-gradient-ending-color
+  );
   --section-background-gradient: linear-gradient(
     var(--section-background-gradient-starting-color),
     var(--section-background-gradient-ending-color)
