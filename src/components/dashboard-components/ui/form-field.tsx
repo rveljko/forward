@@ -42,7 +42,7 @@ function Input({
     <div className="relative w-full max-w-(--input-width)">
       <input
         className={cn(
-          `bg-input-background text-clickable inset-ring-section-outline focus:inset-ring-brand-500 w-full rounded-sm px-3 py-2 shadow-sm inset-ring placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${RightIcon ? 'pr-8' : ''}`,
+          `bg-input-background text-clickable inset-ring-section-outline focus:inset-ring-brand-500 w-full rounded-md px-3 py-2 shadow-sm inset-ring placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${RightIcon ? 'pr-8' : ''}`,
           className
         )}
         required={!optional}
