@@ -4,10 +4,10 @@ import {
   secondaryNavigationLinks,
 } from '@data/navigation-links'
 import useMediaQuery from '@hooks/use-media-query'
+import ChevronLeftIcon from '@icons/chevron-left-icon'
+import ChevronRightIcon from '@icons/chevron-right-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
-import SidebarClosedIcon from '@icons/sidebar-closed-icon'
-import SidebarLeftOpenedIcon from '@icons/sidebar-left-opened-icon'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
 import { useState } from 'react'
@@ -38,7 +38,7 @@ export default function Sidebar() {
             className="text-clickable flex size-7 items-center justify-center hover:cursor-pointer"
             onClick={() => setIsOpened((prev) => !prev)}
           >
-            {isOpened ? <SidebarClosedIcon /> : <SidebarLeftOpenedIcon />}
+            {isOpened ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </button>
         </header>
         <div className="flex h-full flex-col gap-1 overflow-y-auto">
