@@ -7,9 +7,9 @@ type SidebarStyleCardProps = {
 }
 
 export default function SidebarStyleCard({
-  sidebarStyle: { name, imageUrl, label },
+  sidebarStyle: { name, imageLightUrl, imageDarkUrl, label },
 }: SidebarStyleCardProps) {
-  const { newPreferences, setNewPreferences } = usePreferences()
+  const { newPreferences, setNewPreferences, isLightTheme } = usePreferences()
 
   return (
     <button
@@ -20,7 +20,7 @@ export default function SidebarStyleCard({
     >
       <PreferencesCard
         name={name}
-        imageUrl={imageUrl}
+        imageUrl={isLightTheme ? imageLightUrl : imageDarkUrl}
         isActive={newPreferences.sidebarStyle === label}
       />
     </button>

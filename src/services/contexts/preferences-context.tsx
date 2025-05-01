@@ -11,6 +11,7 @@ type PreferencesContextType = {
   setPreferences: React.Dispatch<React.SetStateAction<Preferences>>
   newPreferences: Preferences
   setNewPreferences: React.Dispatch<React.SetStateAction<Preferences>>
+  isLightTheme: boolean
 }
 
 export const PreferencesContext = createContext<PreferencesContextType | null>(
@@ -28,6 +29,11 @@ export default function PreferencesContextProvider({
   const [preferences, setPreferences] = useState(getInitialPreferences)
   const [newPreferences, setNewPreferences] = useState(preferences)
 
+  const isLightTheme =
+    preferences.theme === 'light' ||
+    (preferences.theme === 'system' &&
+      window.matchMedia('(prefers-color-scheme: light)').matches)
+
   useEffect(() => {
     localStorage.setItem('preferences', JSON.stringify(preferences))
   }, [preferences])
@@ -43,6 +49,7 @@ export default function PreferencesContextProvider({
         setPreferences,
         newPreferences,
         setNewPreferences,
+        isLightTheme,
       }}
     >
       {children}

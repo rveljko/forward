@@ -37,7 +37,8 @@ export type SidebarStyle = {
   id: number
   name: string
   label: SidebarStyleLabel
-  imageUrl: string
+  imageDarkUrl: string
+  imageLightUrl: string
 }
 
 export type Preferences = {
