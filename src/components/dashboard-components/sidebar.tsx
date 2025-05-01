@@ -8,12 +8,14 @@ import ChevronLeftIcon from '@icons/chevron-left-icon'
 import ChevronRightIcon from '@icons/chevron-right-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
+import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
 import { useState } from 'react'
 import { Link } from 'react-router'
 
 export default function Sidebar() {
+  const { preferences } = usePreferences()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
 
@@ -38,7 +40,17 @@ export default function Sidebar() {
             className="text-clickable flex size-7 items-center justify-center hover:cursor-pointer"
             onClick={() => setIsOpened((prev) => !prev)}
           >
-            {isOpened ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {preferences.isRightSideSidebar ? (
+              isOpened ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )
+            ) : isOpened ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
           </button>
         </header>
         <div className="flex h-full flex-col gap-1 overflow-y-auto">
