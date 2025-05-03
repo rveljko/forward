@@ -1,3 +1,16 @@
+import HelpAndSupportHeader from '@dashboard-components/help-and-support-header'
+import Divider from '@dashboard-components/ui/divider'
+import ConnectWithUs from '@dashboard-sections/connect-with-us'
+import { TITLE_PREFIX } from '@utils/constants'
+
 export default function HelpAndSupportPage() {
-  return <div>help-and-support-page</div>
+  return (
+    <div className="w-full max-w-200 space-y-4 p-4">
+      <title>{`${TITLE_PREFIX}Help and Support`}</title>
+      <HelpAndSupportHeader />
+      <Divider />
+      <ConnectWithUs />
+      <Divider />
+    </div>
+  )
 }

@@ -18,6 +18,7 @@ export default function FormField({
 
 FormField.Label = Label
 FormField.Input = Input
+FormField.Textarea = Textarea
 
 type LabelProps = React.ComponentPropsWithoutRef<'label'> & {
   children: React.ReactNode
@@ -54,5 +55,19 @@ function Input({
         </span>
       )}
     </div>
+  )
+}
+
+type TextareaProps = React.ComponentPropsWithoutRef<'textarea'>
+
+function Textarea({ className, ...props }: TextareaProps) {
+  return (
+    <textarea
+      className={cn(
+        'bg-input-background text-clickable inset-ring-section-outline focus:inset-ring-brand-500 aspect-2/1 w-full max-w-(--input-width) resize-none rounded-md px-3 py-2 shadow-sm inset-ring placeholder:text-neutral-400 focus:inset-ring focus:outline-0',
+        className
+      )}
+      {...props}
+    />
   )
 }
