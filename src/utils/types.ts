@@ -48,3 +48,9 @@ export type Preferences = {
   areRoundedCorners: boolean
   cornerRoundness: 'large' | 'medium' | 'small' | 'extra-small'
 }
+
+export type Question = {
+  id: number
+  summary: string
+  details: string
+}
