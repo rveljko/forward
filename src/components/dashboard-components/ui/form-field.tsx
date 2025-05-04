@@ -1,3 +1,4 @@
+import { usePreferences } from '@services/contexts/preferences-context'
 import { cn } from '@utils/utils'
 
 type FormFieldProps = React.ComponentPropsWithoutRef<'div'> & {
@@ -39,11 +40,13 @@ function Input({
   className,
   ...props
 }: InputProps) {
+  const { isLightTheme } = usePreferences()
+
   return (
     <div className="relative w-full max-w-(--input-width)">
       <input
         className={cn(
-          `bg-input-background text-clickable inset-ring-section-outline focus:inset-ring-brand-500 w-full rounded-md px-3 py-2 shadow-sm inset-ring placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${RightIcon ? 'pr-8' : ''}`,
+          `bg-input-background text-clickable focus:inset-ring-brand-500 w-full rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline ring' : 'inset-ring-section-outline inset-ring'}`,
           className
         )}
         required={!optional}
