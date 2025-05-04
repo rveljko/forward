@@ -1,6 +1,7 @@
 import HelpAndSupportHeader from '@dashboard-components/help-and-support-header'
 import Divider from '@dashboard-components/ui/divider'
 import ConnectWithUs from '@dashboard-sections/connect-with-us'
+import SocialMediasSection from '@dashboard-sections/social-medias-section'
 import { TITLE_PREFIX } from '@utils/constants'
 
 export default function HelpAndSupportPage() {
@@ -10,6 +11,8 @@ export default function HelpAndSupportPage() {
       <HelpAndSupportHeader />
       <Divider />
       <ConnectWithUs />
+      <Divider />
+      <SocialMediasSection />
       <Divider />
     </div>
   )
