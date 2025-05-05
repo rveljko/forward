@@ -21,7 +21,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`bg top-0 left-0 z-999 h-screen p-4 ${
+      className={`top-0 left-0 z-999 h-screen p-4 ${
         isOpened
           ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
           : 'sticky w-fit'
