@@ -19,14 +19,34 @@ export default function Sidebar() {
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
 
+  const sidebarStyleClassNames = {
+    transparent: `top-0 left-0 z-999 h-screen p-4 ${
+      isOpened
+        ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
+        : 'sticky w-fit'
+    }`,
+    sticky: `bg-section-background-color top-0 left-0 z-999 h-screen bg-(image:--section-background-gradient) p-4 ${preferences.isRightSideSidebar ? 'border-l-section-outline border-l' : 'border-r-section-outline border-r'} ${
+      isOpened
+        ? 'absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit'
+        : 'sticky w-fit'
+    }`,
+    floating: `bg-section-background-color border-section-outline top-0 left-0 z-999 h-full rounded-2xl border bg-(image:--section-background-gradient) p-4 ${
+      isOpened
+        ? 'absolute w-full min-w-(--sidebar-opened-width) rounded-none md:sticky md:w-fit md:rounded-2xl'
+        : 'sticky w-fit'
+    }`,
+  }
+
+  const sidebarStyle =
+    (preferences.sidebarStyle === 'transparent' &&
+      sidebarStyleClassNames.transparent) ||
+    (preferences.sidebarStyle === 'floating' &&
+      sidebarStyleClassNames.floating) ||
+    (preferences.sidebarStyle === 'sticky' && sidebarStyleClassNames.sticky) ||
+    ''
+
   return (
-    <aside
-      className={`top-0 left-0 z-999 h-screen p-4 ${
-        isOpened
-          ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
-          : 'sticky w-fit'
-      }`}
-    >
+    <aside className={sidebarStyle}>
       <div className="flex h-full flex-col gap-4">
         <header
           className={`flex items-center justify-between gap-2 ${
