@@ -1,6 +1,6 @@
 import IntegrationCardsList from '@dashboard-components/integration-cards-list'
 import Divider from '@dashboard-components/ui/divider'
-import { useIntegrations } from '@services/contexts/inetgrations-context'
+import { useIntegrations } from '@services/contexts/integrations-context'
 import Button from '@ui/button'
 
 export default function IntegrationsSection() {
