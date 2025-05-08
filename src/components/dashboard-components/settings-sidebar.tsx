@@ -11,7 +11,7 @@ export default function SettingsSidebar() {
 
   return (
     <aside
-      className={`border-section-outline bg-section-background-color top-0 left-0 h-full shrink-0 bg-(image:--section-background-gradient) p-4 ${isOpened ? 'absolute w-full min-w-(--settings-sidebar-opened-width) border-r-0 md:static md:w-fit md:border-r' : 'w-fit border-r'}`}
+      className={`border-section-outline bg-section-background-color top-0 left-0 z-998 h-full shrink-0 bg-(image:--section-background-gradient) p-4 ${isOpened ? 'absolute w-full min-w-(--settings-sidebar-opened-width) border-r-0 md:static md:w-fit md:border-r' : 'w-fit border-r'}`}
     >
       <header
         className={`mb-4 flex items-center ${isOpened ? 'justify-between' : 'justify-center'}`}
