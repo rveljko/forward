@@ -1,3 +1,4 @@
+import ChatPage from '@dashboard-pages/chat-page'
 import DraftsPage from '@dashboard-pages/drafts-page'
 import GuidesPage from '@dashboard-pages/guides-page'
 import HelpAndSupportPage from '@dashboard-pages/help-and-support-page'
@@ -17,6 +18,7 @@ export default function AppRoutes() {
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<IssuesPage />} />
         <Route path="inbox" element={<InboxPage />} />
+        <Route path="inbox/:chatId" element={<ChatPage />} />
         <Route path="drafts" element={<DraftsPage />} />
         <Route path="guides" element={<GuidesPage />} />
         <Route path="help-and-support" element={<HelpAndSupportPage />} />
