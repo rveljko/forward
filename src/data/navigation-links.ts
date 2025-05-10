@@ -13,15 +13,15 @@ import { NavigationLink } from '@utils/types'
 export const primaryNavigationLinks: NavigationLink[] = [
   {
     id: 1,
-    name: 'Issues',
-    path: '',
-    icon: FolderIcon,
-  },
-  {
-    id: 2,
     name: 'Inbox',
     path: 'inbox',
     icon: InboxIcon,
+  },
+  {
+    id: 2,
+    name: 'Issues',
+    path: '',
+    icon: FolderIcon,
   },
   {
     id: 3,
