@@ -54,3 +54,9 @@ export type Question = {
   summary: string
   details: string
 }
+
+export type Chat = {
+  id: string
+  name: string
+  image: string
+}

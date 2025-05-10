@@ -31,11 +31,13 @@ function Label({ children, ...props }: LabelProps) {
 
 type InputProps = React.ComponentPropsWithoutRef<'input'> & {
   optional?: boolean
+  leftIcon?: React.JSX.Element
   rightIcon?: React.JSX.Element
 }
 
 function Input({
   optional,
+  leftIcon: LeftIcon,
   rightIcon: RightIcon,
   className,
   ...props
@@ -44,16 +46,21 @@ function Input({
 
   return (
     <div className="relative w-full max-w-(--input-width)">
+      {LeftIcon && (
+        <span className="bg-input-background [&_svg]:text-clickable absolute top-1/2 left-0.25 flex -translate-y-1/2 items-center pl-2">
+          {LeftIcon}
+        </span>
+      )}
       <input
         className={cn(
-          `bg-input-background text-clickable focus:inset-ring-brand-500 w-full rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline ring' : 'inset-ring-section-outline inset-ring'}`,
+          `bg-input-background text-clickable focus:inset-ring-brand-500 w-full rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline ring' : 'inset-ring-section-outline inset-ring'}`,
           className
         )}
         required={!optional}
         {...props}
       />
       {RightIcon && (
-        <span className="bg-input-background absolute top-1/2 right-0.25 flex -translate-y-1/2 items-center pr-2">
+        <span className="bg-input-background [&_svg]:text-clickable absolute top-1/2 right-0.25 flex -translate-y-1/2 items-center pr-2">
           {RightIcon}
         </span>
       )}
