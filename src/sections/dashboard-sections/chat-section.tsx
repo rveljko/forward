@@ -3,6 +3,7 @@ import Divider from '@dashboard-components/ui/divider'
 import ArrowLeftIcon from '@icons/arrow-left-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import Button from '@ui/button'
+import { Navigate } from 'react-router'
 
 type ChatSectionProps = {
   chatId: string
@@ -10,8 +11,11 @@ type ChatSectionProps = {
 
 export default function ChatSection({ chatId }: ChatSectionProps) {
   const { getChatById } = useInbox()
+  const chat = getChatById(chatId)
 
-  const { person, messages } = getChatById(chatId)
+  if (!chat) return <Navigate to="/dashboard/inbox" />
+
+  const { person, messages } = chat
 
   return (
     <section className="flex w-full flex-col">
