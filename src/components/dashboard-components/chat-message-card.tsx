@@ -1,4 +1,8 @@
 import { useUserInformation } from '@services/contexts/user-information-context'
+import {
+  iso8601DateFormatter,
+  usDateTimeFormatter,
+} from '@utils/date-formatters'
 import { Message, Person } from '@utils/types'
 
 type ChatMessageCardProps = {
@@ -7,7 +11,7 @@ type ChatMessageCardProps = {
 }
 
 export default function ChatMessageCard({
-  message: { type, message },
+  message: { type, message, date },
   person: { image, name },
 }: ChatMessageCardProps) {
   const {
@@ -25,9 +29,17 @@ export default function ChatMessageCard({
         />
       </div>
       <div>
-        <p className="text-clickable mb-0.5">
-          {isSender ? `${firstName} ${lastName}` : name}
-        </p>
+        <div className="flex items-center gap-1">
+          <p className="text-clickable mb-0.5">
+            {isSender ? `${firstName} ${lastName}` : name}
+          </p>
+          <time
+            className="hidden text-sm text-neutral-400 md:block"
+            dateTime={iso8601DateFormatter(date)}
+          >
+            {usDateTimeFormatter(date)}
+          </time>
+        </div>
         <p className="text-neutral-100">{message}</p>
       </div>
     </article>
