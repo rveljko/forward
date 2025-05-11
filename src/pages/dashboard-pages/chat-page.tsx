@@ -11,7 +11,7 @@ export default function ChatPage() {
   return (
     <InboxContextProvider>
       <div className="flex h-full overflow-hidden">
-        <InboxSidebar className="hidden md:block" />
+        <InboxSidebar className="hidden lg:block" />
         <ChatSection chatId={chatId} />
       </div>
     </InboxContextProvider>
