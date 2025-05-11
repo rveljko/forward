@@ -39,11 +39,9 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
         </div>
       </header>
       <Divider />
-      <ChatMessageCardsList
-        className="overflow-y-auto p-4"
-        messages={messages}
-        person={person}
-      />
+      <div className="flex flex-col-reverse overflow-y-auto p-4">
+        <ChatMessageCardsList messages={messages} person={person} />
+      </div>
     </section>
   )
 }
