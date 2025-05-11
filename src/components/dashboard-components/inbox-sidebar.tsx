@@ -14,7 +14,7 @@ export default function InboxSidebar({ className }: InboxSidebarProps) {
   const { chats } = useInbox()
   const [search, setSearch] = useState('')
 
-  const filteredChats = chats.filter(({ name }) =>
+  const filteredChats = chats.filter(({ person: { name } }) =>
     name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
   )
 

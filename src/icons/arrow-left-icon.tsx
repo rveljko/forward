@@ -9,21 +9,21 @@ export default function ArrowLeftIcon() {
     >
       <path
         d="M4.16663 10H15.8333"
-        stroke="currenColor"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M4.16663 10L9.16663 15"
-        stroke="currenColor"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M4.16663 10L9.16663 5"
-        stroke="currenColor"
+        stroke="currentColor"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

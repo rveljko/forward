@@ -8,6 +8,7 @@ type InboxContextProviderProps = {
 
 type InboxContextType = {
   chats: Chat[]
+  getChatById: (id: string) => Chat
 }
 
 export const InboxContext = createContext<InboxContextType | null>(null)
@@ -22,6 +23,10 @@ export default function InboxContextProvider({
 }: InboxContextProviderProps) {
   const [chats] = useState(getInitialChats)
 
+  function getChatById(id: string) {
+    return chats.find((chat) => chat.id === id)!
+  }
+
   useEffect(() => {
     localStorage.setItem('chats', JSON.stringify(chats))
   }, [chats])
@@ -30,6 +35,7 @@ export default function InboxContextProvider({
     <InboxContext.Provider
       value={{
         chats,
+        getChatById,
       }}
     >
       {children}

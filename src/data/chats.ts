@@ -5,8 +5,10 @@ import { v4 as uuidv4 } from 'uuid'
 export const chats: Chat[] = [
   {
     id: uuidv4(),
-    name: 'Liam Smith',
-    image: `${IMAGE_PATH}liam-smith.png`,
+    person: {
+      name: 'Liam Smith',
+      image: `${IMAGE_PATH}liam-smith.png`,
+    },
     messages: [
       {
         id: uuidv4(),
@@ -94,8 +96,10 @@ export const chats: Chat[] = [
   },
   {
     id: uuidv4(),
-    name: 'Jessica Garcia',
-    image: `${IMAGE_PATH}jessica-garcia.png`,
+    person: {
+      name: 'Jessica Garcia',
+      image: `${IMAGE_PATH}jessica-garcia.png`,
+    },
     messages: [
       {
         id: uuidv4(),
@@ -149,8 +153,10 @@ export const chats: Chat[] = [
   },
   {
     id: uuidv4(),
-    name: 'Luna Moore',
-    image: `${IMAGE_PATH}luna-moore.png`,
+    person: {
+      name: 'Luna Moore',
+      image: `${IMAGE_PATH}luna-moore.png`,
+    },
     messages: [
       {
         id: uuidv4(),
@@ -239,8 +245,10 @@ export const chats: Chat[] = [
   },
   {
     id: uuidv4(),
-    name: 'Sophia Taylor',
-    image: `${IMAGE_PATH}sophia-taylor.png`,
+    person: {
+      name: 'Sophia Taylor',
+      image: `${IMAGE_PATH}sophia-taylor.png`,
+    },
     messages: [
       {
         id: uuidv4(),
@@ -336,8 +344,10 @@ export const chats: Chat[] = [
   },
   {
     id: uuidv4(),
-    name: 'Benjamin Miller',
-    image: `${IMAGE_PATH}benjamin-miller.png`,
+    person: {
+      name: 'Benjamin Miller',
+      image: `${IMAGE_PATH}benjamin-miller.png`,
+    },
     messages: [
       {
         id: uuidv4(),

@@ -55,16 +55,20 @@ export type Question = {
   details: string
 }
 
-type Message = {
+export type Person = {
+  name: string
+  image: string
+}
+
+export type Message = {
   id: string
   type: 'sender' | 'receiver'
-  date: Date,
+  date: Date
   message: string
 }
 
 export type Chat = {
   id: string
-  name: string
-  image: string
+  person: Person
   messages: Message[]
 }
