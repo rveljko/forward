@@ -76,13 +76,7 @@
   --dropdown-background: var(--neutral-800);
   --section-outline: hsl(from var(--clickable) h s l / 10%);
   --background-color: hsl(233, 29%, 5%);
-  --background-gradient-starting-color: transparent;
-  --background-gradient-ending-color: hsl(from var(--clickable) h s l / 1%);
   --section-background-color: hsl(234, 28%, 7%);
-  --section-background-gradient-starting-color: transparent;
-  --section-background-gradient-ending-color: hsl(
-    from var(--clickable) h s l / 1%
-  );
 }
 
 @media (prefers-color-scheme: light) {
@@ -189,25 +183,7 @@
   --color-dropdown-background: var(--dropdown-background);
   --color-section-outline: var(--section-outline);
   --color-background-color: var(--background-color);
-  --background-gradient-starting-color: var(
-    --background-gradient-starting-color
-  );
-  --background-gradient-ending-color: var(--background-gradient-ending-color);
-  --background-gradient: linear-gradient(
-    var(--background-gradient-starting-color),
-    var(--background-gradient-ending-color)
-  );
   --color-section-background-color: var(--section-background-color);
-  --section-background-gradient-starting-color: var(
-    --background-gradient-starting-color
-  );
-  --section-background-gradient-ending-color: var(
-    --background-gradient-ending-color
-  );
-  --section-background-gradient: linear-gradient(
-    var(--section-background-gradient-starting-color),
-    var(--section-background-gradient-ending-color)
-  );
   --sidebar-opened-width: 14.375rem;
   --switch-width: 2rem;
   --input-width: 12.5rem;
@@ -224,7 +200,6 @@
   body {
     min-height: 100vh;
     background-color: var(--color-background-color);
-    background-image: var(--background-gradient);
     color: var(--color-neutral-100);
   }
 

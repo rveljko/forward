@@ -25,12 +25,12 @@ export default function Sidebar() {
         ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
         : 'sticky w-fit'
     }`,
-    sticky: `bg-section-background-color top-0 left-0 z-999 h-screen bg-(image:--section-background-gradient) p-4 ${preferences.isRightSideSidebar ? 'border-l-section-outline border-l' : 'border-r-section-outline border-r'} ${
+    sticky: `bg-section-background-color top-0 left-0 z-999 h-screen p-4 ${preferences.isRightSideSidebar ? 'border-l-section-outline border-l' : 'border-r-section-outline border-r'} ${
       isOpened
         ? 'absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit'
         : 'sticky w-fit'
     }`,
-    floating: `bg-section-background-color border-section-outline top-0 left-0 z-999 h-full rounded-2xl border bg-(image:--section-background-gradient) p-4 ${
+    floating: `bg-section-background-color border-section-outline top-0 left-0 z-999 h-full rounded-2xl border p-4 ${
       isOpened
         ? 'absolute w-full min-w-(--sidebar-opened-width) rounded-none md:sticky md:w-fit md:rounded-2xl'
         : 'sticky w-fit'

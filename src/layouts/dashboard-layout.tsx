@@ -19,7 +19,7 @@ export default function DashboardLayout() {
         <Sidebar />
       </div>
       <div className="w-full p-4">
-        <main className="border-section-outline bg-section-background-color h-full overflow-y-auto rounded-2xl border bg-(image:--section-background-gradient)">
+        <main className="border-section-outline bg-section-background-color h-full overflow-y-auto rounded-2xl border">
           <Outlet />
         </main>
       </div>
