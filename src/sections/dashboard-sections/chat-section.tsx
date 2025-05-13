@@ -6,6 +6,8 @@ import MessageIcon from '@icons/message-icon'
 import SendIcon from '@icons/send-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import Button from '@ui/button'
+import { Message } from '@utils/types'
+import { useState } from 'react'
 import { Navigate } from 'react-router'
 
 type ChatSectionProps = {
@@ -13,7 +15,15 @@ type ChatSectionProps = {
 }
 
 export default function ChatSection({ chatId }: ChatSectionProps) {
-  const { getChatById } = useInbox()
+  const initialMessage: Message = {
+    id: '',
+    date: new Date(),
+    type: 'sender',
+    message: '',
+  }
+
+  const [newMessage, setNewMessage] = useState(initialMessage)
+  const { getChatById, addNewMessage } = useInbox()
   const chat = getChatById(chatId)
 
   if (!chat) return <Navigate to="/dashboard/inbox" />
@@ -47,11 +57,24 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
       </div>
       <div className="mt-auto w-full">
         <Divider />
-        <form className="p-4" onSubmit={(e) => e.preventDefault()}>
+        <form
+          className="p-4"
+          onSubmit={(e) => {
+            e.preventDefault()
+            if (!newMessage.message.length) return
+
+            addNewMessage(chatId, newMessage)
+            setNewMessage(initialMessage)
+          }}
+        >
           <FormField className="[&_div]:max-w-none">
             <FormField.Textarea
               className="aspect-auto"
               placeholder="Message"
+              value={newMessage.message}
+              onChange={(e) =>
+                setNewMessage({ ...newMessage, message: e.target.value })
+              }
               leftIcon={<MessageIcon />}
               rightIcon={
                 <button className="hover:cursor-pointer">

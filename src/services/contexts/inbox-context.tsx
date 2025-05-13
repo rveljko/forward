@@ -1,6 +1,7 @@
 import { chats as defaultChats } from '@data/chats'
-import { Chat } from '@utils/types'
+import { Chat, Message } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 type InboxContextProviderProps = {
   children: React.ReactNode
@@ -9,6 +10,7 @@ type InboxContextProviderProps = {
 type InboxContextType = {
   chats: Chat[]
   getChatById: (id: string) => Chat
+  addNewMessage: (chatId: string, newMessage: Message) => void
 }
 
 export const InboxContext = createContext<InboxContextType | null>(null)
@@ -21,10 +23,27 @@ function getInitialChats(): Chat[] {
 export default function InboxContextProvider({
   children,
 }: InboxContextProviderProps) {
-  const [chats] = useState(getInitialChats)
+  const [chats, setChats] = useState(getInitialChats)
 
   function getChatById(id: string) {
     return chats.find((chat) => chat.id === id)!
+  }
+
+  function addNewMessage(chatId: string, newMessage: Message) {
+    const chat = getChatById(chatId)
+
+    setChats((prevChats) => {
+      return [
+        {
+          ...chat,
+          messages: [
+            ...chat.messages,
+            { ...newMessage, id: uuidv4(), date: new Date() },
+          ],
+        },
+        ...prevChats.filter(({ id }) => id !== chat.id),
+      ]
+    })
   }
 
   useEffect(() => {
@@ -36,6 +55,7 @@ export default function InboxContextProvider({
       value={{
         chats,
         getChatById,
+        addNewMessage,
       }}
     >
       {children}
