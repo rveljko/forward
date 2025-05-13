@@ -1,6 +1,9 @@
 import ChatMessageCardsList from '@dashboard-components/chat-message-cards-list'
 import Divider from '@dashboard-components/ui/divider'
+import FormField from '@dashboard-components/ui/form-field'
 import ArrowLeftIcon from '@icons/arrow-left-icon'
+import MessageIcon from '@icons/message-icon'
+import SendIcon from '@icons/send-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import Button from '@ui/button'
 import { Navigate } from 'react-router'
@@ -41,6 +44,23 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
       <Divider />
       <div className="flex flex-col-reverse overflow-y-auto p-4">
         <ChatMessageCardsList messages={messages} person={person} />
+      </div>
+      <div className="mt-auto w-full">
+        <Divider />
+        <form className="p-4" onSubmit={(e) => e.preventDefault()}>
+          <FormField className="[&_div]:max-w-none">
+            <FormField.Textarea
+              className="aspect-auto"
+              placeholder="Message"
+              leftIcon={<MessageIcon />}
+              rightIcon={
+                <button className="hover:cursor-pointer">
+                  <SendIcon />
+                </button>
+              }
+            />
+          </FormField>
+        </form>
       </div>
     </section>
   )

@@ -68,18 +68,38 @@ function Input({
   )
 }
 
-type TextareaProps = React.ComponentPropsWithoutRef<'textarea'>
+type TextareaProps = React.ComponentPropsWithoutRef<'textarea'> & {
+  leftIcon?: React.JSX.Element
+  rightIcon?: React.JSX.Element
+}
 
-function Textarea({ className, ...props }: TextareaProps) {
+function Textarea({
+  leftIcon: LeftIcon,
+  rightIcon: RightIcon,
+  className,
+  ...props
+}: TextareaProps) {
   const { isLightTheme } = usePreferences()
 
   return (
-    <textarea
-      className={cn(
-        `bg-input-background text-clickable focus:inset-ring-brand-500 aspect-2/1 w-full max-w-(--input-width) resize-none rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${isLightTheme ? 'ring-section-outline ring' : 'inset-ring-section-outline inset-ring'}`,
-        className
+    <div className="relative w-full max-w-(--input-width)">
+      {LeftIcon && (
+        <span className="[&_svg]:text-clickable absolute top-2.5 left-0.25 flex items-center pl-2">
+          {LeftIcon}
+        </span>
       )}
-      {...props}
-    />
+      <textarea
+        className={cn(
+          `bg-input-background text-clickable focus:inset-ring-brand-500 aspect-2/1 w-full resize-none rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline ring' : 'inset-ring-section-outline inset-ring'}`,
+          className
+        )}
+        {...props}
+      />
+      {RightIcon && (
+        <span className="[&_svg]:text-clickable absolute top-2.5 right-0.25 flex items-center pr-2">
+          {RightIcon}
+        </span>
+      )}
+    </div>
   )
 }
