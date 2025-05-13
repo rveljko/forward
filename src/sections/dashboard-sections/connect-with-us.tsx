@@ -24,7 +24,7 @@ export default function ConnectWithUs() {
             setFormFieldValues(initialFormFieldValues)
           }}
         >
-          <FormField className="[&_div]:max-w-[unset]">
+          <FormField className="[&_div]:max-w-none">
             <FormField.Label htmlFor="subject">Subject</FormField.Label>
             <FormField.Input
               id="subject"
@@ -36,10 +36,10 @@ export default function ConnectWithUs() {
                   subject: e.target.value,
                 })
               }
-              className="max-w-[unset]"
+              className="max-w-none"
             />
           </FormField>
-          <FormField>
+          <FormField className="[&_div]:max-w-none">
             <FormField.Label htmlFor="message">Message</FormField.Label>
             <FormField.Textarea
               id="message"
@@ -51,7 +51,7 @@ export default function ConnectWithUs() {
                   message: e.target.value,
                 })
               }
-              className="w-full max-w-[unset]"
+              className="w-full max-w-none"
             />
           </FormField>
           <Button
