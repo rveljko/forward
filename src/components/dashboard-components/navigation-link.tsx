@@ -15,7 +15,7 @@ export default function NavigationLink({
     <NavLink
       to={path}
       className={({ isActive }) =>
-        `text-clickable group hover:inset-ring-clickable/10 flex items-center gap-1 rounded-sm px-1.5 py-1 hover:bg-[linear-gradient(hsl(from_var(--color-black)_h_s_l_/_20%),hsl(from_var(--color-black)_h_s_l_/_20%)),linear-gradient(var(--color-neutral-700),var(--color-neutral-700))] hover:inset-ring ${isActive ? 'inset-ring-clickable/10 [&_span]:text-clickable bg-neutral-700 inset-ring' : ''}`
+        `text-clickable group hover:inset-ring-clickable/10 flex items-center gap-1 rounded-sm px-1.5 py-1 hover:bg-neutral-800 hover:inset-ring ${isActive ? 'inset-ring-clickable/10 [&_span]:text-clickable bg-neutral-700 inset-ring' : ''}`
       }
       end
       {...props}
