@@ -9,6 +9,7 @@ import ChevronRightIcon from '@icons/chevron-right-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import { usePreferences } from '@services/contexts/preferences-context'
+import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
 import { useState } from 'react'
@@ -16,6 +17,7 @@ import { Link } from 'react-router'
 
 export default function Sidebar() {
   const { preferences } = usePreferences()
+  const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
 
@@ -97,10 +99,28 @@ export default function Sidebar() {
               navigationLinks={primaryNavigationLinks}
               showNavigationLinkText={isOpened}
             />
-            <NavigationLinksList
-              navigationLinks={secondaryNavigationLinks}
-              showNavigationLinkText={isOpened}
-            />
+            <div className="space-y-1">
+              <NavigationLinksList
+                navigationLinks={secondaryNavigationLinks}
+                showNavigationLinkText={isOpened}
+              />
+              <div className="flex items-center gap-1 px-1.5 py-1">
+                <div className="flex h-6 shrink-0 items-center justify-center">
+                  <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
+                    <img
+                      className="object-cover"
+                      src={userInformation.profilePictureUrl}
+                      alt={`${userInformation.firstName} ${userInformation.lastName}`}
+                    />
+                  </div>
+                </div>
+                <p
+                  className={`text-clickable ${isOpened ? 'block' : 'hidden'}`}
+                >
+                  {userInformation.firstName} {userInformation.lastName}
+                </p>
+              </div>
+            </div>
           </nav>
         </div>
       </div>
