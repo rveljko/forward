@@ -1,6 +1,7 @@
 import ChatMessageCardsList from '@dashboard-components/chat-message-cards-list'
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
+import UserStatus from '@dashboard-components/ui/user-status'
 import ArrowLeftIcon from '@icons/arrow-left-icon'
 import MessageIcon from '@icons/message-icon'
 import SendIcon from '@icons/send-icon'
@@ -41,11 +42,18 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
           <span className="sr-only">Back</span>
         </Button>
         <div className="flex items-center gap-2">
-          <div className="size-6 overflow-hidden rounded-full bg-neutral-700">
-            <img
-              src={person.image}
-              alt={person.name}
-              className="object-fit-cover"
+          <div className="relative">
+            <div className="size-6 overflow-hidden rounded-full bg-neutral-700">
+              <img
+                src={person.image}
+                alt={person.name}
+                className="object-fit-cover"
+              />
+            </div>
+            <UserStatus
+              status={person.status}
+              isSmall
+              className="absolute right-0.25 bottom-0.25"
             />
           </div>
           <p className="text-clickable">{person.name}</p>
