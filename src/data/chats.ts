@@ -1,5 +1,6 @@
 import { IMAGE_PATH } from '@utils/constants'
 import { generateTimeInPast } from '@utils/date-generators'
+import { generateUserStatus } from '@utils/generate-user-status'
 import { Chat } from '@utils/types'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -9,6 +10,7 @@ export const chats: Chat[] = [
     person: {
       name: 'Liam Smith',
       image: `${IMAGE_PATH}liam-smith.png`,
+      status: generateUserStatus(),
     },
     messages: [
       {
@@ -100,6 +102,7 @@ export const chats: Chat[] = [
     person: {
       name: 'Jessica Garcia',
       image: `${IMAGE_PATH}jessica-garcia.png`,
+      status: generateUserStatus(),
     },
     messages: [
       {
@@ -157,6 +160,7 @@ export const chats: Chat[] = [
     person: {
       name: 'Luna Moore',
       image: `${IMAGE_PATH}luna-moore.png`,
+      status: generateUserStatus(),
     },
     messages: [
       {
@@ -249,6 +253,7 @@ export const chats: Chat[] = [
     person: {
       name: 'Sophia Taylor',
       image: `${IMAGE_PATH}sophia-taylor.png`,
+      status: generateUserStatus(),
     },
     messages: [
       {
@@ -348,6 +353,7 @@ export const chats: Chat[] = [
     person: {
       name: 'Benjamin Miller',
       image: `${IMAGE_PATH}benjamin-miller.png`,
+      status: generateUserStatus(),
     },
     messages: [
       {

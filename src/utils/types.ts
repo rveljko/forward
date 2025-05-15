@@ -55,9 +55,12 @@ export type Question = {
   details: string
 }
 
+export type UserStatus = 'active' | 'inactive'
+
 export type Person = {
   name: string
   image: string
+  status: UserStatus
 }
 
 export type Message = {
