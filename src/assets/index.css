@@ -203,6 +203,11 @@
     color: var(--color-neutral-100);
   }
 
+  body * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(from var(--color-clickable) h s l / 20%) transparent;
+  }
+
   p {
     color: var(--color-neutral-400);
   }
