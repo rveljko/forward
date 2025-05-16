@@ -61,6 +61,7 @@ export type Person = {
   name: string
   image: string
   status: UserStatus
+  lastActiveDate: Date
 }
 
 export type Message = {

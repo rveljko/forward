@@ -1,6 +1,7 @@
 import { IMAGE_PATH } from '@utils/constants'
 import { generateTimeInPast } from '@utils/date-generators'
 import { generateUserStatus } from '@utils/generate-user-status'
+import { randomNumberGenerator } from '@utils/random-number-generator'
 import { Chat } from '@utils/types'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,6 +12,12 @@ export const chats: Chat[] = [
       name: 'Liam Smith',
       image: `${IMAGE_PATH}liam-smith.png`,
       status: generateUserStatus(),
+      lastActiveDate: generateTimeInPast(
+        1,
+        randomNumberGenerator(9, 17),
+        randomNumberGenerator(0, 59),
+        randomNumberGenerator(0, 59)
+      ),
     },
     messages: [
       {
@@ -103,6 +110,12 @@ export const chats: Chat[] = [
       name: 'Jessica Garcia',
       image: `${IMAGE_PATH}jessica-garcia.png`,
       status: generateUserStatus(),
+      lastActiveDate: generateTimeInPast(
+        1,
+        randomNumberGenerator(9, 17),
+        randomNumberGenerator(0, 59),
+        randomNumberGenerator(0, 59)
+      ),
     },
     messages: [
       {
@@ -161,6 +174,12 @@ export const chats: Chat[] = [
       name: 'Luna Moore',
       image: `${IMAGE_PATH}luna-moore.png`,
       status: generateUserStatus(),
+      lastActiveDate: generateTimeInPast(
+        1,
+        randomNumberGenerator(9, 17),
+        randomNumberGenerator(0, 59),
+        randomNumberGenerator(0, 59)
+      ),
     },
     messages: [
       {
@@ -254,6 +273,12 @@ export const chats: Chat[] = [
       name: 'Sophia Taylor',
       image: `${IMAGE_PATH}sophia-taylor.png`,
       status: generateUserStatus(),
+      lastActiveDate: generateTimeInPast(
+        1,
+        randomNumberGenerator(9, 17),
+        randomNumberGenerator(0, 59),
+        randomNumberGenerator(0, 59)
+      ),
     },
     messages: [
       {
@@ -354,6 +379,12 @@ export const chats: Chat[] = [
       name: 'Benjamin Miller',
       image: `${IMAGE_PATH}benjamin-miller.png`,
       status: generateUserStatus(),
+      lastActiveDate: generateTimeInPast(
+        1,
+        randomNumberGenerator(9, 17),
+        randomNumberGenerator(0, 59),
+        randomNumberGenerator(0, 59)
+      ),
     },
     messages: [
       {
