@@ -7,6 +7,10 @@ import MessageIcon from '@icons/message-icon'
 import SendIcon from '@icons/send-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import Button from '@ui/button'
+import {
+  iso8601DateFormatter,
+  weekdayTimeFormatter,
+} from '@utils/date-formatters'
 import { Message } from '@utils/types'
 import { useState } from 'react'
 import { Navigate } from 'react-router'
@@ -41,7 +45,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
         >
           <span className="sr-only">Back</span>
         </Button>
-        <div className="flex items-center gap-2">
+        <div className="group flex items-center gap-2">
           <div className="relative">
             <div className="size-6 overflow-hidden rounded-full bg-neutral-700">
               <img
@@ -56,7 +60,18 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
               className="absolute right-0.25 bottom-0.25"
             />
           </div>
-          <p className="text-clickable">{person.name}</p>
+          <div className="flex items-center gap-1">
+            <p className="text-clickable">{person.name}</p>
+            <span className="hidden text-sm text-transparent transition-colors group-hover:text-neutral-400 hover:text-neutral-400 sm:block">
+              {person.status === 'active' ? (
+                'Active Now'
+              ) : (
+                <time dateTime={iso8601DateFormatter(person.lastActiveDate)}>
+                  Last Active on {weekdayTimeFormatter(person.lastActiveDate)}
+                </time>
+              )}
+            </span>
+          </div>
         </div>
       </header>
       <Divider />
