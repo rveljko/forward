@@ -1,8 +1,6 @@
 import { useUserInformation } from '@services/contexts/user-information-context'
-import {
-  iso8601DateFormatter,
-  usDateTimeFormatter,
-} from '@utils/date-formatters'
+import { iso8601DateFormatter } from '@utils/date-formatters'
+import { amPmTimeFormatter } from '@utils/time-formatters'
 import { Message, Person } from '@utils/types'
 
 type ChatMessageCardProps = {
@@ -37,7 +35,7 @@ export default function ChatMessageCard({
             className="hidden text-sm text-neutral-400 md:block"
             dateTime={iso8601DateFormatter(date)}
           >
-            {usDateTimeFormatter(date)}
+            {amPmTimeFormatter(date)}
           </time>
         </div>
         <p className="text-neutral-100">{message}</p>
