@@ -32,7 +32,7 @@ export default function ChatMessageCard({
             {isSender ? `${firstName} ${lastName}` : name}
           </p>
           <time
-            className="hidden text-sm text-neutral-400 md:block"
+            className="text-sm text-nowrap text-neutral-400"
             dateTime={iso8601DateFormatter(date)}
           >
             {amPmTimeFormatter(date)}
