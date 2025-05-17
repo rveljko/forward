@@ -76,3 +76,9 @@ export type Chat = {
   person: Person
   messages: Message[]
 }
+
+export type Draft = {
+  id: string
+  title: string
+  lastEdit: Date
+}

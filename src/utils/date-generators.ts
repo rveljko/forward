@@ -8,3 +8,7 @@ export function generateTimeInPast(
 
   return new Date(new Date(date).setDate(new Date(date).getDate() - daysAgo))
 }
+
+export function generateDateInPast(daysAgo: number) {
+  return new Date(new Date().setDate(new Date().getDate() - daysAgo))
+}
