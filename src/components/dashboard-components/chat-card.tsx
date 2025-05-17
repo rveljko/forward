@@ -23,15 +23,17 @@ export default function ChatCard({
           className={`absolute right-0.5 bottom-0.5 group-hover:ring-neutral-800 group-has-[.active]:ring-neutral-700 ${status === 'inactive' ? 'group-hover:bg-neutral-800 group-has-[.active]:bg-neutral-700 group-has-[.active]:inset-ring-neutral-500' : ''}`}
         />
       </div>
-      <NavLink
-        to={`/dashboard/inbox/${id}`}
-        className={({ isActive }) =>
-          `text-clickable ${isActive ? 'active before:absolute before:inset-0 before:-z-1 before:bg-neutral-700' : ''}`
-        }
-      >
-        <span className="absolute inset-0"></span>
-        <h3>{name}</h3>
-      </NavLink>
+      <h3>
+        <NavLink
+          to={`/dashboard/inbox/${id}`}
+          className={({ isActive }) =>
+            `text-clickable ${isActive ? 'active before:absolute before:inset-0 before:-z-1 before:bg-neutral-700' : ''}`
+          }
+        >
+          <span className="absolute inset-0"></span>
+          {name}
+        </NavLink>
+      </h3>
     </article>
   )
 }
