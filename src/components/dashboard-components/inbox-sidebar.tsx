@@ -5,6 +5,7 @@ import SearchIcon from '@icons/search-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import { cn } from '@utils/utils'
 import { useState } from 'react'
+import { Link } from 'react-router'
 
 type InboxSidebarProps = {
   className?: string
@@ -26,7 +27,11 @@ export default function InboxSidebar({ className }: InboxSidebarProps) {
       )}
     >
       <header className="p-4">
-        <h1>Inbox</h1>
+        <h1>
+          <Link to="/dashboard/inbox" className="text-clickable">
+            Inbox
+          </Link>
+        </h1>
       </header>
       <Divider />
       <FormField className="p-4 [&_div]:max-w-none">
