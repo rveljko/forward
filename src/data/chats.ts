@@ -57,49 +57,56 @@ export const chats: Chat[] = [
       },
       {
         id: uuidv4(),
-        date: generateTimeInPast(1, 9, 40, 57),
+        date: generateTimeInPast(1, 9, 39, 12),
         type: 'sender',
+        message:
+          "Agreed. I'll create a widget for those and keep the detailed graphs on a secondary tab.",
+      },
+      {
+        id: uuidv4(),
+        date: generateTimeInPast(1, 9, 40, 57),
+        type: 'receiver',
         message:
           'Sounds like a solid plan. Need me to help with designing the layout or setting up the data queries?',
       },
       {
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 41, 25),
-        type: 'receiver',
+        type: 'sender',
         message:
           "If you could help with the queries, that'd save me some time. I'll focus on the UI and user flow.",
       },
       {
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 42, 12),
-        type: 'sender',
+        type: 'receiver',
         message:
           "Got it. I'll send over some example SQL queries for segmenting users by subscription status.",
       },
       {
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 43, 45),
-        type: 'receiver',
+        type: 'sender',
         message:
           'Awesome, thanks! Once we have that, we can test the dashboard with the team and get feedback.',
       },
       {
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 44, 32),
-        type: 'sender',
+        type: 'receiver',
         message:
           "Definitely. Let's aim to have a prototype ready by end of day Thursday.",
       },
       {
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 47, 58),
-        type: 'receiver',
+        type: 'sender',
         message: 'Will do. Appreciate the teamwork, Liam!',
       },
       {
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 52, 17),
-        type: 'sender',
+        type: 'receiver',
         message: 'No problem, Robert. Let me know if anything else comes up.',
       },
     ],
