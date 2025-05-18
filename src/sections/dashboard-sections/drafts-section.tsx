@@ -2,9 +2,11 @@ import Container from '@dashboard-components/container'
 import CreateNewDraftButton from '@dashboard-components/create-new-draft-button'
 import DraftCard from '@dashboard-components/draft-card'
 import Divider from '@dashboard-components/ui/divider'
-import { drafts } from '@data/drafts'
+import { useDrafts } from '@services/contexts/drafts-context'
 
 export default function DraftsSection() {
+  const { drafts } = useDrafts()
+
   return (
     <section>
       <header className="p-4">
