@@ -157,13 +157,6 @@ export const chats: Chat[] = [
         type: 'receiver',
         date: generateTimeInPast(3, 12, 1, 5),
         message:
-          "That would be great! I'm thinking of grouping them into positive, negative, and suggestions. What do you think?",
-      },
-      {
-        id: uuidv4(),
-        type: 'sender',
-        date: generateTimeInPast(3, 12, 3, 48),
-        message:
           "Great idea! I'll start categorizing and wait for your examples. Thanks!",
       },
       {
