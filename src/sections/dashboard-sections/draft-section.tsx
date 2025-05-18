@@ -1,5 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
 import { useDrafts } from '@services/contexts/drafts-context'
+import { TITLE_PREFIX } from '@utils/constants'
 import { Link, Navigate } from 'react-router'
 
 type DraftSectionProps = {
@@ -17,6 +18,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
 
   return (
     <section>
+      <title>{`${TITLE_PREFIX}${title}`}</title>
       <header className="p-4">
         <div className="flex items-center gap-1">
           <Link to="/dashboard/drafts" className="text-clickable">
