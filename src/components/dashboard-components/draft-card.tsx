@@ -11,7 +11,7 @@ export default function DraftCard({
   draft: { id, title, lastEdit },
 }: DraftCardProps) {
   return (
-    <article className="border-section-outline relative h-full overflow-hidden rounded-lg border shadow-sm">
+    <article className="ring-section-outline relative h-full overflow-hidden rounded-lg shadow-sm ring">
       <div className="bg-clickable/10 aspect-3/1 w-full"></div>
       <div className="p-2">
         <h3 className="line-clamp-2 text-balance">
