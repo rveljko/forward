@@ -1,6 +1,8 @@
 import { drafts as defaultDrafts } from '@data/drafts'
 import { Draft } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
+import { v4 as uuidv4 } from 'uuid'
 
 type DraftsContextProviderProps = {
   children: React.ReactNode
@@ -8,6 +10,8 @@ type DraftsContextProviderProps = {
 
 type DraftsContextType = {
   drafts: Draft[]
+  getDraftById: (id: string) => Draft
+  createNewDraft: () => void
 }
 
 export const DraftsContext = createContext<DraftsContextType | null>(null)
@@ -20,7 +24,18 @@ function getInitialDrafts(): Draft[] {
 export default function DraftsContextProvider({
   children,
 }: DraftsContextProviderProps) {
-  const [drafts] = useState(getInitialDrafts)
+  const [drafts, setDrafts] = useState(getInitialDrafts)
+  const navigate = useNavigate()
+
+  function getDraftById(id: string) {
+    return drafts.find((draft) => draft.id === id)!
+  }
+
+  function createNewDraft() {
+    const id = uuidv4()
+    setDrafts([{ id, lastEdit: new Date(), title: 'New Draft' }, ...drafts])
+    navigate(`/dashboard/drafts/${id}`)
+  }
 
   useEffect(() => {
     localStorage.setItem('drafts', JSON.stringify(drafts))
@@ -30,6 +45,8 @@ export default function DraftsContextProvider({
     <DraftsContext.Provider
       value={{
         drafts,
+        getDraftById,
+        createNewDraft,
       }}
     >
       {children}
