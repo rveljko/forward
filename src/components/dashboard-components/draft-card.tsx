@@ -1,5 +1,12 @@
 import Divider from '@dashboard-components/ui/divider'
+import Dropdown from '@dashboard-components/ui/dropdown'
+import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import TimeAgo from '@dashboard-components/ui/time-ago'
+import ClickIcon from '@icons/click-icon'
+import DotsVerticalIcon from '@icons/dots-vertical-icon'
+import EditIcon from '@icons/edit-icon'
+import ExternalLinkIcon from '@icons/external-link-icon'
+import TrashIcon from '@icons/trash-icon'
 import { Draft } from '@utils/types'
 import { Link } from 'react-router'
 
@@ -25,8 +32,35 @@ export default function DraftCard({
         </h3>
       </div>
       <Divider />
-      <div className="p-2">
+      <div className="flex items-center justify-between p-2">
         <TimeAgo date={lastEdit} />
+        <DropdownButton
+          label={<DotsVerticalIcon />}
+          variant="tertiary"
+          className="-m-1 rounded-full p-1 [&_svg]:size-4"
+        >
+          <Dropdown.Button
+            leftIcon={<ClickIcon />}
+            href={`/dashboard/drafts/${id}`}
+          >
+            Open
+          </Dropdown.Button>
+          <Dropdown.Button
+            leftIcon={<ExternalLinkIcon />}
+            href={`/dashboard/drafts/${id}`}
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            Open in new tab
+          </Dropdown.Button>
+          <Dropdown.Button leftIcon={<EditIcon />}>Rename</Dropdown.Button>
+          <Dropdown.Button
+            leftIcon={<TrashIcon />}
+            className="text-danger-500 hover:bg-danger-500/10"
+          >
+            Delete
+          </Dropdown.Button>
+        </DropdownButton>
       </div>
     </article>
   )

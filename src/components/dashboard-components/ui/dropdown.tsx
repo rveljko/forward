@@ -1,4 +1,6 @@
 import CheckIcon from '@icons/check-icon'
+import { cn } from '@utils/utils'
+import { Link } from 'react-router'
 
 type DropdownProps = React.ComponentPropsWithoutRef<'div'> & {
   children: React.ReactNode
@@ -11,7 +13,10 @@ export default function Dropdown({
 }: DropdownProps) {
   return (
     <div
-      className="bg-dropdown-background inset-ring-section-outline w-full max-w-(--dropdown-width) space-y-0.5 rounded-sm p-1 inset-ring"
+      className={cn(
+        'bg-dropdown-background inset-ring-section-outline w-full max-w-(--dropdown-width) space-y-0.5 rounded-sm p-1 inset-ring',
+        className
+      )}
       {...props}
     >
       {children}
@@ -21,25 +26,54 @@ export default function Dropdown({
 
 Dropdown.Button = Button
 
-type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
+type ButtonBaseProps = {
   children: React.ReactNode
   leftIcon?: React.JSX.Element
   rightIcon?: React.JSX.Element
   isActive?: boolean
 }
 
+type ButtonAsAnchorProps = React.ComponentPropsWithoutRef<'a'> & {
+  href: string
+}
+
+type ButtonAsButtonProps = React.ComponentPropsWithoutRef<'button'> & {
+  href?: never
+}
+
+export type ButtonProps = ButtonBaseProps &
+  (ButtonAsAnchorProps | ButtonAsButtonProps)
+
 function Button({
   children,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
   isActive,
+  className,
   ...props
 }: ButtonProps) {
+  const buttonClasses = cn(
+    'text-clickable hover:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99',
+    className
+  )
+
+  if ('href' in props && props.href !== undefined) {
+    return (
+      <Link to={props.href} className={buttonClasses} {...props}>
+        {LeftIcon && <span>{LeftIcon}</span>}
+        <span className="overflow-hidden text-ellipsis">{children}</span>
+        {RightIcon && <span>{RightIcon}</span>}
+        {isActive && (
+          <span className="text-success-500 ml-auto">
+            <CheckIcon />
+          </span>
+        )}
+      </Link>
+    )
+  }
+
   return (
-    <button
-      className="text-clickable hover:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99"
-      {...props}
-    >
+    <button className={buttonClasses} {...props}>
       {LeftIcon && <span>{LeftIcon}</span>}
       <span className="overflow-hidden text-ellipsis">{children}</span>
       {RightIcon && <span>{RightIcon}</span>}
