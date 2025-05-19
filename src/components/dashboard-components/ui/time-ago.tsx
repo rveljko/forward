@@ -16,7 +16,12 @@ export default function TimeAgo({ className, date, ...props }: TimeAgoProps) {
   })
 
   return (
-    <div className={cn('flex items-center gap-1 text-neutral-400', className)}>
+    <div
+      className={cn(
+        'flex items-center gap-1 text-sm text-neutral-400',
+        className
+      )}
+    >
       <span className="[&_svg]:size-4">
         <ClockIcon />
       </span>
