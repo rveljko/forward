@@ -14,8 +14,11 @@ export default function DraftCard({
     <article className="ring-section-outline relative h-full overflow-hidden rounded-lg shadow-sm ring">
       <div className="bg-clickable/10 aspect-3/1 w-full"></div>
       <div className="p-2">
-        <h3 className="line-clamp-2 text-balance">
-          <Link to={`/dashboard/drafts/${id}`}>
+        <h3>
+          <Link
+            to={`/dashboard/drafts/${id}`}
+            className="line-clamp-2 text-balance"
+          >
             <span className="absolute inset-0"></span>
             {title}
           </Link>
