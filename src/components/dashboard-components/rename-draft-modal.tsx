@@ -8,7 +8,7 @@ export default function RenameDraftModal() {
   const [newTitle, setNewTitle] = useState('')
 
   return (
-    <article className="bg-modal-background border-section-outline w-full max-w-140 rounded-2xl border">
+    <article className="bg-modal-background border-section-outline w-full rounded-2xl border">
       <form>
         <div className="p-4">
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">

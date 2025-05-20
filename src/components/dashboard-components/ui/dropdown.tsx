@@ -44,6 +44,9 @@ type ButtonAsButtonProps = React.ComponentPropsWithoutRef<'button'> & {
 export type ButtonProps = ButtonBaseProps &
   (ButtonAsAnchorProps | ButtonAsButtonProps)
 
+export const dropdownButtonClasses =
+  'text-clickable hover:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99'
+
 function Button({
   children,
   leftIcon: LeftIcon,
@@ -52,10 +55,7 @@ function Button({
   className,
   ...props
 }: ButtonProps) {
-  const buttonClasses = cn(
-    'text-clickable hover:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99',
-    className
-  )
+  const buttonClasses = cn(dropdownButtonClasses, className)
 
   if ('href' in props && props.href !== undefined) {
     return (

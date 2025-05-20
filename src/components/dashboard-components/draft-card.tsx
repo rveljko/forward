@@ -1,5 +1,8 @@
+import RenameDraftModalButton from '@dashboard-components/rename-draft-modal-button'
 import Divider from '@dashboard-components/ui/divider'
-import Dropdown from '@dashboard-components/ui/dropdown'
+import Dropdown, {
+  dropdownButtonClasses,
+} from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import TimeAgo from '@dashboard-components/ui/time-ago'
 import ClickIcon from '@icons/click-icon'
@@ -53,7 +56,12 @@ export default function DraftCard({
           >
             Open in new tab
           </Dropdown.Button>
-          <Dropdown.Button leftIcon={<EditIcon />}>Rename</Dropdown.Button>
+          <RenameDraftModalButton
+            leftIcon={<EditIcon />}
+            className={`justify-start inset-ring-0 hover:bg-[image:unset] ${dropdownButtonClasses}`}
+          >
+            Rename
+          </RenameDraftModalButton>
           <Dropdown.Button
             leftIcon={<TrashIcon />}
             className="text-danger-500 hover:bg-danger-500/10"
