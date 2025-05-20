@@ -12,6 +12,7 @@ type DraftsContextType = {
   drafts: Draft[]
   getDraftById: (id: string) => Draft
   createNewDraft: () => void
+  renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
 }
 
 export const DraftsContext = createContext<DraftsContextType | null>(null)
@@ -37,6 +38,15 @@ export default function DraftsContextProvider({
     navigate(`/dashboard/drafts/${id}`)
   }
 
+  function renameDraft(id: Draft['id'], newTitle: Draft['title']) {
+    const draft = getDraftById(id)
+
+    setDrafts([
+      { ...draft, title: newTitle },
+      ...drafts.filter(({ id }) => id !== draft.id),
+    ])
+  }
+
   useEffect(() => {
     localStorage.setItem('drafts', JSON.stringify(drafts))
   }, [drafts])
@@ -47,6 +57,7 @@ export default function DraftsContextProvider({
         drafts,
         getDraftById,
         createNewDraft,
+        renameDraft,
       }}
     >
       {children}

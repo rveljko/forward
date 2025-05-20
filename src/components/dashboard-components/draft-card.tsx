@@ -57,6 +57,8 @@ export default function DraftCard({
             Open in new tab
           </Dropdown.Button>
           <RenameDraftModalButton
+            draftId={id}
+            draftTitle={title}
             leftIcon={<EditIcon />}
             className={`justify-start inset-ring-0 hover:bg-[image:unset] ${dropdownButtonClasses}`}
           >

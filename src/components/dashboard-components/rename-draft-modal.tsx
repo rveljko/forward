@@ -1,15 +1,35 @@
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
 import EditIcon from '@icons/edit-icon'
+import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
+import { Draft } from '@utils/types'
 import { useState } from 'react'
 
-export default function RenameDraftModal() {
-  const [newTitle, setNewTitle] = useState('')
+type RenameDraftModalProps = {
+  closeModal: () => void
+  id: Draft['id']
+  title: Draft['title']
+}
+
+export default function RenameDraftModal({
+  closeModal,
+  id,
+  title,
+}: RenameDraftModalProps) {
+  const { renameDraft } = useDrafts()
+  const [newTitle, setNewTitle] = useState(title)
 
   return (
     <article className="bg-modal-background border-section-outline w-full rounded-2xl border">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+
+          renameDraft(id, newTitle)
+          closeModal()
+        }}
+      >
         <div className="p-4">
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
             <EditIcon />
@@ -28,7 +48,12 @@ export default function RenameDraftModal() {
         </div>
         <Divider />
         <div className="flex items-center justify-end gap-2 p-4">
-          <Button variant="ghost" size="small" type="button">
+          <Button
+            variant="ghost"
+            size="small"
+            type="button"
+            onClick={closeModal}
+          >
             Cancel
           </Button>
           <Button variant="primary" size="small" type="submit">
