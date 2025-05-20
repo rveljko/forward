@@ -1,3 +1,4 @@
+import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-button'
 import RenameDraftModalButton from '@dashboard-components/rename-draft-modal-button'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown, {
@@ -64,12 +65,12 @@ export default function DraftCard({
           >
             Rename
           </RenameDraftModalButton>
-          <Dropdown.Button
+          <DeleteDraftModalButton
             leftIcon={<TrashIcon />}
-            className="text-danger-500 hover:bg-danger-500/10"
+            className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start inset-ring-0 hover:bg-[image:unset]`}
           >
             Delete
-          </Dropdown.Button>
+          </DeleteDraftModalButton>
         </DropdownButton>
       </div>
     </article>
