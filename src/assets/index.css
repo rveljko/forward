@@ -77,6 +77,7 @@
   --section-outline: hsl(from var(--clickable) h s l / 10%);
   --background-color: hsl(233, 29%, 5%);
   --section-background-color: hsl(234, 28%, 7%);
+  --modal-background: var(--section-background-color);
 }
 
 @media (prefers-color-scheme: light) {
@@ -184,6 +185,7 @@
   --color-section-outline: var(--section-outline);
   --color-background-color: var(--background-color);
   --color-section-background-color: var(--section-background-color);
+  --color-modal-background: var(--modal-background);
   --sidebar-opened-width: 14.375rem;
   --switch-width: 2rem;
   --input-width: 12.5rem;
