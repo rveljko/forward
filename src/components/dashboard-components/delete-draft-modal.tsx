@@ -1,14 +1,20 @@
 import Divider from '@dashboard-components/ui/divider'
 import TrashIcon from '@icons/trash-icon'
+import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
+import { Draft } from '@utils/types'
 
 type DeleteDraftModalProps = {
   closeModal: () => void
+  id: Draft['id']
 }
 
 export default function DeleteDraftModal({
   closeModal,
+  id,
 }: DeleteDraftModalProps) {
+  const { deleteDraft } = useDrafts()
+
   return (
     <article className="bg-modal-background border-section-outline w-full rounded-2xl border">
       <div className="p-4">
@@ -23,7 +29,15 @@ export default function DeleteDraftModal({
         <Button variant="ghost" size="small" type="button" onClick={closeModal}>
           Cancel
         </Button>
-        <Button variant="danger" size="small" type="submit">
+        <Button
+          variant="danger"
+          size="small"
+          type="submit"
+          onClick={() => {
+            deleteDraft(id)
+            closeModal()
+          }}
+        >
           Delete
         </Button>
       </div>
