@@ -10,6 +10,7 @@ type DraftsContextProviderProps = {
 
 type DraftsContextType = {
   drafts: Draft[]
+  getSortedDrafts: () => Draft[]
   getDraftById: (id: string) => Draft
   createNewDraft: () => void
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
@@ -27,6 +28,12 @@ export default function DraftsContextProvider({
 }: DraftsContextProviderProps) {
   const [drafts, setDrafts] = useState(getInitialDrafts)
   const navigate = useNavigate()
+
+  function getSortedDrafts() {
+    return drafts.sort(
+      (a, b) => new Date(b.lastEdit).getTime() - new Date(a.lastEdit).getTime()
+    )
+  }
 
   function getDraftById(id: string) {
     return drafts.find((draft) => draft.id === id)!
@@ -55,6 +62,7 @@ export default function DraftsContextProvider({
     <DraftsContext.Provider
       value={{
         drafts,
+        getSortedDrafts,
         getDraftById,
         createNewDraft,
         renameDraft,

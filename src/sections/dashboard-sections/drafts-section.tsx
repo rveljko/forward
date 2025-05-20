@@ -5,7 +5,7 @@ import Divider from '@dashboard-components/ui/divider'
 import { useDrafts } from '@services/contexts/drafts-context'
 
 export default function DraftsSection() {
-  const { drafts } = useDrafts()
+  const { getSortedDrafts } = useDrafts()
 
   return (
     <section>
@@ -18,7 +18,7 @@ export default function DraftsSection() {
           <li>
             <CreateNewDraftButton />
           </li>
-          {drafts.map((draft) => (
+          {getSortedDrafts().map((draft) => (
             <li key={draft.id}>
               <DraftCard draft={draft} />
             </li>
