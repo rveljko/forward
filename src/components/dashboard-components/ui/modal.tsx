@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom'
+import ReactFocusLock from 'react-focus-lock'
 
 type ModalProps = {
   children: React.ReactNode
@@ -17,7 +18,7 @@ export default function Modal({ children, closeModal }: ModalProps) {
         className="w-full max-w-140 rounded-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {children}
+        <ReactFocusLock returnFocus>{children}</ReactFocusLock>
       </div>
     </div>,
     document.getElementById('root')!
