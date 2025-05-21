@@ -61,14 +61,14 @@ export default function DraftCard({
             draftId={id}
             draftTitle={title}
             leftIcon={<EditIcon />}
-            className={`justify-start inset-ring-0 hover:bg-[image:unset] ${dropdownButtonClasses}`}
+            className={`${dropdownButtonClasses} justify-start`}
           >
             Rename
           </RenameDraftModalButton>
           <DeleteDraftModalButton
             draftId={id}
             leftIcon={<TrashIcon />}
-            className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start inset-ring-0 hover:bg-[image:unset]`}
+            className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
           >
             Delete
           </DeleteDraftModalButton>
