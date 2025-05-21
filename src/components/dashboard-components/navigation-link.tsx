@@ -5,13 +5,13 @@ import { NavLink, NavLinkProps } from 'react-router'
 type NavigationLinkProps = Omit<NavLinkProps, 'children'> & {
   children: React.ReactNode
   icon?: NavigationLinkType['icon']
-  showText?: boolean
+  hideText?: boolean
 }
 
 export default function NavigationLink({
   children,
   icon: Icon,
-  showText,
+  hideText,
   className,
   ...props
 }: NavigationLinkProps) {
@@ -31,7 +31,7 @@ export default function NavigationLink({
           <Icon />
         </span>
       )}
-      {showText && children}
+      <span className={!hideText ? 'inline' : 'hidden'}>{children}</span>
     </NavLink>
   )
 }

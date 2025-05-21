@@ -97,12 +97,12 @@ export default function Sidebar() {
           <nav className="flex h-full flex-col justify-between gap-1">
             <NavigationLinksList
               navigationLinks={primaryNavigationLinks}
-              showNavigationLinkText={isOpened}
+              hideNavigationLinkText={!isOpened}
             />
             <div className="space-y-1">
               <NavigationLinksList
                 navigationLinks={secondaryNavigationLinks}
-                showNavigationLinkText={isOpened}
+                hideNavigationLinkText={!isOpened}
               />
               <div className="flex items-center gap-1 px-1.5 py-1">
                 <div className="flex h-6 shrink-0 items-center justify-center">

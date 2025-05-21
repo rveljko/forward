@@ -4,12 +4,12 @@ import { cn } from '@utils/utils'
 
 type NavigationLinksListProps = React.ComponentPropsWithoutRef<'ul'> & {
   navigationLinks: NavigationLinkType[]
-  showNavigationLinkText?: boolean
+  hideNavigationLinkText?: boolean
 }
 
 export default function NavigationLinksList({
   navigationLinks,
-  showNavigationLinkText,
+  hideNavigationLinkText,
   className,
   ...props
 }: NavigationLinksListProps) {
@@ -20,7 +20,7 @@ export default function NavigationLinksList({
           <NavigationLink
             to={path}
             icon={Icon}
-            showText={showNavigationLinkText}
+            hideText={hideNavigationLinkText}
           >
             {name}
           </NavigationLink>

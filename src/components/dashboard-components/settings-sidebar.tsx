@@ -34,7 +34,7 @@ export default function SettingsSidebar() {
       <nav>
         <NavigationLinksList
           navigationLinks={settingsNavigationLinks}
-          showNavigationLinkText={isOpened}
+          hideNavigationLinkText={!isOpened}
         />
       </nav>
     </aside>
