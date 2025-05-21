@@ -29,7 +29,7 @@ function Label({ children, ...props }: LabelProps) {
   return <label {...props}>{children}</label>
 }
 
-type InputProps = React.ComponentPropsWithoutRef<'input'> & {
+type InputProps = React.ComponentPropsWithRef<'input'> & {
   optional?: boolean
   leftIcon?: React.JSX.Element
   rightIcon?: React.JSX.Element

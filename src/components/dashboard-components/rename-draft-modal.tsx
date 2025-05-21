@@ -4,7 +4,7 @@ import EditIcon from '@icons/edit-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { Draft } from '@utils/types'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 type RenameDraftModalProps = {
   closeModal: () => void
@@ -19,6 +19,7 @@ export default function RenameDraftModal({
 }: RenameDraftModalProps) {
   const { renameDraft } = useDrafts()
   const [newTitle, setNewTitle] = useState(title)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   return (
     <article className="bg-modal-background border-section-outline w-full rounded-2xl border">
@@ -41,8 +42,10 @@ export default function RenameDraftModal({
             </FormField.Label>
             <FormField.Input
               id="title"
+              ref={inputRef}
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
+              onFocus={() => inputRef.current?.select()}
             />
           </FormField>
         </div>
