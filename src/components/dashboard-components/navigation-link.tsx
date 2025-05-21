@@ -1,21 +1,27 @@
 import { NavigationLink as NavigationLinkType } from '@utils/types'
+import { cn } from '@utils/utils'
 import { NavLink, NavLinkProps } from 'react-router'
 
-type NavigationLinkProps = Omit<NavLinkProps, 'to'> & {
-  navigationLink: NavigationLinkType
+type NavigationLinkProps = Omit<NavLinkProps, 'children'> & {
+  children: React.ReactNode
+  icon?: NavigationLinkType['icon']
   showText?: boolean
 }
 
 export default function NavigationLink({
-  navigationLink: { name, path, icon: Icon },
+  children,
+  icon: Icon,
   showText,
+  className,
   ...props
 }: NavigationLinkProps) {
   return (
     <NavLink
-      to={path}
       className={({ isActive }) =>
-        `text-clickable group hover:inset-ring-clickable/10 flex items-center gap-1 rounded-sm px-1.5 py-1 hover:bg-neutral-800 hover:inset-ring ${isActive ? 'inset-ring-clickable/10 [&_span]:text-clickable bg-neutral-700 inset-ring' : ''}`
+        cn(
+          `text-clickable group hover:inset-ring-clickable/10 flex items-center gap-1 rounded-sm px-1.5 py-1 hover:bg-neutral-800 hover:inset-ring ${isActive ? 'inset-ring-clickable/10 [&_span]:text-clickable bg-neutral-700 inset-ring' : ''}`,
+          className
+        )
       }
       end
       {...props}
@@ -25,7 +31,7 @@ export default function NavigationLink({
           <Icon />
         </span>
       )}
-      {showText && name}
+      {showText && children}
     </NavLink>
   )
 }

@@ -15,12 +15,15 @@ export default function NavigationLinksList({
 }: NavigationLinksListProps) {
   return (
     <ul className={cn('space-y-1', className)} {...props}>
-      {navigationLinks.map((navigationLink) => (
-        <li key={navigationLink.id}>
+      {navigationLinks.map(({ id, name, path, icon: Icon }) => (
+        <li key={id}>
           <NavigationLink
-            navigationLink={navigationLink}
+            to={path}
+            icon={Icon}
             showText={showNavigationLinkText}
-          />
+          >
+            {name}
+          </NavigationLink>
         </li>
       ))}
     </ul>
