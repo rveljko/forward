@@ -3,16 +3,19 @@ import { cva, VariantProps } from 'class-variance-authority'
 import { Link } from 'react-router'
 
 const button = cva(
-  'text-clickable flex w-max items-center justify-center gap-1 rounded-md inset-ring inset-ring-white/10 hover:cursor-pointer hover:bg-[linear-gradient(hsl(from_var(--color-black)_h_s_l_/_5%),hsl(from_var(--color-black)_h_s_l_/_5%))] active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:bg-[linear-gradient(transparent,transparent)] disabled:opacity-50',
+  'text-clickable inset-ring-clickable/10 flex w-max items-center justify-center gap-1 rounded-md inset-ring hover:cursor-pointer active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
-        primary: 'bg-brand-500 text-white',
-        secondary: 'bg-neutral-800',
-        tertiary: 'inset-ring-0',
-        ghost: '',
-        danger: 'bg-danger-500 text-white',
-        link: 'hover:text-brand-500 inset-ring-0 hover:bg-[image:unset]',
+        primary:
+          'bg-brand-500 text-white hover:bg-[color-mix(in_oklab,var(--color-brand-500),_var(--color-black)_10%)]',
+        secondary:
+          'bg-neutral-800 hover:bg-[color-mix(in_oklab,var(--color-neutral-800),_var(--color-black)_10%)]',
+        tertiary: 'hover:bg-clickable/10 inset-ring-0',
+        ghost: 'hover:bg-clickable/10',
+        danger:
+          'bg-danger-500 text-white hover:bg-[color-mix(in_oklab,var(--color-danger-500),_var(--color-black)_10%)]',
+        link: 'hover:text-brand-500 inset-ring-0',
       },
       size: {
         large: 'px-3 py-2',
