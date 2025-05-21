@@ -36,7 +36,7 @@ export default function RenameDraftModal({
             <EditIcon />
           </span>
           <h3 className="mb-1">Rename Draft</h3>
-          <FormField className="gap-4">
+          <FormField className="gap-4 [&_div]:max-w-none">
             <FormField.Label htmlFor="title" className="text-neutral-400">
               Enter a new title for your draft
             </FormField.Label>
