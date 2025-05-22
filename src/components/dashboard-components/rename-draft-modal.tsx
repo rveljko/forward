@@ -53,13 +53,13 @@ export default function RenameDraftModal({
         <div className="flex items-center justify-end gap-2 p-4">
           <Button
             variant="ghost"
-            size="small"
+            size="large"
             type="button"
             onClick={closeModal}
           >
             Cancel
           </Button>
-          <Button variant="primary" size="small" type="submit">
+          <Button variant="primary" size="large" type="submit">
             Rename
           </Button>
         </div>
