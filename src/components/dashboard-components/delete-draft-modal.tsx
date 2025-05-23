@@ -26,12 +26,12 @@ export default function DeleteDraftModal({
       </div>
       <Divider />
       <div className="flex items-center justify-end gap-2 p-4">
-        <Button variant="ghost" size="small" type="button" onClick={closeModal}>
+        <Button variant="ghost" size="large" type="button" onClick={closeModal}>
           Cancel
         </Button>
         <Button
           variant="danger"
-          size="small"
+          size="large"
           type="submit"
           onClick={() => {
             deleteDraft(id)
