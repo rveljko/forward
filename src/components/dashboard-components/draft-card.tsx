@@ -26,7 +26,7 @@ export default function DraftCard({
       <div className="overflow-hidden rounded-t-lg">
         <div className="bg-clickable/10 aspect-3/1 w-full"></div>
       </div>
-      <div className="p-2">
+      <div className="h-16 p-2">
         <h3>
           <Link
             to={`/dashboard/drafts/${id}`}
