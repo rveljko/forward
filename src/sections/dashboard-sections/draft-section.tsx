@@ -1,6 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
 import { useDrafts } from '@services/contexts/drafts-context'
-import { TITLE_PREFIX } from '@utils/constants'
+import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
@@ -20,6 +20,12 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   const [newTitle, setNewTitle] = useState(title)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  function handleRenameDraft() {
+    const newDraftTitle = newTitle || DEFAULT_DRAFT_TITLE
+    renameDraft(draftId, newDraftTitle)
+    setNewTitle(newDraftTitle)
+  }
+
   return (
     <section>
       <title>{`${TITLE_PREFIX}${title}`}</title>
@@ -33,10 +39,10 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
             ref={inputRef}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            onBlur={() => renameDraft(draftId, newTitle)}
+            onBlur={handleRenameDraft}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                renameDraft(draftId, newTitle)
+                handleRenameDraft()
                 inputRef.current?.blur()
               }
             }}

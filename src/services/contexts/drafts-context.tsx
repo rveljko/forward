@@ -1,4 +1,5 @@
 import { drafts as defaultDrafts } from '@data/drafts'
+import { DEFAULT_DRAFT_TITLE } from '@utils/constants'
 import { Draft } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -42,7 +43,10 @@ export default function DraftsContextProvider({
 
   function createNewDraft() {
     const id = uuidv4()
-    setDrafts([{ id, lastEdit: new Date(), title: 'New Draft' }, ...drafts])
+    setDrafts([
+      { id, lastEdit: new Date(), title: DEFAULT_DRAFT_TITLE },
+      ...drafts,
+    ])
     navigate(`/dashboard/drafts/${id}`)
   }
 
