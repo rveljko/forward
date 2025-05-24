@@ -20,8 +20,9 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   const [newTitle, setNewTitle] = useState(title)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const newDraftTitle = newTitle || DEFAULT_DRAFT_TITLE
+
   function handleRenameDraft() {
-    const newDraftTitle = newTitle || DEFAULT_DRAFT_TITLE
     renameDraft(draftId, newDraftTitle)
     setNewTitle(newDraftTitle)
   }
@@ -46,7 +47,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
                 inputRef.current?.blur()
               }
             }}
-            className="text-clickable w-full max-w-85"
+            className={`focus:text-clickable w-full max-w-85 ${newTitle === DEFAULT_DRAFT_TITLE ? 'text-neutral-400' : 'text-clickable'}`}
             maxLength={80}
           />
         </div>
