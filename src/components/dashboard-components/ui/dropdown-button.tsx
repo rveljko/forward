@@ -1,6 +1,7 @@
 import Dropdown from '@dashboard-components/ui/dropdown'
 import Button, { ButtonProps } from '@ui/button'
 import { useEffect, useRef, useState } from 'react'
+import ReactFocusLock from 'react-focus-lock'
 
 type DropdownButtonProps = ButtonProps & {
   label: React.ReactNode
@@ -40,9 +41,9 @@ export default function DropdownButton({
         {label}
       </Button>
       {isOpened && (
-        <div className="absolute right-0 bottom-[calc(100%_+_--spacing(2))] min-w-full">
+        <ReactFocusLock className="absolute right-0 bottom-[calc(100%_+_--spacing(2))] min-w-full">
           <Dropdown>{children}</Dropdown>
-        </div>
+        </ReactFocusLock>
       )}
     </div>
   )
