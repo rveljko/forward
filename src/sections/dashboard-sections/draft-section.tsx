@@ -1,5 +1,8 @@
+import Container from '@dashboard-components/container'
 import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-button'
+import RichTextEditor from '@dashboard-components/text-editor'
 import Divider from '@dashboard-components/ui/divider'
+import useTextEditor from '@hooks/use-text-editor'
 import PlusIcon from '@icons/plus-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
@@ -23,10 +26,11 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   const { title } = draft
 
   return (
-    <section>
+    <section className="flex h-full flex-col">
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <Header draftId={draftId} title={title} />
       <Divider />
+      <TextEditor />
     </section>
   )
 }
@@ -89,5 +93,15 @@ function Header({ draftId, title }: HeaderProps) {
         </DeleteDraftModalButton>
       </div>
     </header>
+  )
+}
+
+function TextEditor() {
+  const editor = useTextEditor()
+
+  return (
+    <Container className="grow py-8 md:py-16">
+      <RichTextEditor editor={editor} className="h-full" />
+    </Container>
   )
 }
