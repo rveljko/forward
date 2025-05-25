@@ -5,15 +5,16 @@ import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
+import { Draft } from '@utils/types'
 import { useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
 type DraftSectionProps = {
-  draftId: string
+  draftId: Draft['id']
 }
 
 export default function DraftSection({ draftId }: DraftSectionProps) {
-  const { getDraftById, createNewDraft, renameDraft } = useDrafts()
+  const { getDraftById } = useDrafts()
 
   const draft = getDraftById(draftId)
 
@@ -21,6 +22,22 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
 
   const { title } = draft
 
+  return (
+    <section>
+      <title>{`${TITLE_PREFIX}${title}`}</title>
+      <Header draftId={draftId} title={title} />
+      <Divider />
+    </section>
+  )
+}
+
+type HeaderProps = {
+  draftId: Draft['id']
+  title: Draft['title']
+}
+
+function Header({ draftId, title }: HeaderProps) {
+  const { createNewDraft, renameDraft } = useDrafts()
   const [newTitle, setNewTitle] = useState(title)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -32,49 +49,45 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   }
 
   return (
-    <section>
-      <title>{`${TITLE_PREFIX}${title}`}</title>
-      <header className="flex items-center justify-between gap-2 p-4">
-        <div className="flex grow items-center gap-1">
-          <Link to="/dashboard/drafts" className="text-clickable">
-            Drafts
-          </Link>
-          <span className="text-neutral-400">/</span>
-          <input
-            ref={inputRef}
-            value={newTitle}
-            onChange={(e) => setNewTitle(e.target.value)}
-            onBlur={handleRenameDraft}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter') {
-                handleRenameDraft()
-                inputRef.current?.blur()
-              }
-            }}
-            className={`focus:text-clickable w-full max-w-85 ${newTitle === DEFAULT_DRAFT_TITLE ? 'text-neutral-400' : 'text-clickable'}`}
-            maxLength={80}
-          />
-        </div>
-        <div className="flex items-center gap-1">
-          <Button
-            variant="tertiary"
-            className="p-0.5"
-            onClick={() => createNewDraft()}
-          >
-            <PlusIcon />
-            <span className="sr-only">Create new Draft</span>
-          </Button>
-          <DeleteDraftModalButton
-            draftId={draftId}
-            variant="tertiary"
-            className="text-danger-500 hover:bg-danger-500/10 p-0.5"
-          >
-            <TrashIcon />
-            <span className="sr-only">Delete Draft</span>
-          </DeleteDraftModalButton>
-        </div>
-      </header>
-      <Divider />
-    </section>
+    <header className="flex items-center justify-between gap-2 p-4">
+      <div className="flex grow items-center gap-1">
+        <Link to="/dashboard/drafts" className="text-clickable">
+          Drafts
+        </Link>
+        <span className="text-neutral-400">/</span>
+        <input
+          ref={inputRef}
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+          onBlur={handleRenameDraft}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              handleRenameDraft()
+              inputRef.current?.blur()
+            }
+          }}
+          className={`focus:text-clickable w-full max-w-85 ${newTitle === DEFAULT_DRAFT_TITLE ? 'text-neutral-400' : 'text-clickable'}`}
+          maxLength={80}
+        />
+      </div>
+      <div className="flex items-center gap-1">
+        <Button
+          variant="tertiary"
+          className="p-0.5"
+          onClick={() => createNewDraft()}
+        >
+          <PlusIcon />
+          <span className="sr-only">Create new Draft</span>
+        </Button>
+        <DeleteDraftModalButton
+          draftId={draftId}
+          variant="tertiary"
+          className="text-danger-500 hover:bg-danger-500/10 p-0.5"
+        >
+          <TrashIcon />
+          <span className="sr-only">Delete Draft</span>
+        </DeleteDraftModalButton>
+      </div>
+    </header>
   )
 }
