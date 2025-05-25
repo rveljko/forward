@@ -1,5 +1,7 @@
 import Divider from '@dashboard-components/ui/divider'
+import PlusIcon from '@icons/plus-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
+import Button from '@ui/button'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
@@ -9,7 +11,7 @@ type DraftSectionProps = {
 }
 
 export default function DraftSection({ draftId }: DraftSectionProps) {
-  const { getDraftById, renameDraft } = useDrafts()
+  const { getDraftById, createNewDraft, renameDraft } = useDrafts()
 
   const draft = getDraftById(draftId)
 
@@ -30,8 +32,8 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   return (
     <section>
       <title>{`${TITLE_PREFIX}${title}`}</title>
-      <header className="p-4">
-        <div className="flex items-center gap-1">
+      <header className="flex items-center justify-between gap-2 p-4">
+        <div className="flex grow items-center gap-1">
           <Link to="/dashboard/drafts" className="text-clickable">
             Drafts
           </Link>
@@ -51,6 +53,14 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
             maxLength={80}
           />
         </div>
+        <Button
+          variant="tertiary"
+          className="p-0.5"
+          onClick={() => createNewDraft()}
+        >
+          <PlusIcon />
+          <span className="sr-only">Create new Draft</span>
+        </Button>
       </header>
       <Divider />
     </section>
