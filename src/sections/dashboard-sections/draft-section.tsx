@@ -1,5 +1,7 @@
+import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-button'
 import Divider from '@dashboard-components/ui/divider'
 import PlusIcon from '@icons/plus-icon'
+import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
@@ -53,14 +55,24 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
             maxLength={80}
           />
         </div>
-        <Button
-          variant="tertiary"
-          className="p-0.5"
-          onClick={() => createNewDraft()}
-        >
-          <PlusIcon />
-          <span className="sr-only">Create new Draft</span>
-        </Button>
+        <div className="flex items-center gap-1">
+          <Button
+            variant="tertiary"
+            className="p-0.5"
+            onClick={() => createNewDraft()}
+          >
+            <PlusIcon />
+            <span className="sr-only">Create new Draft</span>
+          </Button>
+          <DeleteDraftModalButton
+            draftId={draftId}
+            variant="tertiary"
+            className="text-danger-500 hover:bg-danger-500/10 p-0.5"
+          >
+            <TrashIcon />
+            <span className="sr-only">Delete Draft</span>
+          </DeleteDraftModalButton>
+        </div>
       </header>
       <Divider />
     </section>
