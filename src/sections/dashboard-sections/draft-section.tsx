@@ -1,11 +1,13 @@
 import Container from '@dashboard-components/container'
 import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-button'
 import RichTextEditor from '@dashboard-components/text-editor'
+import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
 import useTextEditor from '@hooks/use-text-editor'
 import PlusIcon from '@icons/plus-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
+import { Editor } from '@tiptap/react'
 import Button from '@ui/button'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { Draft } from '@utils/types'
@@ -25,12 +27,18 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
 
   const { title } = draft
 
+  const editor = useTextEditor()
+
+  if (!editor) return
+
   return (
     <section className="flex h-full flex-col">
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <Header draftId={draftId} title={title} />
       <Divider />
-      <TextEditor />
+      <TextEditorCommandBar editor={editor} className="flex-wrap p-4" />
+      <Divider />
+      <TextEditor editor={editor} />
     </section>
   )
 }
@@ -96,9 +104,11 @@ function Header({ draftId, title }: HeaderProps) {
   )
 }
 
-function TextEditor() {
-  const editor = useTextEditor()
+type TextEditorProps = {
+  editor: Editor
+}
 
+function TextEditor({ editor }: TextEditorProps) {
   return (
     <Container className="grow py-8 md:py-16">
       <RichTextEditor editor={editor} className="h-full" />

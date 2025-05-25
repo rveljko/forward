@@ -1,3 +1,5 @@
+import TextAlign from '@tiptap/extension-text-align'
+import Underline from '@tiptap/extension-underline'
 import { EditorOptions, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
@@ -8,6 +10,10 @@ export default function useTextEditor(editorOptions?: Partial<EditorOptions>) {
         heading: {
           levels: [1, 2, 3, 4],
         },
+      }),
+      Underline,
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
       }),
     ],
     editorProps: {

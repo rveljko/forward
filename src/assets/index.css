@@ -247,4 +247,14 @@
   .ProseMirror p {
     color: var(--color-neutral-100);
   }
+
+  .ProseMirror ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+
+  .ProseMirror ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+  }
 }
