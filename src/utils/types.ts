@@ -81,4 +81,5 @@ export type Draft = {
   id: string
   title: string
   lastEdit: Date
+  content: string
 }
