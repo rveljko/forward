@@ -3,6 +3,7 @@ import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-but
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
+import useDebounce from '@hooks/use-debounce'
 import useTextEditor from '@hooks/use-text-editor'
 import PlusIcon from '@icons/plus-icon'
 import TrashIcon from '@icons/trash-icon'
@@ -11,7 +12,7 @@ import { Editor } from '@tiptap/react'
 import Button from '@ui/button'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { Draft } from '@utils/types'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
 type DraftSectionProps = {
@@ -19,15 +20,25 @@ type DraftSectionProps = {
 }
 
 export default function DraftSection({ draftId }: DraftSectionProps) {
-  const { getDraftById } = useDrafts()
+  const { getDraftById, updateDraft } = useDrafts()
 
   const draft = getDraftById(draftId)
 
   if (!draft) return <Navigate to="/dashboard/drafts" />
 
   const { title, content } = draft
+  const [newContent, setNewContent] = useState(content)
 
-  const editor = useTextEditor({ content })
+  const editor = useTextEditor({
+    content,
+    onUpdate: ({ editor }) => setNewContent(editor.getHTML()),
+  })
+
+  const debouncedContent = useDebounce(newContent, 3000)
+
+  useEffect(() => {
+    if (debouncedContent) updateDraft(draftId, debouncedContent)
+  }, [debouncedContent])
 
   if (!editor) return
 

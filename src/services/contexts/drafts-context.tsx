@@ -14,6 +14,7 @@ type DraftsContextType = {
   getSortedDrafts: () => Draft[]
   getDraftById: (id: string) => Draft
   createNewDraft: () => void
+  updateDraft: (id: Draft['id'], content: Draft['content']) => void
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
   deleteDraft: (id: Draft['id']) => void
 }
@@ -50,6 +51,15 @@ export default function DraftsContextProvider({
     navigate(`/dashboard/drafts/${id}`)
   }
 
+  function updateDraft(id: Draft['id'], content: Draft['content']) {
+    const draft = getDraftById(id)
+
+    setDrafts([
+      { ...draft, lastEdit: new Date(), content },
+      ...drafts.filter(({ id }) => id !== draft.id),
+    ])
+  }
+
   function renameDraft(id: Draft['id'], newTitle: Draft['title']) {
     const draft = getDraftById(id)
 
@@ -74,6 +84,7 @@ export default function DraftsContextProvider({
         getSortedDrafts,
         getDraftById,
         createNewDraft,
+        updateDraft,
         renameDraft,
         deleteDraft,
       }}
