@@ -28,11 +28,17 @@ export default function ProfileSection() {
       >
         <FormField className="lg:flex-row lg:gap-16">
           <p className="w-full max-w-50 text-neutral-100">Profile Picture</p>
-          <div className="flex w-max flex-row-reverse items-center gap-2">
+          <div className="relative flex items-center gap-2">
+            <img
+              src={newUserInformation.profilePictureUrl}
+              alt={`${userInformation.firstName} ${userInformation.lastName} profile picture`}
+              className="size-12 rounded-full object-cover"
+            />
             <FormField.Label
               htmlFor="profile-picture"
               className="hover:cursor-pointer"
             >
+              <span className="absolute top-0 left-0 size-12 rounded-full"></span>
               Upload
             </FormField.Label>
             <input
@@ -56,11 +62,6 @@ export default function ProfileSection() {
                 reader.readAsDataURL(file)
               }}
               className="hidden"
-            />
-            <img
-              src={newUserInformation.profilePictureUrl}
-              alt={`${userInformation.firstName} ${userInformation.lastName} profile picture`}
-              className="size-12 rounded-full object-cover"
             />
           </div>
         </FormField>
