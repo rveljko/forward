@@ -25,9 +25,9 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
 
   if (!draft) return <Navigate to="/dashboard/drafts" />
 
-  const { title } = draft
+  const { title, content } = draft
 
-  const editor = useTextEditor()
+  const editor = useTextEditor({ content })
 
   if (!editor) return
 
