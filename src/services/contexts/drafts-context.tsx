@@ -44,7 +44,7 @@ export default function DraftsContextProvider({
   function createNewDraft() {
     const id = uuidv4()
     setDrafts([
-      { id, lastEdit: new Date(), title: DEFAULT_DRAFT_TITLE },
+      { id, lastEdit: new Date(), title: DEFAULT_DRAFT_TITLE, content: '' },
       ...drafts,
     ])
     navigate(`/dashboard/drafts/${id}`)
