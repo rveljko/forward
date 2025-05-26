@@ -32,7 +32,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   if (!editor) return
 
   return (
-    <section className="flex h-full flex-col">
+    <section className="flex h-full flex-col overflow-hidden">
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <Header draftId={draftId} title={title} />
       <Divider />
@@ -110,8 +110,10 @@ type TextEditorProps = {
 
 function TextEditor({ editor }: TextEditorProps) {
   return (
-    <Container className="grow py-8 md:py-16">
-      <RichTextEditor editor={editor} className="h-full" />
-    </Container>
+    <div className="flex h-full flex-col overflow-y-auto">
+      <Container className="grow py-8 md:py-16">
+        <RichTextEditor editor={editor} className="h-full" />
+      </Container>
+    </div>
   )
 }
