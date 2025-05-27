@@ -17,15 +17,15 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route index element={<IssuesPage />} />
         <Route path="inbox" element={<InboxPage />} />
         <Route path="inbox/:chatId" element={<ChatPage />} />
+        <Route path="issues" element={<IssuesPage />} />
         <Route path="drafts" element={<DraftsPage />} />
         <Route path="drafts/:draftId" element={<DraftPage />} />
         <Route path="guides" element={<GuidesPage />} />
         <Route path="help-and-support" element={<HelpAndSupportPage />} />
         <Route path="settings" element={<SettingsLayout />}>
-          <Route index element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="security" element={<SecurityPage />} />
           <Route path="preferences" element={<PreferencesPage />} />
           <Route path="integrations" element={<IntegrationsPage />} />

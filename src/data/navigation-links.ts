@@ -20,7 +20,7 @@ export const primaryNavigationLinks: NavigationLink[] = [
   {
     id: 2,
     name: 'Issues',
-    path: '',
+    path: 'issues',
     icon: FolderIcon,
   },
   {
@@ -47,7 +47,7 @@ export const secondaryNavigationLinks: NavigationLink[] = [
   {
     id: 3,
     name: 'Settings',
-    path: 'settings',
+    path: 'settings/profile',
     icon: SettingsIcon,
   },
 ]
@@ -56,7 +56,7 @@ export const settingsNavigationLinks: NavigationLink[] = [
   {
     id: 1,
     name: 'My Profile',
-    path: '',
+    path: 'profile',
     icon: UserIcon,
   },
   {
