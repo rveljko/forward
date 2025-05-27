@@ -36,7 +36,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
   const { person, messages } = chat
 
   return (
-    <section className="flex w-full flex-col">
+    <section className="grid w-full grid-cols-1 grid-rows-[repeat(3,auto)_1fr]">
       <header className="flex items-center gap-4 p-4">
         <Button
           href="/dashboard/inbox"
@@ -78,7 +78,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
       <div className="flex flex-col-reverse overflow-y-auto p-4">
         <ChatMessageCardsList messages={messages} person={person} />
       </div>
-      <div className="mt-auto w-full">
+      <div className="self-end">
         <Divider />
         <form
           className="p-4"
@@ -92,7 +92,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
         >
           <FormField className="[&_div]:max-w-none">
             <FormField.Textarea
-              className="aspect-auto"
+              className="field-sizing-content aspect-auto max-h-[30vh]"
               placeholder="Message"
               value={newMessage.message}
               onChange={(e) =>
