@@ -19,7 +19,7 @@ export default function NavigationLink({
     <NavLink
       className={({ isActive }) =>
         cn(
-          `text-clickable group flex items-center gap-1 rounded-sm px-1.5 py-1 hover:bg-neutral-800 ${isActive ? '[&_span]:text-clickable bg-neutral-700' : ''}`,
+          `text-clickable group flex items-center gap-1 rounded-sm px-1.5 py-1 hover:bg-neutral-800 active:scale-99 ${isActive ? '[&_span]:text-clickable bg-neutral-700' : ''}`,
           className
         )
       }
