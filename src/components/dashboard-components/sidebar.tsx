@@ -104,7 +104,10 @@ export default function Sidebar() {
                 navigationLinks={secondaryNavigationLinks}
                 hideNavigationLinkText={!isOpened}
               />
-              <div className="flex items-center gap-1 px-1.5 py-1">
+              <Link
+                to="/dashboard/settings/"
+                className="flex items-center gap-1 px-1.5 py-1"
+              >
                 <div className="flex h-6 shrink-0 items-center justify-center">
                   <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
                     <img
@@ -114,12 +117,12 @@ export default function Sidebar() {
                     />
                   </div>
                 </div>
-                <p
+                <span
                   className={`text-clickable ${isOpened ? 'block' : 'hidden'}`}
                 >
                   {userInformation.firstName} {userInformation.lastName}
-                </p>
-              </div>
+                </span>
+              </Link>
             </div>
           </nav>
         </div>
