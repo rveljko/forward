@@ -23,7 +23,6 @@ export default function NavigationLink({
           className
         )
       }
-      end
       {...props}
     >
       {Icon && (
