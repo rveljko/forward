@@ -105,7 +105,7 @@ export default function Sidebar() {
                 hideNavigationLinkText={!isOpened}
               />
               <Link
-                to="/dashboard/settings/"
+                to="/dashboard/settings/profile"
                 className="flex items-center gap-1 px-1.5 py-1"
               >
                 <div className="flex h-6 shrink-0 items-center justify-center">
