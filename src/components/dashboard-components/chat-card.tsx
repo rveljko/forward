@@ -36,7 +36,9 @@ export default function ChatCard({
             {name}
           </NavLink>
         </h3>
-        <p className="line-clamp-1">{messages[messages.length - 1].message}</p>
+        <p className="line-clamp-1 break-all">
+          {messages[messages.length - 1].message}
+        </p>
       </div>
     </article>
   )
