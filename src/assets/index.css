@@ -257,4 +257,12 @@
     list-style-type: decimal;
     margin-left: 1.5rem;
   }
+
+  .ProseMirror .is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+    color: var(--color-neutral-400);
+  }
 }
