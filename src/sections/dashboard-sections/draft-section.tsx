@@ -5,11 +5,9 @@ import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
 import useDebounce from '@hooks/use-debounce'
 import useTextEditor from '@hooks/use-text-editor'
-import PlusIcon from '@icons/plus-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import { Editor } from '@tiptap/react'
-import Button from '@ui/button'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { Draft } from '@utils/types'
 import { useEffect, useRef, useState } from 'react'
@@ -60,7 +58,7 @@ type HeaderProps = {
 }
 
 function Header({ draftId, title }: HeaderProps) {
-  const { createNewDraft, renameDraft } = useDrafts()
+  const { renameDraft } = useDrafts()
   const [newTitle, setNewTitle] = useState(title)
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -93,24 +91,14 @@ function Header({ draftId, title }: HeaderProps) {
           maxLength={80}
         />
       </div>
-      <div className="flex items-center gap-1">
-        <Button
-          variant="tertiary"
-          className="p-0.5"
-          onClick={() => createNewDraft()}
-        >
-          <PlusIcon />
-          <span className="sr-only">Create new Draft</span>
-        </Button>
-        <DeleteDraftModalButton
-          draftId={draftId}
-          variant="tertiary"
-          className="text-danger-500 hover:bg-danger-500/10 p-0.5"
-        >
-          <TrashIcon />
-          <span className="sr-only">Delete Draft</span>
-        </DeleteDraftModalButton>
-      </div>
+      <DeleteDraftModalButton
+        draftId={draftId}
+        variant="tertiary"
+        className="text-danger-500 hover:bg-danger-500/10 p-0.5"
+      >
+        <TrashIcon />
+        <span className="sr-only">Delete Draft</span>
+      </DeleteDraftModalButton>
     </header>
   )
 }
