@@ -2,6 +2,7 @@ import AlignCenterIcon from '@icons/align-center-icon'
 import AlignJustifiedIcon from '@icons/align-justified-icon'
 import AlignLeftIcon from '@icons/align-left-icon'
 import AlignRightIcon from '@icons/align-right-icon'
+import ArrowBackUpIcon from '@icons/arrow-back-up-icon'
 import BoldIcon from '@icons/bold-icon'
 import Heading1Icon from '@icons/heading1-icon'
 import Heading2Icon from '@icons/heading2-icon'
@@ -31,6 +32,15 @@ export default function TextEditorCommandBar({
       className={cn('flex items-center gap-0.5', className)}
       {...props}
     >
+      <Button
+        variant="tertiary"
+        onClick={() => editor.chain().focus().undo().run()}
+        disabled={!editor.can().chain().focus().undo().run()}
+        className="p-0.5"
+      >
+        <ArrowBackUpIcon />
+        <span className="sr-only">Undo</span>
+      </Button>
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
