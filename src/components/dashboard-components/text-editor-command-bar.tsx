@@ -3,6 +3,7 @@ import AlignJustifiedIcon from '@icons/align-justified-icon'
 import AlignLeftIcon from '@icons/align-left-icon'
 import AlignRightIcon from '@icons/align-right-icon'
 import ArrowBackUpIcon from '@icons/arrow-back-up-icon'
+import ArrowForwardUpIcon from '@icons/arrow-forward-up-icon'
 import BoldIcon from '@icons/bold-icon'
 import Heading1Icon from '@icons/heading1-icon'
 import Heading2Icon from '@icons/heading2-icon'
@@ -40,6 +41,15 @@ export default function TextEditorCommandBar({
       >
         <ArrowBackUpIcon />
         <span className="sr-only">Undo</span>
+      </Button>
+      <Button
+        variant="tertiary"
+        onClick={() => editor.chain().focus().redo().run()}
+        disabled={!editor.can().chain().focus().redo().run()}
+        className="p-0.5"
+      >
+        <ArrowForwardUpIcon />
+        <span className="sr-only">Redo</span>
       </Button>
       <Button
         variant="tertiary"
