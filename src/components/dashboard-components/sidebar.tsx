@@ -55,7 +55,7 @@ export default function Sidebar() {
             isOpened ? 'flex-row' : 'flex-col-reverse'
           }`}
         >
-          <Link to="/dashboard">
+          <Link to="/dashboard/issues">
             <Logo hideText={!isOpened} />
           </Link>
           <button
