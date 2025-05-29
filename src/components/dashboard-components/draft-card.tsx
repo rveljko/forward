@@ -22,7 +22,7 @@ export default function DraftCard({
   draft: { id, title, lastEdit },
 }: DraftCardProps) {
   return (
-    <article className="ring-section-outline hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring">
+    <article className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring">
       <div className="overflow-hidden rounded-t-lg">
         <div className="bg-clickable/10 aspect-3/1 w-full"></div>
       </div>
