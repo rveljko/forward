@@ -18,7 +18,9 @@ export default function DashboardLayout() {
       >
         <Sidebar />
       </div>
-      <div className="w-full p-4">
+      <div
+        className={`w-full p-4 ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
+      >
         <main className="border-section-outline bg-section-background-color h-full overflow-y-auto rounded-2xl border">
           <Outlet />
         </main>
