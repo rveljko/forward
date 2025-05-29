@@ -30,7 +30,7 @@ export default function NavigationLink({
           <Icon />
         </span>
       )}
-      <span className={!hideText ? 'inline' : 'hidden'}>{children}</span>
+      <span className={hideText ? 'hidden' : ''}>{children}</span>
     </NavLink>
   )
 }
