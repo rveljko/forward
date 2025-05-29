@@ -52,7 +52,7 @@ export default function Sidebar() {
       <div className="flex h-full flex-col gap-4">
         <header
           className={`flex items-center justify-between gap-2 ${
-            isOpened ? 'flex-row' : 'flex-col-reverse'
+            isOpened ? 'flex-row' : 'flex-col'
           }`}
         >
           <Link to="/dashboard/issues">
