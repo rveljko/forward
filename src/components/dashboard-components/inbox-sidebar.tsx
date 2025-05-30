@@ -1,4 +1,5 @@
 import ChatCardsList from '@dashboard-components/chat-cards-list'
+import InboxNoSearchResults from '@dashboard-components/inbox-no-search-results'
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
 import SearchIcon from '@icons/search-icon'
@@ -43,7 +44,11 @@ export default function InboxSidebar({ className }: InboxSidebarProps) {
         />
       </FormField>
       <Divider />
-      <ChatCardsList chats={filteredChats} />
+      {filteredChats.length > 0 ? (
+        <ChatCardsList chats={filteredChats} />
+      ) : (
+        <InboxNoSearchResults searchTerm={search} />
+      )}
     </aside>
   )
 }
