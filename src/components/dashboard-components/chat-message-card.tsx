@@ -38,7 +38,7 @@ export default function ChatMessageCard({
             {amPmTimeFormatter(date)}
           </time>
         </div>
-        <p className="break-all text-neutral-100">{message}</p>
+        <p className="wrap-anywhere text-neutral-100">{message}</p>
       </div>
     </article>
   )
