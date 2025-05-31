@@ -83,3 +83,20 @@ export type Draft = {
   lastEdit: Date
   content: string
 }
+
+export type IssueStatus = 'todo' | 'in-progress' | 'finished'
+
+export type IssuePriority = 'low' | 'medium' | 'high'
+
+export type IssueTag = 'design' | 'development' | 'testing'
+
+export type Issue = {
+  id: string
+  title: string
+  description?: string
+  status: IssueStatus
+  priority: IssuePriority
+  tag: IssueTag
+  createdAt: Date
+  content: string
+}
