@@ -1,4 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
+import ArrowsSortIcon from '@icons/arrows-sort-icon'
+import FilterIcon from '@icons/filter-icon'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
 import Button from '@ui/button'
 
@@ -11,6 +13,15 @@ export default function IssuesSection() {
           <SidebarClosedIcon />
         </Button>
       </header>
+      <Divider />
+      <div className="flex items-center gap-2 p-4">
+        <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
+          Filters
+        </Button>
+        <Button variant="secondary" size="small" leftIcon={<ArrowsSortIcon />}>
+          Sort
+        </Button>
+      </div>
       <Divider />
     </section>
   )
