@@ -62,6 +62,7 @@ export default function Sidebar() {
             className="text-clickable flex size-7 items-center justify-center hover:cursor-pointer"
             onClick={() => setIsOpened((prev) => !prev)}
           >
+            <span className="sr-only">Toggle Sidebar</span>
             {preferences.isRightSideSidebar ? (
               isOpened ? (
                 <ChevronRightIcon />
