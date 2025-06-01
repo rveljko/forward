@@ -9,6 +9,7 @@ type IssuesContextProviderProps = {
 type IssuesContextType = {
   issues: Issue[]
   getIssuesByStatus: (status: IssueStatus) => Issue[]
+  getIssueById: (id: Issue['id']) => Issue
 }
 
 export const IssuesContext = createContext<IssuesContextType | null>(null)
@@ -23,19 +24,24 @@ export default function IssuesContextProvider({
 }: IssuesContextProviderProps) {
   const [issues] = useState(getInitialIssues)
 
-  useEffect(() => {
-    localStorage.setItem('issues', JSON.stringify(issues))
-  }, [issues])
-
   function getIssuesByStatus(status: IssueStatus) {
     return issues.filter((issue) => issue.status === status)
   }
+
+  function getIssueById(id: Issue['id']) {
+    return issues.find((issue) => issue.id === id)!
+  }
+
+  useEffect(() => {
+    localStorage.setItem('issues', JSON.stringify(issues))
+  }, [issues])
 
   return (
     <IssuesContext.Provider
       value={{
         issues,
         getIssuesByStatus,
+        getIssueById,
       }}
     >
       {children}
