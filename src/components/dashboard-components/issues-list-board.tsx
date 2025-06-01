@@ -1,16 +1,13 @@
 import IssueColumn from '@dashboard-components/issue-column'
-import { issues } from '@data/issues'
 import CircleEmptyIcon from '@icons/circle-empty-icon'
 import CircleFullIcon from '@icons/circle-full-icon'
 import CircleHalfIcon from '@icons/circle-half-icon'
-import { IssueStatus } from '@utils/types'
+import { useIssues } from '@services/contexts/issues-context'
 
 type IssuesListBoardProps = React.ComponentPropsWithoutRef<'div'>
 
 export default function IssuesListBoard({ ...props }: IssuesListBoardProps) {
-  function getIssuesByStatus(status: IssueStatus) {
-    return issues.filter((issue) => issue.status === status)
-  }
+  const { getIssuesByStatus } = useIssues()
 
   return (
     <div {...props}>
