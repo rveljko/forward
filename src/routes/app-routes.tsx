@@ -5,6 +5,7 @@ import GuidesPage from '@dashboard-pages/guides-page'
 import HelpAndSupportPage from '@dashboard-pages/help-and-support-page'
 import InboxPage from '@dashboard-pages/inbox-page'
 import IntegrationsPage from '@dashboard-pages/integrations-page'
+import IssuePage from '@dashboard-pages/issue-page'
 import IssuesPage from '@dashboard-pages/issues-page'
 import PreferencesPage from '@dashboard-pages/preferences-page'
 import ProfilePage from '@dashboard-pages/profile-page'
@@ -20,6 +21,7 @@ export default function AppRoutes() {
         <Route path="inbox" element={<InboxPage />} />
         <Route path="inbox/:chatId" element={<ChatPage />} />
         <Route path="issues" element={<IssuesPage />} />
+        <Route path="issues/:issueId" element={<IssuePage />} />
         <Route path="drafts" element={<DraftsPage />} />
         <Route path="drafts/:draftId" element={<DraftPage />} />
         <Route path="guides" element={<GuidesPage />} />
