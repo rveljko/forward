@@ -7,7 +7,7 @@ export default function DashboardLayout() {
 
   return (
     <div
-      className={`relative flex h-screen ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
+      className={`relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
       <div
         className={
