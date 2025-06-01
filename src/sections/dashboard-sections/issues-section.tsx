@@ -1,3 +1,4 @@
+import IssuesListBoard from '@dashboard-components/issues-list-board'
 import Divider from '@dashboard-components/ui/divider'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import FilterIcon from '@icons/filter-icon'
@@ -23,6 +24,7 @@ export default function IssuesSection() {
         </Button>
       </div>
       <Divider />
+      <IssuesListBoard />
     </section>
   )
 }

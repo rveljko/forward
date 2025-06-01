@@ -27,3 +27,10 @@ export function weekdayTimeFormatter(date: Date) {
     minute: 'numeric',
   })
 }
+
+export function dayMonthShortFormatter(date: Date) {
+  return new Date(date).toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'short',
+  })
+}
