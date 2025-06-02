@@ -219,6 +219,7 @@
 
   .ProseMirror {
     font-feature-settings: var(--default-font-feature-settings) !important;
+    overflow-wrap: anywhere !important; 
   }
 
   .ProseMirror h1,
