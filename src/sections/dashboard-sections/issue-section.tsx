@@ -1,6 +1,10 @@
+import Container from '@dashboard-components/container'
+import RichTextEditor from '@dashboard-components/text-editor'
 import Divider from '@dashboard-components/ui/divider'
+import useTextEditor from '@hooks/use-text-editor'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
 import { useIssues } from '@services/contexts/issues-context'
+import { Editor } from '@tiptap/react'
 import Button from '@ui/button'
 import { TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
@@ -20,11 +24,16 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
 
   const { title } = issue
 
+  const editor = useTextEditor()
+
+  if (!editor) return
+
   return (
-    <section>
+    <section className="flex h-full flex-col">
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <Header id={issueId} title={title} />
       <Divider />
+      <TextEditor editor={editor} />
     </section>
   )
 }
@@ -63,5 +72,19 @@ function Header({ id, title }: HeaderProps) {
         <SidebarClosedIcon />
       </Button>
     </header>
+  )
+}
+
+type TextEditorProps = {
+  editor: Editor
+}
+
+function TextEditor({ editor }: TextEditorProps) {
+  return (
+    <div className="flex h-full flex-col overflow-y-auto">
+      <Container className="grow py-8 md:py-16">
+        <RichTextEditor editor={editor} className="h-full" />
+      </Container>
+    </div>
   )
 }
