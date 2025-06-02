@@ -1,5 +1,6 @@
 import Container from '@dashboard-components/container'
 import RichTextEditor from '@dashboard-components/text-editor'
+import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
 import useTextEditor from '@hooks/use-text-editor'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
@@ -32,6 +33,8 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
     <section className="flex h-full flex-col">
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <Header id={issueId} title={title} />
+      <Divider />
+      <TextEditorCommandBar editor={editor} className="flex-wrap p-4" />
       <Divider />
       <TextEditor editor={editor} />
     </section>
