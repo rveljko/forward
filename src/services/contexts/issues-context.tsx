@@ -10,6 +10,7 @@ type IssuesContextType = {
   issues: Issue[]
   getIssuesByStatus: (status: IssueStatus) => Issue[]
   getIssueById: (id: Issue['id']) => Issue
+  renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
 }
 
 export const IssuesContext = createContext<IssuesContextType | null>(null)
@@ -22,7 +23,7 @@ function getInitialIssues(): Issue[] {
 export default function IssuesContextProvider({
   children,
 }: IssuesContextProviderProps) {
-  const [issues] = useState(getInitialIssues)
+  const [issues, setIssues] = useState(getInitialIssues)
 
   function getIssuesByStatus(status: IssueStatus) {
     return issues.filter((issue) => issue.status === status)
@@ -30,6 +31,15 @@ export default function IssuesContextProvider({
 
   function getIssueById(id: Issue['id']) {
     return issues.find((issue) => issue.id === id)!
+  }
+
+  function renameIssue(id: Issue['id'], newTitle: Issue['title']) {
+    const issue = getIssueById(id)
+
+    setIssues([
+      { ...issue, title: newTitle },
+      ...issues.filter(({ id }) => id !== issue.id),
+    ])
   }
 
   useEffect(() => {
@@ -42,6 +52,7 @@ export default function IssuesContextProvider({
         issues,
         getIssuesByStatus,
         getIssueById,
+        renameIssue,
       }}
     >
       {children}
