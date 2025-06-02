@@ -6,6 +6,7 @@ import {
 } from '@utils/date-formatters'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
+import { Link } from 'react-router'
 
 type IssueItemProps = React.ComponentPropsWithoutRef<'article'> & {
   issue: Issue
@@ -13,7 +14,7 @@ type IssueItemProps = React.ComponentPropsWithoutRef<'article'> & {
 }
 
 export default function IssueItem({
-  issue: { title, createdAt },
+  issue: { id, title, createdAt },
   icon: Icon,
   className,
   ...props
@@ -21,14 +22,22 @@ export default function IssueItem({
   return (
     <article
       className={cn(
-        'border-section-outline flex items-center justify-between gap-2 border-b p-4',
+        'border-section-outline relative flex items-center justify-between gap-2 border-b p-4 hover:bg-neutral-700',
         className
       )}
       {...props}
     >
       <div className="flex items-center gap-1">
         <span className="shrink-0">{Icon}</span>
-        <h3 className="line-clamp-1">{title}</h3>
+        <h3>
+          <Link
+            to={`/dashboard/issues/${id}`}
+            className="text-clickable line-clamp-1"
+          >
+            <span className="absolute inset-0" />
+            {title}
+          </Link>
+        </h3>
       </div>
       <div className="flex items-center gap-1">
         <div className="max-sm:hidden">
