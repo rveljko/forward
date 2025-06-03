@@ -2,6 +2,7 @@ import Container from '@dashboard-components/container'
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
+import useDebounce from '@hooks/use-debounce'
 import useTextEditor from '@hooks/use-text-editor'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
 import { useIssues } from '@services/contexts/issues-context'
@@ -9,7 +10,7 @@ import { Editor } from '@tiptap/react'
 import Button from '@ui/button'
 import { TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
 type IssueSectionProps = {
@@ -17,15 +18,25 @@ type IssueSectionProps = {
 }
 
 export default function IssueSection({ issueId }: IssueSectionProps) {
-  const { getIssueById } = useIssues()
+  const { getIssueById, updateIssueContent } = useIssues()
 
   const issue = getIssueById(issueId)
 
   if (!issue) return <Navigate to="/dashboard/issues" />
 
   const { title, content } = issue
+  const [newContent, setNewContent] = useState(content)
 
-  const editor = useTextEditor({ content })
+  const editor = useTextEditor({
+    content,
+    onUpdate: ({ editor }) => setNewContent(editor.getHTML()),
+  })
+
+  const debouncedContent = useDebounce(newContent, 3000)
+
+  useEffect(() => {
+    if (debouncedContent) updateIssueContent(issueId, debouncedContent)
+  }, [debouncedContent])
 
   if (!editor) return
 

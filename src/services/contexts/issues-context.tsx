@@ -11,6 +11,7 @@ type IssuesContextType = {
   getIssuesByStatus: (status: IssueStatus) => Issue[]
   getIssueById: (id: Issue['id']) => Issue
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
+  updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
 }
 
 export const IssuesContext = createContext<IssuesContextType | null>(null)
@@ -42,6 +43,15 @@ export default function IssuesContextProvider({
     ])
   }
 
+  function updateIssueContent(id: Issue['id'], content: Issue['content']) {
+    const issue = getIssueById(id)
+
+    setIssues([
+      { ...issue, content },
+      ...issues.filter(({ id }) => id !== issue.id),
+    ])
+  }
+
   useEffect(() => {
     localStorage.setItem('issues', JSON.stringify(issues))
   }, [issues])
@@ -53,6 +63,7 @@ export default function IssuesContextProvider({
         getIssuesByStatus,
         getIssueById,
         renameIssue,
+        updateIssueContent,
       }}
     >
       {children}
