@@ -1,4 +1,3 @@
-import Modal from '@dashboard-components/ui/modal'
 import Button, { ButtonProps } from '@ui/button'
 
 type ModalButtonProps = ButtonProps & {
@@ -19,7 +18,7 @@ export default function ModalButton({
       <Button onClick={toggleModal} {...props}>
         {label}
       </Button>
-      {isOpened && <Modal closeModal={toggleModal}>{children}</Modal>}
+      {isOpened && children}
     </>
   )
 }

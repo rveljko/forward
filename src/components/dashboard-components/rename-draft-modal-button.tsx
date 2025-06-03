@@ -1,4 +1,5 @@
 import RenameDraftModal from '@dashboard-components/rename-draft-modal'
+import Modal from '@dashboard-components/ui/modal'
 import ModalButton from '@dashboard-components/ui/modal-button'
 import useModal from '@hooks/use-modal'
 import { ButtonProps } from '@ui/button'
@@ -24,11 +25,13 @@ export default function RenameDraftModalButton({
       label={children}
       {...props}
     >
-      <RenameDraftModal
-        closeModal={toggleModal}
-        id={draftId}
-        title={draftTitle}
-      />
+      <Modal closeModal={toggleModal}>
+        <RenameDraftModal
+          closeModal={toggleModal}
+          id={draftId}
+          title={draftTitle}
+        />
+      </Modal>
     </ModalButton>
   )
 }

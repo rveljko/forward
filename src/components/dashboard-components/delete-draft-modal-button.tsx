@@ -1,4 +1,5 @@
 import DeleteDraftModal from '@dashboard-components/delete-draft-modal'
+import Modal from '@dashboard-components/ui/modal'
 import ModalButton from '@dashboard-components/ui/modal-button'
 import useModal from '@hooks/use-modal'
 import { ButtonProps } from '@ui/button'
@@ -22,7 +23,9 @@ export default function DeleteDraftModalButton({
       label={children}
       {...props}
     >
-      <DeleteDraftModal closeModal={toggleModal} id={draftId} />
+      <Modal closeModal={toggleModal}>
+        <DeleteDraftModal closeModal={toggleModal} id={draftId} />
+      </Modal>
     </ModalButton>
   )
 }
