@@ -23,9 +23,9 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
 
   if (!issue) return <Navigate to="/dashboard/issues" />
 
-  const { title } = issue
+  const { title, content } = issue
 
-  const editor = useTextEditor()
+  const editor = useTextEditor({ content })
 
   if (!editor) return
 
