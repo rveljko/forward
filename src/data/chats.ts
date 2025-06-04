@@ -25,7 +25,7 @@ export const chats: Chat[] = [
         date: generateTimeInPast(1, 9, 33, 44),
         type: 'receiver',
         message:
-          "Hi Robert, I saw you were updating the dashboard metrics. How's that coming along?",
+          "Hi James, I saw you were updating the dashboard metrics. How's that coming along?",
       },
       {
         id: uuidv4(),
@@ -107,7 +107,7 @@ export const chats: Chat[] = [
         id: uuidv4(),
         date: generateTimeInPast(1, 9, 52, 17),
         type: 'receiver',
-        message: 'No problem, Robert. Let me know if anything else comes up.',
+        message: 'No problem, James. Let me know if anything else comes up.',
       },
     ],
   },
@@ -130,7 +130,7 @@ export const chats: Chat[] = [
         type: 'receiver',
         date: generateTimeInPast(3, 11, 52, 42),
         message:
-          "Hi Robert, I saw you were working on the User Feedback ticket. How's it going?",
+          "Hi James, I saw you were working on the User Feedback ticket. How's it going?",
       },
       {
         id: uuidv4(),
@@ -187,7 +187,7 @@ export const chats: Chat[] = [
         type: 'receiver',
         date: generateTimeInPast(4, 15, 23, 57),
         message:
-          "Hey Robert, I noticed you're working on the new dashboard layout. How's the redesign coming along?",
+          "Hey James, I noticed you're working on the new dashboard layout. How's the redesign coming along?",
       },
       {
         id: uuidv4(),
@@ -286,7 +286,7 @@ export const chats: Chat[] = [
         type: 'receiver',
         date: generateTimeInPast(6, 10, 22, 16),
         message:
-          "Hey Robert, I wanted to check in on the updates you're working on. How's the progress with the new collaboration features?",
+          "Hey James, I wanted to check in on the updates you're working on. How's the progress with the new collaboration features?",
       },
       {
         id: uuidv4(),
@@ -369,7 +369,7 @@ export const chats: Chat[] = [
         type: 'receiver',
         date: generateTimeInPast(6, 10, 41, 22),
         message:
-          'Anytime, Robert. This collaboration feature will be a game changer for our dashboard.',
+          'Anytime, James. This collaboration feature will be a game changer for our dashboard.',
       },
     ],
   },
@@ -399,7 +399,7 @@ export const chats: Chat[] = [
         type: 'receiver',
         date: generateTimeInPast(8, 14, 5, 53),
         message:
-          "Hi Robert! It's going well. I'm focusing on enabling seamless sharing of customized dashboard views across teams, so product, marketing, and customer success can all see data relevant to them without clutter.",
+          "Hi James! It's going well. I'm focusing on enabling seamless sharing of customized dashboard views across teams, so product, marketing, and customer success can all see data relevant to them without clutter.",
       },
       {
         id: uuidv4(),
@@ -468,7 +468,7 @@ export const chats: Chat[] = [
         id: uuidv4(),
         type: 'receiver',
         date: generateTimeInPast(8, 14, 28, 13),
-        message: 'Agreed. Thanks for the support, Robert!',
+        message: 'Agreed. Thanks for the support, James!',
       },
     ],
   },
