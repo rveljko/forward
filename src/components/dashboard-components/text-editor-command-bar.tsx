@@ -54,7 +54,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 1 }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 1 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <Heading1Icon />
         <span className="sr-only">Heading 1</span>
@@ -62,7 +62,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 2 }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 2 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <Heading2Icon />
         <span className="sr-only">Heading 2</span>
@@ -70,7 +70,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 3 }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 3 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <Heading3Icon />
         <span className="sr-only">Heading 3</span>
@@ -78,7 +78,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 4 }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 4 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <Heading4Icon />
         <span className="sr-only">Heading 4</span>
@@ -87,7 +87,7 @@ export default function TextEditorCommandBar({
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
-        className={`p-0.5 ${editor.isActive('bold') ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('bold') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <BoldIcon />
         <span className="sr-only">Bold</span>
@@ -96,7 +96,7 @@ export default function TextEditorCommandBar({
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
-        className={`p-0.5 ${editor.isActive('italic') ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('italic') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <ItalicIcon />
         <span className="sr-only">Italic</span>
@@ -104,7 +104,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleUnderline().run()}
-        className={`p-0.5 ${editor.isActive('underline') ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('underline') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <UnderlineIcon />
         <span className="sr-only">Underline</span>
@@ -113,7 +113,7 @@ export default function TextEditorCommandBar({
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
-        className={`p-0.5 ${editor.isActive('strike') ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('strike') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <StrikethroughIcon />
         <span className="sr-only">Strikethrough</span>
@@ -121,7 +121,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'left' }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'left' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <AlignLeftIcon />
         <span className="sr-only">Left Alignment</span>
@@ -129,7 +129,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'center' }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'center' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <AlignCenterIcon />
         <span className="sr-only">Center Alignment</span>
@@ -137,7 +137,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'right' }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'right' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <AlignRightIcon />
         <span className="sr-only">Right Alignment</span>
@@ -145,7 +145,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'justify' }) ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'justify' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <AlignJustifiedIcon />
         <span className="sr-only">Justify</span>
@@ -153,7 +153,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={`p-0.5 ${editor.isActive('bulletList') ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('bulletList') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <ListIcon />
         <span className="sr-only">Bullet List</span>
@@ -161,7 +161,7 @@ export default function TextEditorCommandBar({
       <Button
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={`p-0.5 ${editor.isActive('orderedList') ? 'bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('orderedList') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
       >
         <ListNumbersIcon />
         <span className="sr-only">Numbered List</span>
