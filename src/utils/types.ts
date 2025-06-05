@@ -84,19 +84,26 @@ export type Draft = {
   content: string
 }
 
-export type IssueStatus = 'todo' | 'in-progress' | 'finished'
+type IssueStatusLabel = 'todo' | 'in-progress' | 'finished'
 
-export type IssuePriority = 'low' | 'medium' | 'high'
+export type IssueStatus = {
+  id: string
+  name: string
+  label: IssueStatusLabel
+  icon: () => React.JSX.Element
+}
 
-export type IssueTag = 'design' | 'development' | 'testing'
+type IssuePriorityLabel = 'low' | 'medium' | 'high'
+
+type IssueTagLabel = 'design' | 'development' | 'testing'
 
 export type Issue = {
   id: string
   title: string
   description?: string
-  status: IssueStatus
-  priority: IssuePriority
-  tag: IssueTag
+  status: IssueStatusLabel
+  priority: IssuePriorityLabel
+  tag: IssueTagLabel
   createdAt: Date
   content: string
 }
