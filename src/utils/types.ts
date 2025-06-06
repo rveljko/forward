@@ -95,6 +95,16 @@ export type IssueStatus = {
 
 type IssuePriorityLabel = 'low' | 'medium' | 'high'
 
+type IssuePriorityLevel = 1 | 2 | 3
+
+export type IssuePriority = {
+  id: string
+  name: string
+  label: IssuePriorityLabel
+  level: IssuePriorityLevel
+  icon: () => React.JSX.Element
+}
+
 type IssueTagLabel = 'design' | 'development' | 'testing'
 
 export type Issue = {
