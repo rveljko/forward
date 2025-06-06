@@ -1,3 +1,4 @@
+import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueTag from '@dashboard-components/ui/issue-tag'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import Button from '@ui/button'
@@ -15,7 +16,7 @@ type IssueItemProps = React.ComponentPropsWithoutRef<'article'> & {
 }
 
 export default function IssueItem({
-  issue: { id, title, tag, createdAt },
+  issue: { id, title, tag, priority, createdAt },
   icon: Icon,
   className,
   ...props
@@ -29,18 +30,21 @@ export default function IssueItem({
       {...props}
     >
       <div className="flex items-center gap-1">
-        <div className="flex h-8.5 shrink-0 items-center">
-          <span className="text-clickable">{Icon}</span>
+        <IssuePriority priority={priority} />
+        <div className="flex items-center gap-1">
+          <div className="flex h-8.5 shrink-0 items-center">
+            <span className="text-clickable">{Icon}</span>
+          </div>
+          <h3>
+            <Link
+              to={`/dashboard/issues/${id}`}
+              className="text-clickable line-clamp-1"
+            >
+              <span className="absolute inset-0" />
+              {title}
+            </Link>
+          </h3>
         </div>
-        <h3>
-          <Link
-            to={`/dashboard/issues/${id}`}
-            className="text-clickable line-clamp-1"
-          >
-            <span className="absolute inset-0" />
-            {title}
-          </Link>
-        </h3>
       </div>
       <div className="flex items-center gap-1">
         <div className="flex items-center gap-1 max-sm:hidden">

@@ -1,6 +1,14 @@
+import { issuePriorities } from '@data/issue-priorities'
 import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
-import { Issue, IssueStatusLabel, IssueTag, IssueTagLabel } from '@utils/types'
+import {
+  Issue,
+  IssuePriority,
+  IssuePriorityLabel,
+  IssueStatusLabel,
+  IssueTag,
+  IssueTagLabel,
+} from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type IssuesContextProviderProps = {
@@ -14,6 +22,7 @@ type IssuesContextType = {
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
   getIssueTag: (tag: IssueTagLabel) => IssueTag
+  getIssuePriority: (priority: IssuePriorityLabel) => IssuePriority
 }
 
 export const IssuesContext = createContext<IssuesContextType | null>(null)
@@ -58,6 +67,10 @@ export default function IssuesContextProvider({
     return issueTags.find((issueTag) => issueTag.label === tag)!
   }
 
+  function getIssuePriority(priority: IssuePriorityLabel) {
+    return issuePriorities.find(({ label }) => label === priority)!
+  }
+
   useEffect(() => {
     localStorage.setItem('issues', JSON.stringify(issues))
   }, [issues])
@@ -71,6 +84,7 @@ export default function IssuesContextProvider({
         renameIssue,
         updateIssueContent,
         getIssueTag,
+        getIssuePriority,
       }}
     >
       {children}
