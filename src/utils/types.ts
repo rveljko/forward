@@ -107,6 +107,12 @@ export type IssuePriority = {
 
 type IssueTagLabel = 'design' | 'development' | 'testing'
 
+export type IssueTag = {
+  id: string
+  name: string
+  label: IssueTagLabel
+}
+
 export type Issue = {
   id: string
   title: string
