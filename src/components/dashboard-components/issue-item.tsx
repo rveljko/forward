@@ -50,7 +50,7 @@ export default function IssueItem({
         <div className="flex items-center gap-1 max-sm:hidden">
           <IssueTag tag={tag} />
           <time
-            className="text-neutral-400"
+            className="text-nowrap text-neutral-400"
             dateTime={iso8601DateFormatter(createdAt)}
           >
             {dayMonthShortFormatter(createdAt)}
