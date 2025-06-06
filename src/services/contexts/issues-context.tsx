@@ -1,5 +1,6 @@
+import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
-import { Issue, IssueStatus } from '@utils/types'
+import { Issue, IssueStatus, IssueTag, IssueTagLabel } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type IssuesContextProviderProps = {
@@ -12,6 +13,7 @@ type IssuesContextType = {
   getIssueById: (id: Issue['id']) => Issue
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
+  getIssueTag: (tag: IssueTagLabel) => IssueTag
 }
 
 export const IssuesContext = createContext<IssuesContextType | null>(null)
@@ -52,6 +54,10 @@ export default function IssuesContextProvider({
     ])
   }
 
+  function getIssueTag(tag: IssueTagLabel) {
+    return issueTags.find((issueTag) => issueTag.label === tag)!
+  }
+
   useEffect(() => {
     localStorage.setItem('issues', JSON.stringify(issues))
   }, [issues])
@@ -64,6 +70,7 @@ export default function IssuesContextProvider({
         getIssueById,
         renameIssue,
         updateIssueContent,
+        getIssueTag,
       }}
     >
       {children}

@@ -1,3 +1,4 @@
+import IssueTag from '@dashboard-components/ui/issue-tag'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import Button from '@ui/button'
 import {
@@ -14,7 +15,7 @@ type IssueItemProps = React.ComponentPropsWithoutRef<'article'> & {
 }
 
 export default function IssueItem({
-  issue: { id, title, createdAt },
+  issue: { id, title, tag, createdAt },
   icon: Icon,
   className,
   ...props
@@ -28,7 +29,9 @@ export default function IssueItem({
       {...props}
     >
       <div className="flex items-center gap-1">
-        <span className="shrink-0">{Icon}</span>
+        <div className="flex h-8.5 shrink-0 items-center">
+          <span className="text-clickable">{Icon}</span>
+        </div>
         <h3>
           <Link
             to={`/dashboard/issues/${id}`}
@@ -40,7 +43,8 @@ export default function IssueItem({
         </h3>
       </div>
       <div className="flex items-center gap-1">
-        <div className="max-sm:hidden">
+        <div className="flex items-center gap-1 max-sm:hidden">
+          <IssueTag tag={tag} />
           <time
             className="text-neutral-400"
             dateTime={iso8601DateFormatter(createdAt)}
