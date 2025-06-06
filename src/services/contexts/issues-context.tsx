@@ -1,6 +1,6 @@
 import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
-import { Issue, IssueStatus, IssueTag, IssueTagLabel } from '@utils/types'
+import { Issue, IssueStatusLabel, IssueTag, IssueTagLabel } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type IssuesContextProviderProps = {
@@ -9,7 +9,7 @@ type IssuesContextProviderProps = {
 
 type IssuesContextType = {
   issues: Issue[]
-  getIssuesByStatus: (status: IssueStatus) => Issue[]
+  getIssuesByStatus: (status: IssueStatusLabel) => Issue[]
   getIssueById: (id: Issue['id']) => Issue
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
@@ -28,7 +28,7 @@ export default function IssuesContextProvider({
 }: IssuesContextProviderProps) {
   const [issues, setIssues] = useState(getInitialIssues)
 
-  function getIssuesByStatus(status: IssueStatus) {
+  function getIssuesByStatus(status: IssueStatusLabel) {
     return issues.filter((issue) => issue.status === status)
   }
 
