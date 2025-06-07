@@ -1,27 +1,24 @@
 import IssueColumnHeader from '@dashboard-components/issue-column-header'
 import IssueItemsList from '@dashboard-components/issue-items-list'
-import { Issue } from '@utils/types'
+import { useIssues } from '@services/contexts/issues-context'
+import { IssueStatusLabel } from '@utils/types'
 
 type IssueColumnProps = React.ComponentPropsWithoutRef<'div'> & {
-  title: string
-  icon: React.JSX.Element
-  issues: Issue[]
+  status: IssueStatusLabel
 }
 
-export default function IssueColumn({
-  title,
-  icon: Icon,
-  issues,
-  ...props
-}: IssueColumnProps) {
+export default function IssueColumn({ status, ...props }: IssueColumnProps) {
+  const { getIssuesByStatus, getIssueStatus } = useIssues()
+  const { name, icon: Icon } = getIssueStatus(status)
+
   return (
     <div {...props}>
       <IssueColumnHeader
-        title={title}
-        icon={Icon}
-        numberOfIssues={issues.length}
+        title={name}
+        icon={<Icon />}
+        numberOfIssues={getIssuesByStatus(status).length}
       />
-      <IssueItemsList issues={issues} icon={Icon} />
+      <IssueItemsList issues={getIssuesByStatus(status)} icon={<Icon />} />
     </div>
   )
 }
