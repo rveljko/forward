@@ -1,4 +1,5 @@
 import Container from '@dashboard-components/container'
+import IssueInformationModalButton from '@dashboard-components/issue-information-modal-button'
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
@@ -7,7 +8,6 @@ import useTextEditor from '@hooks/use-text-editor'
 import SidebarClosedIcon from '@icons/sidebar-closed-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
-import Button from '@ui/button'
 import { TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
 import { useEffect, useRef, useState } from 'react'
@@ -43,7 +43,7 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
   return (
     <section className="flex h-full flex-col">
       <title>{`${TITLE_PREFIX}${title}`}</title>
-      <Header id={issueId} title={title} />
+      <Header id={issueId} title={title} issue={issue} />
       <Divider />
       <TextEditorCommandBar editor={editor} className="flex-wrap p-4" />
       <Divider />
@@ -55,9 +55,10 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
 type HeaderProps = {
   id: Issue['id']
   title: Issue['title']
+  issue: Issue
 }
 
-function Header({ id, title }: HeaderProps) {
+function Header({ id, title, issue }: HeaderProps) {
   const { renameIssue } = useIssues()
   const [newTitle, setNewTitle] = useState(title)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -84,9 +85,13 @@ function Header({ id, title }: HeaderProps) {
           className="text-clickable w-full max-w-85"
         />
       </div>
-      <Button variant="tertiary" className="p-0.5">
+      <IssueInformationModalButton
+        issue={issue}
+        variant="tertiary"
+        className="p-0.5"
+      >
         <SidebarClosedIcon />
-      </Button>
+      </IssueInformationModalButton>
     </header>
   )
 }

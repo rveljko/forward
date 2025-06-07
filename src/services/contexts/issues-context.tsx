@@ -1,10 +1,12 @@
 import { issuePriorities } from '@data/issue-priorities'
+import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
 import {
   Issue,
   IssuePriority,
   IssuePriorityLabel,
+  IssueStatus,
   IssueStatusLabel,
   IssueTag,
   IssueTagLabel,
@@ -21,6 +23,7 @@ type IssuesContextType = {
   getIssueById: (id: Issue['id']) => Issue
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
+  getIssueStatus: (status: IssueStatusLabel) => IssueStatus
   getIssueTag: (tag: IssueTagLabel) => IssueTag
   getIssuePriority: (priority: IssuePriorityLabel) => IssuePriority
 }
@@ -63,6 +66,10 @@ export default function IssuesContextProvider({
     ])
   }
 
+  function getIssueStatus(status: IssueStatusLabel) {
+    return issueStatuses.find(({ label }) => label === status)!
+  }
+
   function getIssueTag(tag: IssueTagLabel) {
     return issueTags.find((issueTag) => issueTag.label === tag)!
   }
@@ -83,6 +90,7 @@ export default function IssuesContextProvider({
         getIssueById,
         renameIssue,
         updateIssueContent,
+        getIssueStatus,
         getIssueTag,
         getIssuePriority,
       }}
