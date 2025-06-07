@@ -40,7 +40,7 @@ type LabelProps = React.ComponentPropsWithoutRef<'p'> & {
 
 function Label({ children, icon: Icon, ...props }: LabelProps) {
   return (
-    <div className="flex w-full max-w-25 items-center gap-1">
+    <div className="flex w-full max-w-30 items-center gap-1">
       <span className="text-clickable">{Icon}</span>
       <p {...props}>{children}</p>
     </div>
