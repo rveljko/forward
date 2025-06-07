@@ -24,6 +24,7 @@ export default function IssueInformationModalButton({
       {...props}
     >
       <Modal
+        isOpened={isOpened}
         closeModal={toggleModal}
         className="md:items-end"
         mediumSizeFullHeight

@@ -1,9 +1,11 @@
 import { cn } from '@utils/utils'
+import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import ReactFocusLock from 'react-focus-lock'
 
 type ModalProps = {
   children: React.ReactNode
+  isOpened: boolean
   closeModal: () => void
   className?: string
   mediumSizeFullHeight?: boolean
@@ -11,10 +13,24 @@ type ModalProps = {
 
 export default function Modal({
   children,
+  isOpened,
   closeModal,
   className,
   mediumSizeFullHeight,
 }: ModalProps) {
+  function handleOnKeyDown(e: KeyboardEvent) {
+    if (e.code === 'Escape') closeModal()
+  }
+
+  useEffect(() => {
+    if (!isOpened) return
+    document.body.addEventListener('keydown', handleOnKeyDown)
+
+    return () => {
+      document.body.removeEventListener('keydown', handleOnKeyDown)
+    }
+  }, [isOpened])
+
   return createPortal(
     <div
       onClick={closeModal}

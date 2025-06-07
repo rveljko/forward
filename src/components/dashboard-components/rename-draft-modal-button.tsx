@@ -25,7 +25,7 @@ export default function RenameDraftModalButton({
       label={children}
       {...props}
     >
-      <Modal closeModal={toggleModal}>
+      <Modal isOpened={isOpened} closeModal={toggleModal}>
         <RenameDraftModal
           closeModal={toggleModal}
           id={draftId}

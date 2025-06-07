@@ -23,7 +23,7 @@ export default function DeleteDraftModalButton({
       label={children}
       {...props}
     >
-      <Modal closeModal={toggleModal}>
+      <Modal isOpened={isOpened} closeModal={toggleModal}>
         <DeleteDraftModal closeModal={toggleModal} id={draftId} />
       </Modal>
     </ModalButton>
