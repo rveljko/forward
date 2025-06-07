@@ -6,6 +6,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Implement Notification System',
+    description:
+      'Build a notification system that keeps users updated about important events in their projects and issues. This should help users stay on top of changes like new comments, status updates, assignments, and deadlines.',
     status: 'todo',
     priority: 'high',
     tag: 'development',
@@ -16,6 +18,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Create and Report Issues',
+    description:
+      'Make it easy and intuitive for users to create new issues and report problems within their projects. This should help teams track bugs, tasks, and feature requests efficiently.',
     status: 'todo',
     priority: 'high',
     tag: 'development',
@@ -26,16 +30,20 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Update Status',
+    description:
+      "Allow users to easily update the status of issues to reflect their current progress. This helps keep everyone on the team informed about what's done, in progress, or blocked.",
     status: 'todo',
     priority: 'medium',
     tag: 'design',
     createdAt: generateDateInPast(3),
     content:
-      '<h1>Update Status</h1><p></p><h2>Goal</h2><p>Allow users to easily update the status of issues to reflect their current progress. This helps keep everyone on the team informed about what’s done, in progress, or blocked.</p><p></p><h2>Key Points</h2><ul><li><p>Users should be able to change issue status quickly from the issue page or issue list.</p></li><li><p>Support common status options like “Open,” “In Progress,” “Resolved,” “Closed,” and allow customization if needed.</p></li><li><p>Show clear visual indicators of the current status on issue cards and detail views.</p></li><li><p>Notify relevant team members when status changes occur (consider integration with the notification system).</p></li><li><p>Handle offline status updates by queuing changes and syncing when back online.</p></li><li><p>Ensure status updates trigger any necessary backend workflows or automations.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Add a status dropdown or toggle on the issue detail page and issue lists.</p></li><li><p>Update the UI instantly when a status changes, with loading indicators for backend sync.</p></li><li><p>Store status changes locally if offline, then sync automatically when online.</p></li><li><p>Connect with backend APIs to update issue status and trigger notifications.</p></li><li><p>Provide audit logs or history so users can see past status changes.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Define the list of default statuses and allow for future customization.</p></li><li><p>Design UI elements for status updates and indicators.</p></li><li><p>Implement frontend components with offline support.</p></li><li><p>Test syncing behavior and notification triggers.</p></li><li><p>Gather user feedback and improve the experience.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Verify compatibility across supported browsers and devices.</p></li><li><p>Consider accessibility for status controls.</p></li><li><p>Align with notification system for status change alerts.</p></li></ul>',
+      "<h1>Update Status</h1><p></p><h2>Goal</h2><p>Allow users to easily update the status of issues to reflect their current progress. This helps keep everyone on the team informed about what's done, in progress, or blocked.</p><p></p><h2>Key Points</h2><ul><li><p>Users should be able to change issue status quickly from the issue page or issue list.</p></li><li><p>Support common status options like “Open,” “In Progress,” “Resolved,” “Closed,” and allow customization if needed.</p></li><li><p>Show clear visual indicators of the current status on issue cards and detail views.</p></li><li><p>Notify relevant team members when status changes occur (consider integration with the notification system).</p></li><li><p>Handle offline status updates by queuing changes and syncing when back online.</p></li><li><p>Ensure status updates trigger any necessary backend workflows or automations.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Add a status dropdown or toggle on the issue detail page and issue lists.</p></li><li><p>Update the UI instantly when a status changes, with loading indicators for backend sync.</p></li><li><p>Store status changes locally if offline, then sync automatically when online.</p></li><li><p>Connect with backend APIs to update issue status and trigger notifications.</p></li><li><p>Provide audit logs or history so users can see past status changes.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Define the list of default statuses and allow for future customization.</p></li><li><p>Design UI elements for status updates and indicators.</p></li><li><p>Implement frontend components with offline support.</p></li><li><p>Test syncing behavior and notification triggers.</p></li><li><p>Gather user feedback and improve the experience.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Verify compatibility across supported browsers and devices.</p></li><li><p>Consider accessibility for status controls.</p></li><li><p>Align with notification system for status change alerts.</p></li></ul>",
   },
   {
     id: uuidv4(),
     title: 'Add Comments',
+    description:
+      'Enable users to add comments to issues to facilitate communication and collaboration within the team. Comments should be easy to write, view, and manage.',
     status: 'todo',
     priority: 'medium',
     tag: 'design',
@@ -46,6 +54,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Set Priorities',
+    description:
+      'Allow users to assign and update priority levels on issues so teams can focus on the most important tasks first.',
     status: 'todo',
     priority: 'medium',
     tag: 'design',
@@ -56,6 +66,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Filter and Sort Issues',
+    description:
+      'Provide users with powerful and flexible tools to filter and sort issues so they can quickly find what matters most and organize their work effectively.',
     status: 'todo',
     priority: 'low',
     tag: 'testing',
@@ -66,6 +78,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Integrate with Other Tools',
+    description:
+      'Enable seamless integration of our issue tracking platform with other popular tools and services that teams rely on, such as CRM systems, email clients, chat platforms, and project management apps. This will streamline workflows, reduce context switching, and improve overall productivity.',
     status: 'in-progress',
     priority: 'high',
     tag: 'development',
@@ -76,6 +90,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Use Tags',
+    description:
+      'Allow users to add and manage tags on issues to help categorize, organize, and quickly find related tasks across projects.',
     status: 'in-progress',
     priority: 'medium',
     tag: 'design',
@@ -86,6 +102,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Utilize Mobile Access',
+    description:
+      'Ensure users have a seamless and efficient experience accessing the issue tracking platform on mobile devices, whether through a mobile-optimized web app or native apps. This will allow users to manage issues, projects, and collaborate effectively on the go.',
     status: 'in-progress',
     priority: 'medium',
     tag: 'testing',
@@ -96,6 +114,8 @@ export const issues: Issue[] = [
   {
     id: uuidv4(),
     title: 'Attach Files and Documents',
+    description:
+      'Allow users to attach files and documents to issues, comments, and other relevant parts of the platform to provide additional context, evidence, or resources.',
     status: 'finished',
     priority: 'high',
     tag: 'testing',
