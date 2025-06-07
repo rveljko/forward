@@ -38,7 +38,7 @@ export default function IssueItem({
           <h3>
             <Link
               to={`/dashboard/issues/${id}`}
-              className="text-clickable line-clamp-1"
+              className="text-clickable line-clamp-1 break-all"
             >
               <span className="absolute inset-0" />
               {title}
