@@ -5,7 +5,7 @@ import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
 import useDebounce from '@hooks/use-debounce'
 import useTextEditor from '@hooks/use-text-editor'
-import SidebarClosedIcon from '@icons/sidebar-closed-icon'
+import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
 import { TITLE_PREFIX } from '@utils/constants'
@@ -88,9 +88,9 @@ function Header({ id, title, issue }: HeaderProps) {
       <IssueInformationModalButton
         issue={issue}
         variant="tertiary"
-        className="p-0.5"
+        className="group p-0.5"
       >
-        <SidebarClosedIcon />
+        <LayoutSidebarRightIcon className="[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
       </IssueInformationModalButton>
     </header>
   )
