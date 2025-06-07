@@ -91,6 +91,7 @@ function Header({ id, title, issue }: HeaderProps) {
         className="group p-0.5"
       >
         <LayoutSidebarRightIcon className="[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
+        <span className="sr-only">Show issue information</span>
       </IssueInformationModalButton>
     </header>
   )
