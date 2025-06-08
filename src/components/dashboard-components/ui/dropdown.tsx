@@ -14,7 +14,7 @@ export default function Dropdown({
   return (
     <div
       className={cn(
-        'bg-dropdown-background inset-ring-section-outline w-full max-w-(--dropdown-width) space-y-0.5 rounded-sm p-1 inset-ring',
+        'bg-dropdown-background inset-ring-section-outline space-y-0.5 rounded-sm p-1 inset-ring',
         className
       )}
       {...props}

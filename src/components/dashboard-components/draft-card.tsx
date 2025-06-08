@@ -43,6 +43,7 @@ export default function DraftCard({
         <DropdownButton
           label={<DotsVerticalIcon />}
           variant="tertiary"
+          position="top-left"
           className="-m-1 rounded-full p-1 [&_svg]:size-4"
         >
           <Dropdown.Button
