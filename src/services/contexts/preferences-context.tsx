@@ -1,5 +1,10 @@
+import { cornerRoundnesses } from '@data/corner-roundnesses '
 import { preferences as defaultPreferences } from '@data/preferences'
-import { Preferences } from '@utils/types'
+import {
+  CornerRoundness,
+  CornerRoundnessLabel,
+  Preferences,
+} from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 
 type PreferencesContextProviderProps = {
@@ -11,6 +16,7 @@ type PreferencesContextType = {
   setPreferences: React.Dispatch<React.SetStateAction<Preferences>>
   newPreferences: Preferences
   setNewPreferences: React.Dispatch<React.SetStateAction<Preferences>>
+  getCornerRoundness: (cornerRoundness: CornerRoundnessLabel) => CornerRoundness
   isLightTheme: boolean
 }
 
@@ -34,6 +40,10 @@ export default function PreferencesContextProvider({
     (preferences.theme === 'system' &&
       window.matchMedia('(prefers-color-scheme: light)').matches)
 
+  function getCornerRoundness(cornerRoundness: CornerRoundnessLabel) {
+    return cornerRoundnesses.find(({ label }) => label === cornerRoundness)!
+  }
+
   useEffect(() => {
     localStorage.setItem('preferences', JSON.stringify(preferences))
   }, [preferences])
@@ -49,6 +59,7 @@ export default function PreferencesContextProvider({
         setPreferences,
         newPreferences,
         setNewPreferences,
+        getCornerRoundness,
         isLightTheme,
       }}
     >

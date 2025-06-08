@@ -41,12 +41,21 @@ export type SidebarStyle = {
   imageLightUrl: string
 }
 
+export type CornerRoundnessLabel = 'large' | 'medium' | 'small' | 'extra-small'
+
+export type CornerRoundness = {
+  id: string
+  name: string
+  label: CornerRoundnessLabel
+  value: number
+}
+
 export type Preferences = {
   theme: ThemeLabel
   sidebarStyle: SidebarStyleLabel
   isRightSideSidebar: boolean
   areRoundedCorners: boolean
-  cornerRoundness: 'large' | 'medium' | 'small' | 'extra-small'
+  cornerRoundness: CornerRoundnessLabel
 }
 
 export type Question = {
