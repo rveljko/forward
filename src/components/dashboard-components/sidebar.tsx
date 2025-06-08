@@ -16,10 +16,12 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 export default function Sidebar() {
-  const { preferences } = usePreferences()
+  const { preferences, getCornerRoundness } = usePreferences()
   const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
+
+  const cornerRoundness = getCornerRoundness(preferences.cornerRoundness)
 
   const sidebarStyleClassNames = {
     transparent: `top-0 left-0 z-999 h-screen p-4 ${
@@ -32,9 +34,9 @@ export default function Sidebar() {
         ? 'absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit'
         : 'sticky w-fit'
     }`,
-    floating: `bg-section-background-color border-section-outline top-0 left-0 z-999 h-full rounded-2xl border p-4 ${
+    floating: `bg-section-background-color border-section-outline top-0 left-0 z-999 h-full rounded-(--border-radius) border p-4 ${
       isOpened
-        ? 'absolute w-full min-w-(--sidebar-opened-width) rounded-none md:sticky md:w-fit md:rounded-2xl'
+        ? 'absolute w-full min-w-(--sidebar-opened-width) rounded-none md:sticky md:w-fit md:rounded-(--border-radius)'
         : 'sticky w-fit'
     }`,
   }
@@ -48,7 +50,14 @@ export default function Sidebar() {
     ''
 
   return (
-    <aside className={sidebarStyle}>
+    <aside
+      style={
+        {
+          '--border-radius': `${cornerRoundness.value / 16}rem`,
+        } as React.CSSProperties
+      }
+      className={sidebarStyle}
+    >
       <div className="flex h-full flex-col gap-4">
         <header
           className={`flex items-center justify-between gap-2 ${
