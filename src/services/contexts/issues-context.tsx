@@ -71,7 +71,7 @@ export default function IssuesContextProvider({
   }
 
   function getIssueTag(tag: IssueTagLabel) {
-    return issueTags.find((issueTag) => issueTag.label === tag)!
+    return issueTags.find(({ label }) => label === tag)!
   }
 
   function getIssuePriority(priority: IssuePriorityLabel) {
