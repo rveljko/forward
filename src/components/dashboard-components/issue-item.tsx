@@ -29,7 +29,7 @@ export default function IssueItem({
       )}
       {...props}
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-2">
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <div className="flex h-8.5 shrink-0 items-center">
@@ -46,8 +46,8 @@ export default function IssueItem({
           </h3>
         </div>
       </div>
-      <div className="flex items-center gap-1">
-        <div className="flex items-center gap-1 max-sm:hidden">
+      <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 max-sm:hidden">
           <IssueTag tag={tag} />
           <time
             className="text-nowrap text-neutral-400"
