@@ -3,7 +3,8 @@ import { usePreferences } from '@services/contexts/preferences-context'
 import { Outlet } from 'react-router'
 
 export default function DashboardLayout() {
-  const { preferences } = usePreferences()
+  const { preferences, getCornerRoundness } = usePreferences()
+  const cornerRoundness = getCornerRoundness(preferences.cornerRoundness)
 
   return (
     <div
@@ -21,7 +22,10 @@ export default function DashboardLayout() {
       <div
         className={`w-full p-4 ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
       >
-        <main className="border-section-outline bg-section-background-color h-full overflow-y-auto rounded-2xl border">
+        <main
+          style={{ borderRadius: `${cornerRoundness.value / 16}rem` }}
+          className="border-section-outline bg-section-background-color h-full overflow-y-auto border"
+        >
           <Outlet />
         </main>
       </div>
