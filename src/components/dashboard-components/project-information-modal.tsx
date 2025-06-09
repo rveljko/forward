@@ -1,5 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
 import InformationList from '@dashboard-components/ui/information-list'
+import ModalCard from '@dashboard-components/ui/modal-card'
 import { issueStatuses } from '@data/issue-statuses'
 import CalendarIcon from '@icons/calendar-icon'
 import CloseIcon from '@icons/close-icon'
@@ -14,7 +15,6 @@ import {
   iso8601DateFormatter,
 } from '@utils/date-formatters'
 import { generateDateInPast } from '@utils/date-generators'
-import { cn } from '@utils/utils'
 
 type ProjectInformationModalProps =
   React.ComponentPropsWithoutRef<'article'> & {
@@ -23,7 +23,6 @@ type ProjectInformationModalProps =
 
 export default function ProjectInformationModal({
   closeModal,
-  className,
   ...props
 }: ProjectInformationModalProps) {
   const {
@@ -32,13 +31,7 @@ export default function ProjectInformationModal({
   const { issues, getIssuesByStatus } = useIssues()
 
   return (
-    <article
-      className={cn(
-        'bg-modal-background border-section-outline w-full rounded-2xl border',
-        className
-      )}
-      {...props}
-    >
+    <ModalCard {...props}>
       <header className="flex flex-col gap-2 p-4">
         <div className="flex items-center justify-between">
           <div className="inset-ring-section-outline w-max rounded-lg p-2 inset-ring">
@@ -107,6 +100,6 @@ export default function ProjectInformationModal({
           </InformationList.Item>
         </InformationList>
       </div>
-    </article>
+    </ModalCard>
   )
 }

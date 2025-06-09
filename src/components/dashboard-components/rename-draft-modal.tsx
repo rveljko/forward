@@ -1,5 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
+import ModalCard from '@dashboard-components/ui/modal-card'
 import EditIcon from '@icons/edit-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
@@ -22,11 +23,10 @@ export default function RenameDraftModal({
   const inputRef = useRef<HTMLInputElement>(null)
 
   return (
-    <article className="bg-modal-background border-section-outline w-full rounded-2xl border">
+    <ModalCard>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-
           renameDraft(id, newTitle)
           closeModal()
         }}
@@ -64,6 +64,6 @@ export default function RenameDraftModal({
           </Button>
         </div>
       </form>
-    </article>
+    </ModalCard>
   )
 }

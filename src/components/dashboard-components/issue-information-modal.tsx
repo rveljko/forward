@@ -1,5 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
 import InformationList from '@dashboard-components/ui/information-list'
+import ModalCard from '@dashboard-components/ui/modal-card'
 import CalendarIcon from '@icons/calendar-icon'
 import CircleEmptyIcon from '@icons/circle-empty-icon'
 import CloseIcon from '@icons/close-icon'
@@ -14,7 +15,6 @@ import {
   iso8601DateFormatter,
 } from '@utils/date-formatters'
 import { Issue } from '@utils/types'
-import { cn } from '@utils/utils'
 
 type IssueInformationModalProps = React.ComponentPropsWithoutRef<'article'> & {
   issue: Issue
@@ -24,7 +24,6 @@ type IssueInformationModalProps = React.ComponentPropsWithoutRef<'article'> & {
 export default function IssueInformationModal({
   issue: { title, description, status, priority, tag, createdAt },
   closeModal,
-  className,
   ...props
 }: IssueInformationModalProps) {
   const {
@@ -36,13 +35,7 @@ export default function IssueInformationModal({
   const { name: tagName, icon: IssueTagIcon } = getIssueTag(tag)
 
   return (
-    <article
-      className={cn(
-        'bg-modal-background border-section-outline w-full rounded-2xl border',
-        className
-      )}
-      {...props}
-    >
+    <ModalCard {...props}>
       <header className="flex flex-col gap-2 p-4">
         <div className="flex items-center justify-between">
           <div className="inset-ring-section-outline w-max rounded-lg p-2 inset-ring">
@@ -116,6 +109,6 @@ export default function IssueInformationModal({
           </InformationList.Item>
         </InformationList>
       </div>
-    </article>
+    </ModalCard>
   )
 }

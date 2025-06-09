@@ -1,4 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
+import ModalCard from '@dashboard-components/ui/modal-card'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
@@ -16,7 +17,7 @@ export default function DeleteDraftModal({
   const { deleteDraft } = useDrafts()
 
   return (
-    <article className="bg-modal-background border-section-outline w-full rounded-2xl border">
+    <ModalCard>
       <div className="p-4">
         <span className="border-section-outline bg-danger-500/10 [&_svg]:text-danger-500 mb-2 flex size-9 items-center justify-center rounded-lg border">
           <TrashIcon />
@@ -41,6 +42,6 @@ export default function DeleteDraftModal({
           Delete
         </Button>
       </div>
-    </article>
+    </ModalCard>
   )
 }
