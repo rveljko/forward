@@ -16,12 +16,10 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 export default function Sidebar() {
-  const { preferences, getCornerRoundness } = usePreferences()
+  const { preferences, getRemCornerRoundness } = usePreferences()
   const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
-
-  const cornerRoundness = getCornerRoundness(preferences.cornerRoundness)
 
   const sidebarStyleClassNames = {
     transparent: `h-screen ${
@@ -53,7 +51,7 @@ export default function Sidebar() {
     <aside
       style={
         {
-          '--border-radius': `${cornerRoundness.value / 16}rem`,
+          '--border-radius': getRemCornerRoundness(),
         } as React.CSSProperties
       }
       className={`top-0 left-0 z-999 p-4 ${sidebarStyle}`}

@@ -17,6 +17,7 @@ type PreferencesContextType = {
   newPreferences: Preferences
   setNewPreferences: React.Dispatch<React.SetStateAction<Preferences>>
   getCornerRoundness: (cornerRoundness: CornerRoundnessLabel) => CornerRoundness
+  getRemCornerRoundness: () => string
   isLightTheme: boolean
 }
 
@@ -44,6 +45,10 @@ export default function PreferencesContextProvider({
     return cornerRoundnesses.find(({ label }) => label === cornerRoundness)!
   }
 
+  function getRemCornerRoundness() {
+    return `${getCornerRoundness(preferences.cornerRoundness).value / 16}rem`
+  }
+
   useEffect(() => {
     localStorage.setItem('preferences', JSON.stringify(preferences))
   }, [preferences])
@@ -60,6 +65,7 @@ export default function PreferencesContextProvider({
         newPreferences,
         setNewPreferences,
         getCornerRoundness,
+        getRemCornerRoundness,
         isLightTheme,
       }}
     >
