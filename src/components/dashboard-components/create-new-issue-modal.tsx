@@ -6,12 +6,13 @@ import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
 import ArrowsMaximizeIcon from '@icons/arrows-maximize-icon'
-import CircleEmptyIcon from '@icons/circle-empty-icon'
 import CloseIcon from '@icons/close-icon'
-import DesignIssueTagIcon from '@icons/design-issue-tag-icon'
-import PriorityLowIcon from '@icons/priority-low-icon'
+import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 type CreateNewIssueModalProps = React.ComponentPropsWithoutRef<'article'> & {
   closeModal: () => void
@@ -22,6 +23,26 @@ export default function CreateNewIssueModal({
   className,
   ...props
 }: CreateNewIssueModalProps) {
+  const { createNewIssue, getIssueStatus, getIssuePriority, getIssueTag } =
+    useIssues()
+  const initialIssue: Issue = {
+    id: uuidv4(),
+    title: '',
+    description: '',
+    status: 'todo',
+    priority: 'low',
+    tag: 'design',
+    createdAt: new Date(),
+    content: '',
+  }
+  const [newIssue, setNewIssue] = useState(initialIssue)
+
+  const { name: statusName, icon: StatusIcon } = getIssueStatus(newIssue.status)
+  const { name: priorityName, icon: PriorityIcon } = getIssuePriority(
+    newIssue.priority
+  )
+  const { name: tagName, icon: TagIcon } = getIssueTag(newIssue.tag)
+
   return (
     <ModalCard
       className={cn('bg-(--create-new-issue-modal-background)', className)}
@@ -30,6 +51,8 @@ export default function CreateNewIssueModal({
       <form
         onSubmit={(e) => {
           e.preventDefault()
+          createNewIssue(newIssue)
+          setNewIssue(initialIssue)
         }}
       >
         <div className="p-4">
@@ -39,7 +62,12 @@ export default function CreateNewIssueModal({
                 type="text"
                 name="title"
                 placeholder="Issue title"
+                value={newIssue.title}
+                onChange={(e) =>
+                  setNewIssue({ ...newIssue, title: e.target.value })
+                }
                 className="text-clickable w-full text-2xl placeholder:text-neutral-400 focus:outline-0"
+                required
               />
               <div className="flex gap-1">
                 <Button variant="tertiary" className="p-1 max-sm:hidden">
@@ -55,41 +83,62 @@ export default function CreateNewIssueModal({
             <textarea
               name="description"
               placeholder="Issue description"
+              value={newIssue.description}
+              onChange={(e) =>
+                setNewIssue({ ...newIssue, description: e.target.value })
+              }
               className="text-clickable aspect-5/1 w-full resize-none placeholder:text-neutral-400 focus:outline-0"
             />
             <div className="flex items-center gap-2">
               <DropdownButton
-                label="Todo"
+                label={statusName}
                 variant="ghost"
                 size="small"
-                leftIcon={<CircleEmptyIcon />}
+                leftIcon={<StatusIcon />}
               >
-                {issueStatuses.map(({ id, name, icon: Icon }) => (
-                  <Dropdown.Button key={id} leftIcon={<Icon />}>
+                {issueStatuses.map(({ id, name, label, icon: Icon }) => (
+                  <Dropdown.Button
+                    key={id}
+                    leftIcon={<Icon />}
+                    onClick={() => setNewIssue({ ...newIssue, status: label })}
+                    isActive={label === newIssue.status}
+                  >
                     {name}
                   </Dropdown.Button>
                 ))}
               </DropdownButton>
               <DropdownButton
-                label="Low"
+                label={priorityName}
                 variant="ghost"
                 size="small"
-                leftIcon={<PriorityLowIcon />}
+                leftIcon={<PriorityIcon />}
               >
-                {issuePriorities.map(({ id, name, icon: Icon }) => (
-                  <Dropdown.Button key={id} leftIcon={<Icon />}>
+                {issuePriorities.map(({ id, name, label, icon: Icon }) => (
+                  <Dropdown.Button
+                    key={id}
+                    leftIcon={<Icon />}
+                    onClick={() =>
+                      setNewIssue({ ...newIssue, priority: label })
+                    }
+                    isActive={label === newIssue.priority}
+                  >
                     {name}
                   </Dropdown.Button>
                 ))}
               </DropdownButton>
               <DropdownButton
-                label="Design"
+                label={tagName}
                 variant="ghost"
                 size="small"
-                leftIcon={<DesignIssueTagIcon />}
+                leftIcon={<TagIcon />}
               >
-                {issueTags.map(({ id, name, icon: Icon }) => (
-                  <Dropdown.Button key={id} leftIcon={<Icon />}>
+                {issueTags.map(({ id, name, label, icon: Icon }) => (
+                  <Dropdown.Button
+                    key={id}
+                    leftIcon={<Icon />}
+                    onClick={() => setNewIssue({ ...newIssue, tag: label })}
+                    isActive={label === newIssue.tag}
+                  >
                     {name}
                   </Dropdown.Button>
                 ))}
@@ -102,7 +151,12 @@ export default function CreateNewIssueModal({
           <Button variant="ghost" size="large" onClick={closeModal}>
             Cancel
           </Button>
-          <Button variant="primary" size="large">
+          <Button
+            variant="primary"
+            size="large"
+            type="submit"
+            disabled={!newIssue.title}
+          >
             Create New Issue
           </Button>
         </div>

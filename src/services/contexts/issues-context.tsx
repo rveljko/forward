@@ -21,6 +21,7 @@ type IssuesContextType = {
   issues: Issue[]
   getIssuesByStatus: (status: IssueStatusLabel) => Issue[]
   getIssueById: (id: Issue['id']) => Issue
+  createNewIssue: (newIssue: Issue) => void
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
   getIssueStatus: (status: IssueStatusLabel) => IssueStatus
@@ -46,6 +47,16 @@ export default function IssuesContextProvider({
 
   function getIssueById(id: Issue['id']) {
     return issues.find((issue) => issue.id === id)!
+  }
+
+  function createNewIssue(newIssue: Issue) {
+    setIssues([
+      {
+        ...newIssue,
+        content: `<h1>${newIssue.title}</h1><p>${newIssue.description}</p>`,
+      },
+      ...issues,
+    ])
   }
 
   function renameIssue(id: Issue['id'], newTitle: Issue['title']) {
@@ -88,6 +99,7 @@ export default function IssuesContextProvider({
         issues,
         getIssuesByStatus,
         getIssueById,
+        createNewIssue,
         renameIssue,
         updateIssueContent,
         getIssueStatus,

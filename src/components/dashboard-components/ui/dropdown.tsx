@@ -73,7 +73,7 @@ function Button({
   }
 
   return (
-    <button className={buttonClasses} {...props}>
+    <button className={buttonClasses} type="button" {...props}>
       {LeftIcon && <span>{LeftIcon}</span>}
       <span className="overflow-hidden text-ellipsis">{children}</span>
       {RightIcon && <span>{RightIcon}</span>}

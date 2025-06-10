@@ -73,7 +73,7 @@ export default function Button({
   }
 
   return (
-    <button className={buttonClasses} {...props}>
+    <button className={buttonClasses} type="button" {...props}>
       {LeftIcon && (
         <span className="flex h-6 items-center justify-center">{LeftIcon}</span>
       )}
