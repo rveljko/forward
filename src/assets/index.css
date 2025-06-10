@@ -78,6 +78,7 @@
   --background-color: hsl(233, 29%, 5%);
   --section-background-color: hsl(234, 28%, 7%);
   --modal-background: var(--section-background-color);
+  --create-new-issue-modal-background: var(--neutral-800);
   --modal-overlay-background: hsl(from black h s l / 10%);
 }
 
@@ -97,6 +98,7 @@
     --dropdown-background: hsl(0, 0%, 100%);
     --background-color: hsl(180, 9%, 98%);
     --section-background-color: hsl(0, 0%, 100%);
+    --create-new-issue-modal-background: hsl(0, 0%, 100%);
   }
 }
 
@@ -115,6 +117,7 @@
   --dropdown-background: var(--neutral-800);
   --background-color: hsl(233, 29%, 5%);
   --section-background-color: hsl(234, 28%, 7%);
+  --create-new-issue-modal-background: var(--neutral-800);
 }
 
 [data-theme='light'] {
@@ -132,6 +135,7 @@
   --dropdown-background: hsl(0, 0%, 100%);
   --background-color: hsl(180, 9%, 98%);
   --section-background-color: hsl(0, 0%, 100%);
+  --create-new-issue-modal-background: hsl(0, 0%, 100%);
 }
 
 @theme {
@@ -187,6 +191,7 @@
   --color-background-color: var(--background-color);
   --color-section-background-color: var(--section-background-color);
   --color-modal-background: var(--modal-background);
+  --color-create-new-issue-modal-background: var(--create-new-issue-modal-background);
   --color-modal-overlay-background: var(--modal-overlay-background);
   --sidebar-opened-width: 14.375rem;
   --switch-width: 2rem;

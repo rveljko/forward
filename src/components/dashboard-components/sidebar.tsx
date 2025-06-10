@@ -1,3 +1,4 @@
+import CreateNewIssueModalButton from '@dashboard-components/create-new-issue-modal-button'
 import NavigationLinksList from '@dashboard-components/navigation-links-list'
 import {
   primaryNavigationLinks,
@@ -85,14 +86,16 @@ export default function Sidebar() {
         </header>
         <div className="flex h-full flex-col gap-1 overflow-y-auto">
           <div className="space-y-1">
-            <Button
+            <CreateNewIssueModalButton
               variant="primary"
               size="small"
               leftIcon={<PenIcon />}
               className="w-full justify-start"
             >
-              {isOpened && 'Create New Issue'}
-            </Button>
+              <span className={isOpened ? 'block' : 'hidden'}>
+                Create New Issue
+              </span>
+            </CreateNewIssueModalButton>
             <Button
               variant="secondary"
               size="small"
