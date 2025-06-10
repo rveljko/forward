@@ -45,7 +45,7 @@ export type ButtonProps = ButtonBaseProps &
   (ButtonAsAnchorProps | ButtonAsButtonProps)
 
 export const dropdownButtonClasses =
-  'text-clickable hover:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99'
+  'text-clickable hover:bg-clickable/5 pointer-coarse:active:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99'
 
 function Button({
   children,
