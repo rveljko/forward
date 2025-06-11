@@ -191,7 +191,9 @@
   --color-background-color: var(--background-color);
   --color-section-background-color: var(--section-background-color);
   --color-modal-background: var(--modal-background);
-  --color-create-new-issue-modal-background: var(--create-new-issue-modal-background);
+  --color-create-new-issue-modal-background: var(
+    --create-new-issue-modal-background
+  );
   --color-modal-overlay-background: var(--modal-overlay-background);
   --sidebar-opened-width: 14.375rem;
   --switch-width: 2rem;
@@ -224,7 +226,7 @@
 
   .ProseMirror {
     font-feature-settings: var(--default-font-feature-settings) !important;
-    overflow-wrap: anywhere !important; 
+    overflow-wrap: anywhere !important;
   }
 
   .ProseMirror h1,
@@ -272,3 +274,5 @@
     color: var(--color-neutral-400);
   }
 }
+
+@custom-variant picker-select (&::picker(select));

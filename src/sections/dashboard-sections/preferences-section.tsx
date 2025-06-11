@@ -1,24 +1,18 @@
 import SidebarStyleCardsList from '@dashboard-components/sidebar-style-cards-list'
 import ThemeCardsList from '@dashboard-components/theme-cards-list'
 import Divider from '@dashboard-components/ui/divider'
-import Dropdown from '@dashboard-components/ui/dropdown'
-import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import Select from '@dashboard-components/ui/select'
 import { cornerRoundnesses } from '@data/corner-roundnesses '
 import { sidebarStyles } from '@data/sidebar-styles'
 import { themes } from '@data/themes'
-import ChevronDownIcon from '@icons/chevron-down-icon'
 import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
 import Switch from '@ui/switch'
+import { CornerRoundnessLabel } from '@utils/types'
 
 export default function PreferencesSection() {
-  const {
-    preferences,
-    setPreferences,
-    newPreferences,
-    setNewPreferences,
-    getCornerRoundness,
-  } = usePreferences()
+  const { preferences, setPreferences, newPreferences, setNewPreferences } =
+    usePreferences()
 
   const isButtonDisabled =
     JSON.stringify(preferences) === JSON.stringify(newPreferences)
@@ -70,27 +64,23 @@ export default function PreferencesSection() {
         <>
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
             <h3 className="w-full max-w-50">Corner Roundness</h3>
-            <DropdownButton
-              label={getCornerRoundness(newPreferences.cornerRoundness).name}
+            <Select
               variant="secondary"
               size="small"
-              rightIcon={<ChevronDownIcon />}
+              value={newPreferences.cornerRoundness}
+              onChange={(e) =>
+                setNewPreferences({
+                  ...newPreferences,
+                  cornerRoundness: e.target.value as CornerRoundnessLabel,
+                })
+              }
             >
               {cornerRoundnesses.map(({ id, name, label }) => (
-                <Dropdown.Button
-                  key={id}
-                  onClick={() =>
-                    setNewPreferences({
-                      ...newPreferences,
-                      cornerRoundness: label,
-                    })
-                  }
-                  isActive={newPreferences.cornerRoundness === label}
-                >
+                <Select.Option key={id} value={label}>
                   {name}
-                </Dropdown.Button>
+                </Select.Option>
               ))}
-            </DropdownButton>
+            </Select>
           </div>
           <Divider />
         </>
