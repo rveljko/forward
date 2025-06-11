@@ -21,9 +21,15 @@ export default function CreateNewIssueModalButton({
       {...props}
     >
       <Modal isOpened={isOpened} closeModal={toggleModal}>
-        <IssuesContextProvider>
-          <CreateNewIssueModal closeModal={toggleModal} />
-        </IssuesContextProvider>
+        <Modal.Overlay>
+          <Modal.Dialog>
+            <Modal.FocusLock>
+              <IssuesContextProvider>
+                <CreateNewIssueModal closeModal={toggleModal} />
+              </IssuesContextProvider>
+            </Modal.FocusLock>
+          </Modal.Dialog>
+        </Modal.Overlay>
       </Modal>
     </ModalButton>
   )

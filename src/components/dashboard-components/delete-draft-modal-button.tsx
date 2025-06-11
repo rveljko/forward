@@ -24,7 +24,13 @@ export default function DeleteDraftModalButton({
       {...props}
     >
       <Modal isOpened={isOpened} closeModal={toggleModal}>
-        <DeleteDraftModal closeModal={toggleModal} id={draftId} />
+        <Modal.Overlay>
+          <Modal.Dialog>
+            <Modal.FocusLock>
+              <DeleteDraftModal closeModal={toggleModal} id={draftId} />
+            </Modal.FocusLock>
+          </Modal.Dialog>
+        </Modal.Overlay>
       </Modal>
     </ModalButton>
   )

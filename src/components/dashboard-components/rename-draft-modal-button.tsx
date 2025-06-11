@@ -26,11 +26,17 @@ export default function RenameDraftModalButton({
       {...props}
     >
       <Modal isOpened={isOpened} closeModal={toggleModal}>
-        <RenameDraftModal
-          closeModal={toggleModal}
-          id={draftId}
-          title={draftTitle}
-        />
+        <Modal.Overlay>
+          <Modal.Dialog>
+            <Modal.FocusLock>
+              <RenameDraftModal
+                closeModal={toggleModal}
+                id={draftId}
+                title={draftTitle}
+              />
+            </Modal.FocusLock>
+          </Modal.Dialog>
+        </Modal.Overlay>
       </Modal>
     </ModalButton>
   )

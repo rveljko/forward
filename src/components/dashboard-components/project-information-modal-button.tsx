@@ -19,16 +19,17 @@ export default function ProjectInformationModalButton({
       label={children}
       {...props}
     >
-      <Modal
-        isOpened={isOpened}
-        closeModal={toggleModal}
-        className="md:items-end"
-        mediumSizeFullHeight
-      >
-        <ProjectInformationModal
-          closeModal={toggleModal}
-          className="md:h-full"
-        />
+      <Modal isOpened={isOpened} closeModal={toggleModal}>
+        <Modal.Overlay className="md:items-end">
+          <Modal.Dialog className="md:h-full">
+            <Modal.FocusLock className="md:h-full">
+              <ProjectInformationModal
+                closeModal={toggleModal}
+                className="md:h-full"
+              />
+            </Modal.FocusLock>
+          </Modal.Dialog>
+        </Modal.Overlay>
       </Modal>
     </ModalButton>
   )
