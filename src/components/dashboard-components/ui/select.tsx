@@ -2,7 +2,7 @@ import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 
 const select = cva(
-  'text-clickable picker-select:bg-dropdown-background picker-select:my-2 picker-select:border-section-outline picker-select:rounded-sm picker-select:p-1 picker-select:[appearance:base-select] field-sizing-content [appearance:base-select] space-y-2 rounded-md hover:cursor-pointer active:scale-99 [&::picker-icon]:hidden',
+  'text-clickable picker-select:bg-dropdown-background picker-select:my-2 picker-select:border-section-outline picker-select:rounded-sm picker-select:p-1 picker-select:[appearance:base-select] field-sizing-content [appearance:base-select] space-y-0.5 rounded-md hover:cursor-pointer active:scale-99 [&::picker-icon]:hidden',
   {
     variants: {
       variant: {
@@ -32,11 +32,13 @@ export default function Select({
   ...props
 }: SelectProps) {
   return (
-    <div className="relative w-max">
-      <select className={cn(select({ variant, size }), className)} {...props}>
-        {children}
-      </select>
-    </div>
+    <select className={cn(select({ variant, size }), className)} {...props}>
+      <button>
+        {/* @ts-ignore */}
+        <selectedcontent className="flex items-center gap-1"></selectedcontent>
+      </button>
+      {children}
+    </select>
   )
 }
 
@@ -49,7 +51,7 @@ type OptionProps = React.ComponentPropsWithoutRef<'option'> & {
 function Option({ children, ...props }: OptionProps) {
   return (
     <option
-      className="text-clickable pointer-coarse:active:bg-clickable/5 [&::checkmark]:text-success-500 hover:bg-clickable/10 rounded-sm p-1 hover:cursor-pointer active:scale-99"
+      className="text-clickable pointer-coarse:active:bg-clickable/5 [&::checkmark]:text-success-500 hover:bg-clickable/10 flex items-center gap-2 rounded-sm p-1 hover:cursor-pointer active:scale-99"
       {...props}
     >
       {children}
