@@ -5,6 +5,7 @@ import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
 import ArrowsMaximizeIcon from '@icons/arrows-maximize-icon'
+import ArrowsMinimizeIcon from '@icons/arrows-minimize-icon'
 import CloseIcon from '@icons/close-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
@@ -20,10 +21,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 type CreateNewIssueModalProps = React.ComponentPropsWithoutRef<'article'> & {
   closeModal: () => void
+  isBigSizeModal: boolean
+  setIsBigSizeModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function CreateNewIssueModal({
   closeModal,
+  isBigSizeModal,
+  setIsBigSizeModal,
   className,
   ...props
 }: CreateNewIssueModalProps) {
@@ -67,9 +72,19 @@ export default function CreateNewIssueModal({
                 required
               />
               <div className="flex gap-1">
-                <Button variant="tertiary" className="p-1 max-sm:hidden">
-                  <ArrowsMaximizeIcon />
-                  <span className="sr-only">Maximize Modal</span>
+                <Button
+                  variant="tertiary"
+                  className="p-1 max-sm:hidden"
+                  onClick={() => setIsBigSizeModal((prev) => !prev)}
+                >
+                  {isBigSizeModal ? (
+                    <ArrowsMinimizeIcon />
+                  ) : (
+                    <ArrowsMaximizeIcon />
+                  )}
+                  <span className="sr-only">
+                    {isBigSizeModal ? 'Minimize modal' : 'Maximize modal'}
+                  </span>
                 </Button>
                 <Button variant="tertiary" className="p-1" onClick={closeModal}>
                   <CloseIcon />

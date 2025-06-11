@@ -4,6 +4,7 @@ import ModalButton from '@dashboard-components/ui/modal-button'
 import useModal from '@hooks/use-modal'
 import IssuesContextProvider from '@services/contexts/issues-context'
 import { ButtonProps } from '@ui/button'
+import { useState } from 'react'
 
 type CreateNewIssueModalButtonProps = ButtonProps
 
@@ -12,6 +13,7 @@ export default function CreateNewIssueModalButton({
   ...props
 }: CreateNewIssueModalButtonProps) {
   const { isOpened, toggleModal } = useModal()
+  const [isBigSizeModal, setIsBigSizeModal] = useState(false)
 
   return (
     <ModalButton
@@ -22,10 +24,16 @@ export default function CreateNewIssueModalButton({
     >
       <Modal isOpened={isOpened} closeModal={toggleModal}>
         <Modal.Overlay>
-          <Modal.Dialog>
+          <Modal.Dialog
+            className={`transition-[max-width] ${isBigSizeModal ? 'max-w-200' : ''} `}
+          >
             <Modal.FocusLock>
               <IssuesContextProvider>
-                <CreateNewIssueModal closeModal={toggleModal} />
+                <CreateNewIssueModal
+                  closeModal={toggleModal}
+                  isBigSizeModal={isBigSizeModal}
+                  setIsBigSizeModal={setIsBigSizeModal}
+                />
               </IssuesContextProvider>
             </Modal.FocusLock>
           </Modal.Dialog>
