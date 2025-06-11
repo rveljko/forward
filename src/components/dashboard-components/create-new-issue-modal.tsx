@@ -54,7 +54,7 @@ export default function CreateNewIssueModal({
         onSubmit={(e) => {
           e.preventDefault()
           createNewIssue(newIssue)
-          setNewIssue(initialIssue)
+          closeModal()
         }}
       >
         <div className="p-4">
