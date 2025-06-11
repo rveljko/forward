@@ -35,6 +35,13 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
 
   const { person, messages } = chat
 
+  function handleSendMessage() {
+    if (!newMessage.message.length) return
+
+    addNewMessage(chatId, newMessage)
+    setNewMessage(initialMessage)
+  }
+
   return (
     <section className="grid w-full grid-cols-1 grid-rows-[repeat(3,auto)_1fr]">
       <header className="flex items-center gap-4 p-4">
@@ -84,10 +91,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
           className="p-4"
           onSubmit={(e) => {
             e.preventDefault()
-            if (!newMessage.message.length) return
-
-            addNewMessage(chatId, newMessage)
-            setNewMessage(initialMessage)
+            handleSendMessage()
           }}
         >
           <FormField className="[&_div]:max-w-none">
@@ -98,6 +102,12 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
               onChange={(e) =>
                 setNewMessage({ ...newMessage, message: e.target.value })
               }
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault()
+                  handleSendMessage()
+                }
+              }}
               leftIcon={<MessageIcon />}
               rightIcon={
                 <button className="hover:cursor-pointer">
