@@ -5,26 +5,23 @@ import { cva, VariantProps } from 'class-variance-authority'
 import React, { useEffect, useRef, useState } from 'react'
 import ReactFocusLock from 'react-focus-lock'
 
-const dropdownContainer = cva(
-  'fixed inset-x-4 bottom-4 z-999 sm:absolute sm:inset-x-auto sm:bottom-auto',
-  {
-    variants: {
-      position: {
-        'top-left': 'sm:right-0 sm:bottom-[calc(100%_+_--spacing(2))]',
-        'top-center':
-          'sm:bottom-[calc(100%_+_--spacing(2))] sm:left-1/2 sm:-translate-x-1/2',
-        'top-right': 'sm:bottom-[calc(100%_+_--spacing(2))] sm:left-0',
-        'bottom-left': 'sm:top-[calc(100%_+_--spacing(2))] sm:right-0',
-        'bottom-center':
-          'sm:top-[calc(100%_+_--spacing(2))] sm:left-1/2 sm:-translate-x-1/2',
-        'bottom-right': 'sm:top-[calc(100%_+_--spacing(2))] sm:left-0',
-      },
+const dropdownContainer = cva('absolute z-999', {
+  variants: {
+    position: {
+      'top-left': 'right-0 bottom-[calc(100%_+_--spacing(2))]',
+      'top-center':
+        'bottom-[calc(100%_+_--spacing(2))] left-1/2 -translate-x-1/2',
+      'top-right': 'bottom-[calc(100%_+_--spacing(2))] left-0',
+      'bottom-left': 'top-[calc(100%_+_--spacing(2))] right-0',
+      'bottom-center':
+        'top-[calc(100%_+_--spacing(2))] left-1/2 -translate-x-1/2',
+      'bottom-right': 'top-[calc(100%_+_--spacing(2))] left-0',
     },
-    defaultVariants: {
-      position: 'bottom-right',
-    },
-  }
-)
+  },
+  defaultVariants: {
+    position: 'bottom-right',
+  },
+})
 
 type DropdownButtonProps = ButtonProps &
   VariantProps<typeof dropdownContainer> & {
@@ -61,7 +58,7 @@ export default function DropdownButton({
   }, [isOpened])
 
   return (
-    <div className="w-max sm:relative" ref={ref}>
+    <div className="relative w-max" ref={ref}>
       <Button onClick={() => setIsOpened((prev) => !prev)} {...props}>
         {label}
       </Button>
