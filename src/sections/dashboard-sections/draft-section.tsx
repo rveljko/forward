@@ -45,7 +45,11 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <Header draftId={draftId} title={title} />
       <Divider />
-      <TextEditorCommandBar editor={editor} className="flex-wrap p-4" />
+      <div className="w-0 min-w-full">
+        <div className="flex overflow-x-auto p-4">
+          <TextEditorCommandBar editor={editor} />
+        </div>
+      </div>
       <Divider />
       <TextEditor editor={editor} />
     </section>
