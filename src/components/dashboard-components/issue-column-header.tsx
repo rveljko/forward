@@ -1,17 +1,20 @@
+import CreateNewIssueModalButton from '@dashboard-components/create-new-issue-modal-button'
 import PlusIcon from '@icons/plus-icon'
-import Button from '@ui/button'
+import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
 
 type IssueColumnHeaderProps = React.ComponentPropsWithoutRef<'div'> & {
   title: string
   icon: React.JSX.Element
   numberOfIssues: number
+  status: IssueStatusLabel
 }
 
 export default function IssueColumnHeader({
   title,
   icon: Icon,
   numberOfIssues,
+  status,
   className,
   ...props
 }: IssueColumnHeaderProps) {
@@ -30,10 +33,14 @@ export default function IssueColumnHeader({
         </div>
         <span className="text-neutral-400">{numberOfIssues}</span>
       </div>
-      <Button variant="tertiary" className="p-0.5">
+      <CreateNewIssueModalButton
+        variant="tertiary"
+        className="p-0.5"
+        status={status}
+      >
         <PlusIcon />
-        <span className="sr-only">Create new Issue</span>
-      </Button>
+        <span className="sr-only">Create New Issue</span>
+      </CreateNewIssueModalButton>
     </div>
   )
 }

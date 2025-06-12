@@ -17,6 +17,7 @@ export default function IssueColumn({ status, ...props }: IssueColumnProps) {
         title={name}
         icon={<Icon />}
         numberOfIssues={getIssuesByStatus(status).length}
+        status={status}
       />
       <IssueItemsList issues={getIssuesByStatus(status)} icon={<Icon />} />
     </div>

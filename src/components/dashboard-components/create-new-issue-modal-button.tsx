@@ -3,12 +3,16 @@ import Modal from '@dashboard-components/ui/modal'
 import ModalButton from '@dashboard-components/ui/modal-button'
 import useModal from '@hooks/use-modal'
 import { ButtonProps } from '@ui/button'
+import { IssueStatusLabel } from '@utils/types'
 import { useState } from 'react'
 
-type CreateNewIssueModalButtonProps = ButtonProps
+type CreateNewIssueModalButtonProps = ButtonProps & {
+  status?: IssueStatusLabel
+}
 
 export default function CreateNewIssueModalButton({
   children,
+  status,
   ...props
 }: CreateNewIssueModalButtonProps) {
   const { isOpened, toggleModal } = useModal()
@@ -31,6 +35,7 @@ export default function CreateNewIssueModalButton({
                 closeModal={toggleModal}
                 isBigSizeModal={isBigSizeModal}
                 setIsBigSizeModal={setIsBigSizeModal}
+                status={status}
               />
             </Modal.FocusLock>
           </Modal.Dialog>

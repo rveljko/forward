@@ -23,12 +23,14 @@ type CreateNewIssueModalProps = React.ComponentPropsWithoutRef<'article'> & {
   closeModal: () => void
   isBigSizeModal: boolean
   setIsBigSizeModal: React.Dispatch<React.SetStateAction<boolean>>
+  status?: IssueStatusLabel
 }
 
 export default function CreateNewIssueModal({
   closeModal,
   isBigSizeModal,
   setIsBigSizeModal,
+  status,
   className,
   ...props
 }: CreateNewIssueModalProps) {
@@ -37,7 +39,7 @@ export default function CreateNewIssueModal({
     id: uuidv4(),
     title: '',
     description: '',
-    status: 'todo',
+    status: status ?? 'todo',
     priority: 'low',
     tag: 'design',
     createdAt: new Date(),
@@ -106,6 +108,7 @@ export default function CreateNewIssueModal({
                 variant="ghost"
                 size="small"
                 name="status"
+                defaultValue={initialIssue.status}
                 onChange={(e) =>
                   setNewIssue({
                     ...newIssue,
