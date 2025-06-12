@@ -53,7 +53,7 @@ function Input({
       )}
       <input
         className={cn(
-          `bg-input-background text-clickable focus:inset-ring-brand-500 w-full rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:inset-ring focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline ring' : 'inset-ring-section-outline inset-ring'}`,
+          `bg-input-background text-clickable w-full rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline focus:ring-brand-500 ring focus:ring' : 'inset-ring-section-outline focus:inset-ring-brand-500 inset-ring focus:inset-ring'}`,
           className
         )}
         required={!optional}
