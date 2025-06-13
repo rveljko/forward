@@ -94,7 +94,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
             handleSendMessage()
           }}
         >
-          <FormField className="[&_div]:max-w-none">
+          <FormField className="[&_div]:flex [&_div]:max-w-none">
             <FormField.Textarea
               className="field-sizing-content aspect-auto max-h-[30vh]"
               placeholder="Message"
