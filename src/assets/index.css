@@ -84,6 +84,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+    color-scheme: light;
     --clickable: hsl(0, 0%, 0%);
     --neutral-100: hsl(234, 28%, 7%);
     --neutral-200: hsl(233, 11%, 16%);
@@ -103,6 +104,7 @@
 }
 
 [data-theme='dark'] {
+  color-scheme: dark;
   --clickable: hsl(0, 0%, 100%);
   --neutral-100: hsl(240, 2%, 82%);
   --neutral-200: hsl(220, 2%, 72%);
@@ -121,6 +123,7 @@
 }
 
 [data-theme='light'] {
+  color-scheme: light;
   --clickable: hsl(0, 0%, 0%);
   --neutral-100: hsl(234, 28%, 7%);
   --neutral-200: hsl(233, 11%, 16%);
@@ -209,6 +212,10 @@
 }
 
 @layer base {
+  html {
+    color-scheme: dark light;
+  }
+
   body {
     min-height: 100vh;
     background-color: var(--color-background-color);
