@@ -24,7 +24,60 @@ export default function Dropdown({
   )
 }
 
+Dropdown.List = List
+Dropdown.Item = Item
+Dropdown.Label = Label
+Dropdown.RadioButton = RadioButton
 Dropdown.Button = Button
+
+type ListProps = React.ComponentPropsWithoutRef<'ul'> & {
+  children: React.ReactNode
+}
+
+function List({ children, ...props }: ListProps) {
+  return <ul {...props}>{children}</ul>
+}
+
+type ItemProps = React.ComponentPropsWithoutRef<'li'> & {
+  children: React.ReactNode
+}
+
+function Item({ children, ...props }: ItemProps) {
+  return <li {...props}>{children}</li>
+}
+
+type LabelProps = React.ComponentPropsWithoutRef<'label'> & {
+  children: React.ReactNode
+}
+
+function Label({ children, className, ...props }: LabelProps) {
+  return (
+    <label
+      className={cn(
+        'text-clickable pointer-coarse:active:bg-clickable/5 hover:bg-clickable/10 flex items-center gap-1 rounded-sm p-1 px-1.5 py-1 text-nowrap hover:cursor-pointer active:scale-99',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </label>
+  )
+}
+
+type RadioButtonProps = React.ComponentPropsWithoutRef<'input'>
+
+function RadioButton({ className, ...props }: RadioButtonProps) {
+  return (
+    <input
+      type="radio"
+      className={cn(
+        'before:inset-ring-clickable/20 pointer-coarse:active:before:inset-ring-brand-500 hover:before:inset-ring-brand-500 checked:before:inset-ring-brand-500 relative size-3.5 appearance-none before:absolute before:size-full before:rounded-full before:inset-ring checked:before:inset-ring-4',
+        className
+      )}
+      {...props}
+    />
+  )
+}
 
 type ButtonBaseProps = {
   children: React.ReactNode

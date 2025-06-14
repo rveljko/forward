@@ -1,9 +1,14 @@
 import IssuesListBoard from '@dashboard-components/issues-list-board'
 import ProjectInformationModalButton from '@dashboard-components/project-information-modal-button'
 import Divider from '@dashboard-components/ui/divider'
+import Dropdown from '@dashboard-components/ui/dropdown'
+import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
+import CalendarIcon from '@icons/calendar-icon'
 import FilterIcon from '@icons/filter-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
+import LetterCaseIcon from '@icons/letter-case-icon'
+import PriorityLowIcon from '@icons/priority-low-icon'
 import Button from '@ui/button'
 
 export default function IssuesSection() {
@@ -24,9 +29,55 @@ export default function IssuesSection() {
         <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
           Filters
         </Button>
-        <Button variant="secondary" size="small" leftIcon={<ArrowsSortIcon />}>
-          Sort
-        </Button>
+        <DropdownButton
+          label="Sort"
+          variant="secondary"
+          size="small"
+          leftIcon={<ArrowsSortIcon />}
+        >
+          <Dropdown.List>
+            <Dropdown.Item>
+              <Dropdown.Label>
+                <Dropdown.RadioButton name="sort" />
+                <CalendarIcon />
+                Newest to Oldest
+              </Dropdown.Label>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Label>
+                <Dropdown.RadioButton name="sort" />
+                <CalendarIcon />
+                Oldest to Newest
+              </Dropdown.Label>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Label>
+                <Dropdown.RadioButton name="sort" />
+                <PriorityLowIcon />
+                Low to High
+              </Dropdown.Label>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Label>
+                <Dropdown.RadioButton name="sort" />
+                <PriorityLowIcon />
+                High to Low
+              </Dropdown.Label>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Label>
+                <Dropdown.RadioButton name="sort" />
+                <LetterCaseIcon />A to Z
+              </Dropdown.Label>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Dropdown.Label>
+                <Dropdown.RadioButton name="sort" />
+                <LetterCaseIcon />Z to A
+              </Dropdown.Label>
+            </Dropdown.Item>
+          </Dropdown.List>
+        </DropdownButton>
       </div>
       <Divider />
       <IssuesListBoard />
