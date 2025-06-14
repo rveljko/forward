@@ -6,12 +6,14 @@ import {
   Issue,
   IssuePriority,
   IssuePriorityLabel,
+  IssueSort,
   IssueStatus,
   IssueStatusLabel,
   IssueTag,
   IssueTagLabel,
 } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 
 type IssuesContextProviderProps = {
   children: React.ReactNode
@@ -19,6 +21,8 @@ type IssuesContextProviderProps = {
 
 type IssuesContextType = {
   issues: Issue[]
+  sort: IssueSort
+  setSort: (key: IssueSort) => void
   getIssuesByStatus: (status: IssueStatusLabel) => Issue[]
   getIssueById: (id: Issue['id']) => Issue
   createNewIssue: (newIssue: Issue) => void
@@ -40,9 +44,55 @@ export default function IssuesContextProvider({
   children,
 }: IssuesContextProviderProps) {
   const [issues, setIssues] = useState(getInitialIssues)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const sort = searchParams.get('sort') as IssueSort
+
+  function setSort(key: IssueSort) {
+    setSearchParams((prevParams) => {
+      prevParams.set('sort', key)
+      return prevParams
+    })
+  }
+
+  function getSortedIssues() {
+    switch (sort) {
+      case 'date-asc':
+        return issues.sort(
+          (a, b) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        )
+      case 'date-desc':
+        return issues.sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+      case 'priority-asc':
+        return issues.sort(
+          (a, b) =>
+            getIssuePriority(a.priority).level -
+            getIssuePriority(b.priority).level
+        )
+      case 'priority-desc':
+        return issues.sort(
+          (a, b) =>
+            getIssuePriority(b.priority).level -
+            getIssuePriority(a.priority).level
+        )
+      case 'name-asc':
+        return issues.sort((a, b) => a.title.localeCompare(b.title))
+      case 'name-desc':
+        return issues.sort((a, b) => b.title.localeCompare(a.title))
+      default:
+        return issues.sort(
+          (a, b) =>
+            getIssuePriority(b.priority).level -
+            getIssuePriority(a.priority).level
+        )
+    }
+  }
 
   function getIssuesByStatus(status: IssueStatusLabel) {
-    return issues.filter((issue) => issue.status === status)
+    return getSortedIssues().filter((issue) => issue.status === status)
   }
 
   function getIssueById(id: Issue['id']) {
@@ -97,6 +147,8 @@ export default function IssuesContextProvider({
     <IssuesContext.Provider
       value={{
         issues,
+        sort,
+        setSort,
         getIssuesByStatus,
         getIssueById,
         createNewIssue,

@@ -9,9 +9,12 @@ import FilterIcon from '@icons/filter-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
+import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
 
 export default function IssuesSection() {
+  const { sort, setSort } = useIssues()
+
   return (
     <section>
       <header className="flex items-center justify-between p-4">
@@ -38,41 +41,65 @@ export default function IssuesSection() {
           <Dropdown.List>
             <Dropdown.Item>
               <Dropdown.Label>
-                <Dropdown.RadioButton name="sort" />
+                <Dropdown.RadioButton
+                  name="sort"
+                  checked={sort === 'date-desc'}
+                  onChange={() => setSort('date-desc')}
+                />
                 <CalendarIcon />
                 Newest to Oldest
               </Dropdown.Label>
             </Dropdown.Item>
             <Dropdown.Item>
               <Dropdown.Label>
-                <Dropdown.RadioButton name="sort" />
+                <Dropdown.RadioButton
+                  name="sort"
+                  checked={sort === 'date-asc'}
+                  onChange={() => setSort('date-asc')}
+                />
                 <CalendarIcon />
                 Oldest to Newest
               </Dropdown.Label>
             </Dropdown.Item>
             <Dropdown.Item>
               <Dropdown.Label>
-                <Dropdown.RadioButton name="sort" />
+                <Dropdown.RadioButton
+                  name="sort"
+                  checked={sort === 'priority-asc'}
+                  onChange={() => setSort('priority-asc')}
+                />
                 <PriorityLowIcon />
                 Low to High
               </Dropdown.Label>
             </Dropdown.Item>
             <Dropdown.Item>
               <Dropdown.Label>
-                <Dropdown.RadioButton name="sort" />
+                <Dropdown.RadioButton
+                  name="sort"
+                  checked={sort === 'priority-desc'}
+                  onChange={() => setSort('priority-desc')}
+                />
                 <PriorityLowIcon />
                 High to Low
               </Dropdown.Label>
             </Dropdown.Item>
             <Dropdown.Item>
               <Dropdown.Label>
-                <Dropdown.RadioButton name="sort" />
+                <Dropdown.RadioButton
+                  name="sort"
+                  checked={sort === 'name-asc'}
+                  onChange={() => setSort('name-asc')}
+                />
                 <LetterCaseIcon />A to Z
               </Dropdown.Label>
             </Dropdown.Item>
             <Dropdown.Item>
               <Dropdown.Label>
-                <Dropdown.RadioButton name="sort" />
+                <Dropdown.RadioButton
+                  name="sort"
+                  checked={sort === 'name-desc'}
+                  onChange={() => setSort('name-desc')}
+                />
                 <LetterCaseIcon />Z to A
               </Dropdown.Label>
             </Dropdown.Item>

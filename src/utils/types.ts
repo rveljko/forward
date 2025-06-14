@@ -133,3 +133,5 @@ export type Issue = {
   createdAt: Date
   content: string
 }
+
+export type IssueSort = 'date-asc' | 'date-desc' | 'priority-asc' | 'priority-desc' | 'name-asc' | 'name-desc' 
