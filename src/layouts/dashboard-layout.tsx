@@ -22,7 +22,11 @@ export default function DashboardLayout() {
         className={`w-full p-4 ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
       >
         <main
-          style={{ borderRadius: getRemCornerRoundness() }}
+          style={{
+            borderRadius: preferences.areRoundedCorners
+              ? getRemCornerRoundness()
+              : 0,
+          }}
           className="border-section-outline bg-section-background-color h-full overflow-y-auto border"
         >
           <Outlet />
