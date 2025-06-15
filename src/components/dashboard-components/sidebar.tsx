@@ -52,7 +52,9 @@ export default function Sidebar() {
     <aside
       style={
         {
-          '--border-radius': getRemCornerRoundness(),
+          '--border-radius': preferences.areRoundedCorners
+            ? getRemCornerRoundness()
+            : 0,
         } as React.CSSProperties
       }
       className={`top-0 left-0 z-999 p-4 ${sidebarStyle}`}
