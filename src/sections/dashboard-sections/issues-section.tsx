@@ -28,7 +28,7 @@ export default function IssuesSection() {
         </ProjectInformationModalButton>
       </header>
       <Divider />
-      <div className="flex items-center gap-2 p-4">
+      <div role="toolbar" className="flex items-center gap-2 p-4">
         <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
           Filters
         </Button>
