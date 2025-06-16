@@ -10,16 +10,16 @@ export default function DashboardLayout() {
       className={`relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
       <div
-        className={
+        className={`animate-scale-fade-in origin-center ${
           preferences.sidebarStyle === 'floating'
             ? `h-full p-4 ${preferences.isRightSideSidebar ? 'pl-0' : 'pr-0'}`
             : ''
-        }
+        }`}
       >
         <Sidebar />
       </div>
       <div
-        className={`w-full p-4 ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
+        className={`animate-scale-fade-in w-full p-4 ${preferences.isRightSideSidebar ? 'origin-right' : 'origin-left'} ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
       >
         <main
           style={{
