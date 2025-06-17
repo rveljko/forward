@@ -6,6 +6,7 @@ import Dropdown, {
 } from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import TimeAgo from '@dashboard-components/ui/time-ago'
+import useDropdown from '@hooks/use-dropdown'
 import ClickIcon from '@icons/click-icon'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import EditIcon from '@icons/edit-icon'
@@ -40,43 +41,61 @@ export default function DraftCard({
       <Divider />
       <div className="flex items-center justify-between p-2">
         <TimeAgo date={lastEdit} />
-        <DropdownButton
-          label={<DotsVerticalIcon />}
-          variant="tertiary"
-          position="top-left"
-          className="-m-1 rounded-full p-1 [&_svg]:size-4"
-        >
-          <Dropdown.Button
-            leftIcon={<ClickIcon />}
-            href={`/dashboard/drafts/${id}`}
-          >
-            Open
-          </Dropdown.Button>
-          <Dropdown.Button
-            leftIcon={<ExternalLinkIcon />}
-            href={`/dashboard/drafts/${id}`}
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            Open in new tab
-          </Dropdown.Button>
-          <RenameDraftModalButton
-            draftId={id}
-            draftTitle={title}
-            leftIcon={<EditIcon />}
-            className={`${dropdownButtonClasses} justify-start`}
-          >
-            Rename
-          </RenameDraftModalButton>
-          <DeleteDraftModalButton
-            draftId={id}
-            leftIcon={<TrashIcon />}
-            className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
-          >
-            Delete
-          </DeleteDraftModalButton>
-        </DropdownButton>
+        <MoreActionsDropdownButton id={id} title={title} />
       </div>
     </article>
+  )
+}
+
+type MoreActionsDropdownButtonProps = {
+  id: Draft['id']
+  title: Draft['title']
+}
+
+function MoreActionsDropdownButton({
+  id,
+  title,
+}: MoreActionsDropdownButtonProps) {
+  const { isOpened, toggleDropdown } = useDropdown()
+
+  return (
+    <DropdownButton
+      label={<DotsVerticalIcon />}
+      isOpened={isOpened}
+      toggleDropdown={toggleDropdown}
+      variant="tertiary"
+      position="top-left"
+      className="-m-1 rounded-full p-1 [&_svg]:size-4"
+    >
+      <Dropdown.Button
+        leftIcon={<ClickIcon />}
+        href={`/dashboard/drafts/${id}`}
+      >
+        Open
+      </Dropdown.Button>
+      <Dropdown.Button
+        leftIcon={<ExternalLinkIcon />}
+        href={`/dashboard/drafts/${id}`}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
+        Open in new tab
+      </Dropdown.Button>
+      <RenameDraftModalButton
+        draftId={id}
+        draftTitle={title}
+        leftIcon={<EditIcon />}
+        className={`${dropdownButtonClasses} justify-start`}
+      >
+        Rename
+      </RenameDraftModalButton>
+      <DeleteDraftModalButton
+        draftId={id}
+        leftIcon={<TrashIcon />}
+        className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
+      >
+        Delete
+      </DeleteDraftModalButton>
+    </DropdownButton>
   )
 }
