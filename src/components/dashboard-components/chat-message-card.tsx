@@ -23,7 +23,7 @@ export default function ChatMessageCard({
         <img
           src={isSender ? profilePictureUrl : image}
           alt={isSender ? `${firstName} ${lastName}` : name}
-          className="object-cover"
+          className="size-full object-cover"
         />
       </div>
       <div>
