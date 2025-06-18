@@ -124,7 +124,7 @@ export default function Sidebar() {
                 <div className="flex h-6 shrink-0 items-center justify-center">
                   <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
                     <img
-                      className="object-cover"
+                      className="size-full object-cover"
                       src={userInformation.profilePictureUrl}
                       alt={`${userInformation.firstName} ${userInformation.lastName}`}
                     />
