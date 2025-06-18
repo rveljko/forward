@@ -5,23 +5,24 @@ import { cva, VariantProps } from 'class-variance-authority'
 import React, { useEffect, useRef } from 'react'
 import ReactFocusLock from 'react-focus-lock'
 
-const dropdownContainer = cva('absolute z-999', {
-  variants: {
-    position: {
-      'top-left': 'right-0 bottom-[calc(100%_+_--spacing(2))]',
-      'top-center':
-        'bottom-[calc(100%_+_--spacing(2))] left-1/2 -translate-x-1/2',
-      'top-right': 'bottom-[calc(100%_+_--spacing(2))] left-0',
-      'bottom-left': 'top-[calc(100%_+_--spacing(2))] right-0',
-      'bottom-center':
-        'top-[calc(100%_+_--spacing(2))] left-1/2 -translate-x-1/2',
-      'bottom-right': 'top-[calc(100%_+_--spacing(2))] left-0',
+const dropdownContainer = cva(
+  'absolute z-999 my-2 [position-anchor:--dropdown] [position-try-fallbacks:flip-inline,flip-block]',
+  {
+    variants: {
+      position: {
+        'top-left': '[position-area:top_span-left]',
+        'top-center': '[position-area:top_center]',
+        'top-right': '[position-area:top_span-right]',
+        'bottom-left': '[position-area:bottom_span-left]',
+        'bottom-center': '[position-area:bottom_center]',
+        'bottom-right': '[position-area:bottom_span-right]',
+      },
     },
-  },
-  defaultVariants: {
-    position: 'bottom-right',
-  },
-})
+    defaultVariants: {
+      position: 'bottom-right',
+    },
+  }
+)
 
 type DropdownButtonProps = ButtonProps &
   VariantProps<typeof dropdownContainer> & {
@@ -35,6 +36,7 @@ export default function DropdownButton({
   isOpened,
   toggleDropdown,
   children,
+  className,
   position,
   ...props
 }: DropdownButtonProps) {
@@ -60,14 +62,18 @@ export default function DropdownButton({
   }, [isOpened])
 
   return (
-    <div className="relative w-max" ref={ref}>
-      <Button onClick={toggleDropdown} {...props}>
+    <div className="w-max" ref={ref}>
+      <Button
+        onClick={toggleDropdown}
+        className={cn('[anchor-name:--dropdown]', className)}
+        {...props}
+      >
         {label}
       </Button>
       {isOpened && (
-        <ReactFocusLock className={cn(dropdownContainer({ position }))}>
-          <Dropdown>{children}</Dropdown>
-        </ReactFocusLock>
+        <Dropdown className={cn(dropdownContainer({ position }))}>
+          <ReactFocusLock>{children}</ReactFocusLock>
+        </Dropdown>
       )}
     </div>
   )
