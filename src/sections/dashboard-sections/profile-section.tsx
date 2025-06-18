@@ -118,7 +118,12 @@ export default function ProfileSection() {
           />
         </FormField>
         <Divider />
-        <Button variant="primary" size="large" disabled={isButtonDisabled}>
+        <Button
+          variant="primary"
+          size="large"
+          type="submit"
+          disabled={isButtonDisabled}
+        >
           Save Changes
         </Button>
       </form>
