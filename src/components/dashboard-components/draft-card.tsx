@@ -65,7 +65,7 @@ function MoreActionsDropdownButton({
       toggleDropdown={toggleDropdown}
       variant="tertiary"
       position="top-left"
-      className="-m-1 rounded-full p-1 [&_svg]:size-4"
+      className="isolate -m-1 rounded-full p-1 [&_svg]:size-4"
     >
       <Dropdown.Button
         leftIcon={<ClickIcon />}
