@@ -1,8 +1,10 @@
+import IssuesKanbanBoard from '@dashboard-components/issues-kanban-board'
 import IssuesListBoard from '@dashboard-components/issues-list-board'
 import ProjectInformationModalButton from '@dashboard-components/project-information-modal-button'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import Switcher from '@dashboard-components/ui/switcher'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
@@ -11,13 +13,27 @@ import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
 import CircleEmptyIcon from '@icons/circle-empty-icon'
 import FilterIcon from '@icons/filter-icon'
+import KanbanIcon from '@icons/kanban-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
+import ListIcon from '@icons/list-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
+import { useEffect, useState } from 'react'
+
+function getInitialView(): 'list' | 'kanban' {
+  const view = localStorage.getItem('view')
+  return view ? JSON.parse(view) : 'list'
+}
 
 export default function IssuesSection() {
+  const [view, setView] = useState(getInitialView)
+
+  useEffect(() => {
+    localStorage.setItem('view', JSON.stringify(view))
+  }, [view])
+
   return (
     <section>
       <header className="flex items-center justify-between p-4">
@@ -31,12 +47,34 @@ export default function IssuesSection() {
         </ProjectInformationModalButton>
       </header>
       <Divider />
-      <div role="toolbar" className="flex items-center gap-2 p-4">
-        <FilterDropdownButton />
-        <SortDropdownButton />
+      <div className="w-0 min-w-full">
+        <div
+          role="toolbar"
+          className="flex items-center gap-2 overflow-x-auto p-4"
+        >
+          <FilterDropdownButton />
+          <SortDropdownButton />
+          <Switcher className="ml-auto">
+            <Switcher.Element
+              onClick={() => setView('list')}
+              isActive={view === 'list'}
+            >
+              <ListIcon />
+              <span className="sr-only">List view</span>
+            </Switcher.Element>
+            <Switcher.Element
+              onClick={() => setView('kanban')}
+              isActive={view === 'kanban'}
+            >
+              <KanbanIcon />
+              <span className="sr-only">Kanban view</span>
+            </Switcher.Element>
+          </Switcher>
+        </div>
       </div>
       <Divider />
-      <IssuesListBoard />
+      {view === 'list' && <IssuesListBoard />}
+      {view === 'kanban' && <IssuesKanbanBoard />}
     </section>
   )
 }
