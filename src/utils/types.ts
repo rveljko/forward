@@ -134,4 +134,17 @@ export type Issue = {
   content: string
 }
 
-export type IssueSort = 'date-asc' | 'date-desc' | 'priority-asc' | 'priority-desc' | 'name-asc' | 'name-desc' 
+export type IssueFilterCategory = 'status' | 'priority' | 'tag'
+
+export type IssueFilterKey =
+  | IssueStatusLabel
+  | IssuePriorityLabel
+  | IssueTagLabel
+
+export type IssueSort =
+  | 'date-asc'
+  | 'date-desc'
+  | 'priority-asc'
+  | 'priority-desc'
+  | 'name-asc'
+  | 'name-desc'

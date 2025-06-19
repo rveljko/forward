@@ -42,6 +42,7 @@ export default function IssuesSection() {
 }
 
 function FilterDropdownButton() {
+  const { setFilter, handleCheckbox } = useIssues()
   const { isOpened, toggleDropdown } = useDropdown()
 
   return (
@@ -62,10 +63,16 @@ function FilterDropdownButton() {
             Status
           </Dropdown.AccordionSummary>
           <Dropdown.List>
-            {issueStatuses.map(({ id, name, icon: Icon }) => (
+            {issueStatuses.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.Checkbox />
+                  <Dropdown.Checkbox
+                    onChange={() => {
+                      setFilter('status', label)
+                      toggleDropdown()
+                    }}
+                    checked={handleCheckbox(label)}
+                  />
                   <Icon />
                   {name}
                 </Dropdown.Label>
@@ -81,10 +88,16 @@ function FilterDropdownButton() {
             Priority
           </Dropdown.AccordionSummary>
           <Dropdown.List>
-            {issuePriorities.map(({ id, name, icon: Icon }) => (
+            {issuePriorities.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.Checkbox />
+                  <Dropdown.Checkbox
+                    onChange={() => {
+                      setFilter('priority', label)
+                      toggleDropdown()
+                    }}
+                    checked={handleCheckbox(label)}
+                  />
                   <Icon />
                   {name}
                 </Dropdown.Label>
@@ -97,10 +110,16 @@ function FilterDropdownButton() {
             Tag
           </Dropdown.AccordionSummary>
           <Dropdown.List>
-            {issueTags.map(({ id, name, icon: Icon }) => (
+            {issueTags.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.Checkbox />
+                  <Dropdown.Checkbox
+                    onChange={() => {
+                      setFilter('tag', label)
+                      toggleDropdown()
+                    }}
+                    checked={handleCheckbox(label)}
+                  />
                   <Icon />
                   {name}
                 </Dropdown.Label>

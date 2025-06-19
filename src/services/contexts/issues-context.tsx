@@ -4,6 +4,8 @@ import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
 import {
   Issue,
+  IssueFilterCategory,
+  IssueFilterKey,
   IssuePriority,
   IssuePriorityLabel,
   IssueSort,
@@ -21,6 +23,8 @@ type IssuesContextProviderProps = {
 
 type IssuesContextType = {
   issues: Issue[]
+  setFilter: (category: IssueFilterCategory, key: IssueFilterKey) => void
+  handleCheckbox: (key: IssueFilterKey) => boolean
   sort: IssueSort
   setSort: (key: IssueSort) => void
   getIssuesByStatus: (status: IssueStatusLabel) => Issue[]
@@ -45,7 +49,41 @@ export default function IssuesContextProvider({
 }: IssuesContextProviderProps) {
   const [issues, setIssues] = useState(getInitialIssues)
   const [searchParams, setSearchParams] = useSearchParams()
+  const statuses = searchParams.getAll('status') as IssueStatusLabel[]
+  const priorities = searchParams.getAll('priority') as IssuePriorityLabel[]
+  const tags = searchParams.getAll('tag') as IssueTagLabel[]
   const sort = searchParams.get('sort') as IssueSort
+
+  const filteredIssues = issues.filter((issue) => {
+    const filteredStatuses = !statuses.length || statuses.includes(issue.status)
+    const filteredPriorities =
+      !priorities.length || priorities.includes(issue.priority)
+    const filteredTags = !tags.length || tags.includes(issue.tag)
+
+    return filteredStatuses && filteredPriorities && filteredTags
+  })
+
+  function setFilter(category: IssueFilterCategory, key: IssueFilterKey) {
+    setSearchParams((prevParams) => {
+      if (prevParams.has(category)) {
+        const keys = prevParams.getAll(category) as IssueFilterKey[]
+
+        if (keys.includes(key)) {
+          prevParams.delete(category, key)
+        } else {
+          prevParams.append(category, key)
+        }
+      } else {
+        prevParams.append(category, key)
+      }
+
+      return prevParams
+    })
+  }
+
+  function handleCheckbox(key: IssueFilterKey) {
+    return [...statuses, ...priorities, ...tags].includes(key)
+  }
 
   function setSort(key: IssueSort) {
     setSearchParams((prevParams) => {
@@ -57,33 +95,33 @@ export default function IssuesContextProvider({
   function getSortedIssues() {
     switch (sort) {
       case 'date-asc':
-        return issues.sort(
+        return filteredIssues.sort(
           (a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         )
       case 'date-desc':
-        return issues.sort(
+        return filteredIssues.sort(
           (a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
       case 'priority-asc':
-        return issues.sort(
+        return filteredIssues.sort(
           (a, b) =>
             getIssuePriority(a.priority).level -
             getIssuePriority(b.priority).level
         )
       case 'priority-desc':
-        return issues.sort(
+        return filteredIssues.sort(
           (a, b) =>
             getIssuePriority(b.priority).level -
             getIssuePriority(a.priority).level
         )
       case 'name-asc':
-        return issues.sort((a, b) => a.title.localeCompare(b.title))
+        return filteredIssues.sort((a, b) => a.title.localeCompare(b.title))
       case 'name-desc':
-        return issues.sort((a, b) => b.title.localeCompare(a.title))
+        return filteredIssues.sort((a, b) => b.title.localeCompare(a.title))
       default:
-        return issues.sort(
+        return filteredIssues.sort(
           (a, b) =>
             getIssuePriority(b.priority).level -
             getIssuePriority(a.priority).level
@@ -147,6 +185,8 @@ export default function IssuesContextProvider({
     <IssuesContext.Provider
       value={{
         issues,
+        setFilter,
+        handleCheckbox,
         sort,
         setSort,
         getIssuesByStatus,
