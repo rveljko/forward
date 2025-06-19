@@ -202,6 +202,7 @@
   --switch-width: 2rem;
   --input-width: 12.5rem;
   --dropdown-width: 12.5rem;
+  --dropdown-accordion-summary-height: 1.75rem;
   --accordion-summary-height: 2.5rem;
   --settings-sidebar-opened-width: 14.375rem;
   --draft-card-width: 16rem;

@@ -3,15 +3,19 @@ import ProjectInformationModalButton from '@dashboard-components/project-informa
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import { issuePriorities } from '@data/issue-priorities'
+import { issueStatuses } from '@data/issue-statuses'
+import { issueTags } from '@data/issue-tags'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
+import CircleEmptyIcon from '@icons/circle-empty-icon'
 import FilterIcon from '@icons/filter-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
+import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
-import Button from '@ui/button'
 
 export default function IssuesSection() {
   return (
@@ -28,14 +32,84 @@ export default function IssuesSection() {
       </header>
       <Divider />
       <div role="toolbar" className="flex items-center gap-2 p-4">
-        <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
-          Filters
-        </Button>
+        <FilterDropdownButton />
         <SortDropdownButton />
       </div>
       <Divider />
       <IssuesListBoard />
     </section>
+  )
+}
+
+function FilterDropdownButton() {
+  const { isOpened, toggleDropdown } = useDropdown()
+
+  return (
+    <DropdownButton
+      label="Filters"
+      isOpened={isOpened}
+      toggleDropdown={toggleDropdown}
+      variant="secondary"
+      size="small"
+      leftIcon={<FilterIcon />}
+    >
+      <Dropdown.Accordion>
+        <Dropdown.AccordionItem value="item-1">
+          <Dropdown.AccordionSummary
+            valueForItem="item-1"
+            icon={<CircleEmptyIcon />}
+          >
+            Status
+          </Dropdown.AccordionSummary>
+          <Dropdown.List>
+            {issueStatuses.map(({ id, name, icon: Icon }) => (
+              <Dropdown.Item key={id}>
+                <Dropdown.Label>
+                  <Dropdown.Checkbox />
+                  <Icon />
+                  {name}
+                </Dropdown.Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.List>
+        </Dropdown.AccordionItem>
+        <Dropdown.AccordionItem value="item-2">
+          <Dropdown.AccordionSummary
+            valueForItem="item-2"
+            icon={<PriorityLowIcon />}
+          >
+            Priority
+          </Dropdown.AccordionSummary>
+          <Dropdown.List>
+            {issuePriorities.map(({ id, name, icon: Icon }) => (
+              <Dropdown.Item key={id}>
+                <Dropdown.Label>
+                  <Dropdown.Checkbox />
+                  <Icon />
+                  {name}
+                </Dropdown.Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.List>
+        </Dropdown.AccordionItem>
+        <Dropdown.AccordionItem value="item-3">
+          <Dropdown.AccordionSummary valueForItem="item-3" icon={<TagIcon />}>
+            Tag
+          </Dropdown.AccordionSummary>
+          <Dropdown.List>
+            {issueTags.map(({ id, name, icon: Icon }) => (
+              <Dropdown.Item key={id}>
+                <Dropdown.Label>
+                  <Dropdown.Checkbox />
+                  <Icon />
+                  {name}
+                </Dropdown.Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.List>
+        </Dropdown.AccordionItem>
+      </Dropdown.Accordion>
+    </DropdownButton>
   )
 }
 
