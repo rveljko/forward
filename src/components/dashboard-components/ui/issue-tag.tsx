@@ -10,7 +10,7 @@ export default function IssueTag({ tag }: IssueTagProps) {
   const { name, icon: Icon } = getIssueTag(tag)
 
   return (
-    <span className="border-section-outline bg-section-background-color flex items-center justify-center gap-1 rounded-full border px-3 py-1 text-neutral-400">
+    <span className="border-section-outline bg-section-background-color flex w-max items-center justify-center gap-1 rounded-full border px-3 py-1 text-neutral-400">
       <Icon />
       {name}
     </span>
