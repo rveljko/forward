@@ -1,15 +1,15 @@
 export default function DevelopmentIssueTagIcon() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="8"
-      height="8"
-      viewBox="0 0 8 8"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
       fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
+        d="M9.78349 7.375C9.87972 7.20833 10.1203 7.20833 10.2165 7.375L13.7835 13.5532C13.8797 13.7199 13.7594 13.9282 13.567 13.9282H6.43301C6.24056 13.9282 6.12028 13.7199 6.21651 13.5532L9.78349 7.375Z"
         fill="#03A9F4"
-        d="M3.783.91a.25.25 0 0 1 .434 0l3.566 6.18a.25.25 0 0 1-.216.374H.433a.25.25 0 0 1-.216-.375L3.783.911Z"
       />
     </svg>
   )

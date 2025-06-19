@@ -1,13 +1,13 @@
 export default function TestingIssueTagIcon() {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="8"
-      height="8"
-      viewBox="0 0 8 8"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
       fill="none"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="8" height="8" rx="4" fill="#F5EB3D" />
+      <rect x="6" y="6" width="8" height="8" rx="4" fill="#F5EB3D" />
     </svg>
   )
 }
