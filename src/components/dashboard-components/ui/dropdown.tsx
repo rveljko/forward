@@ -135,7 +135,7 @@ function AccordionSummary({
 
   return (
     <div
-      className={`text-clickable pointer-coarse:active:bg-clickable/5 hover:bg-clickable/10 relative flex items-center justify-between gap-2 overflow-hidden rounded-sm p-1 px-1.5 py-1 text-nowrap active:scale-99`}
+      className={`text-clickable pointer-coarse:active:bg-clickable/5 hover:bg-clickable/10 relative flex items-center justify-between gap-2 overflow-hidden rounded-sm p-1 px-1.5 py-1 text-nowrap active:scale-99 ${isActive ? 'bg-clickable/10' : ''}`}
     >
       <div className="flex items-center gap-2">
         {Icon && <span>{Icon}</span>}
