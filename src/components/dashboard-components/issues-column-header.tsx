@@ -3,21 +3,21 @@ import PlusIcon from '@icons/plus-icon'
 import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
 
-type IssueColumnHeaderProps = React.ComponentPropsWithoutRef<'div'> & {
+type IssuesColumnHeaderProps = React.ComponentPropsWithoutRef<'div'> & {
   title: string
   icon: React.JSX.Element
   numberOfIssues: number
   status: IssueStatusLabel
 }
 
-export default function IssueColumnHeader({
+export default function IssuesColumnHeader({
   title,
   icon: Icon,
   numberOfIssues,
   status,
   className,
   ...props
-}: IssueColumnHeaderProps) {
+}: IssuesColumnHeaderProps) {
   return (
     <div
       className={cn(

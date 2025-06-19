@@ -1,13 +1,13 @@
-import IssueColumn from '@dashboard-components/issue-column'
+import IssuesListColumn from '@dashboard-components/issues-list-column'
 
 type IssuesListBoardProps = React.ComponentPropsWithoutRef<'div'>
 
 export default function IssuesListBoard({ ...props }: IssuesListBoardProps) {
   return (
     <div {...props}>
-      <IssueColumn status="todo" />
-      <IssueColumn status="in-progress" />
-      <IssueColumn status="finished" />
+      <IssuesListColumn status="todo" />
+      <IssuesListColumn status="in-progress" />
+      <IssuesListColumn status="finished" />
     </div>
   )
 }

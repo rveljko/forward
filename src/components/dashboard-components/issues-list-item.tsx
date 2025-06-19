@@ -10,17 +10,17 @@ import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 import { Link } from 'react-router'
 
-type IssueItemProps = React.ComponentPropsWithoutRef<'article'> & {
+type IssuesListItemProps = React.ComponentPropsWithoutRef<'article'> & {
   issue: Issue
   icon: React.JSX.Element
 }
 
-export default function IssueItem({
+export default function IssuesListItem({
   issue: { id, title, tag, priority, createdAt },
   icon: Icon,
   className,
   ...props
-}: IssueItemProps) {
+}: IssuesListItemProps) {
   return (
     <article
       className={cn(

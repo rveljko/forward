@@ -1,4 +1,4 @@
-import IssueColumnHeader from '@dashboard-components/issue-column-header'
+import IssuesColumnHeader from '@dashboard-components/issues-column-header'
 import IssuesKanbanCardsList from '@dashboard-components/issues-kanban-cards-list'
 import { useIssues } from '@services/contexts/issues-context'
 import { IssueStatusLabel } from '@utils/types'
@@ -18,7 +18,7 @@ export default function IssuesKanbanColumn({
 
   return (
     <div className={cn('w-85 shrink-0 space-y-2', className)} {...props}>
-      <IssueColumnHeader
+      <IssuesColumnHeader
         title={name}
         icon={<Icon />}
         numberOfIssues={getIssuesByStatus(status).length}
