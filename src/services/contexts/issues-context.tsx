@@ -52,7 +52,7 @@ export default function IssuesContextProvider({
   const statuses = searchParams.getAll('status') as IssueStatusLabel[]
   const priorities = searchParams.getAll('priority') as IssuePriorityLabel[]
   const tags = searchParams.getAll('tag') as IssueTagLabel[]
-  const sort = searchParams.get('sort') as IssueSort
+  const sort = (searchParams.get('sort') || 'priority-desc') as IssueSort
 
   const filteredIssues = issues.filter((issue) => {
     const filteredStatuses = !statuses.length || statuses.includes(issue.status)
