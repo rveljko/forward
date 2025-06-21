@@ -6,7 +6,7 @@ import React, { useEffect, useRef } from 'react'
 import ReactFocusLock from 'react-focus-lock'
 
 const dropdownContainer = cva(
-  'absolute z-999 my-2 [position-anchor:--dropdown] [position-try-fallbacks:flip-inline,flip-block]',
+  'absolute z-997 my-2 [position-anchor:--dropdown] [position-try-fallbacks:flip-inline,flip-block]',
   {
     variants: {
       position: {
