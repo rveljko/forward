@@ -59,6 +59,7 @@ export default function ConnectWithUs() {
             size="large"
             leftIcon={<SendIcon />}
             className="w-full"
+            type="submit"
             disabled={isButtonDisabled}
           >
             Send Message
