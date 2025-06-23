@@ -3,9 +3,23 @@ import IssueInformationModalButton from '@dashboard-components/issue-information
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
+import Dropdown from '@dashboard-components/ui/dropdown'
+import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import { issuePriorities } from '@data/issue-priorities'
+import { issueStatuses } from '@data/issue-statuses'
+import { issueTags } from '@data/issue-tags'
 import useDebounce from '@hooks/use-debounce'
+import useDropdown from '@hooks/use-dropdown'
 import useTextEditor from '@hooks/use-text-editor'
+import CircleEmptyIcon from '@icons/circle-empty-icon'
+import ClipboardIcon from '@icons/clipboard-icon'
+import CopyIcon from '@icons/copy-icon'
+import DotsVerticalIcon from '@icons/dots-vertical-icon'
+import EditIcon from '@icons/edit-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
+import PriorityLowIcon from '@icons/priority-low-icon'
+import TagIcon from '@icons/tag-icon'
+import TrashIcon from '@icons/trash-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
 import { TITLE_PREFIX } from '@utils/constants'
@@ -89,15 +103,114 @@ function Header({ id, title, issue }: HeaderProps) {
           className="text-clickable w-full max-w-85"
         />
       </div>
-      <IssueInformationModalButton
-        issue={issue}
-        variant="tertiary"
-        className="group p-0.5"
-      >
-        <LayoutSidebarRightIcon className="[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
-        <span className="sr-only">Show issue information</span>
-      </IssueInformationModalButton>
+      <div className="flex items-center gap-1">
+        <MoreActionsDropdownButton />
+        <IssueInformationModalButton
+          issue={issue}
+          variant="tertiary"
+          className="group p-0.5"
+        >
+          <LayoutSidebarRightIcon className="[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
+          <span className="sr-only">Show issue information</span>
+        </IssueInformationModalButton>
+      </div>
     </header>
+  )
+}
+
+function MoreActionsDropdownButton() {
+  const { isOpened, toggleDropdown } = useDropdown()
+
+  return (
+    <DropdownButton
+      label={
+        <>
+          <DotsVerticalIcon />
+          <span className="sr-only">Issue actions</span>
+        </>
+      }
+      isOpened={isOpened}
+      toggleDropdown={toggleDropdown}
+      variant="tertiary"
+      position="bottom-left"
+      className="p-0.5"
+    >
+      <Dropdown.Accordion>
+        <Dropdown.AccordionItem value="item-1">
+          <Dropdown.AccordionSummary
+            valueForItem="item-1"
+            icon={<CircleEmptyIcon />}
+          >
+            Status
+          </Dropdown.AccordionSummary>
+          <Dropdown.List>
+            {issueStatuses.map(({ id, name, icon: Icon }) => (
+              <Dropdown.Item key={id}>
+                <Dropdown.Label>
+                  <Dropdown.RadioButton />
+                  <Icon />
+                  {name}
+                </Dropdown.Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.List>
+        </Dropdown.AccordionItem>
+        <Dropdown.AccordionItem value="item-2">
+          <Dropdown.AccordionSummary
+            valueForItem="item-2"
+            icon={<PriorityLowIcon />}
+          >
+            Priority
+          </Dropdown.AccordionSummary>
+          <Dropdown.List>
+            {issuePriorities.map(({ id, name, icon: Icon }) => (
+              <Dropdown.Item key={id}>
+                <Dropdown.Label>
+                  <Dropdown.RadioButton />
+                  <Icon />
+                  {name}
+                </Dropdown.Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.List>
+        </Dropdown.AccordionItem>
+        <Dropdown.AccordionItem value="item-3">
+          <Dropdown.AccordionSummary valueForItem="item-3" icon={<TagIcon />}>
+            Tag
+          </Dropdown.AccordionSummary>
+          <Dropdown.List>
+            {issueTags.map(({ id, name, icon: Icon }) => (
+              <Dropdown.Item key={id}>
+                <Dropdown.Label>
+                  <Dropdown.RadioButton />
+                  <Icon />
+                  {name}
+                </Dropdown.Label>
+              </Dropdown.Item>
+            ))}
+          </Dropdown.List>
+        </Dropdown.AccordionItem>
+        <Dropdown.Item>
+          <Dropdown.Button leftIcon={<ClipboardIcon />}>
+            Copy title
+          </Dropdown.Button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <Dropdown.Button leftIcon={<EditIcon />}>Rename</Dropdown.Button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <Dropdown.Button leftIcon={<CopyIcon />}>Duplicate</Dropdown.Button>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <Dropdown.Button
+            leftIcon={<TrashIcon />}
+            className="text-danger-500 hover:bg-danger-500/10"
+          >
+            Delete
+          </Dropdown.Button>
+        </Dropdown.Item>
+      </Dropdown.Accordion>
+    </DropdownButton>
   )
 }
 
