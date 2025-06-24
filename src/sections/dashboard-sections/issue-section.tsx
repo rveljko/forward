@@ -24,6 +24,7 @@ import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
 import { TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
+import copy from 'copy-to-clipboard'
 import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
@@ -104,7 +105,7 @@ function Header({ id, title, issue }: HeaderProps) {
         />
       </div>
       <div className="flex items-center gap-1">
-        <MoreActionsDropdownButton id={id} />
+        <MoreActionsDropdownButton id={id} title={title} />
         <IssueInformationModalButton
           issue={issue}
           variant="tertiary"
@@ -120,9 +121,13 @@ function Header({ id, title, issue }: HeaderProps) {
 
 type MoreActionsDropdownButtonProps = {
   id: Issue['id']
+  title: Issue['title']
 }
 
-function MoreActionsDropdownButton({ id }: MoreActionsDropdownButtonProps) {
+function MoreActionsDropdownButton({
+  id,
+  title,
+}: MoreActionsDropdownButtonProps) {
   const { duplicateIssue } = useIssues()
   const { isOpened, toggleDropdown } = useDropdown()
 
@@ -196,7 +201,13 @@ function MoreActionsDropdownButton({ id }: MoreActionsDropdownButtonProps) {
           </Dropdown.List>
         </Dropdown.AccordionItem>
         <Dropdown.Item>
-          <Dropdown.Button leftIcon={<ClipboardIcon />}>
+          <Dropdown.Button
+            leftIcon={<ClipboardIcon />}
+            onClick={() => {
+              copy(title)
+              toggleDropdown()
+            }}
+          >
             Copy title
           </Dropdown.Button>
         </Dropdown.Item>
