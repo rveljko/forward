@@ -104,7 +104,7 @@ function Header({ id, title, issue }: HeaderProps) {
         />
       </div>
       <div className="flex items-center gap-1">
-        <MoreActionsDropdownButton />
+        <MoreActionsDropdownButton id={id} />
         <IssueInformationModalButton
           issue={issue}
           variant="tertiary"
@@ -118,7 +118,12 @@ function Header({ id, title, issue }: HeaderProps) {
   )
 }
 
-function MoreActionsDropdownButton() {
+type MoreActionsDropdownButtonProps = {
+  id: Issue['id']
+}
+
+function MoreActionsDropdownButton({ id }: MoreActionsDropdownButtonProps) {
+  const { duplicateIssue } = useIssues()
   const { isOpened, toggleDropdown } = useDropdown()
 
   return (
@@ -199,7 +204,15 @@ function MoreActionsDropdownButton() {
           <Dropdown.Button leftIcon={<EditIcon />}>Rename</Dropdown.Button>
         </Dropdown.Item>
         <Dropdown.Item>
-          <Dropdown.Button leftIcon={<CopyIcon />}>Duplicate</Dropdown.Button>
+          <Dropdown.Button
+            leftIcon={<CopyIcon />}
+            onClick={() => {
+              duplicateIssue(id)
+              toggleDropdown()
+            }}
+          >
+            Duplicate
+          </Dropdown.Button>
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Button

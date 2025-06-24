@@ -16,6 +16,7 @@ import {
 } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router'
+import { v4 as uuidv4 } from 'uuid'
 
 type IssuesContextProviderProps = {
   children: React.ReactNode
@@ -31,6 +32,7 @@ type IssuesContextType = {
   getIssueById: (id: Issue['id']) => Issue
   createNewIssue: (newIssue: Issue) => void
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
+  duplicateIssue: (id: Issue['id']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
   getIssueStatus: (status: IssueStatusLabel) => IssueStatus
   getIssueTag: (tag: IssueTagLabel) => IssueTag
@@ -156,6 +158,12 @@ export default function IssuesContextProvider({
     ])
   }
 
+  function duplicateIssue(id: Issue['id']) {
+    const issue = getIssueById(id)
+
+    setIssues([{ ...issue, id: uuidv4(), createdAt: new Date() }, ...issues])
+  }
+
   function updateIssueContent(id: Issue['id'], content: Issue['content']) {
     const issue = getIssueById(id)
 
@@ -193,6 +201,7 @@ export default function IssuesContextProvider({
         getIssueById,
         createNewIssue,
         renameIssue,
+        duplicateIssue,
         updateIssueContent,
         getIssueStatus,
         getIssueTag,
