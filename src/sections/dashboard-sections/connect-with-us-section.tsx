@@ -3,7 +3,7 @@ import SendIcon from '@icons/send-icon'
 import Button from '@ui/button'
 import { useState } from 'react'
 
-export default function ConnectWithUs() {
+export default function ConnectWithUsSection() {
   const initialFormFieldValues = {
     subject: '',
     message: '',
