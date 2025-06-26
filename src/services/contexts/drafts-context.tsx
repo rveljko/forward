@@ -12,7 +12,7 @@ type DraftsContextProviderProps = {
 type DraftsContextType = {
   drafts: Draft[]
   getSortedDrafts: () => Draft[]
-  getDraftById: (id: string) => Draft
+  getDraftById: (id: Draft['id']) => Draft
   createNewDraft: () => void
   updateDraft: (id: Draft['id'], content: Draft['content']) => void
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
@@ -38,7 +38,7 @@ export default function DraftsContextProvider({
     )
   }
 
-  function getDraftById(id: string) {
+  function getDraftById(id: Draft['id']) {
     return drafts.find((draft) => draft.id === id)!
   }
 
