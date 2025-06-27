@@ -124,9 +124,9 @@ type MoreActionsDropdownButtonProps = {
 }
 
 function MoreActionsDropdownButton({
-  issue: { id: issueId, title, status },
+  issue: { id: issueId, title, status, priority },
 }: MoreActionsDropdownButtonProps) {
-  const { duplicateIssue, updateIssueStatus } = useIssues()
+  const { duplicateIssue, updateIssueStatus, updateIssuePriority } = useIssues()
   const { isOpened, toggleDropdown } = useDropdown()
 
   return (
@@ -177,10 +177,16 @@ function MoreActionsDropdownButton({
             Priority
           </Dropdown.AccordionSummary>
           <Dropdown.List>
-            {issuePriorities.map(({ id, name, icon: Icon }) => (
+            {issuePriorities.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.RadioButton />
+                  <Dropdown.RadioButton
+                    onChange={() => {
+                      updateIssuePriority(issueId, label)
+                      toggleDropdown()
+                    }}
+                    checked={label === priority}
+                  />
                   <Icon />
                   {name}
                 </Dropdown.Label>

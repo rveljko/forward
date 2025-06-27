@@ -35,6 +35,7 @@ type IssuesContextType = {
   duplicateIssue: (id: Issue['id']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
   updateIssueStatus: (id: Issue['id'], status: IssueStatusLabel) => void
+  updateIssuePriority: (id: Issue['id'], priority: IssuePriorityLabel) => void
   getIssueStatus: (status: IssueStatusLabel) => IssueStatus
   getIssueTag: (tag: IssueTagLabel) => IssueTag
   getIssuePriority: (priority: IssuePriorityLabel) => IssuePriority
@@ -183,6 +184,15 @@ export default function IssuesContextProvider({
     ])
   }
 
+  function updateIssuePriority(id: Issue['id'], priority: IssuePriorityLabel) {
+    const issue = getIssueById(id)
+
+    setIssues([
+      { ...issue, priority },
+      ...issues.filter(({ id }) => id !== issue.id),
+    ])
+  }
+
   function getIssueStatus(status: IssueStatusLabel) {
     return issueStatuses.find(({ label }) => label === status)!
   }
@@ -214,6 +224,7 @@ export default function IssuesContextProvider({
         duplicateIssue,
         updateIssueContent,
         updateIssueStatus,
+        updateIssuePriority,
         getIssueStatus,
         getIssueTag,
         getIssuePriority,
