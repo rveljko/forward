@@ -8,6 +8,9 @@ type UserInformationContextProviderProps = {
 
 type UserInformationContextType = {
   userInformation: User
+  newUserInformation: User
+  setNewUserInformation: React.Dispatch<React.SetStateAction<User>>
+  isUserInformationSame: boolean
   updateUserInformation: (newUserInformation: User) => void
 }
 
@@ -25,6 +28,10 @@ export default function UserInformationContextProvider({
   const [userInformation, setUserInformation] = useState(
     getInitialUserInformation
   )
+  const [newUserInformation, setNewUserInformation] = useState(userInformation)
+
+  const isUserInformationSame =
+    JSON.stringify(userInformation) === JSON.stringify(newUserInformation)
 
   function updateUserInformation(newUserInformation: User) {
     setUserInformation({ ...newUserInformation })
@@ -38,6 +45,9 @@ export default function UserInformationContextProvider({
     <UserInformationContext.Provider
       value={{
         userInformation,
+        newUserInformation,
+        setNewUserInformation,
+        isUserInformationSame,
         updateUserInformation,
       }}
     >

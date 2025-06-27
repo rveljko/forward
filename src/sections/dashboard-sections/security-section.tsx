@@ -1,6 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
-import useNewUserInformation from '@hooks/use-new-user-information'
 import EyeIcon from '@icons/eye-icon'
 import EyeOffIcon from '@icons/eye-off-icon'
 import { useUserInformation } from '@services/contexts/user-information-context'
@@ -9,9 +8,12 @@ import Switch from '@ui/switch'
 import { useState } from 'react'
 
 export default function SecuritySection() {
-  const { updateUserInformation } = useUserInformation()
-  const { isUserInformationSame, newUserInformation, setNewUserInformation } =
-    useNewUserInformation()
+  const {
+    newUserInformation,
+    setNewUserInformation,
+    isUserInformationSame,
+    updateUserInformation,
+  } = useUserInformation()
   const [showPassword, setShowPassword] = useState(false)
 
   const isButtonDisabled = isUserInformationSame
@@ -75,7 +77,12 @@ export default function SecuritySection() {
           />
         </FormField>
         <Divider />
-        <Button variant="primary" size="large" disabled={isButtonDisabled}>
+        <Button
+          variant="primary"
+          size="large"
+          type="submit"
+          disabled={isButtonDisabled}
+        >
           Save Changes
         </Button>
       </form>

@@ -1,14 +1,17 @@
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
-import useNewUserInformation from '@hooks/use-new-user-information'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import { onlyLettersMask } from '@utils/input-masks'
 
 export default function ProfileSection() {
-  const { userInformation, updateUserInformation } = useUserInformation()
-  const { isUserInformationSame, newUserInformation, setNewUserInformation } =
-    useNewUserInformation()
+  const {
+    userInformation,
+    newUserInformation,
+    setNewUserInformation,
+    isUserInformationSame,
+    updateUserInformation,
+  } = useUserInformation()
 
   const isButtonDisabled = isUserInformationSame
 
