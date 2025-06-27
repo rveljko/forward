@@ -105,7 +105,7 @@ function Header({ id, title, issue }: HeaderProps) {
         />
       </div>
       <div className="flex items-center gap-1">
-        <MoreActionsDropdownButton id={id} title={title} />
+        <MoreActionsDropdownButton issue={issue} />
         <IssueInformationModalButton
           issue={issue}
           variant="tertiary"
@@ -120,15 +120,13 @@ function Header({ id, title, issue }: HeaderProps) {
 }
 
 type MoreActionsDropdownButtonProps = {
-  id: Issue['id']
-  title: Issue['title']
+  issue: Issue
 }
 
 function MoreActionsDropdownButton({
-  id,
-  title,
+  issue: { id: issueId, title, status },
 }: MoreActionsDropdownButtonProps) {
-  const { duplicateIssue } = useIssues()
+  const { duplicateIssue, updateIssueStatus } = useIssues()
   const { isOpened, toggleDropdown } = useDropdown()
 
   return (
@@ -154,10 +152,16 @@ function MoreActionsDropdownButton({
             Status
           </Dropdown.AccordionSummary>
           <Dropdown.List>
-            {issueStatuses.map(({ id, name, icon: Icon }) => (
+            {issueStatuses.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.RadioButton />
+                  <Dropdown.RadioButton
+                    onChange={() => {
+                      updateIssueStatus(issueId, label)
+                      toggleDropdown()
+                    }}
+                    checked={label === status}
+                  />
                   <Icon />
                   {name}
                 </Dropdown.Label>
@@ -218,7 +222,7 @@ function MoreActionsDropdownButton({
           <Dropdown.Button
             leftIcon={<CopyIcon />}
             onClick={() => {
-              duplicateIssue(id)
+              duplicateIssue(issueId)
               toggleDropdown()
             }}
           >
