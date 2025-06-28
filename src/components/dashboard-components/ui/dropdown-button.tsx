@@ -10,12 +10,18 @@ const dropdownContainer = cva(
   {
     variants: {
       position: {
-        'top-left': '[position-area:top_span-left]',
-        'top-center': '[position-area:top_center]',
-        'top-right': '[position-area:top_span-right]',
-        'bottom-left': '[position-area:bottom_span-left]',
-        'bottom-center': '[position-area:bottom_center]',
-        'bottom-right': '[position-area:bottom_span-right]',
+        'top-left':
+          '[position-area:top_span-left] not-supports-[position-area:top_span-left]:right-0 not-supports-[position-area:top_span-left]:bottom-full',
+        'top-center':
+          '[position-area:top_center] not-supports-[position-area:top_center]:bottom-full not-supports-[position-area:top_center]:left-1/2 not-supports-[position-area:top_center]:-translate-x-1/2',
+        'top-right':
+          '[position-area:top_span-right] not-supports-[position-area:top_span-right]:bottom-full not-supports-[position-area:top_span-right]:left-0',
+        'bottom-left':
+          '[position-area:bottom_span-left] not-supports-[position-area:bottom_span-left]:top-full not-supports-[position-area:bottom_span-left]:right-0',
+        'bottom-center':
+          '[position-area:bottom_center] not-supports-[position-area:bottom_center]:top-full not-supports-[position-area:bottom_center]:left-1/2 not-supports-[position-area:bottom_center]:-translate-x-1/2',
+        'bottom-right':
+          '[position-area:bottom_span-right] not-supports-[position-area:bottom_span-right]:top-full not-supports-[position-area:bottom_span-right]:left-0',
       },
     },
     defaultVariants: {
@@ -62,7 +68,10 @@ export default function DropdownButton({
   }, [isOpened])
 
   return (
-    <div className="w-max [anchor-scope:--dropdown]" ref={ref}>
+    <div
+      className="w-max [anchor-scope:--dropdown] not-supports-[anchor-name:--dropdown]:relative"
+      ref={ref}
+    >
       <Button
         onClick={toggleDropdown}
         className={cn('[anchor-name:--dropdown]', className)}
