@@ -47,30 +47,30 @@ export default function IssuesSection() {
         </ProjectInformationModalButton>
       </header>
       <Divider />
-      <div className="w-0 min-w-full">
-        <div
-          role="toolbar"
-          className="flex items-center gap-2 overflow-x-auto p-4"
-        >
+      <div
+        role="toolbar"
+        className="flex flex-wrap items-center justify-between gap-2 p-4"
+      >
+        <div className="flex items-center gap-2">
           <FilterDropdownButton />
           <SortDropdownButton />
-          <Switcher className="ml-auto">
-            <Switcher.Element
-              onClick={() => setView('list')}
-              isActive={view === 'list'}
-            >
-              <ListIcon />
-              <span className="sr-only">List view</span>
-            </Switcher.Element>
-            <Switcher.Element
-              onClick={() => setView('kanban')}
-              isActive={view === 'kanban'}
-            >
-              <KanbanIcon />
-              <span className="sr-only">Kanban view</span>
-            </Switcher.Element>
-          </Switcher>
         </div>
+        <Switcher>
+          <Switcher.Element
+            onClick={() => setView('list')}
+            isActive={view === 'list'}
+          >
+            <ListIcon />
+            <span className="sr-only">List view</span>
+          </Switcher.Element>
+          <Switcher.Element
+            onClick={() => setView('kanban')}
+            isActive={view === 'kanban'}
+          >
+            <KanbanIcon />
+            <span className="sr-only">Kanban view</span>
+          </Switcher.Element>
+        </Switcher>
       </div>
       <Divider />
       {view === 'list' && <IssuesListBoard />}
