@@ -30,7 +30,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        'ring-section-outline bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring',
+        `ring-section-outline bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring ${isDragging ? 'z-10' : ''}`,
         className
       )}
       ref={setNodeRef}
