@@ -21,7 +21,7 @@ export default function IssuesColumnHeader({
   return (
     <div
       className={cn(
-        'flex items-center justify-between bg-neutral-800 p-4',
+        'bg-clickable/10 flex items-center justify-between p-4',
         className
       )}
       {...props}
