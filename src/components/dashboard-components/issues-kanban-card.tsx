@@ -25,7 +25,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        'ring-section-outline relative rounded-sm p-4 ring hover:bg-neutral-700',
+        'ring-section-outline hover:ring-clickable/20 relative rounded-sm p-4 ring',
         className
       )}
       {...props}
