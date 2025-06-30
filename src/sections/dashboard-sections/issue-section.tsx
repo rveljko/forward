@@ -1,9 +1,12 @@
 import Container from '@dashboard-components/container'
+import DeleteIssueModalButton from '@dashboard-components/delete-issue-modal-button'
 import IssueInformationModalButton from '@dashboard-components/issue-information-modal-button'
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
-import Dropdown from '@dashboard-components/ui/dropdown'
+import Dropdown, {
+  dropdownButtonClasses,
+} from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
@@ -247,12 +250,12 @@ function MoreActionsDropdownButton({
           </Dropdown.Button>
         </Dropdown.Item>
         <Dropdown.Item>
-          <Dropdown.Button
+          <DeleteIssueModalButton
             leftIcon={<TrashIcon />}
-            className="text-danger-500 hover:bg-danger-500/10"
+            className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
           >
             Delete
-          </Dropdown.Button>
+          </DeleteIssueModalButton>
         </Dropdown.Item>
       </Dropdown.Accordion>
     </DropdownButton>
