@@ -29,7 +29,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        'ring-section-outline hover:ring-clickable/20 relative rounded-sm p-4 ring',
+        'ring-section-outline bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring',
         className
       )}
       ref={setNodeRef}
