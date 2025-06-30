@@ -1,5 +1,6 @@
 import CreateNewIssueModalButton from '@dashboard-components/create-new-issue-modal-button'
 import PlusIcon from '@icons/plus-icon'
+import { useIssues } from '@services/contexts/issues-context'
 import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
 
@@ -18,6 +19,9 @@ export default function IssuesColumnHeader({
   className,
   ...props
 }: IssuesColumnHeaderProps) {
+  const { getIssueStatus } = useIssues()
+  const { name } = getIssueStatus(status)
+
   return (
     <div
       className={cn(
@@ -39,7 +43,7 @@ export default function IssuesColumnHeader({
         status={status}
       >
         <PlusIcon />
-        <span className="sr-only">Create New Issue</span>
+        <span className="sr-only">{`Create New ${name} Issue`}</span>
       </CreateNewIssueModalButton>
     </div>
   )
