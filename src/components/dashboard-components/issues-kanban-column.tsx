@@ -1,5 +1,6 @@
 import IssuesColumnHeader from '@dashboard-components/issues-column-header'
 import IssuesKanbanCardsList from '@dashboard-components/issues-kanban-cards-list'
+import { useDroppable } from '@dnd-kit/core'
 import { useIssues } from '@services/contexts/issues-context'
 import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
@@ -16,8 +17,15 @@ export default function IssuesKanbanColumn({
   const { getIssuesByStatus, getIssueStatus } = useIssues()
   const { name, icon: Icon } = getIssueStatus(status)
 
+  const { setNodeRef } = useDroppable({
+    id: status,
+  })
+
   return (
-    <div className={cn('w-85 shrink-0 space-y-2', className)} {...props}>
+    <div
+      className={cn('flex h-full w-85 shrink-0 flex-col gap-2', className)}
+      {...props}
+    >
       <IssuesColumnHeader
         title={name}
         icon={<Icon />}
@@ -28,6 +36,7 @@ export default function IssuesKanbanColumn({
       <IssuesKanbanCardsList
         issues={getIssuesByStatus(status)}
         icon={<Icon />}
+        ref={setNodeRef}
       />
     </div>
   )

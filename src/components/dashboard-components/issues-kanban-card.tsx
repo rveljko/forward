@@ -1,5 +1,6 @@
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueTag from '@dashboard-components/ui/issue-tag'
+import { useDraggable } from '@dnd-kit/core'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import Button from '@ui/button'
 import {
@@ -8,7 +9,6 @@ import {
 } from '@utils/date-formatters'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
-import React from 'react'
 import { Link } from 'react-router'
 
 type IssuesKanbanCardProps = React.ComponentPropsWithoutRef<'article'> & {
@@ -22,12 +22,20 @@ export default function IssuesKanbanCard({
   className,
   ...props
 }: IssuesKanbanCardProps) {
+  const { attributes, listeners, transform, setNodeRef } = useDraggable({
+    id,
+  })
+
   return (
     <article
       className={cn(
         'ring-section-outline hover:ring-clickable/20 relative rounded-sm p-4 ring',
         className
       )}
+      ref={setNodeRef}
+      style={{ transform: `translate(${transform?.x}px, ${transform?.y}px)` }}
+      {...attributes}
+      {...listeners}
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">
