@@ -35,7 +35,7 @@ export default function IssuesSection() {
   }, [view])
 
   return (
-    <section>
+    <section className="flex h-full flex-col">
       <header className="flex items-center justify-between p-4">
         <h1>Issues</h1>
         <ProjectInformationModalButton

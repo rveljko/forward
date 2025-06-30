@@ -9,10 +9,10 @@ export default function IssuesKanbanBoard({
   ...props
 }: IssuesKanbanBoardProps) {
   return (
-    <div className="w-0 min-w-full">
+    <div className="w-0 min-w-full grow">
       <div
         className={cn(
-          'divide-section-outline flex divide-x overflow-x-auto p-4',
+          'divide-section-outline flex h-full divide-x overflow-x-auto p-4',
           className
         )}
         {...props}
