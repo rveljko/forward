@@ -1,15 +1,21 @@
 import Divider from '@dashboard-components/ui/divider'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import TrashIcon from '@icons/trash-icon'
+import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { Issue } from '@utils/types'
 
 type DeleteIssueModalProps = {
+  id: Issue['id']
   closeModal: () => void
 }
 
 export default function DeleteIssueModal({
+  id,
   closeModal,
 }: DeleteIssueModalProps) {
+  const { deleteIssue } = useIssues()
+
   return (
     <ModalCard>
       <div className="p-4">
@@ -28,7 +34,10 @@ export default function DeleteIssueModal({
           variant="danger"
           size="large"
           type="submit"
-          onClick={closeModal}
+          onClick={() => {
+            deleteIssue(id)
+            closeModal()
+          }}
         >
           Delete
         </Button>

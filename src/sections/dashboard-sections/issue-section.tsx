@@ -251,6 +251,7 @@ function MoreActionsDropdownButton({
         </Dropdown.Item>
         <Dropdown.Item>
           <DeleteIssueModalButton
+            issueId={issueId}
             leftIcon={<TrashIcon />}
             className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
           >

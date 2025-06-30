@@ -33,6 +33,7 @@ type IssuesContextType = {
   createNewIssue: (newIssue: Issue) => void
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   duplicateIssue: (id: Issue['id']) => void
+  deleteIssue: (id: Issue['id']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
   updateIssueStatus: (id: Issue['id'], status: IssueStatusLabel) => void
   updateIssuePriority: (id: Issue['id'], priority: IssuePriorityLabel) => void
@@ -167,6 +168,10 @@ export default function IssuesContextProvider({
     setIssues([{ ...issue, id: uuidv4(), createdAt: new Date() }, ...issues])
   }
 
+  function deleteIssue(id: Issue['id']) {
+    setIssues([...issues.filter((issue) => issue.id !== id)])
+  }
+
   function updateIssueContent(id: Issue['id'], content: Issue['content']) {
     const issue = getIssueById(id)
 
@@ -232,6 +237,7 @@ export default function IssuesContextProvider({
         createNewIssue,
         renameIssue,
         duplicateIssue,
+        deleteIssue,
         updateIssueContent,
         updateIssueStatus,
         updateIssuePriority,
