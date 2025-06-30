@@ -68,8 +68,9 @@ export default function Sidebar() {
           <Link to="/dashboard/issues">
             <Logo hideText={!isOpened} />
           </Link>
-          <button
-            className="text-clickable flex size-7 items-center justify-center hover:cursor-pointer"
+          <Button
+            variant="tertiary"
+            className="text-clickable flex size-7 items-center justify-center"
             onClick={() => setIsOpened((prev) => !prev)}
           >
             <span className="sr-only">Toggle Sidebar</span>
@@ -84,7 +85,7 @@ export default function Sidebar() {
             ) : (
               <ChevronRightIcon />
             )}
-          </button>
+          </Button>
         </header>
         <div className="flex h-full flex-col gap-1 overflow-y-auto">
           <div className="space-y-1">
