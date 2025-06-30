@@ -14,7 +14,7 @@ const button = cva(
         tertiary: 'hover:bg-clickable/10',
         ghost: 'hover:bg-clickable/10 inset-ring-clickable/10 inset-ring',
         danger:
-          'bg-danger-500 text-white hover:bg-[color-mix(in_oklab,var(--color-danger-500),_var(--color-black)_10%)]',
+          'bg-danger-500 text-black hover:bg-[color-mix(in_oklab,var(--color-danger-500),_var(--color-black)_10%)]',
         link: 'hover:text-brand-500',
       },
       size: {
