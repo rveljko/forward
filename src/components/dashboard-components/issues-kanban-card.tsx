@@ -22,9 +22,10 @@ export default function IssuesKanbanCard({
   className,
   ...props
 }: IssuesKanbanCardProps) {
-  const { attributes, listeners, transform, setNodeRef } = useDraggable({
-    id,
-  })
+  const { attributes, listeners, transform, isDragging, setNodeRef } =
+    useDraggable({
+      id,
+    })
 
   return (
     <article
@@ -47,7 +48,9 @@ export default function IssuesKanbanCard({
               to={`/dashboard/issues/${id}`}
               className="text-clickable line-clamp-1 break-all"
             >
-              <span className="absolute inset-0" />
+              <span
+                className={`absolute inset-0 ${isDragging ? 'cursor-grabbing' : ''}`}
+              />
               {title}
             </Link>
           </h3>
