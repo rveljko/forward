@@ -22,7 +22,7 @@ export default function IssuesListColumn({
         numberOfIssues={getIssuesByStatus(status).length}
         status={status}
       />
-      <IssuesListItemsList issues={getIssuesByStatus(status)} icon={<Icon />} />
+      <IssuesListItemsList issues={getIssuesByStatus(status)} />
     </div>
   )
 }

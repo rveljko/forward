@@ -1,4 +1,5 @@
 import IssuePriority from '@dashboard-components/ui/issue-priority'
+import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import Button from '@ui/button'
@@ -12,12 +13,10 @@ import { Link } from 'react-router'
 
 type IssuesListItemProps = React.ComponentPropsWithoutRef<'article'> & {
   issue: Issue
-  icon: React.JSX.Element
 }
 
 export default function IssuesListItem({
-  issue: { id, title, tag, priority, createdAt },
-  icon: Icon,
+  issue: { id, title, status, tag, priority, createdAt },
   className,
   ...props
 }: IssuesListItemProps) {
@@ -33,7 +32,7 @@ export default function IssuesListItem({
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <div className="flex h-8.5 shrink-0 items-center">
-            <span className="text-clickable">{Icon}</span>
+            <IssueStatus status={status} />
           </div>
           <h3>
             <Link
