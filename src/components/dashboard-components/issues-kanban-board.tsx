@@ -25,14 +25,14 @@ export default function IssuesKanbanBoard({
 
   return (
     <div className="w-0 min-w-full grow">
-      <div
-        className={cn(
-          'divide-section-outline flex h-full divide-x overflow-x-auto p-4',
-          className
-        )}
-        {...props}
-      >
-        <DndContext onDragEnd={handleDragEnd}>
+      <DndContext onDragEnd={handleDragEnd}>
+        <div
+          className={cn(
+            'divide-section-outline flex h-full divide-x overflow-x-auto p-4',
+            className
+          )}
+          {...props}
+        >
           <div className="pr-2">
             <IssuesKanbanColumn status="todo" />
           </div>
@@ -42,8 +42,8 @@ export default function IssuesKanbanBoard({
           <div className="pl-2">
             <IssuesKanbanColumn status="finished" />
           </div>
-        </DndContext>
-      </div>
+        </div>
+      </DndContext>
     </div>
   )
 }
