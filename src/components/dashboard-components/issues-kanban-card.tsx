@@ -1,4 +1,5 @@
 import IssuePriority from '@dashboard-components/ui/issue-priority'
+import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
 import { useDraggable } from '@dnd-kit/core'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
@@ -13,12 +14,10 @@ import { Link } from 'react-router'
 
 type IssuesKanbanCardProps = React.ComponentPropsWithoutRef<'article'> & {
   issue: Issue
-  icon: React.JSX.Element
 }
 
 export default function IssuesKanbanCard({
-  issue: { id, title, priority, tag, createdAt },
-  icon: Icon,
+  issue: { id, title, status, priority, tag, createdAt },
   className,
   ...props
 }: IssuesKanbanCardProps) {
@@ -42,7 +41,7 @@ export default function IssuesKanbanCard({
       <header className="mb-4 flex items-center gap-2">
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
-          <span className="text-clickable shrink-0">{Icon}</span>
+          <IssueStatus status={status} />
           <h3>
             <Link
               to={`/dashboard/issues/${id}`}

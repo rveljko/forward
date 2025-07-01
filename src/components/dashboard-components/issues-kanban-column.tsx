@@ -35,7 +35,6 @@ export default function IssuesKanbanColumn({
       />
       <IssuesKanbanCardsList
         issues={getIssuesByStatus(status)}
-        icon={<Icon />}
         ref={setNodeRef}
       />
     </div>
