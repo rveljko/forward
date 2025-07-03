@@ -12,6 +12,7 @@ import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
 import CircleEmptyIcon from '@icons/circle-empty-icon'
+import DragDropIcon from '@icons/drag-drop-icon'
 import FilterIcon from '@icons/filter-icon'
 import KanbanIcon from '@icons/kanban-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
@@ -184,6 +185,20 @@ function SortDropdownButton() {
       leftIcon={<ArrowsSortIcon />}
     >
       <Dropdown.List>
+        <Dropdown.Item>
+          <Dropdown.Label>
+            <Dropdown.RadioButton
+              name="sort"
+              checked={sort === 'manual'}
+              onChange={() => {
+                setSort('manual')
+                toggleDropdown()
+              }}
+            />
+            <DragDropIcon />
+            Manual
+          </Dropdown.Label>
+        </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
             <Dropdown.RadioButton

@@ -58,7 +58,7 @@ export default function IssuesContextProvider({
   const statuses = searchParams.getAll('status') as IssueStatusLabel[]
   const priorities = searchParams.getAll('priority') as IssuePriorityLabel[]
   const tags = searchParams.getAll('tag') as IssueTagLabel[]
-  const sort = (searchParams.get('sort') || 'priority-desc') as IssueSort
+  const sort = (searchParams.get('sort') || 'manual') as IssueSort
 
   const filteredIssues = issues.filter((issue) => {
     const filteredStatuses = !statuses.length || statuses.includes(issue.status)
@@ -100,6 +100,8 @@ export default function IssuesContextProvider({
 
   function getSortedIssues() {
     switch (sort) {
+      case 'manual':
+        return filteredIssues
       case 'date-asc':
         return filteredIssues.sort(
           (a, b) =>
@@ -127,11 +129,7 @@ export default function IssuesContextProvider({
       case 'name-desc':
         return filteredIssues.sort((a, b) => b.title.localeCompare(a.title))
       default:
-        return filteredIssues.sort(
-          (a, b) =>
-            getIssuePriority(b.priority).level -
-            getIssuePriority(a.priority).level
-        )
+        return filteredIssues
     }
   }
 

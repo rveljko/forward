@@ -142,6 +142,7 @@ export type IssueFilterKey =
   | IssueTagLabel
 
 export type IssueSort =
+  | 'manual'
   | 'date-asc'
   | 'date-desc'
   | 'priority-asc'
