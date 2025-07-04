@@ -24,7 +24,7 @@ export default function IssueActionsModal({
   closeModal,
   issueId,
 }: IssueActionsModalProps) {
-  const { getIssueById } = useIssues()
+  const { getIssueById, duplicateIssue } = useIssues()
   const { title } = getIssueById(issueId)
 
   return (
@@ -104,7 +104,16 @@ export default function IssueActionsModal({
           <PanelCard>
             <div className="mb-1 flex items-center gap-1">
               <PanelCard.Icon icon={<CopyIcon />} />
-              <PanelCard.Heading>Duplicate</PanelCard.Heading>
+              <PanelCard.Heading>
+                <PanelCard.Button
+                  onClick={() => {
+                    duplicateIssue(issueId)
+                    closeModal()
+                  }}
+                >
+                  Duplicate
+                </PanelCard.Button>
+              </PanelCard.Heading>
             </div>
             <PanelCard.Paragraph>Create issue copy</PanelCard.Paragraph>
           </PanelCard>
