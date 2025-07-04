@@ -122,7 +122,11 @@ export default function IssueActionsModal({
           <PanelCard>
             <div className="mb-1 flex items-center gap-1">
               <PanelCard.Icon icon={<ClickIcon />} />
-              <PanelCard.Heading>Open</PanelCard.Heading>
+              <PanelCard.Heading>
+                <PanelCard.Button href={`/dashboard/issues/${issueId}`}>
+                  Open
+                </PanelCard.Button>
+              </PanelCard.Heading>
             </div>
             <PanelCard.Paragraph>View issue details</PanelCard.Paragraph>
           </PanelCard>

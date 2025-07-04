@@ -1,4 +1,5 @@
 import { cn } from '@utils/utils'
+import { Link } from 'react-router'
 
 type PanelCardProps = React.ComponentPropsWithoutRef<'article'> & {
   children: React.ReactNode
@@ -12,7 +13,7 @@ export default function PanelCard({
   return (
     <article
       className={cn(
-        'ring-section-outline has-[button]:hover:ring-clickable/20 relative overflow-hidden rounded-lg p-2 ring has-[button]:active:scale-99',
+        'ring-section-outline has-[button]:hover:ring-clickable/20 has-[a]:hover:ring-clickable/20 relative overflow-hidden rounded-lg p-2 ring has-[a]:active:scale-99 has-[button]:active:scale-99',
         className
       )}
       {...props}
@@ -65,14 +66,30 @@ function Icon({ icon: Icon, className, ...props }: IconProps) {
   )
 }
 
-type ButtonProps = React.ComponentPropsWithoutRef<'button'>
+type ButtonAsAnchorProps = React.ComponentPropsWithoutRef<'a'> & {
+  href: string
+}
+
+type ButtonAsButtonProps = React.ComponentPropsWithoutRef<'button'> & {
+  href?: never
+}
+
+type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps
 
 function Button({ children, className, ...props }: ButtonProps) {
+  const buttonClasses = cn('text-clickable hover:cursor-pointer', className)
+
+  if ('href' in props && props.href !== undefined) {
+    return (
+      <Link to={props.href} className={buttonClasses} {...props}>
+        <span className="absolute inset-0"></span>
+        {children}
+      </Link>
+    )
+  }
+
   return (
-    <button
-      className={cn('text-clickable hover:cursor-pointer', className)}
-      {...props}
-    >
+    <button className={buttonClasses} {...props}>
       <span className="absolute inset-0"></span>
       {children}
     </button>
