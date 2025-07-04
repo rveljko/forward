@@ -56,6 +56,7 @@ export default function IssuesListItem({
           </time>
         </div>
         <IssueActionsModalButton
+          issueId={id}
           variant="tertiary"
           className="hover:text-clickable isolate rounded-full p-0.5 text-neutral-400"
         >

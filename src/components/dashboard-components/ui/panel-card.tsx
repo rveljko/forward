@@ -12,7 +12,7 @@ export default function PanelCard({
   return (
     <article
       className={cn(
-        'ring-section-outline relative rounded-lg p-2 ring',
+        'ring-section-outline has-[button]:hover:ring-clickable/20 relative overflow-hidden rounded-lg p-2 ring has-[button]:active:scale-99',
         className
       )}
       {...props}
@@ -25,6 +25,7 @@ export default function PanelCard({
 PanelCard.Heading = Heading
 PanelCard.Paragraph = Paragraph
 PanelCard.Icon = Icon
+PanelCard.Button = Button
 
 type HeadingProps = React.ComponentPropsWithoutRef<'h3'> & {
   children: React.ReactNode
@@ -61,5 +62,19 @@ function Icon({ icon: Icon, className, ...props }: IconProps) {
     >
       {Icon}
     </span>
+  )
+}
+
+type ButtonProps = React.ComponentPropsWithoutRef<'button'>
+
+function Button({ children, className, ...props }: ButtonProps) {
+  return (
+    <button
+      className={cn('text-clickable hover:cursor-pointer', className)}
+      {...props}
+    >
+      <span className="absolute inset-0"></span>
+      {children}
+    </button>
   )
 }

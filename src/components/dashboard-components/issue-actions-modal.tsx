@@ -10,15 +10,23 @@ import ExternalLinkIcon from '@icons/external-link-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
 import TagIcon from '@icons/tag-icon'
 import TrashIcon from '@icons/trash-icon'
+import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { Issue } from '@utils/types'
+import copy from 'copy-to-clipboard'
 
 type IssueActionsModalProps = {
   closeModal: () => void
+  issueId: Issue['id']
 }
 
 export default function IssueActionsModal({
   closeModal,
+  issueId,
 }: IssueActionsModalProps) {
+  const { getIssueById } = useIssues()
+  const { title } = getIssueById(issueId)
+
   return (
     <ModalCard className="flex flex-col">
       <header className="flex p-4 pb-0">
@@ -78,7 +86,16 @@ export default function IssueActionsModal({
           <PanelCard>
             <div className="mb-1 flex items-center gap-1">
               <PanelCard.Icon icon={<ClipboardIcon />} />
-              <PanelCard.Heading>Copy title</PanelCard.Heading>
+              <PanelCard.Heading>
+                <PanelCard.Button
+                  onClick={() => {
+                    copy(title)
+                    closeModal()
+                  }}
+                >
+                  Copy title
+                </PanelCard.Button>
+              </PanelCard.Heading>
             </div>
             <PanelCard.Paragraph>Copy issue title</PanelCard.Paragraph>
           </PanelCard>

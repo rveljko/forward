@@ -3,10 +3,14 @@ import Modal from '@dashboard-components/ui/modal'
 import ModalButton from '@dashboard-components/ui/modal-button'
 import useModal from '@hooks/use-modal'
 import { ButtonProps } from '@ui/button'
+import { Issue } from '@utils/types'
 
-type IssueActionsModalButtonProps = ButtonProps
+type IssueActionsModalButtonProps = ButtonProps & {
+  issueId: Issue['id']
+}
 
 export default function IssueActionsModalButton({
+  issueId,
   children,
   ...props
 }: IssueActionsModalButtonProps) {
@@ -23,7 +27,7 @@ export default function IssueActionsModalButton({
         <Modal.Overlay>
           <Modal.Dialog>
             <Modal.FocusLock>
-              <IssueActionsModal closeModal={toggleModal} />
+              <IssueActionsModal closeModal={toggleModal} issueId={issueId} />
             </Modal.FocusLock>
           </Modal.Dialog>
         </Modal.Overlay>
