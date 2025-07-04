@@ -1,8 +1,8 @@
+import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-button'
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
-import Button from '@ui/button'
 import {
   dayMonthShortFormatter,
   iso8601DateFormatter,
@@ -55,12 +55,13 @@ export default function IssuesListItem({
             {dayMonthShortFormatter(createdAt)}
           </time>
         </div>
-        <Button
+        <IssueActionsModalButton
           variant="tertiary"
-          className="hover:text-clickable rounded-full p-0.5 text-neutral-400"
+          className="hover:text-clickable isolate rounded-full p-0.5 text-neutral-400"
         >
           <DotsVerticalIcon />
-        </Button>
+          <span className="sr-only">Actions</span>
+        </IssueActionsModalButton>
       </div>
     </article>
   )
