@@ -135,7 +135,15 @@ export default function IssueActionsModal({
           <PanelCard>
             <div className="mb-1 flex items-center gap-1">
               <PanelCard.Icon icon={<ExternalLinkIcon />} />
-              <PanelCard.Heading>Open in new tab</PanelCard.Heading>
+              <PanelCard.Heading>
+                <PanelCard.Button
+                  href={`/dashboard/issues/${issueId}`}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Open in new tab
+                </PanelCard.Button>
+              </PanelCard.Heading>
             </div>
             <PanelCard.Paragraph>Open issue separately</PanelCard.Paragraph>
           </PanelCard>
