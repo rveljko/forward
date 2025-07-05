@@ -34,6 +34,7 @@ type IssuesContextType = {
   renameIssue: (id: Issue['id'], newTitle: Issue['title']) => void
   duplicateIssue: (id: Issue['id']) => void
   deleteIssue: (id: Issue['id']) => void
+  updateIssueTitle: (id: Issue['id'], title: Issue['title']) => void
   updateIssueContent: (id: Issue['id'], content: Issue['content']) => void
   updateIssueStatus: (id: Issue['id'], status: IssueStatusLabel) => void
   updateIssuePriority: (id: Issue['id'], priority: IssuePriorityLabel) => void
@@ -170,6 +171,15 @@ export default function IssuesContextProvider({
     setIssues([...issues.filter((issue) => issue.id !== id)])
   }
 
+  function updateIssueTitle(id: Issue['id'], title: Issue['title']) {
+    const issue = getIssueById(id)
+
+    setIssues([
+      { ...issue, title },
+      ...issues.filter(({ id }) => id !== issue.id),
+    ])
+  }
+
   function updateIssueContent(id: Issue['id'], content: Issue['content']) {
     const issue = getIssueById(id)
 
@@ -236,6 +246,7 @@ export default function IssuesContextProvider({
         renameIssue,
         duplicateIssue,
         deleteIssue,
+        updateIssueTitle,
         updateIssueContent,
         updateIssueStatus,
         updateIssuePriority,

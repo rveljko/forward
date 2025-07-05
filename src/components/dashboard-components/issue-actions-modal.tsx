@@ -1,6 +1,7 @@
 import ChangeIssuePriorityPanel from '@dashboard-components/change-issue-priority-panel'
 import ChangeIssueStatusPanel from '@dashboard-components/change-issue-status-panel'
 import ChangeIssueTagPanel from '@dashboard-components/change-issue-tag-panel'
+import RenameIssuePanel from '@dashboard-components/rename-issue-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
 import ArrowLeftIcon from '@icons/arrow-left-icon'
@@ -30,6 +31,7 @@ type ActivePanel =
   | 'change-status'
   | 'change-priority'
   | 'change-tag'
+  | 'rename'
   | 'delete'
 
 export default function IssueActionsModal({
@@ -68,6 +70,9 @@ export default function IssueActionsModal({
       )}
       {activePanel === 'change-tag' && (
         <ChangeIssueTagPanel issueId={issueId} closeModal={closeModal} />
+      )}
+      {activePanel === 'rename' && (
+        <RenameIssuePanel issueId={issueId} closeModal={closeModal} />
       )}
       {activePanel === 'menu' && (
         <Menu
@@ -143,7 +148,11 @@ function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<EditIcon />} />
-            <PanelCard.Heading>Rename</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button onClick={() => setActivePanel('rename')}>
+                Rename
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Edit issue title</PanelCard.Paragraph>
         </PanelCard>
