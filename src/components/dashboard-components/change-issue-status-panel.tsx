@@ -37,9 +37,9 @@ export default function ChangeIssueStatusPanel({
           </span>
           <h3 className="mb-1">Change Status</h3>
           <p className="mb-4">Update issue progress status</p>
-          <ul className="flex items-center gap-2">
+          <ul className="flex flex-col items-center gap-2 sm:flex-row">
             {issueStatuses.map(({ id, name, label, icon: Icon }) => (
-              <li className="flex-1" key={id}>
+              <li className="w-full flex-1" key={id}>
                 <PanelCard>
                   <div className="flex items-start justify-between">
                     <PanelCard.Icon icon={<Icon />} className="mb-1" />
