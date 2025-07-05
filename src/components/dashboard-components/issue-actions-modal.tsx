@@ -1,5 +1,6 @@
 import ChangeIssuePriorityPanel from '@dashboard-components/change-issue-priority-panel'
 import ChangeIssueStatusPanel from '@dashboard-components/change-issue-status-panel'
+import ChangeIssueTagPanel from '@dashboard-components/change-issue-tag-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
 import ArrowLeftIcon from '@icons/arrow-left-icon'
@@ -65,6 +66,9 @@ export default function IssueActionsModal({
       {activePanel === 'change-priority' && (
         <ChangeIssuePriorityPanel issueId={issueId} closeModal={closeModal} />
       )}
+      {activePanel === 'change-tag' && (
+        <ChangeIssueTagPanel issueId={issueId} closeModal={closeModal} />
+      )}
       {activePanel === 'menu' && (
         <Menu
           issueId={issueId}
@@ -126,7 +130,11 @@ function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
             <div>
               <PanelCard.Icon icon={<TagIcon />} />
             </div>
-            <PanelCard.Heading>Change Tag</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button onClick={() => setActivePanel('change-tag')}>
+                Change Tag
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Update issue label</PanelCard.Paragraph>
         </PanelCard>
