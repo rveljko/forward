@@ -1,6 +1,7 @@
 import ChangeIssuePriorityPanel from '@dashboard-components/change-issue-priority-panel'
 import ChangeIssueStatusPanel from '@dashboard-components/change-issue-status-panel'
 import ChangeIssueTagPanel from '@dashboard-components/change-issue-tag-panel'
+import DeleteIssuePanel from '@dashboard-components/delete-issue-panel'
 import RenameIssuePanel from '@dashboard-components/rename-issue-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
@@ -69,6 +70,9 @@ export default function IssueActionsModal({
       )}
       {activePanel === 'rename' && (
         <RenameIssuePanel issueId={issueId} closeModal={closeModal} />
+      )}
+      {activePanel === 'delete' && (
+        <DeleteIssuePanel issueId={issueId} closeModal={closeModal} />
       )}
       {activePanel === 'menu' && (
         <Menu
@@ -226,8 +230,13 @@ function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
               icon={<TrashIcon />}
               className="[&_svg]:text-danger-500 bg-danger-500/10"
             />
-            <PanelCard.Heading className="text-danger-500">
-              Delete
+            <PanelCard.Heading>
+              <PanelCard.Button
+                className="text-danger-500"
+                onClick={() => setActivePanel('delete')}
+              >
+                Delete
+              </PanelCard.Button>
             </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph className="text-danger-400">
