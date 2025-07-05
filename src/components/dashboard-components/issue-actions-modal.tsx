@@ -42,7 +42,7 @@ export default function IssueActionsModal({
 
   return (
     <ModalCard className="flex flex-col">
-      <header className="flex p-4 pb-0">
+      <header className="flex items-center justify-between p-4 pb-0">
         {activePanel !== 'menu' && (
           <Button
             variant="tertiary"
@@ -53,11 +53,7 @@ export default function IssueActionsModal({
             Back
           </Button>
         )}
-        <Button
-          variant="tertiary"
-          className="ml-auto p-1.5"
-          onClick={closeModal}
-        >
+        <Button variant="tertiary" className="ml-auto p-2" onClick={closeModal}>
           <CloseIcon />
           <span className="sr-only">Close</span>
         </Button>
