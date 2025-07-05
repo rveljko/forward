@@ -1,3 +1,4 @@
+import ChangeIssuePriorityPanel from '@dashboard-components/change-issue-priority-panel'
 import ChangeIssueStatusPanel from '@dashboard-components/change-issue-status-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
@@ -61,6 +62,9 @@ export default function IssueActionsModal({
       {activePanel === 'change-status' && (
         <ChangeIssueStatusPanel issueId={issueId} closeModal={closeModal} />
       )}
+      {activePanel === 'change-priority' && (
+        <ChangeIssuePriorityPanel issueId={issueId} closeModal={closeModal} />
+      )}
       {activePanel === 'menu' && (
         <Menu
           issueId={issueId}
@@ -103,7 +107,13 @@ function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<PriorityIcon />} />
-            <PanelCard.Heading>Change Priority</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button
+                onClick={() => setActivePanel('change-priority')}
+              >
+                Change Priority
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>
             Update issue importance level
