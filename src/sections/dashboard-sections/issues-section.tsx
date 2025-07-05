@@ -17,7 +17,7 @@ import KanbanIcon from '@icons/kanban-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import ListIcon from '@icons/list-icon'
-import PriorityLowIcon from '@icons/priority-low-icon'
+import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
@@ -122,7 +122,7 @@ function FilterDropdownButton() {
         <Dropdown.AccordionItem value="item-2">
           <Dropdown.AccordionSummary
             valueForItem="item-2"
-            icon={<PriorityLowIcon />}
+            icon={<PriorityIcon />}
           >
             Priority
           </Dropdown.AccordionSummary>
@@ -237,7 +237,7 @@ function SortDropdownButton() {
                 toggleDropdown()
               }}
             />
-            <PriorityLowIcon />
+            <PriorityIcon />
             Low to High
           </Dropdown.Label>
         </Dropdown.Item>
@@ -251,7 +251,7 @@ function SortDropdownButton() {
                 toggleDropdown()
               }}
             />
-            <PriorityLowIcon />
+            <PriorityIcon />
             High to Low
           </Dropdown.Label>
         </Dropdown.Item>

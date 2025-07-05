@@ -19,7 +19,7 @@ import CopyIcon from '@icons/copy-icon'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import EditIcon from '@icons/edit-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
-import PriorityLowIcon from '@icons/priority-low-icon'
+import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import TrashIcon from '@icons/trash-icon'
@@ -180,7 +180,7 @@ function MoreActionsDropdownButton({
         <Dropdown.AccordionItem value="item-2">
           <Dropdown.AccordionSummary
             valueForItem="item-2"
-            icon={<PriorityLowIcon />}
+            icon={<PriorityIcon />}
           >
             Priority
           </Dropdown.AccordionSummary>

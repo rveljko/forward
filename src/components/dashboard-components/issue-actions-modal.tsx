@@ -8,7 +8,7 @@ import CloseIcon from '@icons/close-icon'
 import CopyIcon from '@icons/copy-icon'
 import EditIcon from '@icons/edit-icon'
 import ExternalLinkIcon from '@icons/external-link-icon'
-import PriorityLowIcon from '@icons/priority-low-icon'
+import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import TrashIcon from '@icons/trash-icon'
@@ -102,7 +102,7 @@ function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<PriorityLowIcon />} />
+            <PanelCard.Icon icon={<PriorityIcon />} />
             <PanelCard.Heading>Change Priority</PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>

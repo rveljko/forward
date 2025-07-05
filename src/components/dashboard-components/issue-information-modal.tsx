@@ -3,7 +3,7 @@ import InformationList from '@dashboard-components/ui/information-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import CalendarIcon from '@icons/calendar-icon'
 import CloseIcon from '@icons/close-icon'
-import PriorityLowIcon from '@icons/priority-low-icon'
+import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import UserIcon from '@icons/user-icon'
@@ -94,7 +94,7 @@ export default function IssueInformationModal({
             </InformationList.Value>
           </InformationList.Item>
           <InformationList.Item>
-            <InformationList.Label icon={<PriorityLowIcon />}>
+            <InformationList.Label icon={<PriorityIcon />}>
               Priority
             </InformationList.Label>
             <InformationList.Value icon={<IssuePriorityIcon />}>
