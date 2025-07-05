@@ -2,9 +2,9 @@ import Divider from '@dashboard-components/ui/divider'
 import InformationList from '@dashboard-components/ui/information-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import CalendarIcon from '@icons/calendar-icon'
-import CircleEmptyIcon from '@icons/circle-empty-icon'
 import CloseIcon from '@icons/close-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
+import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import UserIcon from '@icons/user-icon'
 import { useIssues } from '@services/contexts/issues-context'
@@ -30,9 +30,11 @@ export default function IssueInformationModal({
     userInformation: { firstName, lastName, profilePictureUrl },
   } = useUserInformation()
   const { getIssueStatus, getIssuePriority, getIssueTag } = useIssues()
-  const { name: statusName, icon: StatusIcon } = getIssueStatus(status)
-  const { name: priorityName, icon: PriorityIcon } = getIssuePriority(priority)
-  const { name: tagName, icon: IssueTagIcon } = getIssueTag(tag)
+  const { name: issueStatusName, icon: IssueStatusIcon } =
+    getIssueStatus(status)
+  const { name: issuePriorityName, icon: IssuePriorityIcon } =
+    getIssuePriority(priority)
+  const { name: issueTagName, icon: IssueTagIcon } = getIssueTag(tag)
 
   return (
     <ModalCard {...props}>
@@ -84,19 +86,19 @@ export default function IssueInformationModal({
             </InformationList.Value>
           </InformationList.Item>
           <InformationList.Item>
-            <InformationList.Label icon={<CircleEmptyIcon />}>
+            <InformationList.Label icon={<StatusIcon />}>
               Status
             </InformationList.Label>
-            <InformationList.Value icon={<StatusIcon />}>
-              {statusName}
+            <InformationList.Value icon={<IssueStatusIcon />}>
+              {issueStatusName}
             </InformationList.Value>
           </InformationList.Item>
           <InformationList.Item>
             <InformationList.Label icon={<PriorityLowIcon />}>
               Priority
             </InformationList.Label>
-            <InformationList.Value icon={<PriorityIcon />}>
-              {priorityName}
+            <InformationList.Value icon={<IssuePriorityIcon />}>
+              {issuePriorityName}
             </InformationList.Value>
           </InformationList.Item>
           <InformationList.Item>
@@ -104,7 +106,7 @@ export default function IssueInformationModal({
               Tag
             </InformationList.Label>
             <InformationList.Value icon={<IssueTagIcon />}>
-              {tagName}
+              {issueTagName}
             </InformationList.Value>
           </InformationList.Item>
         </InformationList>

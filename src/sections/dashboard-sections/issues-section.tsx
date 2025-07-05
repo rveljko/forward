@@ -11,7 +11,6 @@ import { issueTags } from '@data/issue-tags'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
-import CircleEmptyIcon from '@icons/circle-empty-icon'
 import DragDropIcon from '@icons/drag-drop-icon'
 import FilterIcon from '@icons/filter-icon'
 import KanbanIcon from '@icons/kanban-icon'
@@ -19,6 +18,7 @@ import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import ListIcon from '@icons/list-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
+import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { useEffect, useState } from 'react'
@@ -97,7 +97,7 @@ function FilterDropdownButton() {
         <Dropdown.AccordionItem value="item-1">
           <Dropdown.AccordionSummary
             valueForItem="item-1"
-            icon={<CircleEmptyIcon />}
+            icon={<StatusIcon />}
           >
             Status
           </Dropdown.AccordionSummary>

@@ -2,7 +2,7 @@ import Divider from '@dashboard-components/ui/divider'
 import PanelCard from '@dashboard-components/ui/panel-card'
 import RadioButton from '@dashboard-components/ui/radio-button'
 import { issueStatuses } from '@data/issue-statuses'
-import CircleFullIcon from '@icons/circle-full-icon'
+import StatusIcon from '@icons/status-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
 import { Issue, IssueStatusLabel } from '@utils/types'
@@ -33,7 +33,7 @@ export default function ChangeIssueStatusPanel({
       >
         <div className="p-4">
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
-            <CircleFullIcon />
+            <StatusIcon />
           </span>
           <h3 className="mb-1">Change Status</h3>
           <p className="mb-4">Update issue progress status</p>

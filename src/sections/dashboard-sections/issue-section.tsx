@@ -14,13 +14,13 @@ import { issueTags } from '@data/issue-tags'
 import useDebounce from '@hooks/use-debounce'
 import useDropdown from '@hooks/use-dropdown'
 import useTextEditor from '@hooks/use-text-editor'
-import CircleEmptyIcon from '@icons/circle-empty-icon'
 import ClipboardIcon from '@icons/clipboard-icon'
 import CopyIcon from '@icons/copy-icon'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import EditIcon from '@icons/edit-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
+import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useIssues } from '@services/contexts/issues-context'
@@ -155,7 +155,7 @@ function MoreActionsDropdownButton({
         <Dropdown.AccordionItem value="item-1">
           <Dropdown.AccordionSummary
             valueForItem="item-1"
-            icon={<CircleEmptyIcon />}
+            icon={<StatusIcon />}
           >
             Status
           </Dropdown.AccordionSummary>

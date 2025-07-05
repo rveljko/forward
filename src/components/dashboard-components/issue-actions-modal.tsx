@@ -2,7 +2,6 @@ import ChangeIssueStatusPanel from '@dashboard-components/change-issue-status-pa
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
 import ArrowLeftIcon from '@icons/arrow-left-icon'
-import CircleFullIcon from '@icons/circle-full-icon'
 import ClickIcon from '@icons/click-icon'
 import ClipboardIcon from '@icons/clipboard-icon'
 import CloseIcon from '@icons/close-icon'
@@ -10,6 +9,7 @@ import CopyIcon from '@icons/copy-icon'
 import EditIcon from '@icons/edit-icon'
 import ExternalLinkIcon from '@icons/external-link-icon'
 import PriorityLowIcon from '@icons/priority-low-icon'
+import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useIssues } from '@services/contexts/issues-context'
@@ -87,7 +87,7 @@ function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<CircleFullIcon />} />
+            <PanelCard.Icon icon={<StatusIcon />} />
             <PanelCard.Heading>
               <PanelCard.Button onClick={() => setActivePanel('change-status')}>
                 Change Status
