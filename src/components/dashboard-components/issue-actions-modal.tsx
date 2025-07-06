@@ -60,7 +60,7 @@ export default function IssueActionsModal({
         </Button>
       </header>
       {activePanel === 'menu' && (
-        <Menu
+        <MenuPanel
           issueId={issueId}
           closeModal={closeModal}
           setActivePanel={setActivePanel}
@@ -85,13 +85,13 @@ export default function IssueActionsModal({
   )
 }
 
-type MenuProps = {
+type MenuPanelProps = {
   issueId: Issue['id']
   closeModal: () => void
   setActivePanel: React.Dispatch<React.SetStateAction<ActivePanel>>
 }
 
-function Menu({ closeModal, issueId, setActivePanel }: MenuProps) {
+function MenuPanel({ closeModal, issueId, setActivePanel }: MenuPanelProps) {
   const { getIssueById, duplicateIssue } = useIssues()
   const { title } = getIssueById(issueId)
 
