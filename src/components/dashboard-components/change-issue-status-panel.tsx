@@ -5,7 +5,7 @@ import { issueStatuses } from '@data/issue-statuses'
 import StatusIcon from '@icons/status-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
-import { Issue, IssueStatusLabel } from '@utils/types'
+import { Issue } from '@utils/types'
 import { useState } from 'react'
 
 type ChangeIssueStatusPanelProps = {
@@ -19,7 +19,7 @@ export default function ChangeIssueStatusPanel({
 }: ChangeIssueStatusPanelProps) {
   const { getIssueById, updateIssueStatus } = useIssues()
   const { status } = getIssueById(issueId)
-  const [newStatus, setNewStatus] = useState<IssueStatusLabel>(status)
+  const [newStatus, setNewStatus] = useState(status)
 
   const isButtonDisabled = newStatus === status
 
