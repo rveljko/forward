@@ -23,7 +23,7 @@ export default function IssuesListItem({
   return (
     <article
       className={cn(
-        'border-section-outline relative flex items-center justify-between gap-2 border-b p-4 hover:bg-neutral-700',
+        'border-section-outline hover:bg-clickable/5 relative flex items-center justify-between gap-2 border-b p-4',
         className
       )}
       {...props}
