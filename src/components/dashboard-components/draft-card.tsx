@@ -1,17 +1,7 @@
-import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-button'
-import RenameDraftModalButton from '@dashboard-components/rename-draft-modal-button'
+import DraftActionsModalButton from '@dashboard-components/draft-actions-modal-button'
 import Divider from '@dashboard-components/ui/divider'
-import Dropdown, {
-  dropdownButtonClasses,
-} from '@dashboard-components/ui/dropdown'
-import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import TimeAgo from '@dashboard-components/ui/time-ago'
-import useDropdown from '@hooks/use-dropdown'
-import ClickIcon from '@icons/click-icon'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
-import EditIcon from '@icons/edit-icon'
-import ExternalLinkIcon from '@icons/external-link-icon'
-import TrashIcon from '@icons/trash-icon'
 import { Draft } from '@utils/types'
 import { Link } from 'react-router'
 
@@ -41,61 +31,15 @@ export default function DraftCard({
       <Divider />
       <div className="flex items-center justify-between p-2">
         <TimeAgo date={lastEdit} />
-        <MoreActionsDropdownButton id={id} title={title} />
+        <DraftActionsModalButton
+          draftId={id}
+          variant="tertiary"
+          className="isolate -m-1 rounded-full p-1 [&_svg]:size-4"
+        >
+          <DotsVerticalIcon />
+          <span className="sr-only">Actions</span>
+        </DraftActionsModalButton>
       </div>
     </article>
-  )
-}
-
-type MoreActionsDropdownButtonProps = {
-  id: Draft['id']
-  title: Draft['title']
-}
-
-function MoreActionsDropdownButton({
-  id,
-  title,
-}: MoreActionsDropdownButtonProps) {
-  const { isOpened, toggleDropdown } = useDropdown()
-
-  return (
-    <DropdownButton
-      label={<DotsVerticalIcon />}
-      isOpened={isOpened}
-      toggleDropdown={toggleDropdown}
-      variant="tertiary"
-      position="top-left"
-      className="isolate -m-1 rounded-full p-1 [&_svg]:size-4"
-    >
-      <Dropdown.Button
-        leftIcon={<ClickIcon />}
-        href={`/dashboard/drafts/${id}`}
-      >
-        Open
-      </Dropdown.Button>
-      <Dropdown.Button
-        leftIcon={<ExternalLinkIcon />}
-        href={`/dashboard/drafts/${id}`}
-        target="_blank"
-        rel="noreferrer noopener"
-      >
-        Open in new tab
-      </Dropdown.Button>
-      <RenameDraftModalButton
-        draftId={id}
-        draftTitle={title}
-        leftIcon={<EditIcon />}
-        className={`${dropdownButtonClasses} justify-start`}
-      >
-        Rename
-      </RenameDraftModalButton>
-      <DeleteDraftModalButton
-        draftId={id}
-        leftIcon={<TrashIcon />}
-        className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
-      >
-        Delete
-      </DeleteDraftModalButton>
-    </DropdownButton>
   )
 }
