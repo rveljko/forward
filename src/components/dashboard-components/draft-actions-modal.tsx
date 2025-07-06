@@ -16,6 +16,7 @@ type DraftActionsModalProps = {
 }
 
 export default function DraftActionsModal({
+  draftId,
   closeModal,
 }: DraftActionsModalProps) {
   return (
@@ -26,19 +27,27 @@ export default function DraftActionsModal({
           <span className="sr-only">Close</span>
         </Button>
       </header>
-      <MenuPanel />
+      <MenuPanel draftId={draftId} />
     </ModalCard>
   )
 }
 
-function MenuPanel() {
+type MenuPanelProps = {
+  draftId: Draft['id']
+}
+
+function MenuPanel({ draftId }: MenuPanelProps) {
   return (
     <ul className="grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 max-md:h-66">
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<ClickIcon />} />
-            <PanelCard.Heading>Open</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button href={`/dashboard/drafts/${draftId}`}>
+                Open
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>View draft details</PanelCard.Paragraph>
         </PanelCard>
