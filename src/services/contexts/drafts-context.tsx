@@ -16,6 +16,7 @@ type DraftsContextType = {
   createNewDraft: () => void
   updateDraft: (id: Draft['id'], content: Draft['content']) => void
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
+  duplicateDraft: (id: Draft['id']) => void
   deleteDraft: (id: Draft['id']) => void
 }
 
@@ -69,6 +70,12 @@ export default function DraftsContextProvider({
     ])
   }
 
+  function duplicateDraft(id: Draft['id']) {
+    const draft = getDraftById(id)
+
+    setDrafts([{ ...draft, id: uuidv4(), lastEdit: new Date() }, ...drafts])
+  }
+
   function deleteDraft(id: Draft['id']) {
     setDrafts([...drafts.filter((draft) => draft.id !== id)])
   }
@@ -86,6 +93,7 @@ export default function DraftsContextProvider({
         createNewDraft,
         updateDraft,
         renameDraft,
+        duplicateDraft,
         deleteDraft,
       }}
     >

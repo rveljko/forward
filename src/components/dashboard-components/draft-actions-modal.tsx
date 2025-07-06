@@ -40,7 +40,7 @@ type MenuPanelProps = {
 }
 
 function MenuPanel({ draftId, closeModal }: MenuPanelProps) {
-  const { getDraftById } = useDrafts()
+  const { getDraftById, duplicateDraft } = useDrafts()
   const { title } = getDraftById(draftId)
 
   return (
@@ -106,7 +106,16 @@ function MenuPanel({ draftId, closeModal }: MenuPanelProps) {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<CopyIcon />} />
-            <PanelCard.Heading>Duplicate</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button
+                onClick={() => {
+                  duplicateDraft(draftId)
+                  closeModal()
+                }}
+              >
+                Duplicate
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Create draft copy</PanelCard.Paragraph>
         </PanelCard>
