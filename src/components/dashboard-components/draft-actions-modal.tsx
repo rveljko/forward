@@ -1,5 +1,7 @@
+import RenameDraftPanel from '@dashboard-components/rename-draft-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
+import ArrowLeftIcon from '@icons/arrow-left-icon'
 import ClickIcon from '@icons/click-icon'
 import ClipboardIcon from '@icons/clipboard-icon'
 import CloseIcon from '@icons/close-icon'
@@ -11,25 +13,49 @@ import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { Draft } from '@utils/types'
 import copy from 'copy-to-clipboard'
+import { useState } from 'react'
 
 type DraftActionsModalProps = {
   draftId: Draft['id']
   closeModal: () => void
 }
 
+type ActivePanel = 'menu' | 'rename' | 'delete'
+
 export default function DraftActionsModal({
   draftId,
   closeModal,
 }: DraftActionsModalProps) {
+  const [activePanel, setActivePanel] = useState<ActivePanel>('menu')
+
   return (
     <ModalCard>
       <header className="flex items-center justify-between p-4 pb-0">
+        {activePanel !== 'menu' && (
+          <Button
+            variant="tertiary"
+            size="medium"
+            leftIcon={<ArrowLeftIcon />}
+            onClick={() => setActivePanel('menu')}
+          >
+            Back
+          </Button>
+        )}
         <Button variant="tertiary" className="ml-auto p-2" onClick={closeModal}>
           <CloseIcon />
           <span className="sr-only">Close</span>
         </Button>
       </header>
-      <MenuPanel draftId={draftId} closeModal={closeModal} />
+      {activePanel === 'menu' && (
+        <MenuPanel
+          draftId={draftId}
+          closeModal={closeModal}
+          setActivePanel={setActivePanel}
+        />
+      )}
+      {activePanel === 'rename' && (
+        <RenameDraftPanel draftId={draftId} closeModal={closeModal} />
+      )}
     </ModalCard>
   )
 }
@@ -37,9 +63,10 @@ export default function DraftActionsModal({
 type MenuPanelProps = {
   draftId: Draft['id']
   closeModal: () => void
+  setActivePanel: React.Dispatch<React.SetStateAction<ActivePanel>>
 }
 
-function MenuPanel({ draftId, closeModal }: MenuPanelProps) {
+function MenuPanel({ draftId, closeModal, setActivePanel }: MenuPanelProps) {
   const { getDraftById, duplicateDraft } = useDrafts()
   const { title } = getDraftById(draftId)
 
@@ -79,7 +106,11 @@ function MenuPanel({ draftId, closeModal }: MenuPanelProps) {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<EditIcon />} />
-            <PanelCard.Heading>Rename</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button onClick={() => setActivePanel('rename')}>
+                Rename
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Edit draft title</PanelCard.Paragraph>
         </PanelCard>
