@@ -33,8 +33,6 @@ Dropdown.AccordionSummary = AccordionSummary
 Dropdown.List = List
 Dropdown.Item = Item
 Dropdown.Label = Label
-Dropdown.Checkbox = Checkbox
-Dropdown.RadioButton = RadioButton
 Dropdown.Button = Button
 
 type AccordionContextProviderProps = {
@@ -191,36 +189,6 @@ function Label({ children, className, ...props }: LabelProps) {
     >
       {children}
     </label>
-  )
-}
-
-type CheckboxProps = React.ComponentPropsWithoutRef<'input'>
-
-function Checkbox({ className, ...props }: CheckboxProps) {
-  return (
-    <input
-      type="checkbox"
-      className={cn(
-        "before:inset-ring-clickable/20 hover:before:inset-ring-brand-500 pointer-coarse:active:before:inset-ring-brand-500 checked:before:bg-brand-500 relative size-3.5 appearance-none before:absolute before:flex before:size-full before:items-center before:justify-center before:rounded-xs before:text-xs before:text-white before:inset-ring checked:before:inset-ring-0 checked:before:content-['✓']",
-        className
-      )}
-      {...props}
-    />
-  )
-}
-
-type RadioButtonProps = React.ComponentPropsWithoutRef<'input'>
-
-function RadioButton({ className, ...props }: RadioButtonProps) {
-  return (
-    <input
-      type="radio"
-      className={cn(
-        'before:inset-ring-clickable/20 pointer-coarse:active:before:inset-ring-brand-500 hover:before:inset-ring-brand-500 checked:before:inset-ring-brand-500 relative size-3.5 appearance-none before:absolute before:size-full before:rounded-full before:inset-ring checked:before:inset-ring-4',
-        className
-      )}
-      {...props}
-    />
   )
 }
 

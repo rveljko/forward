@@ -8,6 +8,7 @@ import Dropdown, {
   dropdownButtonClasses,
 } from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import RadioButton from '@dashboard-components/ui/radio-button'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
@@ -163,7 +164,7 @@ function MoreActionsDropdownButton({
             {issueStatuses.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.RadioButton
+                  <RadioButton
                     onChange={() => {
                       updateIssueStatus(issueId, label)
                       toggleDropdown()
@@ -188,7 +189,7 @@ function MoreActionsDropdownButton({
             {issuePriorities.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.RadioButton
+                  <RadioButton
                     onChange={() => {
                       updateIssuePriority(issueId, label)
                       toggleDropdown()
@@ -210,7 +211,7 @@ function MoreActionsDropdownButton({
             {issueTags.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.RadioButton
+                  <RadioButton
                     onChange={() => {
                       updateIssueTag(issueId, label)
                       toggleDropdown()

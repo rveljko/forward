@@ -1,9 +1,11 @@
 import IssuesKanbanBoard from '@dashboard-components/issues-kanban-board'
 import IssuesListBoard from '@dashboard-components/issues-list-board'
 import ProjectInformationModalButton from '@dashboard-components/project-information-modal-button'
+import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import RadioButton from '@dashboard-components/ui/radio-button'
 import Switcher from '@dashboard-components/ui/switcher'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
@@ -105,7 +107,7 @@ function FilterDropdownButton() {
             {issueStatuses.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.Checkbox
+                  <Checkbox
                     onChange={() => {
                       setFilter('status', label)
                       toggleDropdown()
@@ -130,7 +132,7 @@ function FilterDropdownButton() {
             {issuePriorities.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.Checkbox
+                  <Checkbox
                     onChange={() => {
                       setFilter('priority', label)
                       toggleDropdown()
@@ -152,7 +154,7 @@ function FilterDropdownButton() {
             {issueTags.map(({ id, name, label, icon: Icon }) => (
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
-                  <Dropdown.Checkbox
+                  <Checkbox
                     onChange={() => {
                       setFilter('tag', label)
                       toggleDropdown()
@@ -187,7 +189,7 @@ function SortDropdownButton() {
       <Dropdown.List>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'manual'}
               onChange={() => {
@@ -201,7 +203,7 @@ function SortDropdownButton() {
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'date-desc'}
               onChange={() => {
@@ -215,7 +217,7 @@ function SortDropdownButton() {
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'date-asc'}
               onChange={() => {
@@ -229,7 +231,7 @@ function SortDropdownButton() {
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'priority-asc'}
               onChange={() => {
@@ -243,7 +245,7 @@ function SortDropdownButton() {
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'priority-desc'}
               onChange={() => {
@@ -257,7 +259,7 @@ function SortDropdownButton() {
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'name-asc'}
               onChange={() => {
@@ -270,7 +272,7 @@ function SortDropdownButton() {
         </Dropdown.Item>
         <Dropdown.Item>
           <Dropdown.Label>
-            <Dropdown.RadioButton
+            <RadioButton
               name="sort"
               checked={sort === 'name-desc'}
               onChange={() => {
