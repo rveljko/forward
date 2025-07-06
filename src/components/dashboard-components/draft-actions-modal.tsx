@@ -1,3 +1,4 @@
+import DeleteDraftPanel from '@dashboard-components/delete-draft-panel'
 import RenameDraftPanel from '@dashboard-components/rename-draft-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
@@ -55,6 +56,9 @@ export default function DraftActionsModal({
       )}
       {activePanel === 'rename' && (
         <RenameDraftPanel draftId={draftId} closeModal={closeModal} />
+      )}
+      {activePanel === 'delete' && (
+        <DeleteDraftPanel draftId={draftId} closeModal={closeModal} />
       )}
     </ModalCard>
   )
@@ -158,8 +162,13 @@ function MenuPanel({ draftId, closeModal, setActivePanel }: MenuPanelProps) {
               icon={<TrashIcon />}
               className="[&_svg]:text-danger-500 bg-danger-500/10"
             />
-            <PanelCard.Heading className="text-danger-500">
-              Delete
+            <PanelCard.Heading>
+              <PanelCard.Button
+                className="text-danger-500"
+                onClick={() => setActivePanel('delete')}
+              >
+                Delete
+              </PanelCard.Button>
             </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph className="text-danger-400">
