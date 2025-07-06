@@ -59,6 +59,13 @@ export default function IssueActionsModal({
           <span className="sr-only">Close</span>
         </Button>
       </header>
+      {activePanel === 'menu' && (
+        <Menu
+          issueId={issueId}
+          closeModal={closeModal}
+          setActivePanel={setActivePanel}
+        />
+      )}
       {activePanel === 'change-status' && (
         <ChangeIssueStatusPanel issueId={issueId} closeModal={closeModal} />
       )}
@@ -73,13 +80,6 @@ export default function IssueActionsModal({
       )}
       {activePanel === 'delete' && (
         <DeleteIssuePanel issueId={issueId} closeModal={closeModal} />
-      )}
-      {activePanel === 'menu' && (
-        <Menu
-          issueId={issueId}
-          closeModal={closeModal}
-          setActivePanel={setActivePanel}
-        />
       )}
     </ModalCard>
   )
