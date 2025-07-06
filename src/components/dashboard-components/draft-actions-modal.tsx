@@ -7,8 +7,10 @@ import CopyIcon from '@icons/copy-icon'
 import EditIcon from '@icons/edit-icon'
 import ExternalLinkIcon from '@icons/external-link-icon'
 import TrashIcon from '@icons/trash-icon'
+import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { Draft } from '@utils/types'
+import copy from 'copy-to-clipboard'
 
 type DraftActionsModalProps = {
   draftId: Draft['id']
@@ -27,16 +29,20 @@ export default function DraftActionsModal({
           <span className="sr-only">Close</span>
         </Button>
       </header>
-      <MenuPanel draftId={draftId} />
+      <MenuPanel draftId={draftId} closeModal={closeModal} />
     </ModalCard>
   )
 }
 
 type MenuPanelProps = {
   draftId: Draft['id']
+  closeModal: () => void
 }
 
-function MenuPanel({ draftId }: MenuPanelProps) {
+function MenuPanel({ draftId, closeModal }: MenuPanelProps) {
+  const { getDraftById } = useDrafts()
+  const { title } = getDraftById(draftId)
+
   return (
     <ul className="grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 max-md:h-66">
       <li>
@@ -82,7 +88,16 @@ function MenuPanel({ draftId }: MenuPanelProps) {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<ClipboardIcon />} />
-            <PanelCard.Heading>Copy title</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button
+                onClick={() => {
+                  copy(title)
+                  closeModal()
+                }}
+              >
+                Copy title
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Copy draft title</PanelCard.Paragraph>
         </PanelCard>
