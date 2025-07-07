@@ -2,7 +2,9 @@ import Divider from '@dashboard-components/ui/divider'
 import InformationList from '@dashboard-components/ui/information-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import CalendarIcon from '@icons/calendar-icon'
+import CheckIcon from '@icons/check-icon'
 import CloseIcon from '@icons/close-icon'
+import EditIcon from '@icons/edit-icon'
 import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
@@ -15,6 +17,7 @@ import {
   iso8601DateFormatter,
 } from '@utils/date-formatters'
 import { Issue } from '@utils/types'
+import { useState } from 'react'
 
 type IssueInformationModalProps = React.ComponentPropsWithoutRef<'article'> & {
   issue: Issue
@@ -22,19 +25,25 @@ type IssueInformationModalProps = React.ComponentPropsWithoutRef<'article'> & {
 }
 
 export default function IssueInformationModal({
-  issue: { title, description, status, priority, tag, createdAt },
+  issue,
   closeModal,
   ...props
 }: IssueInformationModalProps) {
   const {
     userInformation: { firstName, lastName, profilePictureUrl },
   } = useUserInformation()
-  const { getIssueStatus, getIssuePriority, getIssueTag } = useIssues()
-  const { name: issueStatusName, icon: IssueStatusIcon } =
-    getIssueStatus(status)
-  const { name: issuePriorityName, icon: IssuePriorityIcon } =
-    getIssuePriority(priority)
-  const { name: issueTagName, icon: IssueTagIcon } = getIssueTag(tag)
+  const { updateIssue, getIssueStatus, getIssuePriority, getIssueTag } =
+    useIssues()
+  const { name: issueStatusName, icon: IssueStatusIcon } = getIssueStatus(
+    issue.status
+  )
+  const { name: issuePriorityName, icon: IssuePriorityIcon } = getIssuePriority(
+    issue.priority
+  )
+  const { name: issueTagName, icon: IssueTagIcon } = getIssueTag(issue.tag)
+
+  const [isEditMode, setIsEditMode] = useState(false)
+  const [newInformation, setNewInformation] = useState(issue)
 
   return (
     <ModalCard {...props}>
@@ -45,13 +54,64 @@ export default function IssueInformationModal({
               <StatusIcon />
             </span>
           </div>
-          <Button variant="tertiary" className="p-2" onClick={closeModal}>
-            <CloseIcon />
-            <span className="sr-only">Close</span>
-          </Button>
+          <div className="flex items-center gap-1">
+            <Button
+              variant="tertiary"
+              className="p-2"
+              onClick={() => {
+                setIsEditMode((prev) => !prev)
+
+                if (!isEditMode) return
+
+                updateIssue({ ...newInformation })
+              }}
+              disabled={!newInformation.title && !newInformation.description}
+            >
+              {isEditMode ? <CheckIcon /> : <EditIcon />}
+              <span className="sr-only">
+                {isEditMode ? 'Save Changes' : 'Edit'}
+              </span>
+            </Button>
+            <Button variant="tertiary" className="p-2" onClick={closeModal}>
+              <CloseIcon />
+              <span className="sr-only">Close</span>
+            </Button>
+          </div>
         </div>
-        <h3 className="text-2xl font-semibold">{title}</h3>
-        {description && <p className="line-clamp-2">{description}</p>}
+        {isEditMode ? (
+          <>
+            <input
+              type="text"
+              name="title"
+              placeholder="Issue title"
+              value={newInformation.title}
+              onChange={(e) =>
+                setNewInformation({ ...newInformation, title: e.target.value })
+              }
+              autoFocus
+              className="text-2xl font-semibold"
+            />
+            <textarea
+              name="description"
+              placeholder="Issue description"
+              value={newInformation.description}
+              onChange={(e) =>
+                setNewInformation({
+                  ...newInformation,
+                  description: e.target.value,
+                })
+              }
+              className="resize-none text-neutral-400"
+            />
+          </>
+        ) : (
+          <>
+            <h3 className="text-2xl font-semibold">{issue.title}</h3>
+            {issue.description && (
+              <p className="line-clamp-2">{issue.description}</p>
+            )}
+          </>
+        )}
       </header>
       <Divider />
       <div className="p-4">
@@ -80,8 +140,8 @@ export default function IssueInformationModal({
               Started
             </InformationList.Label>
             <InformationList.Value>
-              <time dateTime={iso8601DateFormatter(createdAt)}>
-                {dayMonthShortFormatter(createdAt)}
+              <time dateTime={iso8601DateFormatter(issue.createdAt)}>
+                {dayMonthShortFormatter(issue.createdAt)}
               </time>
             </InformationList.Value>
           </InformationList.Item>
