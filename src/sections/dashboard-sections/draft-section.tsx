@@ -32,7 +32,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
     onUpdate: ({ editor }) => setNewContent(editor.getHTML()),
   })
 
-  const debouncedContent = useDebounce(newContent, 3000)
+  const debouncedContent = useDebounce(newContent, 600)
 
   useEffect(() => {
     if (debouncedContent) updateDraft(draftId, debouncedContent)
