@@ -18,7 +18,7 @@ export default function ChangeIssueStatusPanel({
   closeModal,
 }: ChangeIssueStatusPanelProps) {
   const { getIssueById, updateIssueStatus } = useIssues()
-  const { status } = getIssueById(issueId)
+  const { title, status } = getIssueById(issueId)
   const [newStatus, setNewStatus] = useState(status)
 
   const isButtonDisabled = newStatus === status
@@ -35,7 +35,9 @@ export default function ChangeIssueStatusPanel({
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
             <StatusIcon />
           </span>
-          <h3 className="mb-1">Change Status</h3>
+          <h3 className="mb-1">
+            Change <strong>{title}</strong> Status
+          </h3>
           <p className="mb-4">Update issue progress status</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row">
             {issueStatuses.map(({ id, name, label, icon: Icon }) => (
