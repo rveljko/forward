@@ -13,7 +13,8 @@ export default function DeleteDraftPanel({
   draftId,
   closeModal,
 }: DeleteDraftPanelProps) {
-  const { deleteDraft } = useDrafts()
+  const { getDraftById, deleteDraft } = useDrafts()
+  const { title } = getDraftById(draftId)
 
   return (
     <article>
@@ -21,7 +22,9 @@ export default function DeleteDraftPanel({
         <span className="border-section-outline bg-danger-500/10 [&_svg]:text-danger-500 mb-2 flex size-9 items-center justify-center rounded-lg border">
           <TrashIcon />
         </span>
-        <h3 className="mb-1">Confirm Draft Deletion</h3>
+        <h3 className="mb-1">
+          Confirm <strong>{title}</strong> Deletion
+        </h3>
         <p>Are you sure you want to delete?</p>
       </div>
       <Divider />
