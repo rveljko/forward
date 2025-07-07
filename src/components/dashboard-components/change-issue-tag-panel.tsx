@@ -18,7 +18,7 @@ export default function ChangeIssueTagPanel({
   closeModal,
 }: ChangeIssueTagPanelProps) {
   const { getIssueById, updateIssueTag } = useIssues()
-  const { tag } = getIssueById(issueId)
+  const { title, tag } = getIssueById(issueId)
   const [newTag, setNewTag] = useState(tag)
 
   const isButtonDisabled = newTag === tag
@@ -35,7 +35,9 @@ export default function ChangeIssueTagPanel({
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
             <TagIcon />
           </span>
-          <h3 className="mb-1">Change Tag</h3>
+          <h3 className="mb-1">
+            Change <strong>{title}</strong> Tag
+          </h3>
           <p className="mb-4">Update issue label</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row">
             {issueTags.map(({ id, name, label, icon: Icon }) => (
