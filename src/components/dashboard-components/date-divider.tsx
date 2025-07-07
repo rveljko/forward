@@ -10,14 +10,14 @@ type DateDividerProps = {
 export default function DateDivider({ date }: DateDividerProps) {
   return (
     <div className="flex items-center justify-between gap-2" role="separator">
-      <div className="h-0.25 w-full bg-neutral-400"></div>
+      <div className="bg-section-outline h-0.25 w-full" />
       <time
         className="text-sm text-nowrap text-neutral-400"
         dateTime={iso8601DateFormatter(date)}
       >
         {usLongDateFormatter(date)}
       </time>
-      <div className="h-0.25 w-full bg-neutral-400"></div>
+      <div className="bg-section-outline h-0.25 w-full" />
     </div>
   )
 }
