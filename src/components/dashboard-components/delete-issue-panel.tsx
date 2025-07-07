@@ -13,7 +13,8 @@ export default function DeleteIssuePanel({
   issueId,
   closeModal,
 }: DeleteIssuePanelProps) {
-  const { deleteIssue } = useIssues()
+  const { getIssueById, deleteIssue } = useIssues()
+  const { title } = getIssueById(issueId)
 
   return (
     <article>
@@ -21,7 +22,9 @@ export default function DeleteIssuePanel({
         <span className="border-section-outline bg-danger-500/10 [&_svg]:text-danger-500 mb-2 flex size-9 items-center justify-center rounded-lg border">
           <TrashIcon />
         </span>
-        <h3 className="mb-1">Confirm Issue Deletion</h3>
+        <h3 className="mb-1">
+          Confirm <strong>{title}</strong> Deletion
+        </h3>
         <p>Are you sure you want to delete?</p>
       </div>
       <Divider />
