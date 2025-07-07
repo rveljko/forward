@@ -17,18 +17,18 @@ export default function ChangeIssueTagPanel({
   issueId,
   closeModal,
 }: ChangeIssueTagPanelProps) {
-  const { getIssueById, updateIssueTag } = useIssues()
-  const { title, tag } = getIssueById(issueId)
-  const [newTag, setNewTag] = useState(tag)
+  const { getIssueById, updateIssue } = useIssues()
+  const issue = getIssueById(issueId)
+  const [newTag, setNewTag] = useState(issue.tag)
 
-  const isButtonDisabled = newTag === tag
+  const isButtonDisabled = newTag === issue.tag
 
   return (
     <article>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          updateIssueTag(issueId, newTag)
+          updateIssue({ ...issue, tag: newTag })
         }}
       >
         <div className="p-4">
@@ -36,7 +36,7 @@ export default function ChangeIssueTagPanel({
             <TagIcon />
           </span>
           <h3 className="mb-1">
-            Change <strong>{title}</strong> Tag
+            Change <strong>{issue.title}</strong> Tag
           </h3>
           <p className="mb-4">Update issue label</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row">

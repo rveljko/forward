@@ -17,18 +17,18 @@ export default function ChangeIssueStatusPanel({
   issueId,
   closeModal,
 }: ChangeIssueStatusPanelProps) {
-  const { getIssueById, updateIssueStatus } = useIssues()
-  const { title, status } = getIssueById(issueId)
-  const [newStatus, setNewStatus] = useState(status)
+  const { getIssueById, updateIssue } = useIssues()
+  const issue = getIssueById(issueId)
+  const [newStatus, setNewStatus] = useState(issue.status)
 
-  const isButtonDisabled = newStatus === status
+  const isButtonDisabled = newStatus === issue.status
 
   return (
     <article>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          updateIssueStatus(issueId, newStatus)
+          updateIssue({ ...issue, status: newStatus })
         }}
       >
         <div className="p-4">
@@ -36,7 +36,7 @@ export default function ChangeIssueStatusPanel({
             <StatusIcon />
           </span>
           <h3 className="mb-1">
-            Change <strong>{title}</strong> Status
+            Change <strong>{issue.title}</strong> Status
           </h3>
           <p className="mb-4">Update issue progress status</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row">

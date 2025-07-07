@@ -15,20 +15,20 @@ export default function RenameIssuePanel({
   issueId,
   closeModal,
 }: RenameIssuePanelProps) {
-  const { getIssueById, updateIssueTitle } = useIssues()
-  const { title } = getIssueById(issueId)
-  const [newTitle, setNewTitle] = useState(title)
+  const { getIssueById, updateIssue } = useIssues()
+  const issue = getIssueById(issueId)
+  const [newTitle, setNewTitle] = useState(issue.title)
 
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const isButtonDisabled = newTitle === title
+  const isButtonDisabled = newTitle === issue.title
 
   return (
     <article>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          updateIssueTitle(issueId, newTitle)
+          updateIssue({ ...issue, title: newTitle })
           closeModal()
         }}
       >

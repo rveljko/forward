@@ -17,18 +17,18 @@ export default function ChangeIssuePriorityPanel({
   issueId,
   closeModal,
 }: ChangeIssuePriorityPanelProps) {
-  const { getIssueById, updateIssuePriority } = useIssues()
-  const { title, priority } = getIssueById(issueId)
-  const [newPriority, setNewPriority] = useState(priority)
+  const { getIssueById, updateIssue } = useIssues()
+  const issue = getIssueById(issueId)
+  const [newPriority, setNewPriority] = useState(issue.priority)
 
-  const isButtonDisabled = newPriority === priority
+  const isButtonDisabled = newPriority === issue.priority
 
   return (
     <article>
       <form
         onSubmit={(e) => {
           e.preventDefault()
-          updateIssuePriority(issueId, newPriority)
+          updateIssue({ ...issue, priority: newPriority })
           closeModal()
         }}
       >
@@ -37,7 +37,7 @@ export default function ChangeIssuePriorityPanel({
             <PriorityIcon />
           </span>
           <h3 className="mb-1">
-            Change <strong>{title}</strong> Priority
+            Change <strong>{issue.title}</strong> Priority
           </h3>
           <p className="mb-4">Update issue importance level</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row">

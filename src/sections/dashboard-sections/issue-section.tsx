@@ -37,32 +37,31 @@ type IssueSectionProps = {
 }
 
 export default function IssueSection({ issueId }: IssueSectionProps) {
-  const { getIssueById, updateIssueContent } = useIssues()
+  const { getIssueById, updateIssue } = useIssues()
 
   const issue = getIssueById(issueId)
 
   if (!issue) return <Navigate to="/dashboard/issues" />
 
-  const { title, content } = issue
-  const [newContent, setNewContent] = useState(content)
+  const [newContent, setNewContent] = useState(issue.content)
 
   const editor = useTextEditor({
-    content,
+    content: issue.content,
     onUpdate: ({ editor }) => setNewContent(editor.getHTML()),
   })
 
   const debouncedContent = useDebounce(newContent, 3000)
 
   useEffect(() => {
-    if (debouncedContent) updateIssueContent(issueId, debouncedContent)
+    if (debouncedContent) updateIssue({ ...issue, content: debouncedContent })
   }, [debouncedContent])
 
   if (!editor) return
 
   return (
     <section className="flex h-full flex-col">
-      <title>{`${TITLE_PREFIX}${title}`}</title>
-      <Header id={issueId} title={title} issue={issue} />
+      <title>{`${TITLE_PREFIX}${issue.title}`}</title>
+      <Header issue={issue} />
       <Divider />
       <div className="w-0 min-w-full">
         <div className="flex overflow-x-auto p-4">
@@ -76,14 +75,12 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
 }
 
 type HeaderProps = {
-  id: Issue['id']
-  title: Issue['title']
   issue: Issue
 }
 
-function Header({ id, title, issue }: HeaderProps) {
-  const { renameIssue } = useIssues()
-  const [newTitle, setNewTitle] = useState(title)
+function Header({ issue }: HeaderProps) {
+  const { updateIssue } = useIssues()
+  const [newTitle, setNewTitle] = useState(issue.title)
   const inputRef = useRef<HTMLInputElement>(null)
 
   return (
@@ -98,10 +95,10 @@ function Header({ id, title, issue }: HeaderProps) {
           ref={inputRef}
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          onBlur={() => renameIssue(id, newTitle)}
+          onBlur={() => updateIssue({ ...issue, title: newTitle })}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              renameIssue(id, newTitle)
+              updateIssue({ ...issue, title: newTitle })
               inputRef.current?.blur()
             }
           }}
@@ -127,15 +124,8 @@ type MoreActionsDropdownButtonProps = {
   issue: Issue
 }
 
-function MoreActionsDropdownButton({
-  issue: { id: issueId, title, status, priority, tag },
-}: MoreActionsDropdownButtonProps) {
-  const {
-    duplicateIssue,
-    updateIssueStatus,
-    updateIssuePriority,
-    updateIssueTag,
-  } = useIssues()
+function MoreActionsDropdownButton({ issue }: MoreActionsDropdownButtonProps) {
+  const { duplicateIssue, updateIssue } = useIssues()
   const { isOpened, toggleDropdown } = useDropdown()
 
   return (
@@ -166,10 +156,10 @@ function MoreActionsDropdownButton({
                 <Dropdown.Label>
                   <RadioButton
                     onChange={() => {
-                      updateIssueStatus(issueId, label)
+                      updateIssue({ ...issue, status: label })
                       toggleDropdown()
                     }}
-                    checked={label === status}
+                    checked={label === issue.status}
                   />
                   <Icon />
                   {name}
@@ -191,10 +181,10 @@ function MoreActionsDropdownButton({
                 <Dropdown.Label>
                   <RadioButton
                     onChange={() => {
-                      updateIssuePriority(issueId, label)
+                      updateIssue({ ...issue, priority: label })
                       toggleDropdown()
                     }}
-                    checked={label === priority}
+                    checked={label === issue.priority}
                   />
                   <Icon />
                   {name}
@@ -213,10 +203,10 @@ function MoreActionsDropdownButton({
                 <Dropdown.Label>
                   <RadioButton
                     onChange={() => {
-                      updateIssueTag(issueId, label)
+                      updateIssue({ ...issue, tag: label })
                       toggleDropdown()
                     }}
-                    checked={label === tag}
+                    checked={label === issue.tag}
                   />
                   <Icon />
                   {name}
@@ -229,7 +219,7 @@ function MoreActionsDropdownButton({
           <Dropdown.Button
             leftIcon={<ClipboardIcon />}
             onClick={() => {
-              copy(title)
+              copy(issue.title)
               toggleDropdown()
             }}
           >
@@ -243,7 +233,7 @@ function MoreActionsDropdownButton({
           <Dropdown.Button
             leftIcon={<CopyIcon />}
             onClick={() => {
-              duplicateIssue(issueId)
+              duplicateIssue(issue.id)
               toggleDropdown()
             }}
           >
@@ -252,7 +242,7 @@ function MoreActionsDropdownButton({
         </Dropdown.Item>
         <Dropdown.Item>
           <DeleteIssueModalButton
-            issueId={issueId}
+            issueId={issue.id}
             leftIcon={<TrashIcon />}
             className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
           >
