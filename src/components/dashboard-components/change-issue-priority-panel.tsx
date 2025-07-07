@@ -18,7 +18,7 @@ export default function ChangeIssuePriorityPanel({
   closeModal,
 }: ChangeIssuePriorityPanelProps) {
   const { getIssueById, updateIssuePriority } = useIssues()
-  const { priority } = getIssueById(issueId)
+  const { title, priority } = getIssueById(issueId)
   const [newPriority, setNewPriority] = useState(priority)
 
   const isButtonDisabled = newPriority === priority
@@ -36,7 +36,9 @@ export default function ChangeIssuePriorityPanel({
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
             <PriorityIcon />
           </span>
-          <h3 className="mb-1">Change Priority</h3>
+          <h3 className="mb-1">
+            Change <strong>{title}</strong> Priority
+          </h3>
           <p className="mb-4">Update issue importance level</p>
           <ul className="flex flex-col items-center gap-2 sm:flex-row">
             {issuePriorities.map(({ id, name, label, icon: Icon }) => (
