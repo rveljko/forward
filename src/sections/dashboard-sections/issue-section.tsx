@@ -83,6 +83,8 @@ function Header({ issue }: HeaderProps) {
   const [newTitle, setNewTitle] = useState(issue.title)
   const inputRef = useRef<HTMLInputElement>(null)
 
+  useEffect(() => setNewTitle(issue.title), [issue])
+
   return (
     <header className="flex items-center justify-between gap-2 p-4">
       <div className="flex grow items-center gap-1">
