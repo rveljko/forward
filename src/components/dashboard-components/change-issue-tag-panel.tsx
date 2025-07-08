@@ -29,6 +29,7 @@ export default function ChangeIssueTagPanel({
         onSubmit={(e) => {
           e.preventDefault()
           updateIssue({ ...issue, tag: newTag })
+          closeModal()
         }}
       >
         <div className="p-4">
