@@ -67,7 +67,13 @@ export default function IssueInformationModal({
               }}
               disabled={!newInformation.title && !newInformation.description}
             >
-              {isEditMode ? <CheckIcon /> : <EditIcon />}
+              {isEditMode ? (
+                <span className="[&_svg]:text-success-500">
+                  <CheckIcon />
+                </span>
+              ) : (
+                <EditIcon />
+              )}
               <span className="sr-only">
                 {isEditMode ? 'Save Changes' : 'Edit'}
               </span>
