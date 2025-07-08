@@ -73,6 +73,10 @@ function Header({ draftId, title }: HeaderProps) {
     setNewTitle(newDraftTitle)
   }
 
+  useEffect(() => {
+    setNewTitle(title)
+  }, [title])
+
   return (
     <header className="flex items-center justify-between gap-2 p-4">
       <div className="flex grow items-center gap-1">
