@@ -112,7 +112,7 @@ export default function ProjectInformationModal({
                 })
               }
               autoFocus
-              className="text-2xl font-semibold"
+              className="text-2xl font-semibold placeholder:text-neutral-400"
             />
             <textarea
               name="description"
@@ -124,7 +124,7 @@ export default function ProjectInformationModal({
                   description: e.target.value,
                 })
               }
-              className="resize-none text-neutral-400"
+              className="resize-none text-neutral-400 placeholder:text-neutral-400"
             />
           </>
         ) : (
