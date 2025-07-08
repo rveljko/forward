@@ -114,7 +114,7 @@ export default function IssueInformationModal({
           <>
             <h3 className="text-2xl font-semibold">{issue.title}</h3>
             {issue.description && (
-              <p className="line-clamp-2">{issue.description}</p>
+              <p className="line-clamp-2 text-balance">{issue.description}</p>
             )}
           </>
         )}
