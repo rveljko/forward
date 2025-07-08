@@ -63,7 +63,7 @@ export default function IssueInformationModal({
 
                 if (!isEditMode) return
 
-                updateIssue({ ...newInformation })
+                updateIssue(newInformation)
               }}
               disabled={!newInformation.title && !newInformation.description}
             >
