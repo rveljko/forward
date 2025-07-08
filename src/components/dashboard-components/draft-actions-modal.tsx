@@ -19,6 +19,7 @@ import { useState } from 'react'
 type DraftActionsModalProps = {
   draftId: Draft['id']
   closeModal: () => void
+  withoutLinks?: boolean
 }
 
 type ActivePanel = 'menu' | 'rename' | 'delete'
@@ -26,6 +27,7 @@ type ActivePanel = 'menu' | 'rename' | 'delete'
 export default function DraftActionsModal({
   draftId,
   closeModal,
+  withoutLinks,
 }: DraftActionsModalProps) {
   const [activePanel, setActivePanel] = useState<ActivePanel>('menu')
 
@@ -52,6 +54,7 @@ export default function DraftActionsModal({
           draftId={draftId}
           closeModal={closeModal}
           setActivePanel={setActivePanel}
+          withoutLinks={withoutLinks}
         />
       )}
       {activePanel === 'rename' && (
@@ -68,44 +71,56 @@ type MenuPanelProps = {
   draftId: Draft['id']
   closeModal: () => void
   setActivePanel: React.Dispatch<React.SetStateAction<ActivePanel>>
+  withoutLinks?: boolean
 }
 
-function MenuPanel({ draftId, closeModal, setActivePanel }: MenuPanelProps) {
+function MenuPanel({
+  draftId,
+  closeModal,
+  setActivePanel,
+  withoutLinks,
+}: MenuPanelProps) {
   const { getDraftById, duplicateDraft } = useDrafts()
   const { title } = getDraftById(draftId)
 
   return (
-    <ul className="grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 max-md:h-66">
-      <li>
-        <PanelCard>
-          <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<ClickIcon />} />
-            <PanelCard.Heading>
-              <PanelCard.Button href={`/dashboard/drafts/${draftId}`}>
-                Open
-              </PanelCard.Button>
-            </PanelCard.Heading>
-          </div>
-          <PanelCard.Paragraph>View draft details</PanelCard.Paragraph>
-        </PanelCard>
-      </li>
-      <li>
-        <PanelCard>
-          <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<ExternalLinkIcon />} />
-            <PanelCard.Heading>
-              <PanelCard.Button
-                href={`/dashboard/drafts/${draftId}`}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Open in new tab
-              </PanelCard.Button>
-            </PanelCard.Heading>
-          </div>
-          <PanelCard.Paragraph>Open draft separately</PanelCard.Paragraph>
-        </PanelCard>
-      </li>
+    <ul
+      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-46' : 'max-md:h-66'} `}
+    >
+      {!withoutLinks && (
+        <>
+          <li>
+            <PanelCard>
+              <div className="mb-1 flex items-center gap-1">
+                <PanelCard.Icon icon={<ClickIcon />} />
+                <PanelCard.Heading>
+                  <PanelCard.Button href={`/dashboard/drafts/${draftId}`}>
+                    Open
+                  </PanelCard.Button>
+                </PanelCard.Heading>
+              </div>
+              <PanelCard.Paragraph>View draft details</PanelCard.Paragraph>
+            </PanelCard>
+          </li>
+          <li>
+            <PanelCard>
+              <div className="mb-1 flex items-center gap-1">
+                <PanelCard.Icon icon={<ExternalLinkIcon />} />
+                <PanelCard.Heading>
+                  <PanelCard.Button
+                    href={`/dashboard/drafts/${draftId}`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    Open in new tab
+                  </PanelCard.Button>
+                </PanelCard.Heading>
+              </div>
+              <PanelCard.Paragraph>Open draft separately</PanelCard.Paragraph>
+            </PanelCard>
+          </li>
+        </>
+      )}
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">

@@ -1,11 +1,11 @@
 import Container from '@dashboard-components/container'
-import DeleteDraftModalButton from '@dashboard-components/delete-draft-modal-button'
+import DraftActionsModalButton from '@dashboard-components/draft-actions-modal-button'
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
 import useDebounce from '@hooks/use-debounce'
 import useTextEditor from '@hooks/use-text-editor'
-import TrashIcon from '@icons/trash-icon'
+import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import { Editor } from '@tiptap/react'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
@@ -95,14 +95,15 @@ function Header({ draftId, title }: HeaderProps) {
           maxLength={80}
         />
       </div>
-      <DeleteDraftModalButton
+      <DraftActionsModalButton
         draftId={draftId}
+        withoutLinks
         variant="tertiary"
-        className="text-danger-500 hover:bg-danger-500/10 p-0.5"
+        className="p-0.5"
       >
-        <TrashIcon />
-        <span className="sr-only">Delete Draft</span>
-      </DeleteDraftModalButton>
+        <DotsVerticalIcon />
+        <span className="sr-only">Actions</span>
+      </DraftActionsModalButton>
     </header>
   )
 }

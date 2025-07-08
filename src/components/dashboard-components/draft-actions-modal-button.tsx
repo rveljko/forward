@@ -7,10 +7,12 @@ import { Draft } from '@utils/types'
 
 type DraftActionsModalButtonProps = ButtonProps & {
   draftId: Draft['id']
+  withoutLinks?: boolean
 }
 
 export default function DraftActionsModalButton({
   draftId,
+  withoutLinks,
   children,
   ...props
 }: DraftActionsModalButtonProps) {
@@ -27,7 +29,11 @@ export default function DraftActionsModalButton({
         <Modal.Overlay>
           <Modal.Dialog>
             <Modal.FocusLock>
-              <DraftActionsModal closeModal={toggleModal} draftId={draftId} />
+              <DraftActionsModal
+                closeModal={toggleModal}
+                draftId={draftId}
+                withoutLinks={withoutLinks}
+              />
             </Modal.FocusLock>
           </Modal.Dialog>
         </Modal.Overlay>
