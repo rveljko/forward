@@ -7,10 +7,12 @@ import { Issue } from '@utils/types'
 
 type IssueActionsModalButtonProps = ButtonProps & {
   issueId: Issue['id']
+  withoutLinks?: boolean
 }
 
 export default function IssueActionsModalButton({
   issueId,
+  withoutLinks,
   children,
   ...props
 }: IssueActionsModalButtonProps) {
@@ -27,7 +29,11 @@ export default function IssueActionsModalButton({
         <Modal.Overlay>
           <Modal.Dialog>
             <Modal.FocusLock>
-              <IssueActionsModal closeModal={toggleModal} issueId={issueId} />
+              <IssueActionsModal
+                closeModal={toggleModal}
+                issueId={issueId}
+                withoutLinks={withoutLinks}
+              />
             </Modal.FocusLock>
           </Modal.Dialog>
         </Modal.Overlay>

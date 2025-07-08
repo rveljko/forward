@@ -25,6 +25,7 @@ import { useState } from 'react'
 type IssueActionsModalProps = {
   closeModal: () => void
   issueId: Issue['id']
+  withoutLinks?: boolean
 }
 
 type ActivePanel =
@@ -38,6 +39,7 @@ type ActivePanel =
 export default function IssueActionsModal({
   closeModal,
   issueId,
+  withoutLinks,
 }: IssueActionsModalProps) {
   const [activePanel, setActivePanel] = useState<ActivePanel>('menu')
 
@@ -64,6 +66,7 @@ export default function IssueActionsModal({
           issueId={issueId}
           closeModal={closeModal}
           setActivePanel={setActivePanel}
+          withoutLinks={withoutLinks}
         />
       )}
       {activePanel === 'change-status' && (
@@ -89,44 +92,56 @@ type MenuPanelProps = {
   issueId: Issue['id']
   closeModal: () => void
   setActivePanel: React.Dispatch<React.SetStateAction<ActivePanel>>
+  withoutLinks?: boolean
 }
 
-function MenuPanel({ closeModal, issueId, setActivePanel }: MenuPanelProps) {
+function MenuPanel({
+  closeModal,
+  issueId,
+  setActivePanel,
+  withoutLinks,
+}: MenuPanelProps) {
   const { getIssueById, duplicateIssue } = useIssues()
   const { title } = getIssueById(issueId)
 
   return (
-    <ul className="grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 max-md:h-110">
-      <li>
-        <PanelCard>
-          <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<ClickIcon />} />
-            <PanelCard.Heading>
-              <PanelCard.Button href={`/dashboard/issues/${issueId}`}>
-                Open
-              </PanelCard.Button>
-            </PanelCard.Heading>
-          </div>
-          <PanelCard.Paragraph>View issue details</PanelCard.Paragraph>
-        </PanelCard>
-      </li>
-      <li>
-        <PanelCard>
-          <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<ExternalLinkIcon />} />
-            <PanelCard.Heading>
-              <PanelCard.Button
-                href={`/dashboard/issues/${issueId}`}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Open in new tab
-              </PanelCard.Button>
-            </PanelCard.Heading>
-          </div>
-          <PanelCard.Paragraph>Open issue separately</PanelCard.Paragraph>
-        </PanelCard>
-      </li>
+    <ul
+      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
+    >
+      {!withoutLinks && (
+        <>
+          <li>
+            <PanelCard>
+              <div className="mb-1 flex items-center gap-1">
+                <PanelCard.Icon icon={<ClickIcon />} />
+                <PanelCard.Heading>
+                  <PanelCard.Button href={`/dashboard/issues/${issueId}`}>
+                    Open
+                  </PanelCard.Button>
+                </PanelCard.Heading>
+              </div>
+              <PanelCard.Paragraph>View issue details</PanelCard.Paragraph>
+            </PanelCard>
+          </li>
+          <li>
+            <PanelCard>
+              <div className="mb-1 flex items-center gap-1">
+                <PanelCard.Icon icon={<ExternalLinkIcon />} />
+                <PanelCard.Heading>
+                  <PanelCard.Button
+                    href={`/dashboard/issues/${issueId}`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    Open in new tab
+                  </PanelCard.Button>
+                </PanelCard.Heading>
+              </div>
+              <PanelCard.Paragraph>Open issue separately</PanelCard.Paragraph>
+            </PanelCard>
+          </li>
+        </>
+      )}
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">

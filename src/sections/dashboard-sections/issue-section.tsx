@@ -1,34 +1,17 @@
 import Container from '@dashboard-components/container'
-import DeleteIssueModalButton from '@dashboard-components/delete-issue-modal-button'
+import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-button'
 import IssueInformationModalButton from '@dashboard-components/issue-information-modal-button'
 import RichTextEditor from '@dashboard-components/text-editor'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
-import Dropdown, {
-  dropdownButtonClasses,
-} from '@dashboard-components/ui/dropdown'
-import DropdownButton from '@dashboard-components/ui/dropdown-button'
-import RadioButton from '@dashboard-components/ui/radio-button'
-import { issuePriorities } from '@data/issue-priorities'
-import { issueStatuses } from '@data/issue-statuses'
-import { issueTags } from '@data/issue-tags'
 import useDebounce from '@hooks/use-debounce'
-import useDropdown from '@hooks/use-dropdown'
 import useTextEditor from '@hooks/use-text-editor'
-import ClipboardIcon from '@icons/clipboard-icon'
-import CopyIcon from '@icons/copy-icon'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
-import EditIcon from '@icons/edit-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
-import PriorityIcon from '@icons/priority-icon'
-import StatusIcon from '@icons/status-icon'
-import TagIcon from '@icons/tag-icon'
-import TrashIcon from '@icons/trash-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
 import { TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
-import copy from 'copy-to-clipboard'
 import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
@@ -108,7 +91,15 @@ function Header({ issue }: HeaderProps) {
         />
       </div>
       <div className="flex items-center gap-1">
-        <MoreActionsDropdownButton issue={issue} />
+        <IssueActionsModalButton
+          issueId={issue.id}
+          withoutLinks
+          variant="tertiary"
+          className="p-0.5"
+        >
+          <DotsVerticalIcon />
+          <span className="sr-only">Actions</span>
+        </IssueActionsModalButton>
         <IssueInformationModalButton
           issue={issue}
           variant="tertiary"
@@ -119,140 +110,6 @@ function Header({ issue }: HeaderProps) {
         </IssueInformationModalButton>
       </div>
     </header>
-  )
-}
-
-type MoreActionsDropdownButtonProps = {
-  issue: Issue
-}
-
-function MoreActionsDropdownButton({ issue }: MoreActionsDropdownButtonProps) {
-  const { duplicateIssue, updateIssue } = useIssues()
-  const { isOpened, toggleDropdown } = useDropdown()
-
-  return (
-    <DropdownButton
-      label={
-        <>
-          <DotsVerticalIcon />
-          <span className="sr-only">Issue actions</span>
-        </>
-      }
-      isOpened={isOpened}
-      toggleDropdown={toggleDropdown}
-      variant="tertiary"
-      position="bottom-left"
-      className="p-0.5"
-    >
-      <Dropdown.Accordion>
-        <Dropdown.AccordionItem value="item-1">
-          <Dropdown.AccordionSummary
-            valueForItem="item-1"
-            icon={<StatusIcon />}
-          >
-            Status
-          </Dropdown.AccordionSummary>
-          <Dropdown.List>
-            {issueStatuses.map(({ id, name, label, icon: Icon }) => (
-              <Dropdown.Item key={id}>
-                <Dropdown.Label>
-                  <RadioButton
-                    onChange={() => {
-                      updateIssue({ ...issue, status: label })
-                      toggleDropdown()
-                    }}
-                    checked={label === issue.status}
-                  />
-                  <Icon />
-                  {name}
-                </Dropdown.Label>
-              </Dropdown.Item>
-            ))}
-          </Dropdown.List>
-        </Dropdown.AccordionItem>
-        <Dropdown.AccordionItem value="item-2">
-          <Dropdown.AccordionSummary
-            valueForItem="item-2"
-            icon={<PriorityIcon />}
-          >
-            Priority
-          </Dropdown.AccordionSummary>
-          <Dropdown.List>
-            {issuePriorities.map(({ id, name, label, icon: Icon }) => (
-              <Dropdown.Item key={id}>
-                <Dropdown.Label>
-                  <RadioButton
-                    onChange={() => {
-                      updateIssue({ ...issue, priority: label })
-                      toggleDropdown()
-                    }}
-                    checked={label === issue.priority}
-                  />
-                  <Icon />
-                  {name}
-                </Dropdown.Label>
-              </Dropdown.Item>
-            ))}
-          </Dropdown.List>
-        </Dropdown.AccordionItem>
-        <Dropdown.AccordionItem value="item-3">
-          <Dropdown.AccordionSummary valueForItem="item-3" icon={<TagIcon />}>
-            Tag
-          </Dropdown.AccordionSummary>
-          <Dropdown.List>
-            {issueTags.map(({ id, name, label, icon: Icon }) => (
-              <Dropdown.Item key={id}>
-                <Dropdown.Label>
-                  <RadioButton
-                    onChange={() => {
-                      updateIssue({ ...issue, tag: label })
-                      toggleDropdown()
-                    }}
-                    checked={label === issue.tag}
-                  />
-                  <Icon />
-                  {name}
-                </Dropdown.Label>
-              </Dropdown.Item>
-            ))}
-          </Dropdown.List>
-        </Dropdown.AccordionItem>
-        <Dropdown.Item>
-          <Dropdown.Button
-            leftIcon={<ClipboardIcon />}
-            onClick={() => {
-              copy(issue.title)
-              toggleDropdown()
-            }}
-          >
-            Copy title
-          </Dropdown.Button>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <Dropdown.Button leftIcon={<EditIcon />}>Rename</Dropdown.Button>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <Dropdown.Button
-            leftIcon={<CopyIcon />}
-            onClick={() => {
-              duplicateIssue(issue.id)
-              toggleDropdown()
-            }}
-          >
-            Duplicate
-          </Dropdown.Button>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <DeleteIssueModalButton
-            issueId={issue.id}
-            leftIcon={<TrashIcon />}
-            className={`${dropdownButtonClasses} text-danger-500 hover:bg-danger-500/10 justify-start`}
-          >
-            Delete
-          </DeleteIssueModalButton>
-        </Dropdown.Item>
-      </Dropdown.Accordion>
-    </DropdownButton>
   )
 }
 
