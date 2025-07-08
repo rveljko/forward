@@ -95,7 +95,7 @@ export default function IssueInformationModal({
                 setNewInformation({ ...newInformation, title: e.target.value })
               }
               autoFocus
-              className="text-2xl font-semibold"
+              className="text-2xl font-semibold placeholder:text-neutral-400"
             />
             <textarea
               name="description"
@@ -107,7 +107,7 @@ export default function IssueInformationModal({
                   description: e.target.value,
                 })
               }
-              className="resize-none text-neutral-400"
+              className="resize-none text-neutral-400 placeholder:text-neutral-400"
             />
           </>
         ) : (
