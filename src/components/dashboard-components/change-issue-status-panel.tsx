@@ -29,6 +29,7 @@ export default function ChangeIssueStatusPanel({
         onSubmit={(e) => {
           e.preventDefault()
           updateIssue({ ...issue, status: newStatus })
+          closeModal()
         }}
       >
         <div className="p-4">
