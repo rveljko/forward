@@ -12,6 +12,7 @@ import UserIcon from '@icons/user-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
+import { DEFAULT_ISSUE_TITLE } from '@utils/constants'
 import {
   dayMonthShortFormatter,
   iso8601DateFormatter,
@@ -63,7 +64,10 @@ export default function IssueInformationModal({
 
                 if (!isEditMode) return
 
-                updateIssue(newInformation)
+                updateIssue({
+                  ...newInformation,
+                  title: newInformation.title || DEFAULT_ISSUE_TITLE,
+                })
               }}
               disabled={!newInformation.title && !newInformation.description}
             >
