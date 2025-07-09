@@ -80,6 +80,10 @@ export default function ProjectInformationModal({
 
                 setProjectInformation(newProjectInformation)
               }}
+              disabled={
+                !newProjectInformation.title ||
+                !newProjectInformation.description
+              }
             >
               {isEditMode ? (
                 <span className="[&_svg]:text-success-500">
