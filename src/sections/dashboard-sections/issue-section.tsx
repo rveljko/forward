@@ -10,7 +10,7 @@ import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
-import { TITLE_PREFIX } from '@utils/constants'
+import { DEFAULT_ISSUE_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
 import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
@@ -80,14 +80,16 @@ function Header({ issue }: HeaderProps) {
           ref={inputRef}
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          onBlur={() => updateIssue({ ...issue, title: newTitle })}
+          onBlur={() =>
+            updateIssue({ ...issue, title: newTitle || DEFAULT_ISSUE_TITLE })
+          }
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              updateIssue({ ...issue, title: newTitle })
+              updateIssue({ ...issue, title: newTitle || DEFAULT_ISSUE_TITLE })
               inputRef.current?.blur()
             }
           }}
-          className="text-clickable w-full max-w-85"
+          className={`text-clickable w-full max-w-85 ${newTitle === DEFAULT_ISSUE_TITLE ? 'text-neutral-400' : 'text-clickable'}`}
         />
       </div>
       <div className="flex items-center gap-1">
