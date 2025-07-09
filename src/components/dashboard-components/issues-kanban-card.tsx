@@ -1,9 +1,8 @@
+import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-button'
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
-import { useDraggable } from '@dnd-kit/core'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
-import Button from '@ui/button'
 import {
   dayMonthShortFormatter,
   iso8601DateFormatter,
@@ -21,21 +20,12 @@ export default function IssuesKanbanCard({
   className,
   ...props
 }: IssuesKanbanCardProps) {
-  const { attributes, listeners, transform, isDragging, setNodeRef } =
-    useDraggable({
-      id,
-    })
-
   return (
     <article
       className={cn(
-        `ring-section-outline bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring ${isDragging ? 'z-10' : ''}`,
+        'ring-section-outline bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring',
         className
       )}
-      ref={setNodeRef}
-      style={{ transform: `translate(${transform?.x}px, ${transform?.y}px)` }}
-      {...attributes}
-      {...listeners}
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">
@@ -47,19 +37,19 @@ export default function IssuesKanbanCard({
               to={`/dashboard/issues/${id}`}
               className="text-clickable line-clamp-1 break-all"
             >
-              <span
-                className={`absolute inset-0 ${isDragging ? 'cursor-grabbing' : ''}`}
-              />
+              <span className="absolute inset-0" />
               {title}
             </Link>
           </h3>
         </div>
-        <Button
+        <IssueActionsModalButton
+          issueId={id}
           variant="tertiary"
-          className="hover:text-clickable ml-auto rounded-full p-0.5 text-neutral-400"
+          className="hover:text-clickable isolate ml-auto rounded-full p-0.5 text-neutral-400"
         >
           <DotsVerticalIcon />
-        </Button>
+          <span className="sr-only">Actions</span>
+        </IssueActionsModalButton>
       </header>
       <time
         className="mb-2 inline-block text-nowrap text-neutral-400"
