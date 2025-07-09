@@ -66,13 +66,6 @@ function Header({ draftId, title }: HeaderProps) {
   const [newTitle, setNewTitle] = useState(title)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const newDraftTitle = newTitle || DEFAULT_DRAFT_TITLE
-
-  function handleRenameDraft() {
-    renameDraft(draftId, newDraftTitle)
-    setNewTitle(newDraftTitle)
-  }
-
   useEffect(() => {
     setNewTitle(title)
   }, [title])
@@ -88,10 +81,10 @@ function Header({ draftId, title }: HeaderProps) {
           ref={inputRef}
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          onBlur={handleRenameDraft}
+          onBlur={() => renameDraft(draftId, newTitle || DEFAULT_DRAFT_TITLE)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              handleRenameDraft()
+              renameDraft(draftId, newTitle || DEFAULT_DRAFT_TITLE)
               inputRef.current?.blur()
             }
           }}
