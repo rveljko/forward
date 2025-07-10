@@ -56,7 +56,7 @@ export default function IssuesListItem({
   return (
     <article
       className={cn(
-        'bg-section-background-color hover:bg-clickable/5 relative flex items-center justify-between gap-2 p-4',
+        'bg-section-background-color relative flex items-center justify-between gap-2 p-4',
         className
       )}
       style={style}
