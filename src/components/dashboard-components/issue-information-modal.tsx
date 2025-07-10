@@ -52,7 +52,7 @@ export default function IssueInformationModal({
         <div className="flex items-center justify-between">
           <div className="inset-ring-section-outline w-max rounded-lg p-2 inset-ring">
             <span className="text-clickable">
-              <StatusIcon />
+              <IssueStatusIcon />
             </span>
           </div>
           <div className="flex items-center gap-1">
