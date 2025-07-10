@@ -22,13 +22,34 @@ export default function IssuesKanbanCard({
   className,
   ...props
 }: IssuesKanbanCardProps) {
-  const { attributes, listeners, transform, transition, setNodeRef } =
-    useSortable({ id })
+  const {
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+    setNodeRef,
+  } = useSortable({ id })
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
   }
+
+  if (isDragging)
+    return (
+      <article
+        className={cn(
+          'ring-section-outline bg-clickable/5 h-34.5 rounded-sm ring',
+          className
+        )}
+        style={style}
+        ref={setNodeRef}
+        {...attributes}
+        {...listeners}
+        {...props}
+      />
+    )
 
   return (
     <article

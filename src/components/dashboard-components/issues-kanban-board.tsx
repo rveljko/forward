@@ -1,7 +1,15 @@
+import IssuesKanbanCard from '@dashboard-components/issues-kanban-card'
 import IssuesKanbanColumn from '@dashboard-components/issues-kanban-column'
-import { DndContext, DragOverEvent } from '@dnd-kit/core'
+import {
+  DndContext,
+  DragOverEvent,
+  DragOverlay,
+  DragStartEvent,
+} from '@dnd-kit/core'
 import { useIssues } from '@services/contexts/issues-context'
+import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
+import { useState } from 'react'
 
 type IssuesKanbanBoardProps = React.ComponentPropsWithoutRef<'div'>
 
@@ -9,7 +17,12 @@ export default function IssuesKanbanBoard({
   className,
   ...props
 }: IssuesKanbanBoardProps) {
-  const { updateIssuePosition } = useIssues()
+  const { updateIssuePosition, getIssueById } = useIssues()
+  const [activeId, setActiveId] = useState<Issue['id'] | null>(null)
+
+  function handleDragStart(event: DragStartEvent) {
+    setActiveId(event.active.id as Issue['id'])
+  }
 
   function handleDragOver(e: DragOverEvent) {
     const { active, over } = e
@@ -21,12 +34,20 @@ export default function IssuesKanbanBoard({
     updateIssuePosition(active.id, over.id)
   }
 
+  function handleDragEnd() {
+    setActiveId(null)
+  }
+
   return (
     <div className="w-0 min-w-full grow">
-      <DndContext onDragOver={handleDragOver}>
+      <DndContext
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+      >
         <div
           className={cn(
-            'divide-section-outline flex h-full divide-x overflow-x-auto p-4',
+            'divide-section-outline flex h-full divide-x overflow-x-auto scroll-smooth p-4',
             className
           )}
           {...props}
@@ -41,6 +62,9 @@ export default function IssuesKanbanBoard({
             <IssuesKanbanColumn status="finished" />
           </div>
         </div>
+        <DragOverlay>
+          {activeId && <IssuesKanbanCard issue={getIssueById(activeId)} />}
+        </DragOverlay>
       </DndContext>
     </div>
   )
