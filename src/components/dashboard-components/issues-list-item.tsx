@@ -3,6 +3,8 @@ import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
+import DragVerticalIcon from '@icons/drag-vertical-icon'
+import Button from '@ui/button'
 import {
   dayMonthShortFormatter,
   iso8601DateFormatter,
@@ -29,6 +31,13 @@ export default function IssuesListItem({
       {...props}
     >
       <div className="flex items-center gap-2">
+        <Button
+          variant="tertiary"
+          className="hover:text-clickable z-1 p-0.5 text-neutral-400 pointer-coarse:hidden"
+        >
+          <DragVerticalIcon />
+          <span className="sr-only">Drag handle</span>
+        </Button>
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <div className="flex h-8.5 shrink-0 items-center">
