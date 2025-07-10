@@ -12,7 +12,10 @@ export default function IssuesListItemsList({
   ...props
 }: IssuesListItemsListProps) {
   return (
-    <ul className={cn('divide-section-outline divide-y', className)} {...props}>
+    <ul
+      className={cn('divide-section-outline grow divide-y', className)}
+      {...props}
+    >
       {issues.map((issue) => (
         <li key={issue.id}>
           <IssuesListItem issue={issue} />
