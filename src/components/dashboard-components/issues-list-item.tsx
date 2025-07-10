@@ -24,13 +24,34 @@ export default function IssuesListItem({
   className,
   ...props
 }: IssuesListItemProps) {
-  const { attributes, listeners, transform, transition, setNodeRef } =
-    useSortable({ id })
+  const {
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+    setNodeRef,
+  } = useSortable({ id })
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
   }
+
+  if (isDragging)
+    return (
+      <article
+        className={cn(
+          'bg-clickable/5 ring-section-outline h-16.5 rounded-sm ring',
+          className
+        )}
+        style={style}
+        ref={setNodeRef}
+        {...attributes}
+        {...listeners}
+        {...props}
+      />
+    )
 
   return (
     <article

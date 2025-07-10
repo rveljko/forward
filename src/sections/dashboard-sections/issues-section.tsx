@@ -103,7 +103,7 @@ export default function IssuesSection() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        {view === 'list' && <IssuesListBoard />}
+        {view === 'list' && <IssuesListBoard activeId={activeId} />}
         {view === 'kanban' && <IssuesKanbanBoard activeId={activeId} />}
       </DndContext>
     </section>
