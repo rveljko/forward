@@ -5,6 +5,8 @@ import IssueTag from '@dashboard-components/ui/issue-tag'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
+import DragVerticalIcon from '@icons/drag-vertical-icon'
+import Button from '@ui/button'
 import {
   dayMonthShortFormatter,
   iso8601DateFormatter,
@@ -59,11 +61,18 @@ export default function IssuesKanbanCard({
       )}
       style={style}
       ref={setNodeRef}
-      {...attributes}
-      {...listeners}
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">
+        <Button
+          variant="tertiary"
+          className="hover:text-clickable z-1 p-0.5 text-neutral-400 pointer-coarse:hidden"
+          {...attributes}
+          {...listeners}
+        >
+          <DragVerticalIcon />
+          <span className="sr-only">Drag handle</span>
+        </Button>
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <IssueStatus status={status} />
