@@ -10,6 +10,7 @@ import Switcher from '@dashboard-components/ui/switcher'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
+import { DndContext, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
@@ -23,6 +24,7 @@ import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
+import { Issue } from '@utils/types'
 import { useEffect, useState } from 'react'
 
 function getInitialView(): 'list' | 'kanban' {
@@ -31,7 +33,27 @@ function getInitialView(): 'list' | 'kanban' {
 }
 
 export default function IssuesSection() {
+  const { updateIssuePosition } = useIssues()
   const [view, setView] = useState(getInitialView)
+  const [activeId, setActiveId] = useState<Issue['id'] | null>(null)
+
+  function handleDragStart(e: DragStartEvent) {
+    setActiveId(e.active.id as Issue['id'])
+  }
+
+  function handleDragOver(e: DragOverEvent) {
+    const { active, over } = e
+
+    if (!over) return
+
+    if (active.id === over.id) return
+
+    updateIssuePosition(active.id, over.id)
+  }
+
+  function handleDragEnd() {
+    setActiveId(null)
+  }
 
   useEffect(() => {
     localStorage.setItem('view', JSON.stringify(view))
@@ -76,8 +98,14 @@ export default function IssuesSection() {
         </Switcher>
       </div>
       <Divider />
-      {view === 'list' && <IssuesListBoard />}
-      {view === 'kanban' && <IssuesKanbanBoard />}
+      <DndContext
+        onDragStart={handleDragStart}
+        onDragOver={handleDragOver}
+        onDragEnd={handleDragEnd}
+      >
+        {view === 'list' && <IssuesListBoard />}
+        {view === 'kanban' && <IssuesKanbanBoard activeId={activeId} />}
+      </DndContext>
     </section>
   )
 }

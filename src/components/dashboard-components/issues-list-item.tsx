@@ -2,6 +2,8 @@ import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-b
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import DragVerticalIcon from '@icons/drag-vertical-icon'
 import Button from '@ui/button'
@@ -22,18 +24,30 @@ export default function IssuesListItem({
   className,
   ...props
 }: IssuesListItemProps) {
+  const { attributes, listeners, transform, transition, setNodeRef } =
+    useSortable({ id })
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
+
   return (
     <article
       className={cn(
         'border-section-outline bg-section-background-color hover:bg-clickable/5 relative flex items-center justify-between gap-2 border-b p-4',
         className
       )}
+      style={style}
+      ref={setNodeRef}
       {...props}
     >
       <div className="flex items-center gap-2">
         <Button
           variant="tertiary"
           className="hover:text-clickable z-1 p-0.5 text-neutral-400 pointer-coarse:hidden"
+          {...attributes}
+          {...listeners}
         >
           <DragVerticalIcon />
           <span className="sr-only">Drag handle</span>

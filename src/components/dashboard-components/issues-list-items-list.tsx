@@ -1,7 +1,7 @@
 import IssuesListItem from '@dashboard-components/issues-list-item'
 import { Issue } from '@utils/types'
 
-type IssuesListItemsListProps = React.ComponentPropsWithoutRef<'ul'> & {
+type IssuesListItemsListProps = React.ComponentPropsWithRef<'ul'> & {
   issues: Issue[]
 }
 
