@@ -2,6 +2,8 @@ import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-b
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
+import { useSortable } from '@dnd-kit/sortable'
+import { CSS } from '@dnd-kit/utilities'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import {
   dayMonthShortFormatter,
@@ -20,12 +22,24 @@ export default function IssuesKanbanCard({
   className,
   ...props
 }: IssuesKanbanCardProps) {
+  const { attributes, listeners, transform, transition, setNodeRef } =
+    useSortable({ id })
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  }
+
   return (
     <article
       className={cn(
         'ring-section-outline bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring',
         className
       )}
+      style={style}
+      ref={setNodeRef}
+      {...attributes}
+      {...listeners}
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">

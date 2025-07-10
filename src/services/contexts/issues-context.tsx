@@ -2,6 +2,8 @@ import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
+import { UniqueIdentifier } from '@dnd-kit/core'
+import { arrayMove } from '@dnd-kit/sortable'
 import {
   Issue,
   IssueFilterCategory,
@@ -34,6 +36,10 @@ type IssuesContextType = {
   duplicateIssue: (id: Issue['id']) => void
   deleteIssue: (id: Issue['id']) => void
   updateIssue: (issue: Issue) => void
+  updateIssuePosition: (
+    activeId: UniqueIdentifier,
+    overId: UniqueIdentifier
+  ) => void
   getIssueStatus: (status: IssueStatusLabel) => IssueStatus
   getIssueTag: (tag: IssueTagLabel) => IssueTag
   getIssuePriority: (priority: IssuePriorityLabel) => IssuePriority
@@ -161,6 +167,20 @@ export default function IssuesContextProvider({
     setIssues([issue, ...issues.filter(({ id }) => id !== issue.id)])
   }
 
+  function updateIssuePosition(
+    activeId: UniqueIdentifier,
+    overId: UniqueIdentifier
+  ) {
+    setIssues((prevIssues) => {
+      const activeIndex = prevIssues.findIndex(({ id }) => id === activeId)
+      const overIndex = prevIssues.findIndex(({ id }) => id === overId)
+
+      prevIssues[activeIndex].status = prevIssues[overIndex]?.status ?? overId
+
+      return arrayMove(prevIssues, activeIndex, overIndex)
+    })
+  }
+
   function getIssueStatus(status: IssueStatusLabel) {
     return issueStatuses.find(({ label }) => label === status)!
   }
@@ -191,6 +211,7 @@ export default function IssuesContextProvider({
         duplicateIssue,
         deleteIssue,
         updateIssue,
+        updateIssuePosition,
         getIssueStatus,
         getIssueTag,
         getIssuePriority,

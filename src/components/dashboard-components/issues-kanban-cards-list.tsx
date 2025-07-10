@@ -1,4 +1,5 @@
 import IssuesKanbanCard from '@dashboard-components/issues-kanban-card'
+import { SortableContext } from '@dnd-kit/sortable'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 
@@ -13,11 +14,13 @@ export default function IssuesKanbanCardsList({
 }: IssuesKanbanCardsListProps) {
   return (
     <ul className={cn('flex grow flex-col gap-2', className)} {...props}>
-      {issues.map((issue) => (
-        <li key={issue.id}>
-          <IssuesKanbanCard issue={issue} />
-        </li>
-      ))}
+      <SortableContext items={issues}>
+        {issues.map((issue) => (
+          <li key={issue.id}>
+            <IssuesKanbanCard issue={issue} />
+          </li>
+        ))}
+      </SortableContext>
     </ul>
   )
 }

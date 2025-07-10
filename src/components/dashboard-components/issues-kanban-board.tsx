@@ -1,7 +1,6 @@
 import IssuesKanbanColumn from '@dashboard-components/issues-kanban-column'
-import { DndContext, DragEndEvent } from '@dnd-kit/core'
+import { DndContext, DragOverEvent } from '@dnd-kit/core'
 import { useIssues } from '@services/contexts/issues-context'
-import { Issue, IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
 
 type IssuesKanbanBoardProps = React.ComponentPropsWithoutRef<'div'>
@@ -10,22 +9,21 @@ export default function IssuesKanbanBoard({
   className,
   ...props
 }: IssuesKanbanBoardProps) {
-  const { updateIssueStatus } = useIssues()
+  const { updateIssuePosition } = useIssues()
 
-  function handleDragEnd(e: DragEndEvent) {
+  function handleDragOver(e: DragOverEvent) {
     const { active, over } = e
 
     if (!over) return
 
-    const issueId = active.id as Issue['id']
-    const newStatus = over.id as IssueStatusLabel
+    if (active.id === over.id) return
 
-    updateIssueStatus(issueId, newStatus)
+    updateIssuePosition(active.id, over.id)
   }
 
   return (
     <div className="w-0 min-w-full grow">
-      <DndContext onDragEnd={handleDragEnd}>
+      <DndContext onDragOver={handleDragOver}>
         <div
           className={cn(
             'divide-section-outline flex h-full divide-x overflow-x-auto p-4',
