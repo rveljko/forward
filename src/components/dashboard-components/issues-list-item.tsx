@@ -102,7 +102,7 @@ export default function IssuesListItem({
         <IssueActionsModalButton
           issueId={id}
           variant="tertiary"
-          className="hover:text-clickable isolate rounded-full p-0.5 text-neutral-400"
+          className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-400"
         >
           <DotsVerticalIcon />
           <span className="sr-only">Actions</span>

@@ -89,7 +89,7 @@ export default function IssuesKanbanCard({
         <IssueActionsModalButton
           issueId={id}
           variant="tertiary"
-          className="hover:text-clickable isolate ml-auto rounded-full p-0.5 text-neutral-400"
+          className="hover:text-clickable isolate -m-2 ml-auto rounded-full p-2 text-neutral-400"
         >
           <DotsVerticalIcon />
           <span className="sr-only">Actions</span>
