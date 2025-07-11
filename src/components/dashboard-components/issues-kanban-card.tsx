@@ -42,7 +42,7 @@ export default function IssuesKanbanCard({
     return (
       <article
         className={cn(
-          'ring-section-outline bg-clickable/5 h-34.5 rounded-sm ring',
+          'border-section-outline bg-clickable/5 h-34.5 rounded-sm border border-dashed',
           className
         )}
         style={style}
