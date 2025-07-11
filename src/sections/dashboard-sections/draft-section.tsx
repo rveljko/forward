@@ -1,6 +1,7 @@
 import Container from '@dashboard-components/container'
 import DraftActionsModalButton from '@dashboard-components/draft-actions-modal-button'
 import RichTextEditor from '@dashboard-components/text-editor'
+import TextEditorBubbleMenu from '@dashboard-components/text-editor-bubble-menu'
 import TextEditorCommandBar from '@dashboard-components/text-editor-command-bar'
 import Divider from '@dashboard-components/ui/divider'
 import useDebounce from '@hooks/use-debounce'
@@ -113,6 +114,7 @@ function TextEditor({ editor }: TextEditorProps) {
   return (
     <div className="flex h-full flex-col overflow-y-auto">
       <Container className="grow py-8 md:py-16">
+        <TextEditorBubbleMenu editor={editor} />
         <RichTextEditor editor={editor} className="h-full" />
       </Container>
     </div>
