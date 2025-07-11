@@ -11,7 +11,7 @@ export default function Switcher({
 }: SwitcherProps) {
   return (
     <fieldset
-      className={cn('flex rounded-sm bg-neutral-800 p-1', className)}
+      className={cn('flex rounded-sm bg-neutral-800', className)}
       {...props}
     >
       {children}
@@ -30,7 +30,7 @@ function Element({ children, isActive, className, ...props }: ElementProps) {
   return (
     <button
       className={cn(
-        `hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 text-clickable rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99 pointer-coarse:active:scale-99 ${isActive ? 'bg-clickable/10 hover:bg-clickable/10' : ''}`,
+        `hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 h-8 rounded-sm px-3 py-1 text-neutral-400 inset-ring inset-ring-neutral-800 hover:cursor-pointer active:scale-99 ${isActive ? 'bg-section-background-color pointer-coarse:active:bg-section-background-color hover:bg-section-background-color text-clickable' : ''}`,
         className
       )}
       {...props}
