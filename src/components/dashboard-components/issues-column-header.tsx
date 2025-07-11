@@ -39,7 +39,7 @@ export default function IssuesColumnHeader({
       </div>
       <CreateNewIssueModalButton
         variant="tertiary"
-        className="p-0.5"
+        className="-m-2 p-2"
         status={status}
       >
         <PlusIcon />
