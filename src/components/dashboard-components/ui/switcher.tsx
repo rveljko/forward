@@ -35,6 +35,7 @@ function Element({ children, isActive, className, ...props }: ElementProps) {
         `hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 h-8 rounded-sm px-3 py-1 text-neutral-400 inset-ring inset-ring-neutral-800 hover:cursor-pointer active:scale-99 ${isActive ? 'bg-section-background-color pointer-coarse:active:bg-section-background-color hover:bg-section-background-color text-clickable' : ''}`,
         className
       )}
+      aria-selected={isActive}
       {...props}
     >
       {children}
