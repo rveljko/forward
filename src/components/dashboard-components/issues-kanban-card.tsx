@@ -66,7 +66,7 @@ export default function IssuesKanbanCard({
       <header className="mb-4 flex items-center gap-2">
         <Button
           variant="tertiary"
-          className="hover:text-clickable z-1 p-0.5 text-neutral-400 pointer-coarse:hidden"
+          className="hover:text-clickable z-1 -m-2 p-2 text-neutral-400 pointer-coarse:hidden"
           {...attributes}
           {...listeners}
         >
