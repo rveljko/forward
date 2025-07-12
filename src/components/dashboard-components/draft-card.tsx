@@ -19,7 +19,7 @@ export default function DraftCard({
 
   return (
     <article
-      className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring"
+      className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring pointer-coarse:active:scale-99"
       onContextMenu={(e) => {
         e.preventDefault()
         toggleModal()
