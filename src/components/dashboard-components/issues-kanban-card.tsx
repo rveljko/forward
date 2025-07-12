@@ -1,9 +1,12 @@
+import IssueActionsModal from '@dashboard-components/issue-actions-modal'
 import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-button'
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
+import Modal from '@dashboard-components/ui/modal'
 import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
+import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import DragVerticalIcon from '@icons/drag-vertical-icon'
 import Button from '@ui/button'
@@ -32,6 +35,7 @@ export default function IssuesKanbanCard({
     isDragging,
     setNodeRef,
   } = useSortable({ id })
+  const { isOpened, toggleModal } = useModal()
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -61,6 +65,10 @@ export default function IssuesKanbanCard({
       )}
       style={style}
       ref={setNodeRef}
+      onContextMenu={(e) => {
+        e.preventDefault()
+        toggleModal()
+      }}
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">
@@ -102,6 +110,17 @@ export default function IssuesKanbanCard({
         {dayMonthShortFormatter(createdAt)}
       </time>
       <IssueTag tag={tag} />
+      {isOpened && (
+        <Modal isOpened={isOpened} closeModal={toggleModal}>
+          <Modal.Overlay>
+            <Modal.Dialog>
+              <Modal.FocusLock>
+                <IssueActionsModal closeModal={toggleModal} issueId={id} />
+              </Modal.FocusLock>
+            </Modal.Dialog>
+          </Modal.Overlay>
+        </Modal>
+      )}
     </article>
   )
 }
