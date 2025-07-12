@@ -70,15 +70,17 @@ export default function IssuesListItem({
       {...props}
     >
       <div className="flex items-center gap-2">
-        <Button
-          variant="tertiary"
-          className="hover:text-clickable z-1 -m-2 p-2 text-neutral-400 pointer-coarse:hidden"
-          {...attributes}
-          {...listeners}
-        >
-          <DragVerticalIcon />
-          <span className="sr-only">Drag handle</span>
-        </Button>
+        <div className="z-1">
+          <Button
+            variant="tertiary"
+            className="hover:text-clickable -m-2 p-2 text-neutral-400 pointer-coarse:hidden"
+            {...attributes}
+            {...listeners}
+          >
+            <DragVerticalIcon />
+            <span className="sr-only">Drag handle</span>
+          </Button>
+        </div>
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <div className="flex h-8.5 shrink-0 items-center">
