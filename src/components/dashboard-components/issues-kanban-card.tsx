@@ -51,8 +51,6 @@ export default function IssuesKanbanCard({
         )}
         style={style}
         ref={setNodeRef}
-        {...attributes}
-        {...listeners}
         {...props}
       />
     )
