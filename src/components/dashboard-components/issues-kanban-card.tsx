@@ -70,15 +70,17 @@ export default function IssuesKanbanCard({
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">
-        <Button
-          variant="tertiary"
-          className="hover:text-clickable z-1 -m-2 p-2 text-neutral-400 pointer-coarse:hidden"
-          {...attributes}
-          {...listeners}
-        >
-          <DragVerticalIcon />
-          <span className="sr-only">Drag handle</span>
-        </Button>
+        <div className="z-1">
+          <Button
+            variant="tertiary"
+            className="hover:text-clickable -m-2 p-2 text-neutral-400 pointer-coarse:hidden"
+            {...attributes}
+            {...listeners}
+          >
+            <DragVerticalIcon />
+            <span className="sr-only">Drag handle</span>
+          </Button>
+        </div>
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <IssueStatus status={status} />
@@ -92,14 +94,16 @@ export default function IssuesKanbanCard({
             </Link>
           </h3>
         </div>
-        <IssueActionsModalButton
-          issueId={id}
-          variant="tertiary"
-          className="hover:text-clickable isolate -m-2 ml-auto rounded-full p-2 text-neutral-400"
-        >
-          <DotsVerticalIcon />
-          <span className="sr-only">Actions</span>
-        </IssueActionsModalButton>
+        <div className="ml-auto">
+          <IssueActionsModalButton
+            issueId={id}
+            variant="tertiary"
+            className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-400"
+          >
+            <DotsVerticalIcon />
+            <span className="sr-only">Actions</span>
+          </IssueActionsModalButton>
+        </div>
       </header>
       <time
         className="mb-2 inline-block text-nowrap text-neutral-400"
