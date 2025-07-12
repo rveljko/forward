@@ -44,10 +44,12 @@ export default function DraftActionsModal({
             Back
           </Button>
         )}
-        <Button variant="tertiary" className="ml-auto p-2" onClick={closeModal}>
-          <CloseIcon />
-          <span className="sr-only">Close</span>
-        </Button>
+        <div className="ml-auto">
+          <Button variant="tertiary" className="p-2" onClick={closeModal}>
+            <CloseIcon />
+            <span className="sr-only">Close</span>
+          </Button>
+        </div>
       </header>
       {activePanel === 'menu' && (
         <MenuPanel
