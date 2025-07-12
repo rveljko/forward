@@ -33,7 +33,7 @@ export default function Modal({ children, isOpened, closeModal }: ModalProps) {
     <ModalContext.Provider value={{ closeModal }}>
       {children}
     </ModalContext.Provider>,
-    document.getElementById('root')!
+    document.getElementById('dashboard-layout')!
   )
 }
 
