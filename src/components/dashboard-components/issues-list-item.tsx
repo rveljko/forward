@@ -51,8 +51,6 @@ export default function IssuesListItem({
         )}
         style={style}
         ref={setNodeRef}
-        {...attributes}
-        {...listeners}
         {...props}
       />
     )
