@@ -1,6 +1,9 @@
+import DraftActionsModal from '@dashboard-components/draft-actions-modal'
 import DraftActionsModalButton from '@dashboard-components/draft-actions-modal-button'
 import Divider from '@dashboard-components/ui/divider'
+import Modal from '@dashboard-components/ui/modal'
 import TimeAgo from '@dashboard-components/ui/time-ago'
+import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import { Draft } from '@utils/types'
 import { Link } from 'react-router'
@@ -12,8 +15,16 @@ type DraftCardProps = {
 export default function DraftCard({
   draft: { id, title, lastEdit },
 }: DraftCardProps) {
+  const { isOpened, toggleModal } = useModal()
+
   return (
-    <article className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring">
+    <article
+      className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring"
+      onContextMenu={(e) => {
+        e.preventDefault()
+        toggleModal()
+      }}
+    >
       <div className="overflow-hidden rounded-t-lg">
         <div className="bg-clickable/10 aspect-3/1 w-full"></div>
       </div>
@@ -40,6 +51,17 @@ export default function DraftCard({
           <span className="sr-only">Actions</span>
         </DraftActionsModalButton>
       </div>
+      {isOpened && (
+        <Modal isOpened={isOpened} closeModal={toggleModal}>
+          <Modal.Overlay>
+            <Modal.Dialog>
+              <Modal.FocusLock>
+                <DraftActionsModal closeModal={toggleModal} draftId={id} />
+              </Modal.FocusLock>
+            </Modal.Dialog>
+          </Modal.Overlay>
+        </Modal>
+      )}
     </article>
   )
 }
