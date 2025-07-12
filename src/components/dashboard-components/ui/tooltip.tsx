@@ -1,7 +1,7 @@
 import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 
-const tooltip = cva(
+export const tooltip = cva(
   'bg-section-background-color border-section-outline text-clickable absolute z-997 my-2 rounded-sm border p-1 [position-anchor:--button] [position-try-fallbacks:flip-inline,flip-block]',
   {
     variants: {

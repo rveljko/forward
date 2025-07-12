@@ -1,9 +1,11 @@
+import Tooltip, { tooltip } from '@dashboard-components/ui/tooltip'
 import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
+import { useState } from 'react'
 import { Link } from 'react-router'
 
 const button = cva(
-  'text-clickable flex w-max items-center justify-center gap-1 rounded-md hover:cursor-pointer active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-50',
+  'text-clickable flex w-max items-center justify-center gap-1 rounded-md [anchor-name:--button] hover:cursor-pointer active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -27,11 +29,13 @@ const button = cva(
   }
 )
 
-type ButtonBaseProps = VariantProps<typeof button> & {
-  children: React.ReactNode
-  leftIcon?: React.JSX.Element
-  rightIcon?: React.JSX.Element
-}
+type ButtonBaseProps = VariantProps<typeof button> &
+  VariantProps<typeof tooltip> & {
+    children: React.ReactNode
+    leftIcon?: React.JSX.Element
+    rightIcon?: React.JSX.Element
+    tooltip?: React.JSX.Element
+  }
 
 type ButtonAsAnchorProps = React.ComponentPropsWithoutRef<'a'> & {
   href: string
@@ -48,16 +52,54 @@ export default function Button({
   children,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
+  tooltip: TooltipContent,
+  position,
   variant,
   size,
   className,
   ...props
 }: ButtonProps) {
   const buttonClasses = cn(button({ variant, size, className }))
+  const [isHover, setIsHover] = useState(false)
 
   if ('href' in props && props.href !== undefined) {
     return (
-      <Link to={props.href} className={buttonClasses} {...props}>
+      <div className="[anchor-scope:--button] not-supports-[anchor-name:--dropdown]:relative">
+        <Link
+          to={props.href}
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+          className={buttonClasses}
+          {...props}
+        >
+          {LeftIcon && (
+            <span className="flex h-6 items-center justify-center">
+              {LeftIcon}
+            </span>
+          )}
+          {children}
+          {RightIcon && (
+            <span className="flex h-6 items-center justify-center">
+              {RightIcon}
+            </span>
+          )}
+        </Link>
+        {TooltipContent && isHover && (
+          <Tooltip position={position}>{TooltipContent}</Tooltip>
+        )}
+      </div>
+    )
+  }
+
+  return (
+    <div className="[anchor-scope:--button] not-supports-[anchor-name:--dropdown]:relative">
+      <button
+        className={buttonClasses}
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
+        type="button"
+        {...props}
+      >
         {LeftIcon && (
           <span className="flex h-6 items-center justify-center">
             {LeftIcon}
@@ -69,21 +111,10 @@ export default function Button({
             {RightIcon}
           </span>
         )}
-      </Link>
-    )
-  }
-
-  return (
-    <button className={buttonClasses} type="button" {...props}>
-      {LeftIcon && (
-        <span className="flex h-6 items-center justify-center">{LeftIcon}</span>
+      </button>
+      {TooltipContent && isHover && (
+        <Tooltip position={position}>{TooltipContent}</Tooltip>
       )}
-      {children}
-      {RightIcon && (
-        <span className="flex h-6 items-center justify-center">
-          {RightIcon}
-        </span>
-      )}
-    </button>
+    </div>
   )
 }
