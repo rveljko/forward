@@ -14,8 +14,8 @@ export default function IntegrationCard({
   const { addIntegrationId } = useIntegrations()
 
   return (
-    <article className="flex items-start justify-between gap-2">
-      <header className="flex flex-wrap gap-2">
+    <article className="@container flex items-start justify-between gap-2">
+      <header className="flex flex-col gap-2 @2xs:flex-row">
         <div className="border-section-outline flex size-12 shrink-0 items-center justify-center rounded-lg border">
           <img
             src={logoUrl}
