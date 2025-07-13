@@ -35,7 +35,7 @@ export default function IssuesListItem({
     isDragging,
     setNodeRef,
   } = useSortable({ id })
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -65,7 +65,7 @@ export default function IssuesListItem({
       ref={setNodeRef}
       onContextMenu={(e) => {
         e.preventDefault()
-        toggleModal()
+        openModal()
       }}
       {...props}
     >
@@ -117,11 +117,11 @@ export default function IssuesListItem({
         </IssueActionsModalButton>
       </div>
       {isOpened && (
-        <Modal isOpened={isOpened} closeModal={toggleModal}>
+        <Modal isOpened={isOpened} closeModal={closeModal}>
           <Modal.Overlay>
             <Modal.Dialog>
               <Modal.FocusLock>
-                <IssueActionsModal closeModal={toggleModal} issueId={id} />
+                <IssueActionsModal closeModal={closeModal} issueId={id} />
               </Modal.FocusLock>
             </Modal.Dialog>
           </Modal.Overlay>

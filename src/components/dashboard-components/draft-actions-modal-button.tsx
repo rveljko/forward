@@ -16,21 +16,21 @@ export default function DraftActionsModalButton({
   children,
   ...props
 }: DraftActionsModalButtonProps) {
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
 
   return (
     <ModalButton
       isOpened={isOpened}
-      toggleModal={toggleModal}
+      openModal={openModal}
       label={children}
       {...props}
     >
-      <Modal isOpened={isOpened} closeModal={toggleModal}>
+      <Modal isOpened={isOpened} closeModal={closeModal}>
         <Modal.Overlay>
           <Modal.Dialog>
             <Modal.FocusLock>
               <DraftActionsModal
-                closeModal={toggleModal}
+                closeModal={closeModal}
                 draftId={draftId}
                 withoutLinks={withoutLinks}
               />

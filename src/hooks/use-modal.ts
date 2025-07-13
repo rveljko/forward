@@ -3,9 +3,13 @@ import { useState } from 'react'
 export default function useModal() {
   const [isOpened, setIsOpened] = useState(false)
 
-  function toggleModal() {
-    setIsOpened((prev) => !prev)
+  function openModal() {
+    setIsOpened(true)
   }
 
-  return { isOpened, toggleModal }
+  function closeModal() {
+    setIsOpened(false)
+  }
+
+  return { isOpened, openModal, closeModal }
 }

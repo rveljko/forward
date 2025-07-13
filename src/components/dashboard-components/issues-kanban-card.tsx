@@ -35,7 +35,7 @@ export default function IssuesKanbanCard({
     isDragging,
     setNodeRef,
   } = useSortable({ id })
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -65,7 +65,7 @@ export default function IssuesKanbanCard({
       ref={setNodeRef}
       onContextMenu={(e) => {
         e.preventDefault()
-        toggleModal()
+        openModal()
       }}
       {...props}
     >
@@ -113,11 +113,11 @@ export default function IssuesKanbanCard({
       </time>
       <IssueTag tag={tag} />
       {isOpened && (
-        <Modal isOpened={isOpened} closeModal={toggleModal}>
+        <Modal isOpened={isOpened} closeModal={closeModal}>
           <Modal.Overlay>
             <Modal.Dialog>
               <Modal.FocusLock>
-                <IssueActionsModal closeModal={toggleModal} issueId={id} />
+                <IssueActionsModal closeModal={closeModal} issueId={id} />
               </Modal.FocusLock>
             </Modal.Dialog>
           </Modal.Overlay>

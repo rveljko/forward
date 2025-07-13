@@ -15,14 +15,14 @@ type DraftCardProps = {
 export default function DraftCard({
   draft: { id, title, lastEdit },
 }: DraftCardProps) {
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
 
   return (
     <article
       className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring pointer-coarse:active:scale-99"
       onContextMenu={(e) => {
         e.preventDefault()
-        toggleModal()
+        openModal()
       }}
     >
       <div className="overflow-hidden rounded-t-lg">
@@ -52,11 +52,11 @@ export default function DraftCard({
         </DraftActionsModalButton>
       </div>
       {isOpened && (
-        <Modal isOpened={isOpened} closeModal={toggleModal}>
+        <Modal isOpened={isOpened} closeModal={closeModal}>
           <Modal.Overlay>
             <Modal.Dialog>
               <Modal.FocusLock>
-                <DraftActionsModal closeModal={toggleModal} draftId={id} />
+                <DraftActionsModal closeModal={closeModal} draftId={id} />
               </Modal.FocusLock>
             </Modal.Dialog>
           </Modal.Overlay>

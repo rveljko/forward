@@ -10,21 +10,21 @@ export default function ProjectInformationModalButton({
   children,
   ...props
 }: ProjectInformationModalButtonProps) {
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
 
   return (
     <ModalButton
       isOpened={isOpened}
-      toggleModal={toggleModal}
+      openModal={openModal}
       label={children}
       {...props}
     >
-      <Modal isOpened={isOpened} closeModal={toggleModal}>
+      <Modal isOpened={isOpened} closeModal={closeModal}>
         <Modal.Overlay className="md:items-end">
           <Modal.Dialog className="md:h-full">
             <Modal.FocusLock className="md:h-full">
               <ProjectInformationModal
-                closeModal={toggleModal}
+                closeModal={closeModal}
                 className="md:h-full"
               />
             </Modal.FocusLock>

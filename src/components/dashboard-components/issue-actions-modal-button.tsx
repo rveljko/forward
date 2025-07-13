@@ -16,21 +16,21 @@ export default function IssueActionsModalButton({
   children,
   ...props
 }: IssueActionsModalButtonProps) {
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
 
   return (
     <ModalButton
       isOpened={isOpened}
-      toggleModal={toggleModal}
+      openModal={openModal}
       label={children}
       {...props}
     >
-      <Modal isOpened={isOpened} closeModal={toggleModal}>
+      <Modal isOpened={isOpened} closeModal={closeModal}>
         <Modal.Overlay>
           <Modal.Dialog>
             <Modal.FocusLock>
               <IssueActionsModal
-                closeModal={toggleModal}
+                closeModal={closeModal}
                 issueId={issueId}
                 withoutLinks={withoutLinks}
               />

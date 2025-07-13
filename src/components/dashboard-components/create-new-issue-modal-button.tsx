@@ -15,24 +15,24 @@ export default function CreateNewIssueModalButton({
   status,
   ...props
 }: CreateNewIssueModalButtonProps) {
-  const { isOpened, toggleModal } = useModal()
+  const { isOpened, openModal, closeModal } = useModal()
   const [isBigSizeModal, setIsBigSizeModal] = useState(false)
 
   return (
     <ModalButton
       isOpened={isOpened}
-      toggleModal={toggleModal}
+      openModal={openModal}
       label={children}
       {...props}
     >
-      <Modal isOpened={isOpened} closeModal={toggleModal}>
+      <Modal isOpened={isOpened} closeModal={closeModal}>
         <Modal.Overlay>
           <Modal.Dialog
             className={`transition-[max-width] ${isBigSizeModal ? 'max-w-200' : ''} `}
           >
             <Modal.FocusLock>
               <CreateNewIssueModal
-                closeModal={toggleModal}
+                closeModal={closeModal}
                 isBigSizeModal={isBigSizeModal}
                 setIsBigSizeModal={setIsBigSizeModal}
                 status={status}
