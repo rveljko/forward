@@ -58,7 +58,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        'ring-section-outline pointer-coarse:active:ring-clickable/20 bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 ring pointer-coarse:active:scale-99',
+        'ring-section-outline pointer-coarse:active:ring-clickable/20 bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 shadow-sm ring pointer-coarse:active:scale-99',
         className
       )}
       style={style}
