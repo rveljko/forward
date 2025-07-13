@@ -9,7 +9,7 @@ export default function IntegrtionsCardsList({
   integrations,
 }: IntegrationCardsListProps) {
   return (
-    <ul className="space-y-4">
+    <ul className="w-full space-y-4">
       {integrations.map((integration) => (
         <li key={integration.id}>
           <IntegrationCard integration={integration} />
