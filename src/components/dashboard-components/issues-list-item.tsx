@@ -16,6 +16,7 @@ import {
 } from '@utils/date-formatters'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
+import { AnimatePresence } from 'motion/react'
 import { Link } from 'react-router'
 
 type IssuesListItemProps = React.ComponentPropsWithoutRef<'article'> & {
@@ -116,17 +117,19 @@ export default function IssuesListItem({
           <span className="sr-only">Actions</span>
         </IssueActionsModalButton>
       </div>
-      {isOpened && (
-        <Modal isOpened={isOpened} closeModal={closeModal}>
-          <Modal.Overlay>
-            <Modal.Dialog>
-              <Modal.FocusLock>
-                <IssueActionsModal closeModal={closeModal} issueId={id} />
-              </Modal.FocusLock>
-            </Modal.Dialog>
-          </Modal.Overlay>
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isOpened && (
+          <Modal isOpened={isOpened} closeModal={closeModal}>
+            <Modal.Overlay>
+              <Modal.Dialog>
+                <Modal.FocusLock>
+                  <IssueActionsModal closeModal={closeModal} issueId={id} />
+                </Modal.FocusLock>
+              </Modal.Dialog>
+            </Modal.Overlay>
+          </Modal>
+        )}
+      </AnimatePresence>
     </article>
   )
 }
