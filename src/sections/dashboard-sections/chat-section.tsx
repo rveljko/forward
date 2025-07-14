@@ -7,6 +7,7 @@ import MessageIcon from '@icons/message-icon'
 import SendIcon from '@icons/send-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import Button from '@ui/button'
+import { TITLE_PREFIX } from '@utils/constants'
 import {
   iso8601DateFormatter,
   weekdayTimeFormatter,
@@ -44,6 +45,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
 
   return (
     <section className="grid w-full grid-cols-1 grid-rows-[repeat(3,auto)_1fr]">
+      <title>{`${TITLE_PREFIX}${person.name}`}</title>
       <header className="flex items-center gap-4 p-4">
         <Button
           href="/dashboard/inbox"
