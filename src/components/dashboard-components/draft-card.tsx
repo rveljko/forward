@@ -6,6 +6,7 @@ import TimeAgo from '@dashboard-components/ui/time-ago'
 import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import { Draft } from '@utils/types'
+import { AnimatePresence } from 'motion/react'
 import { Link } from 'react-router'
 
 type DraftCardProps = {
@@ -51,17 +52,19 @@ export default function DraftCard({
           <span className="sr-only">Actions</span>
         </DraftActionsModalButton>
       </div>
-      {isOpened && (
-        <Modal isOpened={isOpened} closeModal={closeModal}>
-          <Modal.Overlay>
-            <Modal.Dialog>
-              <Modal.FocusLock>
-                <DraftActionsModal closeModal={closeModal} draftId={id} />
-              </Modal.FocusLock>
-            </Modal.Dialog>
-          </Modal.Overlay>
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isOpened && (
+          <Modal isOpened={isOpened} closeModal={closeModal}>
+            <Modal.Overlay>
+              <Modal.Dialog>
+                <Modal.FocusLock>
+                  <DraftActionsModal closeModal={closeModal} draftId={id} />
+                </Modal.FocusLock>
+              </Modal.Dialog>
+            </Modal.Overlay>
+          </Modal>
+        )}
+      </AnimatePresence>
     </article>
   )
 }
