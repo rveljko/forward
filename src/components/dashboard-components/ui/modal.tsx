@@ -1,4 +1,5 @@
 import { cn } from '@utils/utils'
+import { motion } from 'motion/react'
 import { ComponentProps, createContext, useContext, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import ReactFocusLock from 'react-focus-lock'
@@ -41,7 +42,7 @@ Modal.Overlay = Overlay
 Modal.Dialog = Dialog
 Modal.FocusLock = FocusLock
 
-type OverlayProps = React.ComponentPropsWithoutRef<'div'> & {
+type OverlayProps = React.ComponentProps<typeof motion.div> & {
   children: React.ReactNode
 }
 
@@ -49,7 +50,10 @@ function Overlay({ children, className, ...props }: OverlayProps) {
   const { closeModal } = useModal()
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       onClick={closeModal}
       className={cn(
         'bg-modal-overlay-background fixed inset-0 z-999 flex flex-col items-center justify-end p-4 md:justify-start',
@@ -58,25 +62,31 @@ function Overlay({ children, className, ...props }: OverlayProps) {
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }
 
-type DialogProps = React.ComponentPropsWithoutRef<'div'> & {
+type DialogProps = React.ComponentProps<typeof motion.div> & {
   children: React.ReactNode
 }
 
 function Dialog({ children, className, ...props }: DialogProps) {
   return (
-    <div
+    <motion.div
+      initial={{ scale: 'var(--scale-from)', translateY: 'var(--slide-from)' }}
+      animate={{ scale: 'var(--scale-to)', translateY: 'var(--slide-to)' }}
+      exit={{ scale: 'var(--scale-from)', translateY: 'var(--slide-from)' }}
       role="dialog"
       aria-modal="true"
-      className={cn('w-full max-w-140 rounded-2xl', className)}
+      className={cn(
+        'w-full max-w-140 rounded-2xl [--scale-from:95%] [--scale-to:100%] [--slide-from:--spacing(10)] [--slide-to:--spacing(0)] md:[--slide-from:--spacing(0)]',
+        className
+      )}
       onClick={(e) => e.stopPropagation()}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }
 

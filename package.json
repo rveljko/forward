@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "copy-to-clipboard": "^3.3.3",
+    "motion": "^12.23.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-focus-lock": "^2.13.6",

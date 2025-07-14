@@ -1,4 +1,5 @@
 import Button, { ButtonProps } from '@ui/button'
+import { AnimatePresence } from 'motion/react'
 
 type ModalButtonProps = ButtonProps & {
   label: React.ReactNode
@@ -18,7 +19,7 @@ export default function ModalButton({
       <Button onClick={openModal} {...props}>
         {label}
       </Button>
-      {isOpened && children}
+      <AnimatePresence>{isOpened && children}</AnimatePresence>
     </>
   )
 }
