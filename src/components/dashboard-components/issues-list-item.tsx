@@ -70,10 +70,10 @@ export default function IssuesListItem({
       {...props}
     >
       <div className="flex items-center gap-2">
-        <div className="z-1">
+        <div className="z-1 pointer-coarse:hidden">
           <Button
             variant="tertiary"
-            className="hover:text-clickable -m-2 p-2 text-neutral-400 pointer-coarse:hidden"
+            className="hover:text-clickable -m-2 p-2 text-neutral-400"
             {...attributes}
             {...listeners}
           >
