@@ -73,13 +73,16 @@ type DialogProps = React.ComponentProps<typeof motion.div> & {
 function Dialog({ children, className, ...props }: DialogProps) {
   return (
     <motion.div
-      initial={{ scale: 'var(--scale-from)', translateY: 'var(--slide-from)' }}
-      animate={{ scale: 'var(--scale-to)', translateY: 'var(--slide-to)' }}
-      exit={{ scale: 'var(--scale-from)', translateY: 'var(--slide-from)' }}
+      initial={{
+        scale: 'var(--scale-from)',
+        translateY: 'var(--slide-y-from)',
+      }}
+      animate={{ scale: 'var(--scale-to)', translateY: 'var(--slide-y-to)' }}
+      exit={{ scale: 'var(--scale-from)', translateY: 'var(--slide-y-from)' }}
       role="dialog"
       aria-modal="true"
       className={cn(
-        'w-full max-w-140 rounded-2xl [--scale-from:95%] [--scale-to:100%] [--slide-from:--spacing(10)] [--slide-to:--spacing(0)] md:[--slide-from:--spacing(0)]',
+        'w-full max-w-140 rounded-2xl [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(10)] [--slide-y-to:--spacing(0)] md:[--slide-y-from:--spacing(0)]',
         className
       )}
       onClick={(e) => e.stopPropagation()}
