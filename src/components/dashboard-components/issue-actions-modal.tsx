@@ -20,6 +20,7 @@ import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
 import { Issue } from '@utils/types'
 import copy from 'copy-to-clipboard'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 type IssueActionsModalProps = {
@@ -63,29 +64,50 @@ export default function IssueActionsModal({
           </Button>
         </div>
       </header>
-      {activePanel === 'menu' && (
-        <MenuPanel
-          issueId={issueId}
-          closeModal={closeModal}
-          setActivePanel={setActivePanel}
-          withoutLinks={withoutLinks}
-        />
-      )}
-      {activePanel === 'change-status' && (
-        <ChangeIssueStatusPanel issueId={issueId} closeModal={closeModal} />
-      )}
-      {activePanel === 'change-priority' && (
-        <ChangeIssuePriorityPanel issueId={issueId} closeModal={closeModal} />
-      )}
-      {activePanel === 'change-tag' && (
-        <ChangeIssueTagPanel issueId={issueId} closeModal={closeModal} />
-      )}
-      {activePanel === 'rename' && (
-        <RenameIssuePanel issueId={issueId} closeModal={closeModal} />
-      )}
-      {activePanel === 'delete' && (
-        <DeleteIssuePanel issueId={issueId} closeModal={closeModal} />
-      )}
+      <AnimatePresence>
+        {activePanel === 'menu' && (
+          <MenuPanel
+            issueId={issueId}
+            closeModal={closeModal}
+            setActivePanel={setActivePanel}
+            withoutLinks={withoutLinks}
+          />
+        )}
+        <motion.div
+          initial={{
+            opacity: 'var(--opacity-from)',
+            translateX: 'var(--slide-x-from)',
+          }}
+          animate={{
+            opacity: 'var(--opacity-to)',
+            translateX: 'var(--slide-x-to)',
+          }}
+          exit={{
+            opacity: 'var(--opacity-from)',
+            translateX: 'var(--slide-x-from)',
+          }}
+          className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
+        >
+          {activePanel === 'change-status' && (
+            <ChangeIssueStatusPanel issueId={issueId} closeModal={closeModal} />
+          )}
+          {activePanel === 'change-priority' && (
+            <ChangeIssuePriorityPanel
+              issueId={issueId}
+              closeModal={closeModal}
+            />
+          )}
+          {activePanel === 'change-tag' && (
+            <ChangeIssueTagPanel issueId={issueId} closeModal={closeModal} />
+          )}
+          {activePanel === 'rename' && (
+            <RenameIssuePanel issueId={issueId} closeModal={closeModal} />
+          )}
+          {activePanel === 'delete' && (
+            <DeleteIssuePanel issueId={issueId} closeModal={closeModal} />
+          )}
+        </motion.div>
+      </AnimatePresence>
     </ModalCard>
   )
 }
@@ -107,8 +129,20 @@ function MenuPanel({
   const { title } = getIssueById(issueId)
 
   return (
-    <ul
-      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
+    <motion.ul
+      initial={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      animate={{
+        opacity: 'var(--opacity-to)',
+        translateX: 'var(--slide-x-to)',
+      }}
+      exit={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
     >
       {!withoutLinks && (
         <>
@@ -261,6 +295,6 @@ function MenuPanel({
           </PanelCard.Paragraph>
         </PanelCard>
       </li>
-    </ul>
+    </motion.ul>
   )
 }
