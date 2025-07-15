@@ -14,6 +14,7 @@ import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { Draft } from '@utils/types'
 import copy from 'copy-to-clipboard'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 type DraftActionsModalProps = {
@@ -51,20 +52,38 @@ export default function DraftActionsModal({
           </Button>
         </div>
       </header>
-      {activePanel === 'menu' && (
-        <MenuPanel
-          draftId={draftId}
-          closeModal={closeModal}
-          setActivePanel={setActivePanel}
-          withoutLinks={withoutLinks}
-        />
-      )}
-      {activePanel === 'rename' && (
-        <RenameDraftPanel draftId={draftId} closeModal={closeModal} />
-      )}
-      {activePanel === 'delete' && (
-        <DeleteDraftPanel draftId={draftId} closeModal={closeModal} />
-      )}
+      <AnimatePresence>
+        {activePanel === 'menu' && (
+          <MenuPanel
+            draftId={draftId}
+            closeModal={closeModal}
+            setActivePanel={setActivePanel}
+            withoutLinks={withoutLinks}
+          />
+        )}
+        <motion.div
+          initial={{
+            opacity: 'var(--opacity-from)',
+            translateX: 'var(--slide-x-from)',
+          }}
+          animate={{
+            opacity: 'var(--opacity-to)',
+            translateX: 'var(--slide-x-to)',
+          }}
+          exit={{
+            opacity: 'var(--opacity-from)',
+            translateX: 'var(--slide-x-from)',
+          }}
+          className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
+        >
+          {activePanel === 'rename' && (
+            <RenameDraftPanel draftId={draftId} closeModal={closeModal} />
+          )}
+          {activePanel === 'delete' && (
+            <DeleteDraftPanel draftId={draftId} closeModal={closeModal} />
+          )}
+        </motion.div>
+      </AnimatePresence>
     </ModalCard>
   )
 }
@@ -86,8 +105,20 @@ function MenuPanel({
   const { title } = getDraftById(draftId)
 
   return (
-    <ul
-      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-46' : 'max-md:h-66'} `}
+    <motion.ul
+      initial={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      animate={{
+        opacity: 'var(--opacity-to)',
+        translateX: 'var(--slide-x-to)',
+      }}
+      exit={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? 'max-md:h-46' : 'max-md:h-66'} `}
     >
       {!withoutLinks && (
         <>
@@ -193,6 +224,6 @@ function MenuPanel({
           </PanelCard.Paragraph>
         </PanelCard>
       </li>
-    </ul>
+    </motion.ul>
   )
 }
