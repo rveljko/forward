@@ -2,10 +2,11 @@ import CheckIcon from '@icons/check-icon'
 import ChevronDownIcon from '@icons/chevron-down-icon'
 import ChevronRightIcon from '@icons/chevron-right-icon'
 import { cn } from '@utils/utils'
+import { motion } from 'motion/react'
 import { createContext, useContext, useState } from 'react'
 import { Link } from 'react-router'
 
-type DropdownProps = React.ComponentPropsWithoutRef<'div'> & {
+type DropdownProps = React.ComponentProps<typeof motion.div> & {
   children: React.ReactNode
 }
 
@@ -15,15 +16,30 @@ export default function Dropdown({
   ...props
 }: DropdownProps) {
   return (
-    <div
+    <motion.div
+      initial={{
+        opacity: 'var(--opacity-from)',
+        scale: 'var(--scale-from)',
+        translateY: 'var(--slide-y-from)',
+      }}
+      animate={{
+        opacity: 'var(--opacity-to)',
+        scale: 'var(--scale-to)',
+        translateY: 'var(--slide-y-to)',
+      }}
+      exit={{
+        opacity: 'var(--opacity-from)',
+        scale: 'var(--scale-from)',
+        translateY: 'var(--slide-y-from)',
+      }}
       className={cn(
-        'bg-dropdown-background inset-ring-section-outline space-y-0.5 rounded-sm p-1 inset-ring',
+        'bg-dropdown-background inset-ring-section-outline space-y-0.5 rounded-sm p-1 inset-ring [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)]',
         className
       )}
       {...props}
     >
       {children}
-    </div>
+    </motion.div>
   )
 }
 

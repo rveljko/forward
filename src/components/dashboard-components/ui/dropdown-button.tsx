@@ -2,6 +2,7 @@ import Dropdown from '@dashboard-components/ui/dropdown'
 import Button, { ButtonProps } from '@ui/button'
 import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
+import { AnimatePresence } from 'motion/react'
 import React, { useEffect, useRef } from 'react'
 import ReactFocusLock from 'react-focus-lock'
 
@@ -79,11 +80,13 @@ export default function DropdownButton({
       >
         {label}
       </Button>
-      {isOpened && (
-        <Dropdown className={cn(dropdownContainer({ position }))}>
-          <ReactFocusLock>{children}</ReactFocusLock>
-        </Dropdown>
-      )}
+      <AnimatePresence>
+        {isOpened && (
+          <Dropdown className={cn(dropdownContainer({ position }))}>
+            <ReactFocusLock>{children}</ReactFocusLock>
+          </Dropdown>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
