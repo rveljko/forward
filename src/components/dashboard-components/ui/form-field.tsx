@@ -90,7 +90,7 @@ function Textarea({
       )}
       <textarea
         className={cn(
-          `bg-input-background text-clickable aspect-2/1 w-full resize-none rounded-md px-3 py-2 shadow-sm placeholder:text-neutral-400 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline focus:ring-brand-500 ring focus:ring' : 'focus:inset-ring-brand-500 inset-ring-section-outline inset-ring focus:inset-ring'}`,
+          `bg-input-background text-clickable aspect-2/1 w-full resize-none rounded-md px-3 py-2 shadow-sm transition-all placeholder:text-neutral-400 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline focus:ring-brand-500 ring focus:ring' : 'focus:inset-ring-brand-500 inset-ring-section-outline inset-ring focus:inset-ring'}`,
           className
         )}
         {...props}
