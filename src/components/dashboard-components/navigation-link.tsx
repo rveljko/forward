@@ -19,7 +19,7 @@ export default function NavigationLink({
     <NavLink
       className={({ isActive }) =>
         cn(
-          `text-clickable group pointer-coarse:active:[&>span:first-child]:text-clickable flex items-center gap-1 rounded-sm px-1.5 py-1 [--hover-background:var(--color-neutral-800)] hover:bg-(--hover-background) active:scale-99 pointer-coarse:active:bg-(--hover-background) ${isActive ? '[&_span]:text-clickable bg-(--active-background) [--active-background:var(--color-neutral-700)] hover:bg-(--active-background) pointer-coarse:active:bg-(--active-background)' : ''}`,
+          `text-clickable group pointer-coarse:active:[&>span:first-child]:text-clickable flex items-center gap-1 rounded-sm px-1.5 py-1 transition-[background-color] [--hover-background:var(--color-neutral-800)] hover:bg-(--hover-background) active:scale-99 pointer-coarse:active:bg-(--hover-background) ${isActive ? '[&_span]:text-clickable bg-(--active-background) [--active-background:var(--color-neutral-700)] hover:bg-(--active-background) pointer-coarse:active:bg-(--active-background)' : ''}`,
           className
         )
       }
