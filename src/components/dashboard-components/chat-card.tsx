@@ -14,14 +14,14 @@ export default function ChatCard({
   },
 }: ChatCardProps) {
   return (
-    <article className="group relative isolate flex items-center gap-2 p-4 hover:bg-neutral-800">
+    <article className="group relative isolate flex items-center gap-2 p-4 transition-[background-color] hover:bg-neutral-800">
       <div className="relative">
         <div className="size-10 overflow-hidden rounded-full bg-neutral-700">
           <img src={image} alt={name} className="object-cover" />
         </div>
         <UserStatus
           status={status}
-          className={`absolute right-0.5 bottom-0.5 group-hover:ring-neutral-800 group-has-[.active]:ring-neutral-700 ${status === 'inactive' ? 'group-hover:bg-neutral-800 group-has-[.active]:bg-neutral-700 group-has-[.active]:inset-ring-neutral-500' : ''}`}
+          className={`absolute right-0.5 bottom-0.5 transition-all group-hover:ring-neutral-800 group-has-[.active]:ring-neutral-700 ${status === 'inactive' ? 'group-hover:bg-neutral-800 group-has-[.active]:bg-neutral-700 group-has-[.active]:inset-ring-neutral-500' : ''}`}
         />
       </div>
       <div>
@@ -29,7 +29,7 @@ export default function ChatCard({
           <NavLink
             to={`/dashboard/inbox/${id}`}
             className={({ isActive }) =>
-              `text-clickable ${isActive ? 'active before:absolute before:inset-0 before:-z-1 before:bg-neutral-700' : ''}`
+              `text-clickable before:absolute before:inset-0 before:-z-1 before:transition-[background-color] ${isActive ? 'active before:bg-neutral-700' : ''}`
             }
           >
             <span className="absolute inset-0"></span>
