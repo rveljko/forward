@@ -2,7 +2,7 @@ import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 
 const select = cva(
-  'text-clickable picker-select:bg-dropdown-background picker-select:my-2 picker-select:border-section-outline picker-select:rounded-sm picker-select:p-1 picker-select:[appearance:base-select] field-sizing-content [appearance:base-select] space-y-0.5 rounded-md hover:cursor-pointer active:scale-99 [&::picker-icon]:hidden',
+  'text-clickable not-open:picker-select:opacity-(--opacity-from) not-open:picker-select:translate-y-(--slide-y-from) not-open:picker-select:scale-(--scale-from) picker-select:transition-all picker-select:transition-discrete picker-select:opacity-(--opacity-to) picker-select:translate-y-(--slide-y-to) picker-select:scale-(--scale-to) picker-select:starting:opacity-(--opacity-from) picker-select:starting:scale-(--scale-from) picker-select:starting:translate-y-(--slide-y-from) picker-select:bg-dropdown-background picker-select:my-2 picker-select:border-section-outline picker-select:rounded-sm picker-select:p-1 picker-select:[appearance:base-select] field-sizing-content [appearance:base-select] space-y-0.5 rounded-md [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)] hover:cursor-pointer active:scale-99 [&::picker-icon]:hidden',
   {
     variants: {
       variant: {
