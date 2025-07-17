@@ -6,7 +6,7 @@ export default function CreateNewDraftButton() {
 
   return (
     <button
-      className="text-clickable border-section-outline flex size-full flex-col items-center justify-center gap-2 rounded-lg border bg-neutral-800 px-4 py-8 shadow-sm transition-all hover:cursor-pointer hover:bg-neutral-700 active:scale-99"
+      className="text-clickable border-section-outline flex size-full flex-col items-center justify-center gap-2 rounded-lg border bg-neutral-800 px-4 py-8 shadow-sm transition-all pointer-coarse:active:bg-neutral-700 hover:cursor-pointer hover:bg-neutral-700 active:scale-99"
       onClick={() => createNewDraft()}
     >
       <div className="bg-clickable/10 flex size-16 items-center justify-center rounded-full [&_svg]:size-8">
