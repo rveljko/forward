@@ -2,16 +2,44 @@ import CheckIcon from '@icons/check-icon'
 import ChevronDownIcon from '@icons/chevron-down-icon'
 import ChevronRightIcon from '@icons/chevron-right-icon'
 import { cn } from '@utils/utils'
+import { cva, VariantProps } from 'class-variance-authority'
 import { motion } from 'motion/react'
 import { createContext, useContext, useState } from 'react'
 import { Link } from 'react-router'
 
-type DropdownProps = React.ComponentProps<typeof motion.div> & {
-  children: React.ReactNode
-}
+export const dropdown = cva(
+  'bg-dropdown-background inset-ring-section-outline absolute z-997 my-2 space-y-0.5 rounded-sm p-1 inset-ring [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)] [position-anchor:--dropdown] [position-try-fallbacks:flip-inline,flip-block]',
+  {
+    variants: {
+      position: {
+        'top-left':
+          '[position-area:top_span-left] not-supports-[position-area:top_span-left]:right-0 not-supports-[position-area:top_span-left]:bottom-full',
+        'top-center':
+          '[position-area:top_center] not-supports-[position-area:top_center]:bottom-full not-supports-[position-area:top_center]:left-1/2 not-supports-[position-area:top_center]:-translate-x-1/2',
+        'top-right':
+          '[position-area:top_span-right] not-supports-[position-area:top_span-right]:bottom-full not-supports-[position-area:top_span-right]:left-0',
+        'bottom-left':
+          '[position-area:bottom_span-left] not-supports-[position-area:bottom_span-left]:top-full not-supports-[position-area:bottom_span-left]:right-0',
+        'bottom-center':
+          '[position-area:bottom_center] not-supports-[position-area:bottom_center]:top-full not-supports-[position-area:bottom_center]:left-1/2 not-supports-[position-area:bottom_center]:-translate-x-1/2',
+        'bottom-right':
+          '[position-area:bottom_span-right] not-supports-[position-area:bottom_span-right]:top-full not-supports-[position-area:bottom_span-right]:left-0',
+      },
+    },
+    defaultVariants: {
+      position: 'bottom-right',
+    },
+  }
+)
+
+type DropdownProps = React.ComponentProps<typeof motion.div> &
+  VariantProps<typeof dropdown> & {
+    children: React.ReactNode
+  }
 
 export default function Dropdown({
   children,
+  position,
   className,
   ...props
 }: DropdownProps) {
@@ -32,10 +60,7 @@ export default function Dropdown({
         scale: 'var(--scale-from)',
         translateY: 'var(--slide-y-from)',
       }}
-      className={cn(
-        'bg-dropdown-background inset-ring-section-outline space-y-0.5 rounded-sm p-1 inset-ring [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)]',
-        className
-      )}
+      className={cn(dropdown({ position, className }))}
       {...props}
     >
       {children}
