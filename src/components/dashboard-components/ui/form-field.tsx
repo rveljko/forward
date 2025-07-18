@@ -52,6 +52,7 @@ function Input({
         </span>
       )}
       <input
+        type="text"
         className={cn(
           `bg-input-background text-clickable w-full rounded-md px-3 py-2 shadow-sm transition-all placeholder:text-neutral-400 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline focus:ring-brand-500 ring focus:ring' : 'inset-ring-section-outline focus:inset-ring-brand-500 inset-ring focus:inset-ring'}`,
           className
