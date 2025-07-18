@@ -12,7 +12,7 @@ export default function Switcher({
   return (
     <fieldset
       role="tablist"
-      className={cn('flex rounded-sm bg-neutral-800', className)}
+      className={cn('flex rounded-sm bg-neutral-800 shadow-sm', className)}
       {...props}
     >
       {children}
