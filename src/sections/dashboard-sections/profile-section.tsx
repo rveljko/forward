@@ -32,7 +32,7 @@ export default function ProfileSection() {
         <FormField className="lg:flex-row lg:gap-16">
           <p className="w-full max-w-50 text-neutral-100">Profile Picture</p>
           <div className="relative flex items-center gap-2">
-            <div className="size-12 overflow-hidden rounded-full">
+            <div className="size-12 overflow-hidden rounded-full bg-neutral-700">
               <img
                 src={newUserInformation.profilePictureUrl}
                 alt={`${userInformation.firstName} ${userInformation.lastName} profile picture`}
