@@ -61,28 +61,16 @@ export default function DraftActionsModal({
             withoutLinks={withoutLinks}
           />
         )}
-        <motion.div
-          initial={{
-            opacity: 'var(--opacity-from)',
-            translateX: 'var(--slide-x-from)',
-          }}
-          animate={{
-            opacity: 'var(--opacity-to)',
-            translateX: 'var(--slide-x-to)',
-          }}
-          exit={{
-            opacity: 'var(--opacity-from)',
-            translateX: 'var(--slide-x-from)',
-          }}
-          className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
-        >
-          {activePanel === 'rename' && (
+        {activePanel === 'rename' && (
+          <ActivePanelContainer>
             <RenameDraftPanel draftId={draftId} closeModal={closeModal} />
-          )}
-          {activePanel === 'delete' && (
+          </ActivePanelContainer>
+        )}
+        {activePanel === 'delete' && (
+          <ActivePanelContainer>
             <DeleteDraftPanel draftId={draftId} closeModal={closeModal} />
-          )}
-        </motion.div>
+          </ActivePanelContainer>
+        )}
       </AnimatePresence>
     </ModalCard>
   )
@@ -225,5 +213,31 @@ function MenuPanel({
         </PanelCard>
       </li>
     </motion.ul>
+  )
+}
+
+type ActivePanelContainerProps = {
+  children: React.ReactNode
+}
+
+function ActivePanelContainer({ children }: ActivePanelContainerProps) {
+  return (
+    <motion.div
+      initial={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      animate={{
+        opacity: 'var(--opacity-to)',
+        translateX: 'var(--slide-x-to)',
+      }}
+      exit={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
+    >
+      {children}
+    </motion.div>
   )
 }
