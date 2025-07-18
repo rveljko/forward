@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 const button = cva(
-  'text-clickable flex w-max items-center justify-center gap-1 rounded-md transition-[background-color,scale] [anchor-name:--button] hover:cursor-pointer active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-50',
+  'text-clickable flex w-max items-center justify-center gap-1 rounded-md shadow-sm transition-[background-color,scale] [anchor-name:--button] hover:cursor-pointer active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -13,12 +13,13 @@ const button = cva(
           'bg-brand-500 text-white hover:bg-[color-mix(in_oklab,var(--color-brand-500),_var(--color-black)_10%)] pointer-coarse:active:bg-[color-mix(in_oklab,var(--color-brand-500),_var(--color-black)_10%)]',
         secondary:
           'bg-neutral-800 hover:bg-[color-mix(in_oklab,var(--color-neutral-800),_var(--color-black)_10%)] pointer-coarse:active:bg-[color-mix(in_oklab,var(--color-neutral-800),_var(--color-black)_10%)]',
-        tertiary: 'hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10',
+        tertiary:
+          'hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 shadow-none',
         ghost:
           'hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 inset-ring-clickable/10 inset-ring',
         danger:
           'bg-danger-500 text-black hover:bg-[color-mix(in_oklab,var(--color-danger-500),_var(--color-black)_10%)] pointer-coarse:active:bg-[color-mix(in_oklab,var(--color-danger-500),_var(--color-black)_10%)]',
-        link: 'hover:text-brand-500 pointer-coarse:active:text-brand-500',
+        link: 'hover:text-brand-500 pointer-coarse:active:text-brand-500 shadow-none',
       },
       size: {
         large: 'px-3 py-2',
