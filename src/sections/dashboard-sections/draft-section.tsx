@@ -79,6 +79,7 @@ function Header({ draftId, title }: HeaderProps) {
         </Link>
         <span className="text-neutral-400">/</span>
         <input
+          type="text"
           ref={inputRef}
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
