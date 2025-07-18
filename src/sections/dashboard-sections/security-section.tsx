@@ -42,7 +42,7 @@ export default function SecuritySection() {
             type={showPassword ? 'text' : 'password'}
             rightIcon={
               <button
-                className="text-clickable hover:cursor-pointer"
+                className="hover:cursor-pointer"
                 role="switch"
                 onClick={() => setShowPassword((prev) => !prev)}
               >
