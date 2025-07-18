@@ -33,7 +33,7 @@ export default function DraftCard({
         <h3>
           <Link
             to={`/dashboard/drafts/${id}`}
-            className="line-clamp-2 text-balance"
+            className="text-clickable line-clamp-2 text-balance"
           >
             <span className="absolute inset-0"></span>
             {title}
