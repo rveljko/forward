@@ -21,7 +21,7 @@ import Button from '@ui/button'
 import { Issue } from '@utils/types'
 import copy from 'copy-to-clipboard'
 import { AnimatePresence, motion } from 'motion/react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 type IssueActionsModalProps = {
   closeModal: () => void
@@ -73,40 +73,34 @@ export default function IssueActionsModal({
             withoutLinks={withoutLinks}
           />
         )}
-        <motion.div
-          initial={{
-            opacity: 'var(--opacity-from)',
-            translateX: 'var(--slide-x-from)',
-          }}
-          animate={{
-            opacity: 'var(--opacity-to)',
-            translateX: 'var(--slide-x-to)',
-          }}
-          exit={{
-            opacity: 'var(--opacity-from)',
-            translateX: 'var(--slide-x-from)',
-          }}
-          className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
-        >
-          {activePanel === 'change-status' && (
+        {activePanel === 'change-status' && (
+          <ActivePanelContainer>
             <ChangeIssueStatusPanel issueId={issueId} closeModal={closeModal} />
-          )}
-          {activePanel === 'change-priority' && (
+          </ActivePanelContainer>
+        )}
+        {activePanel === 'change-priority' && (
+          <ActivePanelContainer>
             <ChangeIssuePriorityPanel
               issueId={issueId}
               closeModal={closeModal}
             />
-          )}
-          {activePanel === 'change-tag' && (
+          </ActivePanelContainer>
+        )}
+        {activePanel === 'change-tag' && (
+          <ActivePanelContainer>
             <ChangeIssueTagPanel issueId={issueId} closeModal={closeModal} />
-          )}
-          {activePanel === 'rename' && (
+          </ActivePanelContainer>
+        )}
+        {activePanel === 'rename' && (
+          <ActivePanelContainer>
             <RenameIssuePanel issueId={issueId} closeModal={closeModal} />
-          )}
-          {activePanel === 'delete' && (
+          </ActivePanelContainer>
+        )}
+        {activePanel === 'delete' && (
+          <ActivePanelContainer>
             <DeleteIssuePanel issueId={issueId} closeModal={closeModal} />
-          )}
-        </motion.div>
+          </ActivePanelContainer>
+        )}
       </AnimatePresence>
     </ModalCard>
   )
@@ -296,5 +290,31 @@ function MenuPanel({
         </PanelCard>
       </li>
     </motion.ul>
+  )
+}
+
+type ActivePanelContainerProps = {
+  children: React.ReactNode
+}
+
+function ActivePanelContainer({ children }: ActivePanelContainerProps) {
+  return (
+    <motion.div
+      initial={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      animate={{
+        opacity: 'var(--opacity-to)',
+        translateX: 'var(--slide-x-to)',
+      }}
+      exit={{
+        opacity: 'var(--opacity-from)',
+        translateX: 'var(--slide-x-from)',
+      }}
+      className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
+    >
+      {children}
+    </motion.div>
   )
 }
