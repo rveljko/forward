@@ -44,7 +44,7 @@ function Item({
       )}
       {...props}
     >
-      {LeftIcon}
+      {LeftIcon && <span className="shrink-0">{LeftIcon}</span>}
       {children}
     </li>
   )
@@ -61,7 +61,10 @@ type ButtonAsButtonProps = React.ComponentPropsWithoutRef<'button'> & {
 type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps
 
 function Button({ children, className, ...props }: ButtonProps) {
-  const buttonClasses = cn('text-clickable hover:cursor-pointer', className)
+  const buttonClasses = cn(
+    'text-clickable line-clamp-1 break-all hover:cursor-pointer',
+    className
+  )
 
   if ('href' in props && props.href !== undefined) {
     return (
