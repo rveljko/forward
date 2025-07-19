@@ -65,7 +65,12 @@ export default function Sidebar() {
             isOpened ? 'flex-row' : 'flex-col'
           }`}
         >
-          <Link to="/dashboard/issues">
+          <Link
+            to="/dashboard/issues"
+            onClick={() =>
+              !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
+            }
+          >
             <Logo hideText={!isOpened} />
           </Link>
           <Button
@@ -112,15 +117,28 @@ export default function Sidebar() {
             <NavigationLinksList
               navigationLinks={primaryNavigationLinks}
               hideNavigationLinkText={!isOpened}
+              onClick={() =>
+                !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
+              }
             />
             <div className="space-y-1">
               <NavigationLinksList
                 navigationLinks={secondaryNavigationLinks}
                 hideNavigationLinkText={!isOpened}
+                onClick={() =>
+                  !isMediumSizeScreen &&
+                  isOpened &&
+                  setIsOpened((prev) => !prev)
+                }
               />
               <Link
                 to="/dashboard/settings/profile"
                 className="flex items-center gap-1 px-1.5 py-1"
+                onClick={() =>
+                  !isMediumSizeScreen &&
+                  isOpened &&
+                  setIsOpened((prev) => !prev)
+                }
               >
                 <div className="flex h-6 shrink-0 items-center justify-center">
                   <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
