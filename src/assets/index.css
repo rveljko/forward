@@ -79,6 +79,7 @@
   --section-background-color: hsl(234, 28%, 7%);
   --modal-background: var(--section-background-color);
   --create-new-issue-modal-background: var(--neutral-800);
+  --search-modal-background: var(--neutral-800);
   --modal-overlay-background: hsl(from black h s l / 10%);
   --divider-top-background: hsl(from black h s l / 40%);
   --divider-bottom-background: var(--section-outline);
@@ -102,6 +103,7 @@
     --background-color: hsl(180, 9%, 98%);
     --section-background-color: hsl(0, 0%, 100%);
     --create-new-issue-modal-background: hsl(0, 0%, 100%);
+    --search-modal-background: hsl(0, 0%, 100%);
     --divider-top-background: transparent;
   }
 }
@@ -123,6 +125,7 @@
   --background-color: hsl(233, 29%, 5%);
   --section-background-color: hsl(234, 28%, 7%);
   --create-new-issue-modal-background: var(--neutral-800);
+  --search-modal-background: var(--neutral-800);
   --divider-top-background: hsl(from black h s l / 40%);
 }
 
@@ -143,6 +146,7 @@
   --background-color: hsl(180, 9%, 98%);
   --section-background-color: hsl(0, 0%, 100%);
   --create-new-issue-modal-background: hsl(0, 0%, 100%);
+  --search-modal-background: hsl(0, 0%, 100%);
   --divider-top-background: transparent;
 }
 
@@ -202,6 +206,7 @@
   --color-create-new-issue-modal-background: var(
     --create-new-issue-modal-background
   );
+  --color-search-modal-background: var(--search-modal-background);
   --color-modal-overlay-background: var(--modal-overlay-background);
   --color-divider-top-background: var(--divider-top-background);
   --color-divider-bottom-background: var(--divider-bottom-background);

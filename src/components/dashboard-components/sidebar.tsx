@@ -1,5 +1,6 @@
 import CreateNewIssueModalButton from '@dashboard-components/create-new-issue-modal-button'
 import NavigationLinksList from '@dashboard-components/navigation-links-list'
+import SearchModalButton from '@dashboard-components/search-modal-button'
 import {
   primaryNavigationLinks,
   secondaryNavigationLinks,
@@ -104,14 +105,14 @@ export default function Sidebar() {
                 Create New Issue
               </span>
             </CreateNewIssueModalButton>
-            <Button
+            <SearchModalButton
               variant="secondary"
               size="small"
               leftIcon={<SearchIcon />}
               className="w-full justify-start"
             >
-              {isOpened && 'Search'}
-            </Button>
+              <span className={isOpened ? 'block' : 'hidden'}>Search</span>
+            </SearchModalButton>
           </div>
           <nav className="flex h-full flex-col justify-between gap-1">
             <NavigationLinksList
