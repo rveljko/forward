@@ -110,41 +110,47 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
 
   return (
     <>
-      <div>
-        <MenuList.Heading>Issues</MenuList.Heading>
-        <MenuList>
-          {filteredIssues.map(({ id, title, status }) => {
-            const { icon: Icon } = getIssueStatus(status)
+      {filteredIssues.length > 0 ? (
+        <>
+          <div>
+            <MenuList.Heading>Issues</MenuList.Heading>
+            <MenuList>
+              {filteredIssues.map(({ id, title, status }) => {
+                const { icon: Icon } = getIssueStatus(status)
 
-            return (
-              <MenuList.Item key={id} leftIcon={<Icon />}>
+                return (
+                  <MenuList.Item key={id} leftIcon={<Icon />}>
+                    <MenuList.Button
+                      href={`/dashboard/issues/${id}`}
+                      onClick={closeModal}
+                    >
+                      {title}
+                    </MenuList.Button>
+                  </MenuList.Item>
+                )
+              })}
+            </MenuList>
+          </div>
+          {filteredDrafts.length > 0 ? <Divider /> : null}
+        </>
+      ) : null}
+      {filteredDrafts.length > 0 ? (
+        <div>
+          <MenuList.Heading>Drafts</MenuList.Heading>
+          <MenuList>
+            {filteredDrafts.map(({ id, title }) => (
+              <MenuList.Item key={id} leftIcon={<BrainIcon />}>
                 <MenuList.Button
-                  href={`/dashboard/issues/${id}`}
+                  href={`/dashboard/drafts/${id}`}
                   onClick={closeModal}
                 >
                   {title}
                 </MenuList.Button>
               </MenuList.Item>
-            )
-          })}
-        </MenuList>
-      </div>
-      <Divider />
-      <div>
-        <MenuList.Heading>Drafts</MenuList.Heading>
-        <MenuList>
-          {filteredDrafts.map(({ id, title }) => (
-            <MenuList.Item key={id} leftIcon={<BrainIcon />}>
-              <MenuList.Button
-                href={`/dashboard/drafts/${id}`}
-                onClick={closeModal}
-              >
-                {title}
-              </MenuList.Button>
-            </MenuList.Item>
-          ))}
-        </MenuList>
-      </div>
+            ))}
+          </MenuList>
+        </div>
+      ) : null}
     </>
   )
 }
