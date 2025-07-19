@@ -10,6 +10,7 @@ import DraftsContextProvider, {
 } from '@services/contexts/drafts-context'
 import { useIssues } from '@services/contexts/issues-context'
 import { cn } from '@utils/utils'
+import Fuse from 'fuse.js'
 import { useState } from 'react'
 
 type SearchModalProps = React.ComponentPropsWithoutRef<'article'> & {
@@ -101,12 +102,12 @@ type ResultsPanelProps = {
 function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
   const { issues, getIssueStatus } = useIssues()
   const { drafts } = useDrafts()
-  const filteredIssues = issues.filter(({ title }) =>
-    title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-  )
-  const filteredDrafts = drafts.filter(({ title }) =>
-    title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
-  )
+  const filteredIssues = new Fuse(issues, { keys: ['title'] })
+    .search(searchQuery)
+    .map(({ item }) => item)
+  const filteredDrafts = new Fuse(drafts, { keys: ['title'] })
+    .search(searchQuery)
+    .map(({ item }) => item)
 
   if (!filteredIssues.length && !filteredDrafts.length)
     return <NoResultsPanel searchQuery={searchQuery} />
