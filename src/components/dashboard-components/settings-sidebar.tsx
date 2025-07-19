@@ -35,6 +35,9 @@ export default function SettingsSidebar() {
         <NavigationLinksList
           navigationLinks={settingsNavigationLinks}
           hideNavigationLinkText={!isOpened}
+          onClick={() =>
+            !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
+          }
         />
       </nav>
     </aside>
