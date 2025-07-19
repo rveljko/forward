@@ -108,6 +108,9 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
     title.toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase())
   )
 
+  if (!filteredIssues.length && !filteredDrafts.length)
+    return <NoResultsPanel searchQuery={searchQuery} />
+
   return (
     <>
       {filteredIssues.length > 0 ? (
@@ -152,5 +155,24 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
         </div>
       ) : null}
     </>
+  )
+}
+
+type NoResultsPanelProps = {
+  searchQuery: string
+}
+
+function NoResultsPanel({ searchQuery }: NoResultsPanelProps) {
+  return (
+    <div className="flex flex-col items-center px-4 text-center text-pretty">
+      <span className="border-section-outline mb-4 flex size-12 items-center justify-center rounded-sm border">
+        <SearchIcon />
+      </span>
+      <h3 className="mb-2">Sorry, We Couldn't Find Anything</h3>
+      <p className="wrap-anywhere">
+        We couldn't find any results for{' '}
+        <strong className="text-clickable">{searchQuery}</strong> search
+      </p>
+    </div>
   )
 }
