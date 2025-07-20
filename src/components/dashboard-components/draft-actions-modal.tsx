@@ -106,7 +106,7 @@ function MenuPanel({
         opacity: 'var(--opacity-from)',
         translateX: 'var(--slide-x-from)',
       }}
-      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? 'max-md:h-46' : 'max-md:h-66'} `}
+      className={`grid grid-cols-[repeat(auto-fit,_minmax(min(var(--panel-card-width),_100%),_1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? '' : 'max-md:h-66'}`}
     >
       {!withoutLinks && (
         <>
