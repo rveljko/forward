@@ -4,6 +4,7 @@ import { issueTags } from '@data/issue-tags'
 import { issues as defaultIssues } from '@data/issues'
 import { UniqueIdentifier } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
+import { DEFAULT_ISSUE_TITLE } from '@utils/constants'
 import {
   Issue,
   IssueFilterCategory,
@@ -17,7 +18,7 @@ import {
   IssueTagLabel,
 } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router'
+import { useNavigate, useSearchParams } from 'react-router'
 import { v4 as uuidv4 } from 'uuid'
 
 type IssuesContextProviderProps = {
@@ -33,6 +34,7 @@ type IssuesContextType = {
   getIssuesByStatus: (status: IssueStatusLabel) => Issue[]
   getIssueById: (id: Issue['id']) => Issue
   createNewIssue: (newIssue: Issue) => void
+  createDefaultIssue: () => void
   duplicateIssue: (id: Issue['id']) => void
   deleteIssue: (id: Issue['id']) => void
   updateIssue: (issue: Issue) => void
@@ -61,6 +63,7 @@ export default function IssuesContextProvider({
   const priorities = searchParams.getAll('priority') as IssuePriorityLabel[]
   const tags = searchParams.getAll('tag') as IssueTagLabel[]
   const sort = (searchParams.get('sort') || 'manual') as IssueSort
+  const navigate = useNavigate()
 
   const filteredIssues = issues.filter((issue) => {
     const filteredStatuses = !statuses.length || statuses.includes(issue.status)
@@ -153,6 +156,23 @@ export default function IssuesContextProvider({
     ])
   }
 
+  function createDefaultIssue() {
+    const id = uuidv4()
+    setIssues([
+      {
+        id,
+        title: DEFAULT_ISSUE_TITLE,
+        status: 'todo',
+        priority: 'low',
+        tag: 'design',
+        createdAt: new Date(),
+        content: '',
+      },
+      ...issues,
+    ])
+    navigate(`/dashboard/issues/${id}`)
+  }
+
   function duplicateIssue(id: Issue['id']) {
     const issue = getIssueById(id)
 
@@ -208,6 +228,7 @@ export default function IssuesContextProvider({
         getIssuesByStatus,
         getIssueById,
         createNewIssue,
+        createDefaultIssue,
         duplicateIssue,
         deleteIssue,
         updateIssue,

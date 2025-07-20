@@ -60,6 +60,7 @@ type MenuPanelProps = {
 }
 
 function MenuPanel({ closeModal }: MenuPanelProps) {
+  const { createDefaultIssue } = useIssues()
   const { createNewDraft } = useDrafts()
 
   return (
@@ -68,7 +69,12 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
         <MenuList.Heading>Quick Actions</MenuList.Heading>
         <MenuList>
           <MenuList.Item leftIcon={<PenIcon />}>
-            <MenuList.Button onClick={closeModal}>
+            <MenuList.Button
+              onClick={() => {
+                createDefaultIssue()
+                closeModal()
+              }}
+            >
               Create New Issue
             </MenuList.Button>
           </MenuList.Item>
