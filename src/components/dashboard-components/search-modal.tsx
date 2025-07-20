@@ -43,13 +43,13 @@ export default function SearchModal({
       </header>
       <Divider />
       <div className="h-max max-h-85 space-y-4 overflow-y-auto py-4">
-        {search.length > 0 ? (
-          <DraftsContextProvider>
+        <DraftsContextProvider>
+          {search.length > 0 ? (
             <ResultsPanel searchQuery={search} closeModal={closeModal} />
-          </DraftsContextProvider>
-        ) : (
-          <MenuPanel closeModal={closeModal} />
-        )}
+          ) : (
+            <MenuPanel closeModal={closeModal} />
+          )}
+        </DraftsContextProvider>
       </div>
     </ModalCard>
   )
@@ -60,6 +60,8 @@ type MenuPanelProps = {
 }
 
 function MenuPanel({ closeModal }: MenuPanelProps) {
+  const { createNewDraft } = useDrafts()
+
   return (
     <>
       <div>
@@ -71,7 +73,12 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
             </MenuList.Button>
           </MenuList.Item>
           <MenuList.Item leftIcon={<BrainIcon />}>
-            <MenuList.Button onClick={closeModal}>
+            <MenuList.Button
+              onClick={() => {
+                createNewDraft()
+                closeModal()
+              }}
+            >
               Create New Draft
             </MenuList.Button>
           </MenuList.Item>
