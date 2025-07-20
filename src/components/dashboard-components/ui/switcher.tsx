@@ -35,7 +35,7 @@ function Element({ children, isActive, className, ...props }: ElementProps) {
     <button
       role="tab"
       className={cn(
-        `hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 rounded-sm px-3 py-1 text-neutral-400 transition-[background-color] hover:cursor-pointer active:scale-99 ${isActive ? 'bg-section-background-color pointer-coarse:active:bg-section-background-color hover:bg-section-background-color text-clickable' : ''}`,
+        'hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 aria-selected:bg-section-background-color aria-selected:pointer-coarse:active:bg-section-background-color aria-selected:hover:bg-section-background-color aria-selected:text-clickable rounded-sm px-3 py-1 text-neutral-400 transition-[background-color] hover:cursor-pointer active:scale-99',
         className
       )}
       aria-selected={isActive}
