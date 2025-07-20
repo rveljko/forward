@@ -1,5 +1,6 @@
 import Sidebar from '@dashboard-components/sidebar'
 import { usePreferences } from '@services/contexts/preferences-context'
+import HolyLoader from 'holy-loader'
 import { Outlet } from 'react-router'
 
 export default function DashboardLayout() {
@@ -10,6 +11,11 @@ export default function DashboardLayout() {
       id="dashboard-layout"
       className={`relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
+      <HolyLoader
+        color="var(--color-brand-500)"
+        height={2}
+        ignoreSearchParams
+      />
       <div
         className={`animate-scale-fade-in origin-center ${
           preferences.sidebarStyle === 'floating'
