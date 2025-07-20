@@ -1,5 +1,6 @@
 import IssueActionsModal from '@dashboard-components/issue-actions-modal'
 import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-button'
+import IssueDate from '@dashboard-components/ui/issue-date'
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
@@ -10,10 +11,6 @@ import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import DragVerticalIcon from '@icons/drag-vertical-icon'
 import Button from '@ui/button'
-import {
-  dayMonthShortFormatter,
-  iso8601DateFormatter,
-} from '@utils/date-formatters'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 import { AnimatePresence } from 'motion/react'
@@ -106,12 +103,7 @@ export default function IssuesKanbanCard({
           </IssueActionsModalButton>
         </div>
       </header>
-      <time
-        className="mb-2 inline-block text-nowrap text-neutral-400"
-        dateTime={iso8601DateFormatter(createdAt)}
-      >
-        {dayMonthShortFormatter(createdAt)}
-      </time>
+      <IssueDate date={createdAt} className="mb-2" />
       <IssueTag tag={tag} />
       <AnimatePresence>
         {isOpened && (
