@@ -5,6 +5,7 @@ import FormField from '@dashboard-components/ui/form-field'
 import SearchIcon from '@icons/search-icon'
 import { useInbox } from '@services/contexts/inbox-context'
 import { cn } from '@utils/utils'
+import Fuse from 'fuse.js'
 import { useState } from 'react'
 import { Link } from 'react-router'
 
@@ -16,9 +17,11 @@ export default function InboxSidebar({ className }: InboxSidebarProps) {
   const { chats } = useInbox()
   const [search, setSearch] = useState('')
 
-  const filteredChats = chats.filter(({ person: { name } }) =>
-    name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-  )
+  const filteredChats = search
+    ? new Fuse(chats, { keys: ['person.name'] })
+        .search(search)
+        .map(({ item }) => item)
+    : chats
 
   return (
     <aside
