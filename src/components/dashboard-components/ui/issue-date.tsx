@@ -16,7 +16,7 @@ export default function IssueDate({
 }: IssueDateProps) {
   return (
     <time
-      className={cn('flex text-nowrap text-neutral-400', className)}
+      className={cn('flex text-sm text-nowrap text-neutral-400', className)}
       dateTime={iso8601DateFormatter(date)}
       {...props}
     >
