@@ -81,7 +81,7 @@ export default function IssuesListItem({
         </div>
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
-          <div className="flex h-8.5 shrink-0 items-center">
+          <div className="flex h-7.5 shrink-0 items-center">
             <IssueStatus status={status} />
           </div>
           <h3>
