@@ -2,6 +2,7 @@ import Sidebar from '@dashboard-components/sidebar'
 import { usePreferences } from '@services/contexts/preferences-context'
 import HolyLoader from 'holy-loader'
 import { Outlet } from 'react-router'
+import { Toaster } from 'sonner'
 
 export default function DashboardLayout() {
   const { preferences, getRemCornerRoundness } = usePreferences()
@@ -15,6 +16,12 @@ export default function DashboardLayout() {
         color="var(--color-brand-500)"
         height={2}
         ignoreSearchParams
+      />
+      <Toaster
+        position="top-right"
+        offset={16}
+        style={{ fontFamily: 'inherit' }}
+        toastOptions={{ classNames: { toast: 'w-90' } }}
       />
       <div
         className={`animate-scale-fade-in origin-center ${
