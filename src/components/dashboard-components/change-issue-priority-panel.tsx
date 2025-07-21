@@ -5,6 +5,7 @@ import { issuePriorities } from '@data/issue-priorities'
 import PriorityIcon from '@icons/priority-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import { useState } from 'react'
 
@@ -29,6 +30,10 @@ export default function ChangeIssuePriorityPanel({
         onSubmit={(e) => {
           e.preventDefault()
           updateIssue({ ...issue, priority: newPriority })
+          showToast({
+            title: 'Issue Priority Changed',
+            description: 'Priority updated successfully',
+          })
           closeModal()
         }}
       >
