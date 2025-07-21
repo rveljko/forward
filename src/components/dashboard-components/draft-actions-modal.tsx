@@ -186,6 +186,10 @@ function MenuPanel({
               <PanelCard.Button
                 onClick={() => {
                   duplicateDraft(draftId)
+                  showToast({
+                    title: 'Draft Duplicated',
+                    description: 'Draft duplicated successfully',
+                  })
                   closeModal()
                 }}
               >
