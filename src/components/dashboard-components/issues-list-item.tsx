@@ -44,7 +44,7 @@ export default function IssuesListItem({
     return (
       <article
         className={cn(
-          'bg-clickable/5 ring-section-outline h-16.5 ring',
+          'bg-clickable/5 ring-section-outline h-15.5 ring',
           className
         )}
         style={style}
