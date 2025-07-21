@@ -17,6 +17,7 @@ import {
   dayMonthShortFormatter,
   iso8601DateFormatter,
 } from '@utils/date-formatters'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import { useState } from 'react'
 
@@ -67,6 +68,10 @@ export default function IssueInformationModal({
                 updateIssue({
                   ...newInformation,
                   title: newInformation.title || DEFAULT_ISSUE_TITLE,
+                })
+                showToast({
+                  title: 'Issue Updated',
+                  description: 'Changes saved successfully',
                 })
               }}
               disabled={!newInformation.title && !newInformation.description}
