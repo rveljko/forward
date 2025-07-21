@@ -263,6 +263,10 @@ function MenuPanel({
               <PanelCard.Button
                 onClick={() => {
                   duplicateIssue(issueId)
+                  showToast({
+                    title: 'Issue Duplicated',
+                    description: 'Issue duplicated successfully',
+                  })
                   closeModal()
                 }}
               >
