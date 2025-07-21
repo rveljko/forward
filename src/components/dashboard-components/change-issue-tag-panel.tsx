@@ -5,6 +5,7 @@ import { issueTags } from '@data/issue-tags'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import { useState } from 'react'
 
@@ -29,6 +30,10 @@ export default function ChangeIssueTagPanel({
         onSubmit={(e) => {
           e.preventDefault()
           updateIssue({ ...issue, tag: newTag })
+          showToast({
+            title: 'Issue Tag Changed',
+            description: 'Tag updated successfully',
+          })
           closeModal()
         }}
       >
