@@ -3,6 +3,7 @@ import FormField from '@dashboard-components/ui/form-field'
 import EditIcon from '@icons/edit-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import { useRef, useState } from 'react'
 
@@ -29,6 +30,10 @@ export default function RenameIssuePanel({
         onSubmit={(e) => {
           e.preventDefault()
           updateIssue({ ...issue, title: newTitle })
+          showToast({
+            title: 'Issue Renamed',
+            description: 'Title updated successfully',
+          })
           closeModal()
         }}
       >
