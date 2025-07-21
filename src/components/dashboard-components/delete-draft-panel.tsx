@@ -2,6 +2,7 @@ import Divider from '@dashboard-components/ui/divider'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Draft } from '@utils/types'
 
 type DeleteDraftPanelProps = {
@@ -38,6 +39,10 @@ export default function DeleteDraftPanel({
           type="submit"
           onClick={() => {
             deleteDraft(draftId)
+            showToast({
+              title: 'Draft Deleted',
+              description: 'Draft deleted successfully',
+            })
             closeModal()
           }}
         >
