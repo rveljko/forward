@@ -1,6 +1,7 @@
 import FormField from '@dashboard-components/ui/form-field'
 import SendIcon from '@icons/send-icon'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { useState } from 'react'
 
 export default function ConnectWithUsSection() {
@@ -22,6 +23,10 @@ export default function ConnectWithUsSection() {
           onSubmit={(e) => {
             e.preventDefault()
             setFormFieldValues(initialFormFieldValues)
+            showToast({
+              title: 'Message Sent',
+              description: 'Your message was sent successfully',
+            })
           }}
         >
           <FormField className="[&_div]:max-w-none">
