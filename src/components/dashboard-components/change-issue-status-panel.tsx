@@ -5,6 +5,7 @@ import { issueStatuses } from '@data/issue-statuses'
 import StatusIcon from '@icons/status-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import { useState } from 'react'
 
@@ -29,6 +30,10 @@ export default function ChangeIssueStatusPanel({
         onSubmit={(e) => {
           e.preventDefault()
           updateIssue({ ...issue, status: newStatus })
+          showToast({
+            title: 'Issue Status Changed',
+            description: 'Status updated successfully',
+          })
           closeModal()
         }}
       >
