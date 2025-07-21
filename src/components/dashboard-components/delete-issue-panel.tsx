@@ -2,6 +2,7 @@ import Divider from '@dashboard-components/ui/divider'
 import TrashIcon from '@icons/trash-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 
 type DeleteIssuePanelProps = {
@@ -38,6 +39,10 @@ export default function DeleteIssuePanel({
           type="submit"
           onClick={() => {
             deleteIssue(issueId)
+            showToast({
+              title: 'Issue Deleted',
+              description: 'Issue deleted successfully',
+            })
             closeModal()
           }}
         >
