@@ -12,6 +12,7 @@ import ExternalLinkIcon from '@icons/external-link-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Draft } from '@utils/types'
 import copy from 'copy-to-clipboard'
 import { AnimatePresence, motion } from 'motion/react'
@@ -163,6 +164,10 @@ function MenuPanel({
               <PanelCard.Button
                 onClick={() => {
                   copy(title)
+                  showToast({
+                    title: 'Draft Title Copied',
+                    description: 'Title copied successfully',
+                  })
                   closeModal()
                 }}
               >
