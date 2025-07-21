@@ -3,6 +3,7 @@ import FormField from '@dashboard-components/ui/form-field'
 import EditIcon from '@icons/edit-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Draft } from '@utils/types'
 import { useRef, useState } from 'react'
 
@@ -29,6 +30,10 @@ export default function RenameDraftPanel({
         onSubmit={(e) => {
           e.preventDefault()
           renameDraft(draftId, newTitle)
+          showToast({
+            title: 'Draft Renamed',
+            description: 'Title updated successfully',
+          })
           closeModal()
         }}
       >
