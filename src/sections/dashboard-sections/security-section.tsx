@@ -5,6 +5,7 @@ import EyeOffIcon from '@icons/eye-off-icon'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import Switch from '@ui/switch'
+import { showToast } from '@utils/toasts'
 import { useState } from 'react'
 
 export default function SecuritySection() {
@@ -30,6 +31,10 @@ export default function SecuritySection() {
         onSubmit={(e) => {
           e.preventDefault()
           updateUserInformation(newUserInformation)
+          showToast({
+            title: 'Security Settings Updated',
+            description: 'Changes applied successfully',
+          })
         }}
       >
         <FormField className="lg:flex-row lg:gap-16">
@@ -42,6 +47,7 @@ export default function SecuritySection() {
             type={showPassword ? 'text' : 'password'}
             rightIcon={
               <button
+                type="button"
                 className="hover:cursor-pointer"
                 role="switch"
                 onClick={() => setShowPassword((prev) => !prev)}
