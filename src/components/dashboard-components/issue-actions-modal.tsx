@@ -18,6 +18,7 @@ import TagIcon from '@icons/tag-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import copy from 'copy-to-clipboard'
 import { AnimatePresence, motion } from 'motion/react'
@@ -240,6 +241,10 @@ function MenuPanel({
               <PanelCard.Button
                 onClick={() => {
                   copy(title)
+                  showToast({
+                    title: 'Issue Title Copied',
+                    description: 'Title copied successfully',
+                  })
                   closeModal()
                 }}
               >
