@@ -9,6 +9,7 @@ import ArrowsMinimizeIcon from '@icons/arrows-minimize-icon'
 import CloseIcon from '@icons/close-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
 import {
   Issue,
   IssuePriorityLabel,
@@ -56,6 +57,10 @@ export default function CreateNewIssueModal({
         onSubmit={(e) => {
           e.preventDefault()
           createNewIssue(newIssue)
+          showToast({
+            title: 'Issue Created',
+            description: 'Issue added successfully',
+          })
           closeModal()
         }}
       >
