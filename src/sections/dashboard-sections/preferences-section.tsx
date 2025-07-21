@@ -8,6 +8,7 @@ import { themes } from '@data/themes'
 import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
 import Switch from '@ui/switch'
+import { showToast } from '@utils/toasts'
 import { CornerRoundnessLabel } from '@utils/types'
 
 export default function PreferencesSection() {
@@ -89,7 +90,13 @@ export default function PreferencesSection() {
         variant="primary"
         size="large"
         disabled={isButtonDisabled}
-        onClick={() => setPreferences(newPreferences)}
+        onClick={() => {
+          setPreferences(newPreferences)
+          showToast({
+            title: 'Preferences Updated',
+            description: 'Preferences saved successfully',
+          })
+        }}
       >
         Save Changes
       </Button>
