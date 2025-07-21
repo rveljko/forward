@@ -3,6 +3,7 @@ import FormField from '@dashboard-components/ui/form-field'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import { onlyLettersMask } from '@utils/input-masks'
+import { showToast } from '@utils/toasts'
 
 export default function ProfileSection() {
   const {
@@ -27,6 +28,10 @@ export default function ProfileSection() {
         onSubmit={(e) => {
           e.preventDefault()
           updateUserInformation(newUserInformation)
+          showToast({
+            title: 'Profile Updated',
+            description: 'Information saved successfully',
+          })
         }}
       >
         <FormField className="lg:flex-row lg:gap-16">
