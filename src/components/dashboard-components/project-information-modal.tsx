@@ -17,6 +17,7 @@ import {
   iso8601DateFormatter,
 } from '@utils/date-formatters'
 import { generateDateInPast } from '@utils/date-generators'
+import { showToast } from '@utils/toasts'
 import { useEffect, useState } from 'react'
 
 type ProjectInformationModalProps =
@@ -79,6 +80,10 @@ export default function ProjectInformationModal({
                 if (!isEditMode) return
 
                 setProjectInformation(newProjectInformation)
+                showToast({
+                  title: 'Project Updated',
+                  description: 'Changes saved successfully',
+                })
               }}
               disabled={
                 !newProjectInformation.title ||
