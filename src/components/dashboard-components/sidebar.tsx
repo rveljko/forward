@@ -1,11 +1,13 @@
-import CreateNewIssueModalButton from '@dashboard-components/create-new-issue-modal-button'
+import CreateNewIssueModal from '@dashboard-components/create-new-issue-modal'
 import NavigationLinksList from '@dashboard-components/navigation-links-list'
 import SearchModalButton from '@dashboard-components/search-modal-button'
+import Modal from '@dashboard-components/ui/modal'
 import {
   primaryNavigationLinks,
   secondaryNavigationLinks,
 } from '@data/navigation-links'
 import useMediaQuery from '@hooks/use-media-query'
+import useModal from '@hooks/use-modal'
 import ChevronLeftIcon from '@icons/chevron-left-icon'
 import ChevronRightIcon from '@icons/chevron-right-icon'
 import PenIcon from '@icons/pen-icon'
@@ -18,10 +20,20 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 export default function Sidebar() {
+  const {
+    isOpened: isCreateNewIssueModalOpen,
+    openModal: openCreateNewIssueModal,
+    closeModal: closeCreateNewIssueModal,
+  } = useModal()
   const { preferences, getRemCornerRoundness } = usePreferences()
   const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
+  const [isBigSizeModal, setIsBigSizeModal] = useState(false)
+
+  function closeOpenedSidebarOnMobile() {
+    !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
+  }
 
   const sidebarStyleClassNames = {
     transparent: `h-screen ${
@@ -66,12 +78,7 @@ export default function Sidebar() {
             isOpened ? 'flex-row' : 'flex-col'
           }`}
         >
-          <Link
-            to="/dashboard/issues"
-            onClick={() =>
-              !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
-            }
-          >
+          <Link to="/dashboard/issues" onClick={closeOpenedSidebarOnMobile}>
             <Logo hideText={!isOpened} />
           </Link>
           <Button
@@ -95,16 +102,20 @@ export default function Sidebar() {
         </header>
         <div className="flex h-full flex-col gap-1 overflow-y-auto">
           <div className="space-y-1">
-            <CreateNewIssueModalButton
+            <Button
               variant="primary"
               size="small"
               leftIcon={<PenIcon />}
               className="w-full justify-start"
+              onClick={() => {
+                openCreateNewIssueModal()
+                closeOpenedSidebarOnMobile()
+              }}
             >
               <span className={isOpened ? 'block' : 'hidden'}>
                 Create New Issue
               </span>
-            </CreateNewIssueModalButton>
+            </Button>
             <SearchModalButton
               variant="secondary"
               size="small"
@@ -118,28 +129,18 @@ export default function Sidebar() {
             <NavigationLinksList
               navigationLinks={primaryNavigationLinks}
               hideNavigationLinkText={!isOpened}
-              onClick={() =>
-                !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
-              }
+              onClick={closeOpenedSidebarOnMobile}
             />
             <div className="space-y-1">
               <NavigationLinksList
                 navigationLinks={secondaryNavigationLinks}
                 hideNavigationLinkText={!isOpened}
-                onClick={() =>
-                  !isMediumSizeScreen &&
-                  isOpened &&
-                  setIsOpened((prev) => !prev)
-                }
+                onClick={closeOpenedSidebarOnMobile}
               />
               <Link
                 to="/dashboard/settings/profile"
                 className="flex items-center gap-1 px-1.5 py-1"
-                onClick={() =>
-                  !isMediumSizeScreen &&
-                  isOpened &&
-                  setIsOpened((prev) => !prev)
-                }
+                onClick={closeOpenedSidebarOnMobile}
               >
                 <div className="flex h-6 shrink-0 items-center justify-center">
                   <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
@@ -160,6 +161,26 @@ export default function Sidebar() {
           </nav>
         </div>
       </div>
+      {isCreateNewIssueModalOpen && (
+        <Modal
+          isOpened={isCreateNewIssueModalOpen}
+          closeModal={closeCreateNewIssueModal}
+        >
+          <Modal.Overlay>
+            <Modal.Dialog
+              className={`transition-[max-width] ${isBigSizeModal ? 'max-w-200' : ''} `}
+            >
+              <Modal.FocusLock>
+                <CreateNewIssueModal
+                  closeModal={closeCreateNewIssueModal}
+                  isBigSizeModal={isBigSizeModal}
+                  setIsBigSizeModal={setIsBigSizeModal}
+                />
+              </Modal.FocusLock>
+            </Modal.Dialog>
+          </Modal.Overlay>
+        </Modal>
+      )}
     </aside>
   )
 }
