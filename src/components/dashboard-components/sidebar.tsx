@@ -1,6 +1,6 @@
 import CreateNewIssueModal from '@dashboard-components/create-new-issue-modal'
 import NavigationLinksList from '@dashboard-components/navigation-links-list'
-import SearchModalButton from '@dashboard-components/search-modal-button'
+import SearchModal from '@dashboard-components/search-modal'
 import Modal from '@dashboard-components/ui/modal'
 import {
   primaryNavigationLinks,
@@ -24,6 +24,11 @@ export default function Sidebar() {
     isOpened: isCreateNewIssueModalOpen,
     openModal: openCreateNewIssueModal,
     closeModal: closeCreateNewIssueModal,
+  } = useModal()
+  const {
+    isOpened: isSearchModalOpen,
+    openModal: openSearchModal,
+    closeModal: closeSearchModal,
   } = useModal()
   const { preferences, getRemCornerRoundness } = usePreferences()
   const { userInformation } = useUserInformation()
@@ -116,14 +121,18 @@ export default function Sidebar() {
                 Create New Issue
               </span>
             </Button>
-            <SearchModalButton
+            <Button
               variant="secondary"
               size="small"
               leftIcon={<SearchIcon />}
               className="w-full justify-start"
+              onClick={() => {
+                openSearchModal()
+                closeOpenedSidebarOnMobile()
+              }}
             >
               <span className={isOpened ? 'block' : 'hidden'}>Search</span>
-            </SearchModalButton>
+            </Button>
           </div>
           <nav className="flex h-full flex-col justify-between gap-1">
             <NavigationLinksList
@@ -176,6 +185,17 @@ export default function Sidebar() {
                   isBigSizeModal={isBigSizeModal}
                   setIsBigSizeModal={setIsBigSizeModal}
                 />
+              </Modal.FocusLock>
+            </Modal.Dialog>
+          </Modal.Overlay>
+        </Modal>
+      )}
+      {isSearchModalOpen && (
+        <Modal isOpened={isSearchModalOpen} closeModal={closeSearchModal}>
+          <Modal.Overlay>
+            <Modal.Dialog>
+              <Modal.FocusLock>
+                <SearchModal closeModal={closeSearchModal} />
               </Modal.FocusLock>
             </Modal.Dialog>
           </Modal.Overlay>
