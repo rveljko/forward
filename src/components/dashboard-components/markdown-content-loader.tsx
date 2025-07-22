@@ -19,6 +19,9 @@ export default function MarkdownContentLoader({
         h3: ({ node, ...props }) => (
           <h3 className="mb-2 text-lg font-medium md:text-xl" {...props} />
         ),
+        h4: ({ node, ...props }) => (
+          <h4 className="mb-2 text-base font-medium md:text-lg" {...props} />
+        ),
         p: ({ node, ...props }) => <p className="mb-2" {...props} />,
         ul: ({ node, ...props }) => (
           <ul className="mb-2 ml-6 list-disc space-y-1.5" {...props} />
