@@ -153,6 +153,7 @@ export type IssueSort =
 export type Guide = {
   id: string
   title: string
+  slug: string
   lastEdit: Date
   content: string
 }
