@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 const button = cva(
-  'text-clickable flex w-max items-center justify-center gap-1 rounded-md shadow-sm transition-[background-color,scale] [anchor-name:--button] hover:cursor-pointer active:scale-99 disabled:scale-100 disabled:cursor-not-allowed disabled:opacity-50',
+  'text-clickable flex w-max items-center justify-center gap-1 rounded-md shadow-sm transition-[background-color,scale] [anchor-name:--button] hover:cursor-pointer not-disabled:active:scale-99 disabled:cursor-not-allowed disabled:opacity-50',
   {
     variants: {
       variant: {
