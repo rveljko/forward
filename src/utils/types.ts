@@ -149,3 +149,10 @@ export type IssueSort =
   | 'priority-desc'
   | 'name-asc'
   | 'name-desc'
+
+export type Guide = {
+  id: string
+  title: string
+  lastEdit: Date
+  content: string
+}

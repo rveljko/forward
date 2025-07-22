@@ -34,3 +34,10 @@ export function dayMonthShortFormatter(date: Date) {
     month: 'short',
   })
 }
+
+export function shortMonthYearFormatter(date: Date) {
+  return new Date(date).toLocaleString('en-US', {
+    month: '2-digit',
+    year: '2-digit',
+  })
+}
