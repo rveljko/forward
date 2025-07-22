@@ -272,19 +272,23 @@
   }
 
   .ProseMirror h1 {
-    font-size: 1.625rem;
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
   }
 
   .ProseMirror h2 {
-    font-size: 1.375rem;
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
   }
 
   .ProseMirror h3 {
-    font-size: 1.25rem;
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
   }
 
   .ProseMirror h4 {
-    font-size: 1.125rem;
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
   }
 
   .ProseMirror p {
@@ -307,6 +311,28 @@
     height: 0;
     pointer-events: none;
     color: var(--color-neutral-400);
+  }
+
+  @media (width >= 48rem) {
+    .ProseMirror h1 {
+      font-size: var(--text-3xl);
+      line-height: var(--text-3xl--line-height);
+    }
+
+    .ProseMirror h2 {
+      font-size: var(--text-2xl);
+      line-height: var(--text-2xl--line-height);
+    }
+
+    .ProseMirror h3 {
+      font-size: var(--text-xl);
+      line-height: var(--text-xl--line-height);
+    }
+
+    .ProseMirror h4 {
+      font-size: var(--text-lg);
+      line-height: var(--text-lg--line-height);
+    }
   }
 }
 
