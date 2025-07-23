@@ -27,6 +27,7 @@
       "@ui/*": ["components/ui/*"],
       "@components/*": ["components/*"],
       "@dashboard-pages/*": ["pages/dashboard-pages/*"],
+      "@landing-pages/*": ["pages/landing-pages/*"],
       "@pages/*": ["pages/*"],
       "@dashboard-sections/*": ["sections/dashboard-sections/*"],
       "@sections/*": ["sections/*"],
