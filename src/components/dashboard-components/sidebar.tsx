@@ -16,6 +16,7 @@ import { usePreferences } from '@services/contexts/preferences-context'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
+import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 import { Link } from 'react-router'
 
@@ -170,26 +171,28 @@ export default function Sidebar() {
           </nav>
         </div>
       </div>
-      {isCreateNewIssueModalOpen && (
-        <Modal
-          isOpened={isCreateNewIssueModalOpen}
-          closeModal={closeCreateNewIssueModal}
-        >
-          <Modal.Overlay>
-            <Modal.Dialog
-              className={`transition-[max-width] ${isBigSizeModal ? 'max-w-200' : ''} `}
-            >
-              <Modal.FocusLock>
-                <CreateNewIssueModal
-                  closeModal={closeCreateNewIssueModal}
-                  isBigSizeModal={isBigSizeModal}
-                  setIsBigSizeModal={setIsBigSizeModal}
-                />
-              </Modal.FocusLock>
-            </Modal.Dialog>
-          </Modal.Overlay>
-        </Modal>
-      )}
+      <AnimatePresence>
+        {isCreateNewIssueModalOpen && (
+          <Modal
+            isOpened={isCreateNewIssueModalOpen}
+            closeModal={closeCreateNewIssueModal}
+          >
+            <Modal.Overlay>
+              <Modal.Dialog
+                className={`transition-[max-width] ${isBigSizeModal ? 'max-w-200' : ''} `}
+              >
+                <Modal.FocusLock>
+                  <CreateNewIssueModal
+                    closeModal={closeCreateNewIssueModal}
+                    isBigSizeModal={isBigSizeModal}
+                    setIsBigSizeModal={setIsBigSizeModal}
+                  />
+                </Modal.FocusLock>
+              </Modal.Dialog>
+            </Modal.Overlay>
+          </Modal>
+        )}
+      </AnimatePresence>
       {isSearchModalOpen && (
         <Modal isOpened={isSearchModalOpen} closeModal={closeSearchModal}>
           <Modal.Overlay>
