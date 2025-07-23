@@ -192,18 +192,18 @@ export default function Sidebar() {
             </Modal.Overlay>
           </Modal>
         )}
+        {isSearchModalOpen && (
+          <Modal isOpened={isSearchModalOpen} closeModal={closeSearchModal}>
+            <Modal.Overlay>
+              <Modal.Dialog>
+                <Modal.FocusLock>
+                  <SearchModal closeModal={closeSearchModal} />
+                </Modal.FocusLock>
+              </Modal.Dialog>
+            </Modal.Overlay>
+          </Modal>
+        )}
       </AnimatePresence>
-      {isSearchModalOpen && (
-        <Modal isOpened={isSearchModalOpen} closeModal={closeSearchModal}>
-          <Modal.Overlay>
-            <Modal.Dialog>
-              <Modal.FocusLock>
-                <SearchModal closeModal={closeSearchModal} />
-              </Modal.FocusLock>
-            </Modal.Dialog>
-          </Modal.Overlay>
-        </Modal>
-      )}
     </aside>
   )
 }
