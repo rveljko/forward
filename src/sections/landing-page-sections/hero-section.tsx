@@ -90,7 +90,7 @@ export default function HeroSection() {
         >
           <div
             id="dashboard-layout"
-            className="bg-background-color border-section-outline relative flex h-screen overflow-hidden rounded-2xl border"
+            className="bg-background-color border-section-outline relative flex h-[80vh] overflow-hidden rounded-2xl border md:h-200"
           >
             <Toaster
               position="top-right"
