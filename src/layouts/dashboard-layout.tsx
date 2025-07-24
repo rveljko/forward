@@ -10,7 +10,7 @@ export default function DashboardLayout() {
   return (
     <div
       id="dashboard-layout"
-      className={`relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
+      className={`bg-background-color relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
       <HolyLoader
         color="var(--color-brand-500)"
