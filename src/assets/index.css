@@ -216,6 +216,7 @@
   --dropdown-width: 12.5rem;
   --dropdown-accordion-summary-height: 1.75rem;
   --accordion-summary-height: 2.5rem;
+  --header-height: 4rem;
   --settings-sidebar-opened-width: 14.375rem;
   --draft-card-width: 16rem;
   --guide-card-width: 16rem;
@@ -244,12 +245,17 @@
     color-scheme: dark light;
   }
 
+  html:has([data-opened='true']) {
+    overflow: hidden;
+  }
+
   body {
     min-height: 100vh;
     background-color: var(--color-background-color);
     color: var(--color-neutral-100);
   }
 
+  html,
   body * {
     scrollbar-width: thin;
     scrollbar-color: hsl(from var(--color-clickable) h s l / 20%) transparent;

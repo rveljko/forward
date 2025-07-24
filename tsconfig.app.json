@@ -24,6 +24,7 @@
     "baseUrl": "./src",
     "paths": {
       "@dashboard-components/*": ["components/dashboard-components/*"],
+      "@landing-page-components/*": ["components/landing-page-components/*"],
       "@ui/*": ["components/ui/*"],
       "@components/*": ["components/*"],
       "@dashboard-pages/*": ["pages/dashboard-pages/*"],
