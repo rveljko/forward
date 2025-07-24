@@ -42,17 +42,15 @@ export default function Sidebar() {
   }
 
   const sidebarStyleClassNames = {
-    transparent: `h-screen ${
-      isOpened
-        ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
-        : 'sticky w-fit'
-    }`,
-    sticky: `bg-section-background-color h-screen ${preferences.isRightSideSidebar ? 'border-l-section-outline border-l' : 'border-r-section-outline border-r'} ${
+    transparent: isOpened
+      ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
+      : 'sticky w-fit',
+    sticky: `bg-section-background-color ${preferences.isRightSideSidebar ? 'border-l-section-outline border-l' : 'border-r-section-outline border-r'} ${
       isOpened
         ? 'absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit'
         : 'sticky w-fit'
     }`,
-    floating: `bg-section-background-color border-section-outline h-full rounded-(--border-radius) border ${
+    floating: `bg-section-background-color border-section-outline rounded-(--border-radius) border ${
       isOpened
         ? 'absolute w-full min-w-(--sidebar-opened-width) rounded-none md:sticky md:w-fit md:rounded-(--border-radius)'
         : 'sticky w-fit'
@@ -76,7 +74,7 @@ export default function Sidebar() {
             : 0,
         } as React.CSSProperties
       }
-      className={`top-0 left-0 z-999 p-4 ${sidebarStyle}`}
+      className={`top-0 left-0 z-999 h-full p-4 ${sidebarStyle}`}
     >
       <div className="flex h-full flex-col gap-4">
         <header
