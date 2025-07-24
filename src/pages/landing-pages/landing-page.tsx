@@ -1,3 +1,5 @@
+import HeroSection from '@landing-page-sections/hero-section'
+
 export default function LandingPage() {
-  return <div>landing-page</div>
+  return <HeroSection />
 }

@@ -31,6 +31,7 @@
       "@landing-pages/*": ["pages/landing-pages/*"],
       "@pages/*": ["pages/*"],
       "@dashboard-sections/*": ["sections/dashboard-sections/*"],
+      "@landing-page-sections/*": ["sections/landing-page-sections/*"],
       "@sections/*": ["sections/*"],
       "@icons/*": ["icons/*"],
       "@routes/*": ["routes/*"],
