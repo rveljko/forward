@@ -5,7 +5,7 @@ export default function LandingPageLayout() {
   return (
     <>
       <Header />
-      <main className="pt-(--header-height)">
+      <main className="relative pt-(--header-height) [--gradient:_radial-gradient(at_top,hsl(from_var(--color-clickable)_h_s_l_/_5%),_var(--color-background-color)_50%)] after:absolute after:top-0 after:-z-1 after:h-175 after:w-full after:bg-(image:--gradient)">
         <Outlet />
       </main>
     </>
