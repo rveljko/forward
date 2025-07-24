@@ -12,7 +12,7 @@ export default function HeroSection() {
   const { preferences, getRemCornerRoundness } = usePreferences()
 
   return (
-    <section className="md:py:25  py-16 [--background:radial-gradient(hsl(from_var(--color-clickable)_h_s_l_/_5%),var(--color-landing-page-background-color))] [--opacity-from:0%] [--opacity-to:100%] [--slide-y-from:--spacing(-4)] [--slide-y-to:--spacing(0)]">
+    <section className="md:py:25 bg-(image:--background) py-16 [--background:radial-gradient(hsl(from_var(--color-clickable)_h_s_l_/_5%),var(--color-landing-page-background-color))] [--opacity-from:0%] [--opacity-to:100%] [--slide-y-from:--spacing(-4)] [--slide-y-to:--spacing(0)]">
       <Container>
         <motion.h1
           initial={{
