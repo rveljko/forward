@@ -96,7 +96,7 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
         <MenuList>
           {secondaryNavigationLinks.map(({ id, name, path, icon: Icon }) => (
             <MenuList.Item key={id} leftIcon={Icon && <Icon />}>
-              <MenuList.Button href={`/dashboard/${path}`} onClick={closeModal}>
+              <MenuList.Button href={path} onClick={closeModal}>
                 {name}
               </MenuList.Button>
             </MenuList.Item>
