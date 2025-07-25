@@ -54,7 +54,7 @@ type ValueProps = React.ComponentPropsWithoutRef<'p'> & {
 
 function Value({ children, icon: Icon, className, ...props }: ValueProps) {
   return (
-    <div className="hover:border-section-outline flex w-full items-center gap-1 rounded-sm border border-dashed border-transparent px-1.5 py-0.5 hover:bg-neutral-800">
+    <div className="hover:border-section-outline flex w-full items-center gap-1 rounded-sm border border-dashed border-transparent px-1.5 py-0.5 transition-all hover:bg-neutral-800">
       {Icon && <span className="text-clickable">{Icon}</span>}
       <p className={cn('text-clickable', className)} {...props}>
         {children}
