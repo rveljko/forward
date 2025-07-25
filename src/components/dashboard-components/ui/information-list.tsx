@@ -56,7 +56,10 @@ function Value({ children, icon: Icon, className, ...props }: ValueProps) {
   return (
     <div className="hover:border-section-outline flex w-full items-center gap-1 rounded-sm border border-dashed border-transparent px-1.5 py-0.5 transition-all hover:bg-neutral-800">
       {Icon && <span className="text-clickable">{Icon}</span>}
-      <p className={cn('text-clickable', className)} {...props}>
+      <p
+        className={cn('text-clickable line-clamp-1 break-all', className)}
+        {...props}
+      >
         {children}
       </p>
     </div>
