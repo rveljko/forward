@@ -38,11 +38,13 @@ type LabelProps = React.ComponentPropsWithoutRef<'p'> & {
   icon: React.JSX.Element
 }
 
-function Label({ children, icon: Icon, ...props }: LabelProps) {
+function Label({ children, icon: Icon, className, ...props }: LabelProps) {
   return (
     <div className="flex w-full max-w-30 items-center gap-1">
       <span className="text-clickable">{Icon}</span>
-      <p {...props}>{children}</p>
+      <p className={cn('line-clamp-1 break-all', className)} {...props}>
+        {children}
+      </p>
     </div>
   )
 }
