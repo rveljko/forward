@@ -90,7 +90,7 @@ export default function HeroSection() {
         >
           <div
             id="dashboard-layout"
-            className="bg-background-color border-section-outline relative flex h-[80vh] overflow-hidden rounded-2xl border md:h-200"
+            className={`bg-background-color border-section-outline relative flex h-[80vh] overflow-hidden rounded-2xl border md:h-200 ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
           >
             <Toaster
               position="top-right"
@@ -98,10 +98,14 @@ export default function HeroSection() {
               style={{ fontFamily: 'inherit' }}
               toastOptions={{ classNames: { toast: 'w-90' } }}
             />
-            <div className="animate-scale-fade-in origin-center [animation-delay:300ms]">
+            <div
+              className={`animate-scale-fade-in origin-center [animation-delay:300ms] ${preferences.sidebarStyle === 'floating' ? `h-full p-4 ${preferences.isRightSideSidebar ? 'pl-0' : 'pr-0'}` : ''}`}
+            >
               <Sidebar />
             </div>
-            <div className="animate-scale-fade-in w-full origin-left p-4 pl-0 [animation-delay:300ms]">
+            <div
+              className={`animate-scale-fade-in w-full p-4 [animation-delay:300ms] ${preferences.isRightSideSidebar ? 'origin-right' : 'origin-left'} ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
+            >
               <div
                 style={{
                   borderRadius: preferences.areRoundedCorners
