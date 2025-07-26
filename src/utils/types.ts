@@ -157,3 +157,10 @@ export type Guide = {
   lastEdit: Date
   content: string
 }
+
+export type Feature = {
+  id: string
+  title: string
+  description: string
+  icon: () => React.JSX.Element
+}

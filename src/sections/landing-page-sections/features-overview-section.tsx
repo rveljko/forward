@@ -1,0 +1,36 @@
+import { overviewFeatures } from '@data/features'
+import CreateNewIssueBentoCard from '@landing-page-components/create-new-issue-bento-card'
+import FeatureCellsList from '@landing-page-components/feature-cells-list'
+import IntegrationsBentoCard from '@landing-page-components/integrations-bento-card'
+import IssueInformationBentoCard from '@landing-page-components/issue-information-bento-card'
+import KeyboardShortcutsBentoCard from '@landing-page-components/keyboard-shortcuts-bento-card'
+import Section from '@landing-page-sections/section'
+
+export default function FeaturesOverviewSection() {
+  return (
+    <Section className="[--background:linear-gradient(hsl(from_var(--color-landing-page-background-color)_h_s_l_/_0%),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_80%),var(--color-landing-page-background-color),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_80%),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_0%)),radial-gradient(hsl(from_var(--color-clickable)_h_s_l_/_5%),var(--color-landing-page-background-color))]">
+      <Section.Heading>
+        Essential Features for Effective Management
+      </Section.Heading>
+      <Section.Paragraph>
+        Discover how Forward can transform your project management experience
+        with these powerful tools
+      </Section.Paragraph>
+      <div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+        <Section.CardAnimator delay={0.2} className="lg:col-span-2">
+          <CreateNewIssueBentoCard />
+        </Section.CardAnimator>
+        <Section.CardAnimator delay={0.3} className="lg:col-span-1">
+          <IssueInformationBentoCard />
+        </Section.CardAnimator>
+        <Section.CardAnimator delay={0.4} className="lg:col-span-1">
+          <IntegrationsBentoCard />
+        </Section.CardAnimator>
+        <Section.CardAnimator delay={0.5} className="lg:col-span-2">
+          <KeyboardShortcutsBentoCard />
+        </Section.CardAnimator>
+      </div>
+      <FeatureCellsList features={overviewFeatures} delay={0.6} />
+    </Section>
+  )
+}
