@@ -3,6 +3,7 @@ import IssueDate from '@dashboard-components/ui/issue-date'
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
 import IssueTag from '@dashboard-components/ui/issue-tag'
+import useOnClickOutside from '@hooks/use-on-click-outside'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import DragVerticalIcon from '@icons/drag-vertical-icon'
@@ -12,7 +13,7 @@ import BentoCard from '@landing-page-components/ui/bento-card'
 import { useIssues } from '@services/contexts/issues-context'
 import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function FilterSortBentoCard() {
   const { getRemCornerRoundness } = usePreferences()
@@ -21,12 +22,10 @@ export default function FilterSortBentoCard() {
   const { name, icon: Icon } = getIssueStatus('todo')
 
   const [isOpened, setIsOpened] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  function handleOnClick(e: MouseEvent) {
-    if (ref.current && !e.composedPath().includes(ref.current))
-      setIsOpened(false)
-  }
+  const ref = useOnClickOutside<HTMLDivElement>(() => {
+    if (!isOpened) return
+    setIsOpened(false)
+  })
 
   function handleOnKeyDown(e: KeyboardEvent) {
     if (e.code === 'Escape') setIsOpened(false)
@@ -34,11 +33,9 @@ export default function FilterSortBentoCard() {
 
   useEffect(() => {
     if (!isOpened) return
-    document.body.addEventListener('click', handleOnClick)
     document.body.addEventListener('keydown', handleOnKeyDown)
 
     return () => {
-      document.body.removeEventListener('click', handleOnClick)
       document.body.removeEventListener('keydown', handleOnKeyDown)
     }
   }, [isOpened])

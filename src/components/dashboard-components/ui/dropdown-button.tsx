@@ -1,9 +1,10 @@
 import Dropdown, { dropdown } from '@dashboard-components/ui/dropdown'
+import useOnClickOutside from '@hooks/use-on-click-outside'
 import Button, { ButtonProps } from '@ui/button'
 import { cn } from '@utils/utils'
 import { VariantProps } from 'class-variance-authority'
 import { AnimatePresence } from 'motion/react'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import ReactFocusLock from 'react-focus-lock'
 
 type DropdownButtonProps = ButtonProps &
@@ -22,11 +23,10 @@ export default function DropdownButton({
   position,
   ...props
 }: DropdownButtonProps) {
-  const ref = useRef<HTMLDivElement>(null)
-
-  function handleOnClick(e: MouseEvent) {
-    if (ref.current && !e.composedPath().includes(ref.current)) toggleDropdown()
-  }
+  const ref = useOnClickOutside<HTMLDivElement>(() => {
+    if (!isOpened) return
+    toggleDropdown()
+  })
 
   function handleOnKeyDown(e: KeyboardEvent) {
     if (e.code === 'Escape') toggleDropdown()
@@ -34,11 +34,9 @@ export default function DropdownButton({
 
   useEffect(() => {
     if (!isOpened) return
-    document.body.addEventListener('click', handleOnClick)
     document.body.addEventListener('keydown', handleOnKeyDown)
 
     return () => {
-      document.body.removeEventListener('click', handleOnClick)
       document.body.removeEventListener('keydown', handleOnKeyDown)
     }
   }, [isOpened])

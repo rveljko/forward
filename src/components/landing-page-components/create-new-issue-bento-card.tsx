@@ -3,6 +3,7 @@ import Select from '@dashboard-components/ui/select'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
+import useOnClickOutside from '@hooks/use-on-click-outside'
 import BentoCard from '@landing-page-components/ui/bento-card'
 import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
@@ -12,7 +13,7 @@ import {
   IssueStatusLabel,
   IssueTagLabel,
 } from '@utils/types'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 export default function CreateNewIssueBentoCard() {
@@ -31,14 +32,11 @@ export default function CreateNewIssueBentoCard() {
   const [newIssue, setNewIssue] = useState(initialIssue)
   const [isOpened, setIsOpened] = useState(false)
 
-  const ref = useRef<HTMLDivElement>(null)
-
-  function handleOnClick(e: MouseEvent) {
-    if (ref.current && !e.composedPath().includes(ref.current)) {
-      setNewIssue(initialIssue)
-      setIsOpened(false)
-    }
-  }
+  const ref = useOnClickOutside<HTMLDivElement>(() => {
+    if (!isOpened) return
+    setNewIssue(initialIssue)
+    setIsOpened(false)
+  })
 
   function handleOnKeyDown(e: KeyboardEvent) {
     if (e.code === 'Escape') {
@@ -49,11 +47,9 @@ export default function CreateNewIssueBentoCard() {
 
   useEffect(() => {
     if (!isOpened) return
-    document.body.addEventListener('click', handleOnClick)
     document.body.addEventListener('keydown', handleOnKeyDown)
 
     return () => {
-      document.body.removeEventListener('click', handleOnClick)
       document.body.removeEventListener('keydown', handleOnKeyDown)
     }
   }, [isOpened])

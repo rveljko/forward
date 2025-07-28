@@ -1,23 +1,22 @@
 import Divider from '@dashboard-components/ui/divider'
 import MenuList from '@dashboard-components/ui/menu-list'
 import { secondaryNavigationLinks } from '@data/navigation-links'
+import useOnClickOutside from '@hooks/use-on-click-outside'
 import BrainIcon from '@icons/brain-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import BentoCard from '@landing-page-components/ui/bento-card'
 import { usePreferences } from '@services/contexts/preferences-context'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function SearchBentoCard() {
   const { getRemCornerRoundness } = usePreferences()
   const [isOpened, setIsOpened] = useState(false)
   const [search, setSearch] = useState('')
-  const ref = useRef<HTMLDivElement>(null)
-
-  function handleOnClick(e: MouseEvent) {
-    if (ref.current && !e.composedPath().includes(ref.current))
-      setIsOpened(false)
-  }
+  const ref = useOnClickOutside<HTMLDivElement>(() => {
+    if (!isOpened) return
+    setIsOpened(false)
+  })
 
   function handleOnKeyDown(e: KeyboardEvent) {
     if (e.code === 'Escape') setIsOpened(false)
@@ -25,11 +24,9 @@ export default function SearchBentoCard() {
 
   useEffect(() => {
     if (!isOpened) return
-    document.body.addEventListener('click', handleOnClick)
     document.body.addEventListener('keydown', handleOnKeyDown)
 
     return () => {
-      document.body.removeEventListener('click', handleOnClick)
       document.body.removeEventListener('keydown', handleOnKeyDown)
     }
   }, [isOpened])
