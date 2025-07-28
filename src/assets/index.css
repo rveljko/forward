@@ -237,6 +237,8 @@
   --font-sans: var(--default-font-family);
   --default-font-feature-settings: 'cv06', 'cv11';
   --animate-scale-fade-in: scale-fade-in 500ms ease-in-out;
+  --animate-speedometer-hand: speedometer-hand 2500ms ease-in-out infinite
+    alternate forwards;
 
   @keyframes scale-fade-in {
     from {
@@ -246,6 +248,24 @@
     to {
       transform: scale(1);
       opacity: 1;
+    }
+  }
+
+  @keyframes speedometer-hand {
+    0% {
+      rotate: 130deg;
+    }
+    25% {
+      rotate: 160deg;
+    }
+    50% {
+      rotate: 150deg;
+    }
+    75% {
+      rotate: 170deg;
+    }
+    100% {
+      rotate: 140deg;
     }
   }
 }

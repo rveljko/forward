@@ -33,7 +33,7 @@ function Heading({ children, className, ...props }: HeadingProps) {
   return (
     <h3
       className={cn(
-        'mb-2 line-clamp-1 max-w-81 text-2xl font-medium',
+        'mb-2 line-clamp-1 shrink-0 max-w-81 text-2xl font-medium',
         className
       )}
       {...props}
@@ -50,7 +50,7 @@ type ParagraphProps = React.ComponentPropsWithoutRef<'p'> & {
 function Paragraph({ children, className, ...props }: ParagraphProps) {
   return (
     <p
-      className={cn('mb-4 line-clamp-2 max-w-81 text-balance', className)}
+      className={cn('mb-4 line-clamp-2 shrink-0 max-w-81 text-balance', className)}
       {...props}
     >
       {children}
