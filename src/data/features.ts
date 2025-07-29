@@ -1,6 +1,11 @@
 import AdjustmentsIcon from '@icons/adjustments-icon'
 import BoltIcon from '@icons/bolt-icon'
+import ClockIcon from '@icons/clock-icon'
+import CompassIcon from '@icons/compass-icon'
+import DatabaseIcon from '@icons/database-icon'
 import DeviceMobileIcon from '@icons/device-mobile-icon'
+import MessageIcon from '@icons/message-icon'
+import MouseIcon from '@icons/mouse-icon'
 import PaletteIcon from '@icons/palette-icon'
 import UploadIcon from '@icons/upload-icon'
 import UserIcon from '@icons/user-icon'
@@ -46,5 +51,44 @@ export const organizeFeatures: Feature[] = [
     title: 'Stay Productive On-the-Go.',
     description: 'Access all features through our dedicated mobile app',
     icon: DeviceMobileIcon,
+  },
+]
+
+export const personalizationFeatures: Feature[] = [
+  {
+    id: uuidv4(),
+    title: 'Simplified Tasks.',
+    description: 'Complete actions quickly with just one click',
+    icon: MouseIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Instant Insights.',
+    description: 'Receive immediate updates as data is processed live',
+    icon: ClockIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Protect Your Information.',
+    description: 'Ensure critical data is safeguarded against loss',
+    icon: DeviceMobileIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Designed for You.',
+    description: 'Enjoy a platform built around user needs and preferences',
+    icon: CompassIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Secure Your Data.',
+    description: 'Automatically back up information for peace of mind',
+    icon: DatabaseIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Collaborative Learning Hub.',
+    description: 'Access resources and connect with fellow users',
+    icon: MessageIcon,
   },
 ]
