@@ -15,7 +15,7 @@ export default function Section({
   return (
     <section
       className={cn(
-        'md:py:25 bg-(image:--background) py-16 [--opacity-from:0%] [--opacity-to:100%] [--slide-y-from:--spacing(-4)] [--slide-y-to:--spacing(0)]',
+        'md:py:25 bg-(image:--background) py-16 [--background:linear-gradient(hsl(from_var(--color-landing-page-background-color)_h_s_l_/_0%),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_80%),var(--color-landing-page-background-color),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_80%),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_0%)),radial-gradient(hsl(from_var(--color-clickable)_h_s_l_/_5%),var(--color-landing-page-background-color))] [--opacity-from:0%] [--opacity-to:100%] [--slide-y-from:--spacing(-4)] [--slide-y-to:--spacing(0)]',
         className
       )}
       {...props}

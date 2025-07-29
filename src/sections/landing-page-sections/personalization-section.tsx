@@ -6,7 +6,7 @@ import Section from '@landing-page-sections/section'
 
 export default function PersonalizationSection() {
   return (
-    <Section className="[--background:linear-gradient(hsl(from_var(--color-landing-page-background-color)_h_s_l_/_0%),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_80%),var(--color-landing-page-background-color),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_80%),hsl(from_var(--color-landing-page-background-color)_h_s_l_/_0%)),radial-gradient(hsl(from_var(--color-clickable)_h_s_l_/_5%),var(--color-landing-page-background-color))]">
+    <Section>
       <Section.Heading>
         Personalize Your Experience for Maximum Efficiency
       </Section.Heading>
