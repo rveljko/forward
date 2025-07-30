@@ -12,7 +12,7 @@ export default function HeroSection() {
   const { preferences, getRemCornerRoundness } = usePreferences()
 
   return (
-    <Section className="[--background:radial-gradient(hsl(from_var(--color-clickable)_h_s_l_/_5%),var(--color-landing-page-background-color))]">
+    <Section>
       <motion.h1
         initial={{
           opacity: 'var(--opacity-from)',
