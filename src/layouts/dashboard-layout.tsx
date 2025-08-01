@@ -1,7 +1,7 @@
+import Toaster from '@components/toaster'
 import Sidebar from '@dashboard-components/sidebar'
 import { usePreferences } from '@services/contexts/preferences-context'
 import { Outlet } from 'react-router'
-import { Toaster } from 'sonner'
 
 export default function DashboardLayout() {
   const { preferences, getRemCornerRoundness } = usePreferences()
@@ -11,12 +11,7 @@ export default function DashboardLayout() {
       id="dashboard-layout"
       className={`bg-background-color relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
-      <Toaster
-        position="top-right"
-        offset={16}
-        style={{ fontFamily: 'inherit' }}
-        toastOptions={{ classNames: { toast: 'w-90' } }}
-      />
+      <Toaster />
       <div
         className={`animate-scale-fade-in origin-center ${
           preferences.sidebarStyle === 'floating'

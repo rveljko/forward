@@ -1,3 +1,4 @@
+import Toaster from '@components/toaster'
 import Sidebar from '@dashboard-components/sidebar'
 import IssuesSection from '@dashboard-sections/issues-section'
 import ChevronRightIcon from '@icons/chevron-right-icon'
@@ -6,7 +7,6 @@ import Section from '@landing-page-sections/section'
 import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
 import { motion } from 'motion/react'
-import { Toaster } from 'sonner'
 
 export default function HeroSection() {
   const { preferences, getRemCornerRoundness } = usePreferences()
@@ -79,12 +79,7 @@ export default function HeroSection() {
           id="dashboard-layout"
           className={`bg-background-color border-section-outline relative flex h-[80vh] overflow-hidden rounded-2xl border md:h-200 ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
         >
-          <Toaster
-            position="top-right"
-            offset={16}
-            style={{ fontFamily: 'inherit' }}
-            toastOptions={{ classNames: { toast: 'w-90' } }}
-          />
+          <Toaster />
           <div
             className={`animate-scale-fade-in origin-center [animation-delay:300ms] ${preferences.sidebarStyle === 'floating' ? `h-full p-4 ${preferences.isRightSideSidebar ? 'pl-0' : 'pr-0'}` : ''}`}
           >
