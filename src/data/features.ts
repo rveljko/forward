@@ -1,4 +1,6 @@
+import AccessibleIcon from '@icons/accessible-icon'
 import AdjustmentsIcon from '@icons/adjustments-icon'
+import BellIcon from '@icons/bell-icon'
 import BoltIcon from '@icons/bolt-icon'
 import ClockIcon from '@icons/clock-icon'
 import CompassIcon from '@icons/compass-icon'
@@ -7,6 +9,7 @@ import DeviceMobileIcon from '@icons/device-mobile-icon'
 import MessageIcon from '@icons/message-icon'
 import MouseIcon from '@icons/mouse-icon'
 import PaletteIcon from '@icons/palette-icon'
+import SpeakerphoneIcon from '@icons/speakerphone-icon'
 import UploadIcon from '@icons/upload-icon'
 import UserIcon from '@icons/user-icon'
 import { Feature } from '@utils/types'
@@ -90,5 +93,26 @@ export const personalizationFeatures: Feature[] = [
     title: 'Collaborative Learning Hub.',
     description: 'Access resources and connect with fellow users',
     icon: MessageIcon,
+  },
+]
+
+export const learningFeatures: Feature[] = [
+  {
+    id: uuidv4(),
+    title: 'Stay Updated Anytime.',
+    description: 'Receive real-time alerts directly on your mobile device',
+    icon: BellIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Effortless Sharing.',
+    description: 'Share updates and achievements across social platforms',
+    icon: SpeakerphoneIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Inclusive Design.',
+    description: 'Navigate the platform easily, regardless of ability',
+    icon: AccessibleIcon,
   },
 ]

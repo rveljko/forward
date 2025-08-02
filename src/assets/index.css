@@ -249,6 +249,8 @@
   --animate-scale-fade-in: scale-fade-in 500ms ease-in-out;
   --animate-speedometer-hand: speedometer-hand 2500ms ease-in-out infinite
     alternate forwards;
+  --animate-qr-code-scanner-line: qr-code-scanner-line 3000ms ease-in-out
+    infinite alternate forwards;
 
   @keyframes scale-fade-in {
     from {
@@ -276,6 +278,15 @@
     }
     100% {
       rotate: 140deg;
+    }
+  }
+
+  @keyframes qr-code-scanner-line {
+    from {
+      transform: translateY(0%);
+    }
+    to {
+      transform: translateY(calc(100% - 2.1875rem));
     }
   }
 }
