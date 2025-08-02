@@ -9,8 +9,8 @@ type InboxContextProviderProps = {
 
 type InboxContextType = {
   chats: Chat[]
-  getChatById: (id: string) => Chat
-  addNewMessage: (chatId: string, newMessage: Message) => void
+  getChatById: (id: Chat['id']) => Chat
+  addNewMessage: (chatId: Chat['id'], newMessage: Message) => void
 }
 
 export const InboxContext = createContext<InboxContextType | null>(null)
@@ -25,11 +25,11 @@ export default function InboxContextProvider({
 }: InboxContextProviderProps) {
   const [chats, setChats] = useState(getInitialChats)
 
-  function getChatById(id: string) {
+  function getChatById(id: Chat['id']) {
     return chats.find((chat) => chat.id === id)!
   }
 
-  function addNewMessage(chatId: string, newMessage: Message) {
+  function addNewMessage(chatId: Chat['id'], newMessage: Message) {
     const chat = getChatById(chatId)
 
     setChats((prevChats) => {
