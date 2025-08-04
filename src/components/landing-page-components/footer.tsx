@@ -5,7 +5,7 @@ import { Link } from 'react-router'
 
 export default function Footer() {
   return (
-    <footer className="border-t-section-outline border-t py-8">
+    <footer className="border-t-section-outline mt-auto border-t py-8">
       <Container className="flex flex-col gap-8">
         <div className="border-b-section-outline flex flex-wrap justify-between gap-8 border-b pb-8 md:gap-16">
           <Link to="/" className="flex size-max">
