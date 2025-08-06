@@ -18,7 +18,7 @@ export default function Footer() {
                 <li key={id}>
                   <Link
                     to={`/dashboard/guides/${slug}`}
-                    className="text-clickable flex w-max py-1"
+                    className="text-clickable inline-block py-1 wrap-anywhere"
                   >
                     {title}
                   </Link>
