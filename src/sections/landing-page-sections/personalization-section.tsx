@@ -14,14 +14,14 @@ export default function PersonalizationSection() {
         Customize your workspace to fit your preferences and improve your
         workflow efficiency
       </Section.Paragraph>
-      <div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <Section.Grid className="lg:grid-cols-2">
         <Section.CardAnimator delay={0.2} className="lg:col-span-1">
           <ThemesBentoCard />
         </Section.CardAnimator>
         <Section.CardAnimator delay={0.3} className="lg:col-span-1">
           <ViewsBentoCard />
         </Section.CardAnimator>
-      </div>
+      </Section.Grid>
       <FeatureCellsList features={personalizationFeatures} delay={0.4} />
     </Section>
   )

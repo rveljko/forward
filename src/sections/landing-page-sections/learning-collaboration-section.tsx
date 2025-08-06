@@ -16,7 +16,7 @@ export default function LearningCollaborationSection() {
         Explore helpful resources that guide you through using Forward
         effectively
       </Section.Paragraph>
-      <div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <Section.Grid className="lg:grid-cols-3">
         <Section.CardAnimator delay={0.2} className="lg:col-span-2">
           <CollaborationBentoCard />
         </Section.CardAnimator>
@@ -29,7 +29,7 @@ export default function LearningCollaborationSection() {
         <Section.CardAnimator delay={0.5} className="lg:col-span-2">
           <HelpCenterBentoCard />
         </Section.CardAnimator>
-      </div>
+      </Section.Grid>
       <FeatureCellsList features={learningFeatures} delay={0.6} />
     </Section>
   )

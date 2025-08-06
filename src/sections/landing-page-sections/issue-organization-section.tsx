@@ -14,7 +14,7 @@ export default function IssueOrganizationSection() {
         Utilize these features to filter, edit, and communicate seamlessly
         within your project
       </Section.Paragraph>
-      <div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <Section.Grid className="lg:grid-cols-3">
         <Section.CardAnimator delay={0.2} className="lg:col-span-1">
           <TextFormattingBentoCard />
         </Section.CardAnimator>
@@ -27,7 +27,7 @@ export default function IssueOrganizationSection() {
         <Section.CardAnimator delay={0.5} className="lg:col-span-1">
           <PerformanceBentoCard />
         </Section.CardAnimator>
-      </div>
+      </Section.Grid>
       <FeatureCellsList features={organizeFeatures} delay={0.6} />
     </Section>
   )

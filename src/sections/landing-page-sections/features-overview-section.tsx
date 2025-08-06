@@ -16,7 +16,7 @@ export default function FeaturesOverviewSection() {
         Discover how Forward can transform your project management experience
         with these powerful tools
       </Section.Paragraph>
-      <div className="mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+      <Section.Grid className="lg:grid-cols-3">
         <Section.CardAnimator delay={0.2} className="lg:col-span-2">
           <CreateNewIssueBentoCard />
         </Section.CardAnimator>
@@ -29,7 +29,7 @@ export default function FeaturesOverviewSection() {
         <Section.CardAnimator delay={0.5} className="lg:col-span-2">
           <KeyboardShortcutsBentoCard />
         </Section.CardAnimator>
-      </div>
+      </Section.Grid>
       <FeatureCellsList features={overviewFeatures} delay={0.6} />
     </Section>
   )

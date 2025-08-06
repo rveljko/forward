@@ -27,6 +27,7 @@ export default function Section({
 
 Section.Paragraph = Paragraph
 Section.Heading = Heading
+Section.Grid = Grid
 Section.CardAnimator = CardAnimator
 
 type HeadingProps = React.ComponentProps<typeof motion.h2> & {
@@ -82,6 +83,21 @@ function Paragraph({ children, className, ...props }: ParagraphProps) {
     >
       {children}
     </motion.p>
+  )
+}
+
+type GridProps = React.ComponentPropsWithoutRef<'div'> & {
+  children: React.ReactNode
+}
+
+function Grid({ children, className, ...props }: GridProps) {
+  return (
+    <div
+      className={cn('mb-8 grid grid-cols-1 gap-5 lg:grid-cols-3', className)}
+      {...props}
+    >
+      {children}
+    </div>
   )
 }
 
