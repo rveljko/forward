@@ -25,10 +25,39 @@ export default function Section({
   )
 }
 
-Section.Paragraph = Paragraph
+Section.Heading1 = Heading1
 Section.Heading2 = Heading2
+Section.Paragraph = Paragraph
 Section.Grid = Grid
 Section.CardAnimator = CardAnimator
+
+type Heading1Props = React.ComponentProps<typeof motion.h1> & {
+  children: React.ReactNode
+}
+
+function Heading1({ children, className, ...props }: Heading1Props) {
+  return (
+    <motion.h1
+      initial={{
+        opacity: 'var(--opacity-from)',
+        translateY: 'var(--slide-y-from)',
+      }}
+      whileInView={{
+        opacity: 'var(--opacity-to)',
+        translateY: 'var(--slide-y-to)',
+      }}
+      transition={{ ease: 'easeInOut' }}
+      viewport={{ once: true }}
+      className={cn(
+        'mb-4 text-4xl font-bold text-balance md:text-5xl',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </motion.h1>
+  )
+}
 
 type Heading2Props = React.ComponentProps<typeof motion.h2> & {
   children: React.ReactNode

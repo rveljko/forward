@@ -13,21 +13,9 @@ export default function HeroSection() {
 
   return (
     <Section>
-      <motion.h1
-        initial={{
-          opacity: 'var(--opacity-from)',
-          translateY: 'var(--slide-y-from)',
-        }}
-        whileInView={{
-          opacity: 'var(--opacity-to)',
-          translateY: 'var(--slide-y-to)',
-        }}
-        transition={{ ease: 'easeInOut' }}
-        viewport={{ once: true }}
-        className="mb-4 text-center text-4xl font-bold text-balance md:text-5xl"
-      >
+      <Section.Heading1 className="text-center">
         Streamline Your Projects with Forward's Powerful Management Tools
-      </motion.h1>
+      </Section.Heading1>
       <Section.Paragraph>
         Experience seamless issue tracking and project management that enhances
         team collaboration and productivity
