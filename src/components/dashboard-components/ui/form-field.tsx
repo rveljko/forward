@@ -25,8 +25,12 @@ type LabelProps = React.ComponentPropsWithoutRef<'label'> & {
   children: React.ReactNode
 }
 
-function Label({ children, ...props }: LabelProps) {
-  return <label {...props}>{children}</label>
+function Label({ children, className, ...props }: LabelProps) {
+  return (
+    <label className={cn('w-max', className)} {...props}>
+      {children}
+    </label>
+  )
 }
 
 type InputProps = React.ComponentPropsWithRef<'input'> & {
