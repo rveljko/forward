@@ -5,9 +5,9 @@ import Button from '@ui/button'
 export default function CtaSection() {
   return (
     <Section>
-      <Section.Heading>
+      <Section.Heading2>
         Start Effectively Managing Your Projects Today
-      </Section.Heading>
+      </Section.Heading2>
       <Section.Paragraph>
         Join Forward now to revolutionize the way you track issues and manage
         projects effectively

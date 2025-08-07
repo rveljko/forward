@@ -26,15 +26,15 @@ export default function Section({
 }
 
 Section.Paragraph = Paragraph
-Section.Heading = Heading
+Section.Heading2 = Heading2
 Section.Grid = Grid
 Section.CardAnimator = CardAnimator
 
-type HeadingProps = React.ComponentProps<typeof motion.h2> & {
+type Heading2Props = React.ComponentProps<typeof motion.h2> & {
   children: React.ReactNode
 }
 
-function Heading({ children, className, ...props }: HeadingProps) {
+function Heading2({ children, className, ...props }: Heading2Props) {
   return (
     <motion.h2
       initial={{

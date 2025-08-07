@@ -9,7 +9,7 @@ import Section from '@landing-page-sections/section'
 export default function IssueOrganizationSection() {
   return (
     <Section>
-      <Section.Heading>Organize Your Issues Effectively</Section.Heading>
+      <Section.Heading2>Organize Your Issues Effectively</Section.Heading2>
       <Section.Paragraph>
         Utilize these features to filter, edit, and communicate seamlessly
         within your project

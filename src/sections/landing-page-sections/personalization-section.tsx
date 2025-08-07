@@ -7,9 +7,9 @@ import Section from '@landing-page-sections/section'
 export default function PersonalizationSection() {
   return (
     <Section>
-      <Section.Heading>
+      <Section.Heading2>
         Personalize Your Experience for Maximum Efficiency
-      </Section.Heading>
+      </Section.Heading2>
       <Section.Paragraph>
         Customize your workspace to fit your preferences and improve your
         workflow efficiency

@@ -9,9 +9,9 @@ import Section from '@landing-page-sections/section'
 export default function LearningCollaborationSection() {
   return (
     <Section>
-      <Section.Heading>
+      <Section.Heading2>
         Learn and Collaborate with Ease and Productivity
-      </Section.Heading>
+      </Section.Heading2>
       <Section.Paragraph>
         Explore helpful resources that guide you through using Forward
         effectively

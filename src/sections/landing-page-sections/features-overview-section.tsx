@@ -9,9 +9,9 @@ import Section from '@landing-page-sections/section'
 export default function FeaturesOverviewSection() {
   return (
     <Section>
-      <Section.Heading>
+      <Section.Heading2>
         Essential Features for Effective Management
-      </Section.Heading>
+      </Section.Heading2>
       <Section.Paragraph>
         Discover how Forward can transform your project management experience
         with these powerful tools
