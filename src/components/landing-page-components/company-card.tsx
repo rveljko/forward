@@ -27,7 +27,7 @@ export default function CompanyCard({
       </div>
       <div>
         <h3 className="mb-1 text-xl font-medium md:text-2xl">{name}</h3>
-        <p>{description}</p>
+        <p className="max-w-81 text-balance">{description}</p>
       </div>
     </article>
   )
