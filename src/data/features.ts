@@ -2,13 +2,18 @@ import AccessibleIcon from '@icons/accessible-icon'
 import AdjustmentsIcon from '@icons/adjustments-icon'
 import BellIcon from '@icons/bell-icon'
 import BoltIcon from '@icons/bolt-icon'
+import CertificateIcon from '@icons/certificate-icon'
 import ClockIcon from '@icons/clock-icon'
 import CompassIcon from '@icons/compass-icon'
 import DatabaseIcon from '@icons/database-icon'
 import DeviceMobileIcon from '@icons/device-mobile-icon'
+import KeyIcon from '@icons/key-icon'
+import LockIcon from '@icons/lock-icon'
+import MedicalCrossIcon from '@icons/medical-cross-icon'
 import MessageIcon from '@icons/message-icon'
 import MouseIcon from '@icons/mouse-icon'
 import PaletteIcon from '@icons/palette-icon'
+import ShieldIcon from '@icons/shield-icon'
 import SpeakerphoneIcon from '@icons/speakerphone-icon'
 import UploadIcon from '@icons/upload-icon'
 import UserIcon from '@icons/user-icon'
@@ -114,5 +119,44 @@ export const learningFeatures: Feature[] = [
     title: 'Inclusive Design.',
     description: 'Navigate the platform easily, regardless of ability',
     icon: AccessibleIcon,
+  },
+]
+
+export const securityFeatures: Feature[] = [
+  {
+    id: uuidv4(),
+    title: 'Robust Protection.',
+    description: 'Safeguard your data with top-notch security measures',
+    icon: LockIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Secure Your Data.',
+    description: 'Automatically back up information for peace of mind',
+    icon: DatabaseIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Protect Your Information.',
+    description: 'Ensure critical data is safeguarded against loss',
+    icon: ShieldIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Secure Your Compliance.',
+    description: 'Keep health data safe with key compliance measures',
+    icon: MedicalCrossIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Account Security.',
+    description: 'Enhance security with an additional verification step',
+    icon: KeyIcon,
+  },
+  {
+    id: uuidv4(),
+    title: 'Trustworthy Operations.',
+    description: 'Show your focus on data safety with SOC 2.',
+    icon: CertificateIcon,
   },
 ]
