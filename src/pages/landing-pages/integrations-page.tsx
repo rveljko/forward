@@ -1,3 +1,11 @@
+import IntegrationsSection from '@landing-page-sections/integrations-section'
+import { TITLE_PREFIX } from '@utils/constants'
+
 export default function IntegrationsPage() {
-  return <div>integrations-page</div>
+  return (
+    <>
+      <title>{`${TITLE_PREFIX}Integrations`}</title>
+      <IntegrationsSection />
+    </>
+  )
 }

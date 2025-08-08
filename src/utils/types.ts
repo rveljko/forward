@@ -10,6 +10,7 @@ export type Integration = {
   name: string
   description: string
   logoUrl: string
+  bigLogoUrl: string
   isActive: boolean
 }
 
@@ -163,4 +164,11 @@ export type Feature = {
   title: string
   description: string
   icon: () => React.JSX.Element
+}
+
+export type Company = {
+  id: string
+  name: string
+  description: string
+  imageUrl: string
 }
