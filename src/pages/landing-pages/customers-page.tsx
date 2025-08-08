@@ -1,3 +1,11 @@
+import CustomersSection from '@landing-page-sections/customers-section'
+import { TITLE_PREFIX } from '@utils/constants'
+
 export default function CustomersPage() {
-  return <div>customers-page</div>
+  return (
+    <>
+      <title>{`${TITLE_PREFIX}Customers`}</title>
+      <CustomersSection />
+    </>
+  )
 }
