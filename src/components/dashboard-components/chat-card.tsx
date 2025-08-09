@@ -14,7 +14,7 @@ export default function ChatCard({
   },
 }: ChatCardProps) {
   return (
-    <article className="group border-b-section-outline relative isolate flex items-center gap-2 border-b p-4 transition-[background-color] hover:bg-neutral-800 pointer-coarse:active:bg-neutral-700">
+    <article className="group bg-section-background-color border-b-section-outline relative isolate flex items-center gap-2 border-b p-4 transition-[background-color] hover:bg-neutral-800 pointer-coarse:active:bg-neutral-700">
       <div className="relative">
         <div className="size-10 overflow-hidden rounded-full bg-neutral-700">
           <img src={image} alt={name} className="object-cover" />
