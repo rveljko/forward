@@ -31,7 +31,7 @@ export default function Sidebar() {
     openModal: openSearchModal,
     closeModal: closeSearchModal,
   } = useModal()
-  const { preferences, getRemCornerRoundness } = usePreferences()
+  const { preferences, getBorderRadius } = usePreferences()
   const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
@@ -69,9 +69,7 @@ export default function Sidebar() {
     <aside
       style={
         {
-          '--border-radius': preferences.areRoundedCorners
-            ? getRemCornerRoundness()
-            : 0,
+          '--border-radius': getBorderRadius(),
         } as React.CSSProperties
       }
       className={`top-0 left-0 z-999 h-full p-4 ${sidebarStyle}`}
