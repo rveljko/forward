@@ -4,7 +4,7 @@ import { usePreferences } from '@services/contexts/preferences-context'
 import { Outlet } from 'react-router'
 
 export default function DashboardLayout() {
-  const { preferences, getRemCornerRoundness } = usePreferences()
+  const { preferences, getBorderRadius } = usePreferences()
 
   return (
     <div
@@ -26,9 +26,7 @@ export default function DashboardLayout() {
       >
         <main
           style={{
-            borderRadius: preferences.areRoundedCorners
-              ? getRemCornerRoundness()
-              : 0,
+            borderRadius: getBorderRadius(),
           }}
           className="border-section-outline bg-section-background-color h-full overflow-y-auto border"
         >

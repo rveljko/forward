@@ -9,7 +9,7 @@ import Button from '@ui/button'
 import { motion } from 'motion/react'
 
 export default function HeroSection() {
-  const { preferences, getRemCornerRoundness } = usePreferences()
+  const { preferences, getBorderRadius } = usePreferences()
 
   return (
     <Section>
@@ -78,9 +78,7 @@ export default function HeroSection() {
           >
             <div
               style={{
-                borderRadius: preferences.areRoundedCorners
-                  ? getRemCornerRoundness()
-                  : 0,
+                borderRadius: getBorderRadius(),
               }}
               className="border-section-outline bg-section-background-color h-full overflow-y-auto border"
             >
