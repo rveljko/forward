@@ -11,11 +11,11 @@ export type ToastProps = {
 }
 
 export default function Toast({ id, title, description }: ToastProps) {
-  const { getRemCornerRoundness } = usePreferences()
+  const { getBorderRadius } = usePreferences()
 
   return (
     <article
-      style={{ borderRadius: getRemCornerRoundness() }}
+      style={{ borderRadius: getBorderRadius() }}
       className="bg-section-background-color border-section-outline border p-1"
     >
       <div className="mb-1 flex justify-between">
