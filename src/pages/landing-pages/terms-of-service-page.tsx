@@ -1,3 +1,11 @@
+import TermsOfServiceSection from '@landing-page-sections/terms-of-service-section'
+import { TITLE_PREFIX } from '@utils/constants'
+
 export default function TermsOfServicePage() {
-  return <div>terms-of-service-page</div>
+  return (
+    <>
+      <title>{`${TITLE_PREFIX}Terms of Service`}</title>
+      <TermsOfServiceSection />
+    </>
+  )
 }
