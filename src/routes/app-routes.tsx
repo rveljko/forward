@@ -9,8 +9,8 @@ import IntegrationsPage from '@dashboard-pages/integrations-page'
 import IssuePage from '@dashboard-pages/issue-page'
 import IssuesPage from '@dashboard-pages/issues-page'
 import PreferencesPage from '@dashboard-pages/preferences-page'
-import SecurityPage from '@dashboard-pages/security-page'
 import ProfilePageSkeleton from '@dashboard-pages/skeletons/profile-page-skeleton'
+import SecurityPageSkeleton from '@dashboard-pages/skeletons/security-page-skeleton'
 import CustomersPage from '@landing-pages/customers-page'
 import FeaturesPage from '@landing-pages/features-page'
 import GuidesLandingPage from '@landing-pages/guides-page'
@@ -25,6 +25,7 @@ import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
 const ProfilePage = lazy(() => import('@dashboard-pages/profile-page'))
+const SecurityPage = lazy(() => import('@dashboard-pages/security-page'))
 
 export default function AppRoutes() {
   return (
@@ -58,7 +59,14 @@ export default function AppRoutes() {
               </Suspense>
             }
           />
-          <Route path="security" element={<SecurityPage />} />
+          <Route
+            path="security"
+            element={
+              <Suspense fallback={<SecurityPageSkeleton />}>
+                <SecurityPage />
+              </Suspense>
+            }
+          />
           <Route path="preferences" element={<PreferencesPage />} />
           <Route path="integrations" element={<IntegrationsPage />} />
         </Route>
