@@ -8,14 +8,14 @@ export default function SecuritySectionSkeleton() {
         <Skeleton className="max-w-60" />
       </div>
       <Skeleton className="h-0.5" />
-      <div className="flex flex-col gap-1 lg:flex-row lg:gap-16">
+      <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
         <div className="w-full max-w-50">
           <Skeleton className="max-w-30" />
         </div>
         <Skeleton className="h-10 max-w-50 shrink-0" />
       </div>
       <Skeleton className="h-0.5" />
-      <div className="flex flex-col items-start gap-1 lg:flex-row lg:gap-16">
+      <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
         <div className="w-full max-w-50">
           <Skeleton className="max-w-30" />
         </div>
