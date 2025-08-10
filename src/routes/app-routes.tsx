@@ -1,9 +1,9 @@
 import ChatPage from '@dashboard-pages/chat-page'
 import DraftPage from '@dashboard-pages/draft-page'
-import DraftsPage from '@dashboard-pages/drafts-page'
 import InboxPage from '@dashboard-pages/inbox-page'
 import IssuePage from '@dashboard-pages/issue-page'
 import IssuesPage from '@dashboard-pages/issues-page'
+import DraftsPageSkeleton from '@dashboard-pages/skeletons/drafts-page-skeleton'
 import GuidePageSkeleton from '@dashboard-pages/skeletons/guide-page-skeleton'
 import GuidesPageSkeleton from '@dashboard-pages/skeletons/guides-page-skeleton'
 import HelpAndSupportPageSkeleton from '@dashboard-pages/skeletons/help-and-support-page-skeleton'
@@ -24,6 +24,7 @@ import LandingPageLayout from '@layouts/landing-page-layout'
 import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
+const DraftsPage = lazy(() => import('@dashboard-pages/drafts-page'))
 const GuidePage = lazy(() => import('@dashboard-pages/guide-page'))
 const GuidesPage = lazy(() => import('@dashboard-pages/guides-page'))
 const HelpAndSupportPage = lazy(
@@ -54,7 +55,14 @@ export default function AppRoutes() {
         <Route path="inbox/:chatId" element={<ChatPage />} />
         <Route path="issues" element={<IssuesPage />} />
         <Route path="issues/:issueId" element={<IssuePage />} />
-        <Route path="drafts" element={<DraftsPage />} />
+        <Route
+          path="drafts"
+          element={
+            <Suspense fallback={<DraftsPageSkeleton />}>
+              <DraftsPage />
+            </Suspense>
+          }
+        />
         <Route path="drafts/:draftId" element={<DraftPage />} />
         <Route
           path="guides"
