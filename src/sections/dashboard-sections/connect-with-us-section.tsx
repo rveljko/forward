@@ -29,7 +29,7 @@ export default function ConnectWithUsSection() {
             })
           }}
         >
-          <FormField className="[&_div]:max-w-none">
+          <FormField className="gap-1 [&_div]:max-w-none">
             <FormField.Label htmlFor="subject">Subject</FormField.Label>
             <FormField.Input
               id="subject"
@@ -44,7 +44,7 @@ export default function ConnectWithUsSection() {
               className="max-w-none"
             />
           </FormField>
-          <FormField className="[&_div]:max-w-none">
+          <FormField className="gap-1 [&_div]:max-w-none">
             <FormField.Label htmlFor="message">Message</FormField.Label>
             <FormField.Textarea
               id="message"
