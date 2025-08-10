@@ -1,10 +1,10 @@
 import ChatPage from '@dashboard-pages/chat-page'
 import DraftPage from '@dashboard-pages/draft-page'
 import DraftsPage from '@dashboard-pages/drafts-page'
-import GuidePage from '@dashboard-pages/guide-page'
 import InboxPage from '@dashboard-pages/inbox-page'
 import IssuePage from '@dashboard-pages/issue-page'
 import IssuesPage from '@dashboard-pages/issues-page'
+import GuidePageSkeleton from '@dashboard-pages/skeletons/guide-page-skeleton'
 import GuidesPageSkeleton from '@dashboard-pages/skeletons/guides-page-skeleton'
 import HelpAndSupportPageSkeleton from '@dashboard-pages/skeletons/help-and-support-page-skeleton'
 import IntegrationsPageSkeleton from '@dashboard-pages/skeletons/integrations-page-skeleton'
@@ -24,6 +24,7 @@ import LandingPageLayout from '@layouts/landing-page-layout'
 import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
+const GuidePage = lazy(() => import('@dashboard-pages/guide-page'))
 const GuidesPage = lazy(() => import('@dashboard-pages/guides-page'))
 const HelpAndSupportPage = lazy(
   () => import('@dashboard-pages/help-and-support-page')
@@ -63,7 +64,14 @@ export default function AppRoutes() {
             </Suspense>
           }
         />
-        <Route path="guides/:guideSlug" element={<GuidePage />} />
+        <Route
+          path="guides/:guideSlug"
+          element={
+            <Suspense fallback={<GuidePageSkeleton />}>
+              <GuidePage />
+            </Suspense>
+          }
+        />
         <Route
           path="help-and-support"
           element={
