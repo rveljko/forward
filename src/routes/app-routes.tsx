@@ -1,8 +1,8 @@
 import ChatPage from '@dashboard-pages/chat-page'
-import DraftPage from '@dashboard-pages/draft-page'
 import InboxPage from '@dashboard-pages/inbox-page'
 import IssuePage from '@dashboard-pages/issue-page'
 import IssuesPage from '@dashboard-pages/issues-page'
+import DraftPageSkeleton from '@dashboard-pages/skeletons/draft-page-skeleton'
 import DraftsPageSkeleton from '@dashboard-pages/skeletons/drafts-page-skeleton'
 import GuidePageSkeleton from '@dashboard-pages/skeletons/guide-page-skeleton'
 import GuidesPageSkeleton from '@dashboard-pages/skeletons/guides-page-skeleton'
@@ -24,6 +24,7 @@ import LandingPageLayout from '@layouts/landing-page-layout'
 import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
+const DraftPage = lazy(() => import('@dashboard-pages/draft-page'))
 const DraftsPage = lazy(() => import('@dashboard-pages/drafts-page'))
 const GuidePage = lazy(() => import('@dashboard-pages/guide-page'))
 const GuidesPage = lazy(() => import('@dashboard-pages/guides-page'))
@@ -63,7 +64,14 @@ export default function AppRoutes() {
             </Suspense>
           }
         />
-        <Route path="drafts/:draftId" element={<DraftPage />} />
+        <Route
+          path="drafts/:draftId"
+          element={
+            <Suspense fallback={<DraftPageSkeleton />}>
+              <DraftPage />
+            </Suspense>
+          }
+        />
         <Route
           path="guides"
           element={
