@@ -1,7 +1,9 @@
 import Toaster from '@components/toaster'
-import Sidebar from '@dashboard-components/sidebar'
+import SidebarSkeleton from '@dashboard-components/skeletons/sidebar-skeleton'
 import { usePreferences } from '@services/contexts/preferences-context'
+import { lazy, Suspense } from 'react'
 import { Outlet } from 'react-router'
+const Sidebar = lazy(() => import('@dashboard-components/sidebar'))
 
 export default function DashboardLayout() {
   const { preferences, getBorderRadius } = usePreferences()
@@ -19,7 +21,9 @@ export default function DashboardLayout() {
             : ''
         }`}
       >
-        <Sidebar />
+        <Suspense fallback={<SidebarSkeleton />}>
+          <Sidebar />
+        </Suspense>
       </div>
       <div
         className={`animate-scale-fade-in w-full p-4 ${preferences.isRightSideSidebar ? 'origin-right' : 'origin-left'} ${preferences.sidebarStyle === 'transparent' ? (preferences.isRightSideSidebar ? 'pr-0' : 'pl-0') : ''}`}
