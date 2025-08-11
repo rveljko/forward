@@ -1,13 +1,13 @@
 import ChatPage from '@dashboard-pages/chat-page'
 import InboxPage from '@dashboard-pages/inbox-page'
 import IssuePage from '@dashboard-pages/issue-page'
-import IssuesPage from '@dashboard-pages/issues-page'
 import DraftPageSkeleton from '@dashboard-pages/skeletons/draft-page-skeleton'
 import DraftsPageSkeleton from '@dashboard-pages/skeletons/drafts-page-skeleton'
 import GuidePageSkeleton from '@dashboard-pages/skeletons/guide-page-skeleton'
 import GuidesPageSkeleton from '@dashboard-pages/skeletons/guides-page-skeleton'
 import HelpAndSupportPageSkeleton from '@dashboard-pages/skeletons/help-and-support-page-skeleton'
 import IntegrationsPageSkeleton from '@dashboard-pages/skeletons/integrations-page-skeleton'
+import IssuesPageSkeleton from '@dashboard-pages/skeletons/issues-page-skeleton'
 import PreferencesPageSkeleton from '@dashboard-pages/skeletons/preferences-page-skeleton'
 import ProfilePageSkeleton from '@dashboard-pages/skeletons/profile-page-skeleton'
 import SecurityPageSkeleton from '@dashboard-pages/skeletons/security-page-skeleton'
@@ -34,6 +34,7 @@ const HelpAndSupportPage = lazy(
 const IntegrationsPage = lazy(
   () => import('@dashboard-pages/integrations-page')
 )
+const IssuesPage = lazy(() => import('@dashboard-pages/issues-page'))
 const PreferencesPage = lazy(() => import('@dashboard-pages/preferences-page'))
 const ProfilePage = lazy(() => import('@dashboard-pages/profile-page'))
 const SecurityPage = lazy(() => import('@dashboard-pages/security-page'))
@@ -54,7 +55,14 @@ export default function AppRoutes() {
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route path="inbox" element={<InboxPage />} />
         <Route path="inbox/:chatId" element={<ChatPage />} />
-        <Route path="issues" element={<IssuesPage />} />
+        <Route
+          path="issues"
+          element={
+            <Suspense fallback={<IssuesPageSkeleton />}>
+              <IssuesPage />
+            </Suspense>
+          }
+        />
         <Route path="issues/:issueId" element={<IssuePage />} />
         <Route
           path="drafts"
