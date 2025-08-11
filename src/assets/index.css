@@ -304,6 +304,7 @@
     min-height: 100vh;
     background-color: var(--color-landing-page-background-color);
     color: var(--color-neutral-100);
+    letter-spacing: var(--tracking-tight);
   }
 
   html,
