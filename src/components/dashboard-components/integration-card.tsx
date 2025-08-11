@@ -25,7 +25,7 @@ export default function IntegrationCard({
           />
         </div>
         <div>
-          <h3>{name}</h3>
+          <h3 className="mb-1">{name}</h3>
           <p className="text-sm">{description}</p>
         </div>
       </header>
