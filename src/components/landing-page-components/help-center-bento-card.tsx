@@ -57,7 +57,7 @@ export default function HelpCenterBentoCard() {
                   name="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="mb-2 flex aspect-auto h-29"
+                  className="mb-2 aspect-auto h-28"
                 />
               </FormField>
               <Button
