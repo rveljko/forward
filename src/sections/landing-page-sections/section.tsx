@@ -49,7 +49,7 @@ function Heading1({ children, className, ...props }: Heading1Props) {
       transition={{ ease: 'easeInOut' }}
       viewport={{ once: true }}
       className={cn(
-        'mb-4 text-4xl font-bold text-balance md:text-5xl',
+        'mb-4 text-4xl font-semibold text-balance md:text-5xl',
         className
       )}
       {...props}
@@ -77,7 +77,7 @@ function Heading2({ children, className, ...props }: Heading2Props) {
       transition={{ ease: 'easeInOut' }}
       viewport={{ once: true }}
       className={cn(
-        'mx-auto mb-4 max-w-130 text-center text-3xl font-bold text-balance md:text-4xl',
+        'mx-auto mb-4 max-w-130 text-center text-3xl font-semibold text-balance md:text-4xl',
         className
       )}
       {...props}

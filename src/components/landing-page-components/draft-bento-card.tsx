@@ -12,7 +12,7 @@ export default function DraftBentoCard() {
         <input
           type="text"
           placeholder="Write something..."
-          className="text-clickable mb-2 w-full text-3xl font-bold placeholder:text-neutral-400"
+          className="text-clickable mb-2 w-full text-3xl font-semibold placeholder:text-neutral-400"
         />
         <textarea
           name="description"

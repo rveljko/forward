@@ -20,26 +20,26 @@ export default function TextFormattingBentoCard() {
         Edit your text with various formatting options to enhance readability
       </BentoCard.Paragraph>
       <div className="mt-auto max-w-80">
-        <div className="mb-2 flex w-max items-center rounded-lg p-0.5 gap-1 bg-neutral-800">
+        <div className="mb-2 flex w-max items-center gap-1 rounded-lg bg-neutral-800 p-0.5">
           <Button
             variant="tertiary"
-            className='p-0.25'
-            onClick={() => ref.current?.classList.toggle('font-bold')}
+            className="p-0.25"
+            onClick={() => ref.current?.classList.toggle('font-semibold')}
           >
             <BoldIcon />
             <span className="sr-only">Bold</span>
           </Button>
           <Button
             variant="tertiary"
-            className='p-0.25'
+            className="p-0.25"
             onClick={() => ref.current?.classList.toggle('italic')}
           >
             <ItalicIcon />
             <span className="sr-only">Italic</span>
           </Button>
           <Button
-              variant="tertiary"
-              className='p-0.25'
+            variant="tertiary"
+            className="p-0.25"
             onClick={() => {
               ref.current?.classList.remove('line-through')
               ref.current?.classList.toggle('underline')
@@ -49,8 +49,8 @@ export default function TextFormattingBentoCard() {
             <span className="sr-only">Underline</span>
           </Button>
           <Button
-              variant="tertiary"
-              className='p-0.25'
+            variant="tertiary"
+            className="p-0.25"
             onClick={() => {
               ref.current?.classList.remove('underline')
               ref.current?.classList.toggle('line-through')
@@ -60,8 +60,8 @@ export default function TextFormattingBentoCard() {
             <span className="sr-only">Strikethrough</span>
           </Button>
           <Button
-              variant="tertiary"
-              className='p-0.25'
+            variant="tertiary"
+            className="p-0.25"
             onClick={() => {
               ref.current?.classList.remove(
                 'text-right',
@@ -75,8 +75,8 @@ export default function TextFormattingBentoCard() {
             <span className="sr-only">Left Alignment</span>
           </Button>
           <Button
-              variant="tertiary"
-              className='p-0.25'
+            variant="tertiary"
+            className="p-0.25"
             onClick={() => {
               ref.current?.classList.remove(
                 'text-left',
@@ -90,8 +90,8 @@ export default function TextFormattingBentoCard() {
             <span className="sr-only">Center Alignment</span>
           </Button>
           <Button
-              variant="tertiary"
-              className='p-0.25'
+            variant="tertiary"
+            className="p-0.25"
             onClick={() => {
               ref.current?.classList.remove(
                 'text-left',
@@ -105,8 +105,8 @@ export default function TextFormattingBentoCard() {
             <span className="sr-only">Right Alignment</span>
           </Button>
           <Button
-              variant="tertiary"
-              className='p-0.25'
+            variant="tertiary"
+            className="p-0.25"
             onClick={() => {
               ref.current?.classList.remove(
                 'text-left',
