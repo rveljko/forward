@@ -11,7 +11,7 @@ export default function InboxSidebarSkeleton({
 }: InboxSidebarSkeletonProps) {
   return (
     <div className={cn('relative w-full md:max-w-80', className)}>
-      <Skeleton className="absolute right-0 h-full w-0.25 max-md:hidden" />
+      <Skeleton className="absolute right-0 h-full w-0.25 rounded-none max-md:hidden" />
       <div className="md:mr-0.25">
         <div className="p-4">
           <Skeleton className="max-w-40" />
