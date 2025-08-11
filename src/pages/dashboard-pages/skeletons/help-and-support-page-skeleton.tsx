@@ -10,11 +10,11 @@ export default function HelpAndSupportPageSkeleton() {
     <div className="w-full max-w-200 space-y-4 p-4">
       <title>{`${TITLE_PREFIX}Help and Support`}</title>
       <HelpAndSupportHeaderSkeleton />
-      <Skeleton className="h-0.5" />
+      <Skeleton className="h-0.5 rounded-none" />
       <ConnectWithUsSectionSkeleton />
-      <Skeleton className="h-0.5" />
+      <Skeleton className="h-0.5 rounded-none" />
       <SocialMediasSectionSkeleton />
-      <Skeleton className="h-0.5" />
+      <Skeleton className="h-0.5 rounded-none" />
       <FaqSectionSkeleton />
     </div>
   )

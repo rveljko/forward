@@ -17,18 +17,18 @@ export default function FaqSectionSkeleton() {
               <Skeleton className="mb-1 h-4.5" />
               <Skeleton className="h-4.5 w-1/2" />
             </div>
-            <Skeleton className="h-0.5" />
+            <Skeleton className="h-0.5 rounded-none" />
           </div>
           <div className="flex items-center gap-2 py-2">
             <Skeleton />
             <Skeleton className="aspect-square w-auto" />
           </div>
-          <Skeleton className="h-0.5" />
+          <Skeleton className="h-0.5 rounded-none" />
           <div className="flex items-center gap-2 py-2">
             <Skeleton />
             <Skeleton className="aspect-square w-auto" />
           </div>
-          <Skeleton className="h-0.5" />
+          <Skeleton className="h-0.5 rounded-none" />
         </div>
       </div>
     </section>

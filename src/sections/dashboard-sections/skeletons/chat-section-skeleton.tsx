@@ -14,9 +14,9 @@ export default function ChatSectionSkeleton() {
       <div className="flex flex-col-reverse overflow-y-auto p-4">
         <div className="space-y-4">
           <div className="flex items-center gap-2">
-            <Skeleton className="h-0.5" />
+            <Skeleton className="h-0.5 rounded-none" />
             <Skeleton className="h-5 max-w-25" />
-            <Skeleton className="h-0.5" />
+            <Skeleton className="h-0.5 rounded-none" />
           </div>
           <div className="flex gap-2">
             <Skeleton className="aspect-square size-10 w-auto rounded-full" />
@@ -75,9 +75,9 @@ export default function ChatSectionSkeleton() {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <Skeleton className="h-0.5" />
+            <Skeleton className="h-0.5 rounded-none" />
             <Skeleton className="h-5 max-w-25" />
-            <Skeleton className="h-0.5" />
+            <Skeleton className="h-0.5 rounded-none" />
           </div>
           <div className="flex gap-2">
             <Skeleton className="aspect-square size-10 w-auto rounded-full" />
