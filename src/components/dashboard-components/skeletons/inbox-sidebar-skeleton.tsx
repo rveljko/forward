@@ -1,9 +1,16 @@
 import Skeleton from '@dashboard-components/ui/skeleton'
 import { chats } from '@data/chats'
+import { cn } from '@utils/utils'
 
-export default function InboxSidebarSkeleton() {
+type InboxSidebarSkeletonProps = {
+  className?: string
+}
+
+export default function InboxSidebarSkeleton({
+  className,
+}: InboxSidebarSkeletonProps) {
   return (
-    <div className="relative w-full md:max-w-80">
+    <div className={cn('relative w-full md:max-w-80', className)}>
       <Skeleton className="absolute right-0 h-full w-0.25 max-md:hidden" />
       <div className="md:mr-0.25">
         <div className="p-4">
