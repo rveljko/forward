@@ -1,10 +1,10 @@
 import ChatPage from '@dashboard-pages/chat-page'
-import InboxPage from '@dashboard-pages/inbox-page'
 import DraftPageSkeleton from '@dashboard-pages/skeletons/draft-page-skeleton'
 import DraftsPageSkeleton from '@dashboard-pages/skeletons/drafts-page-skeleton'
 import GuidePageSkeleton from '@dashboard-pages/skeletons/guide-page-skeleton'
 import GuidesPageSkeleton from '@dashboard-pages/skeletons/guides-page-skeleton'
 import HelpAndSupportPageSkeleton from '@dashboard-pages/skeletons/help-and-support-page-skeleton'
+import InboxPageSkeleton from '@dashboard-pages/skeletons/inbox-page-skeleton'
 import IntegrationsPageSkeleton from '@dashboard-pages/skeletons/integrations-page-skeleton'
 import IssuePageSkeleton from '@dashboard-pages/skeletons/issue-page-skeleton'
 import IssuesPageSkeleton from '@dashboard-pages/skeletons/issues-page-skeleton'
@@ -31,6 +31,7 @@ const GuidesPage = lazy(() => import('@dashboard-pages/guides-page'))
 const HelpAndSupportPage = lazy(
   () => import('@dashboard-pages/help-and-support-page')
 )
+const InboxPage = lazy(() => import('@dashboard-pages/inbox-page'))
 const IntegrationsPage = lazy(
   () => import('@dashboard-pages/integrations-page')
 )
@@ -54,7 +55,14 @@ export default function AppRoutes() {
         <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route path="inbox" element={<InboxPage />} />
+        <Route
+          path="inbox"
+          element={
+            <Suspense fallback={<InboxPageSkeleton />}>
+              <InboxPage />
+            </Suspense>
+          }
+        />
         <Route path="inbox/:chatId" element={<ChatPage />} />
         <Route
           path="issues"
