@@ -94,14 +94,20 @@ export default function IssuesSection() {
         </div>
         <Switcher>
           <Switcher.Element
-            onClick={() => setView('list')}
+            onClick={() => {
+              if (view === 'list') return
+              setView('list')
+            }}
             isActive={view === 'list'}
           >
             <ListIcon />
             <span className="sr-only">List view</span>
           </Switcher.Element>
           <Switcher.Element
-            onClick={() => setView('kanban')}
+            onClick={() => {
+              if (view === 'kanban') return
+              setView('kanban')
+            }}
             isActive={view === 'kanban'}
           >
             <KanbanIcon />
