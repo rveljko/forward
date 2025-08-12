@@ -18,6 +18,7 @@ import Button from '@ui/button'
 import Logo from '@ui/logo'
 import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 import { Link } from 'react-router'
 
 export default function Sidebar() {
@@ -36,6 +37,8 @@ export default function Sidebar() {
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
   const [isBigSizeModal, setIsBigSizeModal] = useState(false)
+
+  useHotkeys('ctrl+b', () => setIsOpened((prev) => !prev))
 
   function closeOpenedSidebarOnMobile() {
     !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
