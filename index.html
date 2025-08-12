@@ -62,7 +62,7 @@
       </style>
       <script>
         const theme =
-          JSON.parse(localStorage.getItem('preferences')).theme || 'system'
+          JSON.parse(localStorage.getItem('preferences'))?.theme || 'system'
         document.documentElement.setAttribute('data-theme', theme)
       </script>
       <div class="spinner-wrapper">
