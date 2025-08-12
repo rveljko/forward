@@ -43,6 +43,11 @@ export default function IssuesSection() {
     if (view === 'list') return
     setView('list')
   })
+  useHotkeys('ctrl+alt+2', (e) => {
+    e.preventDefault()
+    if (view === 'kanban') return
+    setView('kanban')
+  })
 
   function handleDragStart(e: DragStartEvent) {
     setActiveId(e.active.id as Issue['id'])
