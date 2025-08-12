@@ -40,6 +40,10 @@ export default function Sidebar() {
 
   useHotkeys('ctrl+b', () => setIsOpened((prev) => !prev))
   useHotkeys('ctrl+alt+i', openCreateNewIssueModal)
+  useHotkeys('ctrl+k', (e) => {
+    e.preventDefault()
+    openSearchModal()
+  })
 
   function closeOpenedSidebarOnMobile() {
     !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
