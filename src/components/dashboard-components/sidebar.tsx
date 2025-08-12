@@ -39,6 +39,7 @@ export default function Sidebar() {
   const [isBigSizeModal, setIsBigSizeModal] = useState(false)
 
   useHotkeys('ctrl+b', () => setIsOpened((prev) => !prev))
+  useHotkeys('ctrl+alt+i', openCreateNewIssueModal)
 
   function closeOpenedSidebarOnMobile() {
     !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
