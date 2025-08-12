@@ -26,6 +26,7 @@ import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Issue } from '@utils/types'
 import { useEffect, useState } from 'react'
+import { useHotkeys } from 'react-hotkeys-hook'
 
 function getInitialView(): 'list' | 'kanban' {
   const view = localStorage.getItem('view')
@@ -36,6 +37,12 @@ export default function IssuesSection() {
   const { updateIssuePosition } = useIssues()
   const [view, setView] = useState(getInitialView)
   const [activeId, setActiveId] = useState<Issue['id'] | null>(null)
+
+  useHotkeys('ctrl+alt+1', (e) => {
+    e.preventDefault()
+    if (view === 'list') return
+    setView('list')
+  })
 
   function handleDragStart(e: DragStartEvent) {
     setActiveId(e.active.id as Issue['id'])
