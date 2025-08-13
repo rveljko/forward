@@ -1,6 +1,6 @@
 import { cn } from '@utils/utils'
 import { motion } from 'motion/react'
-import { ComponentProps, createContext, useContext, useEffect } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import ReactFocusLock from 'react-focus-lock'
 
@@ -93,7 +93,7 @@ function Dialog({ children, className, ...props }: DialogProps) {
   )
 }
 
-type FocusLockProps = ComponentProps<typeof ReactFocusLock>
+type FocusLockProps = React.ComponentProps<typeof ReactFocusLock>
 
 function FocusLock({ ...props }: FocusLockProps) {
   return <ReactFocusLock returnFocus {...props} />
