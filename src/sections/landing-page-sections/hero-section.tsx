@@ -59,7 +59,7 @@ export default function HeroSection() {
         }}
         transition={{ ease: 'easeInOut', delay: 0.3 }}
         viewport={{ once: true }}
-        className="border-section-outline rounded-4xl border p-4"
+        className="border-section-outline relative isolate overflow-hidden rounded-4xl border p-4 after:absolute after:inset-0 after:-z-1 after:backdrop-blur-3xl"
       >
         <div
           id="dashboard-layout"
