@@ -53,15 +53,13 @@ export default function HeroSection() {
       <motion.div
         initial={{
           opacity: 'var(--opacity-from)',
-          translateY: 'var(--slide-y-from)',
         }}
         whileInView={{
           opacity: 'var(--opacity-to)',
-          translateY: 'var(--slide-y-to)',
         }}
         transition={{ ease: 'easeInOut', delay: 0.3 }}
         viewport={{ once: true }}
-        className="border-section-outline rounded-4xl border p-4 backdrop-blur-3xl"
+        className="border-section-outline rounded-4xl border p-4"
       >
         <div
           id="dashboard-layout"
