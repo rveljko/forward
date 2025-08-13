@@ -18,11 +18,13 @@ export default function ThemesBentoCard() {
             src={`${IMAGE_PATH}theme-${isLightTheme ? 'dark' : 'light'}.png`}
             alt={`${isLightTheme ? 'Dark' : 'Light'} theme dashboard skeleton`}
             className="border-section-outline absolute translate-y-12 rounded-lg border transition-transform duration-300 group-hover:z-2 group-hover:translate-x-18 group-hover:translate-y-0"
+            loading="lazy"
           />
           <img
             src={`${IMAGE_PATH}theme-${isLightTheme ? 'light' : 'dark'}.png`}
             alt={`${isLightTheme ? 'Light' : 'Dark'} theme dashboard skeleton`}
             className="border-section-outline absolute translate-x-18 rounded-lg border transition-transform duration-300 group-hover:z-1 group-hover:translate-x-0 group-hover:translate-y-12"
+            loading="lazy"
           />
         </div>
       </div>
