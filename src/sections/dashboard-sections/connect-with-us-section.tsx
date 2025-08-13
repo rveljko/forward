@@ -17,7 +17,7 @@ export default function ConnectWithUsSection() {
   return (
     <section>
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50">Connect With Us</h3>
+        <h2 className="w-full max-w-50">Connect With Us</h2>
         <form
           className="w-full max-w-75 space-y-2"
           onSubmit={(e) => {
