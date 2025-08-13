@@ -1,6 +1,5 @@
 import { UserStatus as UserStatusType } from '@utils/types'
 import { cn } from '@utils/utils'
-import React from 'react'
 
 type UserStatusProps = React.ComponentPropsWithoutRef<'div'> & {
   status: UserStatusType

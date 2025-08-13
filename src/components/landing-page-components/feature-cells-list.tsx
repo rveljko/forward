@@ -2,7 +2,6 @@ import FeatureCell from '@landing-page-components/feature-cell'
 import { Feature } from '@utils/types'
 import { cn } from '@utils/utils'
 import { motion } from 'motion/react'
-import React from 'react'
 
 type FeatureCellsListProps = React.ComponentPropsWithoutRef<'ul'> & {
   features: Feature[]

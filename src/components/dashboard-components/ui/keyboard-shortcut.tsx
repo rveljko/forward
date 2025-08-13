@@ -1,5 +1,4 @@
 import { cn } from '@utils/utils'
-import React from 'react'
 
 type KeyboardShortcutProps = React.ComponentPropsWithoutRef<'kbd'> & {
   children: React.ReactNode

@@ -1,5 +1,4 @@
 import { cn } from '@utils/utils'
-import React from 'react'
 
 type InformationListProps = React.ComponentPropsWithoutRef<'ul'> & {
   children: React.ReactNode

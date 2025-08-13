@@ -1,7 +1,6 @@
 import Container from '@landing-page-components/container'
 import { cn } from '@utils/utils'
 import { motion } from 'motion/react'
-import React from 'react'
 
 type SectionProps = React.ComponentPropsWithoutRef<'section'> & {
   children: React.ReactNode
