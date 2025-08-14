@@ -112,7 +112,7 @@ export default function ChatSection({ chatId }: ChatSectionProps) {
               }}
               leftIcon={<MessageIcon />}
               rightIcon={
-                <button className="hover:cursor-pointer">
+                <button className="-m-2 rounded-r-sm p-2 hover:cursor-pointer">
                   <SendIcon />
                 </button>
               }
