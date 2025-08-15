@@ -1,8 +1,7 @@
 import NavigationLinksList from '@dashboard-components/navigation-links-list'
 import { settingsNavigationLinks } from '@data/navigation-links'
 import useMediaQuery from '@hooks/use-media-query'
-import ChevronLeftIcon from '@icons/chevron-left-icon'
-import ChevronRightIcon from '@icons/chevron-right-icon'
+import LayoutSidebarLeftIcon from '@icons/layout-sidebar-left-icon'
 import { useState } from 'react'
 
 export default function SettingsSidebar() {
@@ -22,13 +21,15 @@ export default function SettingsSidebar() {
           Settings
         </h1>
         <button
-          className="text-clickable flex size-7 items-center justify-center hover:cursor-pointer"
+          className="text-clickable group flex size-7 items-center justify-center hover:cursor-pointer"
           onClick={() => setIsOpened((prev) => !prev)}
         >
           <span className="sr-only">
             {isOpened ? 'Close Settings Sidebar' : 'Open Settings Sidebar'}
           </span>
-          {isOpened ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          <LayoutSidebarLeftIcon
+            className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:_polygon(0_0,_0_0,_0_100%,_0_100%)] [&_rect]:[clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]' : '[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]'}`}
+          />
         </button>
       </header>
       <nav>
