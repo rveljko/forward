@@ -8,8 +8,8 @@ import {
 } from '@data/navigation-links'
 import useMediaQuery from '@hooks/use-media-query'
 import useModal from '@hooks/use-modal'
-import ChevronLeftIcon from '@icons/chevron-left-icon'
-import ChevronRightIcon from '@icons/chevron-right-icon'
+import LayoutSidebarLeftIcon from '@icons/layout-sidebar-left-icon'
+import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import { usePreferences } from '@services/contexts/preferences-context'
@@ -93,20 +93,18 @@ export default function Sidebar() {
           </Link>
           <Button
             variant="tertiary"
-            className="text-clickable flex size-7 items-center justify-center"
+            className="text-clickable group flex size-7 items-center justify-center"
             onClick={() => setIsOpened((prev) => !prev)}
           >
             <span className="sr-only">Toggle Sidebar</span>
             {preferences.isRightSideSidebar ? (
-              isOpened ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )
-            ) : isOpened ? (
-              <ChevronLeftIcon />
+              <LayoutSidebarRightIcon
+                className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:_polygon(100%_0,_100%_0,_100%_100%,_100%_100%)] [&_rect]:[clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]' : '[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]'}`}
+              />
             ) : (
-              <ChevronRightIcon />
+              <LayoutSidebarLeftIcon
+                className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:_polygon(0_0,_0_0,_0_100%,_0_100%)] [&_rect]:[clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]' : '[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]'}`}
+              />
             )}
           </Button>
         </header>
