@@ -5,7 +5,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./fonts/Inter-Regular.woff2') format('woff2');
+  src: url('/src/assets/fonts/inter-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -13,7 +13,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('./fonts/Inter-Medium.woff2') format('woff2');
+  src: url('/src/assets/fonts/inter-medium.woff2') format('woff2');
 }
 
 @font-face {
@@ -21,7 +21,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('./fonts/Inter-SemiBold.woff2') format('woff2');
+  src: url('/src/assets/fonts/inter-semibold.woff2') format('woff2');
 }
 
 :root {
