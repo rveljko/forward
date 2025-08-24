@@ -25,7 +25,7 @@ export const chats: Chat[] = [
         date: generateTimeInPast(1, 9, 33, 44),
         type: 'receiver',
         message:
-          "Hi James, I saw you were updating the dashboard metrics. How's that coming along?",
+          "Hi James, I saw you were updating the dashboard metrics. How's that coming along? 🎉 1/3 IYKYK",
       },
       {
         id: uuidv4(),
