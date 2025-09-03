@@ -156,6 +156,8 @@ export type Guide = {
   title: string
   slug: string
   lastEdit: Date
+  thumbnailDarkUrl: string
+  thumbnailLightUrl: string
   content: string
 }
 
