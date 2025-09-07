@@ -24,7 +24,7 @@ export default function PriorityLowIcon() {
       />
       <path
         d="M5 10.4167L5 14.5833"
-        stroke="currentColor"
+        stroke="var(--color-yellow-500)"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"

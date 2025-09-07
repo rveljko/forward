@@ -9,21 +9,21 @@ export default function PriorityHighIcon() {
     >
       <path
         d="M15 5.41666L15 14.5833"
-        stroke="currentColor"
+        stroke="var(--color-danger-500)"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M10 7.91666L10 14.5833"
-        stroke="currentColor"
+        stroke="var(--color-danger-500)"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <path
         d="M5 10.4167L5 14.5833"
-        stroke="currentColor"
+        stroke="var(--color-danger-500)"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
