@@ -176,12 +176,7 @@ export default function CreateNewIssueBentoCard() {
                   >
                     Cancel
                   </Button>
-                  <Button
-                    variant="primary"
-                    size="large"
-                    type="submit"
-                    disabled={!newIssue.title}
-                  >
+                  <Button variant="primary" size="large" type="submit">
                     Create New Issue
                   </Button>
                 </div>
