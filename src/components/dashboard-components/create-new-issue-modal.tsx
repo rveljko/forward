@@ -176,7 +176,6 @@ export default function CreateNewIssueModal({
             variant="primary"
             size="large"
             type="submit"
-            disabled={!newIssue.title}
           >
             Create New Issue
           </Button>
