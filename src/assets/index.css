@@ -83,6 +83,7 @@
     var(--landing-page-background-color)
   );
   --issues-list-item-active-background: hsl(234, 17%, 12%);
+  --issues-kanban-card-active-background: hsl(234, 17%, 12%);
   --modal-background: var(--section-background-color);
   --create-new-issue-modal-background: var(--neutral-800);
   --search-modal-background: var(--neutral-800);
@@ -110,6 +111,7 @@
     --background-color: hsl(180, 9%, 98%);
     --landing-page-background-color: hsl(0, 0%, 100%);
     --issues-list-item-active-background: hsl(0, 0%, 95%);
+    --issues-kanban-card-active-background: hsl(0, 0%, 95%);
     --section-background-color: hsl(0, 0%, 100%);
     --landing-page-section-background: unset;
     --create-new-issue-modal-background: hsl(0, 0%, 100%);
@@ -141,6 +143,7 @@
     var(--landing-page-background-color)
   );
   --issues-list-item-active-background: hsl(234, 17%, 12%);
+  --issues-kanban-card-active-background: hsl(234, 17%, 12%);
   --create-new-issue-modal-background: var(--neutral-800);
   --search-modal-background: var(--neutral-800);
   --keyboard-key-background: var(--neutral-800);
@@ -166,6 +169,7 @@
   --section-background-color: hsl(0, 0%, 100%);
   --landing-page-section-background: unset;
   --issues-list-item-active-background: hsl(0, 0%, 95%);
+  --issues-kanban-card-active-background: hsl(0, 0%, 95%);
   --create-new-issue-modal-background: hsl(0, 0%, 100%);
   --search-modal-background: hsl(0, 0%, 100%);
   --keyboard-key-background: hsl(0, 0%, 100%);
@@ -227,6 +231,9 @@
   --color-section-background-color: var(--section-background-color);
   --color-issues-list-item-active-background: var(
     --issues-list-item-active-background
+  );
+  --color-issues-kanban-card-active-background: var(
+    --issues-kanban-card-active-background
   );
   --color-modal-background: var(--modal-background);
   --color-create-new-issue-modal-background: var(

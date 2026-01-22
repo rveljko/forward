@@ -12,6 +12,7 @@ import Button from '@ui/button'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 import { AnimatePresence } from 'motion/react'
+import { useState } from 'react'
 import { Link } from 'react-router'
 
 type IssuesKanbanCardProps = React.ComponentPropsWithoutRef<'article'> & {
@@ -31,7 +32,22 @@ export default function IssuesKanbanCard({
     isDragging,
     setNodeRef,
   } = useSortable({ id })
-  const { isOpened, openModal, closeModal } = useModal()
+  const {
+    isOpened,
+    openModal: openIssueActionsModal,
+    closeModal: closeIssueActionsModal,
+  } = useModal()
+  const [activeIssueId, setActiveIssueId] = useState<Issue['id'] | null>(null)
+
+  function openModal() {
+    openIssueActionsModal()
+    setActiveIssueId(id)
+  }
+
+  function closeModal() {
+    closeIssueActionsModal()
+    setActiveIssueId(null)
+  }
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -54,7 +70,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        'ring-section-outline pointer-coarse:active:bg-clickable/5 pointer-coarse:active:ring-clickable/20 bg-section-background-color hover:ring-clickable/20 relative rounded-sm p-4 shadow-sm ring pointer-coarse:transition-all pointer-coarse:active:scale-99',
+        `ring-section-outline pointer-coarse:active:bg-clickable/5 pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative rounded-sm p-4 shadow-sm ring pointer-coarse:transition-all pointer-coarse:active:scale-99 ${activeIssueId === id ? 'bg-issues-kanban-card-active-background' : 'bg-section-background-color'}`,
         className
       )}
       style={style}
