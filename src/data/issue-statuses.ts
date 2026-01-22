@@ -1,3 +1,4 @@
+import CircleDashedIcon from '@icons/circle-dashed-icon'
 import CircleEmptyIcon from '@icons/circle-empty-icon'
 import CircleFullIcon from '@icons/circle-full-icon'
 import CircleHalfIcon from '@icons/circle-half-icon'
@@ -5,6 +6,12 @@ import { IssueStatus } from '@utils/types'
 import { v4 as uuidv4 } from 'uuid'
 
 export const issueStatuses: IssueStatus[] = [
+  {
+    id: uuidv4(),
+    name: 'Backlog',
+    label: 'backlog',
+    icon: CircleDashedIcon,
+  },
   {
     id: uuidv4(),
     name: 'Todo',
