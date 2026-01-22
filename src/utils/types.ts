@@ -103,9 +103,14 @@ export type IssueStatus = {
   icon: () => React.JSX.Element
 }
 
-export type IssuePriorityLabel = 'low' | 'medium' | 'high'
+export type IssuePriorityLabel =
+  | 'no-priority'
+  | 'low'
+  | 'medium'
+  | 'high'
+  | 'urgent'
 
-type IssuePriorityLevel = 1 | 2 | 3
+type IssuePriorityLevel = 0 | 1 | 2 | 3 | 4
 
 export type IssuePriority = {
   id: string
