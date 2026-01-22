@@ -1,5 +1,4 @@
 import IssueActionsModal from '@dashboard-components/issue-actions-modal'
-import IssueActionsModalButton from '@dashboard-components/issue-actions-modal-button'
 import IssueDate from '@dashboard-components/ui/issue-date'
 import IssuePriority from '@dashboard-components/ui/issue-priority'
 import IssueStatus from '@dashboard-components/ui/issue-status'
@@ -9,6 +8,7 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
+import Button from '@ui/button'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 import { AnimatePresence } from 'motion/react'
@@ -89,14 +89,14 @@ export default function IssuesListItem({
           <IssueTag tag={tag} />
           <IssueDate date={createdAt} />
         </div>
-        <IssueActionsModalButton
-          issueId={id}
+        <Button
           variant="tertiary"
+          onClick={openModal}
           className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-400"
         >
           <DotsVerticalIcon />
           <span className="sr-only">Actions</span>
-        </IssueActionsModalButton>
+        </Button>
       </div>
       <AnimatePresence>
         {isOpened && (
