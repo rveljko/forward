@@ -41,7 +41,7 @@ export default function CreateNewIssueModal({
     title: '',
     description: '',
     status: status ?? 'todo',
-    priority: 'low',
+    priority: 'no-priority',
     tag: 'design',
     createdAt: new Date(),
     content: '',
@@ -172,11 +172,7 @@ export default function CreateNewIssueModal({
           <Button variant="ghost" size="large" onClick={closeModal}>
             Cancel
           </Button>
-          <Button
-            variant="primary"
-            size="large"
-            type="submit"
-          >
+          <Button variant="primary" size="large" type="submit">
             Create New Issue
           </Button>
         </div>
