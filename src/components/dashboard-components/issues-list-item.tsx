@@ -12,6 +12,7 @@ import Button from '@ui/button'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 import { AnimatePresence } from 'motion/react'
+import { useState } from 'react'
 import { Link } from 'react-router'
 
 type IssuesListItemProps = React.ComponentPropsWithoutRef<'article'> & {
@@ -31,7 +32,22 @@ export default function IssuesListItem({
     isDragging,
     setNodeRef,
   } = useSortable({ id })
-  const { isOpened, openModal, closeModal } = useModal()
+  const {
+    isOpened,
+    openModal: openIssueActionsModal,
+    closeModal: closeIssueActionsModal,
+  } = useModal()
+  const [activeIssueId, setActiveIssueId] = useState<Issue['id'] | null>(null)
+
+  function openModal() {
+    openIssueActionsModal()
+    setActiveIssueId(id)
+  }
+
+  function closeModal() {
+    closeIssueActionsModal()
+    setActiveIssueId(null)
+  }
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -54,7 +70,7 @@ export default function IssuesListItem({
   return (
     <article
       className={cn(
-        'bg-section-background-color pointer-coarse:active:bg-clickable/5 relative flex items-center justify-between gap-2 p-4 transition-[background-color]',
+        `bg-section-background-color pointer-coarse:active:bg-clickable/5 relative flex items-center justify-between gap-2 p-4 transition-[background-color] ${activeIssueId === id ? 'bg-issues-list-item-active-background' : 'bg-section-background-color'}`,
         className
       )}
       style={style}
