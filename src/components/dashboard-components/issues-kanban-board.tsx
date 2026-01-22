@@ -27,8 +27,8 @@ export default function IssuesKanbanBoard({
         {...props}
       >
         {issueStatuses.map(({ id, label }) => (
-          <div className="px-2 first:pl-0 last:pr-0">
-            <IssuesKanbanColumn status={label} id={id} />
+          <div className="px-2 first:pl-0 last:pr-0" key={id}>
+            <IssuesKanbanColumn status={label} />
           </div>
         ))}
       </div>
