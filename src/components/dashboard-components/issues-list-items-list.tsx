@@ -1,4 +1,5 @@
 import IssuesListItem from '@dashboard-components/issues-list-item'
+import { SortableContext } from '@dnd-kit/sortable'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 
@@ -16,11 +17,13 @@ export default function IssuesListItemsList({
       className={cn('divide-section-outline grow divide-y', className)}
       {...props}
     >
-      {issues.map((issue) => (
-        <li key={issue.id}>
-          <IssuesListItem issue={issue} />
-        </li>
-      ))}
+      <SortableContext items={issues}>
+        {issues.map((issue) => (
+          <li key={issue.id}>
+            <IssuesListItem issue={issue} />
+          </li>
+        ))}
+      </SortableContext>
     </ul>
   )
 }
