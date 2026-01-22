@@ -20,7 +20,7 @@ export default function IssuesListColumn({
   const { setNodeRef } = useDroppable({ id: status })
 
   return (
-    <div className={cn('flex min-h-30.5 flex-col', className)} {...props}>
+    <div className={cn('flex min-h-29.5 flex-col', className)} {...props}>
       <IssuesColumnHeader
         title={name}
         icon={<Icon />}
