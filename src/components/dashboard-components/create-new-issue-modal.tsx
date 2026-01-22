@@ -113,7 +113,7 @@ export default function CreateNewIssueModal({
                 variant="ghost"
                 size="small"
                 name="status"
-                defaultValue={initialIssue.status}
+                value={newIssue.status}
                 onChange={(e) =>
                   setNewIssue({
                     ...newIssue,
@@ -132,6 +132,7 @@ export default function CreateNewIssueModal({
                 variant="ghost"
                 size="small"
                 name="priority"
+                value={newIssue.priority}
                 onChange={(e) =>
                   setNewIssue({
                     ...newIssue,
@@ -150,6 +151,7 @@ export default function CreateNewIssueModal({
                 variant="ghost"
                 size="small"
                 name="tag"
+                value={newIssue.tag}
                 onChange={(e) =>
                   setNewIssue({
                     ...newIssue,
