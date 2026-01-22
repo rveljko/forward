@@ -9,8 +9,6 @@ import { useSortable } from '@dnd-kit/sortable'
 import { CSS } from '@dnd-kit/utilities'
 import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
-import DragVerticalIcon from '@icons/drag-vertical-icon'
-import Button from '@ui/button'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
 import { AnimatePresence } from 'motion/react'
@@ -65,20 +63,11 @@ export default function IssuesListItem({
         e.preventDefault()
         openModal()
       }}
+      {...attributes}
+      {...listeners}
       {...props}
     >
       <div className="flex items-center gap-2">
-        <div className="z-1 pointer-coarse:hidden">
-          <Button
-            variant="tertiary"
-            className="hover:text-clickable -m-2 p-2 text-neutral-400"
-            {...attributes}
-            {...listeners}
-          >
-            <DragVerticalIcon />
-            <span className="sr-only">Drag handle</span>
-          </Button>
-        </div>
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
           <div className="flex h-7.5 shrink-0 items-center">

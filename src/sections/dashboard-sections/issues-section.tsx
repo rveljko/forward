@@ -10,7 +10,14 @@ import Switcher from '@dashboard-components/ui/switcher'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
-import { DndContext, DragOverEvent, DragStartEvent } from '@dnd-kit/core'
+import {
+  DndContext,
+  DragOverEvent,
+  DragStartEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
@@ -67,6 +74,14 @@ export default function IssuesSection() {
     setActiveId(null)
   }
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  )
+
   useEffect(() => {
     localStorage.setItem('view', JSON.stringify(view))
   }, [view])
@@ -120,6 +135,7 @@ export default function IssuesSection() {
         onDragStart={handleDragStart}
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
+        sensors={sensors}
       >
         {view === 'list' && <IssuesListBoard activeId={activeId} />}
         {view === 'kanban' && <IssuesKanbanBoard activeId={activeId} />}
