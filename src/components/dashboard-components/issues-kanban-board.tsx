@@ -1,5 +1,6 @@
 import IssuesKanbanCard from '@dashboard-components/issues-kanban-card'
 import IssuesKanbanColumn from '@dashboard-components/issues-kanban-column'
+import { issueStatuses } from '@data/issue-statuses'
 import { DragOverlay } from '@dnd-kit/core'
 import { useIssues } from '@services/contexts/issues-context'
 import { Issue } from '@utils/types'
@@ -25,15 +26,11 @@ export default function IssuesKanbanBoard({
         )}
         {...props}
       >
-        <div className="pr-2">
-          <IssuesKanbanColumn status="todo" />
-        </div>
-        <div className="px-2">
-          <IssuesKanbanColumn status="in-progress" />
-        </div>
-        <div className="pl-2">
-          <IssuesKanbanColumn status="finished" />
-        </div>
+        {issueStatuses.map(({ id, label }) => (
+          <div className="px-2 first:pl-0 last:pr-0">
+            <IssuesKanbanColumn status={label} id={id} />
+          </div>
+        ))}
       </div>
       <DragOverlay>
         {activeId && <IssuesKanbanCard issue={getIssueById(activeId)} />}
