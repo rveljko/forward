@@ -40,7 +40,7 @@ export default function CreateNewIssueModal({
     id: uuidv4(),
     title: '',
     description: '',
-    status: status ?? 'todo',
+    status: status ?? 'backlog',
     priority: 'no-priority',
     tag: 'design',
     createdAt: new Date(),
