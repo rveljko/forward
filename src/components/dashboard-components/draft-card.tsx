@@ -20,7 +20,7 @@ export default function DraftCard({
 
   return (
     <article
-      className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative h-full rounded-lg shadow-sm ring pointer-coarse:transition-all pointer-coarse:active:scale-99"
+      className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 has-[a:focus-visible]:ring-clickable relative h-full rounded-lg shadow-sm ring has-[a:focus-visible]:ring-2 pointer-coarse:transition-all pointer-coarse:active:scale-99"
       onContextMenu={(e) => {
         e.preventDefault()
         openModal()
@@ -33,7 +33,7 @@ export default function DraftCard({
         <h3>
           <Link
             to={`/dashboard/drafts/${id}`}
-            className="text-clickable line-clamp-2 text-balance"
+            className="text-clickable line-clamp-2 text-balance focus:outline-0"
           >
             <span className="absolute inset-0"></span>
             {title}
