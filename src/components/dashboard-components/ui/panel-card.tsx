@@ -78,7 +78,10 @@ type ButtonAsButtonProps = React.ComponentPropsWithoutRef<'button'> & {
 type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps
 
 function Button({ children, className, ...props }: ButtonProps) {
-  const buttonClasses = cn('text-clickable hover:cursor-pointer', className)
+  const buttonClasses = cn(
+    'text-clickable hover:cursor-pointer focus:outline-0',
+    className
+  )
 
   if ('href' in props && props.href !== undefined) {
     return (
