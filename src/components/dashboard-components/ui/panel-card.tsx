@@ -13,7 +13,7 @@ export default function PanelCard({
   return (
     <article
       className={cn(
-        'ring-section-outline has-[a:focus-visible]:ring-clickable has-[button]:hover:ring-clickable/20 has-[button]:pointer-coarse:active:ring-clickable/20 has-[input:checked]:ring-brand-500 has-[input:checked]:pointer-coarse:active:ring-brand-500 has-[input:checked]:hover:ring-brand-500 has-[label]:pointer-coarse:active:ring-clickable/20 has-[a]:pointer-coarse:active:ring-clickable/20 has-[label]:hover:ring-clickable/20 has-[a]:hover:ring-clickable/20 relative overflow-hidden rounded-lg p-2 ring transition-all has-[a]:active:scale-99 has-[a:focus-visible]:ring-2 has-[button]:active:scale-99 has-[label]:active:scale-99',
+        'ring-section-outline has-[a:focus-visible]:ring-clickable has-[button:focus-visible]:ring-clickable has-[button]:hover:ring-clickable/20 has-[button]:pointer-coarse:active:ring-clickable/20 has-[input:checked]:ring-brand-500 has-[input:checked]:pointer-coarse:active:ring-brand-500 has-[input:checked]:hover:ring-brand-500 has-[label]:pointer-coarse:active:ring-clickable/20 has-[a]:pointer-coarse:active:ring-clickable/20 has-[label]:hover:ring-clickable/20 has-[a]:hover:ring-clickable/20 relative overflow-hidden rounded-lg p-2 ring transition-all has-[a]:active:scale-99 has-[a:focus-visible]:ring-2 has-[button]:active:scale-99 has-[button:focus-visible]:ring-2 has-[label]:active:scale-99',
         className
       )}
       {...props}
