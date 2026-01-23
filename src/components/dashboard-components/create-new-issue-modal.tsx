@@ -176,8 +176,8 @@ export default function CreateNewIssueModal({
           </div>
         </div>
         <Divider />
-        <div className="flex overflow-x-auto p-4">
-          <div className="ml-auto flex items-center gap-2">
+        <div dir="rtl" className="flex overflow-x-auto p-4">
+          <div dir="ltr" className="ml-auto flex items-center gap-2">
             <label className="flex items-center gap-2 text-nowrap text-neutral-400">
               Create more
               <Switch
