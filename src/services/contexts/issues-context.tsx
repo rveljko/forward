@@ -150,6 +150,8 @@ export default function IssuesContextProvider({
     setIssues([
       {
         ...newIssue,
+        id: uuidv4(),
+        createdAt: new Date(),
         content: `<h1>${newIssue.title}</h1><p>${newIssue.description}</p>`,
       },
       ...issues,

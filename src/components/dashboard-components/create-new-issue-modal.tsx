@@ -9,6 +9,7 @@ import ArrowsMinimizeIcon from '@icons/arrows-minimize-icon'
 import CloseIcon from '@icons/close-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
+import Switch from '@ui/switch'
 import { showToast } from '@utils/toasts'
 import {
   Issue,
@@ -47,6 +48,7 @@ export default function CreateNewIssueModal({
     content: '',
   }
   const [newIssue, setNewIssue] = useState(initialIssue)
+  const [createMore, setCreateMore] = useState(false)
 
   return (
     <ModalCard
@@ -61,7 +63,11 @@ export default function CreateNewIssueModal({
             title: 'Issue Created',
             description: 'Issue added successfully',
           })
-          closeModal()
+          if (createMore) {
+            setNewIssue(initialIssue)
+          } else {
+            closeModal()
+          }
         }}
       >
         <div className="p-4">
@@ -170,13 +176,22 @@ export default function CreateNewIssueModal({
           </div>
         </div>
         <Divider />
-        <div className="flex items-center justify-end gap-2 p-4">
-          <Button variant="ghost" size="large" onClick={closeModal}>
-            Cancel
-          </Button>
-          <Button variant="primary" size="large" type="submit">
-            Create New Issue
-          </Button>
+        <div className="flex overflow-x-auto p-4">
+          <div className="ml-auto flex items-center gap-2">
+            <label className="flex items-center gap-2 text-nowrap text-neutral-400">
+              Create more
+              <Switch
+                checked={createMore}
+                onChange={() => setCreateMore((prev) => !prev)}
+              />
+            </label>
+            <Button variant="ghost" size="large" onClick={closeModal}>
+              Cancel
+            </Button>
+            <Button variant="primary" size="large" type="submit">
+              Create New Issue
+            </Button>
+          </div>
         </div>
       </form>
     </ModalCard>
