@@ -32,6 +32,27 @@ function ListViewSkeleton() {
     <>
       <div>
         <Skeleton className="h-14 rounded-none" />
+        <div className="space-y-px">
+          <div className="flex items-center justify-between gap-2 p-4">
+            <Skeleton className="max-w-60" />
+            <Skeleton className="max-md:aspect-square max-md:w-auto md:h-7.5 md:max-w-60" />
+          </div>
+          <div className="flex items-center justify-between gap-2 p-4">
+            <Skeleton className="max-w-60" />
+            <Skeleton className="max-md:aspect-square max-md:w-auto md:h-7.5 md:max-w-60" />
+          </div>
+          <div className="flex items-center justify-between gap-2 p-4">
+            <Skeleton className="max-w-60" />
+            <Skeleton className="max-md:aspect-square max-md:w-auto md:h-7.5 md:max-w-60" />
+          </div>
+          <div className="flex items-center justify-between gap-2 p-4">
+            <Skeleton className="max-w-60" />
+            <Skeleton className="max-md:aspect-square max-md:w-auto md:h-7.5 md:max-w-60" />
+          </div>
+        </div>
+      </div>
+      <div>
+        <Skeleton className="h-14 rounded-none" />
         <div className="space-y-0.25">
           <div className="flex items-center justify-between gap-2 p-4">
             <Skeleton className="max-w-60" />
