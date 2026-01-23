@@ -37,7 +37,7 @@ export default function ChangeIssueTagPanel({
           closeModal()
         }}
       >
-        <div className="p-4">
+        <div className="px-4 pt-4">
           <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
             <TagIcon />
           </span>
@@ -45,24 +45,24 @@ export default function ChangeIssueTagPanel({
             Change <strong>{issue.title}</strong> Tag
           </h3>
           <p className="mb-4">Update issue label</p>
-          <ul className="flex flex-col items-center gap-2 sm:flex-row">
-            {issueTags.map(({ id, name, label, icon: Icon }) => (
-              <li className="w-full flex-1" key={id}>
-                <PanelCard>
-                  <div className="flex items-start justify-between">
-                    <PanelCard.Icon icon={<Icon />} className="mb-1" />
-                    <RadioButton
-                      id={label}
-                      onChange={() => setNewTag(label)}
-                      checked={label === newTag}
-                    />
-                  </div>
-                  <PanelCard.Label htmlFor={label}>{name}</PanelCard.Label>
-                </PanelCard>
-              </li>
-            ))}
-          </ul>
         </div>
+        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(42.5),100%),1fr))] gap-2 px-4 pb-4 max-sm:max-h-65 max-sm:overflow-y-auto">
+          {issueTags.map(({ id, name, label, icon: Icon }) => (
+            <li className="w-full flex-1" key={id}>
+              <PanelCard>
+                <div className="flex items-start justify-between">
+                  <PanelCard.Icon icon={<Icon />} className="mb-1" />
+                  <RadioButton
+                    id={label}
+                    onChange={() => setNewTag(label)}
+                    checked={label === newTag}
+                  />
+                </div>
+                <PanelCard.Label htmlFor={label}>{name}</PanelCard.Label>
+              </PanelCard>
+            </li>
+          ))}
+        </ul>
         <Divider />
         <div className="flex items-center justify-end gap-2 p-4">
           <Button variant="ghost" size="large" onClick={closeModal}>
