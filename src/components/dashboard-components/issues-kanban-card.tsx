@@ -58,7 +58,7 @@ export default function IssuesKanbanCard({
     return (
       <article
         className={cn(
-          'border-section-outline bg-clickable/5 h-32.5 rounded-sm border border-dashed',
+          'border-section-outline bg-issues-kanban-card-active-background h-32.5 rounded-sm border border-dashed',
           className
         )}
         style={style}
@@ -70,7 +70,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        `ring-section-outline pointer-coarse:active:bg-clickable/5 pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative rounded-sm p-4 shadow-sm ring pointer-coarse:transition-all pointer-coarse:active:scale-99 ${activeIssueId === id ? 'bg-issues-kanban-card-active-background' : 'bg-section-background-color'}`,
+        `ring-section-outline pointer-coarse:active:bg-issues-kanban-card-active-background pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative rounded-sm p-4 shadow-sm ring pointer-coarse:transition-all pointer-coarse:active:scale-99 ${activeIssueId === id ? 'bg-issues-kanban-card-active-background' : 'bg-section-background-color'}`,
         className
       )}
       style={style}
