@@ -39,7 +39,7 @@ function Item({
   return (
     <li
       className={cn(
-        'has-[button]:text-clickable has-[a]:text-clickable has-[button]:hover:bg-clickable/10 has-[button]:pointer-coarse:active:bg-clickable/10 has-[a]:hover:bg-clickable/10 has-[a]:pointer-coarse:active:bg-clickable/10 relative flex items-center gap-2 px-4 py-2 pointer-coarse:transition',
+        'has-[button]:text-clickable has-[a]:text-clickable has-[a:focus-visible]:bg-clickable/10 has-[button]:hover:bg-clickable/10 has-[button:focus-visible]:bg-clickable/10 has-[button]:pointer-coarse:active:bg-clickable/10 has-[a]:hover:bg-clickable/10 has-[a]:pointer-coarse:active:bg-clickable/10 relative flex items-center gap-2 px-4 py-2 pointer-coarse:transition',
         className
       )}
       {...props}
