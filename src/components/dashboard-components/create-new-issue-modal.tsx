@@ -75,7 +75,6 @@ export default function CreateNewIssueModal({
             <div className="flex items-start justify-between gap-2">
               <input
                 type="text"
-                name="title"
                 placeholder="Issue title"
                 value={newIssue.title}
                 onChange={(e) =>
@@ -106,7 +105,6 @@ export default function CreateNewIssueModal({
               </div>
             </div>
             <textarea
-              name="description"
               placeholder="Issue description"
               value={newIssue.description}
               onChange={(e) =>
@@ -118,7 +116,6 @@ export default function CreateNewIssueModal({
               <Select
                 variant="ghost"
                 size="small"
-                name="status"
                 value={newIssue.status}
                 onChange={(e) =>
                   setNewIssue({
@@ -137,7 +134,6 @@ export default function CreateNewIssueModal({
               <Select
                 variant="ghost"
                 size="small"
-                name="priority"
                 value={newIssue.priority}
                 onChange={(e) =>
                   setNewIssue({
@@ -156,7 +152,6 @@ export default function CreateNewIssueModal({
               <Select
                 variant="ghost"
                 size="small"
-                name="tag"
                 value={newIssue.tag}
                 onChange={(e) =>
                   setNewIssue({
