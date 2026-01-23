@@ -149,6 +149,43 @@ function KanbanViewSkeleton() {
               <Skeleton className="mb-2 h-5 max-w-15" />
               <Skeleton className="h-7.5 max-w-35" />
             </div>
+          </div>
+        </div>
+        <div className="flex h-full w-85 shrink-0 flex-col gap-2">
+          <Skeleton className="h-14" />
+          <div className="flex grow flex-col gap-2">
+            <div className="p-4">
+              <div className="mb-4 flex justify-between gap-2">
+                <Skeleton className="max-w-60" />
+                <Skeleton className="aspect-square w-auto" />
+              </div>
+              <Skeleton className="mb-2 h-5 max-w-15" />
+              <Skeleton className="h-7.5 max-w-35" />
+            </div>
+            <div className="p-4">
+              <div className="mb-4 flex justify-between gap-2">
+                <Skeleton className="max-w-60" />
+                <Skeleton className="aspect-square w-auto" />
+              </div>
+              <Skeleton className="mb-2 h-5 max-w-15" />
+              <Skeleton className="h-7.5 max-w-35" />
+            </div>
+            <div className="p-4">
+              <div className="mb-4 flex justify-between gap-2">
+                <Skeleton className="max-w-60" />
+                <Skeleton className="aspect-square w-auto" />
+              </div>
+              <Skeleton className="mb-2 h-5 max-w-15" />
+              <Skeleton className="h-7.5 max-w-35" />
+            </div>
+            <div className="p-4">
+              <div className="mb-4 flex justify-between gap-2">
+                <Skeleton className="max-w-60" />
+                <Skeleton className="aspect-square w-auto" />
+              </div>
+              <Skeleton className="mb-2 h-5 max-w-15" />
+              <Skeleton className="h-7.5 max-w-35" />
+            </div>
             <div className="p-4">
               <div className="mb-4 flex justify-between gap-2">
                 <Skeleton className="max-w-60" />
