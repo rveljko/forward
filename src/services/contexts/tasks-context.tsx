@@ -1,6 +1,7 @@
 import { tasks as defaultTasks } from '@data/tasks'
 import { Task } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 type TasksContextProviderProps = {
   children: React.ReactNode
@@ -8,6 +9,7 @@ type TasksContextProviderProps = {
 
 type TasksContextType = {
   tasks: Task[]
+  createNewTask: (newTask: Task) => void
 }
 
 export const TasksContext = createContext<TasksContextType | null>(null)
@@ -22,12 +24,21 @@ export default function TasksContextProvider({
 }: TasksContextProviderProps) {
   const [tasks, setTasks] = useState(getInitialTasks)
 
+  function createNewTask(newTask: Task) {
+    setTasks((prevTasks) => [
+      { ...newTask, id: uuidv4(), createdAt: new Date() },
+      ...prevTasks,
+    ])
+  }
+
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
 
   return (
-    <TasksContext.Provider value={{ tasks }}>{children}</TasksContext.Provider>
+    <TasksContext.Provider value={{ tasks, createNewTask }}>
+      {children}
+    </TasksContext.Provider>
   )
 }
 

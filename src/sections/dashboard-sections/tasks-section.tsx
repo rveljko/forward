@@ -1,3 +1,4 @@
+import CreateNewTaskModalButton from '@dashboard-components/create-new-task-modal-button'
 import Divider from '@dashboard-components/ui/divider'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import FilterIcon from '@icons/filter-icon'
@@ -27,9 +28,13 @@ export default function TasksSection() {
             Sort
           </Button>
         </div>
-        <Button variant="primary" size="small" leftIcon={<PlusIcon />}>
+        <CreateNewTaskModalButton
+          variant="primary"
+          size="small"
+          leftIcon={<PlusIcon />}
+        >
           Create New Task
-        </Button>
+        </CreateNewTaskModalButton>
       </div>
       <Divider />
     </section>
