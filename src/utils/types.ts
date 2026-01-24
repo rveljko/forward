@@ -134,6 +134,13 @@ export type IssueSort =
   | 'name-asc'
   | 'name-desc'
 
+export type Task = {
+  id: string
+  title: string
+  isChecked: boolean
+  createdAt: Date
+}
+
 export type Guide = {
   id: string
   title: string
