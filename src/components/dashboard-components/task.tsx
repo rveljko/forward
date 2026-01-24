@@ -23,7 +23,13 @@ export default function Task({
   const { isOpened, openModal, closeModal } = useModal()
 
   return (
-    <article className="border-b-section-outline hover:bg-clickable/5 bg-section-background-color relative flex items-center justify-between gap-2 border-b p-4">
+    <article
+      onContextMenu={(e) => {
+        e.preventDefault()
+        openModal()
+      }}
+      className="border-b-section-outline hover:bg-clickable/5 bg-section-background-color relative flex items-center justify-between gap-2 border-b p-4"
+    >
       <label className="flex items-center justify-center gap-2 hover:cursor-pointer has-checked:line-through">
         <Checkbox checked={isChecked} onChange={() => updateTaskStatus(id)} />
         <span className="text-clickable line-clamp-1 break-all">{title}</span>
