@@ -9,6 +9,7 @@ import IssuesPageSkeleton from '@dashboard-pages/skeletons/issues-page-skeleton'
 import PreferencesPageSkeleton from '@dashboard-pages/skeletons/preferences-page-skeleton'
 import ProfilePageSkeleton from '@dashboard-pages/skeletons/profile-page-skeleton'
 import SecurityPageSkeleton from '@dashboard-pages/skeletons/security-page-skeleton'
+import TasksPage from '@dashboard-pages/tasks-page'
 import CustomersPage from '@landing-pages/customers-page'
 import FeaturesPage from '@landing-pages/features-page'
 import GuidesLandingPage from '@landing-pages/guides-page'
@@ -52,6 +53,7 @@ export default function AppRoutes() {
         <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="tasks" element={<TasksPage />} />
         <Route
           path="issues"
           element={
