@@ -78,7 +78,10 @@ export default function CreateNewIssueModal({
                 placeholder="Issue title"
                 value={newIssue.title}
                 onChange={(e) =>
-                  setNewIssue({ ...newIssue, title: e.target.value })
+                  setNewIssue((prevIssue) => ({
+                    ...prevIssue,
+                    title: e.target.value,
+                  }))
                 }
                 className="text-clickable w-full text-2xl placeholder:text-neutral-400 focus:outline-0"
                 required
@@ -108,7 +111,10 @@ export default function CreateNewIssueModal({
               placeholder="Issue description"
               value={newIssue.description}
               onChange={(e) =>
-                setNewIssue({ ...newIssue, description: e.target.value })
+                setNewIssue((prevIssue) => ({
+                  ...prevIssue,
+                  description: e.target.value,
+                }))
               }
               className="text-clickable aspect-5/1 w-full resize-none placeholder:text-neutral-400 focus:outline-0"
             />
@@ -118,10 +124,10 @@ export default function CreateNewIssueModal({
                 size="small"
                 value={newIssue.status}
                 onChange={(e) =>
-                  setNewIssue({
-                    ...newIssue,
+                  setNewIssue((prevIssue) => ({
+                    ...prevIssue,
                     status: e.target.value as IssueStatusLabel,
-                  })
+                  }))
                 }
               >
                 {issueStatuses.map(({ id, name, label, icon: Icon }) => (
@@ -136,10 +142,10 @@ export default function CreateNewIssueModal({
                 size="small"
                 value={newIssue.priority}
                 onChange={(e) =>
-                  setNewIssue({
-                    ...newIssue,
+                  setNewIssue((prevIssue) => ({
+                    ...prevIssue,
                     priority: e.target.value as IssuePriorityLabel,
-                  })
+                  }))
                 }
               >
                 {issuePriorities.map(({ id, name, label, icon: Icon }) => (
@@ -154,10 +160,10 @@ export default function CreateNewIssueModal({
                 size="small"
                 value={newIssue.tag}
                 onChange={(e) =>
-                  setNewIssue({
-                    ...newIssue,
+                  setNewIssue((prevIssue) => ({
+                    ...prevIssue,
                     tag: e.target.value as IssueTagLabel,
-                  })
+                  }))
                 }
               >
                 {issueTags.map(({ id, name, label, icon: Icon }) => (
