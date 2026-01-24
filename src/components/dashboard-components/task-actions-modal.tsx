@@ -41,7 +41,7 @@ type MenuPanelProps = {
 }
 
 function MenuPanel({ taskId, closeModal }: MenuPanelProps) {
-  const { getTaskById } = useTasks()
+  const { getTaskById, duplicateTask } = useTasks()
   const { title } = getTaskById(taskId)
 
   return (
@@ -81,7 +81,20 @@ function MenuPanel({ taskId, closeModal }: MenuPanelProps) {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<CopyIcon />} />
-            <PanelCard.Heading>Duplicate</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button
+                onClick={() => {
+                  duplicateTask(taskId)
+                  showToast({
+                    title: 'Task Duplicated',
+                    description: 'Task duplicated successfully',
+                  })
+                  closeModal()
+                }}
+              >
+                Duplicate
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Create task copy</PanelCard.Paragraph>
         </PanelCard>

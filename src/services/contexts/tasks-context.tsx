@@ -13,6 +13,7 @@ type TasksContextType = {
   getTaskById: (id: Task['id']) => Task
   createNewTask: (newTask: Task) => void
   updateTaskStatus: (id: Task['id']) => void
+  duplicateTask: (id: Task['id']) => void
 }
 
 export const TasksContext = createContext<TasksContextType | null>(null)
@@ -54,6 +55,15 @@ export default function TasksContextProvider({
     ])
   }
 
+  function duplicateTask(id: Task['id']) {
+    const task = getTaskById(id)
+
+    setTasks((prevTasks) => [
+      { ...task, id: uuidv4(), isChecked: false, createdAt: new Date() },
+      ...prevTasks,
+    ])
+  }
+
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
@@ -66,6 +76,7 @@ export default function TasksContextProvider({
         getTaskById,
         createNewTask,
         updateTaskStatus,
+        duplicateTask,
       }}
     >
       {children}
