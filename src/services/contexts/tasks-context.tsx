@@ -9,6 +9,7 @@ type TasksContextProviderProps = {
 
 type TasksContextType = {
   tasks: Task[]
+  getSortedTasks: () => Task[]
   createNewTask: (newTask: Task) => void
 }
 
@@ -24,6 +25,13 @@ export default function TasksContextProvider({
 }: TasksContextProviderProps) {
   const [tasks, setTasks] = useState(getInitialTasks)
 
+  function getSortedTasks() {
+    return [...tasks].sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
+  }
+
   function createNewTask(newTask: Task) {
     setTasks((prevTasks) => [
       { ...newTask, id: uuidv4(), createdAt: new Date() },
@@ -36,7 +44,7 @@ export default function TasksContextProvider({
   }, [tasks])
 
   return (
-    <TasksContext.Provider value={{ tasks, createNewTask }}>
+    <TasksContext.Provider value={{ tasks, getSortedTasks, createNewTask }}>
       {children}
     </TasksContext.Provider>
   )

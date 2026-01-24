@@ -1,11 +1,15 @@
 import CreateNewTaskModalButton from '@dashboard-components/create-new-task-modal-button'
+import TasksList from '@dashboard-components/tasks-list'
 import Divider from '@dashboard-components/ui/divider'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import FilterIcon from '@icons/filter-icon'
 import PlusIcon from '@icons/plus-icon'
+import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
 
 export default function TasksSection() {
+  const { getSortedTasks } = useTasks()
+
   return (
     <section>
       <header className="p-4">
@@ -37,6 +41,7 @@ export default function TasksSection() {
         </CreateNewTaskModalButton>
       </div>
       <Divider />
+      <TasksList tasks={getSortedTasks()} />
     </section>
   )
 }
