@@ -11,6 +11,7 @@ type TasksContextType = {
   tasks: Task[]
   getSortedTasks: () => Task[]
   createNewTask: (newTask: Task) => void
+  updateTaskStatus: (id: Task['id']) => void
 }
 
 export const TasksContext = createContext<TasksContextType | null>(null)
@@ -32,10 +33,23 @@ export default function TasksContextProvider({
     )
   }
 
+  function getTaskById(id: Task['id']) {
+    return tasks.find((task) => task.id === id)!
+  }
+
   function createNewTask(newTask: Task) {
     setTasks((prevTasks) => [
       { ...newTask, id: uuidv4(), createdAt: new Date() },
       ...prevTasks,
+    ])
+  }
+
+  function updateTaskStatus(id: Task['id']) {
+    const task = getTaskById(id)
+
+    setTasks((prevTasks) => [
+      { ...task, isChecked: !task.isChecked },
+      ...prevTasks.filter((task) => task.id !== id),
     ])
   }
 
@@ -44,7 +58,9 @@ export default function TasksContextProvider({
   }, [tasks])
 
   return (
-    <TasksContext.Provider value={{ tasks, getSortedTasks, createNewTask }}>
+    <TasksContext.Provider
+      value={{ tasks, getSortedTasks, createNewTask, updateTaskStatus }}
+    >
       {children}
     </TasksContext.Provider>
   )
