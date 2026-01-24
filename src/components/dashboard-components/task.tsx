@@ -11,6 +11,7 @@ import {
 } from '@utils/date-formatters'
 import { Task as TaskType } from '@utils/types'
 import { AnimatePresence } from 'motion/react'
+import { useState } from 'react'
 
 type TaskProps = React.ComponentPropsWithoutRef<'article'> & {
   task: TaskType
@@ -20,7 +21,22 @@ export default function Task({
   task: { id, title, isChecked, createdAt },
 }: TaskProps) {
   const { updateTaskStatus } = useTasks()
-  const { isOpened, openModal, closeModal } = useModal()
+  const {
+    isOpened,
+    openModal: openTaskActionModal,
+    closeModal: closeTaskActionModal,
+  } = useModal()
+  const [activeTaskId, setActiveTaskId] = useState<TaskType['id'] | null>(null)
+
+  function openModal() {
+    openTaskActionModal()
+    setActiveTaskId(id)
+  }
+
+  function closeModal() {
+    closeTaskActionModal()
+    setActiveTaskId(null)
+  }
 
   return (
     <article
@@ -28,7 +44,7 @@ export default function Task({
         e.preventDefault()
         openModal()
       }}
-      className="border-b-section-outline hover:bg-clickable/5 bg-section-background-color relative flex items-center justify-between gap-2 border-b p-4"
+      className={`border-b-section-outline hover:bg-clickable/5 relative flex items-center justify-between gap-2 border-b p-4 ${activeTaskId === id ? 'bg-clickable/5' : 'bg-section-background-color'}`}
     >
       <label className="flex items-center justify-center gap-2 hover:cursor-pointer has-checked:line-through">
         <Checkbox checked={isChecked} onChange={() => updateTaskStatus(id)} />
