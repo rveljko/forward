@@ -1,4 +1,7 @@
+import TaskActionsModal from '@dashboard-components/task-actions-modal'
 import Checkbox from '@dashboard-components/ui/checkbox'
+import Modal from '@dashboard-components/ui/modal'
+import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
 import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
@@ -7,6 +10,7 @@ import {
   iso8601DateFormatter,
 } from '@utils/date-formatters'
 import { Task as TaskType } from '@utils/types'
+import { AnimatePresence } from 'motion/react'
 
 type TaskProps = React.ComponentPropsWithoutRef<'article'> & {
   task: TaskType
@@ -16,6 +20,7 @@ export default function Task({
   task: { id, title, isChecked, createdAt },
 }: TaskProps) {
   const { updateTaskStatus } = useTasks()
+  const { isOpened, openModal, closeModal } = useModal()
 
   return (
     <article className="border-b-section-outline hover:bg-clickable/5 bg-section-background-color relative flex items-center justify-between gap-2 border-b p-4">
@@ -33,12 +38,26 @@ export default function Task({
         </time>
         <Button
           variant="tertiary"
+          onClick={openModal}
           className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-400"
         >
           <DotsVerticalIcon />
           <span className="sr-only">Actions</span>
         </Button>
       </div>
+      <AnimatePresence>
+        {isOpened && (
+          <Modal isOpened={isOpened} closeModal={closeModal}>
+            <Modal.Overlay>
+              <Modal.Dialog>
+                <Modal.FocusLock>
+                  <TaskActionsModal closeModal={closeModal} />
+                </Modal.FocusLock>
+              </Modal.Dialog>
+            </Modal.Overlay>
+          </Modal>
+        )}
+      </AnimatePresence>
     </article>
   )
 }
