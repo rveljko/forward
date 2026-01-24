@@ -1,3 +1,11 @@
+import TasksSection from '@dashboard-sections/tasks-section'
+import { TITLE_PREFIX } from '@utils/constants'
+
 export default function TasksPage() {
-  return <div>tasks-page</div>
+  return (
+    <>
+      <title>{`${TITLE_PREFIX}Tasks`}</title>
+      <TasksSection />
+    </>
+  )
 }
