@@ -2,7 +2,6 @@ import AppWindowIcon from '@icons/app-window-icon'
 import BrainIcon from '@icons/brain-icon'
 import DocumentIcon from '@icons/document-icon'
 import FolderIcon from '@icons/folder-icon'
-import InboxIcon from '@icons/inbox-icon'
 import LifebuoyIcon from '@icons/lifebuoy-icon'
 import LockPasswordIcon from '@icons/lock-password-icon'
 import SettingsIcon from '@icons/settings-icon'
@@ -11,12 +10,6 @@ import UserIcon from '@icons/user-icon'
 import { NavigationLink } from '@utils/types'
 
 export const primaryNavigationLinks: NavigationLink[] = [
-  {
-    id: 1,
-    name: 'Inbox',
-    path: '/dashboard/inbox',
-    icon: InboxIcon,
-  },
   {
     id: 2,
     name: 'Issues',

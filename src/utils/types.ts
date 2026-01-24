@@ -65,28 +65,6 @@ export type Question = {
   details: string
 }
 
-export type UserStatus = 'active' | 'inactive'
-
-export type Person = {
-  name: string
-  image: string
-  status: UserStatus
-  lastActiveDate: Date
-}
-
-export type Message = {
-  id: string
-  type: 'sender' | 'receiver'
-  date: Date
-  message: string
-}
-
-export type Chat = {
-  id: string
-  person: Person
-  messages: Message[]
-}
-
 export type Draft = {
   id: string
   title: string

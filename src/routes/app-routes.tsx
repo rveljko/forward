@@ -1,10 +1,8 @@
-import ChatPageSkeleton from '@dashboard-pages/skeletons/chat-page-skeleton'
 import DraftPageSkeleton from '@dashboard-pages/skeletons/draft-page-skeleton'
 import DraftsPageSkeleton from '@dashboard-pages/skeletons/drafts-page-skeleton'
 import GuidePageSkeleton from '@dashboard-pages/skeletons/guide-page-skeleton'
 import GuidesPageSkeleton from '@dashboard-pages/skeletons/guides-page-skeleton'
 import HelpAndSupportPageSkeleton from '@dashboard-pages/skeletons/help-and-support-page-skeleton'
-import InboxPageSkeleton from '@dashboard-pages/skeletons/inbox-page-skeleton'
 import IntegrationsPageSkeleton from '@dashboard-pages/skeletons/integrations-page-skeleton'
 import IssuePageSkeleton from '@dashboard-pages/skeletons/issue-page-skeleton'
 import IssuesPageSkeleton from '@dashboard-pages/skeletons/issues-page-skeleton'
@@ -24,7 +22,6 @@ import LandingPageLayout from '@layouts/landing-page-layout'
 import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
-const ChatPage = lazy(() => import('@dashboard-pages/chat-page'))
 const DraftPage = lazy(() => import('@dashboard-pages/draft-page'))
 const DraftsPage = lazy(() => import('@dashboard-pages/drafts-page'))
 const GuidePage = lazy(() => import('@dashboard-pages/guide-page'))
@@ -32,7 +29,6 @@ const GuidesPage = lazy(() => import('@dashboard-pages/guides-page'))
 const HelpAndSupportPage = lazy(
   () => import('@dashboard-pages/help-and-support-page')
 )
-const InboxPage = lazy(() => import('@dashboard-pages/inbox-page'))
 const IntegrationsPage = lazy(
   () => import('@dashboard-pages/integrations-page')
 )
@@ -56,22 +52,6 @@ export default function AppRoutes() {
         <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route
-          path="inbox"
-          element={
-            <Suspense fallback={<InboxPageSkeleton />}>
-              <InboxPage />
-            </Suspense>
-          }
-        />
-        <Route
-          path="inbox/:chatId"
-          element={
-            <Suspense fallback={<ChatPageSkeleton />}>
-              <ChatPage />
-            </Suspense>
-          }
-        />
         <Route
           path="issues"
           element={
