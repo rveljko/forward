@@ -5,13 +5,19 @@ import CloseIcon from '@icons/close-icon'
 import CopyIcon from '@icons/copy-icon'
 import EditIcon from '@icons/edit-icon'
 import TrashIcon from '@icons/trash-icon'
+import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
+import { showToast } from '@utils/toasts'
+import { Task } from '@utils/types'
+import copy from 'copy-to-clipboard'
 
 type TaskActionsModalProps = {
+  taskId: Task['id']
   closeModal: () => void
 }
 
 export default function TaskActionsModal({
+  taskId,
   closeModal,
 }: TaskActionsModalProps) {
   return (
@@ -24,12 +30,20 @@ export default function TaskActionsModal({
           </Button>
         </div>
       </header>
-      <MenuPanel />
+      <MenuPanel taskId={taskId} closeModal={closeModal} />
     </ModalCard>
   )
 }
 
-function MenuPanel() {
+type MenuPanelProps = {
+  taskId: Task['id']
+  closeModal: () => void
+}
+
+function MenuPanel({ taskId, closeModal }: MenuPanelProps) {
+  const { getTaskById } = useTasks()
+  const { title } = getTaskById(taskId)
+
   return (
     <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4">
       <li>
@@ -45,7 +59,20 @@ function MenuPanel() {
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon icon={<ClipboardIcon />} />
-            <PanelCard.Heading>Copy title</PanelCard.Heading>
+            <PanelCard.Heading>
+              <PanelCard.Button
+                onClick={() => {
+                  copy(title)
+                  showToast({
+                    title: 'Task Title Copied',
+                    description: 'Title copied successfully',
+                  })
+                  closeModal()
+                }}
+              >
+                Copy title
+              </PanelCard.Button>
+            </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph>Copy task title</PanelCard.Paragraph>
         </PanelCard>

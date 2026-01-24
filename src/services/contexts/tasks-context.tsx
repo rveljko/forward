@@ -10,6 +10,7 @@ type TasksContextProviderProps = {
 type TasksContextType = {
   tasks: Task[]
   getSortedTasks: () => Task[]
+  getTaskById: (id: Task['id']) => Task
   createNewTask: (newTask: Task) => void
   updateTaskStatus: (id: Task['id']) => void
 }
@@ -59,7 +60,13 @@ export default function TasksContextProvider({
 
   return (
     <TasksContext.Provider
-      value={{ tasks, getSortedTasks, createNewTask, updateTaskStatus }}
+      value={{
+        tasks,
+        getSortedTasks,
+        getTaskById,
+        createNewTask,
+        updateTaskStatus,
+      }}
     >
       {children}
     </TasksContext.Provider>

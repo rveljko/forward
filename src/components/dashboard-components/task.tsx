@@ -51,7 +51,7 @@ export default function Task({
             <Modal.Overlay>
               <Modal.Dialog>
                 <Modal.FocusLock>
-                  <TaskActionsModal closeModal={closeModal} />
+                  <TaskActionsModal taskId={id} closeModal={closeModal} />
                 </Modal.FocusLock>
               </Modal.Dialog>
             </Modal.Overlay>
