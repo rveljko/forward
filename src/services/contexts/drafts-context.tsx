@@ -45,9 +45,9 @@ export default function DraftsContextProvider({
 
   function createNewDraft() {
     const id = uuidv4()
-    setDrafts([
+    setDrafts((prevDrafts) => [
       { id, lastEdit: new Date(), title: DEFAULT_DRAFT_TITLE, content: '' },
-      ...drafts,
+      ...prevDrafts,
     ])
     navigate(`/dashboard/drafts/${id}`)
   }
@@ -55,29 +55,34 @@ export default function DraftsContextProvider({
   function updateDraft(id: Draft['id'], content: Draft['content']) {
     const draft = getDraftById(id)
 
-    setDrafts([
+    setDrafts((prevDrafts) => [
       { ...draft, lastEdit: new Date(), content },
-      ...drafts.filter(({ id }) => id !== draft.id),
+      ...prevDrafts.filter(({ id }) => id !== draft.id),
     ])
   }
 
   function renameDraft(id: Draft['id'], newTitle: Draft['title']) {
     const draft = getDraftById(id)
 
-    setDrafts([
+    setDrafts((prevDrafts) => [
       { ...draft, title: newTitle },
-      ...drafts.filter(({ id }) => id !== draft.id),
+      ...prevDrafts.filter(({ id }) => id !== draft.id),
     ])
   }
 
   function duplicateDraft(id: Draft['id']) {
     const draft = getDraftById(id)
 
-    setDrafts([{ ...draft, id: uuidv4(), lastEdit: new Date() }, ...drafts])
+    setDrafts((prevDrafts) => [
+      { ...draft, id: uuidv4(), lastEdit: new Date() },
+      ...prevDrafts,
+    ])
   }
 
   function deleteDraft(id: Draft['id']) {
-    setDrafts([...drafts.filter((draft) => draft.id !== id)])
+    setDrafts((prevDrafts) => [
+      ...prevDrafts.filter((draft) => draft.id !== id),
+    ])
   }
 
   useEffect(() => {
