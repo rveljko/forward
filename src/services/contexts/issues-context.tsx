@@ -147,20 +147,20 @@ export default function IssuesContextProvider({
   }
 
   function createNewIssue(newIssue: Issue) {
-    setIssues([
+    setIssues((prevIssues) => [
       {
         ...newIssue,
         id: uuidv4(),
         createdAt: new Date(),
         content: `<h1>${newIssue.title}</h1><p>${newIssue.description}</p>`,
       },
-      ...issues,
+      ...prevIssues,
     ])
   }
 
   function createDefaultIssue() {
     const id = uuidv4()
-    setIssues([
+    setIssues((prevIssues) => [
       {
         id,
         title: DEFAULT_ISSUE_TITLE,
@@ -170,7 +170,7 @@ export default function IssuesContextProvider({
         createdAt: new Date(),
         content: '',
       },
-      ...issues,
+      ...prevIssues,
     ])
     navigate(`/dashboard/issues/${id}`)
   }
@@ -178,15 +178,23 @@ export default function IssuesContextProvider({
   function duplicateIssue(id: Issue['id']) {
     const issue = getIssueById(id)
 
-    setIssues([{ ...issue, id: uuidv4(), createdAt: new Date() }, ...issues])
+    setIssues((prevIssues) => [
+      { ...issue, id: uuidv4(), createdAt: new Date() },
+      ...prevIssues,
+    ])
   }
 
   function deleteIssue(id: Issue['id']) {
-    setIssues([...issues.filter((issue) => issue.id !== id)])
+    setIssues((prevIssues) => [
+      ...prevIssues.filter((issue) => issue.id !== id),
+    ])
   }
 
   function updateIssue(issue: Issue) {
-    setIssues([issue, ...issues.filter(({ id }) => id !== issue.id)])
+    setIssues((prevIssues) => [
+      issue,
+      ...prevIssues.filter(({ id }) => id !== issue.id),
+    ])
   }
 
   function updateIssuePosition(
