@@ -253,7 +253,7 @@ export default function IssuesContextProvider({
   )
 }
 
-export const useIssues = () => {
+export function useIssues() {
   const context = useContext(IssuesContext)
 
   if (!context) {

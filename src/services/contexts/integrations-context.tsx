@@ -85,7 +85,7 @@ export default function IntegrationsContextProvider({
   )
 }
 
-export const useIntegrations = () => {
+export function useIntegrations() {
   const context = useContext(IntegrationsContext)
 
   if (!context) {

@@ -107,7 +107,7 @@ export default function DraftsContextProvider({
   )
 }
 
-export const useDrafts = () => {
+export function useDrafts() {
   const context = useContext(DraftsContext)
 
   if (!context) {

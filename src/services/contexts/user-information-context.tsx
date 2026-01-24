@@ -56,7 +56,7 @@ export default function UserInformationContextProvider({
   )
 }
 
-export const useUserInformation = () => {
+export function useUserInformation() {
   const context = useContext(UserInformationContext)
 
   if (!context) {

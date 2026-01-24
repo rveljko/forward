@@ -80,7 +80,7 @@ export default function PreferencesContextProvider({
   )
 }
 
-export const usePreferences = () => {
+export function usePreferences() {
   const context = useContext(PreferencesContext)
 
   if (!context) {
