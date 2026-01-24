@@ -164,8 +164,8 @@ export default function IssuesContextProvider({
       {
         id,
         title: DEFAULT_ISSUE_TITLE,
-        status: 'todo',
-        priority: 'low',
+        status: 'backlog',
+        priority: 'no-priority',
         tag: 'design',
         createdAt: new Date(),
         content: '',
