@@ -1,5 +1,6 @@
 import AppWindowIcon from '@icons/app-window-icon'
 import BrainIcon from '@icons/brain-icon'
+import CheckboxIcon from '@icons/checkbox-icon'
 import DocumentIcon from '@icons/document-icon'
 import FolderIcon from '@icons/folder-icon'
 import LifebuoyIcon from '@icons/lifebuoy-icon'
@@ -10,6 +11,12 @@ import UserIcon from '@icons/user-icon'
 import { NavigationLink } from '@utils/types'
 
 export const primaryNavigationLinks: NavigationLink[] = [
+  {
+    id: 1,
+    name: 'Tasks',
+    path: '/dashboard/tasks',
+    icon: CheckboxIcon,
+  },
   {
     id: 2,
     name: 'Issues',
