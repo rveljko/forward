@@ -1,5 +1,6 @@
 import CreateNewTaskModalButton from '@dashboard-components/create-new-task-modal-button'
 import TasksList from '@dashboard-components/tasks-list'
+import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
@@ -7,11 +8,12 @@ import RadioButton from '@dashboard-components/ui/radio-button'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
+import CheckboxIcon from '@icons/checkbox-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import PlusIcon from '@icons/plus-icon'
+import UncheckedBoxIcon from '@icons/unchecked-box-icon'
 import { useTasks } from '@services/contexts/tasks-context'
-import Button from '@ui/button'
 
 export default function TasksSection() {
   const { getSortedTasks } = useTasks()
@@ -27,9 +29,7 @@ export default function TasksSection() {
         className="flex flex-wrap items-center justify-between gap-2 p-4"
       >
         <div className="flex items-center gap-2">
-          <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
-            Filters
-          </Button>
+          <FiltersDropdownButton />
           <SortDropdownButton />
         </div>
         <CreateNewTaskModalButton
@@ -43,6 +43,51 @@ export default function TasksSection() {
       <Divider />
       <TasksList tasks={getSortedTasks()} />
     </section>
+  )
+}
+
+function FiltersDropdownButton() {
+  const { setFilter, handleCheckbox } = useTasks()
+  const { isOpened, toggleDropdown } = useDropdown()
+
+  return (
+    <DropdownButton
+      label="Filters"
+      isOpened={isOpened}
+      toggleDropdown={toggleDropdown}
+      variant="secondary"
+      size="small"
+      leftIcon={<FilterIcon />}
+    >
+      <Dropdown.List>
+        <Dropdown.Item>
+          <Dropdown.Label>
+            <Checkbox
+              onChange={() => {
+                setFilter('status', 'checked')
+                toggleDropdown()
+              }}
+              checked={handleCheckbox('checked')}
+            />
+            <CheckboxIcon />
+            Checked
+          </Dropdown.Label>
+        </Dropdown.Item>
+        <Dropdown.Item>
+          <Dropdown.Label>
+            <Checkbox
+              onChange={() => {
+                setFilter('status', 'unchecked')
+                toggleDropdown()
+              }}
+              checked={handleCheckbox('unchecked')}
+            />
+            <UncheckedBoxIcon />
+            Unchecked
+          </Dropdown.Label>
+        </Dropdown.Item>
+      </Dropdown.List>
+    </DropdownButton>
   )
 }
 

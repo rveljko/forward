@@ -141,6 +141,10 @@ export type Task = {
   createdAt: Date
 }
 
+export type TaskFilterCategory = 'status'
+
+export type TaskFilterKey = 'checked' | 'unchecked'
+
 export type TaskSort = 'date-asc' | 'date-desc' | 'name-asc' | 'name-desc'
 
 export type Guide = {

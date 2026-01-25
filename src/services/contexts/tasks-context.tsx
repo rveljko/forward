@@ -1,5 +1,5 @@
 import { tasks as defaultTasks } from '@data/tasks'
-import { Task, TaskSort } from '@utils/types'
+import { Task, TaskFilterCategory, TaskFilterKey, TaskSort } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router'
 import { v4 as uuidv4 } from 'uuid'
@@ -10,6 +10,8 @@ type TasksContextProviderProps = {
 
 type TasksContextType = {
   tasks: Task[]
+  setFilter: (category: TaskFilterCategory, key: TaskFilterKey) => void
+  handleCheckbox: (key: TaskFilterKey) => boolean
   sort: TaskSort
   setSort: (key: TaskSort) => void
   getSortedTasks: () => Task[]
@@ -33,7 +35,40 @@ export default function TasksContextProvider({
 }: TasksContextProviderProps) {
   const [tasks, setTasks] = useState(getInitialTasks)
   const [searchParams, setSearchParams] = useSearchParams()
+  const statuses = searchParams.getAll('status') as TaskFilterKey[]
   const sort = (searchParams.get('sort') || 'date-desc') as TaskSort
+
+  const filteredTasks = tasks.filter((task) => {
+    const filteredStatuses =
+      !statuses.length ||
+      statuses.some((status) =>
+        status === 'checked' ? task.isChecked : !task.isChecked
+      )
+
+    return filteredStatuses
+  })
+
+  function setFilter(category: TaskFilterCategory, key: TaskFilterKey) {
+    setSearchParams((prevParams) => {
+      if (prevParams.has(category)) {
+        const keys = prevParams.getAll(category) as TaskFilterKey[]
+
+        if (keys.includes(key)) {
+          prevParams.delete(category, key)
+        } else {
+          prevParams.append(category, key)
+        }
+      } else {
+        prevParams.append(category, key)
+      }
+
+      return prevParams
+    })
+  }
+
+  function handleCheckbox(key: TaskFilterKey) {
+    return statuses.includes(key)
+  }
 
   function setSort(key: TaskSort) {
     setSearchParams((prevParams) => {
@@ -45,21 +80,21 @@ export default function TasksContextProvider({
   function getSortedTasks() {
     switch (sort) {
       case 'date-asc':
-        return [...tasks].sort(
+        return filteredTasks.sort(
           (a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         )
       case 'date-desc':
-        return [...tasks].sort(
+        return filteredTasks.sort(
           (a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         )
       case 'name-asc':
-        return [...tasks].sort((a, b) => a.title.localeCompare(b.title))
+        return filteredTasks.sort((a, b) => a.title.localeCompare(b.title))
       case 'name-desc':
-        return [...tasks].sort((a, b) => b.title.localeCompare(a.title))
+        return filteredTasks.sort((a, b) => b.title.localeCompare(a.title))
       default:
-        return tasks
+        return filteredTasks
     }
   }
 
@@ -113,6 +148,8 @@ export default function TasksContextProvider({
     <TasksContext.Provider
       value={{
         tasks,
+        setFilter,
+        handleCheckbox,
         sort,
         setSort,
         getSortedTasks,
