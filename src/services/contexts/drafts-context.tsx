@@ -80,9 +80,7 @@ export default function DraftsContextProvider({
   }
 
   function deleteDraft(id: Draft['id']) {
-    setDrafts((prevDrafts) => [
-      ...prevDrafts.filter((draft) => draft.id !== id),
-    ])
+    setDrafts((prevDrafts) => prevDrafts.filter((draft) => draft.id !== id))
   }
 
   useEffect(() => {
