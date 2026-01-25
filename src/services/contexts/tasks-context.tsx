@@ -12,6 +12,7 @@ type TasksContextType = {
   getSortedTasks: () => Task[]
   getTaskById: (id: Task['id']) => Task
   createNewTask: (newTask: Task) => void
+  updateTaskTitle: (id: Task['id'], title: Task['title']) => void
   updateTaskStatus: (id: Task['id']) => void
   duplicateTask: (id: Task['id']) => void
 }
@@ -46,6 +47,15 @@ export default function TasksContextProvider({
     ])
   }
 
+  function updateTaskTitle(id: Task['id'], title: Task['title']) {
+    const task = getTaskById(id)
+
+    setTasks((prevTasks) => [
+      { ...task, title },
+      ...prevTasks.filter((task) => task.id !== id),
+    ])
+  }
+
   function updateTaskStatus(id: Task['id']) {
     const task = getTaskById(id)
 
@@ -75,6 +85,7 @@ export default function TasksContextProvider({
         getSortedTasks,
         getTaskById,
         createNewTask,
+        updateTaskTitle,
         updateTaskStatus,
         duplicateTask,
       }}
