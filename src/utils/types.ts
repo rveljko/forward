@@ -141,6 +141,8 @@ export type Task = {
   createdAt: Date
 }
 
+export type TaskSort = 'date-asc' | 'date-desc' | 'name-asc' | 'name-desc'
+
 export type Guide = {
   id: string
   title: string

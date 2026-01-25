@@ -1,6 +1,7 @@
 import { tasks as defaultTasks } from '@data/tasks'
-import { Task } from '@utils/types'
+import { Task, TaskSort } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 import { v4 as uuidv4 } from 'uuid'
 
 type TasksContextProviderProps = {
@@ -9,6 +10,8 @@ type TasksContextProviderProps = {
 
 type TasksContextType = {
   tasks: Task[]
+  sort: TaskSort
+  setSort: (key: TaskSort) => void
   getSortedTasks: () => Task[]
   getTaskById: (id: Task['id']) => Task
   createNewTask: (newTask: Task) => void
@@ -29,12 +32,35 @@ export default function TasksContextProvider({
   children,
 }: TasksContextProviderProps) {
   const [tasks, setTasks] = useState(getInitialTasks)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const sort = (searchParams.get('sort') || 'date-desc') as TaskSort
+
+  function setSort(key: TaskSort) {
+    setSearchParams((prevParams) => {
+      prevParams.set('sort', key)
+      return prevParams
+    })
+  }
 
   function getSortedTasks() {
-    return [...tasks].sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
+    switch (sort) {
+      case 'date-asc':
+        return [...tasks].sort(
+          (a, b) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        )
+      case 'date-desc':
+        return [...tasks].sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        )
+      case 'name-asc':
+        return [...tasks].sort((a, b) => a.title.localeCompare(b.title))
+      case 'name-desc':
+        return [...tasks].sort((a, b) => b.title.localeCompare(a.title))
+      default:
+        return tasks
+    }
   }
 
   function getTaskById(id: Task['id']) {
@@ -87,6 +113,8 @@ export default function TasksContextProvider({
     <TasksContext.Provider
       value={{
         tasks,
+        sort,
+        setSort,
         getSortedTasks,
         getTaskById,
         createNewTask,
