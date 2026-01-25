@@ -19,7 +19,7 @@ export default function TasksSection() {
   const { getSortedTasks } = useTasks()
 
   return (
-    <section>
+    <section className="flex h-full flex-col">
       <header className="p-4">
         <h1>Tasks</h1>
       </header>
@@ -41,7 +41,11 @@ export default function TasksSection() {
         </CreateNewTaskModalButton>
       </div>
       <Divider />
-      <TasksList tasks={getSortedTasks()} />
+      {getSortedTasks().length > 0 ? (
+        <TasksList tasks={getSortedTasks()} />
+      ) : (
+        <NoTasksPanel />
+      )}
     </section>
   )
 }
@@ -161,5 +165,24 @@ function SortDropdownButton() {
         </Dropdown.Item>
       </Dropdown.List>
     </DropdownButton>
+  )
+}
+
+function NoTasksPanel() {
+  return (
+    <div className="flex grow flex-col items-center justify-center p-4 text-center text-pretty">
+      <span className="border-section-outline mb-4 flex size-12 items-center justify-center rounded-sm border">
+        <CheckboxIcon />
+      </span>
+      <h2 className="mb-2">Sorry, You Have No Tasks</h2>
+      <p className="mb-4">Get started by creating your first task</p>
+      <CreateNewTaskModalButton
+        variant="primary"
+        size="small"
+        leftIcon={<PlusIcon />}
+      >
+        Create New Task
+      </CreateNewTaskModalButton>
+    </div>
   )
 }
