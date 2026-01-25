@@ -1,3 +1,4 @@
+import DeleteTaskPanel from '@dashboard-components/delete-task-panel'
 import RenameTaskPanel from '@dashboard-components/rename-task-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
@@ -20,7 +21,7 @@ type TaskActionsModalProps = {
   closeModal: () => void
 }
 
-type ActivePanel = 'menu' | 'rename'
+type ActivePanel = 'menu' | 'rename' | 'delete'
 
 export default function TaskActionsModal({
   taskId,
@@ -59,6 +60,11 @@ export default function TaskActionsModal({
         {activePanel === 'rename' && (
           <ActivePanelContainer>
             <RenameTaskPanel taskId={taskId} closeModal={closeModal} />
+          </ActivePanelContainer>
+        )}
+        {activePanel === 'delete' && (
+          <ActivePanelContainer>
+            <DeleteTaskPanel taskId={taskId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
       </AnimatePresence>
@@ -156,8 +162,13 @@ function MenuPanel({ taskId, closeModal, setActivePanel }: MenuPanelProps) {
               icon={<TrashIcon />}
               className="[&_svg]:text-danger-500 bg-danger-500/10"
             />
-            <PanelCard.Heading className="text-danger-500">
-              Delete
+            <PanelCard.Heading>
+              <PanelCard.Button
+                className="text-danger-500"
+                onClick={() => setActivePanel('delete')}
+              >
+                Delete
+              </PanelCard.Button>
             </PanelCard.Heading>
           </div>
           <PanelCard.Paragraph className="text-danger-400">
