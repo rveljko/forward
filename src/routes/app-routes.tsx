@@ -9,7 +9,7 @@ import IssuesPageSkeleton from '@dashboard-pages/skeletons/issues-page-skeleton'
 import PreferencesPageSkeleton from '@dashboard-pages/skeletons/preferences-page-skeleton'
 import ProfilePageSkeleton from '@dashboard-pages/skeletons/profile-page-skeleton'
 import SecurityPageSkeleton from '@dashboard-pages/skeletons/security-page-skeleton'
-import TasksPage from '@dashboard-pages/tasks-page'
+import TasksPageSkeleton from '@dashboard-pages/skeletons/tasks-page-skeleton'
 import CustomersPage from '@landing-pages/customers-page'
 import FeaturesPage from '@landing-pages/features-page'
 import GuidesLandingPage from '@landing-pages/guides-page'
@@ -38,6 +38,7 @@ const IssuesPage = lazy(() => import('@dashboard-pages/issues-page'))
 const PreferencesPage = lazy(() => import('@dashboard-pages/preferences-page'))
 const ProfilePage = lazy(() => import('@dashboard-pages/profile-page'))
 const SecurityPage = lazy(() => import('@dashboard-pages/security-page'))
+const TasksPage = lazy(() => import('@dashboard-pages/tasks-page'))
 
 export default function AppRoutes() {
   return (
@@ -53,7 +54,14 @@ export default function AppRoutes() {
         <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
       </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route path="tasks" element={<TasksPage />} />
+        <Route
+          path="tasks"
+          element={
+            <Suspense fallback={<TasksPageSkeleton />}>
+              <TasksPage />
+            </Suspense>
+          }
+        />
         <Route
           path="issues"
           element={
