@@ -185,9 +185,7 @@ export default function IssuesContextProvider({
   }
 
   function deleteIssue(id: Issue['id']) {
-    setIssues((prevIssues) => [
-      ...prevIssues.filter((issue) => issue.id !== id),
-    ])
+    setIssues((prevIssues) => prevIssues.filter((issue) => issue.id !== id))
   }
 
   function updateIssue(issue: Issue) {
