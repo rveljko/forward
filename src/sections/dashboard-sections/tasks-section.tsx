@@ -12,8 +12,10 @@ import CheckboxIcon from '@icons/checkbox-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import PlusIcon from '@icons/plus-icon'
+import SearchIcon from '@icons/search-icon'
 import UncheckedBoxIcon from '@icons/unchecked-box-icon'
 import { useTasks } from '@services/contexts/tasks-context'
+import { useSearchParams } from 'react-router'
 
 export default function TasksSection() {
   const { getSortedTasks } = useTasks()
@@ -169,6 +171,11 @@ function SortDropdownButton() {
 }
 
 function NoTasksPanel() {
+  const { tasks } = useTasks()
+  const [searchParams] = useSearchParams()
+
+  if (tasks.length > 0 && searchParams.size > 0) return <NoFilteredTasksPanel />
+
   return (
     <div className="flex grow flex-col items-center justify-center p-4 text-center text-pretty">
       <span className="border-section-outline mb-4 flex size-12 items-center justify-center rounded-sm border">
@@ -183,6 +190,18 @@ function NoTasksPanel() {
       >
         Create New Task
       </CreateNewTaskModalButton>
+    </div>
+  )
+}
+
+function NoFilteredTasksPanel() {
+  return (
+    <div className="flex grow flex-col items-center justify-center p-4 text-center text-pretty">
+      <span className="border-section-outline mb-4 flex size-12 items-center justify-center rounded-sm border">
+        <SearchIcon />
+      </span>
+      <h2 className="mb-2">Sorry, No Matching Tasks</h2>
+      <p className="mb-4">Try adjusting your filters or create a new task</p>
     </div>
   )
 }
