@@ -25,56 +25,49 @@ export default function RenameIssuePanel({
   const isButtonDisabled = newTitle === issue.title
 
   return (
-    <article>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          updateIssue({ ...issue, title: newTitle })
-          showToast({
-            title: 'Issue Renamed',
-            description: 'Title updated successfully',
-          })
-          closeModal()
-        }}
-      >
-        <div className="p-4">
-          <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
-            <EditIcon />
-          </span>
-          <h3 className="mb-1">Rename</h3>
-          <FormField className="gap-4 [&_div]:max-w-none">
-            <FormField.Label htmlFor="title" className="w-max text-neutral-400">
-              Edit issue title
-            </FormField.Label>
-            <FormField.Input
-              id="title"
-              ref={inputRef}
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              onFocus={() => inputRef.current?.select()}
-            />
-          </FormField>
-        </div>
-        <Divider />
-        <div className="flex items-center justify-end gap-2 p-4">
-          <Button
-            variant="ghost"
-            size="large"
-            type="button"
-            onClick={closeModal}
-          >
-            Cancel
-          </Button>
-          <Button
-            variant="primary"
-            size="large"
-            type="submit"
-            disabled={isButtonDisabled}
-          >
-            Rename
-          </Button>
-        </div>
-      </form>
-    </article>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        updateIssue({ ...issue, title: newTitle })
+        showToast({
+          title: 'Issue Renamed',
+          description: 'Title updated successfully',
+        })
+        closeModal()
+      }}
+    >
+      <div className="p-4">
+        <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
+          <EditIcon />
+        </span>
+        <h3 className="mb-1">Rename</h3>
+        <FormField className="gap-4 [&_div]:max-w-none">
+          <FormField.Label htmlFor="title" className="w-max text-neutral-400">
+            Edit issue title
+          </FormField.Label>
+          <FormField.Input
+            id="title"
+            ref={inputRef}
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            onFocus={() => inputRef.current?.select()}
+          />
+        </FormField>
+      </div>
+      <Divider />
+      <div className="flex items-center justify-end gap-2 p-4">
+        <Button variant="ghost" size="large" type="button" onClick={closeModal}>
+          Cancel
+        </Button>
+        <Button
+          variant="primary"
+          size="large"
+          type="submit"
+          disabled={isButtonDisabled}
+        >
+          Rename
+        </Button>
+      </div>
+    </form>
   )
 }
