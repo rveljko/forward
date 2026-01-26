@@ -23,7 +23,7 @@ type TasksContextType = {
   deleteTask: (id: Task['id']) => void
 }
 
-export const TasksContext = createContext<TasksContextType | null>(null)
+const TasksContext = createContext<TasksContextType | null>(null)
 
 function getInitialTasks(): Task[] {
   const tasks = localStorage.getItem('tasks')

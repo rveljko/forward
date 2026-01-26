@@ -13,8 +13,7 @@ type IntegrationsContextType = {
   updateIntegrationStatuses: (ids: number[]) => void
 }
 
-export const IntegrationsContext =
-  createContext<IntegrationsContextType | null>(null)
+const IntegrationsContext = createContext<IntegrationsContextType | null>(null)
 
 function getInitialIntegrations(): Integration[] {
   const integrations = localStorage.getItem('integrations')

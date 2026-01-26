@@ -20,7 +20,7 @@ type DraftsContextType = {
   deleteDraft: (id: Draft['id']) => void
 }
 
-export const DraftsContext = createContext<DraftsContextType | null>(null)
+const DraftsContext = createContext<DraftsContextType | null>(null)
 
 function getInitialDrafts(): Draft[] {
   const drafts = localStorage.getItem('drafts')

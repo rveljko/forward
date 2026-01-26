@@ -22,9 +22,7 @@ type PreferencesContextType = {
   isLightTheme: boolean
 }
 
-export const PreferencesContext = createContext<PreferencesContextType | null>(
-  null
-)
+const PreferencesContext = createContext<PreferencesContextType | null>(null)
 
 function getInitialPreferences(): Preferences {
   const preferences = localStorage.getItem('preferences')

@@ -14,8 +14,9 @@ type UserInformationContextType = {
   updateUserInformation: (newUserInformation: User) => void
 }
 
-export const UserInformationContext =
-  createContext<UserInformationContextType | null>(null)
+const UserInformationContext = createContext<UserInformationContextType | null>(
+  null
+)
 
 function getInitialUserInformation(): User {
   const userInformation = localStorage.getItem('user-information')

@@ -47,7 +47,7 @@ type IssuesContextType = {
   getIssuePriority: (priority: IssuePriorityLabel) => IssuePriority
 }
 
-export const IssuesContext = createContext<IssuesContextType | null>(null)
+const IssuesContext = createContext<IssuesContextType | null>(null)
 
 function getInitialIssues(): Issue[] {
   const issues = localStorage.getItem('issues')
