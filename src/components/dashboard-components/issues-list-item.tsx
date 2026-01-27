@@ -84,7 +84,7 @@ export default function IssuesListItem({
       {...props}
     >
       <div className="flex items-center gap-2">
-        <IssuePriority priority={priority} />
+        <IssuePriority priority={priority} className="isolate z-1" />
         <div className="flex items-center gap-1">
           <div className="flex h-7.5 shrink-0 items-center">
             <IssueStatus status={status} />
