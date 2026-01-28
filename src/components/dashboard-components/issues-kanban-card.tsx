@@ -84,7 +84,7 @@ export default function IssuesKanbanCard({
       {...props}
     >
       <header className="mb-4 flex items-center gap-2">
-        <IssuePriority priority={priority} />
+        <IssuePriority priority={priority} className="isolate z-1" />
         <div className="flex items-center gap-1">
           <IssueStatus status={status} />
           <h3>
