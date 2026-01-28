@@ -72,7 +72,12 @@ export type Draft = {
   content: string
 }
 
-export type IssueStatusLabel = 'backlog' | 'todo' | 'in-progress' | 'finished'
+export type IssueStatusLabel =
+  | 'backlog'
+  | 'todo'
+  | 'in-progress'
+  | 'in-review'
+  | 'finished'
 
 export type IssueStatus = {
   id: string
