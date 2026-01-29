@@ -8,7 +8,7 @@ export default function PerformanceBentoCard() {
         Experience rapid load times and smooth interactions to keep your
         workflow uninterrupted
       </BentoCard.Paragraph>
-      <div className="after:border-clickable/10 to-clickable/10 relative mx-auto mt-auto aspect-[2/1] w-full max-w-90 rounded-t-full bg-linear-0 from-transparent after:absolute after:inset-0 after:rounded-t-full after:border after:border-b-0">
+      <div className="after:border-clickable/10 to-clickable/10 relative mx-auto mt-auto aspect-2/1 w-full max-w-90 rounded-t-full bg-linear-0 from-transparent after:absolute after:inset-0 after:rounded-t-full after:border after:border-b-0">
         <div className="animate-speedometer-hand absolute bottom-0 left-0 h-0.25 w-1/2 origin-bottom-right pl-1">
           <div className="bg-clickable size-full rounded-full" />
         </div>

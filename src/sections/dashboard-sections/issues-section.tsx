@@ -94,7 +94,7 @@ export default function IssuesSection() {
           variant="tertiary"
           className="group p-0.5"
         >
-          <LayoutSidebarRightIcon className="[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
+          <LayoutSidebarRightIcon className="[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
           <span className="sr-only">Show project information</span>
         </ProjectInformationModalButton>
       </header>

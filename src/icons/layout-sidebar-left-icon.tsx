@@ -35,7 +35,7 @@ export default function LayoutSidebarLeftIcon({
         height="13.3333"
         rx="1"
         fill="currentColor"
-        className="transition-all duration-200 ease-in-out [clip-path:_polygon(0_0,_0_0,_0_100%,_0_100%)]"
+        className="transition-all duration-200 ease-in-out [clip-path:polygon(0_0,0_0,0_100%,0_100%)]"
       />
     </svg>
   )

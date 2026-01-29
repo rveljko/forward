@@ -27,7 +27,7 @@ export default function IssueInformationBentoCard() {
         and more
       </BentoCard.Paragraph>
       <InformationList className="mt-auto">
-        <InformationList.Item className="[&>:first-child]:max-w-20">
+        <InformationList.Item className="*:first:max-w-20">
           <InformationList.Label icon={<UserIcon />}>
             Author
           </InformationList.Label>
@@ -45,7 +45,7 @@ export default function IssueInformationBentoCard() {
             James Williams
           </InformationList.Value>
         </InformationList.Item>
-        <InformationList.Item className="[&>:first-child]:max-w-20">
+        <InformationList.Item className="*:first:max-w-20">
           <InformationList.Label className="max-w-20" icon={<CalendarIcon />}>
             Started
           </InformationList.Label>
@@ -55,7 +55,7 @@ export default function IssueInformationBentoCard() {
             </time>
           </InformationList.Value>
         </InformationList.Item>
-        <InformationList.Item className="[&>:first-child]:max-w-20">
+        <InformationList.Item className="*:first:max-w-20">
           <InformationList.Label className="max-w-20" icon={<StatusIcon />}>
             Status
           </InformationList.Label>
@@ -63,7 +63,7 @@ export default function IssueInformationBentoCard() {
             {issueStatusName}
           </InformationList.Value>
         </InformationList.Item>
-        <InformationList.Item className="[&>:first-child]:max-w-20">
+        <InformationList.Item className="*:first:max-w-20">
           <InformationList.Label className="max-w-20" icon={<PriorityIcon />}>
             Priority
           </InformationList.Label>
@@ -71,7 +71,7 @@ export default function IssueInformationBentoCard() {
             {issuePriorityName}
           </InformationList.Value>
         </InformationList.Item>
-        <InformationList.Item className="[&>:first-child]:max-w-20">
+        <InformationList.Item className="*:first:max-w-20">
           <InformationList.Label className="max-w-20" icon={<TagIcon />}>
             Tag
           </InformationList.Label>

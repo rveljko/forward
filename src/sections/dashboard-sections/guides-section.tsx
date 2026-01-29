@@ -11,7 +11,7 @@ export default function GuidesSection() {
       </header>
       <Divider />
       <Container className="py-8 md:py-16">
-        <ul className="grid grid-cols-[repeat(auto-fit,_minmax(min(var(--guide-card-width),_100%),_1fr))] gap-4">
+        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--guide-card-width),100%),1fr))] gap-4">
           {guides.map((guide) => (
             <li key={guide.id}>
               <GuideCard guide={guide} />

@@ -28,7 +28,7 @@ export default function SettingsSidebar() {
             {isOpened ? 'Close Settings Sidebar' : 'Open Settings Sidebar'}
           </span>
           <LayoutSidebarLeftIcon
-            className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:_polygon(0_0,_0_0,_0_100%,_0_100%)] [&_rect]:[clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]' : '[--clip-path:_polygon(0_0,_100%_0,_100%_100%,_0_100%)]'}`}
+            className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:polygon(0_0,0_0,0_100%,0_100%)] [&_rect]:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]' : '[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'}`}
           />
         </button>
       </header>

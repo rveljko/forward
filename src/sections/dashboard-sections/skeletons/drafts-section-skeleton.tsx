@@ -10,7 +10,7 @@ export default function DraftsSectionSkeleton() {
       </div>
       <Skeleton className="h-0.5 rounded-none" />
       <Container className="py-8 md:py-16">
-        <div className="grid grid-cols-[repeat(auto-fit,_minmax(min(var(--draft-card-width),_100%),_1fr))] gap-4">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--draft-card-width),100%),1fr))] gap-4">
           <Skeleton className="h-full min-h-40.5" />
           {drafts.map((_, index) => (
             <Skeleton key={index} className="h-auto">

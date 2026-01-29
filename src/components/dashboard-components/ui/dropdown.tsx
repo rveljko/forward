@@ -178,7 +178,7 @@ function AccordionSummary({
     >
       <div className="flex items-center gap-2">
         {Icon && <span>{Icon}</span>}
-        <h3 className={cn('leading-[1]', className)} {...props}>
+        <h3 className={cn('leading-none', className)} {...props}>
           <button onClick={() => toggleItem(valueForItem)}>
             <span className="absolute inset-0 hover:cursor-pointer"></span>
             {children}

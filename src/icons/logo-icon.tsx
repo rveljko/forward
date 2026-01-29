@@ -26,7 +26,7 @@ export default function LogoIcon({ className }: LogoIconProps) {
         height="11.25"
         rx="5.625"
         fill="currentColor"
-        className="transition-all duration-200 ease-in-out [clip-path:_polygon(100%_0,_100%_0,_100%_100%,_100%_100%)]"
+        className="transition-all duration-200 ease-in-out [clip-path:polygon(100%_0,100%_0,100%_100%,100%_100%)]"
       />
     </svg>
   )

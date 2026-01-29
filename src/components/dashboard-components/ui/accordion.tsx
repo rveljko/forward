@@ -110,7 +110,7 @@ function Summary({ children, valueForItem, ...props }: SummaryProps) {
       className="flex h-(--accordion-summary-height) w-full cursor-pointer items-center justify-between py-2 select-text"
       onClick={() => toggleItem(valueForItem)}
     >
-      <h3 className="text-clickable w-full leading-[1] text-left" {...props}>
+      <h3 className="text-clickable w-full text-left leading-none" {...props}>
         {children}
       </h3>
       <span className="text-clickable">

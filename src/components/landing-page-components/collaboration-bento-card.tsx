@@ -10,7 +10,7 @@ export default function CollaborationBentoCard() {
           everyone aligned and productive
         </BentoCard.Paragraph>
         <div className="absolute max-md:bottom-0 max-md:left-1/2 max-md:w-full max-md:-translate-x-1/2 md:top-1/2 md:right-0 md:-translate-y-1/2">
-          <div className="bg-clickable/10 relative mx-auto w-full max-w-44 rounded-md p-2 md:max-w-128">
+          <div className="bg-clickable/10 relative mx-auto w-full max-w-44 rounded-md p-2 md:max-w-lg">
             <div className="border-clickable/20 absolute top-0 left-0 size-4 rounded-tl-md border-t border-l" />
             <div className="border-clickable/20 absolute top-0 right-0 size-4 rounded-tr-md border-t border-r" />
             <div className="border-clickable/20 absolute bottom-0 left-0 size-4 rounded-bl-md border-b border-l" />

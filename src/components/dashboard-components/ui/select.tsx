@@ -7,7 +7,7 @@ const select = cva(
     variants: {
       variant: {
         secondary:
-          'bg-neutral-800 hover:bg-[color-mix(in_oklab,var(--color-neutral-800),_var(--color-black)_10%)]',
+          'bg-neutral-800 hover:bg-[color-mix(in_oklab,var(--color-neutral-800),var(--color-black)_10%)]',
         ghost: 'hover:bg-clickable/10 inset-ring-clickable/10 inset-ring',
       },
       size: {
