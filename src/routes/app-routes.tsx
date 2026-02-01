@@ -10,16 +10,7 @@ import PreferencesPageSkeleton from '@dashboard-pages/skeletons/preferences-page
 import ProfilePageSkeleton from '@dashboard-pages/skeletons/profile-page-skeleton'
 import SecurityPageSkeleton from '@dashboard-pages/skeletons/security-page-skeleton'
 import TasksPageSkeleton from '@dashboard-pages/skeletons/tasks-page-skeleton'
-import CustomersPage from '@landing-pages/customers-page'
-import FeaturesPage from '@landing-pages/features-page'
-import GuidesLandingPage from '@landing-pages/guides-page'
-import IntegrationsLandingPage from '@landing-pages/integrations-page'
-import LandingPage from '@landing-pages/landing-page'
-import PrivacyPolicyPage from '@landing-pages/privacy-policy-page'
-import SecurityLandingPage from '@landing-pages/security-page'
-import TermsOfServicePage from '@landing-pages/terms-of-service-page'
 import DashboardLayout from '@layouts/dashboard-layout'
-import LandingPageLayout from '@layouts/landing-page-layout'
 import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router'
@@ -43,16 +34,6 @@ const TasksPage = lazy(() => import('@dashboard-pages/tasks-page'))
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<LandingPageLayout />}>
-        <Route index element={<LandingPage />} />
-        <Route path="features" element={<FeaturesPage />} />
-        <Route path="integrations" element={<IntegrationsLandingPage />} />
-        <Route path="customers" element={<CustomersPage />} />
-        <Route path="guides" element={<GuidesLandingPage />} />
-        <Route path="security" element={<SecurityLandingPage />} />
-        <Route path="terms-of-service" element={<TermsOfServicePage />} />
-        <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-      </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route
           path="tasks"
