@@ -88,7 +88,7 @@ export default function Sidebar() {
             isOpened ? 'flex-row' : 'flex-col'
           }`}
         >
-          <Link to="/dashboard/issues" onClick={closeOpenedSidebarOnMobile}>
+          <Link to="/issues" onClick={closeOpenedSidebarOnMobile}>
             <Logo hideText={!isOpened} />
           </Link>
           <Button
@@ -150,7 +150,7 @@ export default function Sidebar() {
                 onClick={closeOpenedSidebarOnMobile}
               />
               <Link
-                to="/dashboard/settings/profile"
+                to="/settings/profile"
                 className="flex items-center gap-1 px-1.5 py-1"
                 onClick={closeOpenedSidebarOnMobile}
               >

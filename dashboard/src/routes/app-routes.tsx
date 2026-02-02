@@ -34,7 +34,7 @@ const TasksPage = lazy(() => import('@dashboard-pages/tasks-page'))
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/dashboard" element={<DashboardLayout />}>
+      <Route path="/" element={<DashboardLayout />}>
         <Route
           path="tasks"
           element={

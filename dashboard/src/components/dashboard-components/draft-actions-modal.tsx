@@ -116,7 +116,7 @@ function MenuPanel({
               <div className="mb-1 flex items-center gap-1">
                 <PanelCard.Icon icon={<ClickIcon />} />
                 <PanelCard.Heading>
-                  <PanelCard.Button href={`/dashboard/drafts/${draftId}`}>
+                  <PanelCard.Button href={`/drafts/${draftId}`}>
                     Open
                   </PanelCard.Button>
                 </PanelCard.Heading>
@@ -130,7 +130,7 @@ function MenuPanel({
                 <PanelCard.Icon icon={<ExternalLinkIcon />} />
                 <PanelCard.Heading>
                   <PanelCard.Button
-                    href={`/dashboard/drafts/${draftId}`}
+                    href={`/drafts/${draftId}`}
                     target="_blank"
                     rel="noreferrer noopener"
                   >

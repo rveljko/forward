@@ -49,7 +49,7 @@ export default function DraftsContextProvider({
       { id, lastEdit: new Date(), title: DEFAULT_DRAFT_TITLE, content: '' },
       ...prevDrafts,
     ])
-    navigate(`/dashboard/drafts/${id}`)
+    navigate(`/drafts/${id}`)
   }
 
   function updateDraft(id: Draft['id'], content: Draft['content']) {

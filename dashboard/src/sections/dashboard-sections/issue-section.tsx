@@ -25,7 +25,7 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
 
   const issue = getIssueById(issueId)
 
-  if (!issue) return <Navigate to="/dashboard/issues" />
+  if (!issue) return <Navigate to="/issues" />
 
   const [newContent, setNewContent] = useState(issue.content)
 
@@ -72,7 +72,7 @@ function Header({ issue }: HeaderProps) {
   return (
     <header className="flex items-center justify-between gap-2 p-4">
       <div className="flex grow items-center gap-1">
-        <Link to="/dashboard/issues" className="text-clickable">
+        <Link to="/issues" className="text-clickable">
           Issues
         </Link>
         <span className="text-neutral-400">/</span>

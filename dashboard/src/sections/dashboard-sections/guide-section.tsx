@@ -17,7 +17,7 @@ function getGuideBySlug(slug: Guide['slug']) {
 export default function GuideSection({ guideSlug }: GuideSectionProps) {
   const guide = getGuideBySlug(guideSlug)
 
-  if (!guide) return <Navigate to="/dashboard/guides" />
+  if (!guide) return <Navigate to="/guides" />
 
   const { title, content } = guide
 
@@ -26,7 +26,7 @@ export default function GuideSection({ guideSlug }: GuideSectionProps) {
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <header className="p-4">
         <div className="flex items-center gap-1">
-          <Link to="/dashboard/guides" className="text-clickable">
+          <Link to="/guides" className="text-clickable">
             Guides
           </Link>
           <span className="text-neutral-400">/</span>

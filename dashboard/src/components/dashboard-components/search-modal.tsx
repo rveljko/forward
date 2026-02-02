@@ -138,7 +138,7 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
                 return (
                   <MenuList.Item key={id} leftIcon={<Icon />}>
                     <MenuList.Button
-                      href={`/dashboard/issues/${id}`}
+                      href={`/issues/${id}`}
                       onClick={closeModal}
                     >
                       {title}
@@ -157,10 +157,7 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
           <MenuList>
             {filteredDrafts.map(({ id, title }) => (
               <MenuList.Item key={id} leftIcon={<BrainIcon />}>
-                <MenuList.Button
-                  href={`/dashboard/drafts/${id}`}
-                  onClick={closeModal}
-                >
+                <MenuList.Button href={`/drafts/${id}`} onClick={closeModal}>
                   {title}
                 </MenuList.Button>
               </MenuList.Item>

@@ -172,7 +172,7 @@ export default function IssuesContextProvider({
       },
       ...prevIssues,
     ])
-    navigate(`/dashboard/issues/${id}`)
+    navigate(`/issues/${id}`)
   }
 
   function duplicateIssue(id: Issue['id']) {

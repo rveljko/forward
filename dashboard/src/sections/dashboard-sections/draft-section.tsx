@@ -23,7 +23,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
 
   const draft = getDraftById(draftId)
 
-  if (!draft) return <Navigate to="/dashboard/drafts" />
+  if (!draft) return <Navigate to="/drafts" />
 
   const { title, content } = draft
   const [newContent, setNewContent] = useState(content)
@@ -74,7 +74,7 @@ function Header({ draftId, title }: HeaderProps) {
   return (
     <header className="flex items-center justify-between gap-2 p-4">
       <div className="flex grow items-center gap-1">
-        <Link to="/dashboard/drafts" className="text-clickable">
+        <Link to="/drafts" className="text-clickable">
           Drafts
         </Link>
         <span className="text-neutral-400">/</span>

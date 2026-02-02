@@ -89,7 +89,7 @@ export default function IssuesKanbanCard({
           <IssueStatus status={status} className="isolate z-1" />
           <h3>
             <Link
-              to={`/dashboard/issues/${id}`}
+              to={`/issues/${id}`}
               className="text-clickable line-clamp-1 break-all"
             >
               <span className="absolute inset-0" />

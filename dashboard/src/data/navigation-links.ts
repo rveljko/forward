@@ -14,19 +14,19 @@ export const primaryNavigationLinks: NavigationLink[] = [
   {
     id: 1,
     name: 'Tasks',
-    path: '/dashboard/tasks',
+    path: '/tasks',
     icon: CheckboxIcon,
   },
   {
     id: 2,
     name: 'Issues',
-    path: '/dashboard/issues',
+    path: '/issues',
     icon: FolderIcon,
   },
   {
     id: 3,
     name: 'Drafts',
-    path: '/dashboard/drafts',
+    path: '/drafts',
     icon: BrainIcon,
   },
 ]
@@ -35,19 +35,19 @@ export const secondaryNavigationLinks: NavigationLink[] = [
   {
     id: 1,
     name: 'Guides',
-    path: '/dashboard/guides',
+    path: '/guides',
     icon: DocumentIcon,
   },
   {
     id: 2,
     name: 'Help & Support',
-    path: '/dashboard/help-and-support',
+    path: '/help-and-support',
     icon: LifebuoyIcon,
   },
   {
     id: 3,
     name: 'Settings',
-    path: '/dashboard/settings/profile',
+    path: '/settings/profile',
     icon: SettingsIcon,
   },
 ]

@@ -34,7 +34,7 @@ export default function GuideCard({
         <div className="h-16 p-2">
           <h3>
             <Link
-              to={`/dashboard/guides/${slug}`}
+              to={`/guides/${slug}`}
               className="text-clickable line-clamp-2 text-balance"
             >
               <span className="absolute inset-0" />
