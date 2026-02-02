@@ -60,25 +60,29 @@ Follow these steps to get the project running locally:
    ```bash
    git clone https://github.com/rveljko/forward.git
    ```
-2. Navigate into the project directory:
+1. Navigate into the project directory:
    ```bash
    cd forward
    ```
-3. Install dependencies:
+1. Navigate to the dashboard folder:
+   ```bash
+   cd dashboard
+   ```
+1. Install dependencies:
    ```bash
    npm install
    ```
-4. Configure environment variable:
+1. Configure environment variable:
    - Create a `.env` file with the following variables (you can create a free PostHog account and get your key and host at [PostHog Signup](https://us.posthog.com/signup)):
      ```
      VITE_PUBLIC_POSTHOG_KEY=
      VITE_PUBLIC_POSTHOG_HOST=
      ```
-5. Start the development server:
+1. Start the development server:
    ```bash
    npm run dev
    ```
-6. Open your browser and navigate to:
+1. Open your browser and navigate to:
    ```
    http://localhost:5173
    ```
