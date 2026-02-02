@@ -161,17 +161,3 @@ export type Guide = {
   thumbnailLightUrl: string
   content: string
 }
-
-export type Feature = {
-  id: string
-  title: string
-  description: string
-  icon: () => React.JSX.Element
-}
-
-export type Company = {
-  id: string
-  name: string
-  description: string
-  imageUrl: string
-}
