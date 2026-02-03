@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 h-(--header-height) w-full border-b border-b-neutral-200 bg-white">
-      <div className="mx-auto flex max-w-285.5 justify-between p-2">
+      <div className="mx-auto flex max-w-285.5 justify-between px-4 py-2">
         <Link href="/" className="flex">
           <Logo />
         </Link>
