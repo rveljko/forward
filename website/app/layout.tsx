@@ -1,4 +1,5 @@
 import Header from '@/components/header'
+import LayoutPattern from '@/components/layout-pattern'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -36,8 +37,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <Header />
-        <main className="pt-(--header-height)">{children}</main>
+        <div className="flex min-h-screen flex-col">
+          <Header />
+          <LayoutPattern>{children}</LayoutPattern>
+        </div>
       </body>
     </html>
   )
