@@ -1,1 +1,5 @@
 @import 'tailwindcss';
+
+@theme {
+  --default-font-feature-settings: 'cv06', 'cv11';
+}
