@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 
 @theme {
+  --header-height: --spacing(12);
   --default-font-feature-settings: 'cv06', 'cv11';
 }

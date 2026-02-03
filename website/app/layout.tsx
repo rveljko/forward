@@ -1,3 +1,4 @@
+import Header from '@/components/header'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -35,7 +36,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <main>{children}</main>
+        <Header />
+        <main className="pt-(--header-height)">{children}</main>
       </body>
     </html>
   )
