@@ -4,3 +4,9 @@
   --header-height: --spacing(12);
   --default-font-feature-settings: 'cv06', 'cv11';
 }
+
+@layer base {
+  body {
+    letter-spacing: var(--tracking-tight);
+  }
+}
