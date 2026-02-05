@@ -1,0 +1,14 @@
+export default function DesignIssueTagIcon() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <rect x="6" y="6" width="8" height="8" rx="1" fill="#F53D61" />
+    </svg>
+  )
+}

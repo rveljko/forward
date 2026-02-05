@@ -1,8 +1,29 @@
 @import 'tailwindcss';
 
 @theme {
+  --color-dashboard-neutral-100: #d0d0d2;
+  --color-dashboard-neutral-200: #b6b7b9;
+  --color-dashboard-neutral-300: #9fa0a3;
+  --color-dashboard-neutral-400: #87888c;
+  --color-dashboard-neutral-500: #6d6d74;
+  --color-dashboard-neutral-600: #56565d;
+  --color-dashboard-neutral-700: #3c3d44;
+  --color-dashboard-neutral-800: #24252d;
+  --color-dashboard-neutral-900: #0d0e17;
+  --color-dashboard-brand-500: #7e45d3;
+  --color-dashboard-background: #f9fafa;
   --header-height: --spacing(12);
   --default-font-feature-settings: 'cv06', 'cv11';
+  --animate-progress-fill: progress-fill 3000ms linear;
+
+  @keyframes progress-fill {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
 }
 
 @layer base {

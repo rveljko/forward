@@ -1,3 +1,5 @@
+import HeroSection from '@/sections/hero-section'
+
 export default function Home() {
-  return <div>home-page</div>
+  return <HeroSection />
 }
