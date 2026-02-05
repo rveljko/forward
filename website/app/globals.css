@@ -31,6 +31,12 @@
     color-scheme: light;
   }
 
+  html,
+  body * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-400) transparent;
+  }
+
   body {
     letter-spacing: var(--tracking-tight);
   }
