@@ -27,6 +27,10 @@
 }
 
 @layer base {
+  html {
+    color-scheme: light;
+  }
+
   body {
     letter-spacing: var(--tracking-tight);
   }
