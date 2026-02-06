@@ -15,6 +15,7 @@
   --header-height: --spacing(12);
   --default-font-feature-settings: 'cv06', 'cv11';
   --animate-progress-fill: progress-fill 3000ms linear;
+  --animate-slide: slide 10000ms linear infinite;
 
   @keyframes progress-fill {
     0% {
@@ -22,6 +23,15 @@
     }
     100% {
       width: 100%;
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translate(0);
+    }
+    100% {
+      transform: translate(-100%);
     }
   }
 }
@@ -39,5 +49,16 @@
 
   body {
     letter-spacing: var(--tracking-tight);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
