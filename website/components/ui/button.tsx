@@ -13,6 +13,7 @@ const button = cva(
           'bg-white ring ring-black/10 hover:bg-neutral-100 pointer-coarse:active:bg-neutral-100',
         tertiary:
           'shadow-none hover:bg-neutral-50 pointer-coarse:active:bg-neutral-50',
+        link: 'shadow-none',
       },
       size: {
         large: 'px-3 py-2',
