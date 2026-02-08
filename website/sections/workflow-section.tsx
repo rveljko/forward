@@ -6,17 +6,18 @@ import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
 import CircleThreeQuartersIcon from '@/icons/circle-three-quarters-icon'
+import Section from '@/sections/section'
 import CircleFullIcon from '../icons/circle-full-icon'
 
 export default function WorkflowSection() {
   return (
-    <section className="flex flex-col divide-neutral-200 @max-5xl:divide-y @5xl:h-177.5 @5xl:flex-row @5xl:divide-x">
+    <Section className="flex flex-col divide-neutral-200 @max-5xl:divide-y @5xl:h-177.5 @5xl:flex-row @5xl:divide-x">
       <div className="flex w-full flex-col divide-neutral-200 @max-3xl:divide-y @3xl:flex-row @3xl:divide-x">
         <TextPanel />
         <StepsPanel />
       </div>
       <StatusesPanel />
-    </section>
+    </Section>
   )
 }
 
@@ -25,14 +26,14 @@ function TextPanel() {
     <div className="flex w-full flex-col justify-between gap-8 p-6 md:p-8 @3xl:max-w-79">
       <div className="flex flex-col gap-2">
         <Badge color="sky">Workflow</Badge>
-        <h2 className="text-2xl font-medium text-neutral-900">
+        <Section.Heading2>
           Your issue workflow <br />
           <span className="text-neutral-500">from idea to done</span>
-        </h2>
-        <p className="max-w-63 text-sm text-balance text-neutral-600">
+        </Section.Heading2>
+        <Section.Paragraph>
           Start with an idea. Work through steps. Mark it finished. Everything
           shows up there, so you stay on track
-        </p>
+        </Section.Paragraph>
       </div>
       <Button href="/" variant="link" rightIcon={<ArrowRightIcon />}>
         Explore Workflow
