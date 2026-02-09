@@ -36,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+      <body
+        className={`${inter.className} antialiased max-md:has-[header[data-is-hamburger-menu-open='true']]:overflow-hidden`}
+      >
         <div className="flex min-h-screen flex-col">
           <Header />
           <LayoutPattern>{children}</LayoutPattern>

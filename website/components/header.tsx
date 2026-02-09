@@ -10,7 +10,10 @@ export default function Header() {
   const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 z-100 h-(--header-height) w-full border-b border-b-neutral-200 bg-white">
+    <header
+      data-is-hamburger-menu-open={isHamburgerMenuOpen}
+      className="fixed top-0 z-100 h-(--header-height) w-full border-b border-b-neutral-200 bg-white"
+    >
       <div className="mx-auto flex max-w-285.5 justify-between px-4 py-2">
         <Link href="/" className="flex">
           <Logo />
