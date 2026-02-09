@@ -26,7 +26,7 @@ export default function PreferencesSection() {
       </header>
       <Divider />
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50">Themes</h3>
+        <h3 className="w-full max-w-50">Theme</h3>
         <ThemeCardsList themes={themes} />
       </div>
       <Divider />
