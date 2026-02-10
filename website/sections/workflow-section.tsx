@@ -80,7 +80,7 @@ function StepsPanel() {
                   <div className="flex items-center gap-2">
                     <CircleEmptyIcon />
                     <h3 className="text-sm font-medium text-neutral-900">
-                      Movo to Todo
+                      Move to Todo
                     </h3>
                   </div>
                   <span className="text-xs text-neutral-600">2/5</span>
