@@ -16,6 +16,7 @@
   --default-font-feature-settings: 'cv06', 'cv11';
   --animate-progress-fill: progress-fill 3000ms linear;
   --animate-slide: slide 10000ms linear infinite;
+  --animate-slide-y: slide-y 10000ms linear infinite;
   --animate-dash-shift: dash-shift 1000ms linear infinite;
 
   @keyframes progress-fill {
@@ -29,10 +30,19 @@
 
   @keyframes slide {
     0% {
-      transform: translate(0);
+      transform: translateX(0);
     }
     100% {
-      transform: translate(-100%);
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes slide-y {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-100%);
     }
   }
 
