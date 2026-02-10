@@ -9,7 +9,7 @@ export default function CustomersCarouselSection() {
         </h2>
       </div>
       <div className="scrollbar-hidden pointer-events-none flex overflow-x-auto select-none">
-        <ul className="animate-slide flex">
+        <ul className="animate-slide-x flex">
           {customers.map(({ name, logo: Logo }) => (
             <li
               key={name}
@@ -20,7 +20,7 @@ export default function CustomersCarouselSection() {
             </li>
           ))}
         </ul>
-        <ul aria-hidden className="animate-slide flex">
+        <ul aria-hidden className="animate-slide-x flex">
           {customers.map(({ name, logo: Logo }) => (
             <li
               key={name}
