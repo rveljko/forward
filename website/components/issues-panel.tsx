@@ -1,17 +1,12 @@
+import IssueItem from '@/components/issue-item'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
-import DesignIssueTagIcon from '@/icons/design-issue-tag-icon'
-import DevelopmentIssueTagIcon from '@/icons/development-issue-tag-icon'
-import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import FilterIcon from '@/icons/filters-icon'
 import KanbanIcon from '@/icons/kanban-icon'
 import ListIcon from '@/icons/list-icon'
 import PlusIcon from '@/icons/plus-icon'
-import PriorityHighIcon from '@/icons/priority-high-icon'
-import PriorityMediumIcon from '@/icons/priority-medium-icon'
-import { dayMonthShortFormatter } from '@/utils/date-formatters'
 
 export default function IssuesPanel() {
   return (
@@ -47,11 +42,9 @@ export default function IssuesPanel() {
       </div>
       <IssueItem
         title="Implement Notification System"
-        priorityIcon={<PriorityHighIcon />}
-        statusIcon={<CircleDashedIcon />}
-        tag="Development"
-        tagIcon={<DevelopmentIssueTagIcon />}
-        createdAt={new Date()}
+        status="backlog"
+        priority="high"
+        tag="development"
       />
       <div className="flex items-center justify-between bg-black/10 p-4">
         <div className="flex items-center gap-1">
@@ -64,19 +57,15 @@ export default function IssuesPanel() {
       <div className="divide-y divide-black/10">
         <IssueItem
           title="Create and Report Issues"
-          priorityIcon={<PriorityHighIcon />}
-          statusIcon={<CircleEmptyIcon />}
-          tag="Development"
-          tagIcon={<DevelopmentIssueTagIcon />}
-          createdAt={new Date()}
+          status="todo"
+          priority="high"
+          tag="development"
         />
         <IssueItem
           title="Update Status"
-          priorityIcon={<PriorityMediumIcon />}
-          statusIcon={<CircleEmptyIcon />}
-          tag="Design"
-          tagIcon={<DesignIssueTagIcon />}
-          createdAt={new Date()}
+          status="todo"
+          priority="medium"
+          tag="design"
         />
       </div>
       <div className="flex items-center justify-between bg-black/10 p-4">
@@ -89,52 +78,10 @@ export default function IssuesPanel() {
       </div>
       <IssueItem
         title="Integrate With Other Tools"
-        priorityIcon={<PriorityHighIcon />}
-        statusIcon={<CircleHalfIcon />}
-        tag="Development"
-        tagIcon={<DevelopmentIssueTagIcon />}
-        createdAt={new Date()}
+        status="in-progress"
+        priority="high"
+        tag="development"
       />
     </>
-  )
-}
-
-type IssueItemProps = {
-  title: string
-  priorityIcon: React.JSX.Element
-  statusIcon: React.JSX.Element
-  tag: string
-  tagIcon: React.JSX.Element
-  createdAt: Date
-}
-
-function IssueItem({
-  title,
-  priorityIcon: PriorityIcon,
-  statusIcon: StatusIcon,
-  tag,
-  tagIcon: TagIcon,
-  createdAt,
-}: IssueItemProps) {
-  return (
-    <article className="flex h-15.5 items-center justify-between gap-2 p-4">
-      <div className="flex items-center gap-1">
-        <span className="mr-1 shrink-0">{PriorityIcon}</span>
-        <span className="shrink-0">{StatusIcon}</span>
-        <span className="line-clamp-1 break-all">{title}</span>
-      </div>
-      <div className="text-dashboard-neutral-600 flex items-center gap-2">
-        <div className="flex items-center gap-2 max-lg:hidden">
-          <span className="flex w-max items-center justify-center gap-1 rounded-full border border-black/10 px-3 py-1 text-sm">
-            {TagIcon}
-            {tag}
-          </span>
-          <span className="text-sm text-nowrap">
-            {dayMonthShortFormatter(createdAt)}
-          </span>
-        </div>
-        <DotsVerticalIcon />
-      </div>
-    </article>
   )
 }
