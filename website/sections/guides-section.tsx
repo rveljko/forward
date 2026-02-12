@@ -2,10 +2,9 @@ import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'
 import CalendarIcon from '@/icons/calendar-icon'
+import Section from '@/sections/section'
 import { dayMonthShortFormatter } from '@/utils/date-formatters'
 import Image from 'next/image'
-
-import Section from '@/sections/section'
 
 type Guide = {
   title: string
