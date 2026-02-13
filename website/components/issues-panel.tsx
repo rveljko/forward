@@ -11,7 +11,9 @@ import PlusIcon from '@/icons/plus-icon'
 export default function IssuesPanel() {
   return (
     <>
-      <div className="border-b border-b-black/10 p-4 text-sm">Issues</div>
+      <div className="border-b border-b-black/10 p-4 text-sm font-medium">
+        Issues
+      </div>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-b-black/10 p-4">
         <div className="flex items-center gap-2">
           <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
@@ -33,7 +35,7 @@ export default function IssuesPanel() {
         </div>
       </div>
       <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1 text-sm">
+        <div className="flex items-center gap-1 text-sm font-medium">
           <CircleDashedIcon />
           Backlog
           <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
@@ -47,7 +49,7 @@ export default function IssuesPanel() {
         tag="development"
       />
       <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1 text-sm">
+        <div className="flex items-center gap-1 text-sm font-medium">
           <CircleEmptyIcon />
           Todo
           <span className="text-dashboard-neutral-600 ml-1 text-sm">2</span>
@@ -69,7 +71,7 @@ export default function IssuesPanel() {
         />
       </div>
       <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1 text-sm">
+        <div className="flex items-center gap-1 text-sm font-medium">
           <CircleHalfIcon />
           In Progress
           <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
