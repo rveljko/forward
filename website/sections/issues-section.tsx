@@ -148,24 +148,26 @@ function DashboardPanel() {
             aria-hidden
             className="size-full overflow-hidden rounded-lg border border-black/10 bg-white"
           >
-            <div className="border-b border-b-black/10 p-4">Issues</div>
+            <div className="border-b border-b-black/10 p-4 text-sm">Issues</div>
             <div className="border-b border-b-black/10 p-4">
               <div className="flex items-center gap-2">
-                <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-black shadow-sm">
+                <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
                   <FilterIcon />
                   Filters
                 </span>
-                <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-black shadow-sm">
+                <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
                   <ArrowsSortIcon />
                   Sort
                 </span>
               </div>
             </div>
             <div className="flex items-center justify-between bg-black/10 p-4">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 text-sm">
                 <CircleDashedIcon />
                 Backlog
-                <span className="text-dashboard-neutral-600 ml-1">1</span>
+                <span className="text-dashboard-neutral-600 ml-1 text-sm">
+                  1
+                </span>
               </div>
               <PlusIcon />
             </div>
@@ -176,10 +178,12 @@ function DashboardPanel() {
               tag="development"
             />
             <div className="flex items-center justify-between bg-black/10 p-4">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 text-sm">
                 <CircleEmptyIcon />
                 Todo
-                <span className="text-dashboard-neutral-600 ml-1">2</span>
+                <span className="text-dashboard-neutral-600 ml-1 text-sm">
+                  2
+                </span>
               </div>
               <PlusIcon />
             </div>
@@ -198,10 +202,12 @@ function DashboardPanel() {
               />
             </div>
             <div className="flex items-center justify-between bg-black/10 p-4">
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1 text-sm">
                 <CircleHalfIcon />
                 In Progress
-                <span className="text-dashboard-neutral-600 ml-1">1</span>
+                <span className="text-dashboard-neutral-600 ml-1 text-sm">
+                  1
+                </span>
               </div>
               <PlusIcon />
             </div>
