@@ -15,7 +15,9 @@ const tasks = [
 export default function TasksPanel() {
   return (
     <>
-      <div className="border-b border-b-black/10 p-4 text-sm">Tasks</div>
+      <div className="border-b border-b-black/10 p-4 text-sm font-medium">
+        Tasks
+      </div>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-b-black/10 p-4">
         <div className="flex items-center gap-2">
           <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
