@@ -11,7 +11,7 @@ export default function IssueTag({ tag, className, ...props }: IssueTagProps) {
   return (
     <span
       className={cn(
-        'flex w-max items-center justify-center gap-1 rounded-full border border-black/10 px-3 py-1 text-sm',
+        'text-dashboard-neutral-600 flex w-max items-center justify-center gap-1 rounded-full border border-black/10 px-3 py-1 text-xs',
         className
       )}
       {...props}

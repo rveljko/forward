@@ -27,12 +27,12 @@ export default function IssueItem({
       <div className="flex items-center gap-1">
         <IssuePriority priority={priority} className="mr-1" />
         <IssueStatus status={status} />
-        <span className="line-clamp-1 break-all">{title}</span>
+        <span className="line-clamp-1 text-sm break-all">{title}</span>
       </div>
       <div className="text-dashboard-neutral-600 flex items-center gap-2">
         <div className="flex items-center gap-2 max-lg:hidden">
           <IssueTag tag={tag} />
-          <span className="text-sm text-nowrap">
+          <span className="text-xs text-nowrap">
             {dayMonthShortFormatter(new Date())}
           </span>
         </div>

@@ -11,32 +11,32 @@ import PlusIcon from '@/icons/plus-icon'
 export default function IssuesPanel() {
   return (
     <>
-      <div className="border-b border-b-black/10 p-4">Issues</div>
+      <div className="border-b border-b-black/10 p-4 text-sm">Issues</div>
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-b-black/10 p-4">
         <div className="flex items-center gap-2">
-          <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-black shadow-sm">
+          <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
             <FilterIcon />
             Filters
           </span>
-          <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-black shadow-sm">
+          <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
             <ArrowsSortIcon />
             Sort
           </span>
         </div>
         <div className="bg-dashboard-neutral-200 flex rounded-md p-0.5 shadow-sm">
-          <span className="flex rounded-sm bg-white px-3 py-1">
+          <span className="flex rounded-sm bg-white px-2.5 py-0.5">
             <ListIcon />
           </span>
-          <span className="text-dashboard-neutral-600 flex px-3 py-1">
+          <span className="text-dashboard-neutral-600 flex px-2.5 py-0.5">
             <KanbanIcon />
           </span>
         </div>
       </div>
       <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 text-sm">
           <CircleDashedIcon />
           Backlog
-          <span className="text-dashboard-neutral-600 ml-1">1</span>
+          <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
         </div>
         <PlusIcon />
       </div>
@@ -47,10 +47,10 @@ export default function IssuesPanel() {
         tag="development"
       />
       <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 text-sm">
           <CircleEmptyIcon />
           Todo
-          <span className="text-dashboard-neutral-600 ml-1">2</span>
+          <span className="text-dashboard-neutral-600 ml-1 text-sm">2</span>
         </div>
         <PlusIcon />
       </div>
@@ -69,10 +69,10 @@ export default function IssuesPanel() {
         />
       </div>
       <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 text-sm">
           <CircleHalfIcon />
           In Progress
-          <span className="text-dashboard-neutral-600 ml-1">1</span>
+          <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
         </div>
         <PlusIcon />
       </div>
