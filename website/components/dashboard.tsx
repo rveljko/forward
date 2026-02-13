@@ -52,13 +52,13 @@ function Sidebar({ activePanelIndex }: SidebarProps) {
       <div className="flex h-full flex-col justify-between gap-2">
         <ul className="flex flex-col gap-1">
           <li>
-            <span className="bg-dashboard-brand-500 flex items-center gap-1 rounded-md px-1.5 py-1 text-white shadow-sm">
+            <span className="bg-dashboard-brand-500 flex items-center gap-1 rounded-md px-1.5 py-1 text-sm text-white shadow-sm">
               <PenIcon />
               Create New Issue
             </span>
           </li>
           <li>
-            <span className="bg-dashboard-neutral-200 flex items-center gap-1 rounded-md px-1.5 py-1 text-black shadow-sm">
+            <span className="bg-dashboard-neutral-200 flex items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
               <SearchIcon />
               Search
             </span>
@@ -66,7 +66,7 @@ function Sidebar({ activePanelIndex }: SidebarProps) {
           <li>
             <span
               data-active={activePanelIndex === 0}
-              className="data-[active=true]:bg-dashboard-neutral-300 [&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-black transition-colors data-[active=true]:[&_svg]:text-black"
+              className="data-[active=true]:bg-dashboard-neutral-300 [&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black transition-colors data-[active=true]:[&_svg]:text-black"
             >
               <CheckboxIcon />
               Tasks
@@ -75,7 +75,7 @@ function Sidebar({ activePanelIndex }: SidebarProps) {
           <li>
             <span
               data-active={activePanelIndex === 1}
-              className="data-[active=true]:bg-dashboard-neutral-300 [&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-black transition-colors data-[active=true]:[&_svg]:text-black"
+              className="data-[active=true]:bg-dashboard-neutral-300 [&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black transition-colors data-[active=true]:[&_svg]:text-black"
             >
               <FolderIcon />
               Issues
@@ -84,7 +84,7 @@ function Sidebar({ activePanelIndex }: SidebarProps) {
           <li>
             <span
               data-active={activePanelIndex === 2}
-              className="data-[active=true]:bg-dashboard-neutral-300 [&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-black transition-colors data-[active=true]:[&_svg]:text-black"
+              className="data-[active=true]:bg-dashboard-neutral-300 [&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black transition-colors data-[active=true]:[&_svg]:text-black"
             >
               <BrainIcon />
               Drafts
@@ -93,25 +93,25 @@ function Sidebar({ activePanelIndex }: SidebarProps) {
         </ul>
         <ul className="flex flex-col gap-1">
           <li>
-            <span className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-black">
+            <span className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black">
               <DocumentIcon />
               Guides
             </span>
           </li>
           <li>
-            <span className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-black">
+            <span className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black">
               <LifebuoyIcon />
               Help & Support
             </span>
           </li>
           <li>
-            <span className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-black">
+            <span className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black">
               <SettingsIcon />
               Settings
             </span>
           </li>
           <li>
-            <span className="flex items-center gap-1 rounded-sm px-1.5 py-1 text-black">
+            <span className="flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-black">
               <span className="size-5 overflow-hidden rounded-full">
                 <Image
                   src="/images/james-williams.png"
