@@ -12,7 +12,7 @@ import Section from '@/sections/section'
 
 export default function IssuesSection() {
   return (
-    <Section className="flex flex-col divide-neutral-200 @max-5xl:divide-y @3xl:flex-row @3xl:divide-x">
+    <Section className="flex flex-col divide-neutral-200 @max-3xl:divide-y @3xl:flex-row @3xl:divide-x">
       <TextPanel />
       <DashboardPanel />
     </Section>
