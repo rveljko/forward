@@ -1,16 +1,9 @@
+import { tasks } from '@/data/tasks'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import FilterIcon from '@/icons/filters-icon'
 import PlusIcon from '@/icons/plus-icon'
 import { dayMonthShortFormatter } from '@/utils/date-formatters'
-
-const tasks = [
-  'Make bed',
-  'Do 50 pushups',
-  '20 min walk',
-  'Stretch 5min',
-  'Balanced breakfast',
-]
 
 export default function TasksPanel() {
   return (
