@@ -27,7 +27,7 @@ export default function Footer() {
         <ul className="flex flex-col gap-1">
           <li className="text-neutral-600">Company</li>
           <li>
-            <Link href="/">Security</Link>
+            <Link href="/security">Security</Link>
           </li>
           <li>
             <Link href="/">Customers</Link>

@@ -1,3 +1,6 @@
+import AicpaSoc2Certificate from '@/components/aicpa-soc2-certificate'
+import GdprCertificate from '@/components/gdpr-certificate'
+import Iso27001Certificate from '@/components/iso-27001-certificate'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'
@@ -26,7 +29,7 @@ function TextPanel() {
           you focus on work
         </Section.Paragraph>
       </div>
-      <Button href="/" variant="link" rightIcon={<ArrowRightIcon />}>
+      <Button href="/security" variant="link" rightIcon={<ArrowRightIcon />}>
         Explore Security
       </Button>
     </div>
@@ -37,31 +40,13 @@ function CertificatesPanel() {
   return (
     <ul className="flex flex-col divide-neutral-200 @max-3xl:divide-y @3xl:flex-row @3xl:divide-x">
       <li className="flex items-center justify-center p-4 @3xl:p-8">
-        <div className="relative flex size-16 flex-col items-center justify-center rounded-full shadow-sm ring ring-black/10">
-          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 border-b border-dashed border-b-neutral-200" />
-          <h3 className="flex flex-col gap-1 text-center text-xs text-neutral-600">
-            <span>AICPA</span>
-            <span>SOC 2</span>
-          </h3>
-        </div>
+        <AicpaSoc2Certificate />
       </li>
       <li className="flex items-center justify-center p-4 @3xl:p-8">
-        <div className="relative flex size-16 flex-col justify-center overflow-hidden rounded-sm shadow-sm ring ring-black/10">
-          <div className="absolute inset-0 flex flex-col justify-evenly">
-            <div className="h-px w-full border-b border-dashed border-b-neutral-200" />
-            <div className="h-px w-full border-b border-dashed border-b-neutral-200" />
-          </div>
-          <h3 className="text-center text-xs text-neutral-600">GDPR</h3>
-        </div>
+        <GdprCertificate />
       </li>
       <li className="flex items-center justify-center p-4 @3xl:p-8">
-        <div className="relative flex size-16 flex-col items-center justify-center rounded-full shadow-sm ring ring-black/10">
-          <div className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 border-b border-dashed border-b-neutral-200" />
-          <h3 className="flex flex-col gap-1 text-center text-xs text-neutral-600">
-            <span>ISO</span>
-            <span>27001</span>
-          </h3>
-        </div>
+        <Iso27001Certificate />
       </li>
     </ul>
   )
