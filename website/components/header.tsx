@@ -35,11 +35,11 @@ export default function Header() {
           <span className="sr-only">Toggle Menu</span>
         </Button>
         <nav
-          className={
+          className={`max-md:fixed max-md:inset-x-0 max-md:top-(--header-height) max-md:h-[calc(100%-var(--header-height))] max-md:overflow-y-auto max-md:bg-white max-md:transition max-md:transition-discrete max-md:duration-300 max-md:starting:opacity-0 ${
             isHamburgerMenuOpen
-              ? 'max-md:fixed max-md:inset-x-0 max-md:top-(--header-height) max-md:h-[calc(100%-var(--header-height))] max-md:overflow-y-auto max-md:bg-white'
-              : 'max-md:hidden'
-          }
+              ? 'max-md:block max-md:opacity-100'
+              : 'max-md:hidden max-md:opacity-0'
+          } `}
         >
           <ul className="flex h-full flex-col md:flex-row md:items-center">
             <li className="md:h-full">
