@@ -1,13 +1,12 @@
+import TaskItem from '@/components/task-item'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import { tasks } from '@/data/tasks'
 import ArrowRightIcon from '@/icons/arrow-right-icon'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
-import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import FilterIcon from '@/icons/filters-icon'
 import PlusIcon from '@/icons/plus-icon'
 import Section from '@/sections/section'
-import { dayMonthShortFormatter } from '@/utils/date-formatters'
 
 export default function TasksSection() {
   return (
@@ -166,21 +165,7 @@ function DashboardPanel() {
               </span>
             </div>
             {tasks.map((task) => (
-              <article
-                key={task}
-                className="flex justify-between gap-2 border-b border-black/10 p-4"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="size-3.5 shrink-0 rounded-sm inset-ring inset-ring-black/20" />
-                  <span className="line-clamp-1 text-sm break-all">{task}</span>
-                </div>
-                <div className="[&_svg]:text-dashboard-neutral-600 flex items-center gap-2">
-                  <span className="text-dashboard-neutral-600 text-xs text-nowrap">
-                    {dayMonthShortFormatter(new Date())}
-                  </span>
-                  <DotsVerticalIcon />
-                </div>
-              </article>
+              <TaskItem key={task} task={task} />
             ))}
           </div>
         </div>

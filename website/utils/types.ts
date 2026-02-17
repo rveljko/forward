@@ -10,3 +10,5 @@ export type Issue = {
   priority: IssuePriorityLabel
   tag: IssueTagLabel
 }
+
+export type Task = string
