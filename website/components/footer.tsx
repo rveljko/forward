@@ -10,7 +10,9 @@ export default function Footer() {
       <div className="w-full border-b border-dashed border-b-neutral-200" />
       <nav className="flex flex-wrap gap-8 md:gap-16">
         <ul className="flex flex-col gap-1">
-          <li className="text-neutral-600">Products</li>
+          <li>
+            <h4 className="text-neutral-600">Products</h4>
+          </li>
           <li>
             <Link href="/">Tasks</Link>
           </li>
@@ -25,7 +27,9 @@ export default function Footer() {
           </li>
         </ul>
         <ul className="flex flex-col gap-1">
-          <li className="text-neutral-600">Company</li>
+          <li>
+            <h4 className="text-neutral-600">Company</h4>
+          </li>
           <li>
             <Link href="/security">Security</Link>
           </li>
@@ -34,7 +38,9 @@ export default function Footer() {
           </li>
         </ul>
         <ul className="flex flex-col gap-1">
-          <li className="text-neutral-600">Resources</li>
+          <li>
+            <h4 className="text-neutral-600">Resources</h4>
+          </li>
           <li>
             <Link href="/">Help Center</Link>
           </li>
