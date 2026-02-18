@@ -5,7 +5,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Forward',
+  title: { default: 'Forward', template: '%s | Forward' },
   description: '',
   icons: [
     { rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg', sizes: 'any' },
