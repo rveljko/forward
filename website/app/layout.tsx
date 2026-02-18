@@ -7,6 +7,10 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Forward',
   description: '',
+  icons: [
+    { rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg', sizes: 'any' },
+    { rel: 'icon', type: 'image/x-icon', url: '/favicon.ico', sizes: '48x48' },
+  ],
 }
 
 const inter = localFont({
