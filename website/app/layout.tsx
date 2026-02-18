@@ -5,8 +5,12 @@ import localFont from 'next/font/local'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: { default: 'Forward', template: '%s | Forward' },
-  description: '',
+  title: {
+    default: 'Turn issues into finished projects fast | Forward',
+    template: '%s | Forward',
+  },
+  description:
+    "Keep your team's work in one spot. No more digging through chats or docs, everything lives here, clear and simple",
   icons: [
     { rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg', sizes: 'any' },
     { rel: 'icon', type: 'image/x-icon', url: '/favicon.ico', sizes: '48x48' },
