@@ -23,7 +23,7 @@ export default function SecurityDetailedSection() {
             <div className="h-px w-full bg-neutral-200" />
             <div className="h-px w-full bg-neutral-200 @2xl:hidden" />
           </div>
-          <ul className="flex w-full max-w-5xl flex-col divide-neutral-200 rounded-lg border border-neutral-200 bg-white @max-2xl:divide-y @2xl:flex-row @2xl:divide-x">
+          <ul className="flex w-full max-w-5xl flex-col divide-dashed divide-neutral-200 rounded-lg border border-neutral-200 bg-white @max-2xl:divide-y @2xl:flex-row @2xl:divide-x">
             <li className="flex w-full items-center justify-center p-4 @2xl:p-8">
               <AicpaSoc2Certificate />
             </li>
