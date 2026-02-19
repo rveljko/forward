@@ -15,7 +15,14 @@ export default function Header() {
       className="fixed top-0 z-100 h-(--header-height) w-full border-b border-b-neutral-200 bg-white"
     >
       <div className="mx-auto flex max-w-285.5 justify-between px-4 py-2">
-        <Link href="/" className="flex">
+        <Link
+          href="/"
+          className="flex"
+          onClick={() => {
+            if (!isHamburgerMenuOpen) return
+            setIsHamburgerMenuOpen(false)
+          }}
+        >
           <Logo />
         </Link>
         <Button
@@ -46,6 +53,10 @@ export default function Header() {
               <Link
                 href="/"
                 className="flex px-2 text-black transition-[background-color,scale] hover:bg-neutral-100 max-md:border-b max-md:border-b-neutral-200 max-md:py-4 max-md:text-xl max-md:font-medium md:h-full md:items-center md:rounded-sm md:active:scale-99 pointer-coarse:active:bg-neutral-100"
+                onClick={() => {
+                  if (!isHamburgerMenuOpen) return
+                  setIsHamburgerMenuOpen(false)
+                }}
               >
                 Products
               </Link>
@@ -54,6 +65,10 @@ export default function Header() {
               <Link
                 href="/integrations"
                 className="flex px-2 text-black transition-[background-color,scale] hover:bg-neutral-100 max-md:border-b max-md:border-b-neutral-200 max-md:py-4 max-md:text-xl max-md:font-medium md:h-full md:items-center md:rounded-sm md:active:scale-99 pointer-coarse:active:bg-neutral-100"
+                onClick={() => {
+                  if (!isHamburgerMenuOpen) return
+                  setIsHamburgerMenuOpen(false)
+                }}
               >
                 Integrations
               </Link>
@@ -62,6 +77,10 @@ export default function Header() {
               <Link
                 href="/"
                 className="flex px-2 text-black transition-[background-color,scale] hover:bg-neutral-100 max-md:border-b max-md:border-b-neutral-200 max-md:py-4 max-md:text-xl max-md:font-medium md:h-full md:items-center md:rounded-sm md:active:scale-99 pointer-coarse:active:bg-neutral-100"
+                onClick={() => {
+                  if (!isHamburgerMenuOpen) return
+                  setIsHamburgerMenuOpen(false)
+                }}
               >
                 Customers
               </Link>
