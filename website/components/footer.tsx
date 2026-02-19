@@ -23,7 +23,7 @@ export default function Footer() {
             <Link href="/">Drafts</Link>
           </li>
           <li>
-            <Link href="/">Integrations</Link>
+            <Link href="/integrations">Integrations</Link>
           </li>
         </ul>
         <ul className="flex flex-col gap-1">

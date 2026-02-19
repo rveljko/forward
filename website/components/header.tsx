@@ -52,7 +52,7 @@ export default function Header() {
             </li>
             <li className="md:h-full">
               <Link
-                href="/"
+                href="/integrations"
                 className="flex px-2 text-black transition-[background-color,scale] hover:bg-neutral-100 max-md:border-b max-md:border-b-neutral-200 max-md:py-4 max-md:text-xl max-md:font-medium md:h-full md:items-center md:rounded-sm md:active:scale-99 pointer-coarse:active:bg-neutral-100"
               >
                 Integrations
