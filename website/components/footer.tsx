@@ -34,7 +34,7 @@ export default function Footer() {
             <Link href="/security">Security</Link>
           </li>
           <li>
-            <Link href="/">Customers</Link>
+            <Link href="/customers">Customers</Link>
           </li>
         </ul>
         <ul className="flex flex-col gap-1">
