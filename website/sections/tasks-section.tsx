@@ -139,7 +139,7 @@ function DashboardPanel() {
         </div>
         <div
           aria-label="Dashboard Task page"
-          className="bg-dashboard-background pointer-events-none h-144 w-full rounded-b-lg border border-t-0 border-neutral-200 p-4 select-none"
+          className="bg-dashboard-background pointer-events-none relative isolate h-144 w-full rounded-b-lg border border-t-0 border-neutral-200 p-4 select-none after:absolute after:-inset-4 after:top-0 after:-z-1 after:bg-white after:mask-linear-0 after:mask-linear-from-black after:mask-linear-to-transparent"
         >
           <div
             aria-hidden
