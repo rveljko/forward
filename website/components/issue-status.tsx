@@ -1,5 +1,6 @@
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
+import CircleFullIcon from '@/icons/circle-full-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
 import CircleThreeQuartersIcon from '@/icons/circle-three-quarters-icon'
 import { IssueStatusLabel } from '@/utils/types'
@@ -31,5 +32,7 @@ function getStatusIcon(status: IssueStatusLabel) {
       return <CircleHalfIcon />
     case 'in-review':
       return <CircleThreeQuartersIcon />
+    case 'finished':
+      return <CircleFullIcon />
   }
 }

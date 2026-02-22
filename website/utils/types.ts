@@ -1,4 +1,9 @@
-export type IssueStatusLabel = 'backlog' | 'todo' | 'in-progress' | 'in-review'
+export type IssueStatusLabel =
+  | 'backlog'
+  | 'todo'
+  | 'in-progress'
+  | 'in-review'
+  | 'finished'
 
 export type IssuePriorityLabel = 'medium' | 'high'
 
