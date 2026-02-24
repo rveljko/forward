@@ -1,16 +1,21 @@
 import IssueItem from '@/components/issue-item'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
+import ArrowLeftIcon from '@/icons/arrow-left-icon'
 import ArrowRightIcon from '@/icons/arrow-right-icon'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
+import ClickIcon from '@/icons/click-icon'
 import CloseIcon from '@/icons/close-icon'
 import DesignIssueTagIcon from '@/icons/design-issue-tag-icon'
+import EditIcon from '@/icons/edit-icon'
+import ExternalLinkIcon from '@/icons/external-link-icon'
 import FilterIcon from '@/icons/filters-icon'
 import PlusIcon from '@/icons/plus-icon'
 import PriorityNoPriorityIcon from '@/icons/priority-no-priority-icon'
+import TrashIcon from '@/icons/trash-icon'
 import Section from '@/sections/section'
 
 export default function IssuesSection() {
@@ -153,7 +158,7 @@ function DashboardPanel() {
           >
             <div className="absolute inset-0 rounded-b-lg bg-black/5" />
             <div className="absolute inset-4 flex flex-col items-center justify-end md:justify-start">
-              <div className="w-full max-w-100 rounded-lg bg-white shadow-sm ring ring-black/10">
+              <div className="hidden w-full max-w-100 rounded-lg bg-white shadow-sm ring ring-black/10">
                 <div className="p-4">
                   <div className="flex justify-between gap-2">
                     <span className="text-dashboard-neutral-600 inline-block text-lg">
@@ -199,6 +204,67 @@ function DashboardPanel() {
                     </span>
                     <span className="bg-dashboard-brand-500 flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap text-white shadow-sm">
                       Create New Issue
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="w-full max-w-100 rounded-lg bg-white p-4 shadow-sm ring ring-black/10">
+                <div className="mb-4 flex items-center justify-between">
+                  <span className="flex w-max items-center gap-1 rounded-md text-sm text-nowrap">
+                    <ArrowLeftIcon />
+                    Back
+                  </span>
+                  <span className="ml-auto">
+                    <CloseIcon />
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+                  <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+                    <div className="mb-1 flex items-center gap-1">
+                      <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
+                        <ClickIcon />
+                      </span>
+                      <span className="text-sm font-medium">Open</span>
+                    </div>
+                    <span className="text-dashboard-neutral-600 block text-xs">
+                      View issue details
+                    </span>
+                  </div>
+                  <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+                    <div className="mb-1 flex items-center gap-1">
+                      <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
+                        <ExternalLinkIcon />
+                      </span>
+                      <span className="text-sm font-medium">
+                        Open in new tab
+                      </span>
+                    </div>
+                    <span className="text-dashboard-neutral-600 block text-xs">
+                      Open issue separately
+                    </span>
+                  </div>
+                  <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+                    <div className="mb-1 flex items-center gap-1">
+                      <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
+                        <EditIcon />
+                      </span>
+                      <span className="text-sm font-medium">Rename</span>
+                    </div>
+                    <span className="text-dashboard-neutral-600 block text-xs">
+                      Edit issue title
+                    </span>
+                  </div>
+                  <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+                    <div className="mb-1 flex items-center gap-1">
+                      <span className="flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
+                        <TrashIcon />
+                      </span>
+                      <span className="text-sm font-medium text-red-500">
+                        Delete
+                      </span>
+                    </div>
+                    <span className="block text-xs text-red-400">
+                      Remove issue permanently
                     </span>
                   </div>
                 </div>
