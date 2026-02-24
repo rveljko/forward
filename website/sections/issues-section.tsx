@@ -148,6 +148,7 @@ function DashboardPanel() {
             aria-hidden
             className="size-full overflow-hidden rounded-lg border border-black/10 bg-white"
           >
+            <div className="absolute inset-0 rounded-b-lg bg-black/5" />
             <div className="border-b border-b-black/10 p-4 text-sm font-medium">
               Issues
             </div>
