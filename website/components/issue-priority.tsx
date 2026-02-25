@@ -1,5 +1,6 @@
 import PriorityHighIcon from '@/icons/priority-high-icon'
 import PriorityMediumIcon from '@/icons/priority-medium-icon'
+import PriorityNoPriorityIcon from '@/icons/priority-no-priority-icon'
 import { IssuePriorityLabel } from '@/utils/types'
 import { cn } from '@/utils/utils'
 
@@ -21,6 +22,8 @@ export default function IssuePriority({
 
 function getPriorityIcon(priority: IssuePriorityLabel) {
   switch (priority) {
+    case 'no-priority':
+      return <PriorityNoPriorityIcon />
     case 'medium':
       return <PriorityMediumIcon />
     case 'high':

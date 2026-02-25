@@ -295,12 +295,21 @@ function DashboardPanel() {
               </div>
               <PlusIcon />
             </div>
-            <IssueItem
-              title="Implement Notification System"
-              status="backlog"
-              priority="high"
-              tag="development"
-            />
+            <div className="divide-y divide-black/10">
+              <IssueItem
+                title="Implement Notification System"
+                status="backlog"
+                priority="high"
+                tag="development"
+              />
+              <IssueItem
+                title="Add Canceled Status"
+                status="backlog"
+                priority="no-priority"
+                tag="design"
+                className="hidden"
+              />
+            </div>
             <div className="flex items-center justify-between bg-black/10 p-4">
               <div className="flex items-center gap-1 text-sm font-medium">
                 <CircleEmptyIcon />
