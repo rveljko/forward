@@ -1,3 +1,6 @@
+'use client'
+
+import Cursor from '@/components/cursor'
 import IssueItem from '@/components/issue-item'
 import ArrowLeftIcon from '@/icons/arrow-left-icon'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
@@ -13,8 +16,34 @@ import FilterIcon from '@/icons/filters-icon'
 import PlusIcon from '@/icons/plus-icon'
 import PriorityNoPriorityIcon from '@/icons/priority-no-priority-icon'
 import TrashIcon from '@/icons/trash-icon'
+import { useAnimate } from 'motion/react'
+import { useEffect } from 'react'
 
 export default function IssuesPageDashboard() {
+  const [scope, animate] = useAnimate()
+
+  async function createAndDeleteIssueAnimation() {
+    await animate('[data-element=cursor]', {
+      transform: 'translate3d(calc(50% - 2.75rem), -8.125rem, 0)',
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    animate('[data-element=overlay]', {
+      opacity: 1,
+    })
+    await animate('[data-element=create-new-issue-modal]', {
+      opacity: 1,
+    })
+  }
+
+  useEffect(() => {
+    createAndDeleteIssueAnimation()
+  }, [])
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center gap-1 rounded-t-lg border border-neutral-200 bg-white px-2 py-1.5">
@@ -23,6 +52,7 @@ export default function IssuesPageDashboard() {
         <div className="size-2 rounded-full bg-neutral-200" />
       </div>
       <div
+        ref={scope}
         aria-label="Dashboard Issues page"
         className="bg-dashboard-background pointer-events-none relative isolate h-144 w-full rounded-b-lg border border-t-0 border-neutral-200 p-4 select-none after:absolute after:-inset-4 after:top-0 after:-z-1 after:bg-white after:mask-linear-0 after:mask-linear-from-black after:mask-linear-to-transparent"
       >
@@ -30,7 +60,18 @@ export default function IssuesPageDashboard() {
           aria-hidden
           className="size-full overflow-hidden rounded-lg border border-black/10 bg-white"
         >
-          <div className="absolute inset-0 rounded-b-lg bg-black/5 opacity-0" />
+          <div className="absolute inset-0 overflow-hidden">
+            <div
+              data-element="cursor"
+              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left"
+            >
+              <Cursor />
+            </div>
+          </div>
+          <div
+            data-element="overlay"
+            className="absolute inset-0 rounded-b-lg bg-black/5 opacity-0"
+          />
           <div className="absolute inset-4">
             <CreateNewIssueModal />
             <IssueActionsModal />
@@ -117,7 +158,10 @@ export default function IssuesPageDashboard() {
 
 function CreateNewIssueModal() {
   return (
-    <div className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0">
+    <div
+      data-element="create-new-issue-modal"
+      className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
+    >
       <div className="p-4">
         <div className="flex justify-between gap-2">
           <span className="text-dashboard-neutral-600 inline-block text-lg">
