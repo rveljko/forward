@@ -16,7 +16,7 @@ import FilterIcon from '@/icons/filters-icon'
 import PlusIcon from '@/icons/plus-icon'
 import PriorityNoPriorityIcon from '@/icons/priority-no-priority-icon'
 import TrashIcon from '@/icons/trash-icon'
-import { useAnimate } from 'motion/react'
+import { motion, stagger, useAnimate } from 'motion/react'
 import { useEffect } from 'react'
 
 export default function IssuesPageDashboard() {
@@ -38,6 +38,78 @@ export default function IssuesPageDashboard() {
     await animate('[data-element=create-new-issue-modal]', {
       opacity: 1,
     })
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(0, var(--translate-y-from-backlog-button-to-title), 0)',
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=issue-title-placeholder]', {
+      display: 'none',
+    })
+    animate(
+      '[data-element=blinking-pipe]',
+      { opacity: [0, 1, 0] },
+      { repeat: Infinity, duration: 1 }
+    )
+    await animate(
+      '[data-element=new-issue-title-letter]',
+      { display: 'inline-block' },
+      { delay: stagger(0.1) }
+    )
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(15%, var(--translate-y-from-title-to-create-issue-button), 0)',
+    })
+    await animate('[data-element=create-issue-button]', {
+      backgroundColor: 'var(--color-dashboard-brand-600)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=create-issue-button]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=create-issue-button]', {
+      scale: 1,
+    })
+    animate('[data-element=create-issue-button]', {
+      backgroundColor: 'var(--color-dashboard-brand-500)',
+    })
+    animate('[data-element=overlay]', {
+      opacity: 0,
+    })
+    animate('[data-element=create-new-issue-modal]', {
+      opacity: 0,
+    })
+    animate(
+      '[data-element=old-backlog-count]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate(
+      '[data-element=new-backlog-count]',
+      {
+        display: 'block',
+      },
+      { duration: 0 }
+    )
+    await animate(
+      '[data-element=new-issue]',
+      {
+        display: 'flex',
+      },
+      { duration: 0 }
+    )
   }
 
   useEffect(() => {
@@ -63,7 +135,7 @@ export default function IssuesPageDashboard() {
           <div className="absolute inset-0 overflow-hidden">
             <div
               data-element="cursor"
-              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left"
+              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)]"
             >
               <Cursor />
             </div>
@@ -95,7 +167,12 @@ export default function IssuesPageDashboard() {
             <div className="flex items-center gap-1 text-sm font-medium">
               <CircleDashedIcon />
               Backlog
-              <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
+              <span className="text-dashboard-neutral-600 ml-1 text-sm">
+                <span data-element="old-backlog-count">1</span>
+                <span data-element="new-backlog-count" className="hidden">
+                  2
+                </span>
+              </span>
             </div>
             <PlusIcon />
           </div>
@@ -112,6 +189,7 @@ export default function IssuesPageDashboard() {
               priority="no-priority"
               tag="design"
               className="hidden"
+              data-element="new-issue"
             />
           </div>
           <div className="flex items-center justify-between bg-black/10 p-4">
@@ -164,10 +242,37 @@ function CreateNewIssueModal() {
     >
       <div className="p-4">
         <div className="flex justify-between gap-2">
-          <span className="text-dashboard-neutral-600 inline-block text-lg">
-            Issue title
+          <div className="h-7">
+            <span
+              data-element="issue-title-placeholder"
+              className="text-dashboard-neutral-600 text-lg"
+            >
+              Issue title
+            </span>
+            <span
+              data-element="new-issue-title"
+              className="line-clamp-1 text-lg"
+            >
+              {'Add Canceled Status'.split('').map((letter, index) => (
+                <motion.span
+                  key={index}
+                  data-element="new-issue-title-letter"
+                  initial={{ display: 'none' }}
+                >
+                  {letter === ' ' ? '\u00A0' : letter}
+                </motion.span>
+              ))}
+              <div
+                data-element="blinking-pipe"
+                className="inline-flex h-full w-max items-center opacity-0"
+              >
+                <span className="inline-block h-4 w-px bg-black" />
+              </div>
+            </span>
+          </div>
+          <span className="ml-auto">
+            <CloseIcon />
           </span>
-          <CloseIcon />
         </div>
         <div className="h-18 w-full">
           <span className="text-dashboard-neutral-600 text-sm">
@@ -205,7 +310,10 @@ function CreateNewIssueModal() {
           <span className="flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap shadow-sm ring ring-black/10">
             Cancel
           </span>
-          <span className="bg-dashboard-brand-500 flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap text-white shadow-sm">
+          <span
+            data-element="create-issue-button"
+            className="bg-dashboard-brand-500 flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap text-white shadow-sm"
+          >
             Create New Issue
           </span>
         </div>
