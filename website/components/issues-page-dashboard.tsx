@@ -171,6 +171,82 @@ export default function IssuesPageDashboard() {
       },
       { duration: 0 }
     )
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(24%, var(--translate-y-from-delete-issue-panel-card-to-delete-issue-button), 0)',
+    })
+    await animate('[data-element=delete-issue-button]', {
+      backgroundColor: 'var(--color-red-600)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=delete-issue-button]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=delete-issue-button]', {
+      scale: 1,
+    })
+    animate('[data-element=delete-issue-button]', {
+      backgroundColor: 'var(--color-red-500)',
+    })
+    animate('[data-element=overlay]', {
+      opacity: 0,
+    })
+    await animate('[data-element=issue-actions-modal]', {
+      opacity: 0,
+    })
+    animate(
+      '[data-element=back-button]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate(
+      '[data-element=delete-panel]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate(
+      '[data-element=menu-panel]',
+      {
+        display: 'grid',
+      },
+      { duration: 0 }
+    )
+    animate(
+      '[data-element=new-backlog-count]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate(
+      '[data-element=old-backlog-count]',
+      {
+        display: 'block',
+      },
+      { duration: 0 }
+    )
+    animate('[data-element=new-issue]', {
+      backgroundColor: 'white',
+    })
+    animate(
+      '[data-element=new-issue]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    await animate('[data-element=cursor]', {
+      transform: 'translate3d(0, 0, 0)',
+    })
   }
 
   useEffect(() => {
@@ -196,7 +272,7 @@ export default function IssuesPageDashboard() {
           <div className="absolute inset-0 overflow-hidden">
             <div
               data-element="cursor"
-              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(55)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(-30)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)]"
+              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-delete-issue-panel-card-to-delete-issue-button:--spacing(60)] [--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(55)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-delete-issue-panel-card-to-delete-issue-button:--spacing(-24)] md:[--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(-30)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)]"
             >
               <Cursor />
             </div>
@@ -469,8 +545,11 @@ function IssueActionsModal() {
           <span className="flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap shadow-sm ring ring-black/10">
             Cancel
           </span>
-          <span className="flex w-max items-center rounded-md bg-red-500 px-2 py-1.5 text-sm text-nowrap text-black shadow-sm">
-            Delete
+          <span
+            data-element="delete-issue-button"
+            className="flex w-max items-center rounded-md bg-red-500 px-2 py-1.5 text-sm text-nowrap text-black shadow-sm"
+          >
+            Delete Issue
           </span>
         </div>
       </div>
