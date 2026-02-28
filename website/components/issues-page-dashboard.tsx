@@ -348,9 +348,9 @@ function IssueActionsModal() {
   return (
     <div
       data-element="issue-actions-modal"
-      className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white p-4 opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
+      className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
     >
-      <div className="mb-4 flex items-center justify-between">
+      <div className="flex items-center justify-between p-4 pb-0">
         <span className="flex w-max items-center gap-1 rounded-md text-sm text-nowrap">
           <ArrowLeftIcon />
           Back
@@ -359,7 +359,7 @@ function IssueActionsModal() {
           <CloseIcon />
         </span>
       </div>
-      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2">
         <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
@@ -402,6 +402,27 @@ function IssueActionsModal() {
           </div>
           <span className="block text-xs text-red-400">
             Remove issue permanently
+          </span>
+        </div>
+      </div>
+      <div className="hidden">
+        <div className="p-4">
+          <span className="mb-2 flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
+            <TrashIcon />
+          </span>
+          <span className="mb-1 block text-sm">
+            Confirm <strong>Add Canceled Status</strong> Deletion
+          </span>
+          <span className="text-dashboard-neutral-600 block text-xs">
+            Are you sure you want to delete?
+          </span>
+        </div>
+        <div className="flex justify-end gap-2 border-t border-t-black/10 p-4">
+          <span className="flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap shadow-sm ring ring-black/10">
+            Cancel
+          </span>
+          <span className="flex w-max items-center rounded-md bg-red-500 px-2 py-1.5 text-sm text-nowrap text-black shadow-sm">
+            Delete
           </span>
         </div>
       </div>
