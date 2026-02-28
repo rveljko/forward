@@ -259,6 +259,7 @@ export default function IssuesPageDashboard() {
       },
       { duration: 0 }
     )
+    createAndDeleteIssueAnimation()
   }
 
   useEffect(() => {
