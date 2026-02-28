@@ -132,6 +132,45 @@ export default function IssuesPageDashboard() {
     await animate('[data-element=issue-actions-modal]', {
       opacity: 1,
     })
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(10%, var(--translate-y-from-issue-actions-button-to-delete-issue-panel-card), 0)',
+    })
+    await animate('[data-element=delete-issue-panel-card]', {
+      borderColor: 'hsl(0 0% 80%)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=delete-issue-panel-card]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=delete-issue-panel-card]', {
+      scale: 1,
+    })
+    animate(
+      '[data-element=menu-panel]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate('[data-element=delete-issue-panel-card]', {
+      borderColor: 'hsl(0 0% 90%)',
+    })
+    animate('[data-element=back-button]', {
+      display: 'flex',
+    })
+    await animate(
+      '[data-element=delete-panel]',
+      {
+        display: 'block',
+      },
+      { duration: 0 }
+    )
   }
 
   useEffect(() => {
@@ -157,7 +196,7 @@ export default function IssuesPageDashboard() {
           <div className="absolute inset-0 overflow-hidden">
             <div
               data-element="cursor"
-              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)]"
+              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(55)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(-30)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)]"
             >
               <Cursor />
             </div>
@@ -351,7 +390,10 @@ function IssueActionsModal() {
       className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
     >
       <div className="flex items-center justify-between p-4 pb-0">
-        <span className="flex w-max items-center gap-1 rounded-md text-sm text-nowrap">
+        <span
+          data-element="back-button"
+          className="hidden w-max items-center gap-1 rounded-md text-sm text-nowrap"
+        >
           <ArrowLeftIcon />
           Back
         </span>
@@ -359,8 +401,11 @@ function IssueActionsModal() {
           <CloseIcon />
         </span>
       </div>
-      <div className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2">
-        <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+      <div
+        data-element="menu-panel"
+        className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2"
+      >
+        <div className="w-full rounded-lg border border-black/10 p-2">
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
               <ClickIcon />
@@ -371,7 +416,7 @@ function IssueActionsModal() {
             View issue details
           </span>
         </div>
-        <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+        <div className="w-full rounded-lg border border-black/10 p-2">
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
               <ExternalLinkIcon />
@@ -382,7 +427,7 @@ function IssueActionsModal() {
             Open issue separately
           </span>
         </div>
-        <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+        <div className="w-full rounded-lg border border-black/10 p-2">
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
               <EditIcon />
@@ -393,7 +438,10 @@ function IssueActionsModal() {
             Edit issue title
           </span>
         </div>
-        <div className="w-full rounded-lg p-2 inset-ring inset-ring-black/10">
+        <div
+          data-element="delete-issue-panel-card"
+          className="w-full rounded-lg border border-black/10 p-2"
+        >
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
               <TrashIcon />
@@ -405,7 +453,7 @@ function IssueActionsModal() {
           </span>
         </div>
       </div>
-      <div className="hidden">
+      <div data-element="delete-panel" className="hidden">
         <div className="p-4">
           <span className="mb-2 flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
             <TrashIcon />
