@@ -90,6 +90,21 @@ export default function IssuesPageDashboard() {
       opacity: 0,
     })
     animate(
+      '[data-element=issue-title-placeholder]',
+      {
+        display: 'inline',
+      },
+      { duration: 0 }
+    )
+    animate('[data-element=blinking-pipe]', { opacity: 0 }, { duration: 0 })
+    animate(
+      '[data-element=new-issue-title-letter]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate(
       '[data-element=old-backlog-count]',
       {
         display: 'none',
