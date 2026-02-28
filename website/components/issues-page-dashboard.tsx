@@ -252,16 +252,13 @@ export default function IssuesPageDashboard() {
     animate('[data-element=new-issue]', {
       backgroundColor: 'white',
     })
-    animate(
+    await animate(
       '[data-element=new-issue]',
       {
         display: 'none',
       },
       { duration: 0 }
     )
-    await animate('[data-element=cursor]', {
-      transform: 'translate3d(0, 0, 0)',
-    })
   }
 
   useEffect(() => {
