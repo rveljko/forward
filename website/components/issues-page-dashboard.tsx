@@ -285,7 +285,7 @@ export default function IssuesPageDashboard() {
           <div className="absolute inset-0 overflow-hidden">
             <div
               data-element="cursor"
-              className="absolute top-1/2 left-1/2 z-10 size-full origin-top-left [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-delete-issue-panel-card-to-delete-issue-button:--spacing(60)] [--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(55)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-delete-issue-panel-card-to-delete-issue-button:--spacing(-24)] md:[--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(-30)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)]"
+              className="absolute top-1/2 left-1/2 z-10 size-full [--translate-y-from-backlog-button-to-title:--spacing(15)] [--translate-y-from-delete-issue-panel-card-to-delete-issue-button:--spacing(60)] [--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(55)] [--translate-y-from-title-to-create-issue-button:--spacing(60)] md:[--translate-y-from-backlog-button-to-title:--spacing(-60)] md:[--translate-y-from-delete-issue-panel-card-to-delete-issue-button:--spacing(-24)] md:[--translate-y-from-issue-actions-button-to-delete-issue-panel-card:--spacing(-30)] md:[--translate-y-from-title-to-create-issue-button:--spacing(-15)] [&_svg]:origin-top-left"
             >
               <Cursor />
             </div>
