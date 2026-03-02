@@ -326,7 +326,7 @@ export default function IssuesPageDashboard() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-black/10">
+          <div className="divide-y divide-black/10 last:border-b last:border-b-black/10">
             <IssueItem
               title="Implement Notification System"
               status="backlog"
@@ -350,7 +350,7 @@ export default function IssuesPageDashboard() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-black/10">
+          <div className="divide-y divide-black/10 last:border-b last:border-b-black/10">
             <IssueItem
               title="Create and Report Issues"
               status="todo"
@@ -372,12 +372,14 @@ export default function IssuesPageDashboard() {
             </div>
             <PlusIcon />
           </div>
-          <IssueItem
-            title="Integrate With Other Tools"
-            status="in-progress"
-            priority="high"
-            tag="development"
-          />
+          <div className="divide-y divide-black/10 last:border-b last:border-b-black/10">
+            <IssueItem
+              title="Integrate With Other Tools"
+              status="in-progress"
+              priority="high"
+              tag="development"
+            />
+          </div>
         </div>
       </div>
     </div>
