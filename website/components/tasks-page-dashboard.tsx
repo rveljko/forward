@@ -11,7 +11,7 @@ import EditIcon from '@/icons/edit-icon'
 import FilterIcon from '@/icons/filters-icon'
 import PlusIcon from '@/icons/plus-icon'
 import TrashIcon from '@/icons/trash-icon'
-import { useAnimate } from 'motion/react'
+import { motion, stagger, useAnimate } from 'motion/react'
 import { useEffect } from 'react'
 
 export default function TasksPageDashboard() {
@@ -45,6 +45,79 @@ export default function TasksPageDashboard() {
     await animate('[data-element=create-new-task-modal]', {
       opacity: 1,
     })
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(0, var(--translate-y-from-open-create-new-task-modal-button-to-title), 0)',
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=task-title-placeholder]', {
+      display: 'none',
+    })
+    animate(
+      '[data-element=blinking-pipe]',
+      { opacity: [0, 1, 0] },
+      { repeat: Infinity, duration: 1 }
+    )
+    await animate(
+      '[data-element=new-task-title-letter]',
+      { display: 'inline-block' },
+      { delay: stagger(0.1) }
+    )
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(15%, var(--translate-y-from-title-to-create-new-task-button), 0)',
+    })
+    await animate('[data-element=create-new-task-button]', {
+      backgroundColor: 'var(--color-dashboard-brand-600)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=create-new-task-button]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=create-new-task-button]', {
+      scale: 1,
+    })
+    animate('[data-element=create-new-task-button]', {
+      backgroundColor: 'var(--color-dashboard-brand-500)',
+    })
+    animate('[data-element=overlay]', {
+      opacity: 0,
+    })
+    animate('[data-element=create-new-task-modal]', {
+      opacity: 0,
+    })
+    animate(
+      '[data-element=task-title-placeholder]',
+      {
+        display: 'inline',
+      },
+      { duration: 0 }
+    )
+    animate('[data-element=blinking-pipe]', { opacity: 0 }, { duration: 0 })
+    animate(
+      '[data-element=new-task-title-letter]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    await animate(
+      '[data-element=new-task]',
+      {
+        display: 'flex',
+      },
+      { duration: 0 }
+    )
   }
 
   useEffect(() => {
@@ -70,7 +143,7 @@ export default function TasksPageDashboard() {
           <div className="absolute inset-0 overflow-hidden">
             <div
               data-element="cursor"
-              className="absolute top-1/2 left-1/2 z-10 size-full [&_svg]:origin-top-left"
+              className="absolute top-1/2 left-1/2 z-10 size-full [--translate-y-from-open-create-new-task-modal-button-to-title:--spacing(44)] [--translate-y-from-title-to-create-new-task-button:--spacing(60)] md:[--translate-y-from-open-create-new-task-modal-button-to-title:--spacing(-60)] md:[--translate-y-from-title-to-create-new-task-button:--spacing(-44)] [&_svg]:origin-top-left"
             >
               <Cursor />
             </div>
@@ -105,6 +178,11 @@ export default function TasksPageDashboard() {
               Create New Task
             </span>
           </div>
+          <TaskItem
+            task="Be happy and positive"
+            className="hidden"
+            data-element="new-task"
+          />
           {tasks.map((task) => (
             <TaskItem key={task} task={task} />
           ))}
@@ -121,7 +199,31 @@ function CreateNewTaskModal() {
       className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
     >
       <div className="flex justify-between gap-2 p-4">
-        <span className="text-dashboard-neutral-600 text-lg">Task title</span>
+        <div className="h-7">
+          <span
+            data-element="task-title-placeholder"
+            className="text-dashboard-neutral-600 text-lg"
+          >
+            Task title
+          </span>
+          <span data-element="new-task-title" className="line-clamp-1 text-lg">
+            {'Be happy and positive'.split('').map((letter, index) => (
+              <motion.span
+                key={index}
+                data-element="new-task-title-letter"
+                initial={{ display: 'none' }}
+              >
+                {letter === ' ' ? '\u00A0' : letter}
+              </motion.span>
+            ))}
+            <div
+              data-element="blinking-pipe"
+              className="inline-flex h-full w-max items-center opacity-0"
+            >
+              <span className="inline-block h-4 w-px bg-black" />
+            </div>
+          </span>
+        </div>
         <span className="ml-auto">
           <CloseIcon />
         </span>
@@ -142,7 +244,10 @@ function CreateNewTaskModal() {
           <span className="flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap shadow-sm ring ring-black/10">
             Cancel
           </span>
-          <span className="bg-dashboard-brand-500 flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap text-white shadow-sm">
+          <span
+            data-element="create-new-task-button"
+            className="bg-dashboard-brand-500 flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap text-white shadow-sm"
+          >
             Create New Task
           </span>
         </div>
