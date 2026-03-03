@@ -237,6 +237,7 @@ export default function TasksPageDashboard() {
       },
       { duration: 0 }
     )
+    createAndDeleteTaskAnimation()
   }
 
   useEffect(() => {
