@@ -310,6 +310,27 @@ function TaskActionsModal() {
           </span>
         </div>
       </div>
+      <div className="hidden">
+        <div className="p-4">
+          <span className="mb-2 flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
+            <TrashIcon />
+          </span>
+          <span className="mb-1 block text-sm">
+            Confirm <strong>Be happy and positive</strong> Deletion
+          </span>
+          <span className="text-dashboard-neutral-600 block text-xs">
+            Are you sure you want to delete?
+          </span>
+        </div>
+        <div className="flex justify-end gap-2 border-t border-t-black/10 p-4">
+          <span className="flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap shadow-sm ring ring-black/10">
+            Cancel
+          </span>
+          <span className="flex w-max items-center rounded-md bg-red-500 px-2 py-1.5 text-sm text-nowrap text-black shadow-sm">
+            Delete Task
+          </span>
+        </div>
+      </div>
     </div>
   )
 }
