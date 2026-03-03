@@ -3,6 +3,7 @@
 import Cursor from '@/components/cursor'
 import TaskItem from '@/components/task-item'
 import { tasks } from '@/data/tasks'
+import ArrowLeftIcon from '@/icons/arrow-left-icon'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import ClipboardIcon from '@/icons/clipboard-icon'
 import CloseIcon from '@/icons/close-icon'
@@ -140,6 +141,102 @@ export default function TasksPageDashboard() {
     await animate('[data-element=task-actions-modal]', {
       opacity: 1,
     })
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(10%, var(--translate-y-from-task-actions-button-to-delete-task-panel-card), 0)',
+    })
+    await animate('[data-element=delete-task-panel-card]', {
+      borderColor: 'hsl(0 0% 80%)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=delete-task-panel-card]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=delete-task-panel-card]', {
+      scale: 1,
+    })
+    animate(
+      '[data-element=menu-panel]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate('[data-element=delete-task-panel-card]', {
+      borderColor: 'hsl(0 0% 90%)',
+    })
+    animate('[data-element=back-button]', {
+      display: 'flex',
+    })
+    await animate(
+      '[data-element=delete-panel]',
+      {
+        display: 'block',
+      },
+      { duration: 0 }
+    )
+    await animate('[data-element=cursor]', {
+      transform:
+        'translate3d(24%, var(--translate-y-from-delete-task-panel-card-to-delete-task-button), 0)',
+    })
+    await animate('[data-element=delete-task-button]', {
+      backgroundColor: 'var(--color-red-600)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=delete-task-button]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=delete-task-button]', {
+      scale: 1,
+    })
+    animate('[data-element=delete-task-button]', {
+      backgroundColor: 'var(--color-red-500)',
+    })
+    animate('[data-element=overlay]', {
+      opacity: 0,
+    })
+    animate(
+      '[data-element=new-task]',
+      {
+        backgroundColor: 'transparent',
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    await animate('[data-element=task-actions-modal]', {
+      opacity: 0,
+    })
+    animate(
+      '[data-element=back-button]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    animate(
+      '[data-element=delete-panel]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    await animate(
+      '[data-element=menu-panel]',
+      {
+        display: 'grid',
+      },
+      { duration: 0 }
+    )
   }
 
   useEffect(() => {
@@ -165,7 +262,7 @@ export default function TasksPageDashboard() {
           <div className="absolute inset-0 overflow-hidden">
             <div
               data-element="cursor"
-              className="absolute top-1/2 left-1/2 z-10 size-full [--translate-y-from-open-create-new-task-modal-button-to-title:--spacing(44)] [--translate-y-from-title-to-create-new-task-button:--spacing(60)] md:[--translate-y-from-open-create-new-task-modal-button-to-title:--spacing(-60)] md:[--translate-y-from-title-to-create-new-task-button:--spacing(-44)] [&_svg]:origin-top-left"
+              className="absolute top-1/2 left-1/2 z-10 size-full [--translate-y-from-delete-task-panel-card-to-delete-task-button:--spacing(60)] [--translate-y-from-open-create-new-task-modal-button-to-title:--spacing(44)] [--translate-y-from-task-actions-button-to-delete-task-panel-card:--spacing(55)] [--translate-y-from-title-to-create-new-task-button:--spacing(60)] md:[--translate-y-from-delete-task-panel-card-to-delete-task-button:--spacing(-24)] md:[--translate-y-from-open-create-new-task-modal-button-to-title:--spacing(-60)] md:[--translate-y-from-task-actions-button-to-delete-task-panel-card:--spacing(-30)] md:[--translate-y-from-title-to-create-new-task-button:--spacing(-44)] [&_svg]:origin-top-left"
             >
               <Cursor />
             </div>
@@ -285,11 +382,21 @@ function TaskActionsModal() {
       className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
     >
       <div className="flex items-center justify-between p-4 pb-0">
+        <span
+          data-element="back-button"
+          className="hidden w-max items-center gap-1 rounded-md text-sm text-nowrap"
+        >
+          <ArrowLeftIcon />
+          Back
+        </span>
         <span className="ml-auto">
           <CloseIcon />
         </span>
       </div>
-      <div className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2">
+      <div
+        data-element="menu-panel"
+        className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2"
+      >
         <div className="w-full rounded-lg border border-black/10 p-2">
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
@@ -323,7 +430,10 @@ function TaskActionsModal() {
             Create task copy
           </span>
         </div>
-        <div className="w-full rounded-lg border border-black/10 p-2">
+        <div
+          data-element="delete-task-panel-card"
+          className="w-full rounded-lg border border-black/10 p-2"
+        >
           <div className="mb-1 flex items-center gap-1">
             <span className="flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
               <TrashIcon />
@@ -335,7 +445,7 @@ function TaskActionsModal() {
           </span>
         </div>
       </div>
-      <div className="hidden">
+      <div data-element="delete-panel" className="hidden">
         <div className="p-4">
           <span className="mb-2 flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
             <TrashIcon />
@@ -351,7 +461,10 @@ function TaskActionsModal() {
           <span className="flex w-max items-center rounded-md px-2 py-1.5 text-sm text-nowrap shadow-sm ring ring-black/10">
             Cancel
           </span>
-          <span className="flex w-max items-center rounded-md bg-red-500 px-2 py-1.5 text-sm text-nowrap text-black shadow-sm">
+          <span
+            data-element="delete-task-button"
+            className="flex w-max items-center rounded-md bg-red-500 px-2 py-1.5 text-sm text-nowrap text-black shadow-sm"
+          >
             Delete Task
           </span>
         </div>
