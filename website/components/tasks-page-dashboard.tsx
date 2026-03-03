@@ -118,6 +118,28 @@ export default function TasksPageDashboard() {
       },
       { duration: 0 }
     )
+    await animate('[data-element=cursor]', {
+      transform: 'translate3d(calc(50% - 2.75rem), -8.125rem, 0)',
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    animate('[data-element=overlay]', {
+      opacity: 1,
+    })
+    animate(
+      '[data-element=new-task]',
+      {
+        backgroundColor: 'hsl(0, 0%, 95%)',
+      },
+      { duration: 0 }
+    )
+    await animate('[data-element=task-actions-modal]', {
+      opacity: 1,
+    })
   }
 
   useEffect(() => {
@@ -258,7 +280,10 @@ function CreateNewTaskModal() {
 
 function TaskActionsModal() {
   return (
-    <div className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0">
+    <div
+      data-element="task-actions-modal"
+      className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
+    >
       <div className="flex items-center justify-between p-4 pb-0">
         <span className="ml-auto">
           <CloseIcon />
