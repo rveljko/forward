@@ -7,7 +7,7 @@ export type ActivePanelIndex = 0 | 1 | 2
 
 export default function DashboardControls() {
   const duration = 3000
-  const [activePanelIndex, setActivePanelIndex] = useState<ActivePanelIndex>(0)
+  const [activePanelIndex, setActivePanelIndex] = useState<ActivePanelIndex>(1)
   const intervalRef = useRef<NodeJS.Timeout>(null)
 
   useEffect(() => {
