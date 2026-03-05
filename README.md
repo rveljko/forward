@@ -9,7 +9,6 @@ A web-based SaaS for Issue Tracking & Project Management
 ## Table of Contents
 
 - [Features](#features)
-- [Tech Stack](#tech-stack)
 - [Setup and Installation Instructions](#setup-and-installation-instructions)
 - [License](#license)
 
@@ -42,15 +41,6 @@ https://github.com/user-attachments/assets/1b89e58d-d118-4064-9b2c-376b142a2397
 ### Customizing Preferences
 
 https://github.com/user-attachments/assets/560a9447-70d3-4921-9b00-347806a47ee0
-
-## Tech Stack
-
-This project is built with the following technologies:
-
-- **Framework:** React
-- **Language:** TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
 
 ## Setup and Installation Instructions
 
