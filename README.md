@@ -65,27 +65,20 @@ Follow these steps to get the project running locally:
    cd forward
    ```
 1. Navigate to the dashboard folder:
+
    ```bash
    cd dashboard
    ```
-1. Install dependencies:
+
+   - Follow installation guide in [Dashboard README](dashboard/README.md#setup-and-installation-instructions)
+
+1. Navigate to the website folder:
+
    ```bash
-   npm install
+   cd website
    ```
-1. Configure environment variable:
-   - Create a `.env` file with the following variables (you can create a free PostHog account and get your key and host at [PostHog Signup](https://us.posthog.com/signup)):
-     ```
-     VITE_PUBLIC_POSTHOG_KEY=
-     VITE_PUBLIC_POSTHOG_HOST=
-     ```
-1. Start the development server:
-   ```bash
-   npm run dev
-   ```
-1. Open your browser and navigate to:
-   ```
-   http://localhost:5173
-   ```
+
+   - Follow installation guide in [Website README](website/README.md#setup-and-installation-instructions)
 
 ## License
 
