@@ -89,4 +89,4 @@ Follow these steps to get the project running locally:
 
 ## License
 
-This project is licensed under the [Apache License 2.0](LICENSE). See the LICENSE file for more details.
+This project is licensed under the [Apache License 2.0](/LICENSE). See the LICENSE file for more details.
