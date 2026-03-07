@@ -49,6 +49,9 @@ export default function HeroSection() {
           docs, everything lives here, clear and simple
         </Section.Paragraph>
         <Button
+          href="https://dashboard-forward-demo-app.netlify.app/issues"
+          target="_blank"
+          rel="noopener noreferrer"
           variant="primary"
           size="large"
           rightIcon={<ChevronRightIcon />}

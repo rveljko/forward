@@ -88,6 +88,9 @@ export default function Header() {
           </ul>
         </nav>
         <Button
+          href="https://dashboard-forward-demo-app.netlify.app/issues"
+          target="_blank"
+          rel="noopener noreferrer"
           variant="primary"
           size="small"
           rightIcon={<ChevronRightIcon />}

@@ -14,13 +14,31 @@ export default function Footer() {
             <h4 className="text-neutral-600">Products</h4>
           </li>
           <li>
-            <Link href="/">Tasks</Link>
+            <Link
+              href="https://dashboard-forward-demo-app.netlify.app/tasks"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tasks
+            </Link>
           </li>
           <li>
-            <Link href="/">Issues</Link>
+            <Link
+              href="https://dashboard-forward-demo-app.netlify.app/issues"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Issues
+            </Link>
           </li>
           <li>
-            <Link href="/">Drafts</Link>
+            <Link
+              href="https://dashboard-forward-demo-app.netlify.app/drafts"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Drafts
+            </Link>
           </li>
           <li>
             <Link href="/integrations">Integrations</Link>
@@ -42,10 +60,22 @@ export default function Footer() {
             <h4 className="text-neutral-600">Resources</h4>
           </li>
           <li>
-            <Link href="/">Help Center</Link>
+            <Link
+              href="https://dashboard-forward-demo-app.netlify.app/help-and-support"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Help Center
+            </Link>
           </li>
           <li>
-            <Link href="/">Guides</Link>
+            <Link
+              href="https://dashboard-forward-demo-app.netlify.app/guides"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Guides
+            </Link>
           </li>
         </ul>
       </nav>

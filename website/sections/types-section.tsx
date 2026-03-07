@@ -43,7 +43,13 @@ function TextPanel() {
           Drafts hold your quick notes
         </Section.Paragraph>
       </div>
-      <Button href="/" variant="link" rightIcon={<ArrowRightIcon />}>
+      <Button
+        href="https://dashboard-forward-demo-app.netlify.app/issues"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="link"
+        rightIcon={<ArrowRightIcon />}
+      >
         Explore Types
       </Button>
     </div>

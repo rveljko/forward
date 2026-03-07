@@ -88,7 +88,13 @@ function TextPanel() {
           create issues. Jump in fast, no guessing
         </Section.Paragraph>
       </div>
-      <Button href="/" variant="link" rightIcon={<ArrowRightIcon />}>
+      <Button
+        href="https://dashboard-forward-demo-app.netlify.app/guides"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="link"
+        rightIcon={<ArrowRightIcon />}
+      >
         Explore Guides
       </Button>
     </div>

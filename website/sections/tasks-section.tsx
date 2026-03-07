@@ -28,7 +28,13 @@ function TextPanel() {
             list that actually gets things done
           </Section.Paragraph>
         </div>
-        <Button href="/" variant="link" rightIcon={<ArrowRightIcon />}>
+        <Button
+          href="https://dashboard-forward-demo-app.netlify.app/tasks"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="link"
+          rightIcon={<ArrowRightIcon />}
+        >
           Explore Tasks
         </Button>
       </div>
