@@ -8,7 +8,7 @@ export const issues: Issue[] = [
     title: 'Implement Notification System',
     description:
       'Build a notification system that keeps users updated about important events in their projects and issues. This should help users stay on top of changes like new comments, status updates, assignments, and deadlines.',
-    status: 'todo',
+    status: 'backlog',
     priority: 'high',
     tag: 'development',
     createdAt: generateDateInPast(3),
@@ -56,7 +56,7 @@ export const issues: Issue[] = [
     title: 'Set Priorities',
     description:
       'Allow users to assign and update priority levels on issues so teams can focus on the most important tasks first.',
-    status: 'todo',
+    status: 'in-progress',
     priority: 'medium',
     tag: 'design',
     createdAt: generateDateInPast(4),
@@ -68,7 +68,7 @@ export const issues: Issue[] = [
     title: 'Filter and Sort Issues',
     description:
       'Provide users with powerful and flexible tools to filter and sort issues so they can quickly find what matters most and organize their work effectively.',
-    status: 'todo',
+    status: 'in-progress',
     priority: 'low',
     tag: 'testing',
     createdAt: generateDateInPast(4),
@@ -92,7 +92,7 @@ export const issues: Issue[] = [
     title: 'Use Tags',
     description:
       'Allow users to add and manage tags on issues to help categorize, organize, and quickly find related tasks across projects.',
-    status: 'in-progress',
+    status: 'in-review',
     priority: 'medium',
     tag: 'design',
     createdAt: generateDateInPast(4),
@@ -104,7 +104,7 @@ export const issues: Issue[] = [
     title: 'Utilize Mobile Access',
     description:
       'Ensure users have a seamless and efficient experience accessing the issue tracking platform on mobile devices, whether through a mobile-optimized web app or native apps. This will allow users to manage issues, projects, and collaborate effectively on the go.',
-    status: 'in-progress',
+    status: 'in-review',
     priority: 'medium',
     tag: 'testing',
     createdAt: generateDateInPast(5),
