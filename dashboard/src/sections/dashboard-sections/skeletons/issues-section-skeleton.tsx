@@ -2,7 +2,7 @@ import Skeleton from '@dashboard-components/ui/skeleton'
 
 function getView(): 'list' | 'kanban' {
   const view = localStorage.getItem('view')
-  return view ? JSON.parse(view) : 'list'
+  return view ? JSON.parse(view) : 'kanban'
 }
 
 export default function IssuesSectionSkeleton() {
