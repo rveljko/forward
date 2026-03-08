@@ -1,8 +1,11 @@
 import Header from '@/components/header'
 import LayoutPattern from '@/components/layout-pattern'
+import PosthogPageviewTracker from '@/components/posthog-pageview-tracker'
+import PosthogAnalyticsProvider from '@/services/providers/posthog-analytics-provider'
 import HolyLoader from 'holy-loader'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
+import { Suspense } from 'react'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -49,13 +52,18 @@ export default function RootLayout({
         className={`${inter.className} antialiased max-md:has-[header[data-is-hamburger-menu-open='true']]:overflow-hidden`}
       >
         <div className="flex min-h-screen flex-col">
-          <HolyLoader
-            color="var(--color-gray-800)"
-            height={3}
-            ignoreSearchParams
-          />
-          <Header />
-          <LayoutPattern>{children}</LayoutPattern>
+          <PosthogAnalyticsProvider>
+            <Suspense fallback={null}>
+              <PosthogPageviewTracker />
+            </Suspense>
+            <HolyLoader
+              color="var(--color-gray-800)"
+              height={3}
+              ignoreSearchParams
+            />
+            <Header />
+            <LayoutPattern>{children}</LayoutPattern>
+          </PosthogAnalyticsProvider>
         </div>
       </body>
     </html>
