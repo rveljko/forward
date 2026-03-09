@@ -6,6 +6,7 @@ export default function PasswordIcon() {
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
     >
       <path
         d="M10 8.3335V11.6668"
