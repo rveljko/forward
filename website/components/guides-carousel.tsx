@@ -95,7 +95,7 @@ export default function GuidesCarousel() {
               activeIndex === index - 1 ||
               (activeIndex === guides.length - 1 && index === 0)
             }
-            className="w-full max-w-max translate-y-[calc(200%+(var(--gap)*2))] overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-1000 [--gap:--spacing(4)] data-[is-active=true]:translate-0 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%-var(--gap))] data-[is-previous=true]:opacity-100"
+            className="w-full max-w-max origin-right translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-1000 [--gap:--spacing(4)] data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100"
           >
             <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
               <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
