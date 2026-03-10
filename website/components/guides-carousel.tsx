@@ -101,7 +101,9 @@ export default function GuidesCarousel() {
 
   return (
     <div className="flex flex-col gap-8 [--gap:--spacing(4)] [--transition-duration:1000ms] @5xl:flex-row @5xl:items-center">
-      <ul className="relative h-38 w-full overflow-hidden">
+      <ul className="relative isolate h-38 w-full overflow-hidden">
+        <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
+        <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
         {guides.map(({ tags, label, icon: Icon }, index) => (
           <li
             key={index}
@@ -135,7 +137,9 @@ export default function GuidesCarousel() {
           </li>
         ))}
       </ul>
-      <ul className="relative h-150 w-full overflow-hidden">
+      <ul className="relative isolate h-150 w-full overflow-hidden">
+        <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
+        <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
         {guides.map(({ title, image, tags }, index) => (
           <li
             key={index}
