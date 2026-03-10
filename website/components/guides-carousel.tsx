@@ -66,7 +66,7 @@ const guides: Guide[] = [
 ]
 
 export default function GuidesCarousel() {
-  const [activeIndex, setActiveIndex] = useState(3)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
