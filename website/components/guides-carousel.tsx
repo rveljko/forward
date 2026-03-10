@@ -1,7 +1,14 @@
 'use client'
 
 import Badge from '@/components/ui/badge'
+import AppWindowIcon from '@/icons/app-window-icon'
+import BrainIcon from '@/icons/brain-icon'
 import CalendarIcon from '@/icons/calendar-icon'
+import CheckboxIcon from '@/icons/checkbox-icon'
+import FolderIcon from '@/icons/folder-icon'
+import LockPasswordIcon from '@/icons/lock-password-icon'
+import SparklesIcon from '@/icons/sparkles-icon'
+import UserIcon from '@/icons/user-icon'
 import { dayMonthShortFormatter } from '@/utils/date-formatters'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
@@ -13,6 +20,8 @@ type Guide = {
     text: string
     color: React.ComponentProps<typeof Badge>['color']
   }[]
+  label: string
+  icon: React.JSX.Element
 }
 
 const guides: Guide[] = [
@@ -20,16 +29,22 @@ const guides: Guide[] = [
     title: 'How to Create a New Task',
     image: '/images/how-to-create-a-task-thumbnail.png',
     tags: [{ text: 'Tasks', color: 'blue' }],
+    label: 'Creating a Task',
+    icon: <CheckboxIcon />,
   },
   {
     title: 'How to Create a New Issue',
     image: '/images/how-to-create-an-issue-thumbnail.png',
     tags: [{ text: 'Issues', color: 'cyan' }],
+    label: 'Creating a Issue',
+    icon: <FolderIcon />,
   },
   {
     title: 'How to Create a New Draft',
     image: '/images/how-to-create-a-draft-thumbnail.png',
     tags: [{ text: 'Drafts', color: 'violet' }],
+    label: 'Creating a Draft',
+    icon: <BrainIcon />,
   },
   {
     title: 'How to Update User Information',
@@ -38,6 +53,8 @@ const guides: Guide[] = [
       { text: 'Settings', color: 'sky' },
       { text: 'Profile', color: 'pink' },
     ],
+    label: 'Updating User Info',
+    icon: <UserIcon />,
   },
   {
     title: 'How to Change Password',
@@ -46,6 +63,8 @@ const guides: Guide[] = [
       { text: 'Settings', color: 'sky' },
       { text: 'Security', color: 'orange' },
     ],
+    label: 'Changing Password',
+    icon: <LockPasswordIcon />,
   },
   {
     title: 'How to Change Preferences',
@@ -54,6 +73,8 @@ const guides: Guide[] = [
       { text: 'Settings', color: 'sky' },
       { text: 'Preferences', color: 'green' },
     ],
+    label: 'Changing Preferences',
+    icon: <SparklesIcon />,
   },
   {
     title: 'How to Toggle Integrations',
@@ -62,6 +83,8 @@ const guides: Guide[] = [
       { text: 'Settings', color: 'sky' },
       { text: 'Integrations', color: 'rose' },
     ],
+    label: 'Toggling Integrations',
+    icon: <AppWindowIcon />,
   },
 ]
 
