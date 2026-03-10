@@ -42,7 +42,7 @@ function TextPanel() {
 
 function GuidesCarouselPanel() {
   return (
-    <div className="flex h-100 w-full flex-col items-center overflow-hidden px-6 md:px-8 @3xl:h-150 @3xl:items-end">
+    <div className="w-full p-6 md:p-8">
       <GuidesCarousel />
     </div>
   )

@@ -100,54 +100,95 @@ export default function GuidesCarousel() {
   }, [])
 
   return (
-    <ul className="relative size-full">
-      {guides.map(({ title, image, tags }, index) => (
-        <li key={index} className="absolute top-1/2 right-px -translate-y-1/2">
-          <article
-            data-is-before-previous={
-              activeIndex === index + 2 ||
-              (activeIndex === 0 && index === guides.length - 2) ||
-              (activeIndex === 1 && index === guides.length - 1)
-            }
-            data-is-previous={
-              activeIndex === index + 1 ||
-              (activeIndex === 0 && index === guides.length - 1)
-            }
-            data-is-active={activeIndex === index}
-            data-is-next={
-              activeIndex === index - 1 ||
-              (activeIndex === guides.length - 1 && index === 0)
-            }
-            className="w-full max-w-max origin-right translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-1000 [--gap:--spacing(4)] data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100"
+    <div className="flex flex-col gap-8 [--gap:--spacing(4)] [--transition-duration:1000ms] @5xl:flex-row @5xl:items-center">
+      <ul className="relative h-38 w-full overflow-hidden">
+        {guides.map(({ tags, label, icon: Icon }, index) => (
+          <li
+            key={index}
+            className="absolute top-1/2 right-px w-full max-w-50 -translate-y-1/2"
           >
-            <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
-              <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
-                <Image
-                  src={image}
-                  alt=""
-                  width={1280}
-                  height={720}
-                  loading="lazy"
-                />
+            <article
+              data-is-before-previous={
+                activeIndex === index + 2 ||
+                (activeIndex === 0 && index === guides.length - 2) ||
+                (activeIndex === 1 && index === guides.length - 1)
+              }
+              data-is-previous={
+                activeIndex === index + 1 ||
+                (activeIndex === 0 && index === guides.length - 1)
+              }
+              data-is-active={activeIndex === index}
+              data-is-next={
+                activeIndex === index - 1 ||
+                (activeIndex === guides.length - 1 && index === 0)
+              }
+              className="flex origin-right translate-y-[calc(200%+(var(--gap)*2))] scale-95 items-center gap-2 rounded-lg bg-white p-2.5 opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100"
+            >
+              <Badge
+                color={tags[tags.length - 1].color}
+                className="py-1 [&_svg]:size-3"
+              >
+                {Icon}
+              </Badge>
+              <h3 className="text-sm font-medium text-neutral-900">{label}</h3>
+            </article>
+          </li>
+        ))}
+      </ul>
+      <ul className="relative h-150 w-full overflow-hidden @5xl:max-w-80">
+        {guides.map(({ title, image, tags }, index) => (
+          <li
+            key={index}
+            className="absolute top-1/2 right-px -translate-y-1/2"
+          >
+            <article
+              data-is-before-previous={
+                activeIndex === index + 2 ||
+                (activeIndex === 0 && index === guides.length - 2) ||
+                (activeIndex === 1 && index === guides.length - 1)
+              }
+              data-is-previous={
+                activeIndex === index + 1 ||
+                (activeIndex === 0 && index === guides.length - 1)
+              }
+              data-is-active={activeIndex === index}
+              data-is-next={
+                activeIndex === index - 1 ||
+                (activeIndex === guides.length - 1 && index === 0)
+              }
+              className="w-full max-w-max origin-right translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100"
+            >
+              <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
+                <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
+                  <Image
+                    src={image}
+                    alt=""
+                    width={1280}
+                    height={720}
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="text-sm font-medium text-neutral-900">
+                  {title}
+                </h3>
+                <ul className="flex items-center gap-1">
+                  {tags.map(({ text, color }, index) => (
+                    <li key={index}>
+                      <Badge color={color}>{text}</Badge>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <h3 className="text-sm font-medium text-neutral-900">{title}</h3>
-              <ul className="flex items-center gap-1">
-                {tags.map(({ text, color }, index) => (
-                  <li key={index}>
-                    <Badge color={color}>{text}</Badge>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="p-2">
-              <span className="flex w-max items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
-                <CalendarIcon />
-                {dayMonthShortFormatter(new Date())}
-              </span>
-            </div>
-          </article>
-        </li>
-      ))}
-    </ul>
+              <div className="p-2">
+                <span className="flex w-max items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
+                  <CalendarIcon />
+                  {dayMonthShortFormatter(new Date())}
+                </span>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
