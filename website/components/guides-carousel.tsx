@@ -100,7 +100,7 @@ export default function GuidesCarousel() {
   }, [])
 
   return (
-    <div className="flex flex-col gap-8 [--gap:--spacing(4)] [--transition-duration:1000ms] @5xl:flex-row @5xl:items-center">
+    <div className="flex flex-col items-center gap-8 [--gap:--spacing(4)] [--transition-duration:1000ms] @5xl:flex-row">
       <ul className="relative isolate h-38 w-full overflow-hidden">
         <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
         <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
@@ -137,13 +137,13 @@ export default function GuidesCarousel() {
           </li>
         ))}
       </ul>
-      <ul className="relative isolate h-150 w-full overflow-hidden">
+      <ul className="relative isolate h-150 w-full max-w-79 overflow-hidden">
         <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
         <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
         {guides.map(({ title, image, tags }, index) => (
           <li
             key={index}
-            className="absolute top-1/2 left-1/2 w-full max-w-79 -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
+            className="absolute top-1/2 left-1/2 w-full -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
           >
             <article
               data-is-before-previous={
