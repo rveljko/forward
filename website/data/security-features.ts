@@ -35,7 +35,7 @@ export const securityFeatures: Feature[] = [
   {
     icon: GitBranchIcon,
     title: 'Open Source Code',
-    description: 'All data encrypted client-side before storage',
+    description: 'Verify security yourself through public code',
   },
   {
     icon: PasswordIcon,
