@@ -270,7 +270,7 @@ export default function TasksPageDashboard() {
           </div>
           <div
             data-element="overlay"
-            className="absolute inset-0 rounded-b-lg bg-black/5 opacity-0"
+            className="absolute inset-0 rounded-b-lg bg-white/50 opacity-0"
           />
           <div className="absolute inset-4">
             <CreateNewTaskModal />
