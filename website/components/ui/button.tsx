@@ -3,12 +3,12 @@ import { cva, VariantProps } from 'class-variance-authority'
 import Link from 'next/link'
 
 const button = cva(
-  'flex w-max items-center justify-center gap-1 rounded-md text-black shadow-sm transition-[background-color,scale] hover:cursor-pointer active:scale-99 pointer-coarse:select-none',
+  'flex w-max items-center justify-center gap-1 rounded-md text-black shadow-sm transition hover:cursor-pointer active:scale-99 pointer-coarse:select-none',
   {
     variants: {
       variant: {
         primary:
-          'bg-gray-800 text-white hover:bg-gray-900 pointer-coarse:active:bg-gray-900',
+          'border border-gray-900 bg-gray-800 text-white inset-shadow-2xs inset-shadow-white/10 hover:bg-gray-900 active:inset-shadow-black/10 pointer-coarse:active:bg-gray-900',
         secondary:
           'bg-white ring ring-black/10 hover:bg-neutral-100 pointer-coarse:active:bg-neutral-100',
         tertiary:
