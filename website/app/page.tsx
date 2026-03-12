@@ -1,3 +1,4 @@
+import CtaSection from '@/sections/cta-section'
 import CustomersCarouselSection from '@/sections/customers-carousel-section'
 import CustomizeColumnsSection from '@/sections/customize-columns-section'
 import GuidesSection from '@/sections/guides-section'
@@ -20,6 +21,7 @@ export default function Home() {
       <CustomizeColumnsSection />
       <TasksSection />
       <SecuritySection />
+      <CtaSection />
     </>
   )
 }
