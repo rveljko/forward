@@ -4,7 +4,7 @@ A web-based SaaS for Issue Tracking & Project Management
 
 ### Link for [Live Demo](https://forward-demo-app.netlify.app/)
 
-<img src="dashboard/public/meta-image.png" alt="Preview of application" />
+<img src="website/app/opengraph-image.png" alt="Preview of application" />
 
 ## Table of Contents
 
