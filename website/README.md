@@ -4,6 +4,8 @@ A web-based SaaS landing page for Issue Tracking & Project Management
 
 ### Link for [Live Demo](https://forward-demo-app.netlify.app/)
 
+<img src="app/opengraph-image.png" alt="Preview of application" />
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
