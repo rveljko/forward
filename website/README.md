@@ -42,6 +42,12 @@ Follow these steps to get the project running locally:
    npm install
    ```
 
+1. Configure environment variable:
+   - Create a `.env.local` file with the following variables (you can create a free PostHog account and get your key and host at [PostHog Signup](https://us.posthog.com/signup)):
+     ```
+     NEXT_PUBLIC_POSTHOG_KEY=
+     NEXT_PUBLIC_POSTHOG_HOST=
+     ```
 1. Start the development server:
    ```bash
    npm run dev
