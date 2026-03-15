@@ -112,6 +112,8 @@ export type IssueTag = {
   icon: () => React.JSX.Element
 }
 
+type IssueTemplateLabel = 'clean' | 'bug-report' | 'feature-request'
+
 export type Issue = {
   id: string
   title: string
@@ -119,6 +121,7 @@ export type Issue = {
   status: IssueStatusLabel
   priority: IssuePriorityLabel
   tag: IssueTagLabel
+  template: IssueTemplateLabel
   createdAt: Date
   content: string
 }
