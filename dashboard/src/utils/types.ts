@@ -112,7 +112,12 @@ export type IssueTag = {
   icon: () => React.JSX.Element
 }
 
-type IssueTemplateLabel = 'clean' | 'bug-report' | 'feature-request'
+type IssueTemplateLabel =
+  | 'clean'
+  | 'bug-report'
+  | 'feature-request'
+  | 'improvement'
+  | 'blocker'
 
 export type Issue = {
   id: string
