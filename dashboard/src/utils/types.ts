@@ -119,6 +119,13 @@ type IssueTemplateLabel =
   | 'improvement'
   | 'blocker'
 
+export type IssueTemplate = {
+  id: string
+  name: string
+  label: IssueStatusLabel
+  icon: () => React.JSX.Element
+}
+
 export type Issue = {
   id: string
   title: string
