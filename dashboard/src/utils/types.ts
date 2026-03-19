@@ -122,7 +122,7 @@ type IssueTemplateLabel =
 export type IssueTemplate = {
   id: string
   name: string
-  label: IssueStatusLabel
+  label: IssueTemplateLabel
   icon: () => React.JSX.Element
 }
 
