@@ -4,6 +4,7 @@ import Select from '@dashboard-components/ui/select'
 import { issuePriorities } from '@data/issue-priorities'
 import { issueStatuses } from '@data/issue-statuses'
 import { issueTags } from '@data/issue-tags'
+import { issueTemplates } from '@data/issue-templates'
 import ArrowsMaximizeIcon from '@icons/arrows-maximize-icon'
 import ArrowsMinimizeIcon from '@icons/arrows-minimize-icon'
 import CloseIcon from '@icons/close-icon'
@@ -16,6 +17,7 @@ import {
   IssuePriorityLabel,
   IssueStatusLabel,
   IssueTagLabel,
+  IssueTemplateLabel,
 } from '@utils/types'
 import { cn } from '@utils/utils'
 import { useState } from 'react'
@@ -44,6 +46,7 @@ export default function CreateNewIssueModal({
     status: status ?? 'backlog',
     priority: 'no-priority',
     tag: 'design',
+    template: 'clean',
     createdAt: new Date(),
     content: '',
   }
@@ -167,6 +170,24 @@ export default function CreateNewIssueModal({
                 }
               >
                 {issueTags.map(({ id, name, label, icon: Icon }) => (
+                  <Select.Option key={id} value={label}>
+                    <Icon />
+                    {name}
+                  </Select.Option>
+                ))}
+              </Select>
+              <Select
+                variant="ghost"
+                size="small"
+                value={newIssue.template}
+                onChange={(e) =>
+                  setNewIssue((prevIssue) => ({
+                    ...prevIssue,
+                    template: e.target.value as IssueTemplateLabel,
+                  }))
+                }
+              >
+                {issueTemplates.map(({ id, name, label, icon: Icon }) => (
                   <Select.Option key={id} value={label}>
                     <Icon />
                     {name}
