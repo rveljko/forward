@@ -5,6 +5,7 @@ import { issues as defaultIssues } from '@data/issues'
 import { UniqueIdentifier } from '@dnd-kit/core'
 import { arrayMove } from '@dnd-kit/sortable'
 import { DEFAULT_ISSUE_TITLE } from '@utils/constants'
+import { generateIssueTemplate } from '@utils/issue-template-generator'
 import {
   Issue,
   IssueFilterCategory,
@@ -152,7 +153,11 @@ export default function IssuesContextProvider({
         ...newIssue,
         id: uuidv4(),
         createdAt: new Date(),
-        content: `<h1>${newIssue.title}</h1><p>${newIssue.description}</p>`,
+        content: generateIssueTemplate(
+          newIssue.template,
+          newIssue.title,
+          newIssue.description
+        ),
       },
       ...prevIssues,
     ])
