@@ -172,6 +172,7 @@ export default function IssuesContextProvider({
         status: 'backlog',
         priority: 'no-priority',
         tag: 'design',
+        template: 'clean',
         createdAt: new Date(),
         content: '',
       },
