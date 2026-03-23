@@ -1,3 +1,4 @@
+import TemplatesCarousel from '@/components/templates-carousel'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'
@@ -40,5 +41,9 @@ function TextPanel() {
 }
 
 function TemplatesCarouselPanel() {
-  return <div className="w-full p-6 md:p-8">templates carousel panel</div>
+  return (
+    <div className="w-full p-6 md:p-8">
+      <TemplatesCarousel />
+    </div>
+  )
 }
