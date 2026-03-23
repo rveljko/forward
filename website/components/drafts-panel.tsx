@@ -39,7 +39,7 @@ export default function DraftsPanel() {
             <div className="overflow-hidden rounded-t-lg">
               <div className="aspect-3/1 w-full bg-black/10"></div>
             </div>
-            <div className="h-16 border-b border-b-black/10 p-2">
+            <div className="h-14 border-b border-b-black/10 p-2">
               <span className="line-clamp-2 text-sm font-medium text-balance">
                 {title}
               </span>
