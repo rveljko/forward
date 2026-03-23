@@ -110,7 +110,7 @@ export default function GuidesCarousel() {
             className="absolute top-1/2 left-1/2 w-full max-w-50 -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
           >
             <article
-              data-is-before-previous={
+              data-is-after-previous={
                 activeIndex === index + 2 ||
                 (activeIndex === 0 && index === guides.length - 2) ||
                 (activeIndex === 1 && index === guides.length - 1)
@@ -124,7 +124,7 @@ export default function GuidesCarousel() {
                 activeIndex === index - 1 ||
                 (activeIndex === guides.length - 1 && index === 0)
               }
-              className="flex translate-y-[calc(200%+(var(--gap)*2))] scale-95 items-center gap-2 rounded-lg bg-white p-2.5 opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100 @5xl:origin-right"
+              className="flex translate-y-[calc(200%+(var(--gap)*2))] scale-95 items-center gap-2 rounded-lg bg-white p-2.5 opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100 @5xl:origin-right"
             >
               <Badge
                 color={tags[tags.length - 1].color}
@@ -146,7 +146,7 @@ export default function GuidesCarousel() {
             className="absolute top-1/2 left-1/2 w-full -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
           >
             <article
-              data-is-before-previous={
+              data-is-after-previous={
                 activeIndex === index + 2 ||
                 (activeIndex === 0 && index === guides.length - 2) ||
                 (activeIndex === 1 && index === guides.length - 1)
@@ -160,7 +160,7 @@ export default function GuidesCarousel() {
                 activeIndex === index - 1 ||
                 (activeIndex === guides.length - 1 && index === 0)
               }
-              className="translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-before-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-before-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100 @5xl:origin-right"
+              className="translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100 @5xl:origin-right"
             >
               <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
                 <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
