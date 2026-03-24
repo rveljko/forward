@@ -72,8 +72,8 @@ export default function TemplatesCarousel() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center">
-      <ul className="relative isolate h-24 w-full max-w-lg overflow-hidden [--gap:--spacing(4)]">
+    <div className="flex flex-col items-center gap-8 [--transition-duration:1000ms]">
+      <ul className="relative isolate h-24 w-full max-w-lg overflow-hidden">
         <div className="absolute left-0 z-1 h-full w-4 bg-linear-to-r from-white to-transparent" />
         <div className="absolute right-0 z-1 h-full w-4 bg-linear-to-l from-white to-transparent" />
         {templates.map(({ label, description, icon: Icon, color }, index) => (
@@ -96,7 +96,7 @@ export default function TemplatesCarousel() {
                 activeIndex === index - 1 ||
                 (activeIndex === templates.length - 1 && index === 0)
               }
-              className="flex translate-x-[calc(-200%-(var(--gap)*2))] flex-col rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-1000 data-[is-active=true]:translate-x-0 data-[is-active=true]:-translate-y-4 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-x-[calc(200%+(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-x-[calc(-100%-var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-x-[calc(100%+var(--gap))] data-[is-previous=true]:opacity-100"
+              className="flex translate-x-[calc(-200%-(var(--gap)*2))] flex-col rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) [--gap:--spacing(4)] data-[is-active=true]:translate-x-0 data-[is-active=true]:-translate-y-4 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-x-[calc(200%+(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-x-[calc(-100%-var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-x-[calc(100%+var(--gap))] data-[is-previous=true]:opacity-100"
             >
               <div className="flex w-full items-center gap-2 border-b border-b-neutral-300 p-2.5">
                 <Badge color={color} className="py-1 [&_svg]:size-3">
@@ -110,6 +110,57 @@ export default function TemplatesCarousel() {
                 <p className="text-xs text-nowrap text-neutral-600">
                   {description}
                 </p>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+      <ul className="relative h-154 w-full overflow-hidden">
+        <div className="absolute left-0 z-1 h-full w-4 bg-linear-to-r from-white to-transparent" />
+        <div className="absolute right-0 z-1 h-full w-4 bg-linear-to-l from-white to-transparent" />
+        {templates.map(({ title, content: Content }, index) => (
+          <li
+            key={index}
+            className="absolute bottom-0 left-1/2 w-full max-w-md -translate-x-1/2"
+          >
+            <article
+              data-is-after-previous={
+                activeIndex === index + 2 ||
+                (activeIndex === 0 && index === templates.length - 2) ||
+                (activeIndex === 1 && index === templates.length - 1)
+              }
+              data-is-previous={
+                activeIndex === index + 1 ||
+                (activeIndex === 0 && index === templates.length - 1)
+              }
+              data-is-active={activeIndex === index}
+              data-is-next={
+                activeIndex === index - 1 ||
+                (activeIndex === templates.length - 1 && index === 0)
+              }
+              className="flex w-full translate-x-[calc(-200%-(var(--gap)*2))] flex-col opacity-0 transition-transform duration-(--transition-duration) [--gap:--spacing(8)] data-[is-active=true]:translate-x-0 data-[is-active=true]:-translate-y-4 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-x-[calc(200%+(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-x-[calc(-100%-var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-x-[calc(100%+var(--gap))] data-[is-previous=true]:opacity-100"
+            >
+              <div className="flex w-full items-center gap-1 rounded-t-lg border border-neutral-200 bg-white px-2 py-1.5">
+                <div className="size-2 rounded-full bg-neutral-200" />
+                <div className="size-2 rounded-full bg-neutral-200" />
+                <div className="size-2 rounded-full bg-neutral-200" />
+              </div>
+              <div className="bg-dashboard-background relative isolate h-144 w-full rounded-b-lg border border-t-0 border-neutral-200 p-4 after:absolute after:-inset-4 after:top-0 after:-z-1 after:bg-white after:mask-linear-0 after:mask-linear-from-black after:mask-linear-to-transparent">
+                <div className="size-full overflow-hidden rounded-lg border border-black/10 bg-white">
+                  <div className="border-b border-b-black/10 p-4">
+                    <span className="line-clamp-1 text-sm font-medium break-all">
+                      Issues / {title}
+                    </span>
+                  </div>
+                  <div className="border-b border-b-black/10 p-4">
+                    <div className="h-6 w-2/3 animate-pulse rounded-md bg-neutral-200" />
+                  </div>
+                  <div className="size-full px-4 py-8">
+                    <div className="mx-auto size-full max-w-sm flex-col text-neutral-900">
+                      {Content}
+                    </div>
+                  </div>
+                </div>
               </div>
             </article>
           </li>
