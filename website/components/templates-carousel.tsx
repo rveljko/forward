@@ -185,7 +185,6 @@ function CleanTemplate() {
 function FeatureRequestTemplate() {
   return (
     <>
-      <p className="text-xs font-medium">Feature Request</p>
       <p className="text-lg font-medium">Create and Report Issues</p>
       <p className="mb-4 text-xs">
         <span className="font-medium">Description: </span>
@@ -222,7 +221,6 @@ function FeatureRequestTemplate() {
 function BugReportTemplate() {
   return (
     <>
-      <p className="text-xs font-medium">Bug Report</p>
       <p className="text-lg font-medium">
         Missing Status Updates and Offline Sync
       </p>
@@ -263,7 +261,6 @@ function BugReportTemplate() {
 function ImprovementTemplate() {
   return (
     <>
-      <p className="text-xs font-medium">Improvement</p>
       <p className="text-lg font-medium">Add Comments</p>
       <p className="mb-4 text-xs">
         <span className="font-medium">Description: </span>
@@ -308,7 +305,6 @@ function ImprovementTemplate() {
 function BlockerTemplate() {
   return (
     <>
-      <p className="text-xs font-medium">Blocker</p>
       <p className="text-lg font-medium">No Integrations with External Tools</p>
       <p className="mb-4 text-xs">
         <span className="font-medium">Description: </span>
