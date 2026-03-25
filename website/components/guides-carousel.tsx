@@ -10,6 +10,7 @@ import LockPasswordIcon from '@/icons/lock-password-icon'
 import SparklesIcon from '@/icons/sparkles-icon'
 import UserIcon from '@/icons/user-icon'
 import { dayMonthShortFormatter } from '@/utils/date-formatters'
+import { cn } from '@/utils/utils'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
@@ -104,94 +105,114 @@ export default function GuidesCarousel() {
       <ul className="relative isolate h-38 w-full overflow-hidden">
         <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
         <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
-        {guides.map(({ tags, label, icon: Icon }, index) => (
-          <li
-            key={index}
-            className="absolute top-1/2 left-1/2 w-full max-w-50 -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
-          >
-            <article
-              data-is-after-previous={
-                activeIndex === index + 2 ||
-                (activeIndex === 0 && index === guides.length - 2) ||
-                (activeIndex === 1 && index === guides.length - 1)
-              }
-              data-is-previous={
-                activeIndex === index + 1 ||
-                (activeIndex === 0 && index === guides.length - 1)
-              }
-              data-is-active={activeIndex === index}
-              data-is-next={
-                activeIndex === index - 1 ||
-                (activeIndex === guides.length - 1 && index === 0)
-              }
-              className="flex translate-y-[calc(200%+(var(--gap)*2))] scale-95 items-center gap-2 rounded-lg bg-white p-2.5 opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100 @5xl:origin-right"
+        {guides.map(({ tags, label, icon: Icon }, index) => {
+          const isAfterPrevious =
+            activeIndex === index + 2 ||
+            (activeIndex === 0 && index === guides.length - 2) ||
+            (activeIndex === 1 && index === guides.length - 1)
+          const isPrevious =
+            activeIndex === index + 1 ||
+            (activeIndex === 0 && index === guides.length - 1)
+          const isActive = activeIndex === index
+          const isNext =
+            activeIndex === index - 1 ||
+            (activeIndex === guides.length - 1 && index === 0)
+
+          return (
+            <li
+              key={index}
+              className="absolute top-1/2 left-1/2 w-full max-w-50 -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
             >
-              <Badge
-                color={tags[tags.length - 1].color}
-                className="py-1 [&_svg]:size-3"
+              <article
+                className={cn(
+                  'flex translate-y-[calc(200%+(var(--gap)*2))] scale-95 items-center gap-2 rounded-lg bg-white p-2.5 opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) @5xl:origin-right',
+                  isAfterPrevious &&
+                    'translate-y-[calc(-200%-(var(--gap)*2))] opacity-100',
+                  isPrevious &&
+                    'translate-y-[calc(-100%+2.5%-var(--gap))] opacity-100',
+                  isActive && 'translate-0 scale-100 opacity-100',
+                  isNext &&
+                    'translate-y-[calc(100%-2.5%+var(--gap))] opacity-100'
+                )}
               >
-                {Icon}
-              </Badge>
-              <h3 className="text-sm font-medium text-neutral-900">{label}</h3>
-            </article>
-          </li>
-        ))}
+                <Badge
+                  color={tags[tags.length - 1].color}
+                  className="py-1 [&_svg]:size-3"
+                >
+                  {Icon}
+                </Badge>
+                <h3 className="text-sm font-medium text-neutral-900">
+                  {label}
+                </h3>
+              </article>
+            </li>
+          )
+        })}
       </ul>
       <ul className="relative isolate h-150 w-full max-w-79 overflow-hidden">
         <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
         <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
-        {guides.map(({ title, image, tags }, index) => (
-          <li
-            key={index}
-            className="absolute top-1/2 left-1/2 w-full -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
-          >
-            <article
-              data-is-after-previous={
-                activeIndex === index + 2 ||
-                (activeIndex === 0 && index === guides.length - 2) ||
-                (activeIndex === 1 && index === guides.length - 1)
-              }
-              data-is-previous={
-                activeIndex === index + 1 ||
-                (activeIndex === 0 && index === guides.length - 1)
-              }
-              data-is-active={activeIndex === index}
-              data-is-next={
-                activeIndex === index - 1 ||
-                (activeIndex === guides.length - 1 && index === 0)
-              }
-              className="translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) data-[is-active=true]:translate-0 data-[is-active=true]:scale-100 data-[is-active=true]:opacity-100 data-[is-after-previous=true]:translate-y-[calc(-200%-(var(--gap)*2))] data-[is-after-previous=true]:opacity-100 data-[is-next=true]:translate-y-[calc(100%-2.5%+var(--gap))] data-[is-next=true]:opacity-100 data-[is-previous=true]:translate-y-[calc(-100%+2.5%-var(--gap))] data-[is-previous=true]:opacity-100 @5xl:origin-right"
+        {guides.map(({ title, image, tags }, index) => {
+          const isAfterPrevious =
+            activeIndex === index + 2 ||
+            (activeIndex === 0 && index === guides.length - 2) ||
+            (activeIndex === 1 && index === guides.length - 1)
+          const isPrevious =
+            activeIndex === index + 1 ||
+            (activeIndex === 0 && index === guides.length - 1)
+          const isActive = activeIndex === index
+          const isNext =
+            activeIndex === index - 1 ||
+            (activeIndex === guides.length - 1 && index === 0)
+
+          return (
+            <li
+              key={index}
+              className="absolute top-1/2 left-1/2 w-full -translate-1/2 px-px @5xl:right-0 @5xl:left-auto @5xl:translate-x-0"
             >
-              <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
-                <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
-                  <Image
-                    src={image}
-                    alt=""
-                    width={1280}
-                    height={720}
-                    loading="lazy"
-                  />
+              <article
+                className={cn(
+                  'translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) @5xl:origin-right',
+                  isAfterPrevious &&
+                    'translate-y-[calc(-200%-(var(--gap)*2))] opacity-100',
+                  isPrevious &&
+                    'translate-y-[calc(-100%+2.5%-var(--gap))] opacity-100',
+                  isActive && 'translate-0 scale-100 opacity-100',
+                  isNext &&
+                    'translate-y-[calc(100%-2.5%+var(--gap))] opacity-100'
+                )}
+              >
+                <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
+                  <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
+                    <Image
+                      src={image}
+                      alt=""
+                      width={1280}
+                      height={720}
+                      loading="lazy"
+                    />
+                  </div>
+                  <h3 className="text-sm font-medium text-neutral-900">
+                    {title}
+                  </h3>
+                  <ul className="flex items-center gap-1">
+                    {tags.map(({ text, color }, index) => (
+                      <li key={index}>
+                        <Badge color={color}>{text}</Badge>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <h3 className="text-sm font-medium text-neutral-900">
-                  {title}
-                </h3>
-                <ul className="flex items-center gap-1">
-                  {tags.map(({ text, color }, index) => (
-                    <li key={index}>
-                      <Badge color={color}>{text}</Badge>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="p-2">
-                <span className="flex w-max items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
-                  <CalendarIcon />
-                  {dayMonthShortFormatter(new Date())}
-                </span>
-              </div>
-            </article>
-          </li>
-        ))}
+                <div className="p-2">
+                  <span className="flex w-max items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
+                    <CalendarIcon />
+                    {dayMonthShortFormatter(new Date())}
+                  </span>
+                </div>
+              </article>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
