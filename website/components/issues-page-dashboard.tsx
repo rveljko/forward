@@ -10,6 +10,7 @@ import CircleHalfIcon from '@/icons/circle-half-icon'
 import ClickIcon from '@/icons/click-icon'
 import CloseIcon from '@/icons/close-icon'
 import DesignIssueTagIcon from '@/icons/design-issue-tag-icon'
+import DocumentIcon from '@/icons/document-icon'
 import EditIcon from '@/icons/edit-icon'
 import ExternalLinkIcon from '@/icons/external-link-icon'
 import FilterIcon from '@/icons/filters-icon'
@@ -444,6 +445,10 @@ function CreateNewIssueModal() {
         <span className="text flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-nowrap shadow-sm ring ring-black/10">
           <DesignIssueTagIcon />
           Design
+        </span>
+        <span className="text flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-nowrap shadow-sm ring ring-black/10">
+          <DocumentIcon />
+          Clean
         </span>
       </div>
       <div
