@@ -62,7 +62,7 @@ const templates: Template[] = [
 ]
 
 export default function TemplatesCarousel() {
-  const [activeIndex, setActiveIndex] = useState(4)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
