@@ -1,3 +1,4 @@
+import DraftsPageDashboard from '@/components/drafts-page-dashboard'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'
@@ -133,7 +134,7 @@ function Svg() {
 function DashboardPanel() {
   return (
     <div className="flex w-full items-center justify-center px-6 py-8 @5xl:p-16">
-      drafts page panel
+      <DraftsPageDashboard />
     </div>
   )
 }

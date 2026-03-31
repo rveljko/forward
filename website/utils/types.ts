@@ -17,3 +17,8 @@ export type Issue = {
 }
 
 export type Task = string
+
+export type Draft = {
+  title: string
+  daysAgo: string
+}
