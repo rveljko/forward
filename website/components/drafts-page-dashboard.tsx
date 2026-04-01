@@ -1,3 +1,4 @@
+import Cursor from '@/components/cursor'
 import DraftCard from '@/components/draft-card'
 import { drafts } from '@/data/drafts'
 import PlusIcon from '@/icons/plus-icon'
@@ -18,6 +19,11 @@ export default function DraftsPageDashboard() {
           aria-hidden
           className="size-full overflow-hidden rounded-lg border border-black/10 bg-white"
         >
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 z-10 size-full [&_svg]:origin-top-left">
+              <Cursor />
+            </div>
+          </div>
           <div className="border-b border-b-black/10 p-4 text-sm font-medium">
             Drafts
           </div>
