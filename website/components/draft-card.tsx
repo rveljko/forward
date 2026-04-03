@@ -12,7 +12,7 @@ export default function DraftCard({
   return (
     <article className="flex h-full flex-col rounded-lg shadow-sm ring ring-black/10">
       <div className="overflow-hidden rounded-t-lg">
-        <div className="aspect-3/1 w-full bg-black/10"></div>
+        <div className="aspect-3/1 w-full bg-black/10" />
       </div>
       <div className="h-14 p-2">
         <span className="line-clamp-2 text-sm font-medium text-balance">
