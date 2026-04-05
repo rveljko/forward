@@ -1,3 +1,5 @@
+'use client'
+
 import Cursor from '@/components/cursor'
 import DraftCard from '@/components/draft-card'
 import { drafts } from '@/data/drafts'
@@ -8,8 +10,51 @@ import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import EditIcon from '@/icons/edit-icon'
 import PlusIcon from '@/icons/plus-icon'
 import TrashIcon from '@/icons/trash-icon'
+import { useAnimate } from 'motion/react'
+import { useEffect } from 'react'
 
 export default function DraftsPageDashboard() {
+  const [scope, animate] = useAnimate()
+
+  async function createAndDeleteDraftAnimation() {
+    await animate('[data-element=cursor]', {
+      transform: 'translate3d(-30%, -6.25rem, 0)',
+    })
+    await animate('[data-element=create-new-draft-button]', {
+      backgroundColor: 'var(--color-dashboard-neutral-300)',
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=create-new-draft-button]', {
+      scale: 0.99,
+    })
+    animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=create-new-draft-button]', {
+      scale: 1,
+    })
+    animate(
+      '[data-element=drafts-page]',
+      {
+        display: 'none',
+      },
+      { duration: 0 }
+    )
+    await animate(
+      '[data-element=draft-page]',
+      {
+        display: 'block',
+      },
+      { duration: 0 }
+    )
+  }
+
+  useEffect(() => {
+    createAndDeleteDraftAnimation()
+  }, [])
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center gap-1 rounded-t-lg border border-neutral-200 bg-white px-2 py-1.5">
@@ -18,6 +63,7 @@ export default function DraftsPageDashboard() {
         <div className="size-2 rounded-full bg-neutral-200" />
       </div>
       <div
+        ref={scope}
         aria-label="Dashboard Drafts page"
         className="bg-dashboard-background pointer-events-none relative isolate h-144 w-full rounded-b-lg border border-t-0 border-neutral-200 p-4 select-none after:absolute after:-inset-4 after:top-0 after:-z-1 after:bg-white after:mask-linear-0 after:mask-linear-from-black after:mask-linear-to-transparent"
       >
@@ -26,7 +72,10 @@ export default function DraftsPageDashboard() {
           className="size-full overflow-hidden rounded-lg border border-black/10 bg-white"
         >
           <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 z-10 size-full [&_svg]:origin-top-left">
+            <div
+              data-element="cursor"
+              className="absolute top-1/2 left-1/2 z-10 size-full [&_svg]:origin-top-left"
+            >
               <Cursor />
             </div>
           </div>
@@ -34,12 +83,15 @@ export default function DraftsPageDashboard() {
           <div className="absolute inset-4">
             <DraftActionsModal />
           </div>
-          <div>
+          <div data-element="drafts-page">
             <div className="border-b border-b-black/10 p-4 text-sm font-medium">
               Drafts
             </div>
             <div className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(48),100%),1fr))] gap-4 px-4 py-8">
-              <span className="bg-dashboard-neutral-200 flex size-full flex-col items-center justify-center gap-2 rounded-lg border border-black/10 px-4 py-8 shadow-sm">
+              <span
+                data-element="create-new-draft-button"
+                className="bg-dashboard-neutral-200 flex size-full flex-col items-center justify-center gap-2 rounded-lg border border-black/10 px-4 py-8 shadow-sm"
+              >
                 <div className="flex size-16 items-center justify-center rounded-full bg-black/10 [&_svg]:size-8">
                   <PlusIcon />
                 </div>
@@ -50,7 +102,7 @@ export default function DraftsPageDashboard() {
               ))}
             </div>
           </div>
-          <div className="hidden">
+          <div data-element="draft-page" className="hidden">
             <div className="flex justify-between gap-2 border-b border-b-black/10 p-4">
               <span className="text-sm font-medium">
                 Drafts /
