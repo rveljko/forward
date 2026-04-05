@@ -4,6 +4,7 @@ import { drafts } from '@/data/drafts'
 import ClipboardIcon from '@/icons/clipboard-icon'
 import CloseIcon from '@/icons/close-icon'
 import CopyIcon from '@/icons/copy-icon'
+import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import EditIcon from '@/icons/edit-icon'
 import PlusIcon from '@/icons/plus-icon'
 import TrashIcon from '@/icons/trash-icon'
@@ -33,19 +34,40 @@ export default function DraftsPageDashboard() {
           <div className="absolute inset-4">
             <DraftActionsModal />
           </div>
-          <div className="border-b border-b-black/10 p-4 text-sm font-medium">
-            Drafts
+          <div>
+            <div className="border-b border-b-black/10 p-4 text-sm font-medium">
+              Drafts
+            </div>
+            <div className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(48),100%),1fr))] gap-4 px-4 py-8">
+              <span className="bg-dashboard-neutral-200 flex size-full flex-col items-center justify-center gap-2 rounded-lg border border-black/10 px-4 py-8 shadow-sm">
+                <div className="flex size-16 items-center justify-center rounded-full bg-black/10 [&_svg]:size-8">
+                  <PlusIcon />
+                </div>
+                <span className="text-sm font-medium">Create New Draft</span>
+              </span>
+              {drafts.map((draft, index) => (
+                <DraftCard draft={draft} key={index} />
+              ))}
+            </div>
           </div>
-          <div className="mx-auto grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(48),100%),1fr))] gap-4 px-4 py-8">
-            <span className="bg-dashboard-neutral-200 flex size-full flex-col items-center justify-center gap-2 rounded-lg border border-black/10 px-4 py-8 shadow-sm">
-              <div className="flex size-16 items-center justify-center rounded-full bg-black/10 [&_svg]:size-8">
-                <PlusIcon />
+          <div className="hidden">
+            <div className="flex justify-between gap-2 border-b border-b-black/10 p-4">
+              <span className="text-sm font-medium">
+                Drafts /
+                <span className="text-dashboard-neutral-600"> New Draft</span>
+              </span>
+              <DotsVerticalIcon />
+            </div>
+            <div className="border-b border-b-black/10 p-4">
+              <div className="bg-dashboard-neutral-100 h-6 w-2/3 animate-pulse rounded-md" />
+            </div>
+            <div className="px-4 py-8">
+              <div className="mx-auto w-full max-w-md">
+                <span className="text-dashboard-neutral-600 text-sm">
+                  Write something...
+                </span>
               </div>
-              <span className="text-sm font-medium">Create New Draft</span>
-            </span>
-            {drafts.map((draft, index) => (
-              <DraftCard draft={draft} key={index} />
-            ))}
+            </div>
           </div>
         </div>
       </div>
