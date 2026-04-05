@@ -71,6 +71,21 @@ export default function DraftsPageDashboard() {
       { display: 'inline-block' },
       { delay: stagger(0.1) }
     )
+    await animate('[data-element=cursor]', {
+      transform: 'translate3d(calc(50% - 2.75rem), -15.5rem, 0)',
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    animate('[data-element=overlay]', {
+      opacity: 1,
+    })
+    await animate('[data-element=draft-actions-modal]', {
+      opacity: 1,
+    })
   }
 
   useEffect(() => {
@@ -101,8 +116,11 @@ export default function DraftsPageDashboard() {
               <Cursor />
             </div>
           </div>
-          <div className="absolute inset-0 rounded-b-lg bg-white/50 opacity-0" />
-          <div className="absolute inset-4">
+          <div
+            data-element="overlay"
+            className="absolute inset-0 z-5 rounded-b-lg bg-white/50 opacity-0"
+          />
+          <div className="absolute inset-4 z-5">
             <DraftActionsModal />
           </div>
           <div data-element="drafts-page">
@@ -175,7 +193,10 @@ export default function DraftsPageDashboard() {
 
 function DraftActionsModal() {
   return (
-    <div className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0">
+    <div
+      data-element="draft-actions-modal"
+      className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0"
+    >
       <div className="flex items-center justify-between p-4 pb-0">
         <span className="ml-auto">
           <CloseIcon />
