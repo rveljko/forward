@@ -10,7 +10,7 @@ import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import EditIcon from '@/icons/edit-icon'
 import PlusIcon from '@/icons/plus-icon'
 import TrashIcon from '@/icons/trash-icon'
-import { useAnimate } from 'motion/react'
+import { motion, stagger, useAnimate } from 'motion/react'
 import { useEffect } from 'react'
 
 export default function DraftsPageDashboard() {
@@ -48,6 +48,28 @@ export default function DraftsPageDashboard() {
         display: 'block',
       },
       { duration: 0 }
+    )
+    await animate('[data-element=cursor]', {
+      transform: 'translate3d(-25%, -7.5rem, 0)',
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 0.9,
+    })
+    await animate('[data-element=cursor] svg', {
+      scale: 1,
+    })
+    await animate('[data-element=draft-placeholder]', {
+      display: 'none',
+    })
+    animate(
+      '[data-element=blinking-pipe]',
+      { opacity: [0, 1, 0] },
+      { repeat: Infinity, duration: 1 }
+    )
+    await animate(
+      '[data-element=draft-text-letter]',
+      { display: 'inline-block' },
+      { delay: stagger(0.1) }
     )
   }
 
@@ -115,9 +137,33 @@ export default function DraftsPageDashboard() {
             </div>
             <div className="px-4 py-8">
               <div className="mx-auto w-full max-w-md">
-                <span className="text-dashboard-neutral-600 text-sm">
-                  Write something...
-                </span>
+                <div className="h-4.5">
+                  <span
+                    data-element="draft-placeholder"
+                    className="text-dashboard-neutral-600 text-sm"
+                  >
+                    Write something...
+                  </span>
+                  <span className="text-sm text-black">
+                    {'Do something today that makes you proud'
+                      .split('')
+                      .map((letter, index) => (
+                        <motion.span
+                          key={index}
+                          data-element="draft-text-letter"
+                          initial={{ display: 'none' }}
+                        >
+                          {letter === ' ' ? '\u00A0' : letter}
+                        </motion.span>
+                      ))}
+                    <div
+                      data-element="blinking-pipe"
+                      className="inline-flex h-full w-max items-center opacity-0"
+                    >
+                      <span className="inline-block h-4 w-px bg-black" />
+                    </div>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
