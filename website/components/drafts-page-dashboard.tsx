@@ -1,7 +1,12 @@
 import Cursor from '@/components/cursor'
 import DraftCard from '@/components/draft-card'
 import { drafts } from '@/data/drafts'
+import ClipboardIcon from '@/icons/clipboard-icon'
+import CloseIcon from '@/icons/close-icon'
+import CopyIcon from '@/icons/copy-icon'
+import EditIcon from '@/icons/edit-icon'
 import PlusIcon from '@/icons/plus-icon'
+import TrashIcon from '@/icons/trash-icon'
 
 export default function DraftsPageDashboard() {
   return (
@@ -24,6 +29,10 @@ export default function DraftsPageDashboard() {
               <Cursor />
             </div>
           </div>
+          <div className="absolute inset-0 rounded-b-lg bg-white/50 opacity-0" />
+          <div className="absolute inset-4">
+            <DraftActionsModal />
+          </div>
           <div className="border-b border-b-black/10 p-4 text-sm font-medium">
             Drafts
           </div>
@@ -38,6 +47,64 @@ export default function DraftsPageDashboard() {
               <DraftCard draft={draft} key={index} />
             ))}
           </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function DraftActionsModal() {
+  return (
+    <div className="absolute left-1/2 w-full max-w-100 -translate-x-1/2 rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 max-md:bottom-0 md:top-0">
+      <div className="flex items-center justify-between p-4 pb-0">
+        <span className="ml-auto">
+          <CloseIcon />
+        </span>
+      </div>
+      <div className="grid grid-cols-1 gap-2 p-4 md:grid-cols-2">
+        <div className="w-full rounded-lg border border-black/10 p-2">
+          <div className="mb-1 flex items-center gap-1">
+            <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
+              <EditIcon />
+            </span>
+            <span className="text-sm font-medium">Rename</span>
+          </div>
+          <span className="text-dashboard-neutral-600 block text-xs">
+            Edit draft title
+          </span>
+        </div>
+        <div className="w-full rounded-lg border border-black/10 p-2">
+          <div className="mb-1 flex items-center gap-1">
+            <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
+              <ClipboardIcon />
+            </span>
+            <span className="text-sm font-medium">Copy title</span>
+          </div>
+          <span className="text-dashboard-neutral-600 block text-xs">
+            Copy draft title
+          </span>
+        </div>
+        <div className="w-full rounded-lg border border-black/10 p-2">
+          <div className="mb-1 flex items-center gap-1">
+            <span className="flex size-7 items-center justify-center rounded-md border border-black/10 [&_svg]:size-4">
+              <CopyIcon />
+            </span>
+            <span className="text-sm font-medium">Duplicate</span>
+          </div>
+          <span className="text-dashboard-neutral-600 block text-xs">
+            Create draft copy
+          </span>
+        </div>
+        <div className="w-full rounded-lg border border-black/10 p-2">
+          <div className="mb-1 flex items-center gap-1">
+            <span className="flex size-7 items-center justify-center rounded-md border border-black/10 bg-red-500/10 [&_svg]:size-4 [&_svg]:text-red-500">
+              <TrashIcon />
+            </span>
+            <span className="text-sm font-medium text-red-500">Delete</span>
+          </div>
+          <span className="block text-xs text-red-400">
+            Remove draft permanently
+          </span>
         </div>
       </div>
     </div>
