@@ -73,7 +73,7 @@ export default function TemplatesCarousel() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-8 [--transition-duration:1000ms]">
+    <div className="pointer-events-none flex flex-col items-center gap-8 select-none [--transition-duration:1000ms]">
       <ul className="relative isolate h-24 w-full max-w-lg overflow-hidden">
         <div className="absolute left-0 z-1 h-full w-4 bg-linear-to-r from-white to-transparent" />
         <div className="absolute right-0 z-1 h-full w-4 bg-linear-to-l from-white to-transparent" />
