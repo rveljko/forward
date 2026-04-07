@@ -207,6 +207,7 @@ export default function DraftsPageDashboard() {
       },
       { duration: 0 }
     )
+    createAndDeleteDraftAnimation()
   }
 
   useEffect(() => {
