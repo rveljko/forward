@@ -105,7 +105,7 @@ export default function IssuesListItem({
         <Button
           variant="tertiary"
           onClick={openModal}
-          className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-400"
+          className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-600"
         >
           <DotsVerticalIcon />
           <span className="sr-only">Actions</span>
