@@ -57,10 +57,7 @@ export default function IssuesListItem({
   if (isDragging)
     return (
       <article
-        className={cn(
-          'bg-issues-list-item-active-background ring-section-outline h-15.5 ring',
-          className
-        )}
+        className={cn('h-15.5 bg-white', className)}
         style={style}
         ref={setNodeRef}
         {...props}
