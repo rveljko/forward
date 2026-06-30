@@ -17,7 +17,7 @@ export default function IssueStatus({
   return (
     <span
       title={name}
-      className={cn('text-clickable shrink-0', className)}
+      className={cn('shrink-0 text-black', className)}
       {...props}
     >
       <Icon />
