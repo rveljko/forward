@@ -14,7 +14,10 @@ export default function IssuesListItemsList({
 }: IssuesListItemsListProps) {
   return (
     <ul
-      className={cn('divide-section-outline grow divide-y', className)}
+      className={cn(
+        'grow divide-y divide-neutral-200 last:border-b last:border-neutral-200',
+        className
+      )}
       {...props}
     >
       <SortableContext items={issues}>
