@@ -24,14 +24,14 @@ export default function Switcher({
   )
 }
 
-Switcher.Element = Element
+Switcher.Button = Button
 
-type ElementProps = React.ComponentPropsWithoutRef<'button'> & {
+type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   children: React.ReactNode
   isActive?: boolean
 }
 
-function Element({ children, isActive, className, ...props }: ElementProps) {
+function Button({ children, isActive, className, ...props }: ButtonProps) {
   return (
     <button
       role="tab"
@@ -44,7 +44,7 @@ function Element({ children, isActive, className, ...props }: ElementProps) {
     >
       {isActive && (
         <motion.div
-          layoutId="active-switcher-element-background"
+          layoutId="active-switcher-button-background"
           className="absolute inset-0 rounded-sm bg-white ring ring-neutral-300"
         />
       )}

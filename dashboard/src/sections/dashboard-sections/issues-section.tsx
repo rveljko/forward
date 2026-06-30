@@ -108,7 +108,7 @@ export default function IssuesSection() {
           <SortDropdownButton />
         </div>
         <Switcher>
-          <Switcher.Element
+          <Switcher.Button
             onClick={() => {
               if (view === 'list') return
               setView('list')
@@ -117,8 +117,8 @@ export default function IssuesSection() {
           >
             <ListIcon />
             <span className="sr-only">List view</span>
-          </Switcher.Element>
-          <Switcher.Element
+          </Switcher.Button>
+          <Switcher.Button
             onClick={() => {
               if (view === 'kanban') return
               setView('kanban')
@@ -127,7 +127,7 @@ export default function IssuesSection() {
           >
             <KanbanIcon />
             <span className="sr-only">Kanban view</span>
-          </Switcher.Element>
+          </Switcher.Button>
         </Switcher>
       </div>
       <Divider />
