@@ -114,9 +114,9 @@ export default function IssuesSection() {
               setView('list')
             }}
             isActive={view === 'list'}
+            leftIcon={<ListIcon />}
           >
-            <ListIcon />
-            <span className="sr-only">List view</span>
+            List
           </Switcher.Button>
           <Switcher.Button
             onClick={() => {
@@ -124,9 +124,9 @@ export default function IssuesSection() {
               setView('kanban')
             }}
             isActive={view === 'kanban'}
+            leftIcon={<KanbanIcon />}
           >
-            <KanbanIcon />
-            <span className="sr-only">Kanban view</span>
+            Kanban
           </Switcher.Button>
         </Switcher>
       </div>

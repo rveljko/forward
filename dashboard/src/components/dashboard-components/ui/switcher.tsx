@@ -29,9 +29,18 @@ Switcher.Button = Button
 type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   children: React.ReactNode
   isActive?: boolean
+  leftIcon?: React.JSX.Element
+  rightIcon?: React.JSX.Element
 }
 
-function Button({ children, isActive, className, ...props }: ButtonProps) {
+function Button({
+  children,
+  isActive,
+  leftIcon: LeftIcon,
+  rightIcon: RightIcon,
+  className,
+  ...props
+}: ButtonProps) {
   return (
     <button
       role="tab"
@@ -48,7 +57,9 @@ function Button({ children, isActive, className, ...props }: ButtonProps) {
           className="absolute inset-0 rounded-sm bg-white ring ring-neutral-300"
         />
       )}
+      {LeftIcon && <span className="relative z-10">{LeftIcon}</span>}
       <span className="relative z-10">{children}</span>
+      {RightIcon && <span className="relative z-10">{RightIcon}</span>}
     </button>
   )
 }
