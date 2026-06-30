@@ -1,4 +1,5 @@
 import { cn } from '@utils/utils'
+import { motion } from 'motion/react'
 
 type SwitcherProps = React.ComponentPropsWithoutRef<'fieldset'> & {
   children: React.ReactNode
@@ -13,7 +14,7 @@ export default function Switcher({
     <fieldset
       role="tablist"
       className={cn(
-        'flex rounded-md bg-neutral-800 p-0.5 shadow-sm',
+        'flex w-max items-center rounded-sm bg-neutral-100 ring inset-ring ring-neutral-900/10 inset-ring-white',
         className
       )}
       {...props}
@@ -35,13 +36,19 @@ function Element({ children, isActive, className, ...props }: ElementProps) {
     <button
       role="tab"
       className={cn(
-        'hover:bg-clickable/10 pointer-coarse:active:bg-clickable/10 aria-selected:bg-section-background-color aria-selected:pointer-coarse:active:bg-section-background-color aria-selected:hover:bg-section-background-color aria-selected:text-clickable rounded-sm px-3 py-1 text-neutral-400 transition-[background-color] hover:cursor-pointer active:scale-99',
+        `relative flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-neutral-600 transition-colors hover:cursor-pointer hover:text-black ${isActive && 'text-black'}`,
         className
       )}
       aria-selected={isActive}
       {...props}
     >
-      {children}
+      {isActive && (
+        <motion.div
+          layoutId="active-switcher-element-background"
+          className="absolute inset-0 rounded-sm bg-white ring ring-neutral-300"
+        />
+      )}
+      <span className="relative z-10">{children}</span>
     </button>
   )
 }
