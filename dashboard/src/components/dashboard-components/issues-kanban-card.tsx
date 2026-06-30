@@ -70,7 +70,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        `relative rounded-sm bg-white p-4 shadow-sm ring ring-neutral-900/10 hover:ring-neutral-900/20 pointer-coarse:transition-all pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20 ${activeIssueId === id ? 'ring-neutral-900/20' : ''}`,
+        `relative rounded-md bg-white p-4 shadow-sm ring ring-neutral-900/10 hover:ring-neutral-900/20 pointer-coarse:transition-all pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20 ${activeIssueId === id ? 'ring-neutral-900/20' : ''}`,
         className
       )}
       style={style}
