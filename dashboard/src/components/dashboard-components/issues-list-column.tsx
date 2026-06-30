@@ -26,6 +26,7 @@ export default function IssuesListColumn({
         icon={<Icon />}
         numberOfIssues={getIssuesByStatus(status).length}
         status={status}
+        className="border-b border-b-neutral-200 bg-white"
       />
       <IssuesListItemsList
         issues={getIssuesByStatus(status)}

@@ -27,19 +27,16 @@ export default function IssuesColumnHeader({
 
   return (
     <div
-      className={cn(
-        'bg-clickable/10 flex items-center justify-between p-4',
-        className
-      )}
+      className={cn('flex items-center justify-between p-4', className)}
       {...props}
     >
       <div className="flex items-center gap-2">
         <div className="text-clickable flex items-center gap-1">
           {Icon}
-          <h2>{title}</h2>
+          <h2 className="font-medium">{title}</h2>
         </div>
         <CountUp
-          className="text-neutral-400"
+          className="text-neutral-600"
           start={prevNumberOfIssues}
           end={numberOfIssues}
         />
