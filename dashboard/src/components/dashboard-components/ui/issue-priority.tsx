@@ -15,7 +15,7 @@ export default function IssuePriority({
   const { icon: Icon, name } = getIssuePriority(priority)
 
   return (
-    <span title={name} className={cn('text-neutral-400', className)} {...props}>
+    <span title={name} className={cn('text-black', className)} {...props}>
       <Icon />
       <span className="sr-only">{`${name} priority`}</span>
     </span>
