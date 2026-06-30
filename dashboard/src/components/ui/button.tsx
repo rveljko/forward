@@ -1,24 +1,22 @@
-import Tooltip, { tooltip } from '@dashboard-components/ui/tooltip'
 import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
-import { useState } from 'react'
 import { Link } from 'react-router'
 
 const button = cva(
-  'text-clickable flex w-max items-center justify-center gap-1 rounded-md shadow-sm transition [anchor-name:--button] hover:cursor-pointer not-disabled:active:scale-99 disabled:cursor-not-allowed disabled:opacity-50 disabled:select-none',
+  'flex w-max items-center justify-center gap-1 rounded-md text-black shadow-sm transition hover:cursor-pointer not-disabled:active:scale-99 disabled:cursor-not-allowed disabled:opacity-50 disabled:select-none',
   {
     variants: {
       variant: {
         primary:
-          'bg-brand-500 text-white not-disabled:hover:bg-[color-mix(in_oklab,var(--color-brand-500),var(--color-black)_10%)] not-disabled:pointer-coarse:active:bg-[color-mix(in_oklab,var(--color-brand-500),var(--color-black)_10%)]',
+          'bg-brand-500 not-disabled:hover:border-brand-700 not-disabled:pointer-coarse:active:border-brand-700 not-disabled:pointer-coarse:active:from-brand-600 not-disabled:pointer-coarse:active:to-brand-700 not-disabled:hover:from-brand-600 not-disabled:hover:to-brand-700 border-brand-600 from-brand-500 to-brand-600 border bg-linear-to-b text-white inset-ring inset-ring-white/10',
         secondary:
-          'bg-neutral-800 not-disabled:hover:bg-[color-mix(in_oklab,var(--color-neutral-800),var(--color-black)_10%)] not-disabled:pointer-coarse:active:bg-[color-mix(in_oklab,var(--color-neutral-800),var(--color-black)_10%)]',
+          'bg-white ring ring-neutral-900/10 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:ring-neutral-900/20',
         tertiary:
-          'not-disabled:hover:bg-clickable/10 not-disabled:pointer-coarse:active:bg-clickable/10 shadow-none',
+          'shadow-none not-disabled:hover:bg-neutral-200 not-disabled:pointer-coarse:active:bg-neutral-200',
         ghost:
-          'not-disabled:hover:bg-clickable/10 not-disabled:pointer-coarse:active:bg-clickable/10 inset-ring-clickable/10 shadow-none inset-ring',
+          'ring ring-neutral-900/10 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:ring-neutral-900/20',
         danger:
-          'bg-danger-500 text-black not-disabled:hover:bg-[color-mix(in_oklab,var(--color-danger-500),var(--color-black)_10%)] not-disabled:pointer-coarse:active:bg-[color-mix(in_oklab,var(--color-danger-500),var(--color-black)_10%)]',
+          'border border-red-600 bg-red-500 bg-linear-to-b from-red-500 to-red-600 text-white inset-ring inset-ring-white/10 not-disabled:hover:border-red-700 not-disabled:hover:from-red-600 not-disabled:hover:to-red-700 not-disabled:pointer-coarse:active:border-red-700 not-disabled:pointer-coarse:active:from-red-600 not-disabled:pointer-coarse:active:to-red-700',
         link: 'not-disabled:hover:text-brand-500 not-disabled:pointer-coarse:active:text-brand-500 shadow-none',
       },
       size: {
@@ -30,13 +28,11 @@ const button = cva(
   }
 )
 
-type ButtonBaseProps = VariantProps<typeof button> &
-  VariantProps<typeof tooltip> & {
-    children: React.ReactNode
-    leftIcon?: React.JSX.Element
-    rightIcon?: React.JSX.Element
-    tooltip?: React.JSX.Element
-  }
+type ButtonBaseProps = VariantProps<typeof button> & {
+  children: React.ReactNode
+  leftIcon?: React.JSX.Element
+  rightIcon?: React.JSX.Element
+}
 
 type ButtonAsAnchorProps = React.ComponentPropsWithoutRef<'a'> & {
   href: string
@@ -53,54 +49,16 @@ export default function Button({
   children,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
-  tooltip: TooltipContent,
-  position,
   variant,
   size,
   className,
   ...props
 }: ButtonProps) {
   const buttonClasses = cn(button({ variant, size, className }))
-  const [isHover, setIsHover] = useState(false)
 
   if ('href' in props && props.href !== undefined) {
     return (
-      <div className="[anchor-scope:--button] not-supports-[anchor-name:--dropdown]:relative">
-        <Link
-          to={props.href}
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-          className={buttonClasses}
-          {...props}
-        >
-          {LeftIcon && (
-            <span className="flex h-6 items-center justify-center">
-              {LeftIcon}
-            </span>
-          )}
-          {children}
-          {RightIcon && (
-            <span className="flex h-6 items-center justify-center">
-              {RightIcon}
-            </span>
-          )}
-        </Link>
-        {TooltipContent && isHover && (
-          <Tooltip position={position}>{TooltipContent}</Tooltip>
-        )}
-      </div>
-    )
-  }
-
-  return (
-    <div className="[anchor-scope:--button] not-supports-[anchor-name:--dropdown]:relative">
-      <button
-        className={buttonClasses}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-        type="button"
-        {...props}
-      >
+      <Link to={props.href} className={buttonClasses} {...props}>
         {LeftIcon && (
           <span className="flex h-6 items-center justify-center">
             {LeftIcon}
@@ -112,10 +70,21 @@ export default function Button({
             {RightIcon}
           </span>
         )}
-      </button>
-      {TooltipContent && isHover && (
-        <Tooltip position={position}>{TooltipContent}</Tooltip>
+      </Link>
+    )
+  }
+
+  return (
+    <button className={buttonClasses} type="button" {...props}>
+      {LeftIcon && (
+        <span className="flex h-6 items-center justify-center">{LeftIcon}</span>
       )}
-    </div>
+      {children}
+      {RightIcon && (
+        <span className="flex h-6 items-center justify-center">
+          {RightIcon}
+        </span>
+      )}
+    </button>
   )
 }
