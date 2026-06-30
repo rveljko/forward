@@ -21,7 +21,7 @@ export default function IssuesKanbanBoard({
     <div className="w-0 min-w-full grow">
       <div
         className={cn(
-          'divide-section-outline flex h-full divide-x overflow-x-auto scroll-smooth p-4',
+          'flex h-full divide-x divide-neutral-200 overflow-x-auto scroll-smooth p-4',
           className
         )}
         {...props}
