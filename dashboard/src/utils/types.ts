@@ -109,7 +109,6 @@ export type IssueTag = {
   id: string
   name: string
   label: IssueTagLabel
-  icon: () => React.JSX.Element
 }
 
 export type IssueTemplateLabel =
