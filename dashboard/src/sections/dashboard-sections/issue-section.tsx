@@ -13,6 +13,7 @@ import { useIssues } from '@services/contexts/issues-context'
 import { Editor } from '@tiptap/react'
 import { DEFAULT_ISSUE_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { Issue } from '@utils/types'
+import { cn } from '@utils/utils'
 import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
@@ -75,7 +76,7 @@ function Header({ issue }: HeaderProps) {
         <Link to="/issues" className="font-medium text-black">
           Issues
         </Link>
-        <span className="text-neutral-400">/</span>
+        <span className="text-neutral-600">/</span>
         <input
           type="text"
           ref={inputRef}
@@ -90,7 +91,10 @@ function Header({ issue }: HeaderProps) {
               inputRef.current?.blur()
             }
           }}
-          className={`text-clickable w-full max-w-85 ${newTitle === DEFAULT_ISSUE_TITLE ? 'text-neutral-400' : 'text-clickable'}`}
+          className={cn(
+            `w-full max-w-85 text-black`,
+            newTitle === DEFAULT_ISSUE_TITLE && 'text-neutral-600'
+          )}
         />
       </div>
       <div className="flex items-center gap-1">
