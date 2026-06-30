@@ -70,7 +70,7 @@ export default function IssuesKanbanCard({
   return (
     <article
       className={cn(
-        `ring-section-outline pointer-coarse:active:bg-issues-kanban-card-active-background pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 relative rounded-sm p-4 shadow-sm ring pointer-coarse:transition-all pointer-coarse:active:scale-99 ${activeIssueId === id ? 'bg-issues-kanban-card-active-background' : 'bg-section-background-color'}`,
+        `relative rounded-sm bg-white p-4 shadow-sm ring ring-neutral-900/10 hover:ring-neutral-900/20 pointer-coarse:transition-all pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20 ${activeIssueId === id ? 'ring-neutral-900/20' : ''}`,
         className
       )}
       style={style}
@@ -90,7 +90,7 @@ export default function IssuesKanbanCard({
           <h3>
             <Link
               to={`/issues/${id}`}
-              className="text-clickable line-clamp-1 break-all"
+              className="line-clamp-1 break-all text-black"
             >
               <span className="absolute inset-0" />
               {title}
@@ -101,7 +101,7 @@ export default function IssuesKanbanCard({
           <Button
             variant="tertiary"
             onClick={openModal}
-            className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-400"
+            className="hover:text-clickable isolate -m-2 rounded-full p-2 text-neutral-600"
           >
             <DotsVerticalIcon />
             <span className="sr-only">Actions</span>
