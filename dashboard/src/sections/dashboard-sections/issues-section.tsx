@@ -89,7 +89,7 @@ export default function IssuesSection() {
   return (
     <section className="flex h-full flex-col">
       <header className="flex items-center justify-between p-4">
-        <h1>Issues</h1>
+        <h1 className="font-medium">Issues</h1>
         <ProjectInformationModalButton
           variant="tertiary"
           className="group p-0.5"

@@ -21,7 +21,7 @@ export default function PreferencesSection() {
   return (
     <section className="space-y-4">
       <header>
-        <h2 className="mb-1">Preferences</h2>
+        <h2 className="mb-1 font-medium">Preferences</h2>
         <p>Customize your app experience</p>
       </header>
       <Divider />

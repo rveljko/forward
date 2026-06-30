@@ -74,7 +74,7 @@ function Header({ draftId, title }: HeaderProps) {
   return (
     <header className="flex items-center justify-between gap-2 p-4">
       <div className="flex grow items-center gap-1">
-        <Link to="/drafts" className="text-clickable">
+        <Link to="/drafts" className="font-medium text-black">
           Drafts
         </Link>
         <span className="text-neutral-400">/</span>

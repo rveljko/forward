@@ -26,7 +26,7 @@ export default function GuideSection({ guideSlug }: GuideSectionProps) {
       <title>{`${TITLE_PREFIX}${title}`}</title>
       <header className="p-4">
         <div className="flex items-center gap-1">
-          <Link to="/guides" className="text-clickable">
+          <Link to="/guides" className="font-medium text-black">
             Guides
           </Link>
           <span className="text-neutral-400">/</span>

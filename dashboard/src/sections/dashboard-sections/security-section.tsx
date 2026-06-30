@@ -22,7 +22,7 @@ export default function SecuritySection() {
   return (
     <section className="space-y-4">
       <header>
-        <h2 className="mb-1">Security</h2>
+        <h2 className="mb-1 font-medium">Security</h2>
         <p>Enhance your account protection settings</p>
       </header>
       <Divider />

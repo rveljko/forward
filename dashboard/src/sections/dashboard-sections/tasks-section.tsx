@@ -23,7 +23,7 @@ export default function TasksSection() {
   return (
     <section className="flex h-full flex-col">
       <header className="p-4">
-        <h1>Tasks</h1>
+        <h1 className="font-medium">Tasks</h1>
       </header>
       <Divider />
       <div

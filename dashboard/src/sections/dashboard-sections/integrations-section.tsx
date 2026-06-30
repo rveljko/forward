@@ -13,7 +13,7 @@ export default function IntegrationsSection() {
   return (
     <section className="space-y-4">
       <header>
-        <h2 className="mb-1">Integrations</h2>
+        <h2 className="mb-1 font-medium">Integrations</h2>
         <p>Connect and manage your apps seamlessly</p>
       </header>
       <Divider />

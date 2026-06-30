@@ -10,7 +10,7 @@ export default function DraftsSection() {
   return (
     <section>
       <header className="p-4">
-        <h1>Drafts</h1>
+        <h1 className="font-medium">Drafts</h1>
       </header>
       <Divider />
       <Container className="py-8 md:py-16">
