@@ -58,7 +58,7 @@ export default function IssuesKanbanCard({
     return (
       <article
         className={cn(
-          'border-section-outline bg-issues-kanban-card-active-background h-32.5 rounded-sm border border-dashed',
+          'h-29.5 rounded-md border border-dashed border-neutral-200 bg-white',
           className
         )}
         style={style}
