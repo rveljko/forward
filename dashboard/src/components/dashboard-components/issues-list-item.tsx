@@ -70,7 +70,7 @@ export default function IssuesListItem({
   return (
     <article
       className={cn(
-        `bg-section-background-color pointer-coarse:active:bg-issues-list-item-active-background hover:bg-issues-list-item-active-background relative flex items-center justify-between gap-2 p-4 pointer-coarse:transition ${activeIssueId === id ? 'bg-issues-list-item-active-background' : 'bg-section-background-color'}`,
+        `relative flex items-center justify-between gap-2 p-4 hover:bg-white pointer-coarse:transition pointer-coarse:active:bg-white ${activeIssueId === id ? 'bg-white' : 'bg-neutral-50'}`,
         className
       )}
       style={style}
