@@ -11,7 +11,7 @@ export default function DashboardLayout() {
   return (
     <div
       id="dashboard-layout"
-      className={`bg-background-color relative flex h-screen overflow-hidden ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
+      className={`relative flex h-screen overflow-hidden bg-neutral-100 text-sm text-neutral-900 inset-ring inset-ring-white ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
       <Toaster />
       <div
@@ -32,7 +32,7 @@ export default function DashboardLayout() {
           style={{
             borderRadius: getBorderRadius(),
           }}
-          className="border-section-outline bg-section-background-color h-full overflow-y-auto border"
+          className="h-full overflow-y-auto border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white"
         >
           <Outlet />
         </main>
