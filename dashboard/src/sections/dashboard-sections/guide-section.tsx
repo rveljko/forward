@@ -29,8 +29,8 @@ export default function GuideSection({ guideSlug }: GuideSectionProps) {
           <Link to="/guides" className="font-medium text-black">
             Guides
           </Link>
-          <span className="text-neutral-400">/</span>
-          <p className="line-clamp-1 text-neutral-100">{title}</p>
+          <span className="text-neutral-600">/</span>
+          <p className="line-clamp-1">{title}</p>
         </div>
       </header>
       <Divider />
