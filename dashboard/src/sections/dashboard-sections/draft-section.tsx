@@ -11,6 +11,7 @@ import { useDrafts } from '@services/contexts/drafts-context'
 import { Editor } from '@tiptap/react'
 import { DEFAULT_DRAFT_TITLE, TITLE_PREFIX } from '@utils/constants'
 import { Draft } from '@utils/types'
+import { cn } from '@utils/utils'
 import { useEffect, useRef, useState } from 'react'
 import { Link, Navigate } from 'react-router'
 
@@ -77,7 +78,7 @@ function Header({ draftId, title }: HeaderProps) {
         <Link to="/drafts" className="font-medium text-black">
           Drafts
         </Link>
-        <span className="text-neutral-400">/</span>
+        <span className="text-neutral-600">/</span>
         <input
           type="text"
           ref={inputRef}
@@ -90,7 +91,10 @@ function Header({ draftId, title }: HeaderProps) {
               inputRef.current?.blur()
             }
           }}
-          className={`focus:text-clickable w-full max-w-85 ${newTitle === DEFAULT_DRAFT_TITLE ? 'text-neutral-400' : 'text-clickable'}`}
+          className={cn(
+            `w-full max-w-85 text-black`,
+            newTitle === DEFAULT_DRAFT_TITLE && 'text-neutral-600'
+          )}
           maxLength={80}
         />
       </div>
