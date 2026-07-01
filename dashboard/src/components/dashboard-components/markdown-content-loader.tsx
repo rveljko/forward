@@ -26,7 +26,10 @@ export default function MarkdownContentLoader({
           <h4 className="mb-2 text-base font-medium md:text-lg" {...props} />
         ),
         p: ({ node, ...props }) => (
-          <p className="mb-2 has-[+_h2]:mb-8 has-[+_h3]:mb-8" {...props} />
+          <p
+            className="mb-2 text-neutral-600 has-[+_h2]:mb-8 has-[+_h3]:mb-8"
+            {...props}
+          />
         ),
         ul: ({ node, ...props }) => (
           <ul
@@ -42,7 +45,7 @@ export default function MarkdownContentLoader({
         ),
         li: ({ node, ...props }) => (
           <li
-            className="text-neutral-400 [&_strong]:text-neutral-200"
+            className="text-neutral-600 [&_strong]:text-neutral-800"
             {...props}
           />
         ),
