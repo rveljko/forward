@@ -16,7 +16,7 @@ const button = cva(
         ghost:
           'ring ring-neutral-900/10 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:ring-neutral-900/20',
         danger:
-          'border border-red-600 bg-red-500 bg-linear-to-b from-red-500 to-red-600 text-white inset-ring inset-ring-white/10 not-disabled:hover:border-red-700 not-disabled:hover:from-red-600 not-disabled:hover:to-red-700 not-disabled:pointer-coarse:active:border-red-700 not-disabled:pointer-coarse:active:from-red-600 not-disabled:pointer-coarse:active:to-red-700',
+          'border border-red-600 bg-red-500 bg-linear-to-b from-red-500 to-red-600 text-white inset-shadow-2xs inset-shadow-white/10 not-disabled:hover:border-red-700 not-disabled:hover:from-red-600 not-disabled:hover:to-red-700 not-disabled:pointer-coarse:active:border-red-700 not-disabled:pointer-coarse:active:from-red-600 not-disabled:pointer-coarse:active:to-red-700',
         link: 'not-disabled:hover:text-brand-500 not-disabled:pointer-coarse:active:text-brand-500 shadow-none',
       },
       size: {
