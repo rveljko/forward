@@ -69,7 +69,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 1 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 1 }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Heading 1<KeyboardShortcut>Ctrl + Alt + 1</KeyboardShortcut>
@@ -83,7 +83,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 2 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 2 }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Heading 2<KeyboardShortcut>Ctrl + Alt + 2</KeyboardShortcut>
@@ -97,7 +97,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 3 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 3 }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Heading 3<KeyboardShortcut>Ctrl + Alt + 3</KeyboardShortcut>
@@ -111,7 +111,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        className={`p-0.5 ${editor.isActive('heading', { level: 4 }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('heading', { level: 4 }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Heading 4<KeyboardShortcut>Ctrl + Alt + 4</KeyboardShortcut>
@@ -126,7 +126,7 @@ export default function TextEditorCommandBar({
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
-        className={`p-0.5 ${editor.isActive('bold') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('bold') ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Bold
@@ -142,7 +142,7 @@ export default function TextEditorCommandBar({
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
-        className={`p-0.5 ${editor.isActive('italic') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('italic') ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Italic
@@ -157,7 +157,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleUnderline().run()}
-        className={`p-0.5 ${editor.isActive('underline') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('underline') ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Underline
@@ -173,7 +173,7 @@ export default function TextEditorCommandBar({
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
-        className={`p-0.5 ${editor.isActive('strike') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('strike') ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Strikethrough
@@ -188,7 +188,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('left').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'left' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'left' }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Left Alignment
@@ -203,7 +203,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('center').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'center' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'center' }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Center Alignment
@@ -218,7 +218,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('right').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'right' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'right' }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Right Alignment
@@ -233,7 +233,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
-        className={`p-0.5 ${editor.isActive({ textAlign: 'justify' }) ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive({ textAlign: 'justify' }) ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Justify
@@ -248,7 +248,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={`p-0.5 ${editor.isActive('bulletList') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('bulletList') ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Bullet List
@@ -263,7 +263,7 @@ export default function TextEditorCommandBar({
       <TooltipButton
         variant="tertiary"
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={`p-0.5 ${editor.isActive('orderedList') ? 'bg-neutral-700 hover:bg-neutral-700' : ''}`}
+        className={`p-0.5 ${editor.isActive('orderedList') ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white not-disabled:hover:bg-neutral-50 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:bg-neutral-50 not-disabled:pointer-coarse:active:ring-neutral-900/20' : ''}`}
         tooltip={
           <div className="flex flex-col items-center gap-1 text-nowrap">
             Numbered List
