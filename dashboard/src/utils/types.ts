@@ -1,3 +1,5 @@
+import { BadgeProps } from '@dashboard-components/ui/badge'
+
 export type NavigationLink = {
   id: number
   name: string
@@ -173,5 +175,9 @@ export type Guide = {
   lastEdit: Date
   thumbnailDarkUrl: string
   thumbnailLightUrl: string
+  tags: {
+    text: string
+    color: BadgeProps['color']
+  }[]
   content: string
 }

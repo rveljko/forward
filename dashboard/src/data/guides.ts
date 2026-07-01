@@ -20,6 +20,7 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-create-a-new-issue.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-create-a-new-issue.png`,
     lastEdit: generateDateInPast(1),
+    tags: [{ text: 'Issues', color: 'cyan' }],
     content: howToCreateANewIssueGuide,
   },
   {
@@ -29,6 +30,7 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-change-issue-priorities.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-change-issue-priorities.png`,
     lastEdit: generateDateInPast(1),
+    tags: [{ text: 'Issues', color: 'cyan' }],
     content: howToChangeIssuePrioritiesGuide,
   },
   {
@@ -38,6 +40,7 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-sort-and-filter-issues.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-sort-and-filter-issues.png`,
     lastEdit: generateDateInPast(2),
+    tags: [{ text: 'Issues', color: 'cyan' }],
     content: howToSortAndFilterIssuesGuide,
   },
   {
@@ -47,6 +50,7 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-create-a-new-draft.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-create-a-new-draft.png`,
     lastEdit: generateDateInPast(3),
+    tags: [{ text: 'Drafts', color: 'violet' }],
     content: howToCreateANewDraftGuide,
   },
   {
@@ -56,6 +60,7 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-update-draft-properties.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-update-draft-properties.png`,
     lastEdit: generateDateInPast(3),
+    tags: [{ text: 'Drafts', color: 'violet' }],
     content: howToUpdateDraftPropertiesGuide,
   },
   {
@@ -65,6 +70,10 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-update-user-information.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-update-user-information.png`,
     lastEdit: generateDateInPast(3),
+    tags: [
+      { text: 'Settings', color: 'sky' },
+      { text: 'Profile', color: 'pink' },
+    ],
     content: howToUpdateUserInformationGuide,
   },
   {
@@ -74,6 +83,10 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-change-your-password.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-change-your-password.png`,
     lastEdit: generateDateInPast(4),
+    tags: [
+      { text: 'Settings', color: 'sky' },
+      { text: 'Security', color: 'orange' },
+    ],
     content: howToChangeYourPasswordGuide,
   },
   {
@@ -83,6 +96,10 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-change-your-preferences.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-change-your-preferences.png`,
     lastEdit: generateDateInPast(5),
+    tags: [
+      { text: 'Settings', color: 'sky' },
+      { text: 'Preferences', color: 'green' },
+    ],
     content: howToChangeYourPreferencesGuide,
   },
   {
@@ -92,6 +109,10 @@ export const guides: Guide[] = [
     thumbnailDarkUrl: `${IMAGE_PATH}guide-thumbnail-dark-how-to-toggle-integrations.png`,
     thumbnailLightUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-toggle-integrations.png`,
     lastEdit: generateDateInPast(5),
+    tags: [
+      { text: 'Settings', color: 'sky' },
+      { text: 'Integrations', color: 'rose' },
+    ],
     content: howToToggleIntegrationsGuide,
   },
 ]
