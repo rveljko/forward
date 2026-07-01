@@ -1,5 +1,5 @@
 import Container from '@dashboard-components/container'
-import DraftCard from '@dashboard-components/draft-card'
+import DraftCardsList from '@dashboard-components/draft-cards-list'
 import Divider from '@dashboard-components/ui/divider'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import FilterIcon from '@icons/filter-icon'
@@ -38,13 +38,7 @@ export default function DraftsSection() {
       </div>
       <Divider />
       <Container className="py-8 md:py-16">
-        <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--draft-card-width),100%),1fr))] gap-4">
-          {getSortedDrafts().map((draft) => (
-            <li key={draft.id}>
-              <DraftCard draft={draft} />
-            </li>
-          ))}
-        </ul>
+        <DraftCardsList drafts={getSortedDrafts()} />
       </Container>
     </section>
   )
