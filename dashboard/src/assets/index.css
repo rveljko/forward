@@ -114,6 +114,82 @@
     scrollbar-width: thin;
     scrollbar-color: hsl(from var(--color-clickable) h s l / 20%) transparent;
   }
+
+  .ProseMirror {
+    font-feature-settings: var(--default-font-feature-settings) !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  .ProseMirror h1,
+  .ProseMirror h2,
+  .ProseMirror h3,
+  .ProseMirror h4 {
+    font-weight: bold;
+  }
+
+  .ProseMirror h1 {
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+  }
+
+  .ProseMirror h2 {
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+  }
+
+  .ProseMirror h3 {
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+  }
+
+  .ProseMirror h4 {
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+  }
+
+  .ProseMirror p {
+    color: var(--color-neutral-900);
+  }
+
+  .ProseMirror ul {
+    list-style-type: disc;
+    margin-left: --spacing(6);
+  }
+
+  .ProseMirror ol {
+    list-style-type: decimal;
+    margin-left: --spacing(6);
+  }
+
+  .ProseMirror .is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+    color: var(--color-neutral-600);
+  }
+
+  @media (width >= 48rem) {
+    .ProseMirror h1 {
+      font-size: var(--text-3xl);
+      line-height: var(--text-3xl--line-height);
+    }
+
+    .ProseMirror h2 {
+      font-size: var(--text-2xl);
+      line-height: var(--text-2xl--line-height);
+    }
+
+    .ProseMirror h3 {
+      font-size: var(--text-xl);
+      line-height: var(--text-xl--line-height);
+    }
+
+    .ProseMirror h4 {
+      font-size: var(--text-lg);
+      line-height: var(--text-lg--line-height);
+    }
+  }
 }
 
 @custom-variant picker-select (&::picker(select));
