@@ -19,14 +19,14 @@ export default function NavigationLink({
     <NavLink
       className={({ isActive }) =>
         cn(
-          `text-clickable group pointer-coarse:active:[&>span:first-child]:text-clickable flex items-center gap-1 rounded-sm px-1.5 py-1 transition-[background-color,scale] [--hover-background:var(--color-neutral-800)] hover:bg-(--hover-background) active:scale-99 pointer-coarse:active:bg-(--hover-background) ${isActive ? '[&_span]:text-clickable bg-(--active-background) [--active-background:var(--color-neutral-700)] hover:bg-(--active-background) pointer-coarse:active:bg-(--active-background)' : ''}`,
+          `group flex items-center gap-1 rounded-md px-1.5 py-1 font-medium text-black transition hover:bg-neutral-200 active:scale-99 pointer-coarse:active:bg-neutral-200 ${isActive ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white hover:bg-neutral-50 pointer-coarse:active:bg-neutral-50 [&_span:first-child]:text-black' : ''}`,
           className
         )
       }
       {...props}
     >
       {Icon && (
-        <span className="group-hover:text-clickable flex h-6 items-center justify-center text-neutral-400">
+        <span className="flex h-6 items-center justify-center text-neutral-600 transition-colors group-hover:text-black pointer-coarse:group-active:text-black">
           <Icon />
         </span>
       )}
