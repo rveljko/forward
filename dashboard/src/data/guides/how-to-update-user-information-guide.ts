@@ -1,4 +1,4 @@
-export const howToCorrectlyUpdateUserInformationGuide = `## How to Correctly Update User Information
+export const howToUpdateUserInformationGuide = `## How to Update User Information
 
 Keeping your user information up to date is important for accurate account management. Follow these steps to update your details:
 

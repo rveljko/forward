@@ -1,4 +1,4 @@
-export const howToPromptlyCreateANewIssueGuide = `## How to Promptly Create a New Issue
+export const howToCreateANewIssueGuide = `## How to Create a New Issue
 
 Creating and tracking issues is a core part of managing your projects efficiently. Follow these steps to create a new issue quickly and accurately:
 

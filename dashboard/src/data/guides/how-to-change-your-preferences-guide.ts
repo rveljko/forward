@@ -1,4 +1,4 @@
-export const howToSimplyChangeYourPreferencesGuide = `## How to Simply Change Your Preferences
+export const howToChangeYourPreferencesGuide = `## How to Change Your Preferences
 
 Customize your experience by updating your preferences. Follow these steps:
 

@@ -1,4 +1,4 @@
-export const howToSecurelyChangeYourPasswordGuide = `## How to Securely Change Your Password
+export const howToChangeYourPasswordGuide = `## How to Change Your Password
 
 Keeping your password secure is essential for protecting your account. Follow these steps to change your password:
 

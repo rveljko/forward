@@ -1,4 +1,4 @@
-export const howToSeamlesslyToggleIntegrationsGuide = `## How to Seamlessly Toggle Integrations
+export const howToToggleIntegrationsGuide = `## How to Toggle Integrations
 
 Easily manage your integrations to connect with the tools you use. Follow these steps:
 

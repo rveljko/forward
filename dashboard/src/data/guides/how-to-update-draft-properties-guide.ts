@@ -1,4 +1,4 @@
-export const howToEasilyUpdateDraftPropertiesGuide = `## How to Easily Update Draft Properties
+export const howToUpdateDraftPropertiesGuide = `## How to Update Draft Properties
 
 Updating draft properties allows you to modify draft details efficiently. Follow these steps:
 

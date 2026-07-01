@@ -1,4 +1,4 @@
-export const howToSwiftlyChangeIssuePrioritiesGuide = `## How to Swiftly Change Issue Priorities
+export const howToChangeIssuePrioritiesGuide = `## How to Change Issue Priorities
 
 Managing issue priorities effectively helps keep your project focused on the most critical tasks. Follow these simple steps to change the priority of an issue in your project management tool:
 

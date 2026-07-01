@@ -1,4 +1,4 @@
-export const howToEffectivelySortAndFilterIssuesGuide = `## How to Effectively Sort and Filter Issues
+export const howToSortAndFilterIssuesGuide = `## How to Sort and Filter Issues
 
 Keeping your issues organized is easy with the sort and filter features. Follow these steps to quickly find the issues you need:
 

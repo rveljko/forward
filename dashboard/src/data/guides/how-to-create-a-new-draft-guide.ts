@@ -1,4 +1,4 @@
-export const howToQuicklyCreateANewDraftGuide = `## How to Quickly Create a New Draft
+export const howToCreateANewDraftGuide = `## How to Create a New Draft
 
 Creating drafts allows you to save your work in progress and return to it later. Follow these steps to create a new draft:
 
