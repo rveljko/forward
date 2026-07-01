@@ -18,7 +18,7 @@ export default function TimeAgo({ className, date, ...props }: TimeAgoProps) {
   return (
     <div
       className={cn(
-        'flex items-center gap-1 text-sm text-neutral-400',
+        'flex items-center gap-1 text-xs text-neutral-600',
         className
       )}
     >

@@ -20,22 +20,22 @@ export default function DraftCard({
 
   return (
     <article
-      className="ring-section-outline pointer-coarse:active:ring-clickable/20 hover:ring-clickable/20 has-[a:focus-visible]:ring-clickable relative h-full rounded-lg shadow-sm ring has-[a:focus-visible]:ring-2 pointer-coarse:transition-all pointer-coarse:active:scale-99"
+      className="relative flex h-full flex-col overflow-hidden rounded-md border border-white bg-white shadow-sm ring ring-neutral-900/10 hover:cursor-pointer hover:ring-neutral-900/20 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-black pointer-coarse:transition pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20"
       onContextMenu={(e) => {
         e.preventDefault()
         openModal()
       }}
     >
-      <div className="overflow-hidden rounded-t-lg">
-        <div className="bg-clickable/10 aspect-3/1 w-full"></div>
+      <div className="overflow-hidden">
+        <div className="aspect-3/1 w-full rounded-b-sm bg-neutral-200" />
       </div>
-      <div className="h-16 p-2">
+      <div className="h-14 p-2">
         <h3>
           <Link
             to={`/drafts/${id}`}
-            className="text-clickable line-clamp-2 text-balance focus:outline-0"
+            className="line-clamp-2 text-balance text-black focus:outline-0"
           >
-            <span className="absolute inset-0"></span>
+            <span className="absolute inset-0" />
             {title}
           </Link>
         </h3>
