@@ -2,13 +2,14 @@ import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 
 const select = cva(
-  'text-clickable not-open:picker-select:opacity-(--opacity-from) not-open:picker-select:translate-y-(--slide-y-from) not-open:picker-select:scale-(--scale-from) picker-select:transition-all picker-select:transition-discrete picker-select:opacity-(--opacity-to) picker-select:translate-y-(--slide-y-to) picker-select:scale-(--scale-to) picker-select:starting:opacity-(--opacity-from) picker-select:starting:scale-(--scale-from) picker-select:starting:translate-y-(--slide-y-from) picker-select:bg-dropdown-background picker-select:my-2 picker-select:border-section-outline picker-select:rounded-sm picker-select:p-1 picker-select:[appearance:base-select] field-sizing-content [appearance:base-select] space-y-0.5 rounded-md [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)] hover:cursor-pointer active:scale-99 [&::picker-icon]:hidden',
+  'not-open:picker-select:opacity-(--opacity-from) not-open:picker-select:translate-y-(--slide-y-from) not-open:picker-select:scale-(--scale-from) picker-select:transition-all picker-select:transition-discrete picker-select:opacity-(--opacity-to) picker-select:translate-y-(--slide-y-to) picker-select:scale-(--scale-to) picker-select:starting:opacity-(--opacity-from) picker-select:starting:scale-(--scale-from) picker-select:starting:translate-y-(--slide-y-from) picker-select:bg-white picker-select:my-2 picker-select:border-neutral-200 picker-select:rounded-sm picker-select:p-1 picker-select:[appearance:base-select] field-sizing-content [appearance:base-select] space-y-0.5 rounded-md text-black [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)] hover:cursor-pointer active:scale-99 [&::picker-icon]:hidden',
   {
     variants: {
       variant: {
         secondary:
-          'bg-neutral-800 hover:bg-[color-mix(in_oklab,var(--color-neutral-800),var(--color-black)_10%)]',
-        ghost: 'hover:bg-clickable/10 inset-ring-clickable/10 inset-ring',
+          'bg-white ring ring-neutral-900/10 hover:ring-neutral-900/20 pointer-coarse:active:ring-neutral-900/20',
+        ghost:
+          'ring ring-neutral-900/10 hover:ring-neutral-900/20 pointer-coarse:active:ring-neutral-900/20',
       },
       size: {
         large: 'px-3 py-2',
@@ -51,7 +52,7 @@ type OptionProps = React.ComponentPropsWithoutRef<'option'> & {
 function Option({ children, ...props }: OptionProps) {
   return (
     <option
-      className="text-clickable pointer-coarse:active:bg-clickable/5 [&::checkmark]:text-success-500 hover:bg-clickable/10 flex items-center gap-2 rounded-sm p-1 hover:cursor-pointer active:scale-99"
+      className="flex items-center gap-2 rounded-sm p-1 text-black hover:cursor-pointer hover:bg-neutral-100 active:scale-99 pointer-coarse:active:bg-neutral-100 [&::checkmark]:text-green-500"
       {...props}
     >
       {children}
