@@ -13,7 +13,15 @@ export default function PanelCard({
   return (
     <article
       className={cn(
-        'group/panel-card inset-ring-section-outline has-[a:focus-visible]:inset-ring-clickable has-[button:focus-visible]:inset-ring-clickable has-[button]:hover:inset-ring-clickable/20 has-[button]:pointer-coarse:active:inset-ring-clickable/20 has-[input:checked]:inset-ring-brand-500 has-[input:checked:focus-visible]:inset-ring-brand-500 has-[input:focus-visible]:inset-ring-clickable has-[input:checked]:pointer-coarse:active:inset-ring-brand-500 has-[input:checked]:hover:inset-ring-brand-500 has-[label]:pointer-coarse:active:inset-ring-clickable/20 has-[a]:pointer-coarse:active:inset-ring-clickable/20 has-[label]:hover:inset-ring-clickable/20 has-[a]:hover:inset-ring-clickable/20 relative overflow-hidden rounded-lg p-2 inset-ring transition-all has-[a]:active:scale-99 has-[a:focus-visible]:inset-ring-2 has-[button]:active:scale-99 has-[button:focus-visible]:inset-ring-2 has-[input:focus-visible]:inset-ring-2 has-[label]:active:scale-99',
+        'group/panel-card relative overflow-hidden rounded-lg bg-white p-2 shadow-sm ring ring-neutral-900/10 pointer-coarse:transition',
+        'has-[button]:hover:ring-neutral-900/20 has-[button]:active:scale-99 has-[button]:pointer-coarse:active:ring-neutral-900/20',
+        'has-[a]:hover:ring-neutral-900/20 has-[a]:active:scale-99 has-[a]:pointer-coarse:active:ring-neutral-900/20',
+        'has-[label]:hover:ring-neutral-900/20 has-[label]:active:scale-99 has-[label]:pointer-coarse:active:ring-neutral-900/20',
+        'has-[button:focus-visible]:ring-2 has-[button:focus-visible]:ring-black',
+        'has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-black',
+        'has-[input:focus-visible]:ring-2 has-[input:focus-visible]:ring-black',
+        'has-[input:checked]:ring-brand-500 has-[input:checked]:hover:ring-brand-500 has-[input:checked]:pointer-coarse:active:ring-brand-500 has-[input:checked]:ring-2',
+        'has-[input:checked:focus-visible]:ring-brand-500',
         className
       )}
       {...props}
@@ -33,8 +41,12 @@ type HeadingProps = React.ComponentPropsWithoutRef<'h3'> & {
   children: React.ReactNode
 }
 
-function Heading({ children, ...props }: HeadingProps) {
-  return <h3 {...props}>{children}</h3>
+function Heading({ children, className, ...props }: HeadingProps) {
+  return (
+    <h3 className={cn('font-medium', className)} {...props}>
+      {children}
+    </h3>
+  )
 }
 
 type ParagraphProps = React.ComponentPropsWithoutRef<'p'> & {
@@ -43,7 +55,7 @@ type ParagraphProps = React.ComponentPropsWithoutRef<'p'> & {
 
 function Paragraph({ children, className, ...props }: ParagraphProps) {
   return (
-    <p className={cn('text-sm', className)} {...props}>
+    <p className={cn('text-xs text-neutral-600', className)} {...props}>
       {children}
     </p>
   )
@@ -57,7 +69,7 @@ function Icon({ icon: Icon, className, ...props }: IconProps) {
   return (
     <span
       className={cn(
-        'inset-ring-section-outline [&_svg]:text-clickable flex w-max items-center justify-center rounded-lg p-2 inset-ring [&_svg]:size-4',
+        'flex w-max items-center justify-center rounded-lg p-2 shadow-sm ring ring-neutral-900/10 [&_svg]:size-4 [&_svg]:text-black',
         className
       )}
       {...props}
@@ -79,14 +91,14 @@ type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps
 
 function Button({ children, className, ...props }: ButtonProps) {
   const buttonClasses = cn(
-    'text-clickable hover:cursor-pointer focus:outline-0',
+    'text-black hover:cursor-pointer focus:outline-0',
     className
   )
 
   if ('href' in props && props.href !== undefined) {
     return (
       <Link to={props.href} className={buttonClasses} {...props}>
-        <span className="absolute inset-0"></span>
+        <span className="absolute inset-0" />
         {children}
       </Link>
     )
@@ -94,7 +106,7 @@ function Button({ children, className, ...props }: ButtonProps) {
 
   return (
     <button className={buttonClasses} {...props}>
-      <span className="absolute inset-0"></span>
+      <span className="absolute inset-0" />
       {children}
     </button>
   )
@@ -107,10 +119,10 @@ type LabelProps = React.ComponentPropsWithoutRef<'label'> & {
 function Label({ children, className, ...props }: LabelProps) {
   return (
     <label
-      className={cn('text-clickable hover:cursor-pointer', className)}
+      className={cn('font-medium text-black hover:cursor-pointer', className)}
       {...props}
     >
-      <span className="absolute inset-0"></span>
+      <span className="absolute inset-0" />
       {children}
     </label>
   )
