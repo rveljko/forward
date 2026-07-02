@@ -7,7 +7,7 @@ export default function SocialMediasSection() {
   return (
     <section>
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h2 className="w-full max-w-50">Social Medias</h2>
+        <h2 className="w-full max-w-50 font-medium">Social Medias</h2>
         <ul className="space-y-1">
           <li>
             <Button

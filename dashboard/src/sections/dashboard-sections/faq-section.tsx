@@ -5,7 +5,7 @@ export default function FaqSection() {
   return (
     <section>
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h2 className="w-full max-w-50">FAQ</h2>
+        <h2 className="w-full max-w-50 font-medium">FAQ</h2>
         <Accordion defaultActive="item-1">
           {faq.map(({ id, summary, details }) => (
             <Accordion.Item value={`item-${id}`} key={id}>
