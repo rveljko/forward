@@ -8,7 +8,7 @@ import { createContext, useContext, useState } from 'react'
 import { Link } from 'react-router'
 
 export const dropdown = cva(
-  'bg-dropdown-background inset-ring-section-outline absolute z-997 my-2 space-y-0.5 rounded-sm p-1 inset-ring [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)] [position-anchor:--dropdown] [position-try-fallbacks:flip-inline,flip-block]',
+  'absolute z-997 my-2 space-y-0.5 rounded-sm border border-neutral-200 bg-white p-1 [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)] [position-anchor:--dropdown] [position-try-fallbacks:flip-inline,flip-block]',
   {
     variants: {
       position: {
@@ -174,13 +174,13 @@ function AccordionSummary({
 
   return (
     <div
-      className={`text-clickable pointer-coarse:active:bg-clickable/5 hover:bg-clickable/10 relative flex items-center justify-between gap-2 overflow-hidden rounded-sm p-1 px-1.5 py-1 text-nowrap active:scale-99 ${isActive ? 'bg-clickable/10' : ''}`}
+      className={`relative flex items-center justify-between gap-2 overflow-hidden rounded-sm p-1 px-1.5 py-1 text-nowrap text-black hover:bg-neutral-100 active:scale-99 pointer-coarse:active:bg-neutral-100 ${isActive ? 'bg-neutral-100' : ''}`}
     >
       <div className="flex items-center gap-2">
         {Icon && <span>{Icon}</span>}
         <h3 className={cn('leading-none', className)} {...props}>
           <button onClick={() => toggleItem(valueForItem)}>
-            <span className="absolute inset-0 hover:cursor-pointer"></span>
+            <span className="absolute inset-0 hover:cursor-pointer" />
             {children}
           </button>
         </h3>
@@ -223,7 +223,7 @@ function Label({ children, className, ...props }: LabelProps) {
   return (
     <label
       className={cn(
-        'text-clickable pointer-coarse:active:bg-clickable/5 hover:bg-clickable/10 flex items-center gap-1 rounded-sm p-1 px-1.5 py-1 text-nowrap hover:cursor-pointer active:scale-99',
+        'flex items-center gap-1 rounded-sm p-1 px-1.5 py-1 text-nowrap text-black hover:cursor-pointer hover:bg-neutral-100 active:scale-99 pointer-coarse:active:bg-neutral-100',
         className
       )}
       {...props}
@@ -252,7 +252,7 @@ export type ButtonProps = ButtonBaseProps &
   (ButtonAsAnchorProps | ButtonAsButtonProps)
 
 export const dropdownButtonClasses =
-  'text-clickable hover:bg-clickable/5 pointer-coarse:active:bg-clickable/5 flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 hover:cursor-pointer active:scale-99'
+  'flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 text-black hover:cursor-pointer hover:bg-neutral-100 active:scale-99'
 
 function Button({
   children,
