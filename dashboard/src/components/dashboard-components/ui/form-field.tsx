@@ -1,4 +1,3 @@
-import { usePreferences } from '@services/contexts/preferences-context'
 import { cn } from '@utils/utils'
 
 type FormFieldProps = React.ComponentPropsWithoutRef<'div'> & {
@@ -46,26 +45,24 @@ function Input({
   className,
   ...props
 }: InputProps) {
-  const { isLightTheme } = usePreferences()
-
   return (
     <div className="relative w-full max-w-(--input-width)">
       {LeftIcon && (
-        <span className="bg-input-background [&_svg]:text-clickable absolute top-1/2 left-0.25 flex -translate-y-1/2 items-center pl-2">
+        <span className="absolute top-1/2 left-px flex -translate-y-1/2 items-center bg-white pl-2 [&_svg]:text-black">
           {LeftIcon}
         </span>
       )}
       <input
         type="text"
         className={cn(
-          `bg-input-background text-clickable w-full rounded-md px-3 py-2 shadow-sm transition-all placeholder:text-neutral-400 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline focus:ring-brand-500 ring focus:ring' : 'inset-ring-section-outline focus:inset-ring-brand-500 inset-ring focus:inset-ring'}`,
+          `focus:ring-brand-500 w-full rounded-md bg-white px-3 py-2 text-black shadow-sm ring ring-neutral-900/10 transition placeholder:text-neutral-600 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''}`,
           className
         )}
         required={!optional}
         {...props}
       />
       {RightIcon && (
-        <span className="bg-input-background [&_svg]:text-clickable absolute top-1/2 right-0.25 flex -translate-y-1/2 items-center pr-2">
+        <span className="absolute top-1/2 right-px flex -translate-y-1/2 items-center bg-white pr-2 [&_svg]:text-black">
           {RightIcon}
         </span>
       )}
@@ -84,24 +81,22 @@ function Textarea({
   className,
   ...props
 }: TextareaProps) {
-  const { isLightTheme } = usePreferences()
-
   return (
     <div className="relative w-full max-w-(--input-width)">
       {LeftIcon && (
-        <span className="[&_svg]:text-clickable absolute top-2.5 left-0.25 flex items-center pl-2">
+        <span className="absolute top-2.5 left-px flex items-center pl-2 [&_svg]:text-black">
           {LeftIcon}
         </span>
       )}
       <textarea
         className={cn(
-          `bg-input-background text-clickable flex aspect-2/1 w-full resize-none rounded-md px-3 py-2 shadow-sm transition-all placeholder:text-neutral-400 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} ${isLightTheme ? 'ring-section-outline focus:ring-brand-500 ring focus:ring' : 'focus:inset-ring-brand-500 inset-ring-section-outline inset-ring focus:inset-ring'}`,
+          `focus:ring-brand-500 flex aspect-2/1 w-full resize-none rounded-md bg-white px-3 py-2 text-black shadow-sm ring ring-neutral-900/10 transition placeholder:text-neutral-600 focus:outline-0 ${LeftIcon ? 'pl-8' : ''} ${RightIcon ? 'pr-8' : ''} `,
           className
         )}
         {...props}
       />
       {RightIcon && (
-        <span className="[&_svg]:text-clickable absolute top-2.5 right-0.25 flex items-center pr-2">
+        <span className="absolute top-2.5 right-px flex items-center pr-2 [&_svg]:text-black">
           {RightIcon}
         </span>
       )}
