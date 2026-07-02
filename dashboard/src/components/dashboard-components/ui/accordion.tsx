@@ -110,10 +110,13 @@ function Summary({ children, valueForItem, ...props }: SummaryProps) {
       className="flex h-(--accordion-summary-height) w-full cursor-pointer items-center justify-between py-2 select-text"
       onClick={() => toggleItem(valueForItem)}
     >
-      <h3 className="text-clickable w-full text-left leading-none" {...props}>
+      <h3
+        className="w-full text-left leading-none font-medium text-black"
+        {...props}
+      >
         {children}
       </h3>
-      <span className="text-clickable">
+      <span className="text-black">
         {isActive ? <ChevronDownIcon /> : <ChevronRightIcon />}
       </span>
     </button>
@@ -126,7 +129,7 @@ type DetailsProps = React.ComponentPropsWithoutRef<'p'> & {
 
 function Details({ children, ...props }: DetailsProps) {
   return (
-    <p className="mb-2 text-left" {...props}>
+    <p className="mb-2 text-left text-neutral-600" {...props}>
       {children}
     </p>
   )
