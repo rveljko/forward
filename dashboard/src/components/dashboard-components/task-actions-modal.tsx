@@ -160,18 +160,18 @@ function MenuPanel({ taskId, closeModal, setActivePanel }: MenuPanelProps) {
           <div className="mb-1 flex items-center gap-1">
             <PanelCard.Icon
               icon={<TrashIcon />}
-              className="[&_svg]:text-danger-500 bg-danger-500/10"
+              className="bg-red-100 ring-red-200 [&_svg]:text-red-500"
             />
             <PanelCard.Heading>
               <PanelCard.Button
-                className="text-danger-500"
+                className="text-red-500"
                 onClick={() => setActivePanel('delete')}
               >
                 Delete
               </PanelCard.Button>
             </PanelCard.Heading>
           </div>
-          <PanelCard.Paragraph className="text-danger-400">
+          <PanelCard.Paragraph className="text-red-400">
             Remove task permanently
           </PanelCard.Paragraph>
         </PanelCard>
