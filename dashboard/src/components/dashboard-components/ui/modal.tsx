@@ -56,7 +56,7 @@ function Overlay({ children, className, ...props }: OverlayProps) {
       exit={{ opacity: 0 }}
       onClick={closeModal}
       className={cn(
-        'bg-modal-overlay-background absolute inset-0 z-999 flex flex-col items-center justify-end p-4 md:justify-start',
+        'absolute inset-0 z-999 flex flex-col items-center justify-end bg-black/10 p-4 md:justify-start',
         className
       )}
       {...props}

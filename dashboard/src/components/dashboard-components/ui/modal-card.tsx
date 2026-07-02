@@ -10,7 +10,7 @@ export default function ModalCard({ children, className }: ModalCardProps) {
     <article
       style={{ borderRadius: getBorderRadius() }}
       className={cn(
-        'bg-modal-background border-section-outline w-full border',
+        'w-full bg-neutral-50 ring inset-ring ring-neutral-200 inset-ring-white',
         className
       )}
     >
