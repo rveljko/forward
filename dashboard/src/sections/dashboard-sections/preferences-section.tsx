@@ -22,21 +22,21 @@ export default function PreferencesSection() {
     <section className="space-y-4">
       <header>
         <h2 className="mb-1 font-medium">Preferences</h2>
-        <p>Customize your app experience</p>
+        <p className="text-neutral-600">Customize your app experience</p>
       </header>
       <Divider />
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50">Theme</h3>
+        <h3 className="w-full max-w-50 font-medium">Theme</h3>
         <ThemeCardsList themes={themes} />
       </div>
       <Divider />
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50">Sidebar Style</h3>
+        <h3 className="w-full max-w-50 font-medium">Sidebar Style</h3>
         <SidebarStyleCardsList sidebarStyles={sidebarStyles} />
       </div>
       <Divider />
       <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50">Right Side Sidebar</h3>
+        <h3 className="w-full max-w-50 font-medium">Right Side Sidebar</h3>
         <Switch
           checked={newPreferences.isRightSideSidebar}
           onChange={() =>
@@ -49,7 +49,7 @@ export default function PreferencesSection() {
       </div>
       <Divider />
       <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50">Rounded Corners</h3>
+        <h3 className="w-full max-w-50 font-medium">Rounded Corners</h3>
         <Switch
           checked={newPreferences.areRoundedCorners}
           onChange={() =>
@@ -64,7 +64,7 @@ export default function PreferencesSection() {
       {newPreferences.areRoundedCorners && (
         <>
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
-            <h3 className="w-full max-w-50">Corner Roundness</h3>
+            <h3 className="w-full max-w-50 font-medium">Corner Roundness</h3>
             <Select
               variant="secondary"
               size="small"

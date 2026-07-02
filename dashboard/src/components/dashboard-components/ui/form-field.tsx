@@ -26,7 +26,7 @@ type LabelProps = React.ComponentPropsWithoutRef<'label'> & {
 
 function Label({ children, className, ...props }: LabelProps) {
   return (
-    <label className={cn('w-max', className)} {...props}>
+    <label className={cn('w-max font-medium', className)} {...props}>
       {children}
     </label>
   )

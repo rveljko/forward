@@ -23,7 +23,9 @@ export default function SecuritySection() {
     <section className="space-y-4">
       <header>
         <h2 className="mb-1 font-medium">Security</h2>
-        <p>Enhance your account protection settings</p>
+        <p className="text-neutral-600">
+          Enhance your account protection settings
+        </p>
       </header>
       <Divider />
       <form
@@ -68,9 +70,7 @@ export default function SecuritySection() {
         </FormField>
         <Divider />
         <FormField className="items-start lg:flex-row lg:gap-16">
-          <p className="w-full max-w-50 text-neutral-100">
-            2-Step Authentication
-          </p>
+          <p className="w-full max-w-50 font-medium">2-Step Authentication</p>
           <Switch
             checked={newUserInformation.isTwoStepVerificationEnabled}
             onChange={() => {
