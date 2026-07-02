@@ -8,7 +8,7 @@ const button = cva(
     variants: {
       variant: {
         primary:
-          'bg-brand-500 not-disabled:hover:border-brand-700 not-disabled:pointer-coarse:active:border-brand-700 not-disabled:pointer-coarse:active:from-brand-600 not-disabled:pointer-coarse:active:to-brand-700 not-disabled:hover:from-brand-600 not-disabled:hover:to-brand-700 border-brand-600 from-brand-500 to-brand-600 border bg-linear-to-b text-white inset-shadow-2xs inset-shadow-white/10',
+          'not-disabled:hover:border-brand-700 not-disabled:pointer-coarse:active:border-brand-700 not-disabled:pointer-coarse:active:from-brand-600 not-disabled:pointer-coarse:active:to-brand-700 not-disabled:hover:from-brand-600 not-disabled:hover:to-brand-700 border-brand-600 from-brand-500 to-brand-600 border bg-linear-to-b text-white inset-shadow-2xs inset-shadow-white/10',
         secondary:
           'bg-white ring ring-neutral-900/10 not-disabled:hover:ring-neutral-900/20 not-disabled:pointer-coarse:active:ring-neutral-900/20',
         tertiary:
