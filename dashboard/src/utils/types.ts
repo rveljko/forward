@@ -67,9 +67,12 @@ export type Question = {
   details: string
 }
 
+type DraftCategoryLabel = 'general' | 'idea' | 'meeting' | 'inspiration'
+
 export type Draft = {
   id: string
   title: string
+  category: DraftCategoryLabel
   lastEdit: Date
   content: string
 }
