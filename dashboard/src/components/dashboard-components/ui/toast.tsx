@@ -1,3 +1,4 @@
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import CircleCheckIcon from '@icons/circle-check-icon'
 import CloseIcon from '@icons/close-icon'
 import { usePreferences } from '@services/contexts/preferences-context'
@@ -16,14 +17,15 @@ export default function Toast({ id, title, description }: ToastProps) {
   return (
     <article
       style={{ borderRadius: getBorderRadius() }}
-      className="bg-section-background-color border-section-outline border p-1"
+      className="bg-neutral-50 p-2 ring inset-ring ring-neutral-200 inset-ring-white"
     >
-      <div className="mb-1 flex justify-between">
+      <div className="mb-1 flex items-start justify-between">
         <div className="flex items-center gap-1">
-          <span className="inset-ring-section-outline bg-success-500/10 [&_svg]:text-success-500 flex size-8 shrink-0 items-center justify-center rounded-lg inset-ring">
-            <CircleCheckIcon />
-          </span>
-          <h3 className="line-clamp-1">{title}</h3>
+          <IconWrapper
+            icon={<CircleCheckIcon />}
+            className="bg-green-100 text-green-500 ring-green-200"
+          />
+          <h3 className="line-clamp-1 font-medium">{title}</h3>
         </div>
         <Button
           variant="tertiary"
@@ -36,7 +38,7 @@ export default function Toast({ id, title, description }: ToastProps) {
           <span className="sr-only">Close</span>
         </Button>
       </div>
-      <p className="text-sm">{description}</p>
+      <p className="text-xs text-neutral-600">{description}</p>
     </article>
   )
 }
