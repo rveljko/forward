@@ -174,9 +174,9 @@ function NoResultsPanel({ searchQuery }: NoResultsPanelProps) {
     <div className="flex flex-col items-center px-4 text-center text-pretty">
       <IconWrapper icon={<SearchIcon />} className="mb-4" />
       <h3 className="mb-2 font-medium">Sorry, We Couldn't Find Anything</h3>
-      <p className="wrap-anywhere text-neutral-600">
+      <p className="text-xs wrap-anywhere text-neutral-600">
         We couldn't find any results for{' '}
-        <span className="text-black">{searchQuery}</span> search
+        <strong className="font-medium text-black">{searchQuery}</strong> search
       </p>
     </div>
   )
