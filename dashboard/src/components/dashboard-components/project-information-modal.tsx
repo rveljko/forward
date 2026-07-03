@@ -65,10 +65,8 @@ export default function ProjectInformationModal({
     <ModalCard {...props}>
       <header className="flex flex-col gap-2 p-4">
         <div className="flex items-center justify-between">
-          <div className="inset-ring-section-outline w-max rounded-lg p-2 inset-ring">
-            <span className="text-clickable">
-              <PlanetIcon />
-            </span>
+          <div className="flex w-max items-center justify-center rounded-lg bg-white p-2 text-black shadow-sm ring ring-neutral-900/10 [&_svg]:size-4">
+            <PlanetIcon />
           </div>
           <div className="flex items-center gap-1">
             <Button
@@ -91,7 +89,7 @@ export default function ProjectInformationModal({
               }
             >
               {isEditMode ? (
-                <span className="[&_svg]:text-success-500">
+                <span className="[&_svg]:text-green-500">
                   <CheckIcon />
                 </span>
               ) : (
@@ -121,7 +119,7 @@ export default function ProjectInformationModal({
                 })
               }
               autoFocus
-              className="text-2xl font-semibold placeholder:text-neutral-400"
+              className="text-2xl font-semibold placeholder:text-neutral-600"
             />
             <textarea
               name="description"
@@ -133,7 +131,7 @@ export default function ProjectInformationModal({
                   description: e.target.value,
                 })
               }
-              className="resize-none text-neutral-400 placeholder:text-neutral-400"
+              className="resize-none text-neutral-600 placeholder:text-neutral-600"
             />
           </>
         ) : (
@@ -141,7 +139,7 @@ export default function ProjectInformationModal({
             <h3 className="text-2xl font-semibold">
               {projectInformation.title}
             </h3>
-            <p className="line-clamp-2 text-balance">
+            <p className="line-clamp-2 text-balance text-neutral-600">
               {projectInformation.description}
             </p>
           </>
@@ -157,7 +155,7 @@ export default function ProjectInformationModal({
             </InformationList.Label>
             <InformationList.Value
               icon={
-                <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
+                <div className="size-5 overflow-hidden rounded-full">
                   <img
                     src={profilePictureUrl}
                     alt={`${firstName} ${lastName}`}
