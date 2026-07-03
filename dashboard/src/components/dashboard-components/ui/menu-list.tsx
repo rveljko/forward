@@ -19,7 +19,10 @@ type HeadingProps = React.ComponentPropsWithoutRef<'h3'> & {
 
 function Heading({ children, className, ...props }: HeadingProps) {
   return (
-    <h3 className={cn('ml-4 text-neutral-400', className)} {...props}>
+    <h3
+      className={cn('ml-4 font-medium text-neutral-600', className)}
+      {...props}
+    >
       {children}
     </h3>
   )
@@ -39,7 +42,10 @@ function Item({
   return (
     <li
       className={cn(
-        'has-[button]:text-clickable has-[a]:text-clickable has-[a:focus-visible]:bg-clickable/10 has-[button]:hover:bg-clickable/10 has-[button:focus-visible]:bg-clickable/10 has-[button]:pointer-coarse:active:bg-clickable/10 has-[a]:hover:bg-clickable/10 has-[a]:pointer-coarse:active:bg-clickable/10 relative flex items-center gap-2 px-4 py-2 pointer-coarse:transition',
+        'relative flex items-center gap-2 px-4 py-2 pointer-coarse:transition',
+        'has-[a]:text-black has-[button]:text-black',
+        'has-[a]:hover:bg-neutral-200 has-[button]:hover:bg-neutral-200 has-[a]:pointer-coarse:active:bg-neutral-200 has-[button]:pointer-coarse:active:bg-neutral-200',
+        'has-[a:focus-visible]:bg-neutral-200 has-[button:focus-visible]:bg-neutral-200',
         className
       )}
       {...props}
@@ -62,7 +68,7 @@ type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps
 
 function Button({ children, className, ...props }: ButtonProps) {
   const buttonClasses = cn(
-    'text-clickable line-clamp-1 break-all hover:cursor-pointer focus:outline-0',
+    'line-clamp-1 break-all text-black hover:cursor-pointer focus:outline-0',
     className
   )
 

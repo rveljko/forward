@@ -1,4 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import MenuList from '@dashboard-components/ui/menu-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import { secondaryNavigationLinks } from '@data/navigation-links'
@@ -9,7 +10,6 @@ import DraftsContextProvider, {
   useDrafts,
 } from '@services/contexts/drafts-context'
 import { useIssues } from '@services/contexts/issues-context'
-import { cn } from '@utils/utils'
 import Fuse from 'fuse.js'
 import { useState } from 'react'
 
@@ -19,18 +19,14 @@ type SearchModalProps = React.ComponentPropsWithoutRef<'article'> & {
 
 export default function SearchModal({
   closeModal,
-  className,
   ...props
 }: SearchModalProps) {
   const [search, setSearch] = useState('')
 
   return (
-    <ModalCard
-      className={cn('bg-search-modal-background overflow-hidden', className)}
-      {...props}
-    >
+    <ModalCard {...props}>
       <header className="relative">
-        <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 [&_svg]:text-neutral-400">
+        <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 [&_svg]:text-neutral-600">
           <SearchIcon />
         </span>
         <input
@@ -38,7 +34,7 @@ export default function SearchModal({
           placeholder="Type a command or search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="text-clickable w-full p-4 pl-11 placeholder:text-neutral-400 focus:outline-0"
+          className="w-full p-4 pl-11 text-black placeholder:text-neutral-600 focus:outline-0"
         />
       </header>
       <Divider />
@@ -176,13 +172,11 @@ type NoResultsPanelProps = {
 function NoResultsPanel({ searchQuery }: NoResultsPanelProps) {
   return (
     <div className="flex flex-col items-center px-4 text-center text-pretty">
-      <span className="border-section-outline mb-4 flex size-12 items-center justify-center rounded-sm border">
-        <SearchIcon />
-      </span>
-      <h3 className="mb-2">Sorry, We Couldn't Find Anything</h3>
-      <p className="wrap-anywhere">
+      <IconWrapper icon={<SearchIcon />} className="mb-4" />
+      <h3 className="mb-2 font-medium">Sorry, We Couldn't Find Anything</h3>
+      <p className="wrap-anywhere text-neutral-600">
         We couldn't find any results for{' '}
-        <strong className="text-clickable">{searchQuery}</strong> search
+        <span className="text-black">{searchQuery}</span> search
       </p>
     </div>
   )
