@@ -1,4 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import PanelCard from '@dashboard-components/ui/panel-card'
 import RadioButton from '@dashboard-components/ui/radio-button'
 import { issuePriorities } from '@data/issue-priorities'
@@ -37,13 +38,11 @@ export default function ChangeIssuePriorityPanel({
       }}
     >
       <div className="px-4 pt-4">
-        <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
-          <PriorityIcon />
-        </span>
-        <h3 className="mb-1">
-          Change <strong>{issue.title}</strong> Priority
-        </h3>
-        <p className="mb-4">Update issue importance level</p>
+        <IconWrapper icon={<PriorityIcon />} className="mb-2" />
+        <h3 className="mb-1 font-medium">Change {issue.title} Priority</h3>
+        <p className="mb-4 text-xs text-neutral-600">
+          Update issue importance level
+        </p>
       </div>
       <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(42.5),100%),1fr))] gap-2 px-4 pb-4 max-sm:max-h-65 max-sm:overflow-y-auto">
         {issuePriorities.map(({ id, name, label, icon: Icon }) => (

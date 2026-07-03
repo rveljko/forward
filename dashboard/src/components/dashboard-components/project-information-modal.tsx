@@ -1,4 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import InformationList from '@dashboard-components/ui/information-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import { issueStatuses } from '@data/issue-statuses'
@@ -65,9 +66,7 @@ export default function ProjectInformationModal({
     <ModalCard {...props}>
       <header className="flex flex-col gap-2 p-4">
         <div className="flex items-center justify-between">
-          <div className="flex w-max items-center justify-center rounded-lg bg-white p-2 text-black shadow-sm ring ring-neutral-900/10 [&_svg]:size-4">
-            <PlanetIcon />
-          </div>
+          <IconWrapper icon={<PlanetIcon />} />
           <div className="flex items-center gap-1">
             <Button
               variant="tertiary"
