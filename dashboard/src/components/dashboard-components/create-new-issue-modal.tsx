@@ -19,7 +19,6 @@ import {
   IssueTagLabel,
   IssueTemplateLabel,
 } from '@utils/types'
-import { cn } from '@utils/utils'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -35,7 +34,6 @@ export default function CreateNewIssueModal({
   isBigSizeModal,
   setIsBigSizeModal,
   status,
-  className,
   ...props
 }: CreateNewIssueModalProps) {
   const { createNewIssue } = useIssues()
@@ -54,10 +52,7 @@ export default function CreateNewIssueModal({
   const [createMore, setCreateMore] = useState(false)
 
   return (
-    <ModalCard
-      className={cn('bg-(--create-new-issue-modal-background)', className)}
-      {...props}
-    >
+    <ModalCard {...props}>
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -86,7 +81,7 @@ export default function CreateNewIssueModal({
                     title: e.target.value,
                   }))
                 }
-                className="text-clickable w-full text-2xl placeholder:text-neutral-400 focus:outline-0"
+                className="w-full text-2xl text-black placeholder:text-neutral-600 focus:outline-0"
                 required
               />
               <div className="flex gap-1">
@@ -119,7 +114,7 @@ export default function CreateNewIssueModal({
                   description: e.target.value,
                 }))
               }
-              className="text-clickable aspect-5/1 w-full resize-none placeholder:text-neutral-400 focus:outline-0"
+              className="aspect-5/1 w-full resize-none text-black placeholder:text-neutral-600 focus:outline-0"
             />
             <div className="flex flex-wrap items-center gap-2">
               <Select
@@ -200,7 +195,7 @@ export default function CreateNewIssueModal({
         <Divider />
         <div dir="rtl" className="flex overflow-x-auto p-4">
           <div dir="ltr" className="ml-auto flex items-center gap-2">
-            <label className="flex items-center gap-2 text-nowrap text-neutral-400">
+            <label className="flex items-center gap-2 text-nowrap text-neutral-600">
               Create more
               <Switch
                 checked={createMore}
