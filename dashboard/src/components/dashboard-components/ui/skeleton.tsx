@@ -6,7 +6,7 @@ export default function Skeleton({ className, ...props }: SkeletonProps) {
   return (
     <div
       className={cn(
-        'bg-clickable/10 h-6 w-full animate-pulse rounded-sm',
+        'h-6 w-full animate-pulse rounded-sm bg-neutral-200',
         className
       )}
       {...props}
