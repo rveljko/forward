@@ -1,5 +1,6 @@
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import EditIcon from '@icons/edit-icon'
 import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
@@ -37,12 +38,13 @@ export default function RenameTaskPanel({
       }}
     >
       <div className="p-4">
-        <span className="border-section-outline [&_svg]:text-clickable mb-2 flex size-9 items-center justify-center rounded-lg border">
-          <EditIcon />
-        </span>
-        <h3 className="mb-1">Rename</h3>
+        <IconWrapper icon={<EditIcon />} className="mb-2" />
+        <h3 className="mb-1 font-medium">Rename</h3>
         <FormField className="gap-4 [&_div]:max-w-none">
-          <FormField.Label htmlFor="title" className="w-max text-neutral-400">
+          <FormField.Label
+            htmlFor="title"
+            className="w-max text-xs font-normal text-neutral-600"
+          >
             Edit task title
           </FormField.Label>
           <FormField.Input
