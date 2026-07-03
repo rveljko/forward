@@ -6,7 +6,6 @@ import Button from '@ui/button'
 import Switch from '@ui/switch'
 import { showToast } from '@utils/toasts'
 import { Task } from '@utils/types'
-import { cn } from '@utils/utils'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -16,7 +15,6 @@ type CreateNewTaskModalProps = React.ComponentPropsWithoutRef<'article'> & {
 
 export default function CreateNewTaskModal({
   closeModal,
-  className,
   ...props
 }: CreateNewTaskModalProps) {
   const { createNewTask } = useTasks()
@@ -30,10 +28,7 @@ export default function CreateNewTaskModal({
   const [createMore, setCreateMore] = useState(false)
 
   return (
-    <ModalCard
-      className={cn('bg-(--create-new-task-modal-background)', className)}
-      {...props}
-    >
+    <ModalCard {...props}>
       <form
         onSubmit={(e) => {
           e.preventDefault()
@@ -57,7 +52,7 @@ export default function CreateNewTaskModal({
             onChange={(e) =>
               setNewTask((prevTask) => ({ ...prevTask, title: e.target.value }))
             }
-            className="text-clickable w-full text-2xl placeholder:text-neutral-400 focus:outline-0"
+            className="w-full text-2xl text-black placeholder:text-neutral-600 focus:outline-0"
             required
           />
           <Button variant="tertiary" className="p-1" onClick={closeModal}>
@@ -68,7 +63,7 @@ export default function CreateNewTaskModal({
         <Divider />
         <div dir="rtl" className="flex overflow-x-auto p-4">
           <div dir="ltr" className="ml-auto flex items-center gap-2">
-            <label className="flex items-center gap-2 text-nowrap text-neutral-400">
+            <label className="flex items-center gap-2 text-nowrap text-neutral-600">
               Create more
               <Switch
                 checked={createMore}
