@@ -198,11 +198,11 @@ function NoTasksPanel() {
 function NoFilteredTasksPanel() {
   return (
     <div className="flex grow flex-col items-center justify-center p-4 text-center text-pretty">
-      <span className="border-section-outline mb-4 flex size-12 items-center justify-center rounded-sm border">
-        <SearchIcon />
-      </span>
-      <h2 className="mb-2">Sorry, No Matching Tasks</h2>
-      <p className="mb-4">Try adjusting your filters or create a new task</p>
+      <IconWrapper icon={<SearchIcon />} className="mb-4" />
+      <h2 className="mb-2 font-medium">Sorry, No Matching Tasks</h2>
+      <p className="mb-4 text-xs text-neutral-600">
+        Try adjusting your filters or create a new task
+      </p>
     </div>
   )
 }
