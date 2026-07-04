@@ -33,7 +33,7 @@ export default function DraftCard({
       <div className="overflow-hidden">
         <div
           className={cn(
-            'h-21 w-full rounded-b-sm',
+            'h-21 w-full rounded-b-sm transition-colors',
             category === 'general' && 'bg-neutral-200',
             category === 'idea' && 'bg-sky-200',
             category === 'meeting' && 'bg-green-200',
