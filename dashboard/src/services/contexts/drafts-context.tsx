@@ -1,5 +1,6 @@
+import { draftCategories } from '@data/draft-categories'
 import { drafts as defaultDrafts } from '@data/drafts'
-import { Draft } from '@utils/types'
+import { Draft, DraftCategory, DraftCategoryLabel } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -16,6 +17,7 @@ type DraftsContextType = {
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
   duplicateDraft: (id: Draft['id']) => void
   deleteDraft: (id: Draft['id']) => void
+  getDraftCategory: (category: DraftCategoryLabel) => DraftCategory
 }
 
 const DraftsContext = createContext<DraftsContextType | null>(null)
@@ -83,6 +85,10 @@ export default function DraftsContextProvider({
     setDrafts((prevDrafts) => prevDrafts.filter((draft) => draft.id !== id))
   }
 
+  function getDraftCategory(category: DraftCategoryLabel) {
+    return draftCategories.find(({ label }) => label === category)!
+  }
+
   useEffect(() => {
     localStorage.setItem('drafts', JSON.stringify(drafts))
   }, [drafts])
@@ -98,6 +104,7 @@ export default function DraftsContextProvider({
         renameDraft,
         duplicateDraft,
         deleteDraft,
+        getDraftCategory,
       }}
     >
       {children}

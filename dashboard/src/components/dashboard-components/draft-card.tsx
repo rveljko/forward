@@ -5,7 +5,9 @@ import Modal from '@dashboard-components/ui/modal'
 import TimeAgo from '@dashboard-components/ui/time-ago'
 import useModal from '@hooks/use-modal'
 import DotsVerticalIcon from '@icons/dots-vertical-icon'
+import { useDrafts } from '@services/contexts/drafts-context'
 import { Draft } from '@utils/types'
+import { cn } from '@utils/utils'
 import { AnimatePresence } from 'motion/react'
 import { Link } from 'react-router'
 
@@ -14,8 +16,10 @@ type DraftCardProps = {
 }
 
 export default function DraftCard({
-  draft: { id, title, lastEdit },
+  draft: { id, title, category, lastEdit },
 }: DraftCardProps) {
+  const { getDraftCategory } = useDrafts()
+  const { name: categoryName } = getDraftCategory(category)
   const { isOpened, openModal, closeModal } = useModal()
 
   return (
@@ -27,7 +31,16 @@ export default function DraftCard({
       }}
     >
       <div className="overflow-hidden">
-        <div className="aspect-3/1 w-full rounded-b-sm bg-neutral-200" />
+        <div
+          className={cn(
+            'aspect-3/1 w-full rounded-b-sm',
+            category === 'general' && 'bg-neutral-200',
+            category === 'idea' && 'bg-sky-200',
+            category === 'meeting' && 'bg-green-200',
+            category === 'inspiration' && 'bg-purple-200'
+          )}
+        />
+        <span className="sr-only">{`${categoryName} category`}</span>
       </div>
       <div className="h-14 p-2">
         <h3>
