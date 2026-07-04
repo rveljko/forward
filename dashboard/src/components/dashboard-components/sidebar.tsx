@@ -108,7 +108,7 @@ export default function Sidebar() {
             )}
           </Button>
         </header>
-        <div className="flex h-full flex-col gap-1 overflow-y-auto">
+        <div className="flex h-full flex-col gap-1 overflow-y-auto px-px">
           <div className="space-y-1">
             <Button
               variant="primary"
