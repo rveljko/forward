@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@toolwind/anchors';
 
 @font-face {
   font-family: Inter;
