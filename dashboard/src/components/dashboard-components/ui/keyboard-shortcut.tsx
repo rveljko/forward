@@ -12,7 +12,7 @@ export default function KeyboardShortcut({
   return (
     <kbd
       className={cn(
-        'font-sans text-xs text-nowrap text-neutral-400',
+        'font-sans text-xs text-nowrap text-neutral-600',
         className
       )}
       {...props}
