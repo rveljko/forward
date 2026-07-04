@@ -1,4 +1,5 @@
 import Container from '@dashboard-components/container'
+import CreateNewDraftModalButton from '@dashboard-components/create-new-draft-modal-button'
 import DraftCardsList from '@dashboard-components/draft-cards-list'
 import Divider from '@dashboard-components/ui/divider'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
@@ -32,9 +33,13 @@ export default function DraftsSection() {
             Sort
           </Button>
         </div>
-        <Button variant="primary" size="small" leftIcon={<PlusIcon />}>
+        <CreateNewDraftModalButton
+          variant="primary"
+          size="small"
+          leftIcon={<PlusIcon />}
+        >
           Create New Draft
-        </Button>
+        </CreateNewDraftModalButton>
       </div>
       <Divider />
       <Container className="py-8 md:py-16">

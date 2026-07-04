@@ -67,7 +67,14 @@ export type Question = {
   details: string
 }
 
-type DraftCategoryLabel = 'general' | 'idea' | 'meeting' | 'inspiration'
+export type DraftCategoryLabel = 'general' | 'idea' | 'meeting' | 'inspiration'
+
+export type DraftCategory = {
+  id: string
+  name: string
+  label: DraftCategoryLabel
+  icon: () => React.JSX.Element
+}
 
 export type Draft = {
   id: string

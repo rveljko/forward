@@ -1,8 +1,6 @@
 import { drafts as defaultDrafts } from '@data/drafts'
-import { DEFAULT_DRAFT_TITLE } from '@utils/constants'
 import { Draft } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
 import { v4 as uuidv4 } from 'uuid'
 
 type DraftsContextProviderProps = {
@@ -13,7 +11,7 @@ type DraftsContextType = {
   drafts: Draft[]
   getSortedDrafts: () => Draft[]
   getDraftById: (id: Draft['id']) => Draft
-  createNewDraft: () => void
+  createNewDraft: (newDraft: Draft) => void
   updateDraft: (id: Draft['id'], content: Draft['content']) => void
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
   duplicateDraft: (id: Draft['id']) => void
@@ -31,7 +29,6 @@ export default function DraftsContextProvider({
   children,
 }: DraftsContextProviderProps) {
   const [drafts, setDrafts] = useState(getInitialDrafts)
-  const navigate = useNavigate()
 
   function getSortedDrafts() {
     return drafts.sort(
@@ -43,13 +40,16 @@ export default function DraftsContextProvider({
     return drafts.find((draft) => draft.id === id)!
   }
 
-  function createNewDraft() {
-    const id = uuidv4()
+  function createNewDraft(newDraft: Draft) {
     setDrafts((prevDrafts) => [
-      { id, lastEdit: new Date(), title: DEFAULT_DRAFT_TITLE, content: '' },
+      {
+        ...newDraft,
+        id: uuidv4(),
+        lastEdit: new Date(),
+        content: `<h1>${newDraft.title}</h1><p>${newDraft.content}</p>`,
+      },
       ...prevDrafts,
     ])
-    navigate(`/drafts/${id}`)
   }
 
   function updateDraft(id: Draft['id'], content: Draft['content']) {
