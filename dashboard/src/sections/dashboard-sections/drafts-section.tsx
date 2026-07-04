@@ -5,10 +5,12 @@ import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import RadioButton from '@dashboard-components/ui/radio-button'
 import { draftCategories } from '@data/draft-categories'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
+import BrainIcon from '@icons/brain-icon'
 import CalendarIcon from '@icons/calendar-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
@@ -19,7 +21,7 @@ export default function DraftsSection() {
   const { getSortedDrafts } = useDrafts()
 
   return (
-    <section>
+    <section className="flex h-full flex-col">
       <header className="p-4">
         <h1 className="font-medium">Drafts</h1>
       </header>
@@ -41,8 +43,12 @@ export default function DraftsSection() {
         </CreateNewDraftModalButton>
       </div>
       <Divider />
-      <Container className="py-8 md:py-16">
-        <DraftCardsList drafts={getSortedDrafts()} />
+      <Container className="grow py-8 md:py-16">
+        {getSortedDrafts().length > 0 ? (
+          <DraftCardsList drafts={getSortedDrafts()} />
+        ) : (
+          <NoDraftsPanel />
+        )}
       </Container>
     </section>
   )
@@ -152,5 +158,24 @@ function SortDropdownButton() {
         </Dropdown.Item>
       </Dropdown.List>
     </DropdownButton>
+  )
+}
+
+function NoDraftsPanel() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center p-4 text-center text-pretty">
+      <IconWrapper icon={<BrainIcon />} className="mb-4" />
+      <h2 className="mb-2 font-medium">Sorry, You Have No Drafts</h2>
+      <p className="mb-4 text-xs text-neutral-600">
+        Get started by creating your first draft
+      </p>
+      <CreateNewDraftModalButton
+        variant="primary"
+        size="small"
+        leftIcon={<PlusIcon />}
+      >
+        Create New Draft
+      </CreateNewDraftModalButton>
+    </div>
   )
 }
