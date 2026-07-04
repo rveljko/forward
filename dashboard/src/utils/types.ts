@@ -88,6 +88,8 @@ export type DraftFilterCategory = 'category'
 
 export type DraftFilterKey = DraftCategoryLabel
 
+export type DraftSort = 'date-asc' | 'date-desc' | 'name-asc' | 'name-desc'
+
 export type IssueStatusLabel =
   | 'backlog'
   | 'todo'

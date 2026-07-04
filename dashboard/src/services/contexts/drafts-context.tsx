@@ -6,6 +6,7 @@ import {
   DraftCategoryLabel,
   DraftFilterCategory,
   DraftFilterKey,
+  DraftSort,
 } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router'
@@ -19,6 +20,8 @@ type DraftsContextType = {
   drafts: Draft[]
   setFilter: (category: DraftFilterCategory, key: DraftFilterKey) => void
   handleCheckbox: (key: DraftFilterKey) => boolean
+  sort: DraftSort
+  setSort: (key: DraftSort) => void
   getSortedDrafts: () => Draft[]
   getDraftById: (id: Draft['id']) => Draft
   createNewDraft: (newDraft: Draft) => void
@@ -42,6 +45,7 @@ export default function DraftsContextProvider({
   const [drafts, setDrafts] = useState(getInitialDrafts)
   const [searchParams, setSearchParams] = useSearchParams()
   const categories = searchParams.getAll('category') as DraftCategoryLabel[]
+  const sort = (searchParams.get('sort') || 'date-desc') as DraftSort
 
   const filteredDrafts = drafts.filter((draft) => {
     const filteredCategories =
@@ -72,10 +76,32 @@ export default function DraftsContextProvider({
     return categories.includes(key)
   }
 
+  function setSort(key: DraftSort) {
+    setSearchParams((prevParams) => {
+      prevParams.set('sort', key)
+      return prevParams
+    })
+  }
+
   function getSortedDrafts() {
-    return filteredDrafts.sort(
-      (a, b) => new Date(b.lastEdit).getTime() - new Date(a.lastEdit).getTime()
-    )
+    switch (sort) {
+      case 'date-asc':
+        return filteredDrafts.sort(
+          (a, b) =>
+            new Date(a.lastEdit).getTime() - new Date(b.lastEdit).getTime()
+        )
+      case 'date-desc':
+        return filteredDrafts.sort(
+          (a, b) =>
+            new Date(b.lastEdit).getTime() - new Date(a.lastEdit).getTime()
+        )
+      case 'name-asc':
+        return filteredDrafts.sort((a, b) => a.title.localeCompare(b.title))
+      case 'name-desc':
+        return filteredDrafts.sort((a, b) => b.title.localeCompare(a.title))
+      default:
+        return filteredDrafts
+    }
   }
 
   function getDraftById(id: Draft['id']) {
@@ -139,6 +165,8 @@ export default function DraftsContextProvider({
         drafts,
         setFilter,
         handleCheckbox,
+        sort,
+        setSort,
         getSortedDrafts,
         getDraftById,
         createNewDraft,
