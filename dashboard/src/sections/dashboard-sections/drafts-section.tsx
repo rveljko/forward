@@ -15,7 +15,9 @@ import CalendarIcon from '@icons/calendar-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import PlusIcon from '@icons/plus-icon'
+import SearchIcon from '@icons/search-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
+import { useSearchParams } from 'react-router'
 
 export default function DraftsSection() {
   const { getSortedDrafts } = useDrafts()
@@ -162,6 +164,12 @@ function SortDropdownButton() {
 }
 
 function NoDraftsPanel() {
+  const { drafts } = useDrafts()
+  const [searchParams] = useSearchParams()
+
+  if (drafts.length > 0 && searchParams.size > 0)
+    return <NoFilteredDraftsPanel />
+
   return (
     <div className="flex h-full flex-col items-center justify-center p-4 text-center text-pretty">
       <IconWrapper icon={<BrainIcon />} className="mb-4" />
@@ -176,6 +184,18 @@ function NoDraftsPanel() {
       >
         Create New Draft
       </CreateNewDraftModalButton>
+    </div>
+  )
+}
+
+function NoFilteredDraftsPanel() {
+  return (
+    <div className="flex h-full flex-col items-center justify-center p-4 text-center text-pretty">
+      <IconWrapper icon={<SearchIcon />} className="mb-4" />
+      <h2 className="mb-2 font-medium">Sorry, No Matching Drafts</h2>
+      <p className="mb-4 text-xs text-neutral-600">
+        Try adjusting your filters or create a new draft
+      </p>
     </div>
   )
 }
