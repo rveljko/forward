@@ -1,7 +1,12 @@
 import Container from '@dashboard-components/container'
 import CreateNewDraftModalButton from '@dashboard-components/create-new-draft-modal-button'
 import DraftCardsList from '@dashboard-components/draft-cards-list'
+import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
+import Dropdown from '@dashboard-components/ui/dropdown'
+import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import { draftCategories } from '@data/draft-categories'
+import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import FilterIcon from '@icons/filter-icon'
 import PlusIcon from '@icons/plus-icon'
@@ -22,9 +27,7 @@ export default function DraftsSection() {
         className="flex flex-wrap items-center justify-between gap-2 p-4"
       >
         <div className="flex items-center gap-2">
-          <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
-            Filters
-          </Button>
+          <FiltersDropdownButton />
           <Button
             variant="secondary"
             size="small"
@@ -46,5 +49,39 @@ export default function DraftsSection() {
         <DraftCardsList drafts={getSortedDrafts()} />
       </Container>
     </section>
+  )
+}
+
+function FiltersDropdownButton() {
+  const { setFilter, handleCheckbox } = useDrafts()
+  const { isOpened, toggleDropdown } = useDropdown()
+
+  return (
+    <DropdownButton
+      label="Filters"
+      isOpened={isOpened}
+      toggleDropdown={toggleDropdown}
+      variant="secondary"
+      size="small"
+      leftIcon={<FilterIcon />}
+    >
+      <Dropdown.List>
+        {draftCategories.map(({ id, name, label, icon: Icon }) => (
+          <Dropdown.Item key={id}>
+            <Dropdown.Label>
+              <Checkbox
+                onChange={() => {
+                  setFilter('category', label)
+                  toggleDropdown()
+                }}
+                checked={handleCheckbox(label)}
+              />
+              <Icon />
+              {name}
+            </Dropdown.Label>
+          </Dropdown.Item>
+        ))}
+      </Dropdown.List>
+    </DropdownButton>
   )
 }

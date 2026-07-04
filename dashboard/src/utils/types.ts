@@ -84,6 +84,10 @@ export type Draft = {
   content: string
 }
 
+export type DraftFilterCategory = 'category'
+
+export type DraftFilterKey = DraftCategoryLabel
+
 export type IssueStatusLabel =
   | 'backlog'
   | 'todo'

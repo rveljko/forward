@@ -1,7 +1,14 @@
 import { draftCategories } from '@data/draft-categories'
 import { drafts as defaultDrafts } from '@data/drafts'
-import { Draft, DraftCategory, DraftCategoryLabel } from '@utils/types'
+import {
+  Draft,
+  DraftCategory,
+  DraftCategoryLabel,
+  DraftFilterCategory,
+  DraftFilterKey,
+} from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 import { v4 as uuidv4 } from 'uuid'
 
 type DraftsContextProviderProps = {
@@ -10,6 +17,8 @@ type DraftsContextProviderProps = {
 
 type DraftsContextType = {
   drafts: Draft[]
+  setFilter: (category: DraftFilterCategory, key: DraftFilterKey) => void
+  handleCheckbox: (key: DraftFilterKey) => boolean
   getSortedDrafts: () => Draft[]
   getDraftById: (id: Draft['id']) => Draft
   createNewDraft: (newDraft: Draft) => void
@@ -31,9 +40,40 @@ export default function DraftsContextProvider({
   children,
 }: DraftsContextProviderProps) {
   const [drafts, setDrafts] = useState(getInitialDrafts)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const categories = searchParams.getAll('category') as DraftCategoryLabel[]
+
+  const filteredDrafts = drafts.filter((draft) => {
+    const filteredCategories =
+      !categories.length || categories.includes(draft.category)
+
+    return filteredCategories
+  })
+
+  function setFilter(category: DraftFilterCategory, key: DraftFilterKey) {
+    setSearchParams((prevParams) => {
+      if (prevParams.has(category)) {
+        const keys = prevParams.getAll(category) as DraftFilterKey[]
+
+        if (keys.includes(key)) {
+          prevParams.delete(category, key)
+        } else {
+          prevParams.append(category, key)
+        }
+      } else {
+        prevParams.append(category, key)
+      }
+
+      return prevParams
+    })
+  }
+
+  function handleCheckbox(key: DraftFilterKey) {
+    return categories.includes(key)
+  }
 
   function getSortedDrafts() {
-    return drafts.sort(
+    return filteredDrafts.sort(
       (a, b) => new Date(b.lastEdit).getTime() - new Date(a.lastEdit).getTime()
     )
   }
@@ -97,6 +137,8 @@ export default function DraftsContextProvider({
     <DraftsContext.Provider
       value={{
         drafts,
+        setFilter,
+        handleCheckbox,
         getSortedDrafts,
         getDraftById,
         createNewDraft,
