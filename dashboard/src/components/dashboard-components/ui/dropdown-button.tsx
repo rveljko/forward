@@ -42,13 +42,10 @@ export default function DropdownButton({
   }, [isOpened])
 
   return (
-    <div
-      className="w-max [anchor-scope:--dropdown] not-supports-[anchor-name:--dropdown]:relative"
-      ref={ref}
-    >
+    <div className="anchor-scope/dropdown w-max" ref={ref}>
       <Button
         onClick={toggleDropdown}
-        className={cn('[anchor-name:--dropdown]', className)}
+        className={cn('anchor/dropdown', className)}
         {...props}
       >
         {label}
