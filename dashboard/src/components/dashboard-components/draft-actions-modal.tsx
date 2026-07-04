@@ -1,3 +1,4 @@
+import ChangeDraftCategoryPanel from '@dashboard-components/change-draft-category-panel'
 import DeleteDraftPanel from '@dashboard-components/delete-draft-panel'
 import RenameDraftPanel from '@dashboard-components/rename-draft-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
@@ -9,6 +10,7 @@ import CloseIcon from '@icons/close-icon'
 import CopyIcon from '@icons/copy-icon'
 import EditIcon from '@icons/edit-icon'
 import ExternalLinkIcon from '@icons/external-link-icon'
+import LabelIcon from '@icons/label-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
@@ -24,7 +26,7 @@ type DraftActionsModalProps = {
   withoutLinks?: boolean
 }
 
-type ActivePanel = 'menu' | 'rename' | 'delete'
+type ActivePanel = 'menu' | 'change-category' | 'rename' | 'delete'
 
 export default function DraftActionsModal({
   draftId,
@@ -61,6 +63,14 @@ export default function DraftActionsModal({
             setActivePanel={setActivePanel}
             withoutLinks={withoutLinks}
           />
+        )}
+        {activePanel === 'change-category' && (
+          <ActivePanelContainer>
+            <ChangeDraftCategoryPanel
+              draftId={draftId}
+              closeModal={closeModal}
+            />
+          </ActivePanelContainer>
         )}
         {activePanel === 'rename' && (
           <ActivePanelContainer>
@@ -143,6 +153,21 @@ function MenuPanel({
           </li>
         </>
       )}
+      <li>
+        <PanelCard>
+          <div className="mb-1 flex items-center gap-1">
+            <PanelCard.Icon icon={<LabelIcon />} />
+            <PanelCard.Heading>
+              <PanelCard.Button
+                onClick={() => setActivePanel('change-category')}
+              >
+                Change category
+              </PanelCard.Button>
+            </PanelCard.Heading>
+          </div>
+          <PanelCard.Paragraph>Edit draft category</PanelCard.Paragraph>
+        </PanelCard>
+      </li>
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
