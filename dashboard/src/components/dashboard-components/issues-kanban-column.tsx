@@ -31,7 +31,7 @@ export default function IssuesKanbanColumn({
         icon={<Icon />}
         numberOfIssues={getIssuesByStatus(status).length}
         status={status}
-        className="rounded-sm"
+        className="sticky top-0 z-10 bg-neutral-50 ring ring-neutral-50"
       />
       <IssuesKanbanCardsList
         issues={getIssuesByStatus(status)}
