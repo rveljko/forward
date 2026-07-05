@@ -48,7 +48,9 @@ export default function Task({
     >
       <label className="flex items-center justify-center gap-2 hover:cursor-pointer has-checked:line-through">
         <Checkbox checked={isChecked} onChange={() => updateTaskStatus(id)} />
-        <span className="line-clamp-1 break-all text-black">{title}</span>
+        <span className="line-clamp-1 font-medium break-all text-black">
+          {title}
+        </span>
         <span className="absolute inset-0" />
       </label>
       <div className="flex items-center gap-2">
