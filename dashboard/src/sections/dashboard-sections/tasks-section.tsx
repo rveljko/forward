@@ -22,7 +22,7 @@ export default function TasksSection() {
   const { getSortedTasks } = useTasks()
 
   return (
-    <section className="flex h-full flex-col">
+    <section className="flex h-full flex-col overflow-y-hidden">
       <header className="p-4">
         <h1 className="font-medium">Tasks</h1>
       </header>
@@ -45,7 +45,9 @@ export default function TasksSection() {
       </div>
       <Divider />
       {getSortedTasks().length > 0 ? (
-        <TasksList tasks={getSortedTasks()} />
+        <div className="overflow-y-auto">
+          <TasksList tasks={getSortedTasks()} />
+        </div>
       ) : (
         <NoTasksPanel />
       )}
