@@ -89,7 +89,7 @@ export default function IssuesListItem({
           <h3>
             <Link
               to={`/issues/${id}`}
-              className="text-clickable line-clamp-1 break-all"
+              className="line-clamp-1 break-all text-black"
             >
               <span className="absolute inset-0" />
               {title}
