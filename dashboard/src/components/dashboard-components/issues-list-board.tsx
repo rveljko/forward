@@ -16,7 +16,7 @@ export default function IssuesListBoard({
   const { getIssueById } = useIssues()
 
   return (
-    <div {...props}>
+    <div className="overflow-y-auto" {...props}>
       {issueStatuses.map(({ id, label }) => (
         <IssuesListColumn status={label} key={id} />
       ))}

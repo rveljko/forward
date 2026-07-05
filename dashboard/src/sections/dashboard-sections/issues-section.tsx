@@ -87,7 +87,7 @@ export default function IssuesSection() {
   }, [view])
 
   return (
-    <section className="flex h-full flex-col">
+    <section className="flex h-full flex-col overflow-y-hidden">
       <header className="flex items-center justify-between p-4">
         <h1 className="font-medium">Issues</h1>
         <ProjectInformationModalButton
