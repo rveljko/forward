@@ -46,7 +46,7 @@ export default function DraftCard({
         <h3>
           <Link
             to={`/drafts/${id}`}
-            className="line-clamp-2 text-balance text-black focus:outline-0"
+            className="line-clamp-2 font-medium text-balance text-black focus:outline-0"
           >
             <span className="absolute inset-0" />
             {title}
