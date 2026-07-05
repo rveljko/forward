@@ -90,7 +90,7 @@ export default function IssuesKanbanCard({
           <h3>
             <Link
               to={`/issues/${id}`}
-              className="line-clamp-1 break-all text-black"
+              className="line-clamp-1 font-medium break-all text-black"
             >
               <span className="absolute inset-0" />
               {title}
