@@ -23,7 +23,7 @@ export default function DraftsSection() {
   const { getSortedDrafts } = useDrafts()
 
   return (
-    <section className="flex h-full flex-col">
+    <section className="flex h-full flex-col overflow-hidden">
       <header className="p-4">
         <h1 className="font-medium">Drafts</h1>
       </header>
@@ -45,13 +45,15 @@ export default function DraftsSection() {
         </CreateNewDraftModalButton>
       </div>
       <Divider />
-      <Container className="grow py-8 md:py-16">
-        {getSortedDrafts().length > 0 ? (
-          <DraftCardsList drafts={getSortedDrafts()} />
-        ) : (
-          <NoDraftsPanel />
-        )}
-      </Container>
+      {getSortedDrafts().length > 0 ? (
+        <div className="grow overflow-y-auto">
+          <Container className="py-8 md:py-16">
+            <DraftCardsList drafts={getSortedDrafts()} />
+          </Container>
+        </div>
+      ) : (
+        <NoDraftsPanel />
+      )}
     </section>
   )
 }
