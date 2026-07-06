@@ -52,7 +52,7 @@ export default function CreateNewTaskModal({
             onChange={(e) =>
               setNewTask((prevTask) => ({ ...prevTask, title: e.target.value }))
             }
-            className="w-full text-2xl text-black placeholder:text-neutral-600 focus:outline-0"
+            className="w-full text-2xl font-medium text-black placeholder:text-neutral-600 focus:outline-0"
             required
           />
           <Button variant="tertiary" className="p-1" onClick={closeModal}>
