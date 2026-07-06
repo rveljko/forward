@@ -7,20 +7,20 @@ import { v4 as uuidv4 } from 'uuid'
 export const issueTags: IssueTag[] = [
   {
     id: uuidv4(),
-    name: 'Design',
-    label: 'design',
+    name: 'Bug',
+    label: 'bug',
     icon: DesignIssueTagIcon,
   },
   {
     id: uuidv4(),
-    name: 'Development',
-    label: 'development',
+    name: 'Improvement',
+    label: 'improvement',
     icon: DevelopmentIssueTagIcon,
   },
   {
     id: uuidv4(),
-    name: 'Testing',
-    label: 'testing',
+    name: 'Optimization',
+    label: 'optimization',
     icon: TestingIssueTagIcon,
   },
 ]

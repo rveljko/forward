@@ -10,7 +10,7 @@ export const issues: Issue[] = [
       'Build a notification system that keeps users updated about important events in their projects and issues. This should help users stay on top of changes like new comments, status updates, assignments, and deadlines.',
     status: 'backlog',
     priority: 'high',
-    tag: 'development',
+    tag: 'improvement',
     template: 'clean',
     createdAt: generateDateInPast(3),
     content:
@@ -23,7 +23,7 @@ export const issues: Issue[] = [
       'Make it easy and intuitive for users to create new issues and report problems within their projects. This should help teams track bugs, tasks, and feature requests efficiently.',
     status: 'todo',
     priority: 'high',
-    tag: 'development',
+    tag: 'improvement',
     template: 'clean',
     createdAt: generateDateInPast(3),
     content:
@@ -36,7 +36,7 @@ export const issues: Issue[] = [
       "Allow users to easily update the status of issues to reflect their current progress. This helps keep everyone on the team informed about what's done, in progress, or blocked.",
     status: 'todo',
     priority: 'medium',
-    tag: 'design',
+    tag: 'bug',
     template: 'clean',
     createdAt: generateDateInPast(3),
     content:
@@ -49,7 +49,7 @@ export const issues: Issue[] = [
       'Enable users to add comments to issues to facilitate communication and collaboration within the team. Comments should be easy to write, view, and manage.',
     status: 'todo',
     priority: 'medium',
-    tag: 'design',
+    tag: 'bug',
     template: 'clean',
     createdAt: generateDateInPast(4),
     content:
@@ -62,7 +62,7 @@ export const issues: Issue[] = [
       'Enable seamless integration of our issue tracking platform with other popular tools and services that teams rely on, such as CRM systems, email clients, chat platforms, and project management apps. This will streamline workflows, reduce context switching, and improve overall productivity.',
     status: 'in-progress',
     priority: 'high',
-    tag: 'development',
+    tag: 'improvement',
     template: 'clean',
     createdAt: generateDateInPast(4),
     content:
@@ -75,7 +75,7 @@ export const issues: Issue[] = [
       'Allow users to assign and update priority levels on issues so teams can focus on the most important tasks first.',
     status: 'in-progress',
     priority: 'medium',
-    tag: 'design',
+    tag: 'bug',
     template: 'clean',
     createdAt: generateDateInPast(4),
     content:
@@ -88,7 +88,7 @@ export const issues: Issue[] = [
       'Provide users with powerful and flexible tools to filter and sort issues so they can quickly find what matters most and organize their work effectively.',
     status: 'in-progress',
     priority: 'low',
-    tag: 'testing',
+    tag: 'optimization',
     template: 'clean',
     createdAt: generateDateInPast(4),
     content:
@@ -101,7 +101,7 @@ export const issues: Issue[] = [
       'Allow users to add and manage tags on issues to help categorize, organize, and quickly find related tasks across projects.',
     status: 'in-review',
     priority: 'medium',
-    tag: 'design',
+    tag: 'bug',
     template: 'clean',
     createdAt: generateDateInPast(4),
     content:
@@ -114,7 +114,7 @@ export const issues: Issue[] = [
       'Ensure users have a seamless and efficient experience accessing the issue tracking platform on mobile devices, whether through a mobile-optimized web app or native apps. This will allow users to manage issues, projects, and collaborate effectively on the go.',
     status: 'in-review',
     priority: 'medium',
-    tag: 'testing',
+    tag: 'optimization',
     template: 'clean',
     createdAt: generateDateInPast(5),
     content:
@@ -127,7 +127,7 @@ export const issues: Issue[] = [
       'Allow users to attach files and documents to issues, comments, and other relevant parts of the platform to provide additional context, evidence, or resources.',
     status: 'finished',
     priority: 'high',
-    tag: 'testing',
+    tag: 'optimization',
     template: 'clean',
     createdAt: generateDateInPast(6),
     content:
