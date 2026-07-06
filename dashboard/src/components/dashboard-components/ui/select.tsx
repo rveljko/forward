@@ -36,7 +36,7 @@ export default function Select({
     <select className={cn(select({ variant, size }), className)} {...props}>
       <button>
         {/* @ts-ignore */}
-        <selectedcontent className="flex items-center gap-1"></selectedcontent>
+        <selectedcontent className="flex items-center gap-1 font-medium"></selectedcontent>
       </button>
       {children}
     </select>
