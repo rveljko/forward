@@ -1,4 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
+import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import InformationList from '@dashboard-components/ui/information-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import CalendarIcon from '@icons/calendar-icon'
@@ -51,11 +52,7 @@ export default function IssueInformationModal({
     <ModalCard {...props}>
       <header className="flex flex-col gap-2 p-4">
         <div className="flex items-center justify-between">
-          <div className="inset-ring-section-outline w-max rounded-lg p-2 inset-ring">
-            <span className="text-clickable">
-              <IssueStatusIcon />
-            </span>
-          </div>
+          <IconWrapper icon={<IssueStatusIcon />} />
           <div className="flex items-center gap-1">
             <Button
               variant="tertiary"
@@ -77,7 +74,7 @@ export default function IssueInformationModal({
               disabled={!newInformation.title && !newInformation.description}
             >
               {isEditMode ? (
-                <span className="[&_svg]:text-success-500">
+                <span className="[&_svg]:text-green-500">
                   <CheckIcon />
                 </span>
               ) : (
@@ -104,7 +101,7 @@ export default function IssueInformationModal({
                 setNewInformation({ ...newInformation, title: e.target.value })
               }
               autoFocus
-              className="text-2xl font-semibold placeholder:text-neutral-400"
+              className="text-2xl font-semibold placeholder:text-neutral-600"
             />
             <textarea
               name="description"
@@ -116,21 +113,23 @@ export default function IssueInformationModal({
                   description: e.target.value,
                 })
               }
-              className="resize-none text-neutral-400 placeholder:text-neutral-400"
+              className="resize-none text-neutral-600 placeholder:text-neutral-600"
             />
           </>
         ) : (
           <>
             <h3 className="text-2xl font-semibold">{issue.title}</h3>
             {issue.description && (
-              <p className="line-clamp-2 text-balance">{issue.description}</p>
+              <p className="line-clamp-2 text-balance text-neutral-600">
+                {issue.description}
+              </p>
             )}
           </>
         )}
       </header>
       <Divider />
       <div className="p-4">
-        <h3 className="mb-2">Properties</h3>
+        <h3 className="mb-2 font-medium">Properties</h3>
         <InformationList>
           <InformationList.Item>
             <InformationList.Label icon={<UserIcon />}>
@@ -138,7 +137,7 @@ export default function IssueInformationModal({
             </InformationList.Label>
             <InformationList.Value
               icon={
-                <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
+                <div className="size-5 overflow-hidden rounded-full">
                   <img
                     src={profilePictureUrl}
                     alt={`${firstName} ${lastName}`}
