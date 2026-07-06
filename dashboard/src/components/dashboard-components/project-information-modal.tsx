@@ -146,7 +146,7 @@ export default function ProjectInformationModal({
       </header>
       <Divider />
       <div className="p-4">
-        <h3 className="mb-2">Properties</h3>
+        <h3 className="mb-2 font-medium">Properties</h3>
         <InformationList>
           <InformationList.Item>
             <InformationList.Label icon={<UserIcon />}>
