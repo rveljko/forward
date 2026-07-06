@@ -14,8 +14,8 @@ import BrainIcon from '@icons/brain-icon'
 import CalendarIcon from '@icons/calendar-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
-import PlusIcon from '@icons/plus-icon'
 import SearchIcon from '@icons/search-icon'
+import WritingIcon from '@icons/writing-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import { useSearchParams } from 'react-router'
 
@@ -39,7 +39,7 @@ export default function DraftsSection() {
         <CreateNewDraftModalButton
           variant="primary"
           size="small"
-          leftIcon={<PlusIcon />}
+          leftIcon={<WritingIcon />}
         >
           Create New Draft
         </CreateNewDraftModalButton>
@@ -182,7 +182,7 @@ function NoDraftsPanel() {
       <CreateNewDraftModalButton
         variant="primary"
         size="small"
-        leftIcon={<PlusIcon />}
+        leftIcon={<WritingIcon />}
       >
         Create New Draft
       </CreateNewDraftModalButton>
