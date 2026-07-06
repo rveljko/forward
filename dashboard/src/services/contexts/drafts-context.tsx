@@ -18,7 +18,9 @@ type DraftsContextProviderProps = {
 
 type DraftsContextType = {
   drafts: Draft[]
+  categories: DraftCategoryLabel[]
   setFilter: (category: DraftFilterCategory, key: DraftFilterKey) => void
+  removeFilter: (category: DraftFilterCategory, key: DraftFilterKey) => void
   handleCheckbox: (key: DraftFilterKey) => boolean
   sort: DraftSort
   setSort: (key: DraftSort) => void
@@ -68,6 +70,14 @@ export default function DraftsContextProvider({
       } else {
         prevParams.append(category, key)
       }
+
+      return prevParams
+    })
+  }
+
+  function removeFilter(category: DraftFilterCategory, key: DraftFilterKey) {
+    setSearchParams((prevParams) => {
+      prevParams.delete(category, key)
 
       return prevParams
     })
@@ -173,7 +183,9 @@ export default function DraftsContextProvider({
     <DraftsContext.Provider
       value={{
         drafts,
+        categories,
         setFilter,
+        removeFilter,
         handleCheckbox,
         sort,
         setSort,

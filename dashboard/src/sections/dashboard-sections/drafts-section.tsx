@@ -5,6 +5,7 @@ import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import FilterChip from '@dashboard-components/ui/filter-chip'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import RadioButton from '@dashboard-components/ui/radio-button'
 import { draftCategories } from '@data/draft-categories'
@@ -17,10 +18,12 @@ import LetterCaseIcon from '@icons/letter-case-icon'
 import SearchIcon from '@icons/search-icon'
 import WritingIcon from '@icons/writing-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
+import { AnimatePresence, motion } from 'motion/react'
 import { useSearchParams } from 'react-router'
 
 export default function DraftsSection() {
-  const { getSortedDrafts } = useDrafts()
+  const { categories, removeFilter, getSortedDrafts, getDraftCategory } =
+    useDrafts()
 
   return (
     <section className="flex h-full flex-col overflow-hidden">
@@ -32,9 +35,32 @@ export default function DraftsSection() {
         role="toolbar"
         className="flex flex-wrap items-center justify-between gap-2 p-4"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <FiltersDropdownButton />
           <SortDropdownButton />
+          <ul className="contents">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {categories.map((category) => {
+                const { name, icon: Icon } = getDraftCategory(category)
+
+                return (
+                  <motion.li
+                    layout
+                    key={category}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                  >
+                    <FilterChip
+                      name={name}
+                      icon={<Icon />}
+                      onRemove={() => removeFilter('category', category)}
+                    />
+                  </motion.li>
+                )
+              })}
+            </AnimatePresence>
+          </ul>
         </div>
         <CreateNewDraftModalButton
           variant="primary"
