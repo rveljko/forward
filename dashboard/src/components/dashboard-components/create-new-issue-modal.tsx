@@ -81,7 +81,7 @@ export default function CreateNewIssueModal({
                     title: e.target.value,
                   }))
                 }
-                className="w-full text-2xl text-black placeholder:text-neutral-600 focus:outline-0"
+                className="w-full text-2xl font-medium text-black placeholder:text-neutral-600 focus:outline-0"
                 required
               />
               <div className="flex gap-1">
