@@ -1,7 +1,7 @@
 import Divider from '@dashboard-components/ui/divider'
 import FormField from '@dashboard-components/ui/form-field'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
-import EditIcon from '@icons/edit-icon'
+import EditCircleIcon from '@icons/edit-circle-icon'
 import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
@@ -38,7 +38,7 @@ export default function RenameTaskPanel({
       }}
     >
       <div className="p-4">
-        <IconWrapper icon={<EditIcon />} className="mb-2" />
+        <IconWrapper icon={<EditCircleIcon />} className="mb-2" />
         <h3 className="mb-1 font-medium">Rename</h3>
         <FormField className="gap-4 [&_div]:max-w-none">
           <FormField.Label

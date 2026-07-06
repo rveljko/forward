@@ -5,7 +5,7 @@ import ModalCard from '@dashboard-components/ui/modal-card'
 import CalendarIcon from '@icons/calendar-icon'
 import CheckIcon from '@icons/check-icon'
 import CloseIcon from '@icons/close-icon'
-import EditIcon from '@icons/edit-icon'
+import EditCircleIcon from '@icons/edit-circle-icon'
 import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
@@ -78,7 +78,7 @@ export default function IssueInformationModal({
                   <CheckIcon />
                 </span>
               ) : (
-                <EditIcon />
+                <EditCircleIcon />
               )}
               <span className="sr-only">
                 {isEditMode ? 'Save Changes' : 'Edit'}

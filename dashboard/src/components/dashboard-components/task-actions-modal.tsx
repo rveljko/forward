@@ -6,7 +6,7 @@ import ArrowLeftIcon from '@icons/arrow-left-icon'
 import ClipboardIcon from '@icons/clipboard-icon'
 import CloseIcon from '@icons/close-icon'
 import CopyIcon from '@icons/copy-icon'
-import EditIcon from '@icons/edit-icon'
+import EditCircleIcon from '@icons/edit-circle-icon'
 import TrashIcon from '@icons/trash-icon'
 import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
@@ -101,7 +101,7 @@ function MenuPanel({ taskId, closeModal, setActivePanel }: MenuPanelProps) {
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<EditIcon />} />
+            <PanelCard.Icon icon={<EditCircleIcon />} />
             <PanelCard.Heading>
               <PanelCard.Button onClick={() => setActivePanel('rename')}>
                 Rename

@@ -8,7 +8,7 @@ import ClickIcon from '@icons/click-icon'
 import ClipboardIcon from '@icons/clipboard-icon'
 import CloseIcon from '@icons/close-icon'
 import CopyIcon from '@icons/copy-icon'
-import EditIcon from '@icons/edit-icon'
+import EditCircleIcon from '@icons/edit-circle-icon'
 import ExternalLinkIcon from '@icons/external-link-icon'
 import LabelIcon from '@icons/label-icon'
 import TrashIcon from '@icons/trash-icon'
@@ -171,7 +171,7 @@ function MenuPanel({
       <li>
         <PanelCard>
           <div className="mb-1 flex items-center gap-1">
-            <PanelCard.Icon icon={<EditIcon />} />
+            <PanelCard.Icon icon={<EditCircleIcon />} />
             <PanelCard.Heading>
               <PanelCard.Button onClick={() => setActivePanel('rename')}>
                 Rename

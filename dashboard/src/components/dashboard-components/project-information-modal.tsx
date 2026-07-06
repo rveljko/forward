@@ -6,7 +6,7 @@ import { issueStatuses } from '@data/issue-statuses'
 import CalendarIcon from '@icons/calendar-icon'
 import CheckIcon from '@icons/check-icon'
 import CloseIcon from '@icons/close-icon'
-import EditIcon from '@icons/edit-icon'
+import EditCircleIcon from '@icons/edit-circle-icon'
 import FolderIcon from '@icons/folder-icon'
 import PlanetIcon from '@icons/planet-icon'
 import UserIcon from '@icons/user-icon'
@@ -92,7 +92,7 @@ export default function ProjectInformationModal({
                   <CheckIcon />
                 </span>
               ) : (
-                <EditIcon />
+                <EditCircleIcon />
               )}
               <span className="sr-only">
                 {isEditMode ? 'Save Changes' : 'Edit'}
