@@ -10,9 +10,9 @@ import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
 import CheckboxIcon from '@icons/checkbox-icon'
+import EditIcon from '@icons/edit-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
-import PlusIcon from '@icons/plus-icon'
 import SearchIcon from '@icons/search-icon'
 import UncheckedBoxIcon from '@icons/unchecked-box-icon'
 import { useTasks } from '@services/contexts/tasks-context'
@@ -38,7 +38,7 @@ export default function TasksSection() {
         <CreateNewTaskModalButton
           variant="primary"
           size="small"
-          leftIcon={<PlusIcon />}
+          leftIcon={<EditIcon />}
         >
           Create New Task
         </CreateNewTaskModalButton>
@@ -189,7 +189,7 @@ function NoTasksPanel() {
       <CreateNewTaskModalButton
         variant="primary"
         size="small"
-        leftIcon={<PlusIcon />}
+        leftIcon={<EditIcon />}
       >
         Create New Task
       </CreateNewTaskModalButton>
