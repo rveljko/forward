@@ -25,7 +25,7 @@ export default function FilterChip({
     >
       <div className="flex items-center gap-1 [&>div:first-child]:w-auto">
         {Icon}
-        <span className="text-xs font-medium">{name}</span>
+        <span className="text-xs font-medium text-nowrap">{name}</span>
       </div>
       <Button variant="tertiary" className="size-4" onClick={onRemove}>
         <CloseIcon />
