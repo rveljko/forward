@@ -6,6 +6,7 @@ import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import RadioButton from '@dashboard-components/ui/radio-button'
+import { taskStatuses } from '@data/task-statuses'
 import useDropdown from '@hooks/use-dropdown'
 import ArrowsSortIcon from '@icons/arrows-sort-icon'
 import CalendarIcon from '@icons/calendar-icon'
@@ -14,7 +15,6 @@ import EditIcon from '@icons/edit-icon'
 import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import SearchIcon from '@icons/search-icon'
-import UncheckedBoxIcon from '@icons/unchecked-box-icon'
 import { useTasks } from '@services/contexts/tasks-context'
 import { useSearchParams } from 'react-router'
 
@@ -69,32 +69,21 @@ function FiltersDropdownButton() {
       leftIcon={<FilterIcon />}
     >
       <Dropdown.List>
-        <Dropdown.Item>
-          <Dropdown.Label>
-            <Checkbox
-              onChange={() => {
-                setFilter('status', 'checked')
-                toggleDropdown()
-              }}
-              checked={handleCheckbox('checked')}
-            />
-            <CheckboxIcon />
-            Checked
-          </Dropdown.Label>
-        </Dropdown.Item>
-        <Dropdown.Item>
-          <Dropdown.Label>
-            <Checkbox
-              onChange={() => {
-                setFilter('status', 'unchecked')
-                toggleDropdown()
-              }}
-              checked={handleCheckbox('unchecked')}
-            />
-            <UncheckedBoxIcon />
-            Unchecked
-          </Dropdown.Label>
-        </Dropdown.Item>
+        {taskStatuses.map(({ id, name, label, icon: Icon }) => (
+          <Dropdown.Item key={id}>
+            <Dropdown.Label>
+              <Checkbox
+                onChange={() => {
+                  setFilter('status', label)
+                  toggleDropdown()
+                }}
+                checked={handleCheckbox(label)}
+              />
+              <Icon />
+              {name}
+            </Dropdown.Label>
+          </Dropdown.Item>
+        ))}
       </Dropdown.List>
     </DropdownButton>
   )

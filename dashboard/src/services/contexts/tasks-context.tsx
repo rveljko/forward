@@ -1,5 +1,11 @@
 import { tasks as defaultTasks } from '@data/tasks'
-import { Task, TaskFilterCategory, TaskFilterKey, TaskSort } from '@utils/types'
+import {
+  Task,
+  TaskFilterCategory,
+  TaskFilterKey,
+  TaskSort,
+  TaskStatusLabel,
+} from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router'
 import { v4 as uuidv4 } from 'uuid'
@@ -35,7 +41,7 @@ export default function TasksContextProvider({
 }: TasksContextProviderProps) {
   const [tasks, setTasks] = useState(getInitialTasks)
   const [searchParams, setSearchParams] = useSearchParams()
-  const statuses = searchParams.getAll('status') as TaskFilterKey[]
+  const statuses = searchParams.getAll('status') as TaskStatusLabel[]
   const sort = (searchParams.get('sort') || 'date-desc') as TaskSort
 
   const filteredTasks = tasks.filter((task) => {

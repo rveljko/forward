@@ -172,6 +172,15 @@ export type IssueSort =
   | 'name-asc'
   | 'name-desc'
 
+export type TaskStatusLabel = 'checked' | 'unchecked'
+
+export type TaskStatus = {
+  id: string
+  name: string
+  label: TaskStatusLabel
+  icon: () => React.JSX.Element
+}
+
 export type Task = {
   id: string
   title: string
@@ -181,7 +190,7 @@ export type Task = {
 
 export type TaskFilterCategory = 'status'
 
-export type TaskFilterKey = 'checked' | 'unchecked'
+export type TaskFilterKey = TaskStatusLabel
 
 export type TaskSort = 'date-asc' | 'date-desc' | 'name-asc' | 'name-desc'
 
