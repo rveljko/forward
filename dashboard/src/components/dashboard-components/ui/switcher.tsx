@@ -14,7 +14,7 @@ export default function Switcher({
     <fieldset
       role="tablist"
       className={cn(
-        'flex w-max items-center rounded-sm border border-neutral-900/10 bg-neutral-100 inset-ring inset-ring-white',
+        'flex w-max items-center rounded-sm bg-neutral-100 ring inset-ring ring-neutral-900/10 inset-ring-white',
         className
       )}
       {...props}
