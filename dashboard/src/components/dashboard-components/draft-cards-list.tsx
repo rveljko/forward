@@ -1,6 +1,7 @@
 import DraftCard from '@dashboard-components/draft-card'
 import { Draft } from '@utils/types'
 import { cn } from '@utils/utils'
+import { AnimatePresence, motion } from 'motion/react'
 import React from 'react'
 
 type DraftCardsListProps = React.ComponentPropsWithoutRef<'ul'> & {
@@ -20,11 +21,19 @@ export default function DraftCardsList({
       )}
       {...props}
     >
-      {drafts.map((draft) => (
-        <li key={draft.id}>
-          <DraftCard draft={draft} />
-        </li>
-      ))}
+      <AnimatePresence mode="popLayout" initial={false}>
+        {drafts.map((draft) => (
+          <motion.li
+            layout
+            key={draft.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+          >
+            <DraftCard draft={draft} />
+          </motion.li>
+        ))}
+      </AnimatePresence>
     </ul>
   )
 }
