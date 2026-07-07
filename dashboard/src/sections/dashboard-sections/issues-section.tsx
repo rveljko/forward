@@ -5,6 +5,7 @@ import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import FilterChip from '@dashboard-components/ui/filter-chip'
 import RadioButton from '@dashboard-components/ui/radio-button'
 import Switcher from '@dashboard-components/ui/switcher'
 import { issuePriorities } from '@data/issue-priorities'
@@ -32,6 +33,7 @@ import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
 import { Issue } from '@utils/types'
+import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 
@@ -41,7 +43,16 @@ function getInitialView(): 'list' | 'kanban' {
 }
 
 export default function IssuesSection() {
-  const { updateIssuePosition } = useIssues()
+  const {
+    statuses,
+    priorities,
+    tags,
+    removeFilter,
+    updateIssuePosition,
+    getIssueStatus,
+    getIssuePriority,
+    getIssueTag,
+  } = useIssues()
   const [view, setView] = useState(getInitialView)
   const [activeId, setActiveId] = useState<Issue['id'] | null>(null)
 
@@ -106,6 +117,69 @@ export default function IssuesSection() {
         <div className="flex items-center gap-2">
           <FilterDropdownButton />
           <SortDropdownButton />
+          <ul className="contents">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {statuses.map((status) => {
+                const { name, icon: Icon } = getIssueStatus(status)
+
+                return (
+                  <motion.li
+                    layout
+                    key={status}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                  >
+                    <FilterChip
+                      name={name}
+                      icon={<Icon />}
+                      onRemove={() => removeFilter('status', status)}
+                    />
+                  </motion.li>
+                )
+              })}
+
+              {priorities.map((priority) => {
+                const { name, icon: Icon } = getIssuePriority(priority)
+
+                return (
+                  <motion.li
+                    layout
+                    key={priority}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                  >
+                    <FilterChip
+                      name={name}
+                      icon={<Icon />}
+                      onRemove={() => removeFilter('priority', priority)}
+                    />
+                  </motion.li>
+                )
+              })}
+
+              {tags.map((tag) => {
+                const { name, icon: Icon } = getIssueTag(tag)
+
+                return (
+                  <motion.li
+                    layout
+                    key={tag}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                  >
+                    <FilterChip
+                      name={name}
+                      icon={<Icon />}
+                      onRemove={() => removeFilter('tag', tag)}
+                    />
+                  </motion.li>
+                )
+              })}
+            </AnimatePresence>
+          </ul>
         </div>
         <Switcher>
           <Switcher.Button

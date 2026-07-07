@@ -28,7 +28,11 @@ type IssuesContextProviderProps = {
 
 type IssuesContextType = {
   issues: Issue[]
+  statuses: IssueStatusLabel[]
+  priorities: IssuePriorityLabel[]
+  tags: IssueTagLabel[]
   setFilter: (category: IssueFilterCategory, key: IssueFilterKey) => void
+  removeFilter: (category: IssueFilterCategory, key: IssueFilterKey) => void
   handleCheckbox: (key: IssueFilterKey) => boolean
   sort: IssueSort
   setSort: (key: IssueSort) => void
@@ -88,6 +92,14 @@ export default function IssuesContextProvider({
       } else {
         prevParams.append(category, key)
       }
+
+      return prevParams
+    })
+  }
+
+  function removeFilter(category: IssueFilterCategory, key: IssueFilterKey) {
+    setSearchParams((prevParams) => {
+      prevParams.delete(category, key)
 
       return prevParams
     })
@@ -235,7 +247,11 @@ export default function IssuesContextProvider({
     <IssuesContext.Provider
       value={{
         issues,
+        priorities,
+        tags,
+        statuses,
         setFilter,
+        removeFilter,
         handleCheckbox,
         sort,
         setSort,
