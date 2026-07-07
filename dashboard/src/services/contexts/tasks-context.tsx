@@ -1,9 +1,11 @@
+import { taskStatuses } from '@data/task-statuses'
 import { tasks as defaultTasks } from '@data/tasks'
 import {
   Task,
   TaskFilterCategory,
   TaskFilterKey,
   TaskSort,
+  TaskStatus,
   TaskStatusLabel,
 } from '@utils/types'
 import { createContext, useContext, useEffect, useState } from 'react'
@@ -16,7 +18,9 @@ type TasksContextProviderProps = {
 
 type TasksContextType = {
   tasks: Task[]
+  statuses: TaskStatusLabel[]
   setFilter: (category: TaskFilterCategory, key: TaskFilterKey) => void
+  removeFilter: (category: TaskFilterCategory, key: TaskFilterKey) => void
   handleCheckbox: (key: TaskFilterKey) => boolean
   sort: TaskSort
   setSort: (key: TaskSort) => void
@@ -27,6 +31,7 @@ type TasksContextType = {
   updateTaskStatus: (id: Task['id']) => void
   duplicateTask: (id: Task['id']) => void
   deleteTask: (id: Task['id']) => void
+  getTaskStatus: (status: TaskStatusLabel) => TaskStatus
 }
 
 const TasksContext = createContext<TasksContextType | null>(null)
@@ -67,6 +72,14 @@ export default function TasksContextProvider({
       } else {
         prevParams.append(category, key)
       }
+
+      return prevParams
+    })
+  }
+
+  function removeFilter(category: TaskFilterCategory, key: TaskFilterKey) {
+    setSearchParams((prevParams) => {
+      prevParams.delete(category, key)
 
       return prevParams
     })
@@ -146,6 +159,10 @@ export default function TasksContextProvider({
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id))
   }
 
+  function getTaskStatus(status: TaskStatusLabel) {
+    return taskStatuses.find(({ label }) => label === status)!
+  }
+
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks))
   }, [tasks])
@@ -154,7 +171,9 @@ export default function TasksContextProvider({
     <TasksContext.Provider
       value={{
         tasks,
+        statuses,
         setFilter,
+        removeFilter,
         handleCheckbox,
         sort,
         setSort,
@@ -165,6 +184,7 @@ export default function TasksContextProvider({
         updateTaskStatus,
         duplicateTask,
         deleteTask,
+        getTaskStatus,
       }}
     >
       {children}

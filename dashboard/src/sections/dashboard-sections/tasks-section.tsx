@@ -4,6 +4,7 @@ import Checkbox from '@dashboard-components/ui/checkbox'
 import Divider from '@dashboard-components/ui/divider'
 import Dropdown from '@dashboard-components/ui/dropdown'
 import DropdownButton from '@dashboard-components/ui/dropdown-button'
+import FilterChip from '@dashboard-components/ui/filter-chip'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import RadioButton from '@dashboard-components/ui/radio-button'
 import { taskStatuses } from '@data/task-statuses'
@@ -16,10 +17,11 @@ import FilterIcon from '@icons/filter-icon'
 import LetterCaseIcon from '@icons/letter-case-icon'
 import SearchIcon from '@icons/search-icon'
 import { useTasks } from '@services/contexts/tasks-context'
+import { AnimatePresence, motion } from 'motion/react'
 import { useSearchParams } from 'react-router'
 
 export default function TasksSection() {
-  const { getSortedTasks } = useTasks()
+  const { statuses, removeFilter, getSortedTasks, getTaskStatus } = useTasks()
 
   return (
     <section className="flex h-full flex-col overflow-y-hidden">
@@ -34,6 +36,29 @@ export default function TasksSection() {
         <div className="flex items-center gap-2">
           <FiltersDropdownButton />
           <SortDropdownButton />
+          <ul className="contents">
+            <AnimatePresence mode="popLayout" initial={false}>
+              {statuses.map((status) => {
+                const { name, icon: Icon } = getTaskStatus(status)
+
+                return (
+                  <motion.li
+                    layout
+                    key={status}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                  >
+                    <FilterChip
+                      name={name}
+                      icon={<Icon />}
+                      onRemove={() => removeFilter('status', status)}
+                    />
+                  </motion.li>
+                )
+              })}
+            </AnimatePresence>
+          </ul>
         </div>
         <CreateNewTaskModalButton
           variant="primary"
