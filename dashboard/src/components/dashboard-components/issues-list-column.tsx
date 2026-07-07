@@ -4,8 +4,9 @@ import { useDroppable } from '@dnd-kit/core'
 import { useIssues } from '@services/contexts/issues-context'
 import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
+import { motion } from 'motion/react'
 
-type IssuesListColumnProps = React.ComponentPropsWithoutRef<'div'> & {
+type IssuesListColumnProps = React.ComponentProps<typeof motion.div> & {
   status: IssueStatusLabel
 }
 
@@ -20,18 +21,24 @@ export default function IssuesListColumn({
   const { setNodeRef } = useDroppable({ id: status })
 
   return (
-    <div className={cn('flex min-h-29.5 flex-col', className)} {...props}>
-      <IssuesColumnHeader
-        title={name}
-        icon={<Icon />}
-        numberOfIssues={getIssuesByStatus(status).length}
-        status={status}
-        className="sticky top-0 z-10 border-b border-b-neutral-200 bg-white"
-      />
+    <motion.div
+      layout
+      className={cn('flex min-h-29.5 flex-col', className)}
+      {...props}
+    >
+      <motion.div layout className="sticky top-0 z-10">
+        <IssuesColumnHeader
+          title={name}
+          icon={<Icon />}
+          numberOfIssues={getIssuesByStatus(status).length}
+          status={status}
+          className="border-b border-b-neutral-200 bg-white"
+        />
+      </motion.div>
       <IssuesListItemsList
         issues={getIssuesByStatus(status)}
         ref={setNodeRef}
       />
-    </div>
+    </motion.div>
   )
 }
