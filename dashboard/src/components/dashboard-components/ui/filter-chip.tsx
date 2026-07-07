@@ -23,7 +23,7 @@ export default function FilterChip({
       )}
       {...props}
     >
-      <div className="flex items-center gap-1 [&>div:first-child]:w-auto">
+      <div className="flex items-center gap-1 [&_svg]:size-4 [&>div:first-child]:h-4 [&>div:first-child]:w-auto">
         {Icon}
         <span className="text-xs font-medium text-nowrap">{name}</span>
       </div>
