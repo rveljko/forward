@@ -24,7 +24,7 @@ export default function DraftCardsList({
       <AnimatePresence mode="popLayout" initial={false}>
         {drafts.map((draft) => (
           <motion.li
-            layout
+            layout="position"
             key={draft.id}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
