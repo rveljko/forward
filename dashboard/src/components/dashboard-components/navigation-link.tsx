@@ -26,7 +26,7 @@ export default function NavigationLink({
       {...props}
     >
       {Icon && (
-        <span className="flex h-6 items-center justify-center text-neutral-600 transition-colors group-hover:text-black pointer-coarse:group-active:text-black">
+        <span className="flex h-6 items-center justify-center text-neutral-600 transition-colors group-hover:text-black pointer-coarse:group-active:text-black [&_svg]:size-4">
           <Icon />
         </span>
       )}
