@@ -229,7 +229,7 @@ export default function IssuesSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="overflow-y-auto"
+              className="min-h-0 flex-1 overflow-y-auto"
             >
               <IssuesKanbanBoard activeId={activeId} />
             </motion.div>

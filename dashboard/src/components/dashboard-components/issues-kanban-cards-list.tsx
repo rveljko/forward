@@ -19,7 +19,10 @@ export default function IssuesKanbanCardsList({
   const isDragging = active !== null
 
   return (
-    <ul className={cn('flex grow flex-col gap-2', className)} {...props}>
+    <ul
+      className={cn('flex min-h-0 flex-1 flex-col gap-2', className)}
+      {...props}
+    >
       <SortableContext items={issues}>
         <AnimatePresence mode="popLayout" initial={false}>
           {issues.map((issue) => (

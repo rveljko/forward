@@ -23,7 +23,7 @@ export default function IssuesKanbanColumn({
 
   return (
     <div
-      className={cn('flex h-full w-85 shrink-0 flex-col gap-2', className)}
+      className={cn('flex min-h-full w-85 shrink-0 flex-col gap-2', className)}
       {...props}
     >
       <IssuesColumnHeader

@@ -18,9 +18,12 @@ export default function IssuesKanbanBoard({
   const { getIssueById } = useIssues()
 
   return (
-    <div className="w-0 min-w-full grow overflow-auto">
+    <div className="h-full w-0 min-w-full overflow-x-auto">
       <div
-        className={cn('my-4 flex divide-x divide-neutral-200', className)}
+        className={cn(
+          'flex min-h-full items-stretch divide-x divide-neutral-200 py-4',
+          className
+        )}
         {...props}
       >
         {issueStatuses.map(({ id, label }) => (
