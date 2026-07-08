@@ -218,7 +218,7 @@ export default function IssuesSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="overflow-y-auto"
+              className="overflow-x-hidden overflow-y-auto"
             >
               <IssuesListBoard activeId={activeId} />
             </motion.div>
