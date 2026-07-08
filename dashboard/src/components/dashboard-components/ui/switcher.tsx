@@ -57,9 +57,13 @@ function Button({
           className="absolute inset-0 rounded-sm bg-white ring ring-neutral-300"
         />
       )}
-      {LeftIcon && <span className="relative z-10">{LeftIcon}</span>}
+      {LeftIcon && (
+        <span className="relative z-10 [&_svg]:size-4">{LeftIcon}</span>
+      )}
       <span className="relative z-10">{children}</span>
-      {RightIcon && <span className="relative z-10">{RightIcon}</span>}
+      {RightIcon && (
+        <span className="relative z-10 [&_svg]:size-4">{RightIcon}</span>
+      )}
     </button>
   )
 }
