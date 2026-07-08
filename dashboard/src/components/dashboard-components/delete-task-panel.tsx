@@ -15,8 +15,7 @@ export default function DeleteTaskPanel({
   taskId,
   closeModal,
 }: DeleteTaskPanelProps) {
-  const { getTaskById, deleteTask } = useTasks()
-  const { title } = getTaskById(taskId)
+  const { deleteTask } = useTasks()
 
   return (
     <>
@@ -25,7 +24,7 @@ export default function DeleteTaskPanel({
           icon={<TrashIcon />}
           className="mb-2 bg-red-100 text-red-500 ring-red-200"
         />
-        <h3 className="mb-1 font-medium">Confirm {title} Deletion</h3>
+        <h3 className="mb-1 font-medium">Confirm Task Deletion</h3>
         <p className="text-xs text-neutral-600">
           Are you sure you want to delete?
         </p>
