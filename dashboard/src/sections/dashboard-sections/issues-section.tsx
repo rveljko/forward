@@ -211,8 +211,30 @@ export default function IssuesSection() {
         onDragEnd={handleDragEnd}
         sensors={sensors}
       >
-        {view === 'list' && <IssuesListBoard activeId={activeId} />}
-        {view === 'kanban' && <IssuesKanbanBoard activeId={activeId} />}
+        <AnimatePresence mode="wait" initial={false}>
+          {view === 'list' && (
+            <motion.div
+              key="list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="overflow-y-auto"
+            >
+              <IssuesListBoard activeId={activeId} />
+            </motion.div>
+          )}
+          {view === 'kanban' && (
+            <motion.div
+              key="kanban"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="overflow-y-auto"
+            >
+              <IssuesKanbanBoard activeId={activeId} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </DndContext>
     </section>
   )
