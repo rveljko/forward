@@ -15,8 +15,7 @@ export default function DeleteIssuePanel({
   issueId,
   closeModal,
 }: DeleteIssuePanelProps) {
-  const { getIssueById, deleteIssue } = useIssues()
-  const { title } = getIssueById(issueId)
+  const { deleteIssue } = useIssues()
 
   return (
     <>
@@ -25,7 +24,7 @@ export default function DeleteIssuePanel({
           icon={<TrashIcon />}
           className="mb-2 bg-red-100 text-red-500 ring-red-200"
         />
-        <h3 className="mb-1 font-medium">Confirm {title} Deletion</h3>
+        <h3 className="mb-1 font-medium">Confirm Issue Deletion</h3>
         <p className="text-xs text-neutral-600">
           Are you sure you want to delete?
         </p>
