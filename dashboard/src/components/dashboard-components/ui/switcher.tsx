@@ -45,7 +45,7 @@ function Button({
     <button
       role="tab"
       className={cn(
-        `relative flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm text-neutral-600 transition-colors hover:cursor-pointer hover:text-black ${isActive && 'text-black'}`,
+        `relative flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm font-medium text-neutral-600 transition-colors hover:cursor-pointer hover:text-black ${isActive && 'text-black'}`,
         className
       )}
       aria-selected={isActive}
