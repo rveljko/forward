@@ -37,6 +37,13 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
   const debouncedContent = useDebounce(newContent, 600)
 
   useEffect(() => {
+    if (!editor) return
+
+    editor.commands.setContent(issue.content, false)
+    setNewContent(issue.content)
+  }, [editor, issueId])
+
+  useEffect(() => {
     if (debouncedContent) updateIssue({ ...issue, content: debouncedContent })
   }, [debouncedContent])
 
