@@ -65,9 +65,10 @@ export default function IssueActionsModal({
           </Button>
         </div>
       </header>
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout" initial={false}>
         {activePanel === 'menu' && (
           <MenuPanel
+            key="menu"
             issueId={issueId}
             closeModal={closeModal}
             setActivePanel={setActivePanel}
@@ -75,12 +76,12 @@ export default function IssueActionsModal({
           />
         )}
         {activePanel === 'change-status' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="change-status">
             <ChangeIssueStatusPanel issueId={issueId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
         {activePanel === 'change-priority' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="change-priority">
             <ChangeIssuePriorityPanel
               issueId={issueId}
               closeModal={closeModal}
@@ -88,17 +89,17 @@ export default function IssueActionsModal({
           </ActivePanelContainer>
         )}
         {activePanel === 'change-tag' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="change-tag">
             <ChangeIssueTagPanel issueId={issueId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
         {activePanel === 'rename' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="rename">
             <RenameIssuePanel issueId={issueId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
         {activePanel === 'delete' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="delete">
             <DeleteIssuePanel issueId={issueId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
@@ -107,7 +108,7 @@ export default function IssueActionsModal({
   )
 }
 
-type MenuPanelProps = {
+type MenuPanelProps = React.ComponentProps<typeof motion.ul> & {
   issueId: Issue['id']
   closeModal: () => void
   setActivePanel: React.Dispatch<React.SetStateAction<ActivePanel>>
@@ -119,6 +120,7 @@ function MenuPanel({
   issueId,
   setActivePanel,
   withoutLinks,
+  ...props
 }: MenuPanelProps) {
   const { getIssueById, duplicateIssue } = useIssues()
   const { title } = getIssueById(issueId)
@@ -138,6 +140,8 @@ function MenuPanel({
         translateX: 'var(--slide-x-from)',
       }}
       className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
+      transition={{ ease: 'easeInOut' }}
+      {...props}
     >
       {!withoutLinks && (
         <>
@@ -302,11 +306,14 @@ function MenuPanel({
   )
 }
 
-type ActivePanelContainerProps = {
+type ActivePanelContainerProps = React.ComponentProps<typeof motion.div> & {
   children: React.ReactNode
 }
 
-function ActivePanelContainer({ children }: ActivePanelContainerProps) {
+function ActivePanelContainer({
+  children,
+  ...props
+}: ActivePanelContainerProps) {
   return (
     <motion.div
       initial={{
@@ -322,6 +329,8 @@ function ActivePanelContainer({ children }: ActivePanelContainerProps) {
         translateX: 'var(--slide-x-from)',
       }}
       className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
+      transition={{ ease: 'easeInOut' }}
+      {...props}
     >
       {children}
     </motion.div>
