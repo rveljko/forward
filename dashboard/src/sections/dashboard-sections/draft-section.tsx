@@ -36,6 +36,13 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   const debouncedContent = useDebounce(newContent, 600)
 
   useEffect(() => {
+    if (!editor) return
+
+    editor.commands.setContent(content, false)
+    setNewContent(content)
+  }, [editor, draft])
+
+  useEffect(() => {
     if (debouncedContent) updateDraft(draftId, debouncedContent)
   }, [debouncedContent])
 
