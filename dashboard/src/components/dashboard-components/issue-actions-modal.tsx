@@ -1,7 +1,9 @@
+import ActivePanelContainer from '@dashboard-components/active-panel-container'
 import ChangeIssuePriorityPanel from '@dashboard-components/change-issue-priority-panel'
 import ChangeIssueStatusPanel from '@dashboard-components/change-issue-status-panel'
 import ChangeIssueTagPanel from '@dashboard-components/change-issue-tag-panel'
 import DeleteIssuePanel from '@dashboard-components/delete-issue-panel'
+import MenuPanelContainer from '@dashboard-components/menu-panel-container'
 import RenameIssuePanel from '@dashboard-components/rename-issue-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
@@ -21,7 +23,7 @@ import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import copy from 'copy-to-clipboard'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
 import React, { useState } from 'react'
 
 type IssueActionsModalProps = {
@@ -67,13 +69,14 @@ export default function IssueActionsModal({
       </header>
       <AnimatePresence mode="popLayout" initial={false}>
         {activePanel === 'menu' && (
-          <MenuPanel
-            key="menu"
-            issueId={issueId}
-            closeModal={closeModal}
-            setActivePanel={setActivePanel}
-            withoutLinks={withoutLinks}
-          />
+          <MenuPanelContainer key="menu">
+            <MenuPanel
+              issueId={issueId}
+              closeModal={closeModal}
+              setActivePanel={setActivePanel}
+              withoutLinks={withoutLinks}
+            />
+          </MenuPanelContainer>
         )}
         {activePanel === 'change-status' && (
           <ActivePanelContainer key="change-status">
@@ -108,7 +111,7 @@ export default function IssueActionsModal({
   )
 }
 
-type MenuPanelProps = React.ComponentProps<typeof motion.ul> & {
+type MenuPanelProps = {
   issueId: Issue['id']
   closeModal: () => void
   setActivePanel: React.Dispatch<React.SetStateAction<ActivePanel>>
@@ -116,32 +119,17 @@ type MenuPanelProps = React.ComponentProps<typeof motion.ul> & {
 }
 
 function MenuPanel({
-  closeModal,
   issueId,
+  closeModal,
   setActivePanel,
   withoutLinks,
-  ...props
 }: MenuPanelProps) {
   const { getIssueById, duplicateIssue } = useIssues()
   const { title } = getIssueById(issueId)
 
   return (
-    <motion.ul
-      initial={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      animate={{
-        opacity: 'var(--opacity-to)',
-        translateX: 'var(--slide-x-to)',
-      }}
-      exit={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
-      transition={{ ease: 'easeInOut' }}
-      {...props}
+    <ul
+      className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
     >
       {!withoutLinks && (
         <>
@@ -302,37 +290,6 @@ function MenuPanel({
           </PanelCard.Paragraph>
         </PanelCard>
       </li>
-    </motion.ul>
-  )
-}
-
-type ActivePanelContainerProps = React.ComponentProps<typeof motion.div> & {
-  children: React.ReactNode
-}
-
-function ActivePanelContainer({
-  children,
-  ...props
-}: ActivePanelContainerProps) {
-  return (
-    <motion.div
-      initial={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      animate={{
-        opacity: 'var(--opacity-to)',
-        translateX: 'var(--slide-x-to)',
-      }}
-      exit={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
-      transition={{ ease: 'easeInOut' }}
-      {...props}
-    >
-      {children}
-    </motion.div>
+    </ul>
   )
 }
