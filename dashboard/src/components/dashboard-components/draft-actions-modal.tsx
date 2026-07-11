@@ -1,5 +1,7 @@
+import ActivePanelContainer from '@dashboard-components/active-panel-container'
 import ChangeDraftCategoryPanel from '@dashboard-components/change-draft-category-panel'
 import DeleteDraftPanel from '@dashboard-components/delete-draft-panel'
+import MenuPanelContainer from '@dashboard-components/menu-panel-container'
 import RenameDraftPanel from '@dashboard-components/rename-draft-panel'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import PanelCard from '@dashboard-components/ui/panel-card'
@@ -17,7 +19,7 @@ import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Draft } from '@utils/types'
 import copy from 'copy-to-clipboard'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence } from 'motion/react'
 import { useState } from 'react'
 
 type DraftActionsModalProps = {
@@ -55,17 +57,19 @@ export default function DraftActionsModal({
           </Button>
         </div>
       </header>
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout" initial={false}>
         {activePanel === 'menu' && (
-          <MenuPanel
-            draftId={draftId}
-            closeModal={closeModal}
-            setActivePanel={setActivePanel}
-            withoutLinks={withoutLinks}
-          />
+          <MenuPanelContainer key="menu">
+            <MenuPanel
+              draftId={draftId}
+              closeModal={closeModal}
+              setActivePanel={setActivePanel}
+              withoutLinks={withoutLinks}
+            />
+          </MenuPanelContainer>
         )}
         {activePanel === 'change-category' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="change-category">
             <ChangeDraftCategoryPanel
               draftId={draftId}
               closeModal={closeModal}
@@ -73,12 +77,12 @@ export default function DraftActionsModal({
           </ActivePanelContainer>
         )}
         {activePanel === 'rename' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="rename">
             <RenameDraftPanel draftId={draftId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
         {activePanel === 'delete' && (
-          <ActivePanelContainer>
+          <ActivePanelContainer key="delete">
             <DeleteDraftPanel draftId={draftId} closeModal={closeModal} />
           </ActivePanelContainer>
         )}
@@ -104,20 +108,8 @@ function MenuPanel({
   const { title } = getDraftById(draftId)
 
   return (
-    <motion.ul
-      initial={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      animate={{
-        opacity: 'var(--opacity-to)',
-        translateX: 'var(--slide-x-to)',
-      }}
-      exit={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 [--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(-10)] [--slide-x-to:--spacing(0)] ${withoutLinks ? '' : 'max-md:h-66'}`}
+    <ul
+      className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? '' : 'max-md:h-66'}`}
     >
       {!withoutLinks && (
         <>
@@ -246,32 +238,6 @@ function MenuPanel({
           </PanelCard.Paragraph>
         </PanelCard>
       </li>
-    </motion.ul>
-  )
-}
-
-type ActivePanelContainerProps = {
-  children: React.ReactNode
-}
-
-function ActivePanelContainer({ children }: ActivePanelContainerProps) {
-  return (
-    <motion.div
-      initial={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      animate={{
-        opacity: 'var(--opacity-to)',
-        translateX: 'var(--slide-x-to)',
-      }}
-      exit={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
-      }}
-      className="[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]"
-    >
-      {children}
-    </motion.div>
+    </ul>
   )
 }
