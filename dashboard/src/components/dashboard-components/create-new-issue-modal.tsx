@@ -19,6 +19,7 @@ import {
   IssueTagLabel,
   IssueTemplateLabel,
 } from '@utils/types'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -87,14 +88,23 @@ export default function CreateNewIssueModal({
               <div className="flex gap-1">
                 <Button
                   variant="tertiary"
-                  className="p-1 max-sm:hidden"
+                  className="relative p-1 max-sm:hidden"
                   onClick={() => setIsBigSizeModal((prev) => !prev)}
                 >
-                  {isBigSizeModal ? (
-                    <ArrowsMinimizeIcon />
-                  ) : (
-                    <ArrowsMaximizeIcon />
-                  )}
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    <motion.span
+                      key={isBigSizeModal ? 'minimize' : 'maximize'}
+                      initial={{ opacity: 0, scale: 0.25, filter: 'blur(4px)' }}
+                      animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                      exit={{ opacity: 0, scale: 0.25, filter: 'blur(4px)' }}
+                    >
+                      {isBigSizeModal ? (
+                        <ArrowsMinimizeIcon />
+                      ) : (
+                        <ArrowsMaximizeIcon />
+                      )}
+                    </motion.span>
+                  </AnimatePresence>
                   <span className="sr-only">
                     {isBigSizeModal ? 'Minimize modal' : 'Maximize modal'}
                   </span>
