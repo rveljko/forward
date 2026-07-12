@@ -75,10 +75,10 @@ function Dialog({ children, className, ...props }: DialogProps) {
     <motion.div
       initial={{
         scale: 'var(--scale-from)',
-        translateY: 'var(--slide-y-from)',
+        y: 'var(--slide-y-from)',
       }}
-      animate={{ scale: 'var(--scale-to)', translateY: 'var(--slide-y-to)' }}
-      exit={{ scale: 'var(--scale-from)', translateY: 'var(--slide-y-from)' }}
+      animate={{ scale: 'var(--scale-to)', y: 'var(--slide-y-to)' }}
+      exit={{ scale: 'var(--scale-from)', y: 'var(--slide-y-from)' }}
       role="dialog"
       aria-modal="true"
       className={cn(

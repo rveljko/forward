@@ -1,4 +1,3 @@
-import { cn } from '@utils/utils'
 import { motion } from 'motion/react'
 
 type ActivePanelContainerProps = React.ComponentProps<typeof motion.div> & {
@@ -13,22 +12,18 @@ export default function ActivePanelContainer({
   return (
     <motion.div
       initial={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
+        opacity: 0,
+        x: 40,
       }}
       animate={{
-        opacity: 'var(--opacity-to)',
-        translateX: 'var(--slide-x-to)',
+        opacity: 1,
+        x: 0,
       }}
       exit={{
-        opacity: 'var(--opacity-from)',
-        translateX: 'var(--slide-x-from)',
+        opacity: 0,
+        x: 40,
       }}
-      className={cn(
-        '[--opacity-from:0%] [--opacity-to:100%] [--slide-x-from:--spacing(10)] [--slide-x-to:--spacing(0)]',
-        className
-      )}
-      transition={{ ease: 'easeInOut' }}
+      layout="position"
       {...props}
     >
       {children}

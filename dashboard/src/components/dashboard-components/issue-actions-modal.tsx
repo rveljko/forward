@@ -23,7 +23,7 @@ import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
 import copy from 'copy-to-clipboard'
-import { AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import React, { useState } from 'react'
 
 type IssueActionsModalProps = {
@@ -48,25 +48,34 @@ export default function IssueActionsModal({
   const [activePanel, setActivePanel] = useState<ActivePanel>('menu')
 
   return (
-    <ModalCard className="flex flex-col">
-      <header className="flex items-center justify-between p-4 pb-0">
-        {activePanel !== 'menu' && (
-          <Button
-            variant="tertiary"
-            size="medium"
-            leftIcon={<ArrowLeftIcon />}
-            onClick={() => setActivePanel('menu')}
-          >
-            Back
-          </Button>
-        )}
-        <div className="ml-auto">
-          <Button variant="tertiary" className="p-2" onClick={closeModal}>
-            <CloseIcon />
-            <span className="sr-only">Close</span>
-          </Button>
-        </div>
-      </header>
+    <ModalCard>
+      <motion.header
+        layout="position"
+        className="flex items-center justify-between p-4 pb-0"
+      >
+        <AnimatePresence>
+          {activePanel !== 'menu' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <Button
+                variant="tertiary"
+                size="medium"
+                leftIcon={<ArrowLeftIcon />}
+                onClick={() => setActivePanel('menu')}
+              >
+                Back
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Button variant="tertiary" className="ml-auto p-2" onClick={closeModal}>
+          <CloseIcon />
+          <span className="sr-only">Close</span>
+        </Button>
+      </motion.header>
       <AnimatePresence mode="popLayout" initial={false}>
         {activePanel === 'menu' && (
           <MenuPanelContainer key="menu">
