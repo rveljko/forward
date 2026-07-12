@@ -32,6 +32,7 @@ import PriorityIcon from '@icons/priority-icon'
 import StatusIcon from '@icons/status-icon'
 import TagIcon from '@icons/tag-icon'
 import { useIssues } from '@services/contexts/issues-context'
+import { useModalContext } from '@services/contexts/modal-context'
 import { Issue } from '@utils/types'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
@@ -43,6 +44,7 @@ function getInitialView(): 'list' | 'kanban' {
 }
 
 export default function IssuesSection() {
+  const { isModalOpened } = useModalContext()
   const {
     statuses,
     priorities,
@@ -209,7 +211,7 @@ export default function IssuesSection() {
         onDragStart={handleDragStart}
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
-        sensors={sensors}
+        sensors={isModalOpened ? [] : sensors}
       >
         <AnimatePresence mode="wait" initial={false}>
           {view === 'list' && (

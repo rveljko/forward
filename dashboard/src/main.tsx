@@ -1,5 +1,6 @@
 import AppRoutes from '@routes/app-routes'
 import IssuesContextProvider from '@services/contexts/issues-context'
+import ModalContextProvider from '@services/contexts/modal-context'
 import PreferencesContextProvider from '@services/contexts/preferences-context'
 import UserInformationContextProvider from '@services/contexts/user-information-context'
 import HolyLoader from 'holy-loader'
@@ -27,7 +28,9 @@ createRoot(document.getElementById('root')!).render(
                 height={2}
                 ignoreSearchParams
               />
-              <AppRoutes />
+              <ModalContextProvider>
+                <AppRoutes />
+              </ModalContextProvider>
             </PostHogProvider>
           </IssuesContextProvider>
         </UserInformationContextProvider>
