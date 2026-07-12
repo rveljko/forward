@@ -15,7 +15,7 @@ import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Task } from '@utils/types'
 import copy from 'copy-to-clipboard'
-import { AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 type TaskActionsModalProps = {
@@ -33,24 +33,33 @@ export default function TaskActionsModal({
 
   return (
     <ModalCard>
-      <header className="flex items-center justify-between p-4 pb-0">
-        {activePanel !== 'menu' && (
-          <Button
-            variant="tertiary"
-            size="medium"
-            leftIcon={<ArrowLeftIcon />}
-            onClick={() => setActivePanel('menu')}
-          >
-            Back
-          </Button>
-        )}
-        <div className="ml-auto">
-          <Button variant="tertiary" className="p-2" onClick={closeModal}>
-            <CloseIcon />
-            <span className="sr-only">Close</span>
-          </Button>
-        </div>
-      </header>
+      <motion.header
+        layout="position"
+        className="flex items-center justify-between p-4 pb-0"
+      >
+        <AnimatePresence>
+          {activePanel !== 'menu' && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <Button
+                variant="tertiary"
+                size="medium"
+                leftIcon={<ArrowLeftIcon />}
+                onClick={() => setActivePanel('menu')}
+              >
+                Back
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        <Button variant="tertiary" className="ml-auto p-2" onClick={closeModal}>
+          <CloseIcon />
+          <span className="sr-only">Close</span>
+        </Button>
+      </motion.header>
       <AnimatePresence mode="popLayout" initial={false}>
         {activePanel === 'menu' && (
           <MenuPanelContainer key="menu">
