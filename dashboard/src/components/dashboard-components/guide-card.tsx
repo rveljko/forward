@@ -27,7 +27,7 @@ export default function GuideCard({
         <h3>
           <Link
             to={`/guides/${slug}`}
-            className="mb-1 block text-balance text-black focus:outline-0"
+            className="mb-1 block font-medium text-balance text-black focus:outline-0"
           >
             <span className="absolute inset-0" />
             {title}
