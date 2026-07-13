@@ -5,6 +5,7 @@ import MenuList from '@dashboard-components/ui/menu-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import BrainIcon from '@icons/brain-icon'
 import CheckboxIcon from '@icons/checkbox-icon'
+import CloseIcon from '@icons/close-icon'
 import DocumentIcon from '@icons/document-icon'
 import LifebuoyIcon from '@icons/lifebuoy-icon'
 import PenIcon from '@icons/pen-icon'
@@ -13,7 +14,9 @@ import SettingsIcon from '@icons/settings-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
 import { useIssues } from '@services/contexts/issues-context'
 import { useTasks } from '@services/contexts/tasks-context'
+import Button from '@ui/button'
 import Fuse from 'fuse.js'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 type SearchModalProps = {
@@ -36,6 +39,24 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
           onChange={(e) => setSearch(e.target.value)}
           className="w-full p-4 pl-10 text-black placeholder:text-neutral-600 focus:outline-0"
         />
+        <AnimatePresence initial={false}>
+          {search.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute top-1/2 right-4 -translate-y-1/2 bg-neutral-50"
+            >
+              <Button
+                variant="tertiary"
+                className="p-1"
+                onClick={() => setSearch('')}
+              >
+                <CloseIcon />
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
       <Divider />
       <div className="h-max max-h-85 space-y-4 overflow-y-auto py-4">
