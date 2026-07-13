@@ -42,7 +42,7 @@ function Item({
   return (
     <li
       className={cn(
-        'relative flex items-center gap-2 px-4 py-2 pointer-coarse:transition',
+        'relative flex items-center gap-1 px-4 py-2 pointer-coarse:transition',
         'has-[a]:text-black has-[button]:text-black',
         'has-[a]:hover:bg-neutral-200 has-[button]:hover:bg-neutral-200 has-[a]:pointer-coarse:active:bg-neutral-200 has-[button]:pointer-coarse:active:bg-neutral-200',
         'has-[a:focus-visible]:bg-neutral-200 has-[button:focus-visible]:bg-neutral-200',
