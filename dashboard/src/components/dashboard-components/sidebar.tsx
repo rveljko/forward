@@ -1,17 +1,19 @@
 import CreateNewIssueModal from '@dashboard-components/create-new-issue-modal'
-import NavigationLinksList from '@dashboard-components/navigation-links-list'
+import NavigationLink from '@dashboard-components/navigation-link'
 import SearchModal from '@dashboard-components/search-modal'
 import Modal from '@dashboard-components/ui/modal'
-import {
-  primaryNavigationLinks,
-  secondaryNavigationLinks,
-} from '@data/navigation-links'
 import useMediaQuery from '@hooks/use-media-query'
 import useModal from '@hooks/use-modal'
+import BrainIcon from '@icons/brain-icon'
+import CheckboxIcon from '@icons/checkbox-icon'
+import DocumentIcon from '@icons/document-icon'
+import FolderIcon from '@icons/folder-icon'
 import LayoutSidebarLeftIcon from '@icons/layout-sidebar-left-icon'
 import LayoutSidebarRightIcon from '@icons/layout-sidebar-right-icon'
+import LifebuoyIcon from '@icons/lifebuoy-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
+import SettingsIcon from '@icons/settings-icon'
 import { usePreferences } from '@services/contexts/preferences-context'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
@@ -138,38 +140,86 @@ export default function Sidebar() {
             </Button>
           </div>
           <nav className="flex h-full flex-col justify-between gap-1">
-            <NavigationLinksList
-              navigationLinks={primaryNavigationLinks}
-              hideNavigationLinkText={!isOpened}
-              onClick={closeOpenedSidebarOnMobile}
-            />
-            <div className="space-y-1">
-              <NavigationLinksList
-                navigationLinks={secondaryNavigationLinks}
-                hideNavigationLinkText={!isOpened}
-                onClick={closeOpenedSidebarOnMobile}
-              />
-              <Link
-                to="/settings/profile"
-                className="flex items-center gap-1 px-1.5 py-1"
-                onClick={closeOpenedSidebarOnMobile}
-              >
-                <div className="flex h-6 shrink-0 items-center justify-center">
-                  <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
-                    <img
-                      className="size-full object-cover"
-                      src={userInformation.profilePictureUrl}
-                      alt={`${userInformation.firstName} ${userInformation.lastName}`}
-                    />
-                  </div>
-                </div>
-                <span
-                  className={`text-clickable ${isOpened ? 'block' : 'hidden'}`}
+            <ul className="space-y-1">
+              <li>
+                <NavigationLink
+                  to="/tasks"
+                  leftIcon={<CheckboxIcon />}
+                  onClick={closeOpenedSidebarOnMobile}
                 >
-                  {userInformation.firstName} {userInformation.lastName}
-                </span>
-              </Link>
-            </div>
+                  Tasks
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink
+                  to="/issues"
+                  leftIcon={<FolderIcon />}
+                  onClick={closeOpenedSidebarOnMobile}
+                >
+                  Issues
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink
+                  to="/drafts"
+                  leftIcon={<BrainIcon />}
+                  onClick={closeOpenedSidebarOnMobile}
+                >
+                  Drafts
+                </NavigationLink>
+              </li>
+            </ul>
+            <ul className="space-y-1">
+              <li>
+                <NavigationLink
+                  to="/guides"
+                  leftIcon={<DocumentIcon />}
+                  onClick={closeOpenedSidebarOnMobile}
+                >
+                  Guides
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink
+                  to="/help-and-support"
+                  leftIcon={<LifebuoyIcon />}
+                  onClick={closeOpenedSidebarOnMobile}
+                >
+                  Help & Support
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink
+                  to="/settings/profile"
+                  leftIcon={<SettingsIcon />}
+                  onClick={closeOpenedSidebarOnMobile}
+                >
+                  Settings
+                </NavigationLink>
+              </li>
+              <li>
+                <Link
+                  to="/settings/profile"
+                  className="flex items-center gap-1 px-1.5 py-1"
+                  onClick={closeOpenedSidebarOnMobile}
+                >
+                  <div className="flex h-6 shrink-0 items-center justify-center">
+                    <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
+                      <img
+                        className="size-full object-cover"
+                        src={userInformation.profilePictureUrl}
+                        alt={`${userInformation.firstName} ${userInformation.lastName}`}
+                      />
+                    </div>
+                  </div>
+                  <span
+                    className={`text-clickable ${isOpened ? 'block' : 'hidden'}`}
+                  >
+                    {userInformation.firstName} {userInformation.lastName}
+                  </span>
+                </Link>
+              </li>
+            </ul>
           </nav>
         </div>
       </div>

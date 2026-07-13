@@ -1,56 +1,8 @@
 import AppWindowIcon from '@icons/app-window-icon'
-import BrainIcon from '@icons/brain-icon'
-import CheckboxIcon from '@icons/checkbox-icon'
-import DocumentIcon from '@icons/document-icon'
-import FolderIcon from '@icons/folder-icon'
-import LifebuoyIcon from '@icons/lifebuoy-icon'
 import LockPasswordIcon from '@icons/lock-password-icon'
-import SettingsIcon from '@icons/settings-icon'
 import SparklesIcon from '@icons/sparkles-icon'
 import UserIcon from '@icons/user-icon'
 import { NavigationLink } from '@utils/types'
-
-export const primaryNavigationLinks: NavigationLink[] = [
-  {
-    id: 1,
-    name: 'Tasks',
-    path: '/tasks',
-    icon: CheckboxIcon,
-  },
-  {
-    id: 2,
-    name: 'Issues',
-    path: '/issues',
-    icon: FolderIcon,
-  },
-  {
-    id: 3,
-    name: 'Drafts',
-    path: '/drafts',
-    icon: BrainIcon,
-  },
-]
-
-export const secondaryNavigationLinks: NavigationLink[] = [
-  {
-    id: 1,
-    name: 'Guides',
-    path: '/guides',
-    icon: DocumentIcon,
-  },
-  {
-    id: 2,
-    name: 'Help & Support',
-    path: '/help-and-support',
-    icon: LifebuoyIcon,
-  },
-  {
-    id: 3,
-    name: 'Settings',
-    path: '/settings/profile',
-    icon: SettingsIcon,
-  },
-]
 
 export const settingsNavigationLinks: NavigationLink[] = [
   {

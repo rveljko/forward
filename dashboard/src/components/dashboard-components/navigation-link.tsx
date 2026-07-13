@@ -1,17 +1,16 @@
-import { NavigationLink as NavigationLinkType } from '@utils/types'
 import { cn } from '@utils/utils'
 import { NavLink, NavLinkProps } from 'react-router'
 
 type NavigationLinkProps = Omit<NavLinkProps, 'children'> & {
   children: React.ReactNode
-  icon?: NavigationLinkType['icon']
-  hideText?: boolean
+  leftIcon?: React.JSX.Element
+  rightIcon?: React.JSX.Element
 }
 
 export default function NavigationLink({
   children,
-  icon: Icon,
-  hideText,
+  leftIcon: LeftIcon,
+  rightIcon: RightIcon,
   className,
   ...props
 }: NavigationLinkProps) {
@@ -25,12 +24,17 @@ export default function NavigationLink({
       }
       {...props}
     >
-      {Icon && (
-        <span className="flex h-6 items-center justify-center text-neutral-600 transition-colors group-hover:text-black pointer-coarse:group-active:text-black [&_svg]:size-4">
-          <Icon />
+      {LeftIcon && (
+        <span className="text-neutral-600 transition-colors group-hover:text-black pointer-coarse:group-active:text-black [&_svg]:size-4">
+          {LeftIcon}
         </span>
       )}
-      <span className={hideText ? 'hidden' : ''}>{children}</span>
+      {children}
+      {RightIcon && (
+        <span className="text-neutral-600 transition-colors group-hover:text-black pointer-coarse:group-active:text-black [&_svg]:size-4">
+          {RightIcon}
+        </span>
+      )}
     </NavLink>
   )
 }
