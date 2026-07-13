@@ -1,4 +1,5 @@
 import Divider from '@dashboard-components/ui/divider'
+import HighlightText from '@dashboard-components/ui/highlight-text'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import MenuList from '@dashboard-components/ui/menu-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
@@ -130,12 +131,14 @@ type ResultsPanelProps = {
 function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
   const { issues, getIssueStatus } = useIssues()
   const { drafts } = useDrafts()
-  const filteredIssues = new Fuse(issues, { keys: ['title'] })
-    .search(searchQuery)
-    .map(({ item }) => item)
-  const filteredDrafts = new Fuse(drafts, { keys: ['title'] })
-    .search(searchQuery)
-    .map(({ item }) => item)
+  const filteredIssues = new Fuse(issues, {
+    keys: ['title'],
+    includeMatches: true,
+  }).search(searchQuery)
+  const filteredDrafts = new Fuse(drafts, {
+    keys: ['title'],
+    includeMatches: true,
+  }).search(searchQuery)
 
   if (!filteredIssues.length && !filteredDrafts.length)
     return <NoResultsPanel searchQuery={searchQuery} />
@@ -147,20 +150,29 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
           <div>
             <MenuList.Heading>Issues</MenuList.Heading>
             <MenuList>
-              {filteredIssues.map(({ id, title, status }) => {
-                const { icon: Icon } = getIssueStatus(status)
+              {filteredIssues.map(
+                ({ item: { id, status, title }, matches }) => {
+                  const { icon: Icon } = getIssueStatus(status)
 
-                return (
-                  <MenuList.Item key={id} leftIcon={<Icon />}>
-                    <MenuList.Button
-                      href={`/issues/${id}`}
-                      onClick={closeModal}
-                    >
-                      {title}
-                    </MenuList.Button>
-                  </MenuList.Item>
-                )
-              })}
+                  const titleMatch = matches?.find(
+                    (match) => match.key === 'title'
+                  )
+
+                  return (
+                    <MenuList.Item key={id} leftIcon={<Icon />}>
+                      <MenuList.Button
+                        href={`/issues/${id}`}
+                        onClick={closeModal}
+                      >
+                        <HighlightText
+                          text={title}
+                          indices={titleMatch?.indices}
+                        />
+                      </MenuList.Button>
+                    </MenuList.Item>
+                  )
+                }
+              )}
             </MenuList>
           </div>
           {filteredDrafts.length > 0 ? <Divider /> : null}
@@ -170,13 +182,17 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
         <div>
           <MenuList.Heading>Drafts</MenuList.Heading>
           <MenuList>
-            {filteredDrafts.map(({ id, title }) => (
-              <MenuList.Item key={id} leftIcon={<BrainIcon />}>
-                <MenuList.Button href={`/drafts/${id}`} onClick={closeModal}>
-                  {title}
-                </MenuList.Button>
-              </MenuList.Item>
-            ))}
+            {filteredDrafts.map(({ item: { id, title }, matches }) => {
+              const titleMatch = matches?.find((match) => match.key === 'title')
+
+              return (
+                <MenuList.Item key={id} leftIcon={<BrainIcon />}>
+                  <MenuList.Button href={`/drafts/${id}`} onClick={closeModal}>
+                    <HighlightText text={title} indices={titleMatch?.indices} />
+                  </MenuList.Button>
+                </MenuList.Item>
+              )
+            })}
           </MenuList>
         </div>
       ) : null}
