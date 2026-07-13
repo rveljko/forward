@@ -63,7 +63,7 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
       <div>
         <MenuList.Heading>Quick Actions</MenuList.Heading>
         <MenuList>
-          <MenuList.Item leftIcon={<PenIcon />}>
+          <MenuList.Item leftIcon={<PenIcon />} className="[&>span_svg]:size-4">
             <MenuList.Button
               onClick={() => {
                 createDefaultIssue()
@@ -73,7 +73,10 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
               Create New Issue
             </MenuList.Button>
           </MenuList.Item>
-          <MenuList.Item leftIcon={<BrainIcon />}>
+          <MenuList.Item
+            leftIcon={<BrainIcon />}
+            className="[&>span_svg]:size-4"
+          >
             <MenuList.Button
               onClick={() => {
                 createNewDraft()
@@ -89,17 +92,26 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
       <div>
         <MenuList.Heading>Quick Menu</MenuList.Heading>
         <MenuList>
-          <MenuList.Item leftIcon={<DocumentIcon />}>
+          <MenuList.Item
+            leftIcon={<DocumentIcon />}
+            className="[&>span_svg]:size-4"
+          >
             <MenuList.Button href="/guides" onClick={closeModal}>
               Guides
             </MenuList.Button>
           </MenuList.Item>
-          <MenuList.Item leftIcon={<LifebuoyIcon />}>
+          <MenuList.Item
+            leftIcon={<LifebuoyIcon />}
+            className="[&>span_svg]:size-4"
+          >
             <MenuList.Button href="/help-and-support" onClick={closeModal}>
               Help & Support
             </MenuList.Button>
           </MenuList.Item>
-          <MenuList.Item leftIcon={<SettingsIcon />}>
+          <MenuList.Item
+            leftIcon={<SettingsIcon />}
+            className="[&>span_svg]:size-4"
+          >
             <MenuList.Button href="/settings/profile" onClick={closeModal}>
               Settings
             </MenuList.Button>
