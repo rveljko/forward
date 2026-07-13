@@ -4,15 +4,15 @@ import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import MenuList from '@dashboard-components/ui/menu-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
 import BrainIcon from '@icons/brain-icon'
+import CheckboxIcon from '@icons/checkbox-icon'
 import DocumentIcon from '@icons/document-icon'
 import LifebuoyIcon from '@icons/lifebuoy-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import SettingsIcon from '@icons/settings-icon'
-import DraftsContextProvider, {
-  useDrafts,
-} from '@services/contexts/drafts-context'
+import { useDrafts } from '@services/contexts/drafts-context'
 import { useIssues } from '@services/contexts/issues-context'
+import { useTasks } from '@services/contexts/tasks-context'
 import Fuse from 'fuse.js'
 import { useState } from 'react'
 
@@ -39,13 +39,11 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
       </header>
       <Divider />
       <div className="h-max max-h-85 space-y-4 overflow-y-auto py-4">
-        <DraftsContextProvider>
-          {search.length > 0 ? (
-            <ResultsPanel searchQuery={search} closeModal={closeModal} />
-          ) : (
-            <MenuPanel closeModal={closeModal} />
-          )}
-        </DraftsContextProvider>
+        {search.length > 0 ? (
+          <ResultsPanel searchQuery={search} closeModal={closeModal} />
+        ) : (
+          <MenuPanel closeModal={closeModal} />
+        )}
       </div>
     </ModalCard>
   )
@@ -129,8 +127,14 @@ type ResultsPanelProps = {
 }
 
 function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
+  const { tasks } = useTasks()
   const { issues, getIssueStatus } = useIssues()
   const { drafts } = useDrafts()
+
+  const filteredTasks = new Fuse(tasks, {
+    keys: ['title'],
+    includeMatches: true,
+  }).search(searchQuery)
   const filteredIssues = new Fuse(issues, {
     keys: ['title'],
     includeMatches: true,
@@ -145,6 +149,34 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
 
   return (
     <>
+      {filteredTasks.length > 0 ? (
+        <>
+          <div>
+            <MenuList.Heading>Tasks</MenuList.Heading>
+            <MenuList>
+              {filteredTasks.map(({ item: { id, title }, matches }) => {
+                const titleMatch = matches?.find(
+                  (match) => match.key === 'title'
+                )
+
+                return (
+                  <MenuList.Item key={id} leftIcon={<CheckboxIcon />}>
+                    <MenuList.Button href="/tasks" onClick={closeModal}>
+                      <HighlightText
+                        text={title}
+                        indices={titleMatch?.indices}
+                      />
+                    </MenuList.Button>
+                  </MenuList.Item>
+                )
+              })}
+            </MenuList>
+          </div>
+          {filteredIssues.length > 0 || filteredDrafts.length > 0 ? (
+            <Divider />
+          ) : null}
+        </>
+      ) : null}
       {filteredIssues.length > 0 ? (
         <>
           <div>
