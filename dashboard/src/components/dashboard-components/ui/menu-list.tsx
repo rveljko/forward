@@ -68,7 +68,7 @@ type ButtonProps = ButtonAsAnchorProps | ButtonAsButtonProps
 
 function Button({ children, className, ...props }: ButtonProps) {
   const buttonClasses = cn(
-    'line-clamp-1 break-all text-black hover:cursor-pointer focus:outline-0',
+    'line-clamp-1 font-medium break-all text-black hover:cursor-pointer focus:outline-0',
     className
   )
 
