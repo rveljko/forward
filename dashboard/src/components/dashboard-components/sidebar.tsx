@@ -14,7 +14,10 @@ import LifebuoyIcon from '@icons/lifebuoy-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import SettingsIcon from '@icons/settings-icon'
+import { useDrafts } from '@services/contexts/drafts-context'
+import { useIssues } from '@services/contexts/issues-context'
 import { usePreferences } from '@services/contexts/preferences-context'
+import { useTasks } from '@services/contexts/tasks-context'
 import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
@@ -34,6 +37,9 @@ export default function Sidebar() {
     openModal: openSearchModal,
     closeModal: closeSearchModal,
   } = useModal()
+  const { tasks } = useTasks()
+  const { issues } = useIssues()
+  const { drafts } = useDrafts()
   const { preferences, getBorderRadius } = usePreferences()
   const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
@@ -145,6 +151,12 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/tasks"
                   leftIcon={<CheckboxIcon />}
+                  rightIcon={
+                    <span className="rounded-sm bg-neutral-50 px-1 py-0.5 text-xs text-neutral-600 tabular-nums mix-blend-multiply ring inset-ring ring-neutral-200 inset-ring-white">
+                      {tasks.length}
+                    </span>
+                  }
+                  className="[&>span:last-child]:ml-auto"
                   onClick={closeOpenedSidebarOnMobile}
                 >
                   Tasks
@@ -154,6 +166,12 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/issues"
                   leftIcon={<FolderIcon />}
+                  rightIcon={
+                    <span className="rounded-sm bg-neutral-50 px-1 py-0.5 text-xs text-neutral-600 tabular-nums mix-blend-multiply ring inset-ring ring-neutral-200 inset-ring-white">
+                      {issues.length}
+                    </span>
+                  }
+                  className="[&>span:last-child]:ml-auto"
                   onClick={closeOpenedSidebarOnMobile}
                 >
                   Issues
@@ -163,6 +181,12 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/drafts"
                   leftIcon={<BrainIcon />}
+                  rightIcon={
+                    <span className="rounded-sm bg-neutral-50 px-1 py-0.5 text-xs text-neutral-600 tabular-nums mix-blend-multiply ring inset-ring ring-neutral-200 inset-ring-white">
+                      {drafts.length}
+                    </span>
+                  }
+                  className="[&>span:last-child]:ml-auto"
                   onClick={closeOpenedSidebarOnMobile}
                 >
                   Drafts

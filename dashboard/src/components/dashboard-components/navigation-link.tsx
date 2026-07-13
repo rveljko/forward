@@ -18,7 +18,7 @@ export default function NavigationLink({
     <NavLink
       className={({ isActive }) =>
         cn(
-          `group flex items-center gap-1 rounded-md px-1.5 py-1 font-medium text-black transition hover:bg-neutral-200 active:scale-99 pointer-coarse:active:bg-neutral-200 ${isActive ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white hover:bg-neutral-50 hover:ring-neutral-900/20 pointer-coarse:active:bg-neutral-50 pointer-coarse:active:ring-neutral-900/20 [&_span:first-child]:text-black' : ''}`,
+          `group flex items-center gap-1 rounded-md px-1.5 py-1 font-medium text-black transition hover:bg-neutral-200 active:scale-99 pointer-coarse:active:bg-neutral-200 ${isActive ? 'bg-neutral-50 ring inset-ring ring-neutral-900/10 inset-ring-white hover:bg-neutral-50 hover:ring-neutral-900/20 pointer-coarse:active:bg-neutral-50 pointer-coarse:active:ring-neutral-900/20 [&>span:first-child]:text-black' : ''}`,
           className
         )
       }
