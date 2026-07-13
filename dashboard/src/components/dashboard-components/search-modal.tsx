@@ -2,10 +2,12 @@ import Divider from '@dashboard-components/ui/divider'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import MenuList from '@dashboard-components/ui/menu-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
-import { secondaryNavigationLinks } from '@data/navigation-links'
 import BrainIcon from '@icons/brain-icon'
+import DocumentIcon from '@icons/document-icon'
+import LifebuoyIcon from '@icons/lifebuoy-icon'
 import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
+import SettingsIcon from '@icons/settings-icon'
 import DraftsContextProvider, {
   useDrafts,
 } from '@services/contexts/drafts-context'
@@ -90,13 +92,21 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
       <div>
         <MenuList.Heading>Quick Menu</MenuList.Heading>
         <MenuList>
-          {secondaryNavigationLinks.map(({ id, name, path, icon: Icon }) => (
-            <MenuList.Item key={id} leftIcon={Icon && <Icon />}>
-              <MenuList.Button href={path} onClick={closeModal}>
-                {name}
-              </MenuList.Button>
-            </MenuList.Item>
-          ))}
+          <MenuList.Item leftIcon={<DocumentIcon />}>
+            <MenuList.Button href="/guides" onClick={closeModal}>
+              Guides
+            </MenuList.Button>
+          </MenuList.Item>
+          <MenuList.Item leftIcon={<LifebuoyIcon />}>
+            <MenuList.Button href="/help-and-support" onClick={closeModal}>
+              Help & Support
+            </MenuList.Button>
+          </MenuList.Item>
+          <MenuList.Item leftIcon={<SettingsIcon />}>
+            <MenuList.Button href="/settings/profile" onClick={closeModal}>
+              Settings
+            </MenuList.Button>
+          </MenuList.Item>
         </MenuList>
       </div>
     </>
