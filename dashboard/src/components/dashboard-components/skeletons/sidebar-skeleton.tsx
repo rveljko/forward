@@ -1,8 +1,4 @@
 import Skeleton from '@dashboard-components/ui/skeleton'
-import {
-  primaryNavigationLinks,
-  secondaryNavigationLinks,
-} from '@data/navigation-links'
 
 export default function SidebarSkeleton() {
   return (
@@ -19,14 +15,14 @@ export default function SidebarSkeleton() {
           </div>
           <div className="flex h-full flex-col justify-between gap-1">
             <div className="space-y-1">
-              {primaryNavigationLinks.map((_, index) => (
-                <Skeleton key={index} className="max-md:size-8 md:h-8" />
-              ))}
+              <Skeleton className="max-md:size-8 md:h-8" />
+              <Skeleton className="max-md:size-8 md:h-8" />
+              <Skeleton className="max-md:size-8 md:h-8" />
             </div>
             <div className="space-y-1">
-              {secondaryNavigationLinks.map((_, index) => (
-                <Skeleton key={index} className="max-md:size-8 md:h-8" />
-              ))}
+              <Skeleton className="max-md:size-8 md:h-8" />
+              <Skeleton className="max-md:size-8 md:h-8" />
+              <Skeleton className="max-md:size-8 md:h-8" />
               <Skeleton className="max-md:size-8 md:h-8" />
             </div>
           </div>
