@@ -15,20 +15,17 @@ import { useIssues } from '@services/contexts/issues-context'
 import Fuse from 'fuse.js'
 import { useState } from 'react'
 
-type SearchModalProps = React.ComponentPropsWithoutRef<'article'> & {
+type SearchModalProps = {
   closeModal: () => void
 }
 
-export default function SearchModal({
-  closeModal,
-  ...props
-}: SearchModalProps) {
+export default function SearchModal({ closeModal }: SearchModalProps) {
   const [search, setSearch] = useState('')
 
   return (
-    <ModalCard {...props}>
+    <ModalCard>
       <header className="relative">
-        <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 [&_svg]:text-neutral-600">
+        <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 [&_svg]:size-4 [&_svg]:text-neutral-600">
           <SearchIcon />
         </span>
         <input
@@ -36,7 +33,7 @@ export default function SearchModal({
           placeholder="Type a command or search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-4 pl-11 text-black placeholder:text-neutral-600 focus:outline-0"
+          className="w-full p-4 pl-10 text-black placeholder:text-neutral-600 focus:outline-0"
         />
       </header>
       <Divider />
