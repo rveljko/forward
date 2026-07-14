@@ -216,7 +216,11 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
     includeMatches: true,
   }).search(searchQuery)
 
-  if (!filteredIssues.length && !filteredDrafts.length)
+  if (
+    (!showTasks || filteredTasks.length === 0) &&
+    (!showIssues || filteredIssues.length === 0) &&
+    (!showDrafts || filteredDrafts.length === 0)
+  )
     return <NoResultsPanel searchQuery={searchQuery} />
 
   return (
