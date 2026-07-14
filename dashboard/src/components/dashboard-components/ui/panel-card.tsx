@@ -13,7 +13,7 @@ export default function PanelCard({
   return (
     <article
       className={cn(
-        'group/panel-card relative overflow-hidden rounded-lg bg-white p-2 ring ring-neutral-900/10 pointer-coarse:transition',
+        'group/panel-card relative overflow-hidden rounded-lg bg-white p-2 ring ring-neutral-200 pointer-coarse:transition',
         'has-[button]:hover:ring-neutral-900/20 has-[button]:active:scale-99 has-[button]:pointer-coarse:active:ring-neutral-900/20',
         'has-[a]:hover:ring-neutral-900/20 has-[a]:active:scale-99 has-[a]:pointer-coarse:active:ring-neutral-900/20',
         'has-[label]:hover:ring-neutral-900/20 has-[label]:active:scale-99 has-[label]:pointer-coarse:active:ring-neutral-900/20',
