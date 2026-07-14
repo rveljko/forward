@@ -3,6 +3,7 @@ import HighlightText from '@dashboard-components/ui/highlight-text'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
 import MenuList from '@dashboard-components/ui/menu-list'
 import ModalCard from '@dashboard-components/ui/modal-card'
+import SearchFilter from '@dashboard-components/ui/search-filter'
 import BrainIcon from '@icons/brain-icon'
 import CheckboxIcon from '@icons/checkbox-icon'
 import CloseIcon from '@icons/close-icon'
@@ -23,8 +24,19 @@ type SearchModalProps = {
   closeModal: () => void
 }
 
+type Filter = 'tasks' | 'issues' | 'drafts'
+
 export default function SearchModal({ closeModal }: SearchModalProps) {
   const [search, setSearch] = useState('')
+  const [filters, setFilters] = useState<Filter[]>([])
+
+  function toggleFilter(filter: Filter) {
+    setFilters((prevFilters) =>
+      prevFilters.includes(filter)
+        ? [...prevFilters].filter((prevFilter) => prevFilter !== filter)
+        : [...prevFilters, filter]
+    )
+  }
 
   return (
     <ModalCard>
@@ -60,13 +72,38 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
           </AnimatePresence>
         </header>
         <Divider />
+        <div role="toolbar" className="flex items-center gap-2 p-4">
+          <SearchFilter
+            checked={filters.includes('tasks')}
+            onChange={() => toggleFilter('tasks')}
+          >
+            Tasks
+          </SearchFilter>
+          <SearchFilter
+            checked={filters.includes('issues')}
+            onChange={() => toggleFilter('issues')}
+          >
+            Issues
+          </SearchFilter>
+          <SearchFilter
+            checked={filters.includes('drafts')}
+            onChange={() => toggleFilter('drafts')}
+          >
+            Drafts
+          </SearchFilter>
+        </div>
+        <Divider />
       </motion.div>
       <motion.div
         layout="position"
         className="h-max max-h-85 space-y-4 overflow-y-auto py-4"
       >
         {search.length > 0 ? (
-          <ResultsPanel searchQuery={search} closeModal={closeModal} />
+          <ResultsPanel
+            searchQuery={search}
+            closeModal={closeModal}
+            filters={filters}
+          />
         ) : (
           <MenuPanel closeModal={closeModal} />
         )}
@@ -154,12 +191,17 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
 type ResultsPanelProps = {
   searchQuery: string
   closeModal: () => void
+  filters: Filter[]
 }
 
-function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
+function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
   const { tasks } = useTasks()
   const { issues, getIssueStatus } = useIssues()
   const { drafts } = useDrafts()
+
+  const showTasks = filters.length === 0 || filters.includes('tasks')
+  const showIssues = filters.length === 0 || filters.includes('issues')
+  const showDrafts = filters.length === 0 || filters.includes('drafts')
 
   const filteredTasks = new Fuse(tasks, {
     keys: ['title'],
@@ -179,7 +221,7 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
 
   return (
     <>
-      {filteredTasks.length > 0 ? (
+      {showTasks && filteredTasks.length > 0 ? (
         <>
           <div>
             <div className="flex items-center gap-1 px-4">
@@ -210,7 +252,7 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
           ) : null}
         </>
       ) : null}
-      {filteredIssues.length > 0 ? (
+      {showIssues && filteredIssues.length > 0 ? (
         <>
           <div>
             <div className="flex items-center gap-1 px-4">
@@ -246,7 +288,7 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
           {filteredDrafts.length > 0 ? <Divider /> : null}
         </>
       ) : null}
-      {filteredDrafts.length > 0 ? (
+      {showDrafts && filteredDrafts.length > 0 ? (
         <div>
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Drafts</MenuList.Heading>
