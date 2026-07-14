@@ -105,7 +105,7 @@ export default function IssuesSection() {
         <h1 className="font-medium">Issues</h1>
         <ProjectInformationModalButton
           variant="tertiary"
-          className="group p-0.5"
+          className="group -m-0.5 p-0.5"
         >
           <LayoutSidebarRightIcon className="[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)] group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)]" />
           <span className="sr-only">Show project information</span>
