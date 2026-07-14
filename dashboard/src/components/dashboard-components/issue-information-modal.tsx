@@ -20,6 +20,7 @@ import {
 } from '@utils/date-formatters'
 import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
 type IssueInformationModalProps = React.ComponentPropsWithoutRef<'article'> & {
@@ -56,7 +57,7 @@ export default function IssueInformationModal({
           <div className="flex items-center gap-1">
             <Button
               variant="tertiary"
-              className="p-2"
+              className="relative p-2"
               onClick={() => {
                 setIsEditMode((prev) => !prev)
 
@@ -73,13 +74,22 @@ export default function IssueInformationModal({
               }}
               disabled={!newInformation.title && !newInformation.description}
             >
-              {isEditMode ? (
-                <span className="[&_svg]:text-green-500">
-                  <CheckIcon />
-                </span>
-              ) : (
-                <EditCircleIcon />
-              )}
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.span
+                  key={isEditMode ? 'check' : 'edit'}
+                  initial={{ opacity: 0, scale: 0.25, filter: 'blur(4px)' }}
+                  animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, scale: 0.25, filter: 'blur(4px)' }}
+                >
+                  {isEditMode ? (
+                    <span className="[&_svg]:text-green-500">
+                      <CheckIcon />
+                    </span>
+                  ) : (
+                    <EditCircleIcon />
+                  )}
+                </motion.span>
+              </AnimatePresence>
               <span className="sr-only">
                 {isEditMode ? 'Save Changes' : 'Edit'}
               </span>
