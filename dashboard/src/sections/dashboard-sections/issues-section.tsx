@@ -114,7 +114,7 @@ export default function IssuesSection() {
       <Divider />
       <div
         role="toolbar"
-        className="flex flex-wrap items-center justify-between gap-2 p-4"
+        className="flex min-h-15.5 flex-wrap items-center justify-between gap-2 p-4"
       >
         <div className="flex items-center gap-2">
           <FilterDropdownButton />
