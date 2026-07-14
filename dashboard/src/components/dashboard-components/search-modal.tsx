@@ -28,44 +28,49 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
 
   return (
     <ModalCard>
-      <header className="relative">
-        <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 [&_svg]:size-4 [&_svg]:text-neutral-600">
-          <SearchIcon />
-        </span>
-        <input
-          type="text"
-          placeholder="Type a command or search..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-4 pl-10 text-black placeholder:text-neutral-600 focus:outline-0"
-        />
-        <AnimatePresence initial={false}>
-          {search.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute top-1/2 right-4 -translate-y-1/2 bg-neutral-50"
-            >
-              <Button
-                variant="tertiary"
-                className="p-1"
-                onClick={() => setSearch('')}
+      <motion.div layout="position">
+        <header className="relative">
+          <span className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 [&_svg]:size-4 [&_svg]:text-neutral-600">
+            <SearchIcon />
+          </span>
+          <input
+            type="text"
+            placeholder="Type a command or search..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full p-4 pl-10 text-black placeholder:text-neutral-600 focus:outline-0"
+          />
+          <AnimatePresence initial={false}>
+            {search.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute top-1/2 right-4 -translate-y-1/2 bg-neutral-50"
               >
-                <CloseIcon />
-              </Button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
-      <Divider />
-      <div className="h-max max-h-85 space-y-4 overflow-y-auto py-4">
+                <Button
+                  variant="tertiary"
+                  className="p-1"
+                  onClick={() => setSearch('')}
+                >
+                  <CloseIcon />
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </header>
+        <Divider />
+      </motion.div>
+      <motion.div
+        layout="position"
+        className="h-max max-h-85 space-y-4 overflow-y-auto py-4"
+      >
         {search.length > 0 ? (
           <ResultsPanel searchQuery={search} closeModal={closeModal} />
         ) : (
           <MenuPanel closeModal={closeModal} />
         )}
-      </div>
+      </motion.div>
     </ModalCard>
   )
 }
