@@ -138,7 +138,7 @@ function MenuPanel({
 
   return (
     <ul
-      className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-86' : 'max-md:h-110'}`}
+      className={`grid grid-cols-[repeat(auto-fit,minmax(min(var(--panel-card-width),100%),1fr))] gap-2 overflow-y-auto p-4 ${withoutLinks ? 'max-md:h-82.5' : 'max-md:h-101'}`}
     >
       {!withoutLinks && (
         <>
