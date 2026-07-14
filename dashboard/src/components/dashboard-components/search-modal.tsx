@@ -86,7 +86,9 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
   return (
     <>
       <div>
-        <MenuList.Heading>Quick Actions</MenuList.Heading>
+        <div className="px-4">
+          <MenuList.Heading>Quick Actions</MenuList.Heading>
+        </div>
         <MenuList>
           <MenuList.Item leftIcon={<PenIcon />} className="[&>span_svg]:size-4">
             <MenuList.Button
@@ -115,7 +117,9 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
       </div>
       <Divider />
       <div>
-        <MenuList.Heading>Quick Menu</MenuList.Heading>
+        <div className="px-4">
+          <MenuList.Heading>Quick Menu</MenuList.Heading>
+        </div>
         <MenuList>
           <MenuList.Item
             leftIcon={<DocumentIcon />}
@@ -178,7 +182,10 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
       {filteredTasks.length > 0 ? (
         <>
           <div>
-            <MenuList.Heading>Tasks</MenuList.Heading>
+            <div className="flex items-center gap-1 px-4">
+              <MenuList.Heading>Tasks</MenuList.Heading>
+              <span className="text-neutral-600">{filteredTasks.length}</span>
+            </div>
             <MenuList>
               {filteredTasks.map(({ item: { id, title }, matches }) => {
                 const titleMatch = matches?.find(
@@ -206,7 +213,10 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
       {filteredIssues.length > 0 ? (
         <>
           <div>
-            <MenuList.Heading>Issues</MenuList.Heading>
+            <div className="flex items-center gap-1 px-4">
+              <MenuList.Heading>Issues</MenuList.Heading>
+              <span className="text-neutral-600">{filteredIssues.length}</span>
+            </div>
             <MenuList>
               {filteredIssues.map(
                 ({ item: { id, status, title }, matches }) => {
@@ -238,7 +248,10 @@ function ResultsPanel({ searchQuery, closeModal }: ResultsPanelProps) {
       ) : null}
       {filteredDrafts.length > 0 ? (
         <div>
-          <MenuList.Heading>Drafts</MenuList.Heading>
+          <div className="flex items-center gap-1 px-4">
+            <MenuList.Heading>Drafts</MenuList.Heading>
+            <span className="text-neutral-600">{filteredDrafts.length}</span>
+          </div>
           <MenuList>
             {filteredDrafts.map(({ item: { id, title }, matches }) => {
               const titleMatch = matches?.find((match) => match.key === 'title')

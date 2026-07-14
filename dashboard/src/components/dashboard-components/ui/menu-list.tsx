@@ -19,10 +19,7 @@ type HeadingProps = React.ComponentPropsWithoutRef<'h3'> & {
 
 function Heading({ children, className, ...props }: HeadingProps) {
   return (
-    <h3
-      className={cn('ml-4 font-medium text-neutral-600', className)}
-      {...props}
-    >
+    <h3 className={cn('font-medium', className)} {...props}>
       {children}
     </h3>
   )
