@@ -96,7 +96,7 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
       </motion.div>
       <motion.div
         layout="position"
-        className="h-max max-h-85 space-y-4 overflow-y-auto py-4"
+        className="flex h-max max-h-85 flex-col gap-4 divide-y divide-neutral-200 overflow-y-auto py-4 *:pb-4 *:last:pb-0"
       >
         {search.length > 0 ? (
           <ResultsPanel
@@ -152,7 +152,6 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
           </MenuList.Item>
         </MenuList>
       </div>
-      <Divider />
       <div>
         <div className="px-4">
           <MenuList.Heading>Quick Menu</MenuList.Heading>
@@ -226,71 +225,48 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
   return (
     <>
       {showTasks && filteredTasks.length > 0 ? (
-        <>
-          <div>
-            <div className="flex items-center gap-1 px-4">
-              <MenuList.Heading>Tasks</MenuList.Heading>
-              <span className="text-neutral-600">{filteredTasks.length}</span>
-            </div>
-            <MenuList>
-              {filteredTasks.map(({ item: { id, title }, matches }) => {
-                const titleMatch = matches?.find(
-                  (match) => match.key === 'title'
-                )
-
-                return (
-                  <MenuList.Item key={id} leftIcon={<CheckboxIcon />}>
-                    <MenuList.Button href="/tasks" onClick={closeModal}>
-                      <HighlightText
-                        text={title}
-                        indices={titleMatch?.indices}
-                      />
-                    </MenuList.Button>
-                  </MenuList.Item>
-                )
-              })}
-            </MenuList>
+        <div>
+          <div className="flex items-center gap-1 px-4">
+            <MenuList.Heading>Tasks</MenuList.Heading>
+            <span className="text-neutral-600">{filteredTasks.length}</span>
           </div>
-          {filteredIssues.length > 0 || filteredDrafts.length > 0 ? (
-            <Divider />
-          ) : null}
-        </>
+          <MenuList>
+            {filteredTasks.map(({ item: { id, title }, matches }) => {
+              const titleMatch = matches?.find((match) => match.key === 'title')
+
+              return (
+                <MenuList.Item key={id} leftIcon={<CheckboxIcon />}>
+                  <MenuList.Button href="/tasks" onClick={closeModal}>
+                    <HighlightText text={title} indices={titleMatch?.indices} />
+                  </MenuList.Button>
+                </MenuList.Item>
+              )
+            })}
+          </MenuList>
+        </div>
       ) : null}
       {showIssues && filteredIssues.length > 0 ? (
-        <>
-          <div>
-            <div className="flex items-center gap-1 px-4">
-              <MenuList.Heading>Issues</MenuList.Heading>
-              <span className="text-neutral-600">{filteredIssues.length}</span>
-            </div>
-            <MenuList>
-              {filteredIssues.map(
-                ({ item: { id, status, title }, matches }) => {
-                  const { icon: Icon } = getIssueStatus(status)
-
-                  const titleMatch = matches?.find(
-                    (match) => match.key === 'title'
-                  )
-
-                  return (
-                    <MenuList.Item key={id} leftIcon={<Icon />}>
-                      <MenuList.Button
-                        href={`/issues/${id}`}
-                        onClick={closeModal}
-                      >
-                        <HighlightText
-                          text={title}
-                          indices={titleMatch?.indices}
-                        />
-                      </MenuList.Button>
-                    </MenuList.Item>
-                  )
-                }
-              )}
-            </MenuList>
+        <div>
+          <div className="flex items-center gap-1 px-4">
+            <MenuList.Heading>Issues</MenuList.Heading>
+            <span className="text-neutral-600">{filteredIssues.length}</span>
           </div>
-          {filteredDrafts.length > 0 ? <Divider /> : null}
-        </>
+          <MenuList>
+            {filteredIssues.map(({ item: { id, status, title }, matches }) => {
+              const { icon: Icon } = getIssueStatus(status)
+
+              const titleMatch = matches?.find((match) => match.key === 'title')
+
+              return (
+                <MenuList.Item key={id} leftIcon={<Icon />}>
+                  <MenuList.Button href={`/issues/${id}`} onClick={closeModal}>
+                    <HighlightText text={title} indices={titleMatch?.indices} />
+                  </MenuList.Button>
+                </MenuList.Item>
+              )
+            })}
+          </MenuList>
+        </div>
       ) : null}
       {showDrafts && filteredDrafts.length > 0 ? (
         <div>
