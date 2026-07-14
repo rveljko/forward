@@ -116,7 +116,7 @@ export default function IssuesSection() {
         role="toolbar"
         className="flex min-h-15.5 flex-wrap items-center justify-between gap-2 p-4"
       >
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <FilterDropdownButton />
           <SortDropdownButton />
           <ul className="contents">
