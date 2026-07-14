@@ -98,7 +98,7 @@ function Header({ draftId, title }: HeaderProps) {
             }
           }}
           className={cn(
-            `w-full max-w-85 text-black`,
+            `w-full max-w-85 font-medium text-black`,
             newTitle === DEFAULT_DRAFT_TITLE && 'text-neutral-600'
           )}
           maxLength={80}
