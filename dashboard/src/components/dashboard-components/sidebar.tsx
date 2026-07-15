@@ -1,6 +1,7 @@
 import CreateNewIssueModal from '@dashboard-components/create-new-issue-modal'
 import NavigationLink from '@dashboard-components/navigation-link'
 import SearchModal from '@dashboard-components/search-modal'
+import CountBadge from '@dashboard-components/ui/count-badge'
 import Modal from '@dashboard-components/ui/modal'
 import useMediaQuery from '@hooks/use-media-query'
 import useModal from '@hooks/use-modal'
@@ -151,11 +152,7 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/tasks"
                   leftIcon={<CheckboxIcon />}
-                  rightIcon={
-                    <span className="rounded-sm bg-neutral-50 px-1 py-0.5 text-xs text-neutral-600 tabular-nums mix-blend-multiply ring inset-ring ring-neutral-200 inset-ring-white">
-                      {tasks.length}
-                    </span>
-                  }
+                  rightIcon={<CountBadge>{tasks.length}</CountBadge>}
                   className="[&>span:last-child]:ml-auto"
                   onClick={closeOpenedSidebarOnMobile}
                 >
@@ -166,11 +163,7 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/issues"
                   leftIcon={<FolderIcon />}
-                  rightIcon={
-                    <span className="rounded-sm bg-neutral-50 px-1 py-0.5 text-xs text-neutral-600 tabular-nums mix-blend-multiply ring inset-ring ring-neutral-200 inset-ring-white">
-                      {issues.length}
-                    </span>
-                  }
+                  rightIcon={<CountBadge>{issues.length}</CountBadge>}
                   className="[&>span:last-child]:ml-auto"
                   onClick={closeOpenedSidebarOnMobile}
                 >
@@ -181,11 +174,7 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/drafts"
                   leftIcon={<BrainIcon />}
-                  rightIcon={
-                    <span className="rounded-sm bg-neutral-50 px-1 py-0.5 text-xs text-neutral-600 tabular-nums mix-blend-multiply ring inset-ring ring-neutral-200 inset-ring-white">
-                      {drafts.length}
-                    </span>
-                  }
+                  rightIcon={<CountBadge>{drafts.length}</CountBadge>}
                   className="[&>span:last-child]:ml-auto"
                   onClick={closeOpenedSidebarOnMobile}
                 >

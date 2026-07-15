@@ -28,11 +28,13 @@ function Heading({ children, className, ...props }: HeadingProps) {
 type ItemProps = React.ComponentPropsWithoutRef<'li'> & {
   children: React.ReactNode
   leftIcon?: React.JSX.Element
+  rightIcon?: React.JSX.Element
 }
 
 function Item({
   children,
   leftIcon: LeftIcon,
+  rightIcon: RightIcon,
   className,
   ...props
 }: ItemProps) {
@@ -49,6 +51,7 @@ function Item({
     >
       {LeftIcon && <span className="shrink-0">{LeftIcon}</span>}
       {children}
+      {RightIcon && <span className="shrink-0">{RightIcon}</span>}
     </li>
   )
 }

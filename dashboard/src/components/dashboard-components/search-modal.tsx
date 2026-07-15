@@ -1,3 +1,4 @@
+import CountBadge from '@dashboard-components/ui/count-badge'
 import Divider from '@dashboard-components/ui/divider'
 import HighlightText from '@dashboard-components/ui/highlight-text'
 import IconWrapper from '@dashboard-components/ui/icon-wrapper'
@@ -117,6 +118,10 @@ type MenuPanelProps = {
 }
 
 function MenuPanel({ closeModal }: MenuPanelProps) {
+  const { tasks } = useTasks()
+  const { issues } = useIssues()
+  const { drafts } = useDrafts()
+
   return (
     <>
       <div>
@@ -126,7 +131,8 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
         <MenuList>
           <MenuList.Item
             leftIcon={<CheckboxIcon />}
-            className="[&>span_svg]:size-4"
+            rightIcon={<CountBadge>{tasks.length}</CountBadge>}
+            className="[&>span_svg]:size-4 [&>span:last-child]:ml-auto"
           >
             <MenuList.Button href="/tasks" onClick={closeModal}>
               Tasks
@@ -134,7 +140,8 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
           </MenuList.Item>
           <MenuList.Item
             leftIcon={<FolderIcon />}
-            className="[&>span_svg]:size-4"
+            rightIcon={<CountBadge>{issues.length}</CountBadge>}
+            className="[&>span_svg]:size-4 [&>span:last-child]:ml-auto"
           >
             <MenuList.Button href="/issues" onClick={closeModal}>
               Issues
@@ -142,7 +149,8 @@ function MenuPanel({ closeModal }: MenuPanelProps) {
           </MenuList.Item>
           <MenuList.Item
             leftIcon={<BrainIcon />}
-            className="[&>span_svg]:size-4"
+            rightIcon={<CountBadge>{drafts.length}</CountBadge>}
+            className="[&>span_svg]:size-4 [&>span:last-child]:ml-auto"
           >
             <MenuList.Button href="/drafts" onClick={closeModal}>
               Drafts
