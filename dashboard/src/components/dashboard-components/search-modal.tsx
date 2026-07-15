@@ -8,8 +8,8 @@ import BrainIcon from '@icons/brain-icon'
 import CheckboxIcon from '@icons/checkbox-icon'
 import CloseIcon from '@icons/close-icon'
 import DocumentIcon from '@icons/document-icon'
+import FolderIcon from '@icons/folder-icon'
 import LifebuoyIcon from '@icons/lifebuoy-icon'
-import PenIcon from '@icons/pen-icon'
 import SearchIcon from '@icons/search-icon'
 import SettingsIcon from '@icons/settings-icon'
 import { useDrafts } from '@services/contexts/drafts-context'
@@ -117,37 +117,35 @@ type MenuPanelProps = {
 }
 
 function MenuPanel({ closeModal }: MenuPanelProps) {
-  const { createDefaultIssue } = useIssues()
-  const { createNewDraft } = useDrafts()
-
   return (
     <>
       <div>
         <div className="px-4">
-          <MenuList.Heading>Quick Actions</MenuList.Heading>
+          <MenuList.Heading>Quick Access</MenuList.Heading>
         </div>
         <MenuList>
-          <MenuList.Item leftIcon={<PenIcon />} className="[&>span_svg]:size-4">
-            <MenuList.Button
-              onClick={() => {
-                createDefaultIssue()
-                closeModal()
-              }}
-            >
-              Create New Issue
+          <MenuList.Item
+            leftIcon={<CheckboxIcon />}
+            className="[&>span_svg]:size-4"
+          >
+            <MenuList.Button href="/tasks" onClick={closeModal}>
+              Tasks
+            </MenuList.Button>
+          </MenuList.Item>
+          <MenuList.Item
+            leftIcon={<FolderIcon />}
+            className="[&>span_svg]:size-4"
+          >
+            <MenuList.Button href="/issues" onClick={closeModal}>
+              Issues
             </MenuList.Button>
           </MenuList.Item>
           <MenuList.Item
             leftIcon={<BrainIcon />}
             className="[&>span_svg]:size-4"
           >
-            <MenuList.Button
-              onClick={() => {
-                createNewDraft()
-                closeModal()
-              }}
-            >
-              Create New Draft
+            <MenuList.Button href="/drafts" onClick={closeModal}>
+              Drafts
             </MenuList.Button>
           </MenuList.Item>
         </MenuList>
