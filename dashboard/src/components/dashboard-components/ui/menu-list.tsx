@@ -1,4 +1,5 @@
 import { cn } from '@utils/utils'
+import { motion } from 'motion/react'
 import { Link } from 'react-router'
 
 type MenuListProps = React.ComponentPropsWithoutRef<'ul'> & {
@@ -25,7 +26,7 @@ function Heading({ children, className, ...props }: HeadingProps) {
   )
 }
 
-type ItemProps = React.ComponentPropsWithoutRef<'li'> & {
+type ItemProps = React.ComponentProps<typeof motion.li> & {
   children: React.ReactNode
   leftIcon?: React.JSX.Element
   rightIcon?: React.JSX.Element
@@ -39,9 +40,9 @@ function Item({
   ...props
 }: ItemProps) {
   return (
-    <li
+    <motion.li
       className={cn(
-        'relative flex items-center gap-1 px-4 py-2 pointer-coarse:transition',
+        'relative flex items-center gap-1 bg-neutral-50 px-4 py-2 pointer-coarse:transition',
         'has-[a]:text-black has-[button]:text-black',
         'has-[a]:hover:bg-neutral-200 has-[button]:hover:bg-neutral-200 has-[a]:pointer-coarse:active:bg-neutral-200 has-[button]:pointer-coarse:active:bg-neutral-200',
         'has-[a:focus-visible]:bg-neutral-200 has-[button:focus-visible]:bg-neutral-200',
@@ -52,7 +53,7 @@ function Item({
       {LeftIcon && <span className="shrink-0">{LeftIcon}</span>}
       {children}
       {RightIcon && <span className="shrink-0">{RightIcon}</span>}
-    </li>
+    </motion.li>
   )
 }
 

@@ -97,7 +97,7 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
       </motion.div>
       <motion.div
         layout="position"
-        className="flex h-max max-h-85 flex-col gap-4 divide-y divide-neutral-200 overflow-y-auto py-4 *:pb-4 *:last:pb-0"
+        className="flex h-max max-h-85 flex-col gap-4 divide-y divide-neutral-200 overflow-x-hidden overflow-y-auto py-4 *:pb-4 *:last:pb-0"
       >
         {search.length > 0 ? (
           <ResultsPanel
@@ -237,17 +237,31 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
             <span className="text-neutral-600">{filteredTasks.length}</span>
           </div>
           <MenuList>
-            {filteredTasks.map(({ item: { id, title }, matches }) => {
-              const titleMatch = matches?.find((match) => match.key === 'title')
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filteredTasks.map(({ item: { id, title }, matches }) => {
+                const titleMatch = matches?.find(
+                  (match) => match.key === 'title'
+                )
 
-              return (
-                <MenuList.Item key={id} leftIcon={<CheckboxIcon />}>
-                  <MenuList.Button href="/tasks" onClick={closeModal}>
-                    <HighlightText text={title} indices={titleMatch?.indices} />
-                  </MenuList.Button>
-                </MenuList.Item>
-              )
-            })}
+                return (
+                  <MenuList.Item
+                    layout
+                    key={id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    leftIcon={<CheckboxIcon />}
+                  >
+                    <MenuList.Button href="/tasks" onClick={closeModal}>
+                      <HighlightText
+                        text={title}
+                        indices={titleMatch?.indices}
+                      />
+                    </MenuList.Button>
+                  </MenuList.Item>
+                )
+              })}
+            </AnimatePresence>
           </MenuList>
         </div>
       ) : null}
@@ -258,19 +272,38 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
             <span className="text-neutral-600">{filteredIssues.length}</span>
           </div>
           <MenuList>
-            {filteredIssues.map(({ item: { id, status, title }, matches }) => {
-              const { icon: Icon } = getIssueStatus(status)
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filteredIssues.map(
+                ({ item: { id, status, title }, matches }) => {
+                  const { icon: Icon } = getIssueStatus(status)
 
-              const titleMatch = matches?.find((match) => match.key === 'title')
+                  const titleMatch = matches?.find(
+                    (match) => match.key === 'title'
+                  )
 
-              return (
-                <MenuList.Item key={id} leftIcon={<Icon />}>
-                  <MenuList.Button href={`/issues/${id}`} onClick={closeModal}>
-                    <HighlightText text={title} indices={titleMatch?.indices} />
-                  </MenuList.Button>
-                </MenuList.Item>
-              )
-            })}
+                  return (
+                    <MenuList.Item
+                      layout
+                      key={id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      leftIcon={<Icon />}
+                    >
+                      <MenuList.Button
+                        href={`/issues/${id}`}
+                        onClick={closeModal}
+                      >
+                        <HighlightText
+                          text={title}
+                          indices={titleMatch?.indices}
+                        />
+                      </MenuList.Button>
+                    </MenuList.Item>
+                  )
+                }
+              )}
+            </AnimatePresence>
           </MenuList>
         </div>
       ) : null}
@@ -281,17 +314,34 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
             <span className="text-neutral-600">{filteredDrafts.length}</span>
           </div>
           <MenuList>
-            {filteredDrafts.map(({ item: { id, title }, matches }) => {
-              const titleMatch = matches?.find((match) => match.key === 'title')
+            <AnimatePresence mode="popLayout" initial={false}>
+              {filteredDrafts.map(({ item: { id, title }, matches }) => {
+                const titleMatch = matches?.find(
+                  (match) => match.key === 'title'
+                )
 
-              return (
-                <MenuList.Item key={id} leftIcon={<BrainIcon />}>
-                  <MenuList.Button href={`/drafts/${id}`} onClick={closeModal}>
-                    <HighlightText text={title} indices={titleMatch?.indices} />
-                  </MenuList.Button>
-                </MenuList.Item>
-              )
-            })}
+                return (
+                  <MenuList.Item
+                    layout
+                    key={id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    leftIcon={<BrainIcon />}
+                  >
+                    <MenuList.Button
+                      href={`/drafts/${id}`}
+                      onClick={closeModal}
+                    >
+                      <HighlightText
+                        text={title}
+                        indices={titleMatch?.indices}
+                      />
+                    </MenuList.Button>
+                  </MenuList.Item>
+                )
+              })}
+            </AnimatePresence>
           </MenuList>
         </div>
       ) : null}
