@@ -1,4 +1,5 @@
 import IssuesListItem from '@dashboard-components/issues-list-item'
+import { useDndContext } from '@dnd-kit/core'
 import { SortableContext } from '@dnd-kit/sortable'
 import { Issue } from '@utils/types'
 import { cn } from '@utils/utils'
@@ -13,6 +14,10 @@ export default function IssuesListItemsList({
   className,
   ...props
 }: IssuesListItemsListProps) {
+  const { active } = useDndContext()
+
+  const isDragging = active !== null
+
   return (
     <ul
       className={cn(
@@ -25,7 +30,7 @@ export default function IssuesListItemsList({
         <AnimatePresence mode="popLayout" initial={false}>
           {issues.map((issue) => (
             <motion.li
-              layout
+              layout={!isDragging}
               key={issue.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
