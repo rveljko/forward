@@ -1,12 +1,5 @@
 import { BadgeProps } from '@dashboard-components/ui/badge'
 
-export type NavigationLink = {
-  id: number
-  name: string
-  path: string
-  icon?: () => React.JSX.Element
-}
-
 export type Integration = {
   id: number
   name: string
