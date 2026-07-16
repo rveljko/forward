@@ -229,9 +229,16 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
     return <NoResultsPanel searchQuery={searchQuery} />
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="popLayout" initial={false}>
       {showTasks && filteredTasks.length > 0 ? (
-        <motion.div layout="position" className="bg-neutral-50">
+        <motion.div
+          layout="position"
+          key="tasks"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="bg-neutral-50"
+        >
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Tasks</MenuList.Heading>
             <span className="text-neutral-600">{filteredTasks.length}</span>
@@ -266,7 +273,14 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
         </motion.div>
       ) : null}
       {showIssues && filteredIssues.length > 0 ? (
-        <motion.div layout="position" className="bg-neutral-50">
+        <motion.div
+          layout="position"
+          key="issues"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="bg-neutral-50"
+        >
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Issues</MenuList.Heading>
             <span className="text-neutral-600">{filteredIssues.length}</span>
@@ -308,7 +322,14 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
         </motion.div>
       ) : null}
       {showDrafts && filteredDrafts.length > 0 ? (
-        <motion.div layout="position" className="bg-neutral-50">
+        <motion.div
+          layout="position"
+          key="drafts"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="bg-neutral-50"
+        >
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Drafts</MenuList.Heading>
             <span className="text-neutral-600">{filteredDrafts.length}</span>
