@@ -97,7 +97,7 @@ export default function SearchModal({ closeModal }: SearchModalProps) {
       </motion.div>
       <motion.div
         layout="position"
-        className="flex h-max max-h-85 flex-col gap-4 divide-y divide-neutral-200 overflow-x-hidden overflow-y-auto py-4 *:pb-4 *:last:pb-0"
+        className="h-max max-h-85 overflow-x-hidden overflow-y-auto *:py-4 *:not-first:border-t *:not-first:border-t-neutral-200"
       >
         {search.length > 0 ? (
           <ResultsPanel
@@ -229,9 +229,9 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
     return <NoResultsPanel searchQuery={searchQuery} />
 
   return (
-    <>
+    <AnimatePresence>
       {showTasks && filteredTasks.length > 0 ? (
-        <div>
+        <motion.div layout="position" className="bg-neutral-50">
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Tasks</MenuList.Heading>
             <span className="text-neutral-600">{filteredTasks.length}</span>
@@ -263,10 +263,10 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
               })}
             </AnimatePresence>
           </MenuList>
-        </div>
+        </motion.div>
       ) : null}
       {showIssues && filteredIssues.length > 0 ? (
-        <div>
+        <motion.div layout="position" className="bg-neutral-50">
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Issues</MenuList.Heading>
             <span className="text-neutral-600">{filteredIssues.length}</span>
@@ -305,10 +305,10 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
               )}
             </AnimatePresence>
           </MenuList>
-        </div>
+        </motion.div>
       ) : null}
       {showDrafts && filteredDrafts.length > 0 ? (
-        <div>
+        <motion.div layout="position" className="bg-neutral-50">
           <div className="flex items-center gap-1 px-4">
             <MenuList.Heading>Drafts</MenuList.Heading>
             <span className="text-neutral-600">{filteredDrafts.length}</span>
@@ -343,9 +343,9 @@ function ResultsPanel({ searchQuery, closeModal, filters }: ResultsPanelProps) {
               })}
             </AnimatePresence>
           </MenuList>
-        </div>
+        </motion.div>
       ) : null}
-    </>
+    </AnimatePresence>
   )
 }
 
