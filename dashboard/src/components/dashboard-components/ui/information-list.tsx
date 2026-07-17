@@ -40,7 +40,7 @@ type LabelProps = React.ComponentPropsWithoutRef<'p'> & {
 function Label({ children, icon: Icon, className, ...props }: LabelProps) {
   return (
     <div className="flex w-full max-w-30 items-center gap-1">
-      <span className="text-black">{Icon}</span>
+      <span className="text-black [&_svg]:size-4">{Icon}</span>
       <p
         className={cn('line-clamp-1 break-all text-neutral-600', className)}
         {...props}
@@ -59,7 +59,7 @@ type ValueProps = React.ComponentPropsWithoutRef<'p'> & {
 function Value({ children, icon: Icon, className, ...props }: ValueProps) {
   return (
     <div className="flex w-full items-center gap-1 rounded-sm border border-dashed border-transparent px-1.5 py-0.5 hover:border-neutral-300 hover:bg-neutral-200">
-      {Icon && <span className="text-black">{Icon}</span>}
+      {Icon && <span className="text-black [&_svg]:size-4">{Icon}</span>}
       <p
         className={cn('line-clamp-1 break-all text-black', className)}
         {...props}
