@@ -6,8 +6,8 @@ import UserIcon from '@icons/user-icon'
 
 export default function SettingsNavigation() {
   return (
-    <nav>
-      <ul className="flex overflow-x-auto">
+    <nav className="w-0 min-w-full overflow-x-auto">
+      <ul className="flex">
         <li>
           <SettingsNavigationLink
             to="/settings/profile"
