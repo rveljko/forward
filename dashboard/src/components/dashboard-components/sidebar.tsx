@@ -21,6 +21,7 @@ import { usePreferences } from '@services/contexts/preferences-context'
 import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
+import { cn } from '@utils/utils'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
@@ -65,8 +66,15 @@ export default function Sidebar() {
         } as React.CSSProperties
       }
       initial={false}
-      animate={{ width: isOpened ? 'var(--sidebar-opened-width)' : 62 }}
-      className={`z-999 h-full shrink-0 bg-neutral-100 p-4 [--sidebar-opened-width:256px]`}
+      animate={{ width: isOpened ? 256 : 62 }}
+      className={cn(
+        'z-999 h-full shrink-0 p-4',
+        preferences.sidebarStyle === 'transparent' && 'bg-neutral-100',
+        preferences.sidebarStyle === 'sticky' &&
+          'border-r border-neutral-200 bg-neutral-50 inset-ring inset-ring-white',
+        preferences.sidebarStyle === 'floating' &&
+          'rounded-(--border-radius) border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white'
+      )}
     >
       <div className="flex h-full flex-col gap-4">
         <header
