@@ -19,10 +19,9 @@ import { useDrafts } from '@services/contexts/drafts-context'
 import { useIssues } from '@services/contexts/issues-context'
 import { usePreferences } from '@services/contexts/preferences-context'
 import { useTasks } from '@services/contexts/tasks-context'
-import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
-import { AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { useHotkeys } from 'react-hotkeys-hook'
 import { Link } from 'react-router'
@@ -42,7 +41,6 @@ export default function Sidebar() {
   const { issues } = useIssues()
   const { drafts } = useDrafts()
   const { preferences, getBorderRadius } = usePreferences()
-  const { userInformation } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
   const [isBigSizeModal, setIsBigSizeModal] = useState(false)
@@ -58,38 +56,17 @@ export default function Sidebar() {
     !isMediumSizeScreen && isOpened && setIsOpened((prev) => !prev)
   }
 
-  const sidebarStyleClassNames = {
-    transparent: isOpened
-      ? 'bg-background-color absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit md:bg-transparent'
-      : 'sticky w-fit',
-    sticky: `bg-section-background-color ${preferences.isRightSideSidebar ? 'border-l-section-outline border-l' : 'border-r-section-outline border-r'} ${
-      isOpened
-        ? 'absolute w-full min-w-(--sidebar-opened-width) md:sticky md:w-fit'
-        : 'sticky w-fit'
-    }`,
-    floating: `bg-section-background-color border-section-outline rounded-(--border-radius) border ${
-      isOpened
-        ? 'absolute w-full min-w-(--sidebar-opened-width) rounded-none md:sticky md:w-fit md:rounded-(--border-radius)'
-        : 'sticky w-fit'
-    }`,
-  }
-
-  const sidebarStyle =
-    (preferences.sidebarStyle === 'transparent' &&
-      sidebarStyleClassNames.transparent) ||
-    (preferences.sidebarStyle === 'floating' &&
-      sidebarStyleClassNames.floating) ||
-    (preferences.sidebarStyle === 'sticky' && sidebarStyleClassNames.sticky) ||
-    ''
-
   return (
-    <aside
+    <motion.aside
+      layout="position"
       style={
         {
           '--border-radius': getBorderRadius(),
         } as React.CSSProperties
       }
-      className={`top-0 left-0 z-999 h-full p-4 ${sidebarStyle}`}
+      initial={false}
+      animate={{ width: isOpened ? 'var(--sidebar-opened-width)' : 62 }}
+      className={`z-999 h-full shrink-0 bg-neutral-100 p-4 [--sidebar-opened-width:256px]`}
     >
       <div className="flex h-full flex-col gap-4">
         <header
@@ -102,7 +79,7 @@ export default function Sidebar() {
           </Link>
           <Button
             variant="tertiary"
-            className="text-clickable group flex size-7 items-center justify-center"
+            className="group -m- shrink-0 p-1 text-black"
             onClick={() => setIsOpened((prev) => !prev)}
           >
             <span className="sr-only">Toggle Sidebar</span>
@@ -117,33 +94,51 @@ export default function Sidebar() {
             )}
           </Button>
         </header>
-        <div className="flex h-full flex-col gap-1 overflow-y-auto px-px">
+        <div className="flex h-full flex-col gap-1 overflow-x-hidden overflow-y-auto px-px">
           <div className="space-y-1">
             <Button
               variant="primary"
               size="small"
               leftIcon={<PenIcon />}
-              className="w-full justify-start"
+              className="h-7 w-full justify-start"
               onClick={() => {
                 openCreateNewIssueModal()
                 closeOpenedSidebarOnMobile()
               }}
             >
-              <span className={isOpened ? 'block' : 'hidden'}>
-                Create New Issue
-              </span>
+              <AnimatePresence mode="popLayout" initial={false}>
+                {isOpened && (
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Create New Issue
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Button>
             <Button
               variant="secondary"
               size="small"
               leftIcon={<SearchIcon />}
-              className="w-full justify-start"
+              className="h-7 w-full justify-start"
               onClick={() => {
                 openSearchModal()
                 closeOpenedSidebarOnMobile()
               }}
             >
-              <span className={isOpened ? 'block' : 'hidden'}>Search</span>
+              <AnimatePresence mode="popLayout" initial={false}>
+                {isOpened && (
+                  <motion.span
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    Search
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Button>
           </div>
           <nav className="flex h-full flex-col justify-between gap-1">
@@ -153,11 +148,32 @@ export default function Sidebar() {
                   to="/tasks"
                   leftIcon={<CheckboxIcon />}
                   rightIcon={
-                    <CountBadge className="ml-auto">{tasks.length}</CountBadge>
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      {isOpened && (
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="ml-auto"
+                        >
+                          <CountBadge>{tasks.length}</CountBadge>
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   }
                   onClick={closeOpenedSidebarOnMobile}
                 >
-                  Tasks
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        Tasks
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </NavigationLink>
               </li>
               <li>
@@ -165,11 +181,32 @@ export default function Sidebar() {
                   to="/issues"
                   leftIcon={<FolderIcon />}
                   rightIcon={
-                    <CountBadge className="ml-auto">{issues.length}</CountBadge>
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      {isOpened && (
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="ml-auto"
+                        >
+                          <CountBadge>{issues.length}</CountBadge>
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   }
                   onClick={closeOpenedSidebarOnMobile}
                 >
-                  Issues
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        Issues
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </NavigationLink>
               </li>
               <li>
@@ -177,11 +214,32 @@ export default function Sidebar() {
                   to="/drafts"
                   leftIcon={<BrainIcon />}
                   rightIcon={
-                    <CountBadge className="ml-auto">{drafts.length}</CountBadge>
+                    <AnimatePresence mode="popLayout" initial={false}>
+                      {isOpened && (
+                        <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          className="ml-auto"
+                        >
+                          <CountBadge>{drafts.length}</CountBadge>
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   }
                   onClick={closeOpenedSidebarOnMobile}
                 >
-                  Drafts
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        Drafts
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </NavigationLink>
               </li>
             </ul>
@@ -192,7 +250,17 @@ export default function Sidebar() {
                   leftIcon={<DocumentIcon />}
                   onClick={closeOpenedSidebarOnMobile}
                 >
-                  Guides
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        Guides
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </NavigationLink>
               </li>
               <li>
@@ -201,7 +269,17 @@ export default function Sidebar() {
                   leftIcon={<LifebuoyIcon />}
                   onClick={closeOpenedSidebarOnMobile}
                 >
-                  Help & Support
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        Help & Support
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </NavigationLink>
               </li>
               <li>
@@ -210,30 +288,18 @@ export default function Sidebar() {
                   leftIcon={<SettingsIcon />}
                   onClick={closeOpenedSidebarOnMobile}
                 >
-                  Settings
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        Settings
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
                 </NavigationLink>
-              </li>
-              <li>
-                <Link
-                  to="/settings/profile"
-                  className="flex items-center gap-1 px-1.5 py-1"
-                  onClick={closeOpenedSidebarOnMobile}
-                >
-                  <div className="flex h-6 shrink-0 items-center justify-center">
-                    <div className="size-5 overflow-hidden rounded-full bg-neutral-700">
-                      <img
-                        className="size-full object-cover"
-                        src={userInformation.profilePictureUrl}
-                        alt={`${userInformation.firstName} ${userInformation.lastName}`}
-                      />
-                    </div>
-                  </div>
-                  <span
-                    className={`text-clickable ${isOpened ? 'block' : 'hidden'}`}
-                  >
-                    {userInformation.firstName} {userInformation.lastName}
-                  </span>
-                </Link>
               </li>
             </ul>
           </nav>
@@ -272,6 +338,6 @@ export default function Sidebar() {
           </Modal>
         )}
       </AnimatePresence>
-    </aside>
+    </motion.aside>
   )
 }
