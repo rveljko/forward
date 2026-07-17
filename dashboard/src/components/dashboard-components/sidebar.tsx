@@ -3,6 +3,7 @@ import NavigationLink from '@dashboard-components/navigation-link'
 import SearchModal from '@dashboard-components/search-modal'
 import CountBadge from '@dashboard-components/ui/count-badge'
 import Modal from '@dashboard-components/ui/modal'
+import UserInformationModal from '@dashboard-components/user-information-modal'
 import useMediaQuery from '@hooks/use-media-query'
 import useModal from '@hooks/use-modal'
 import BrainIcon from '@icons/brain-icon'
@@ -19,6 +20,7 @@ import { useDrafts } from '@services/contexts/drafts-context'
 import { useIssues } from '@services/contexts/issues-context'
 import { usePreferences } from '@services/contexts/preferences-context'
 import { useTasks } from '@services/contexts/tasks-context'
+import { useUserInformation } from '@services/contexts/user-information-context'
 import Button from '@ui/button'
 import Logo from '@ui/logo'
 import { cn } from '@utils/utils'
@@ -38,10 +40,18 @@ export default function Sidebar() {
     openModal: openSearchModal,
     closeModal: closeSearchModal,
   } = useModal()
+  const {
+    isOpened: isUserInformationModalOpen,
+    openModal: openUserInformationModal,
+    closeModal: closeUserInformationModal,
+  } = useModal()
   const { tasks } = useTasks()
   const { issues } = useIssues()
   const { drafts } = useDrafts()
   const { preferences, getBorderRadius } = usePreferences()
+  const {
+    userInformation: { firstName, lastName, profilePictureUrl },
+  } = useUserInformation()
   const { isMediumSizeScreen } = useMediaQuery()
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
   const [isBigSizeModal, setIsBigSizeModal] = useState(false)
@@ -315,6 +325,36 @@ export default function Sidebar() {
                   </AnimatePresence>
                 </NavigationLink>
               </li>
+              <li>
+                <Button
+                  variant="tertiary"
+                  size="small"
+                  leftIcon={
+                    <img
+                      src={profilePictureUrl}
+                      alt=""
+                      className="size-full rounded-full object-cover"
+                    />
+                  }
+                  className="h-7 w-full justify-start"
+                  onClick={() => {
+                    openUserInformationModal()
+                    closeOpenedSidebarOnMobile()
+                  }}
+                >
+                  <AnimatePresence mode="popLayout" initial={false}>
+                    {isOpened && (
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      >
+                        {`${firstName} ${lastName}`}
+                      </motion.span>
+                    )}
+                  </AnimatePresence>
+                </Button>
+              </li>
             </motion.ul>
           </nav>
         </motion.div>
@@ -346,6 +386,20 @@ export default function Sidebar() {
               <Modal.Dialog>
                 <Modal.FocusLock>
                   <SearchModal closeModal={closeSearchModal} />
+                </Modal.FocusLock>
+              </Modal.Dialog>
+            </Modal.Overlay>
+          </Modal>
+        )}
+        {isUserInformationModalOpen && (
+          <Modal
+            isOpened={isUserInformationModalOpen}
+            closeModal={closeUserInformationModal}
+          >
+            <Modal.Overlay>
+              <Modal.Dialog>
+                <Modal.FocusLock>
+                  <UserInformationModal />
                 </Modal.FocusLock>
               </Modal.Dialog>
             </Modal.Overlay>

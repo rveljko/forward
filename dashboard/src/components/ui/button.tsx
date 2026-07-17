@@ -60,13 +60,13 @@ export default function Button({
     return (
       <Link to={props.href} className={buttonClasses} {...props}>
         {LeftIcon && (
-          <span className="flex size-4 items-center justify-center">
+          <span className="flex size-4 shrink-0 items-center justify-center">
             {LeftIcon}
           </span>
         )}
         {children}
         {RightIcon && (
-          <span className="flex size-4 items-center justify-center">
+          <span className="flex size-4 shrink-0 items-center justify-center">
             {RightIcon}
           </span>
         )}
@@ -77,13 +77,13 @@ export default function Button({
   return (
     <button className={buttonClasses} type="button" {...props}>
       {LeftIcon && (
-        <span className="flex size-4 items-center justify-center">
+        <span className="flex size-4 shrink-0 items-center justify-center">
           {LeftIcon}
         </span>
       )}
       {children}
       {RightIcon && (
-        <span className="flex size-4 items-center justify-center">
+        <span className="flex size-4 shrink-0 items-center justify-center">
           {RightIcon}
         </span>
       )}
