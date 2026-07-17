@@ -152,8 +152,9 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/tasks"
                   leftIcon={<CheckboxIcon />}
-                  rightIcon={<CountBadge>{tasks.length}</CountBadge>}
-                  className="[&>span:last-child]:ml-auto"
+                  rightIcon={
+                    <CountBadge className="ml-auto">{tasks.length}</CountBadge>
+                  }
                   onClick={closeOpenedSidebarOnMobile}
                 >
                   Tasks
@@ -163,8 +164,9 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/issues"
                   leftIcon={<FolderIcon />}
-                  rightIcon={<CountBadge>{issues.length}</CountBadge>}
-                  className="[&>span:last-child]:ml-auto"
+                  rightIcon={
+                    <CountBadge className="ml-auto">{issues.length}</CountBadge>
+                  }
                   onClick={closeOpenedSidebarOnMobile}
                 >
                   Issues
@@ -174,8 +176,9 @@ export default function Sidebar() {
                 <NavigationLink
                   to="/drafts"
                   leftIcon={<BrainIcon />}
-                  rightIcon={<CountBadge>{drafts.length}</CountBadge>}
-                  className="[&>span:last-child]:ml-auto"
+                  rightIcon={
+                    <CountBadge className="ml-auto">{drafts.length}</CountBadge>
+                  }
                   onClick={closeOpenedSidebarOnMobile}
                 >
                   Drafts
