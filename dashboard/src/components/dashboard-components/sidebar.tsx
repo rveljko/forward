@@ -94,8 +94,11 @@ export default function Sidebar() {
             )}
           </Button>
         </header>
-        <div className="flex h-full flex-col gap-1 overflow-x-hidden overflow-y-auto px-px">
-          <div className="space-y-1">
+        <motion.div
+          layout
+          className="flex h-full flex-col gap-1 overflow-x-hidden overflow-y-auto px-px"
+        >
+          <motion.div layout="position" className="space-y-1">
             <Button
               variant="primary"
               size="small"
@@ -140,9 +143,9 @@ export default function Sidebar() {
                 )}
               </AnimatePresence>
             </Button>
-          </div>
+          </motion.div>
           <nav className="flex h-full flex-col justify-between gap-1">
-            <ul className="space-y-1">
+            <motion.ul layout="position" className="space-y-1">
               <li>
                 <NavigationLink
                   to="/tasks"
@@ -242,8 +245,8 @@ export default function Sidebar() {
                   </AnimatePresence>
                 </NavigationLink>
               </li>
-            </ul>
-            <ul className="space-y-1">
+            </motion.ul>
+            <motion.ul layout="preserve-aspect" className="space-y-1">
               <li>
                 <NavigationLink
                   to="/guides"
@@ -301,9 +304,9 @@ export default function Sidebar() {
                   </AnimatePresence>
                 </NavigationLink>
               </li>
-            </ul>
+            </motion.ul>
           </nav>
-        </div>
+        </motion.div>
       </div>
       <AnimatePresence>
         {isCreateNewIssueModalOpen && (
