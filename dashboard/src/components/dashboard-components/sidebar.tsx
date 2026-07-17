@@ -46,7 +46,10 @@ export default function Sidebar() {
   const [isOpened, setIsOpened] = useState(isMediumSizeScreen)
   const [isBigSizeModal, setIsBigSizeModal] = useState(false)
 
-  useHotkeys('ctrl+b', () => setIsOpened((prev) => !prev))
+  useHotkeys('ctrl+b', (e) => {
+    e.preventDefault()
+    setIsOpened((prev) => !prev)
+  })
   useHotkeys('ctrl+alt+i', openCreateNewIssueModal)
   useHotkeys('ctrl+k', (e) => {
     e.preventDefault()
