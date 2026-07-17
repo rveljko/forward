@@ -5,12 +5,14 @@ import { Outlet } from 'react-router'
 
 export default function SettingsLayout() {
   return (
-    <div className="w-full max-w-200 space-y-4 p-4">
+    <div className="w-full max-w-200 p-4">
       <SettingsHeader />
       <Divider />
       <SettingsNavigation />
       <Divider />
-      <Outlet />
+      <div className="mt-4">
+        <Outlet />
+      </div>
     </div>
   )
 }
