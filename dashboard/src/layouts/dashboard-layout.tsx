@@ -12,7 +12,7 @@ export default function DashboardLayout() {
   return (
     <div
       id="dashboard-layout"
-      className={`relative flex h-screen overflow-hidden bg-neutral-100 text-sm text-neutral-900 inset-ring inset-ring-white ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
+      className={`relative flex h-screen overflow-hidden bg-neutral-100 text-sm text-neutral-900 ${preferences.isRightSideSidebar ? 'flex-row-reverse' : 'flex-row'}`}
     >
       <Toaster />
       <div
