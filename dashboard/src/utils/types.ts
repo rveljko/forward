@@ -18,15 +18,6 @@ export type User = {
   isTwoStepVerificationEnabled: boolean
 }
 
-export type ThemeLabel = 'system' | 'dark' | 'light'
-
-export type Theme = {
-  id: number
-  name: string
-  label: ThemeLabel
-  imageUrl: string
-}
-
 export type SidebarStyleLabel = 'transparent' | 'sticky' | 'floating'
 
 export type SidebarStyle = {
@@ -47,7 +38,6 @@ export type CornerRoundness = {
 }
 
 export type Preferences = {
-  theme: ThemeLabel
   sidebarStyle: SidebarStyleLabel
   isRightSideSidebar: boolean
   areRoundedCorners: boolean

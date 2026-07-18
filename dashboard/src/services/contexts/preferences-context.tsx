@@ -19,7 +19,6 @@ type PreferencesContextType = {
   getCornerRoundness: (cornerRoundness: CornerRoundnessLabel) => CornerRoundness
   getRemCornerRoundness: () => string
   getBorderRadius: () => string | 0
-  isLightTheme: boolean
 }
 
 const PreferencesContext = createContext<PreferencesContextType | null>(null)
@@ -34,11 +33,6 @@ export default function PreferencesContextProvider({
 }: PreferencesContextProviderProps) {
   const [preferences, setPreferences] = useState(getInitialPreferences)
   const [newPreferences, setNewPreferences] = useState(preferences)
-
-  const isLightTheme =
-    preferences.theme === 'light' ||
-    (preferences.theme === 'system' &&
-      window.matchMedia('(prefers-color-scheme: light)').matches)
 
   function getCornerRoundness(cornerRoundness: CornerRoundnessLabel) {
     return cornerRoundnesses.find(({ label }) => label === cornerRoundness)!
@@ -56,10 +50,6 @@ export default function PreferencesContextProvider({
     localStorage.setItem('preferences', JSON.stringify(preferences))
   }, [preferences])
 
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', preferences.theme)
-  }, [preferences.theme])
-
   return (
     <PreferencesContext.Provider
       value={{
@@ -70,7 +60,6 @@ export default function PreferencesContextProvider({
         getCornerRoundness,
         getRemCornerRoundness,
         getBorderRadius,
-        isLightTheme,
       }}
     >
       {children}

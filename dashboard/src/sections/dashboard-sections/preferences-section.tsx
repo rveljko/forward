@@ -1,10 +1,8 @@
 import SidebarStyleCardsList from '@dashboard-components/sidebar-style-cards-list'
-import ThemeCardsList from '@dashboard-components/theme-cards-list'
 import Divider from '@dashboard-components/ui/divider'
 import Select from '@dashboard-components/ui/select'
 import { cornerRoundnesses } from '@data/corner-roundnesses '
 import { sidebarStyles } from '@data/sidebar-styles'
-import { themes } from '@data/themes'
 import { usePreferences } from '@services/contexts/preferences-context'
 import Button from '@ui/button'
 import Switch from '@ui/switch'
@@ -24,11 +22,6 @@ export default function PreferencesSection() {
         <h2 className="mb-1 font-medium">Preferences</h2>
         <p className="text-neutral-600">Customize your app experience</p>
       </header>
-      <Divider />
-      <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
-        <h3 className="w-full max-w-50 font-medium">Theme</h3>
-        <ThemeCardsList themes={themes} />
-      </div>
       <Divider />
       <div className="flex flex-col gap-2 lg:flex-row lg:gap-16">
         <h3 className="w-full max-w-50 font-medium">Sidebar Style</h3>

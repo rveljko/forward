@@ -67,23 +67,6 @@
           --background-color: hsl(233, 29%, 5%);
         }
 
-        @media (prefers-color-scheme: light) {
-          :root {
-            --clickable: hsl(0, 0%, 0%);
-            --background-color: hsl(180, 9%, 98%);
-          }
-        }
-
-        [data-theme='dark'] {
-          --clickable: hsl(0, 0%, 100%);
-          --background-color: hsl(233, 29%, 5%);
-        }
-
-        [data-theme='light'] {
-          --clickable: hsl(0, 0%, 0%);
-          --background-color: hsl(180, 9%, 98%);
-        }
-
         @keyframes rotation {
           0% {
             transform: rotate(0deg);
@@ -109,11 +92,6 @@
           animation: rotation 1s linear infinite;
         }
       </style>
-      <script>
-        const theme =
-          JSON.parse(localStorage.getItem('preferences'))?.theme || 'system'
-        document.documentElement.setAttribute('data-theme', theme)
-      </script>
       <div class="spinner-wrapper">
         <svg
           width="32"
