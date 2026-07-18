@@ -1,7 +1,9 @@
 import AppRoutes from '@routes/app-routes'
+import DraftsContextProvider from '@services/contexts/drafts-context'
 import IssuesContextProvider from '@services/contexts/issues-context'
 import ModalContextProvider from '@services/contexts/modal-context'
 import PreferencesContextProvider from '@services/contexts/preferences-context'
+import TasksContextProvider from '@services/contexts/tasks-context'
 import UserInformationContextProvider from '@services/contexts/user-information-context'
 import HolyLoader from 'holy-loader'
 import posthog from 'posthog-js'
@@ -21,18 +23,22 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <PreferencesContextProvider>
         <UserInformationContextProvider>
-          <IssuesContextProvider>
-            <PostHogProvider client={posthog}>
-              <HolyLoader
-                color="var(--color-brand-500)"
-                height={2}
-                ignoreSearchParams
-              />
-              <ModalContextProvider>
-                <AppRoutes />
-              </ModalContextProvider>
-            </PostHogProvider>
-          </IssuesContextProvider>
+          <TasksContextProvider>
+            <IssuesContextProvider>
+              <DraftsContextProvider>
+                <PostHogProvider client={posthog}>
+                  <HolyLoader
+                    color="var(--color-brand-500)"
+                    height={2}
+                    ignoreSearchParams
+                  />
+                  <ModalContextProvider>
+                    <AppRoutes />
+                  </ModalContextProvider>
+                </PostHogProvider>
+              </DraftsContextProvider>
+            </IssuesContextProvider>
+          </TasksContextProvider>
         </UserInformationContextProvider>
       </PreferencesContextProvider>
     </BrowserRouter>
