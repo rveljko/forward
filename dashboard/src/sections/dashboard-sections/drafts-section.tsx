@@ -72,7 +72,7 @@ export default function DraftsSection() {
       </div>
       <Divider />
       {getSortedDrafts().length > 0 ? (
-        <div className="grow overflow-y-auto">
+        <div className="grow scrollbar-gutter-stable overflow-y-auto">
           <Container className="py-8 md:py-16">
             <DraftCardsList drafts={getSortedDrafts()} />
           </Container>
