@@ -16,7 +16,7 @@ export default function IssueSectionSkeleton() {
       <div className="w-0 min-w-full">
         <div className="flex gap-0.5 overflow-x-auto p-4">
           {Array.from({ length: 16 }, (_, index) => index).map((_, index) => (
-            <Skeleton key={index} className="size-6" />
+            <Skeleton key={index} className="size-6 shrink-0" />
           ))}
         </div>
       </div>
