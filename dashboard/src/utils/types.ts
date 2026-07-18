@@ -24,8 +24,7 @@ export type SidebarStyle = {
   id: number
   name: string
   label: SidebarStyleLabel
-  imageDarkUrl: string
-  imageLightUrl: string
+  imageUrl: string
 }
 
 export type CornerRoundnessLabel = 'large' | 'medium' | 'small' | 'extra-small'
