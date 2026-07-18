@@ -1,3 +1,4 @@
+import Divider from '@dashboard-components/ui/divider'
 import Skeleton from '@dashboard-components/ui/skeleton'
 
 export default function TasksSectionSkeleton() {
@@ -6,15 +7,15 @@ export default function TasksSectionSkeleton() {
       <div className="p-4">
         <Skeleton className="max-w-40" />
       </div>
-      <Skeleton className="h-0.5 rounded-none" />
+      <Divider />
       <div className="flex flex-wrap items-center justify-between gap-2 p-4">
         <div className="flex items-center gap-2">
-          <Skeleton className="h-8 w-20 shrink-0" />
-          <Skeleton className="h-8 w-20 shrink-0" />
+          <Skeleton className="h-7 w-18 shrink-0" />
+          <Skeleton className="h-7 w-18 shrink-0" />
         </div>
-        <Skeleton className="h-8 w-40" />
+        <Skeleton className="h-7.5 w-40" />
       </div>
-      <Skeleton className="h-0.5 rounded-none" />
+      <Divider />
       <div className="space-y-px">
         <div className="flex items-center justify-between gap-2 p-4">
           <Skeleton className="max-w-60" />
