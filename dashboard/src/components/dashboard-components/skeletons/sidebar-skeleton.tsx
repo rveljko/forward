@@ -2,7 +2,7 @@ import Skeleton from '@dashboard-components/ui/skeleton'
 
 export default function SidebarSkeleton() {
   return (
-    <aside className="h-full w-max p-4 md:w-(--sidebar-opened-width)">
+    <aside className="h-full w-15.5 shrink-0 p-4 md:w-64">
       <div className="flex h-full flex-col gap-4">
         <div className="flex items-center justify-between gap-2 max-md:flex-col">
           <Skeleton className="max-md:size-5 max-md:rounded-full md:h-7 md:max-w-25" />
@@ -10,20 +10,20 @@ export default function SidebarSkeleton() {
         </div>
         <div className="flex h-full flex-col gap-1 overflow-y-auto">
           <div className="space-y-1">
-            <Skeleton className="max-md:size-8 md:h-8" />
-            <Skeleton className="max-md:size-8 md:h-8" />
+            <Skeleton className="max-md:size-7 md:h-7" />
+            <Skeleton className="max-md:size-7 md:h-7" />
           </div>
           <div className="flex h-full flex-col justify-between gap-1">
             <div className="space-y-1">
-              <Skeleton className="max-md:size-8 md:h-8" />
-              <Skeleton className="max-md:size-8 md:h-8" />
-              <Skeleton className="max-md:size-8 md:h-8" />
+              <Skeleton className="max-md:size-7 md:h-7" />
+              <Skeleton className="max-md:size-7 md:h-7" />
+              <Skeleton className="max-md:size-7 md:h-7" />
             </div>
             <div className="space-y-1">
-              <Skeleton className="max-md:size-8 md:h-8" />
-              <Skeleton className="max-md:size-8 md:h-8" />
-              <Skeleton className="max-md:size-8 md:h-8" />
-              <Skeleton className="max-md:size-8 md:h-8" />
+              <Skeleton className="max-md:size-7 md:h-7" />
+              <Skeleton className="max-md:size-7 md:h-7" />
+              <Skeleton className="max-md:size-7 md:h-7" />
+              <Skeleton className="max-md:size-7 md:h-7" />
             </div>
           </div>
         </div>
