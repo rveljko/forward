@@ -108,7 +108,7 @@ function Header({ draftId, title }: HeaderProps) {
         draftId={draftId}
         withoutLinks
         variant="tertiary"
-        className="p-0.5"
+        className="-m-0.5 p-0.5"
       >
         <DotsVerticalIcon />
         <span className="sr-only">Actions</span>
