@@ -182,8 +182,7 @@ export type Guide = {
   title: string
   slug: string
   lastEdit: Date
-  thumbnailDarkUrl: string
-  thumbnailLightUrl: string
+  thumbnailUrl: string
   tags: {
     text: string
     color: BadgeProps['color']
