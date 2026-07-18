@@ -30,7 +30,7 @@ export default function GuideSection({ guideSlug }: GuideSectionProps) {
             Guides
           </Link>
           <span className="text-neutral-600">/</span>
-          <p className="line-clamp-1">{title}</p>
+          <p className="line-clamp-1 font-medium">{title}</p>
         </div>
       </header>
       <Divider />
