@@ -101,7 +101,7 @@ export default function IssuesKanbanCard({
           <Button
             variant="tertiary"
             onClick={openModal}
-            className="isolate -m-2 rounded-full p-2 text-neutral-600 hover:text-black"
+            className="isolate -m-1 rounded-full p-1 text-neutral-600 hover:text-black"
           >
             <DotsVerticalIcon />
             <span className="sr-only">Actions</span>
