@@ -1,6 +1,6 @@
 import Container from '@dashboard-components/container'
+import Divider from '@dashboard-components/ui/divider'
 import Skeleton from '@dashboard-components/ui/skeleton'
-import { guides } from '@data/guides'
 
 export default function GuidesSectionSkeleton() {
   return (
@@ -8,14 +8,11 @@ export default function GuidesSectionSkeleton() {
       <div className="p-4">
         <Skeleton className="max-w-40" />
       </div>
-      <Skeleton className="h-0.5 rounded-none" />
+      <Divider />
       <Container className="py-8 md:py-16">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--guide-card-width),100%),1fr))] gap-4">
-          {guides.map((_, index) => (
-            <Skeleton key={index} className="h-auto">
-              <div className="aspect-2/1 w-full" />
-              <div className="h-25.5" />
-            </Skeleton>
+          {Array.from({ length: 9 }, (_, index) => index).map((_, index) => (
+            <Skeleton key={index} className="h-66" />
           ))}
         </div>
       </Container>
