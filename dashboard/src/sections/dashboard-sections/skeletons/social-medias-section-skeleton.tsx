@@ -7,7 +7,7 @@ export default function SocialMediasSectionSkeleton() {
         <div className="w-full max-w-50">
           <Skeleton className="max-w-30" />
         </div>
-        <div className="w-full max-w-40 space-y-2.5">
+        <div className="w-full max-w-40 space-y-1">
           <Skeleton className="h-8" />
           <Skeleton className="h-8" />
           <Skeleton className="h-8" />

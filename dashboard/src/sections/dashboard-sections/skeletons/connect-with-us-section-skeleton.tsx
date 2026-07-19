@@ -10,13 +10,13 @@ export default function ConnectWithUsSectionSkeleton() {
         <div className="w-full max-w-75 space-y-2">
           <div className="space-y-1">
             <Skeleton className="max-w-20" />
-            <Skeleton className="h-10" />
+            <Skeleton className="h-9" />
           </div>
           <div className="space-y-1">
             <Skeleton className="max-w-20" />
             <Skeleton className="aspect-2/1 h-auto" />
           </div>
-          <Skeleton className="h-10" />
+          <Skeleton className="h-9.5" />
         </div>
       </div>
     </section>

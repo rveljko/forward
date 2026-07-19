@@ -1,3 +1,4 @@
+import Divider from '@dashboard-components/ui/divider'
 import Skeleton from '@dashboard-components/ui/skeleton'
 
 export default function FaqSectionSkeleton() {
@@ -9,26 +10,26 @@ export default function FaqSectionSkeleton() {
         </div>
         <div className="w-full max-w-100">
           <div>
-            <div className="flex items-center gap-2 py-2">
+            <div className="flex items-center gap-2 py-2.5">
               <Skeleton />
               <Skeleton className="aspect-square w-auto" />
             </div>
-            <div className="mb-2 w-full pb-2">
-              <Skeleton className="mb-1 h-4.5" />
-              <Skeleton className="h-4.5 w-1/2" />
+            <div className="mb-1 w-full">
+              <Skeleton className="mb-1 h-5" />
+              <Skeleton className="h-5 w-1/2" />
             </div>
-            <Skeleton className="h-0.5 rounded-none" />
+            <Divider />
           </div>
-          <div className="flex items-center gap-2 py-2">
+          <div className="flex items-center gap-2 py-2.5">
             <Skeleton />
             <Skeleton className="aspect-square w-auto" />
           </div>
-          <Skeleton className="h-0.5 rounded-none" />
-          <div className="flex items-center gap-2 py-2">
+          <Divider />
+          <div className="flex items-center gap-2 py-2.5">
             <Skeleton />
             <Skeleton className="aspect-square w-auto" />
           </div>
-          <Skeleton className="h-0.5 rounded-none" />
+          <Divider />
         </div>
       </div>
     </section>
