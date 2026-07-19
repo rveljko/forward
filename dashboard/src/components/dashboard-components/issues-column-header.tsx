@@ -31,7 +31,7 @@ export default function IssuesColumnHeader({
       {...props}
     >
       <div className="flex items-center gap-2">
-        <div className="text-clickable flex items-center gap-1">
+        <div className="flex items-center gap-1 text-black">
           {Icon}
           <h2 className="font-medium">{title}</h2>
         </div>
