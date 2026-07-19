@@ -17,7 +17,7 @@ export default function GuideCard({
 }: GuideCardProps) {
   return (
     <article className="relative overflow-hidden rounded-lg border border-white bg-white shadow-sm ring ring-neutral-900/10 hover:cursor-pointer hover:ring-neutral-900/20 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-black pointer-coarse:transition pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20">
-      <div className="max-h-42 w-full overflow-hidden mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
+      <div className="h-42 w-full overflow-hidden mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
         <img src={thumbnailUrl} alt="" />
       </div>
       <div className="p-2">
