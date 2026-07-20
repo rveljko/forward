@@ -116,6 +116,10 @@
     scrollbar-color: hsl(from var(--color-clickable) h s l / 20%) transparent;
   }
 
+  body {
+    background-color: var(--color-neutral-100);
+  }
+
   .ProseMirror {
     font-feature-settings: var(--default-font-feature-settings) !important;
     overflow-wrap: anywhere !important;
