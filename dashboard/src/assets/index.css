@@ -113,7 +113,7 @@
   html,
   body * {
     scrollbar-width: thin;
-    scrollbar-color: hsl(from var(--color-clickable) h s l / 20%) transparent;
+    scrollbar-color: var(--color-neutral-400) transparent;
   }
 
   body {
