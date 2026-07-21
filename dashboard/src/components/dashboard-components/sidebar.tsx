@@ -81,7 +81,7 @@ export default function Sidebar() {
       initial={false}
       animate={{ width: isOpened ? 256 : 62 }}
       className={cn(
-        'z-999 h-full shrink-0 p-4',
+        'h-full shrink-0 p-4',
         preferences.sidebarStyle === 'transparent' && 'bg-neutral-100',
         preferences.sidebarStyle === 'sticky' &&
           'border-r border-neutral-200 bg-neutral-50 inset-ring inset-ring-white',
