@@ -14,6 +14,8 @@ const button = cva(
         tertiary:
           'shadow-none hover:bg-neutral-200 pointer-coarse:active:bg-neutral-200',
         link: 'shadow-none',
+        brand:
+          'hover:border-brand-700 pointer-coarse:active:border-brand-700 pointer-coarse:active:from-brand-600 pointer-coarse:active:to-brand-700 hover:from-brand-600 hover:to-brand-700 border-brand-600 from-brand-500 to-brand-600 border bg-linear-to-b text-white inset-shadow-2xs inset-shadow-white/10',
       },
       size: {
         large: 'px-3 py-2',
