@@ -24,11 +24,11 @@ export default function Dashboard({ activePanelIndex }: DashboardProps) {
   return (
     <div
       aria-hidden
-      className="bg-dashboard-background pointer-events-none mx-auto h-144 w-full max-w-5xl rounded-lg border border-neutral-200 select-none"
+      className="pointer-events-none mx-auto h-144 w-full max-w-5xl rounded-lg border border-neutral-200 bg-neutral-100 select-none"
     >
       <div className="flex h-full">
         <Sidebar activePanelIndex={activePanelIndex} />
-        <div className="m-4 ml-0 w-full overflow-hidden rounded-lg border border-neutral-200 bg-white">
+        <div className="m-4 ml-0 w-full overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white">
           {activePanelIndex === 0 && <TasksPanel />}
           {activePanelIndex === 1 && <IssuesPanel />}
           {activePanelIndex === 2 && <DraftsPanel />}
