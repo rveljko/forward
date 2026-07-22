@@ -44,7 +44,7 @@ export default function HeroSection() {
           Turn issues into
           <span className="text-neutral-500"> finished projects fast</span>
         </Section.Heading1>
-        <Section.Paragraph className="mx-auto mb-6 max-w-[48ch] text-center text-pretty @2xl:text-base">
+        <Section.Paragraph className="mx-auto mb-6 max-w-[48ch] text-center text-pretty">
           Keep your team's work in one spot. No more digging through chats or
           docs, everything lives here, clear and simple
         </Section.Paragraph>
