@@ -44,7 +44,7 @@ export default function ChangeIssuePriorityPanel({
           Update issue importance level
         </p>
       </div>
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(42.5),100%),1fr))] gap-2 px-4 pb-4 max-sm:max-h-65 max-sm:overflow-y-auto">
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(42.5),100%),1fr))] gap-2 px-4 pb-4 max-sm:max-h-65 max-sm:overflow-y-auto max-sm:pt-0.5">
         {issuePriorities.map(({ id, name, label, icon: Icon }) => (
           <li className="w-full flex-1" key={id}>
             <PanelCard>
