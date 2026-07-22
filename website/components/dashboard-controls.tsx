@@ -40,7 +40,7 @@ export default function DashboardControls() {
           <button
             data-active={activePanelIndex === 0}
             onClick={() => handlePanelClick(0)}
-            className="group relative w-full bg-white p-4 transition hover:cursor-pointer hover:bg-neutral-50 data-[active=true]:bg-neutral-100"
+            className="group relative w-full bg-white p-4 font-medium text-black transition hover:cursor-pointer hover:bg-neutral-50 data-[active=true]:bg-neutral-100"
             disabled={activePanelIndex === 0}
           >
             Tasks
@@ -54,7 +54,7 @@ export default function DashboardControls() {
           <button
             data-active={activePanelIndex === 1}
             onClick={() => handlePanelClick(1)}
-            className="group relative w-full bg-white p-4 transition hover:cursor-pointer hover:bg-neutral-50 data-[active=true]:bg-neutral-100"
+            className="group relative w-full bg-white p-4 font-medium text-black transition hover:cursor-pointer hover:bg-neutral-50 data-[active=true]:bg-neutral-100"
             disabled={activePanelIndex === 1}
           >
             Issues
@@ -68,7 +68,7 @@ export default function DashboardControls() {
           <button
             data-active={activePanelIndex === 2}
             onClick={() => handlePanelClick(2)}
-            className="group relative w-full bg-white p-4 transition hover:cursor-pointer hover:bg-neutral-50 data-[active=true]:bg-neutral-100"
+            className="group relative w-full bg-white p-4 font-medium text-black transition hover:cursor-pointer hover:bg-neutral-50 data-[active=true]:bg-neutral-100"
             disabled={activePanelIndex === 2}
           >
             Drafts
