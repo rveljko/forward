@@ -69,6 +69,10 @@
     scrollbar-color: var(--color-neutral-400) transparent;
   }
 
+  html {
+    color-scheme: light;
+  }
+
   body {
     background-color: var(--color-neutral-100);
   }
