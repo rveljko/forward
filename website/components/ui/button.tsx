@@ -10,9 +10,9 @@ const button = cva(
         primary:
           'border border-gray-900 bg-gray-800 text-white inset-shadow-2xs inset-shadow-white/10 hover:bg-gray-900 active:inset-shadow-black/10 pointer-coarse:active:bg-gray-900',
         secondary:
-          'bg-white ring ring-black/10 hover:bg-neutral-100 pointer-coarse:active:bg-neutral-100',
+          'bg-white ring ring-neutral-900/10 hover:ring-neutral-900/20 pointer-coarse:active:ring-neutral-900/20',
         tertiary:
-          'shadow-none hover:bg-neutral-50 pointer-coarse:active:bg-neutral-50',
+          'shadow-none hover:bg-neutral-200 pointer-coarse:active:bg-neutral-200',
         link: 'shadow-none',
       },
       size: {
