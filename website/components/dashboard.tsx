@@ -24,7 +24,7 @@ export default function Dashboard({ activePanelIndex }: DashboardProps) {
   return (
     <div
       aria-hidden
-      className="pointer-events-none mx-auto h-144 w-full max-w-5xl rounded-lg border border-neutral-200 bg-neutral-100 select-none"
+      className="pointer-events-none mx-auto h-144 w-full max-w-5xl rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-900 select-none"
     >
       <div className="flex h-full">
         <Sidebar activePanelIndex={activePanelIndex} />
@@ -47,7 +47,7 @@ function Sidebar({ activePanelIndex }: SidebarProps) {
     <aside className="flex w-64 shrink-0 flex-col gap-4 p-4">
       <div className="flex items-center justify-between">
         <Logo />
-        <span className="flex size-7 items-center justify-center">
+        <span className="flex size-7 items-center justify-center text-black">
           <SidebarToggleIcon />
         </span>
       </div>
