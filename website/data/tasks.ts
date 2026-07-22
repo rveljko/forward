@@ -1,9 +1,8 @@
 import { Task } from '@/utils/types'
 
 export const tasks: Task[] = [
-  'Make bed',
-  'Do 50 pushups',
-  '20 min walk',
-  'Stretch 5min',
-  'Balanced breakfast',
+  'Prepare release notes for next deploy',
+  'Clean up inactive test accounts',
+  'Verify mobile layout on issue details page',
+  'Review and update project documentation',
 ]
