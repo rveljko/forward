@@ -3,7 +3,9 @@ import Button from '@/components/ui/button'
 import Divider from '@/components/ui/divider'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
+import CircleFullIcon from '@/icons/circle-full-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
+import CircleThreeQuartersIcon from '@/icons/circle-three-quarters-icon'
 import FilterIcon from '@/icons/filters-icon'
 import KanbanIcon from '@/icons/kanban-icon'
 import ListIcon from '@/icons/list-icon'
@@ -101,7 +103,61 @@ export default function IssuesPanel() {
         <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
           <IssueItem
             title="Integrate with Other Tools"
-            status="todo"
+            status="in-progress"
+            priority="high"
+            tag="development"
+          />
+          <IssueItem
+            title="Set Priorities"
+            status="in-progress"
+            priority="medium"
+            tag="development"
+          />
+          <IssueItem
+            title="Filter and Sort Issues"
+            status="in-progress"
+            priority="medium"
+            tag="development"
+          />
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="flex items-center gap-1">
+            <CircleThreeQuartersIcon />
+            <span className="font-medium">In Review</span>
+            <span className="ml-1 text-neutral-600">2</span>
+          </div>
+          <PlusIcon />
+        </div>
+        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <IssueItem
+            title="Use Tags"
+            status="in-review"
+            priority="high"
+            tag="development"
+          />
+          <IssueItem
+            title="Utilize Mobile Access"
+            status="in-review"
+            priority="medium"
+            tag="development"
+          />
+        </div>
+      </div>
+      <div>
+        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="flex items-center gap-1">
+            <CircleFullIcon />
+            <span className="font-medium">Finished</span>
+            <span className="ml-1 text-neutral-600">1</span>
+          </div>
+          <PlusIcon />
+        </div>
+        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <IssueItem
+            title="Attach Files and Documents"
+            status="finished"
             priority="high"
             tag="development"
           />
