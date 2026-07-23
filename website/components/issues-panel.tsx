@@ -45,7 +45,7 @@ export default function IssuesPanel() {
       <Divider />
       <div className="overflow-y-auto">
         <div>
-          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="sticky top-0 flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
             <div className="flex items-center gap-1">
               <CircleDashedIcon />
               <span className="font-medium">Backlog</span>
@@ -65,7 +65,7 @@ export default function IssuesPanel() {
           </ul>
         </div>
         <div>
-          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="sticky top-0 flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
             <div className="flex items-center gap-1">
               <CircleDashedIcon />
               <span className="font-medium">Todo</span>
@@ -101,7 +101,7 @@ export default function IssuesPanel() {
           </ul>
         </div>
         <div>
-          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="sticky top-0 flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
             <div className="flex items-center gap-1">
               <CircleHalfIcon />
               <span className="font-medium">In Progress</span>
@@ -137,7 +137,7 @@ export default function IssuesPanel() {
           </ul>
         </div>
         <div>
-          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="sticky top-0 flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
             <div className="flex items-center gap-1">
               <CircleThreeQuartersIcon />
               <span className="font-medium">In Review</span>
@@ -165,7 +165,7 @@ export default function IssuesPanel() {
           </ul>
         </div>
         <div>
-          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="sticky top-0 flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
             <div className="flex items-center gap-1">
               <CircleFullIcon />
               <span className="font-medium">Finished</span>
