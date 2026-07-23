@@ -4,7 +4,6 @@ import CustomizeColumnsSection from '@/sections/customize-columns-section'
 import DraftsSection from '@/sections/drafts-section'
 import GuidesSection from '@/sections/guides-section'
 import HeroSection from '@/sections/hero-section'
-import IssuesSection from '@/sections/issues-section'
 import SecuritySection from '@/sections/security-section'
 import TasksSection from '@/sections/tasks-section'
 import TemplatesSection from '@/sections/templates-section'
@@ -19,7 +18,6 @@ export default function Home() {
       <WorkflowSection />
       <TypesSection />
       <GuidesSection />
-      <IssuesSection />
       <CustomizeColumnsSection />
       <TasksSection />
       <TemplatesSection />
