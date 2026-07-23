@@ -53,14 +53,16 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-            <IssueItem
-              title="Implement Notification System"
-              status="backlog"
-              priority="high"
-              tag="development"
-            />
-          </div>
+          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <li>
+              <IssueItem
+                title="Implement Notification System"
+                status="backlog"
+                priority="high"
+                tag="development"
+              />
+            </li>
+          </ul>
         </div>
         <div>
           <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
@@ -71,26 +73,32 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-            <IssueItem
-              title="Create and Report Issues"
-              status="todo"
-              priority="high"
-              tag="development"
-            />
-            <IssueItem
-              title="Update Status"
-              status="todo"
-              priority="medium"
-              tag="development"
-            />
-            <IssueItem
-              title="Add Comments"
-              status="todo"
-              priority="medium"
-              tag="development"
-            />
-          </div>
+          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <li>
+              <IssueItem
+                title="Create and Report Issues"
+                status="todo"
+                priority="high"
+                tag="development"
+              />
+            </li>
+            <li>
+              <IssueItem
+                title="Update Status"
+                status="todo"
+                priority="medium"
+                tag="development"
+              />
+            </li>
+            <li>
+              <IssueItem
+                title="Add Comments"
+                status="todo"
+                priority="medium"
+                tag="development"
+              />
+            </li>
+          </ul>
         </div>
         <div>
           <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
@@ -101,26 +109,32 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-            <IssueItem
-              title="Integrate with Other Tools"
-              status="in-progress"
-              priority="high"
-              tag="development"
-            />
-            <IssueItem
-              title="Set Priorities"
-              status="in-progress"
-              priority="medium"
-              tag="development"
-            />
-            <IssueItem
-              title="Filter and Sort Issues"
-              status="in-progress"
-              priority="medium"
-              tag="development"
-            />
-          </div>
+          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <li>
+              <IssueItem
+                title="Integrate with Other Tools"
+                status="in-progress"
+                priority="high"
+                tag="development"
+              />
+            </li>
+            <li>
+              <IssueItem
+                title="Set Priorities"
+                status="in-progress"
+                priority="medium"
+                tag="development"
+              />
+            </li>
+            <li>
+              <IssueItem
+                title="Filter and Sort Issues"
+                status="in-progress"
+                priority="medium"
+                tag="development"
+              />
+            </li>
+          </ul>
         </div>
         <div>
           <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
@@ -131,20 +145,24 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-            <IssueItem
-              title="Use Tags"
-              status="in-review"
-              priority="high"
-              tag="development"
-            />
-            <IssueItem
-              title="Utilize Mobile Access"
-              status="in-review"
-              priority="medium"
-              tag="development"
-            />
-          </div>
+          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <li>
+              <IssueItem
+                title="Use Tags"
+                status="in-review"
+                priority="high"
+                tag="development"
+              />
+            </li>
+            <li>
+              <IssueItem
+                title="Utilize Mobile Access"
+                status="in-review"
+                priority="medium"
+                tag="development"
+              />
+            </li>
+          </ul>
         </div>
         <div>
           <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
@@ -155,14 +173,16 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-            <IssueItem
-              title="Attach Files and Documents"
-              status="finished"
-              priority="high"
-              tag="development"
-            />
-          </div>
+          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <li>
+              <IssueItem
+                title="Attach Files and Documents"
+                status="finished"
+                priority="high"
+                tag="development"
+              />
+            </li>
+          </ul>
         </div>
       </div>
     </div>
