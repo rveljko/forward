@@ -8,7 +8,7 @@ export default function CustomersCarouselSection() {
           Trusted by companies <br /> of all sizes worldwide
         </h2>
       </div>
-      <div className="scrollbar-hidden pointer-events-none flex overflow-x-auto select-none">
+      <div className="pointer-events-none flex scrollbar-none overflow-x-auto select-none">
         <ul className="animate-slide-x flex">
           {customers.map(({ name, logo: Logo }) => (
             <li
