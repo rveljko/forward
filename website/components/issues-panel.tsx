@@ -1,7 +1,8 @@
 import IssueItem from '@/components/issue-item'
+import Button from '@/components/ui/button'
+import Divider from '@/components/ui/divider'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
-import CircleEmptyIcon from '@/icons/circle-empty-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
 import FilterIcon from '@/icons/filters-icon'
 import KanbanIcon from '@/icons/kanban-icon'
@@ -11,82 +12,100 @@ import PlusIcon from '@/icons/plus-icon'
 export default function IssuesPanel() {
   return (
     <>
-      <div className="border-b border-b-black/10 p-4 text-sm font-medium">
-        Issues
+      <div className="p-4">
+        <span className="font-medium">Issues</span>
       </div>
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-b-black/10 p-4">
+      <Divider />
+      <div className="flex min-h-15.5 flex-wrap items-center justify-between gap-2 p-4">
         <div className="flex items-center gap-2">
-          <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
-            <FilterIcon />
+          <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
             Filters
-          </span>
-          <span className="bg-dashboard-neutral-200 flex w-max items-center gap-1 rounded-md px-1.5 py-1 text-sm text-black shadow-sm">
-            <ArrowsSortIcon />
+          </Button>
+          <Button
+            variant="secondary"
+            size="small"
+            leftIcon={<ArrowsSortIcon />}
+          >
             Sort
-          </span>
+          </Button>
         </div>
-        <div className="bg-dashboard-neutral-200 flex rounded-md p-0.5 shadow-sm">
-          <span className="flex rounded-sm bg-white px-2.5 py-0.5">
+        <div className="flex w-max items-center rounded-sm bg-neutral-100 ring inset-ring ring-neutral-900/10 inset-ring-white">
+          <button className="flex items-center gap-1 rounded-sm bg-white px-1.5 py-1 text-sm font-medium text-black ring ring-neutral-300 transition-colors hover:cursor-pointer hover:text-black [&_svg]:size-4">
             <ListIcon />
-          </span>
-          <span className="text-dashboard-neutral-600 flex px-2.5 py-0.5">
+            List
+          </button>
+          <button className="flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm font-medium text-neutral-600 transition-colors hover:cursor-pointer hover:text-black [&_svg]:size-4">
             <KanbanIcon />
-          </span>
+            Kanban
+          </button>
         </div>
       </div>
-      <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1 text-sm font-medium">
-          <CircleDashedIcon />
-          Backlog
-          <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
+      <Divider />
+      <div>
+        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="flex items-center gap-1">
+            <CircleDashedIcon />
+            <span className="font-medium">Backlog</span>
+            <span className="ml-1 text-neutral-600">1</span>
+          </div>
+          <PlusIcon />
         </div>
-        <PlusIcon />
-      </div>
-      <div className="divide-y divide-black/10 last:border-b last:border-b-black/10">
-        <IssueItem
-          title="Implement Notification System"
-          status="backlog"
-          priority="high"
-          tag="development"
-        />
-      </div>
-      <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1 text-sm font-medium">
-          <CircleEmptyIcon />
-          Todo
-          <span className="text-dashboard-neutral-600 ml-1 text-sm">2</span>
+        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <IssueItem
+            title="Implement Notification System"
+            status="backlog"
+            priority="high"
+            tag="development"
+          />
         </div>
-        <PlusIcon />
       </div>
-      <div className="divide-y divide-black/10 last:border-b last:border-b-black/10">
-        <IssueItem
-          title="Create and Report Issues"
-          status="todo"
-          priority="high"
-          tag="development"
-        />
-        <IssueItem
-          title="Update Status"
-          status="todo"
-          priority="medium"
-          tag="design"
-        />
-      </div>
-      <div className="flex items-center justify-between bg-black/10 p-4">
-        <div className="flex items-center gap-1 text-sm font-medium">
-          <CircleHalfIcon />
-          In Progress
-          <span className="text-dashboard-neutral-600 ml-1 text-sm">1</span>
+      <div>
+        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="flex items-center gap-1">
+            <CircleDashedIcon />
+            <span className="font-medium">Todo</span>
+            <span className="ml-1 text-neutral-600">3</span>
+          </div>
+          <PlusIcon />
         </div>
-        <PlusIcon />
+        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <IssueItem
+            title="Create and Report Issues"
+            status="todo"
+            priority="high"
+            tag="development"
+          />
+          <IssueItem
+            title="Update Status"
+            status="todo"
+            priority="medium"
+            tag="development"
+          />
+          <IssueItem
+            title="Add Comments"
+            status="todo"
+            priority="medium"
+            tag="development"
+          />
+        </div>
       </div>
-      <div className="divide-y divide-black/10 last:border-b last:border-b-black/10">
-        <IssueItem
-          title="Integrate With Other Tools"
-          status="in-progress"
-          priority="high"
-          tag="development"
-        />
+      <div>
+        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+          <div className="flex items-center gap-1">
+            <CircleHalfIcon />
+            <span className="font-medium">In Progress</span>
+            <span className="ml-1 text-neutral-600">3</span>
+          </div>
+          <PlusIcon />
+        </div>
+        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <IssueItem
+            title="Integrate with Other Tools"
+            status="todo"
+            priority="high"
+            tag="development"
+          />
+        </div>
       </div>
     </>
   )

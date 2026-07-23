@@ -1,6 +1,7 @@
 import IssuePriority from '@/components/issue-priority'
 import IssueStatus from '@/components/issue-status'
 import IssueTag from '@/components/issue-tag'
+import Button from '@/components/ui/button'
 import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import { dayMonthShortFormatter } from '@/utils/date-formatters'
 import { Issue } from '@/utils/types'
@@ -31,14 +32,19 @@ export default function IssueItem({
           {title}
         </span>
       </div>
-      <div className="text-dashboard-neutral-600 flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <div className="flex items-center gap-2 max-lg:hidden">
           <IssueTag tag={tag} />
-          <span className="text-xs text-nowrap">
+          <span className="text-xs text-nowrap text-neutral-600">
             {dayMonthShortFormatter(new Date())}
           </span>
         </div>
-        <DotsVerticalIcon />
+        <Button
+          variant="tertiary"
+          className="rounded-full text-neutral-600 hover:text-black [&_svg]:size-5"
+        >
+          <DotsVerticalIcon />
+        </Button>
       </div>
     </article>
   )
