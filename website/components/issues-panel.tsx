@@ -13,7 +13,7 @@ import PlusIcon from '@/icons/plus-icon'
 
 export default function IssuesPanel() {
   return (
-    <>
+    <div className="flex h-full flex-col overflow-y-hidden">
       <div className="p-4">
         <span className="font-medium">Issues</span>
       </div>
@@ -43,126 +43,128 @@ export default function IssuesPanel() {
         </div>
       </div>
       <Divider />
-      <div>
-        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
-          <div className="flex items-center gap-1">
-            <CircleDashedIcon />
-            <span className="font-medium">Backlog</span>
-            <span className="ml-1 text-neutral-600">1</span>
+      <div className="overflow-y-auto">
+        <div>
+          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+            <div className="flex items-center gap-1">
+              <CircleDashedIcon />
+              <span className="font-medium">Backlog</span>
+              <span className="ml-1 text-neutral-600">1</span>
+            </div>
+            <PlusIcon />
           </div>
-          <PlusIcon />
+          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <IssueItem
+              title="Implement Notification System"
+              status="backlog"
+              priority="high"
+              tag="development"
+            />
+          </div>
         </div>
-        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-          <IssueItem
-            title="Implement Notification System"
-            status="backlog"
-            priority="high"
-            tag="development"
-          />
+        <div>
+          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+            <div className="flex items-center gap-1">
+              <CircleDashedIcon />
+              <span className="font-medium">Todo</span>
+              <span className="ml-1 text-neutral-600">3</span>
+            </div>
+            <PlusIcon />
+          </div>
+          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <IssueItem
+              title="Create and Report Issues"
+              status="todo"
+              priority="high"
+              tag="development"
+            />
+            <IssueItem
+              title="Update Status"
+              status="todo"
+              priority="medium"
+              tag="development"
+            />
+            <IssueItem
+              title="Add Comments"
+              status="todo"
+              priority="medium"
+              tag="development"
+            />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+            <div className="flex items-center gap-1">
+              <CircleHalfIcon />
+              <span className="font-medium">In Progress</span>
+              <span className="ml-1 text-neutral-600">3</span>
+            </div>
+            <PlusIcon />
+          </div>
+          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <IssueItem
+              title="Integrate with Other Tools"
+              status="in-progress"
+              priority="high"
+              tag="development"
+            />
+            <IssueItem
+              title="Set Priorities"
+              status="in-progress"
+              priority="medium"
+              tag="development"
+            />
+            <IssueItem
+              title="Filter and Sort Issues"
+              status="in-progress"
+              priority="medium"
+              tag="development"
+            />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+            <div className="flex items-center gap-1">
+              <CircleThreeQuartersIcon />
+              <span className="font-medium">In Review</span>
+              <span className="ml-1 text-neutral-600">2</span>
+            </div>
+            <PlusIcon />
+          </div>
+          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <IssueItem
+              title="Use Tags"
+              status="in-review"
+              priority="high"
+              tag="development"
+            />
+            <IssueItem
+              title="Utilize Mobile Access"
+              status="in-review"
+              priority="medium"
+              tag="development"
+            />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
+            <div className="flex items-center gap-1">
+              <CircleFullIcon />
+              <span className="font-medium">Finished</span>
+              <span className="ml-1 text-neutral-600">1</span>
+            </div>
+            <PlusIcon />
+          </div>
+          <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+            <IssueItem
+              title="Attach Files and Documents"
+              status="finished"
+              priority="high"
+              tag="development"
+            />
+          </div>
         </div>
       </div>
-      <div>
-        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
-          <div className="flex items-center gap-1">
-            <CircleDashedIcon />
-            <span className="font-medium">Todo</span>
-            <span className="ml-1 text-neutral-600">3</span>
-          </div>
-          <PlusIcon />
-        </div>
-        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-          <IssueItem
-            title="Create and Report Issues"
-            status="todo"
-            priority="high"
-            tag="development"
-          />
-          <IssueItem
-            title="Update Status"
-            status="todo"
-            priority="medium"
-            tag="development"
-          />
-          <IssueItem
-            title="Add Comments"
-            status="todo"
-            priority="medium"
-            tag="development"
-          />
-        </div>
-      </div>
-      <div>
-        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
-          <div className="flex items-center gap-1">
-            <CircleHalfIcon />
-            <span className="font-medium">In Progress</span>
-            <span className="ml-1 text-neutral-600">3</span>
-          </div>
-          <PlusIcon />
-        </div>
-        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-          <IssueItem
-            title="Integrate with Other Tools"
-            status="in-progress"
-            priority="high"
-            tag="development"
-          />
-          <IssueItem
-            title="Set Priorities"
-            status="in-progress"
-            priority="medium"
-            tag="development"
-          />
-          <IssueItem
-            title="Filter and Sort Issues"
-            status="in-progress"
-            priority="medium"
-            tag="development"
-          />
-        </div>
-      </div>
-      <div>
-        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
-          <div className="flex items-center gap-1">
-            <CircleThreeQuartersIcon />
-            <span className="font-medium">In Review</span>
-            <span className="ml-1 text-neutral-600">2</span>
-          </div>
-          <PlusIcon />
-        </div>
-        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-          <IssueItem
-            title="Use Tags"
-            status="in-review"
-            priority="high"
-            tag="development"
-          />
-          <IssueItem
-            title="Utilize Mobile Access"
-            status="in-review"
-            priority="medium"
-            tag="development"
-          />
-        </div>
-      </div>
-      <div>
-        <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
-          <div className="flex items-center gap-1">
-            <CircleFullIcon />
-            <span className="font-medium">Finished</span>
-            <span className="ml-1 text-neutral-600">1</span>
-          </div>
-          <PlusIcon />
-        </div>
-        <div className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
-          <IssueItem
-            title="Attach Files and Documents"
-            status="finished"
-            priority="high"
-            tag="development"
-          />
-        </div>
-      </div>
-    </>
+    </div>
   )
 }
