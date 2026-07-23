@@ -66,7 +66,7 @@ function StepsPanel() {
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleDashedIcon />
-                    <h3 className="text-sm font-medium text-neutral-900">
+                    <h3 className="font-medium text-neutral-900">
                       Create an Issue
                     </h3>
                   </div>
@@ -85,7 +85,7 @@ function StepsPanel() {
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleEmptyIcon />
-                    <h3 className="text-sm font-medium text-neutral-900">
+                    <h3 className="font-medium text-neutral-900">
                       Move to Todo
                     </h3>
                   </div>
@@ -104,9 +104,7 @@ function StepsPanel() {
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleHalfIcon />
-                    <h3 className="text-sm font-medium text-neutral-900">
-                      Start work
-                    </h3>
+                    <h3 className="font-medium text-neutral-900">Start work</h3>
                   </div>
                   <span className="text-xs text-neutral-600">3/5</span>
                 </div>
@@ -123,7 +121,7 @@ function StepsPanel() {
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleThreeQuartersIcon />
-                    <h3 className="text-sm font-medium text-neutral-900">
+                    <h3 className="font-medium text-neutral-900">
                       Submit for review
                     </h3>
                   </div>
@@ -142,7 +140,7 @@ function StepsPanel() {
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleFullIcon />
-                    <h3 className="text-sm font-medium text-neutral-900">
+                    <h3 className="font-medium text-neutral-900">
                       Finish and close
                     </h3>
                   </div>
@@ -169,25 +167,23 @@ function StatusesPanel() {
         <ul className="flex flex-col gap-2 @5xl:w-full">
           <li className="flex items-center gap-2 p-2.5">
             <CircleDashedIcon />
-            <h4 className="text-sm font-medium text-neutral-900">Backlog</h4>
+            <h4 className="font-medium text-neutral-900">Backlog</h4>
           </li>
           <li className="flex items-center gap-2 p-2.5">
             <CircleEmptyIcon />
-            <h4 className="text-sm font-medium text-neutral-900">Todo</h4>
+            <h4 className="font-medium text-neutral-900">Todo</h4>
           </li>
           <li className="flex items-center gap-2 p-2.5">
             <CircleHalfIcon />
-            <h4 className="text-sm font-medium text-neutral-900">
-              In Progress
-            </h4>
+            <h4 className="font-medium text-neutral-900">In Progress</h4>
           </li>
           <li className="flex items-center gap-2 p-2.5">
             <CircleThreeQuartersIcon />
-            <h4 className="text-sm font-medium text-neutral-900">In Review</h4>
+            <h4 className="font-medium text-neutral-900">In Review</h4>
           </li>
           <li className="flex items-center gap-2 p-2.5">
             <CircleFullIcon />
-            <h4 className="text-sm font-medium text-neutral-900">Finished</h4>
+            <h4 className="font-medium text-neutral-900">Finished</h4>
           </li>
         </ul>
       </div>
