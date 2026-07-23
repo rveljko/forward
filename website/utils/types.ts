@@ -20,5 +20,6 @@ export type Task = string
 
 export type Draft = {
   title: string
+  category: 'general' | 'idea' | 'meeting' | 'inspiration'
   daysAgo: string
 }

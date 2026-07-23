@@ -1,24 +1,43 @@
 import DraftCard from '@/components/draft-card'
+import Button from '@/components/ui/button'
+import Divider from '@/components/ui/divider'
 import { drafts } from '@/data/drafts'
-import PlusIcon from '@/icons/plus-icon'
+import ArrowsSortIcon from '@/icons/arrows-sort-icon'
+import FilterIcon from '@/icons/filters-icon'
+import WritingIcon from '@/icons/writing-icon'
 
 export default function DraftsPanel() {
   return (
     <>
-      <div className="border-b border-b-black/10 p-4 text-sm font-medium">
-        Drafts
+      <div className="p-4">
+        <span className="text-sm font-medium">Drafts</span>
       </div>
-      <div className="mx-auto grid max-w-180 grid-cols-[repeat(auto-fit,minmax(min(--spacing(48),100%),1fr))] gap-4 px-4 py-8">
-        <span className="bg-dashboard-neutral-200 flex size-full flex-col items-center justify-center gap-2 rounded-lg border border-black/10 px-4 py-8 shadow-sm">
-          <div className="flex size-16 items-center justify-center rounded-full bg-black/10 [&_svg]:size-8">
-            <PlusIcon />
-          </div>
-          <span className="text-sm font-medium">Create New Draft</span>
-        </span>
+      <Divider />
+      <div className="flex flex-wrap items-center justify-between gap-2 p-4">
+        <div className="flex items-center gap-2">
+          <Button variant="secondary" size="small" leftIcon={<FilterIcon />}>
+            Filters
+          </Button>
+          <Button
+            variant="secondary"
+            size="small"
+            leftIcon={<ArrowsSortIcon />}
+          >
+            Sort
+          </Button>
+        </div>
+        <Button variant="brand" size="small" leftIcon={<WritingIcon />}>
+          Create New Draft
+        </Button>
+      </div>
+      <Divider />
+      <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(55),100%),1fr))] gap-4 px-4 py-8">
         {drafts.map((draft, index) => (
-          <DraftCard draft={draft} key={index} />
+          <li key={draft.title}>
+            <DraftCard draft={draft} key={index} />
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   )
 }

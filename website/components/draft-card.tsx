@@ -1,26 +1,37 @@
+import Divider from '@/components/ui/divider'
 import ClockIcon from '@/icons/clock-icon'
 import DotsVerticalIcon from '@/icons/dots-vertical-icon'
 import { Draft } from '@/utils/types'
+import { cn } from '@/utils/utils'
 
 type DraftCardProps = {
   draft: Draft
 }
 
 export default function DraftCard({
-  draft: { title, daysAgo },
+  draft: { title, daysAgo, category },
 }: DraftCardProps) {
   return (
-    <article className="flex h-full flex-col rounded-lg shadow-sm ring ring-black/10">
-      <div className="overflow-hidden rounded-t-lg">
-        <div className="aspect-3/1 w-full bg-black/10" />
+    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-white shadow-sm ring ring-neutral-900/10">
+      <div className="overflow-hidden">
+        <div
+          className={cn(
+            'h-19 w-full rounded-b-sm transition-colors',
+            category === 'general' && 'bg-neutral-200',
+            category === 'idea' && 'bg-sky-200',
+            category === 'meeting' && 'bg-green-200',
+            category === 'inspiration' && 'bg-purple-200'
+          )}
+        />
       </div>
       <div className="h-14 p-2">
         <span className="line-clamp-2 text-sm font-medium text-balance">
           {title}
         </span>
       </div>
-      <div className="mt-auto flex items-center justify-between border-t border-t-black/10 p-2">
-        <span className="text-dashboard-neutral-600 flex items-center gap-1 text-xs [&_svg]:size-4">
+      <Divider />
+      <div className="flex items-center justify-between p-2">
+        <span className="flex items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
           <ClockIcon /> {daysAgo}
         </span>
         <span className="[&_svg]:size-4">
