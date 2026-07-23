@@ -37,7 +37,10 @@ type Heading2Props = React.ComponentPropsWithoutRef<'h2'> & {
 function Heading2({ children, className, ...props }: Heading2Props) {
   return (
     <h2
-      className={cn('text-2xl font-medium text-neutral-900', className)}
+      className={cn(
+        'text-2xl font-medium text-neutral-900 md:text-3xl',
+        className
+      )}
       {...props}
     >
       {children}
@@ -53,7 +56,7 @@ function Paragraph({ children, className, ...props }: ParagraphProps) {
   return (
     <p
       className={cn(
-        'max-w-63 text-sm text-balance text-neutral-600',
+        'max-w-100 text-sm text-balance text-neutral-600',
         className
       )}
       {...props}

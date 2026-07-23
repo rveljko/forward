@@ -18,7 +18,7 @@ function TextPanel() {
     <div className="flex w-full flex-col justify-between gap-8 p-6 md:p-8 @3xl:max-w-79">
       <div className="flex flex-col gap-2">
         <Badge color="orange">Guides</Badge>
-        <Section.Heading2>
+        <Section.Heading2 className="md:text-2xl">
           Guides to get you <br />
           <span className="text-neutral-500">started step by step</span>
         </Section.Heading2>
