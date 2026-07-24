@@ -20,7 +20,7 @@ export default function IssueItem({
   return (
     <article
       className={cn(
-        'flex h-15.5 items-center justify-between gap-2 p-4',
+        'relative flex items-center justify-between gap-2 p-4 hover:bg-white pointer-coarse:transition pointer-coarse:active:bg-white',
         className
       )}
       {...props}
@@ -28,12 +28,13 @@ export default function IssueItem({
       <div className="flex items-center gap-1">
         <IssuePriority priority={priority} className="mr-1" />
         <IssueStatus status={status} />
-        <span className="line-clamp-1 text-sm font-medium break-all">
+        <span className="line-clamp-1 text-sm font-medium break-all hover:cursor-pointer">
+          <span className="absolute inset-0" />
           {title}
         </span>
       </div>
       <div className="flex items-center gap-2">
-        <div className="flex items-center gap-2 max-lg:hidden">
+        <div className="hidden items-center gap-2 @lg/dashboard:flex">
           <IssueTag tag={tag} />
           <span className="text-xs text-nowrap text-neutral-600">
             {dayMonthShortFormatter(new Date())}
@@ -41,7 +42,7 @@ export default function IssueItem({
         </div>
         <Button
           variant="tertiary"
-          className="rounded-full text-neutral-600 hover:text-black [&_svg]:size-5"
+          className="isolate -m-1 rounded-full p-1 text-neutral-600 hover:text-black [&_svg]:size-5"
         >
           <DotsVerticalIcon />
         </Button>
