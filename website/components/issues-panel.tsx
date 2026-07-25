@@ -130,7 +130,7 @@ export default function IssuesPanel() {
               <IssueItem
                 title="Filter and Sort Issues"
                 status="in-progress"
-                priority="medium"
+                priority="low"
                 tag="optimization"
               />
             </li>
