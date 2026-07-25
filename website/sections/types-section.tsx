@@ -6,8 +6,8 @@ import CalendarIcon from '@/icons/calendar-icon'
 import CheckboxIcon from '@/icons/checkbox-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
-import DevelopmentIssueTagIcon from '@/icons/development-issue-tag-icon'
 import FolderIcon from '@/icons/folder-icon'
+import ImprovementIssueTagIcon from '@/icons/improvement-issue-tag-icon'
 import LogoIcon from '@/icons/logo-icon'
 import PriorityHighIcon from '@/icons/priority-high-icon'
 import PriorityIcon from '@/icons/priority-icon'
@@ -238,11 +238,11 @@ function IssueInformationPanel() {
                   <span className="text-xs text-neutral-600">Tag</span>
                 </div>
                 <div className="flex w-full max-w-20 items-center gap-1">
-                  <span className="[&_svg]:size-4">
-                    <DevelopmentIssueTagIcon />
+                  <span className="[&>div]:size-4">
+                    <ImprovementIssueTagIcon />
                   </span>
                   <span className="text-xs text-nowrap text-neutral-900">
-                    Development
+                    Improvement
                   </span>
                 </div>
               </li>
