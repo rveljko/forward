@@ -59,7 +59,7 @@ export default function IssuesPanel() {
                 title="Implement Notification System"
                 status="backlog"
                 priority="high"
-                tag="development"
+                tag="improvement"
               />
             </li>
           </ul>
@@ -79,7 +79,7 @@ export default function IssuesPanel() {
                 title="Create and Report Issues"
                 status="todo"
                 priority="high"
-                tag="development"
+                tag="improvement"
               />
             </li>
             <li>
@@ -87,7 +87,7 @@ export default function IssuesPanel() {
                 title="Update Status"
                 status="todo"
                 priority="medium"
-                tag="development"
+                tag="bug"
               />
             </li>
             <li>
@@ -95,7 +95,7 @@ export default function IssuesPanel() {
                 title="Add Comments"
                 status="todo"
                 priority="medium"
-                tag="development"
+                tag="bug"
               />
             </li>
           </ul>
@@ -115,7 +115,7 @@ export default function IssuesPanel() {
                 title="Integrate with Other Tools"
                 status="in-progress"
                 priority="high"
-                tag="development"
+                tag="improvement"
               />
             </li>
             <li>
@@ -123,7 +123,7 @@ export default function IssuesPanel() {
                 title="Set Priorities"
                 status="in-progress"
                 priority="medium"
-                tag="development"
+                tag="bug"
               />
             </li>
             <li>
@@ -131,7 +131,7 @@ export default function IssuesPanel() {
                 title="Filter and Sort Issues"
                 status="in-progress"
                 priority="medium"
-                tag="development"
+                tag="optimization"
               />
             </li>
           </ul>
@@ -151,7 +151,7 @@ export default function IssuesPanel() {
                 title="Use Tags"
                 status="in-review"
                 priority="high"
-                tag="development"
+                tag="bug"
               />
             </li>
             <li>
@@ -159,7 +159,7 @@ export default function IssuesPanel() {
                 title="Utilize Mobile Access"
                 status="in-review"
                 priority="medium"
-                tag="development"
+                tag="optimization"
               />
             </li>
           </ul>
@@ -179,7 +179,7 @@ export default function IssuesPanel() {
                 title="Attach Files and Documents"
                 status="finished"
                 priority="high"
-                tag="development"
+                tag="optimization"
               />
             </li>
           </ul>
