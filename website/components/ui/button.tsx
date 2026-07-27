@@ -3,7 +3,7 @@ import { cva, VariantProps } from 'class-variance-authority'
 import Link from 'next/link'
 
 const button = cva(
-  'flex w-max items-center justify-center gap-1 rounded-md font-medium text-black shadow-sm transition hover:cursor-pointer active:scale-99 pointer-coarse:select-none [&_svg]:size-4',
+  'flex w-max items-center justify-center gap-1 rounded-md font-medium text-black shadow-sm transition hover:cursor-pointer active:scale-99 pointer-coarse:select-none',
   {
     variants: {
       variant: {
@@ -57,18 +57,34 @@ export default function Button({
   if ('href' in props && props.href !== undefined) {
     return (
       <Link className={buttonClasses} {...props}>
-        {LeftIcon}
+        {LeftIcon && (
+          <span className="flex size-4 shrink-0 items-center justify-center">
+            {LeftIcon}
+          </span>
+        )}
         {children}
-        {RightIcon}
+        {RightIcon && (
+          <span className="flex size-4 shrink-0 items-center justify-center">
+            {RightIcon}
+          </span>
+        )}
       </Link>
     )
   }
 
   return (
     <button className={buttonClasses} {...props}>
-      {LeftIcon}
+      {LeftIcon && (
+        <span className="flex size-4 shrink-0 items-center justify-center">
+          {LeftIcon}
+        </span>
+      )}
       {children}
-      {RightIcon}
+      {RightIcon && (
+        <span className="flex size-4 shrink-0 items-center justify-center">
+          {RightIcon}
+        </span>
+      )}
     </button>
   )
 }
