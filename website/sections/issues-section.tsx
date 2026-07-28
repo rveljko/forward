@@ -1,4 +1,4 @@
-import IssuesPanel from '@/components/issues-panel'
+import IssuesPanel from '@/components/panels/issues-panel'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'

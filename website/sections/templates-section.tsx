@@ -1,4 +1,4 @@
-import TemplateShowcase from '@/components/template-showcase'
+import TemplateShowcase from '@/components/issues/template-showcase'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'

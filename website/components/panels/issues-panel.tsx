@@ -1,4 +1,4 @@
-import IssueItem from '@/components/issue-item'
+import IssueItem from '@/components/issues/issue-item'
 import Button from '@/components/ui/button'
 import Divider from '@/components/ui/divider'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'

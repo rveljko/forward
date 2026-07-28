@@ -1,4 +1,4 @@
-import TaskItem from '@/components/task-item'
+import TaskItem from '@/components/tasks/task-item'
 import Button from '@/components/ui/button'
 import Divider from '@/components/ui/divider'
 import { tasks } from '@/data/tasks'

@@ -1,4 +1,4 @@
-import DraftsPanel from '@/components/drafts-panel'
+import DraftsPanel from '@/components/panels/drafts-panel'
 import Badge from '@/components/ui/badge'
 import Button from '@/components/ui/button'
 import ArrowRightIcon from '@/icons/arrow-right-icon'

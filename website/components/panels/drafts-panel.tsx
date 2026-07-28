@@ -1,4 +1,4 @@
-import DraftCard from '@/components/draft-card'
+import DraftCard from '@/components/drafts/draft-card'
 import Button from '@/components/ui/button'
 import Divider from '@/components/ui/divider'
 import { drafts } from '@/data/drafts'
