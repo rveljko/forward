@@ -1,3 +1,4 @@
+import Button from '@/components/ui/button'
 import Divider from '@/components/ui/divider'
 import ClockIcon from '@/icons/clock-icon'
 import DotsVerticalIcon from '@/icons/dots-vertical-icon'
@@ -12,7 +13,7 @@ export default function DraftCard({
   draft: { title, daysAgo, category },
 }: DraftCardProps) {
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-lg border border-white shadow-sm ring ring-neutral-900/10">
+    <article className="relative flex h-full flex-col overflow-hidden rounded-lg border border-white shadow-sm ring ring-neutral-900/10 hover:cursor-pointer hover:ring-neutral-900/20 pointer-coarse:transition pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20">
       <div className="overflow-hidden">
         <div
           className={cn(
@@ -26,6 +27,7 @@ export default function DraftCard({
       </div>
       <div className="h-14 p-2">
         <span className="line-clamp-2 text-sm font-medium text-balance">
+          <span className="absolute inset-0" />
           {title}
         </span>
       </div>
@@ -34,9 +36,13 @@ export default function DraftCard({
         <span className="flex items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
           <ClockIcon /> {daysAgo}
         </span>
-        <span className="[&_svg]:size-4">
+
+        <Button
+          variant="tertiary"
+          className="isolate -m-1 rounded-full p-1 [&_svg]:size-4"
+        >
           <DotsVerticalIcon />
-        </span>
+        </Button>
       </div>
     </article>
   )

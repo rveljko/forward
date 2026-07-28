@@ -8,7 +8,7 @@ import WritingIcon from '@/icons/writing-icon'
 
 export default function DraftsPanel() {
   return (
-    <>
+    <div className="flex h-full flex-col">
       <div className="p-4">
         <span className="text-sm font-medium">Drafts</span>
       </div>
@@ -31,13 +31,15 @@ export default function DraftsPanel() {
         </Button>
       </div>
       <Divider />
-      <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(55),100%),1fr))] gap-4 px-4 py-8">
-        {drafts.map((draft, index) => (
-          <li key={draft.title}>
-            <DraftCard draft={draft} key={index} />
-          </li>
-        ))}
-      </ul>
-    </>
+      <div className="grow scrollbar-none overflow-y-auto px-4 py-8 @4xl/dashboard:scrollbar-thin">
+        <ul className="mx-auto grid w-full max-w-200 grid-cols-[repeat(auto-fit,minmax(min(--spacing(55),100%),1fr))] gap-4">
+          {drafts.map((draft, index) => (
+            <li key={draft.title}>
+              <DraftCard draft={draft} key={index} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   )
 }
