@@ -39,7 +39,7 @@ export default function ChangeIssueTagPanel({
     >
       <div className="px-4 pt-4">
         <IconWrapper icon={<TagIcon />} className="mb-2" />
-        <h3 className="mb-1 font-medium">Change {issue.title} PrioTagrity</h3>
+        <h3 className="mb-1 font-medium">Change {issue.title} Tag</h3>
         <p className="mb-4 text-xs text-neutral-600">Update issue label</p>
       </div>
       <ul className="grid grid-cols-[repeat(auto-fit,minmax(min(--spacing(42.5),100%),1fr))] gap-2 px-4 pb-4 max-sm:max-h-65 max-sm:overflow-y-auto max-sm:pt-0.5">
