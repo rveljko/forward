@@ -217,7 +217,7 @@ function Label({ children, className, ...props }: LabelProps) {
   return (
     <label
       className={cn(
-        'flex items-center gap-1 rounded-sm p-1 px-1.5 py-1 text-nowrap text-black hover:cursor-pointer hover:bg-neutral-100 active:scale-99 pointer-coarse:active:bg-neutral-100',
+        'flex items-center gap-1 rounded-sm p-1 px-1.5 py-1 font-medium text-nowrap text-black hover:cursor-pointer hover:bg-neutral-100 active:scale-99 pointer-coarse:active:bg-neutral-100',
         className
       )}
       {...props}
