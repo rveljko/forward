@@ -268,10 +268,7 @@ function FilterDropdownButton() {
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
                   <Checkbox
-                    onChange={() => {
-                      setFilter('status', label)
-                      toggleDropdown()
-                    }}
+                    onChange={() => setFilter('status', label)}
                     checked={handleCheckbox(label)}
                   />
                   <Icon />
@@ -293,10 +290,7 @@ function FilterDropdownButton() {
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
                   <Checkbox
-                    onChange={() => {
-                      setFilter('priority', label)
-                      toggleDropdown()
-                    }}
+                    onChange={() => setFilter('priority', label)}
                     checked={handleCheckbox(label)}
                   />
                   <Icon />
@@ -315,10 +309,7 @@ function FilterDropdownButton() {
               <Dropdown.Item key={id}>
                 <Dropdown.Label>
                   <Checkbox
-                    onChange={() => {
-                      setFilter('tag', label)
-                      toggleDropdown()
-                    }}
+                    onChange={() => setFilter('tag', label)}
                     checked={handleCheckbox(label)}
                   />
                   <Icon />
@@ -352,10 +343,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'manual'}
-              onChange={() => {
-                setSort('manual')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('manual')}
             />
             <DragDropIcon />
             Manual
@@ -366,10 +354,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'date-desc'}
-              onChange={() => {
-                setSort('date-desc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('date-desc')}
             />
             <CalendarIcon />
             Newest to Oldest
@@ -380,10 +365,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'date-asc'}
-              onChange={() => {
-                setSort('date-asc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('date-asc')}
             />
             <CalendarIcon />
             Oldest to Newest
@@ -394,10 +376,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'priority-asc'}
-              onChange={() => {
-                setSort('priority-asc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('priority-asc')}
             />
             <PriorityIcon />
             Low to High
@@ -408,10 +387,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'priority-desc'}
-              onChange={() => {
-                setSort('priority-desc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('priority-desc')}
             />
             <PriorityIcon />
             High to Low
@@ -422,10 +398,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'name-asc'}
-              onChange={() => {
-                setSort('name-asc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('name-asc')}
             />
             <LetterCaseIcon />A to Z
           </Dropdown.Label>
@@ -435,10 +408,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'name-desc'}
-              onChange={() => {
-                setSort('name-desc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('name-desc')}
             />
             <LetterCaseIcon />Z to A
           </Dropdown.Label>
