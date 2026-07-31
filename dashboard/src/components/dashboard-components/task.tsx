@@ -46,9 +46,10 @@ export default function Task({
       }}
       className={`relative flex items-center justify-between gap-2 border-b border-b-neutral-200 p-4 hover:bg-white ${activeTaskId === id ? 'bg-white' : 'bg-neutral-50'}`}
     >
-      <label className="flex items-center justify-center gap-2 hover:cursor-pointer has-checked:line-through">
+      <label className="group flex items-center justify-center gap-2 hover:cursor-pointer">
         <Checkbox checked={isChecked} onChange={() => updateTaskStatus(id)} />
-        <span className="line-clamp-1 font-medium break-all text-black">
+        <span className="relative line-clamp-1 font-medium break-all text-black">
+          <span className="absolute top-1/2 h-px w-0 bg-current transition-all group-has-[input[type=checkbox]:checked]:w-full pointer-coarse:-translate-y-1/2" />
           {title}
         </span>
         <span className="absolute inset-0" />
