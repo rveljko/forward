@@ -8,7 +8,7 @@ import { createContext, useContext, useState } from 'react'
 import { Link } from 'react-router'
 
 export const dropdown = cva(
-  'anchored/dropdown try-flip-all absolute z-997 my-2 space-y-0.5 rounded-sm border border-neutral-200 bg-white p-1 [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)]',
+  'anchored/dropdown try-flip-all absolute z-997 my-2 min-w-50 space-y-0.5 rounded-sm border border-neutral-200 bg-white p-1 [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)]',
   {
     variants: {
       position: {
