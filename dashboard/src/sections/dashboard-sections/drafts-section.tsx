@@ -102,10 +102,7 @@ function FiltersDropdownButton() {
           <Dropdown.Item key={id}>
             <Dropdown.Label>
               <Checkbox
-                onChange={() => {
-                  setFilter('category', label)
-                  toggleDropdown()
-                }}
+                onChange={() => setFilter('category', label)}
                 checked={handleCheckbox(label)}
               />
               <Icon />
@@ -137,10 +134,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'date-desc'}
-              onChange={() => {
-                setSort('date-desc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('date-desc')}
             />
             <CalendarIcon />
             Newest to Oldest
@@ -151,10 +145,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'date-asc'}
-              onChange={() => {
-                setSort('date-asc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('date-asc')}
             />
             <CalendarIcon />
             Oldest to Newest
@@ -165,10 +156,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'name-asc'}
-              onChange={() => {
-                setSort('name-asc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('name-asc')}
             />
             <LetterCaseIcon />A to Z
           </Dropdown.Label>
@@ -178,10 +166,7 @@ function SortDropdownButton() {
             <RadioButton
               name="sort"
               checked={sort === 'name-desc'}
-              onChange={() => {
-                setSort('name-desc')
-                toggleDropdown()
-              }}
+              onChange={() => setSort('name-desc')}
             />
             <LetterCaseIcon />Z to A
           </Dropdown.Label>
