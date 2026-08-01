@@ -44,7 +44,7 @@ export default function CreateNewIssueModal({
     description: '',
     status: status ?? 'backlog',
     priority: 'no-priority',
-    tag: 'bug',
+    tag: 'feature',
     template: 'clean',
     createdAt: new Date(),
     content: '',
