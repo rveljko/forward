@@ -23,7 +23,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-type CreateNewIssueModalProps = React.ComponentPropsWithoutRef<'article'> & {
+type CreateNewIssueModalProps = {
   closeModal: () => void
   isBigSizeModal: boolean
   setIsBigSizeModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -35,7 +35,6 @@ export default function CreateNewIssueModal({
   isBigSizeModal,
   setIsBigSizeModal,
   status,
-  ...props
 }: CreateNewIssueModalProps) {
   const { createNewIssue } = useIssues()
   const initialIssue: Issue = {
@@ -53,7 +52,7 @@ export default function CreateNewIssueModal({
   const [createMore, setCreateMore] = useState(false)
 
   return (
-    <ModalCard {...props}>
+    <ModalCard>
       <form
         onSubmit={(e) => {
           e.preventDefault()
