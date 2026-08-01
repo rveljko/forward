@@ -1,11 +1,9 @@
-import CheckIcon from '@icons/check-icon'
 import ChevronDownIcon from '@icons/chevron-down-icon'
 import ChevronRightIcon from '@icons/chevron-right-icon'
 import { cn } from '@utils/utils'
 import { cva, VariantProps } from 'class-variance-authority'
 import { motion } from 'motion/react'
 import { createContext, useContext, useState } from 'react'
-import { Link } from 'react-router'
 
 export const dropdown = cva(
   'anchored/dropdown try-flip-all absolute z-997 my-2 min-w-50 space-y-0.5 rounded-lg border border-neutral-200 bg-white p-1 [--opacity-from:0%] [--opacity-to:100%] [--scale-from:95%] [--scale-to:100%] [--slide-y-from:--spacing(4)] [--slide-y-to:--spacing(0)]',
@@ -68,7 +66,6 @@ Dropdown.AccordionSummary = AccordionSummary
 Dropdown.List = List
 Dropdown.Item = Item
 Dropdown.Label = Label
-Dropdown.Button = Button
 
 type AccordionContextProviderProps = {
   children: React.ReactNode
@@ -224,65 +221,5 @@ function Label({ children, className, ...props }: LabelProps) {
     >
       {children}
     </label>
-  )
-}
-
-type ButtonBaseProps = {
-  children: React.ReactNode
-  leftIcon?: React.JSX.Element
-  rightIcon?: React.JSX.Element
-  isActive?: boolean
-}
-
-type ButtonAsAnchorProps = React.ComponentPropsWithoutRef<'a'> & {
-  href: string
-}
-
-type ButtonAsButtonProps = React.ComponentPropsWithoutRef<'button'> & {
-  href?: never
-}
-
-export type ButtonProps = ButtonBaseProps &
-  (ButtonAsAnchorProps | ButtonAsButtonProps)
-
-export const dropdownButtonClasses =
-  'flex w-full items-center gap-1 truncate rounded-xs px-1.5 py-1 text-black hover:cursor-pointer hover:bg-neutral-100 active:scale-99'
-
-function Button({
-  children,
-  leftIcon: LeftIcon,
-  rightIcon: RightIcon,
-  isActive,
-  className,
-  ...props
-}: ButtonProps) {
-  const buttonClasses = cn(dropdownButtonClasses, className)
-
-  if ('href' in props && props.href !== undefined) {
-    return (
-      <Link to={props.href} className={buttonClasses} {...props}>
-        {LeftIcon && <span>{LeftIcon}</span>}
-        <span className="overflow-hidden text-ellipsis">{children}</span>
-        {RightIcon && <span>{RightIcon}</span>}
-        {isActive && (
-          <span className="text-success-500 ml-auto">
-            <CheckIcon />
-          </span>
-        )}
-      </Link>
-    )
-  }
-
-  return (
-    <button className={buttonClasses} type="button" {...props}>
-      {LeftIcon && <span>{LeftIcon}</span>}
-      <span className="overflow-hidden text-ellipsis">{children}</span>
-      {RightIcon && <span>{RightIcon}</span>}
-      {isActive && (
-        <span className="text-success-500 ml-auto">
-          <CheckIcon />
-        </span>
-      )}
-    </button>
   )
 }
