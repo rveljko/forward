@@ -11,13 +11,12 @@ import { Draft, DraftCategoryLabel } from '@utils/types'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-type CreateNewDraftModalProps = React.ComponentPropsWithoutRef<'article'> & {
+type CreateNewDraftModalProps = {
   closeModal: () => void
 }
 
 export default function CreateNewDraftModal({
   closeModal,
-  ...props
 }: CreateNewDraftModalProps) {
   const { createNewDraft } = useDrafts()
   const initialDraft: Draft = {
@@ -31,7 +30,7 @@ export default function CreateNewDraftModal({
   const [createMore, setCreateMore] = useState(false)
 
   return (
-    <ModalCard {...props}>
+    <ModalCard>
       <form
         onSubmit={(e) => {
           e.preventDefault()
