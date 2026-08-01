@@ -9,13 +9,12 @@ import { Task } from '@utils/types'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-type CreateNewTaskModalProps = React.ComponentPropsWithoutRef<'article'> & {
+type CreateNewTaskModalProps = {
   closeModal: () => void
 }
 
 export default function CreateNewTaskModal({
   closeModal,
-  ...props
 }: CreateNewTaskModalProps) {
   const { createNewTask } = useTasks()
   const initialTask: Task = {
@@ -28,7 +27,7 @@ export default function CreateNewTaskModal({
   const [createMore, setCreateMore] = useState(false)
 
   return (
-    <ModalCard {...props}>
+    <ModalCard>
       <form
         onSubmit={(e) => {
           e.preventDefault()
