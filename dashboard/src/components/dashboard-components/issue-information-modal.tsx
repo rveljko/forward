@@ -23,7 +23,7 @@ import { Issue } from '@utils/types'
 import { AnimatePresence, motion } from 'motion/react'
 import { useState } from 'react'
 
-type IssueInformationModalProps = React.ComponentPropsWithoutRef<'article'> & {
+type IssueInformationModalProps = React.ComponentProps<typeof ModalCard> & {
   issue: Issue
   closeModal: () => void
 }
