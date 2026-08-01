@@ -22,10 +22,9 @@ import { showToast } from '@utils/toasts'
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
-type ProjectInformationModalProps =
-  React.ComponentPropsWithoutRef<'article'> & {
-    closeModal: () => void
-  }
+type ProjectInformationModalProps = React.ComponentProps<typeof ModalCard> & {
+  closeModal: () => void
+}
 
 const initialProjectInformation = {
   title: 'Planet Garden',
