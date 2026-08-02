@@ -103,7 +103,12 @@ export type IssuePriority = {
   icon: () => React.JSX.Element
 }
 
-export type IssueTagLabel = 'feature' | 'bug' | 'improvement' | 'optimization'
+export type IssueTagLabel =
+  | 'feature'
+  | 'bug'
+  | 'improvement'
+  | 'optimization'
+  | 'blocker'
 
 export type IssueTag = {
   id: string

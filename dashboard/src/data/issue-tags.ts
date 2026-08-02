@@ -1,3 +1,4 @@
+import BlockerIssueTagIcon from '@icons/blocker-issue-tag-icon'
 import BugIssueTagIcon from '@icons/bug-issue-tag-icon'
 import FeatureIssueTagIcon from '@icons/feature-issue-tag-icon'
 import ImprovementIssueTagIcon from '@icons/improvement-issue-tag-icon'
@@ -29,5 +30,11 @@ export const issueTags: IssueTag[] = [
     name: 'Optimization',
     label: 'optimization',
     icon: OptimizationIssueTagIcon,
+  },
+  {
+    id: uuidv4(),
+    name: 'Blocker',
+    label: 'blocker',
+    icon: BlockerIssueTagIcon,
   },
 ]
