@@ -123,7 +123,7 @@ type TextEditorProps = {
 
 function TextEditor({ editor }: TextEditorProps) {
   return (
-    <div className="flex h-full flex-col overflow-y-auto">
+    <div className="flex h-full scrollbar-gutter-stable flex-col overflow-y-auto">
       <Container className="grow py-8 md:py-16">
         <RichTextEditor editor={editor} className="h-full" />
       </Container>
