@@ -5,132 +5,131 @@ import { v4 as uuidv4 } from 'uuid'
 export const issues: Issue[] = [
   {
     id: uuidv4(),
-    title: 'Implement Notification System',
-    description:
-      'Build a notification system that keeps users updated about important events in their projects and issues. This should help users stay on top of changes like new comments, status updates, assignments, and deadlines.',
+    title: 'Add draft linking with issues and tasks',
+    description: 'Add draft linking with issues and tasks',
     status: 'backlog',
-    priority: 'high',
-    tag: 'improvement',
-    template: 'clean',
-    createdAt: generateDateInPast(3),
-    content:
-      "<h1>Implement Notification System</h1><p></p><h2>Goal</h2><p>Build a notification system that keeps users updated about important events in their projects and issues. This should help users stay on top of changes like new comments, status updates, assignments, and deadlines.</p><p></p><h2>Key Points</h2><ul><li><p>We'll need different types of notifications — like when someone comments on an issue, changes its status, or assigns it to someone.</p></li><li><p>Notifications should show up inside the app (like a notification bell or center), and maybe later we can add email or push notifications for the really important stuff.</p></li><li><p>Users should be able to control what notifications they get and how — for example, turning off emails or muting certain projects.</p></li><li><p>Since we have offline mode, notifications created while offline should be queued and shown when the user comes back online. Also, users should see which notifications they haven’t read yet.</p></li><li><p>The system needs to work smoothly even as more users and projects grow, without slowing down the app.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Use WebSockets or Server-Sent Events to push notifications in real-time.</p></li><li><p>Create a notification center UI with unread counts and filters so users can easily find what’s new.</p></li><li><p>Store notifications locally so users can still see them offline.</p></li><li><p>Hook this up with backend APIs to get notifications, mark them read/unread, and update preferences.</p></li><li><p>Add a settings page so users can customize their notification preferences.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Look into best practices and maybe some open-source tools for notifications.</p></li><li><p>Sketch out how the notification UI and settings might look.</p></li><li><p>Build a simple prototype to test real-time delivery.</p></li><li><p>Make sure offline notifications queue up and sync properly.</p></li><li><p>Get some user feedback and improve the system based on that.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Check this works well on all browsers we support.</p></li><li><p>Work closely with the backend team to design the notification API.</p></li><li><p>Keep privacy and security in mind when dealing with notification data.</p></li></ul>",
-  },
-  {
-    id: uuidv4(),
-    title: 'Create and Report Issues',
-    description:
-      'Make it easy and intuitive for users to create new issues and report problems within their projects. This should help teams track bugs, tasks, and feature requests efficiently.',
-    status: 'todo',
-    priority: 'high',
-    tag: 'improvement',
-    template: 'clean',
-    createdAt: generateDateInPast(3),
-    content:
-      '<h1>Create and Report Issues</h1><p></p><h2>Goal</h2><p>Make it easy and intuitive for users to create new issues and report problems within their projects. This should help teams track bugs, tasks, and feature requests efficiently.</p><p></p><h2>Key Points</h2><ul><li><p>The issue creation form should be simple but flexible — allow users to add titles, descriptions, assign to team members, set priorities, and attach files if needed.</p></li><li><p>Support rich text or markdown in the description so users can provide detailed info.</p></li><li><p>Users should be able to quickly report issues from different parts of the app (e.g., from the dashboard or project page).</p></li><li><p>Validate inputs to prevent incomplete or incorrect data.</p></li><li><p>Provide helpful feedback and confirmations once an issue is created.</p></li><li><p>Consider offline support so users can draft issues and submit them once back online.</p></li><li><p>Make sure the UI works smoothly on all devices and browsers.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Build a reusable issue creation component with form validation and markdown support.</p></li><li><p>Integrate file upload functionality for attachments.</p></li><li><p>Add quick access buttons or shortcuts to open the issue creation form from various pages.</p></li><li><p>Save drafts locally to avoid losing user input if they navigate away or go offline.</p></li><li><p>Connect with backend APIs to create and store issues reliably.</p></li><li><p>Show success messages and clear the form after submission.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Research best UI/UX patterns for issue reporting forms.</p></li><li><p>Design mockups and get feedback from users or stakeholders.</p></li><li><p>Develop the issue creation form with validation and markdown editor.</p></li><li><p>Test offline draft saving and syncing on reconnect.</p></li><li><p>Collect user feedback and iterate on the workflow.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Ensure compatibility with all supported browsers.</p></li><li><p>Coordinate with backend team to finalize API specs.</p></li><li><p>Keep accessibility in mind for all users.</p></li></ul>',
-  },
-  {
-    id: uuidv4(),
-    title: 'Update Status',
-    description:
-      "Allow users to easily update the status of issues to reflect their current progress. This helps keep everyone on the team informed about what's done, in progress, or blocked.",
-    status: 'todo',
-    priority: 'medium',
-    tag: 'bug',
-    template: 'clean',
-    createdAt: generateDateInPast(3),
-    content:
-      "<h1>Update Status</h1><p></p><h2>Goal</h2><p>Allow users to easily update the status of issues to reflect their current progress. This helps keep everyone on the team informed about what's done, in progress, or blocked.</p><p></p><h2>Key Points</h2><ul><li><p>Users should be able to change issue status quickly from the issue page or issue list.</p></li><li><p>Support common status options like “Open,” “In Progress,” “Resolved,” “Closed,” and allow customization if needed.</p></li><li><p>Show clear visual indicators of the current status on issue cards and detail views.</p></li><li><p>Notify relevant team members when status changes occur (consider integration with the notification system).</p></li><li><p>Handle offline status updates by queuing changes and syncing when back online.</p></li><li><p>Ensure status updates trigger any necessary backend workflows or automations.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Add a status dropdown or toggle on the issue detail page and issue lists.</p></li><li><p>Update the UI instantly when a status changes, with loading indicators for backend sync.</p></li><li><p>Store status changes locally if offline, then sync automatically when online.</p></li><li><p>Connect with backend APIs to update issue status and trigger notifications.</p></li><li><p>Provide audit logs or history so users can see past status changes.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Define the list of default statuses and allow for future customization.</p></li><li><p>Design UI elements for status updates and indicators.</p></li><li><p>Implement frontend components with offline support.</p></li><li><p>Test syncing behavior and notification triggers.</p></li><li><p>Gather user feedback and improve the experience.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Verify compatibility across supported browsers and devices.</p></li><li><p>Consider accessibility for status controls.</p></li><li><p>Align with notification system for status change alerts.</p></li></ul>",
-  },
-  {
-    id: uuidv4(),
-    title: 'Add Comments',
-    description:
-      'Enable users to add comments to issues to facilitate communication and collaboration within the team. Comments should be easy to write, view, and manage.',
-    status: 'todo',
-    priority: 'medium',
-    tag: 'bug',
-    template: 'clean',
-    createdAt: generateDateInPast(4),
-    content:
-      '<h1>Add Comments</h1><p></p><h2>Goal</h2><p>Enable users to add comments to issues to facilitate communication and collaboration within the team. Comments should be easy to write, view, and manage.</p><p></p><h2>Key Points</h2><ul><li><p>Users should be able to add, edit, and delete their own comments.</p></li><li><p>Support rich text or markdown formatting to allow detailed and clear communication.</p></li><li><p>Display comments in chronological order with timestamps and author information.</p></li><li><p>Notify relevant users when new comments are added (integrate with the notification system).</p></li><li><p>Support offline comment drafting and syncing once back online.</p></li><li><p>Ensure the comment section loads efficiently, even with many comments.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Build a comment input box with markdown support and basic formatting tools.</p></li><li><p>Show a list of comments below the issue description, with clear separation and user info.</p></li><li><p>Implement edit and delete options for users’ own comments.</p></li><li><p>Store comments locally when offline and sync automatically when online.</p></li><li><p>Connect with backend APIs to fetch, create, update, and delete comments.</p></li><li><p>Add notifications or badges to alert users of new comments.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Research best practices for comment systems in project management tools.</p></li><li><p>Design the comment UI and interaction flows.</p></li><li><p>Develop the comment input and display components.</p></li><li><p>Test offline comment creation and syncing.</p></li><li><p>Collect feedback from users and iterate on the experience.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Ensure compatibility across all supported browsers and devices.</p></li><li><p>Coordinate with backend for API support and notification integration.</p></li><li><p>Keep accessibility in mind for all comment features.</p></li></ul>',
-  },
-  {
-    id: uuidv4(),
-    title: 'Integrate with Other Tools',
-    description:
-      'Enable seamless integration of our issue tracking platform with other popular tools and services that teams rely on, such as CRM systems, email clients, chat platforms, and project management apps. This will streamline workflows, reduce context switching, and improve overall productivity.',
-    status: 'in-progress',
-    priority: 'high',
-    tag: 'improvement',
-    template: 'clean',
-    createdAt: generateDateInPast(4),
-    content:
-      '<h1>Integrate with Other Tools</h1><p></p><h2>Goal</h2><p>Enable seamless integration of our issue tracking platform with other popular tools and services that teams rely on, such as CRM systems, email clients, chat platforms, and project management apps. This will streamline workflows, reduce context switching, and improve overall productivity.</p><p></p><h2>Key Points</h2><ul><li><p>Integrations should allow automatic syncing of issues, comments, status updates, and notifications across connected tools.</p></li><li><p>Support popular platforms like GitHub, Slack, email services, CRM systems, and calendar apps.</p></li><li><p>Provide easy setup and configuration for users, ideally with no-code or low-code options.</p></li><li><p>Ensure data consistency and handle conflicts gracefully when syncing between systems.</p></li><li><p>Allow customization of integration triggers and actions to fit different team workflows.</p></li><li><p>Maintain security and privacy standards when exchanging data with third-party services.</p></li><li><p>Consider offline scenarios where changes made offline sync properly once back online.</p></li><li><p>Provide clear documentation and support for integrations.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Use APIs and webhooks to connect with external services for real-time data exchange.</p></li><li><p>Build an integration management UI where users can enable, configure, and monitor integrations.</p></li><li><p>Leverage existing workflow automation platforms (e.g., Make.com) to simplify building and maintaining integrations.</p></li><li><p>Support importing/exporting issues and comments via common formats like Markdown to enhance compatibility.</p></li><li><p>Implement background jobs to handle syncing and error recovery.</p></li><li><p>Provide logs or dashboards to track integration status and troubleshoot issues.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Identify the most valuable tools and platforms to integrate with based on user needs and market research.</p></li><li><p>Design the integration setup experience and user interface.</p></li><li><p>Develop core integration connectors and test with key platforms like GitHub and Slack.</p></li><li><p>Pilot integrations with select users and gather feedback.</p></li><li><p>Expand integration options and improve automation capabilities.</p></li><li><p>Document integration features and provide user guides.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Ensure all integrations comply with security best practices and data privacy regulations.</p></li><li><p>Coordinate closely with backend and security teams to design robust APIs and authentication flows.</p></li><li><p>Monitor integration performance and user satisfaction continuously.</p></li></ul>',
-  },
-  {
-    id: uuidv4(),
-    title: 'Set Priorities',
-    description:
-      'Allow users to assign and update priority levels on issues so teams can focus on the most important tasks first.',
-    status: 'in-progress',
-    priority: 'medium',
-    tag: 'bug',
-    template: 'clean',
-    createdAt: generateDateInPast(4),
-    content:
-      '<h1>Set Priorities</h1><p></p><h2>Goal</h2><p>Allow users to assign and update priority levels on issues so teams can focus on the most important tasks first.</p><p></p><h2>Key Points</h2><ul><li><p>Provide a clear set of priority levels (e.g., Low, Medium, High) that users can select from.</p></li><li><p>Make it easy to change priority both when creating an issue and when updating an existing one.</p></li><li><p>Display priority visually on issue lists and detail pages, using colors or icons for quick recognition.</p></li><li><p>Consider how priority changes affect notifications or workflows.</p></li><li><p>Support offline priority updates that sync when the user is back online.</p></li><li><p>Ensure priority settings are consistent across the app and easy to understand.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Add a priority selector dropdown or buttons on issue creation and edit forms.</p></li><li><p>Show priority badges or colored labels on issue cards and details.</p></li><li><p>Save priority changes locally if offline, then sync with backend when online.</p></li><li><p>Connect with backend APIs to update and retrieve priority data.</p></li><li><p>Optionally, allow users to filter or sort issues by priority.</p></li></ul><h2></h2><h2>Next Steps</h2><ul><li><p>Define the priority levels and their meanings.</p></li><li><p>Design UI components for selecting and displaying priority.</p></li><li><p>Implement frontend support with offline syncing.</p></li><li><p>Coordinate with backend team on API support and any related workflows.</p></li><li><p>Test priority updates and their impact on notifications and filters.</p></li><li><p>Gather user feedback and refine the feature.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Verify cross-browser compatibility.</p></li><li><p>Keep accessibility in mind for priority controls and indicators.</p></li><li><p>Align with other issue attributes like status and due dates.</p></li></ul>',
-  },
-  {
-    id: uuidv4(),
-    title: 'Filter and Sort Issues',
-    description:
-      'Provide users with powerful and flexible tools to filter and sort issues so they can quickly find what matters most and organize their work effectively.',
-    status: 'in-progress',
     priority: 'low',
-    tag: 'optimization',
-    template: 'clean',
+    tag: 'feature',
+    template: 'feature-request',
     createdAt: generateDateInPast(4),
     content:
-      '<h1>Filter and Sort Issues</h1><p></p><h2>Goal</h2><p>Provide users with powerful and flexible tools to filter and sort issues so they can quickly find what matters most and organize their work effectively.</p><p></p><h2>Key Points</h2><ul><li><p>Filters should allow narrowing down issues by key attributes such as assignee, status, priority, labels, due dates, and more.</p></li><li><p>Support combining multiple filters with logical AND and OR conditions to refine results precisely.</p></li><li><p>Sorting options should include common fields like creation date, update date, priority, and alphabetical order.</p></li><li><p>Filters and sorting preferences should be easy to apply, clear, and modifiable at any time.</p></li><li><p>Users should be able to save custom filter and sort views for quick access later.</p></li><li><p>Filtering and sorting should persist across navigation within the app to avoid losing context.</p></li><li><p>The UI should provide clear indicators of active filters and sorting criteria.</p></li><li><p>Consider responsiveness and usability on different screen sizes, with options to toggle filter visibility to reduce clutter.</p></li><li><p>Avoid applying default filters or sorting that users did not explicitly set, to prevent confusion.</p></li><li><p>Support keyboard shortcuts and quick actions to speed up filtering and sorting tasks.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Implement a filter panel with dropdowns or multi-select controls for each filterable field.</p></li><li><p>Add a sorting dropdown aligned with filters, allowing users to pick ascending or descending order.</p></li><li><p>Show badges or labels summarizing active filters with options to remove them individually.</p></li><li><p>Allow users to save and switch between multiple filter and sort presets.</p></li><li><p>Persist filter and sort state in the URL or user preferences for continuity.</p></li><li><p>Optimize performance to handle large issue lists without lag.</p></li><li><p>Design for accessibility and keyboard navigation.</p></li><li><p>On smaller screens, provide a toggle button to show/hide filters and sorting controls.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Research best practices and popular patterns for filtering and sorting in issue trackers and project management tools.</p></li><li><p>Design UI mockups for the filter and sort components, including mobile views.</p></li><li><p>Develop frontend components with state management for filters and sorting.</p></li><li><p>Integrate with backend APIs to support filtering and sorting queries efficiently.</p></li><li><p>Collect feedback and iterate on the design and functionality.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Ensure compatibility across all supported browsers and devices.</p></li><li><p>Coordinate with backend team to define API support for complex filtering and sorting.</p></li><li><p>Keep user experience consistent and intuitive, avoiding surprises like unexpected default filters.</p></li></ul>',
+      '<h1>Add draft linking with issues and tasks</h1><p></p><p>Allow users to connect drafts with related issues and tasks so notes, ideas, and project information can stay connected</p><p></p><p>Drafts are currently useful for storing meeting notes, ideas, and inspiration, but they exist separately from the actual work users are managing.</p><p></p><h3>Problem</h3><p>Users often create notes before creating issues or tasks. For example:</p><ul><li><p>A product manager writes down feature ideas during a meeting</p></li><li><p>A developer documents technical considerations before creating a bug issue</p></li><li><p>A team creates planning notes before starting sprint work</p></li></ul><p></p><p>Currently, users need to manually copy information between drafts, issues, and tasks</p><p></p><p>This creates several problems:</p><ul><li><p>Important context can be lost</p></li><li><p>Users need to search multiple areas to find related information</p></li><li><p>Notes and implementation work become disconnected</p></li><li><p>Teams may create duplicate information</p></li></ul><p></p><h3>Proposed Solution</h3><p>Allow drafts to be linked with issues and tasks.</p><p></p><p>Users should be able to:</p><ul><li><p>Attach one or more issues to a draft</p></li><li><p>Attach tasks to drafts</p></li><li><p>Open related items directly from the draft</p></li><li><p>View connected drafts from inside issues and tasks</p></li></ul><p></p><h3>Additional Notes</h3><p>Possible future improvements:</p><ul><li><p>Convert a draft section into an issue automatically</p></li><li><p>Create tasks from highlighted text</p></li><li><p>Suggest related issues while writing drafts</p></li><li><p>Add backlinks between all content types</p></li></ul><p></p>',
   },
   {
     id: uuidv4(),
-    title: 'Use Tags',
+    title: 'Improve Kanban board organization and usability',
     description:
-      'Allow users to add and manage tags on issues to help categorize, organize, and quickly find related tasks across projects.',
-    status: 'in-review',
+      'Improve the issue Kanban board experience to make managing workflow states easier and more efficient',
+    status: 'todo',
+    priority: 'high',
+    tag: 'improvement',
+    template: 'improvement',
+    createdAt: generateDateInPast(4),
+    content:
+      '<h1>Improve Kanban board organization and usability</h1><p></p><p>Improve the issue Kanban board experience to make managing workflow states easier and more efficient</p><p></p><p>The Kanban view is one of the main ways users interact with issues, so it should provide a smooth experience when moving, organizing, and reviewing work</p><p></p><h3>Current Situation</h3><p>Users can currently drag issues between columns:</p><ul><li><p>Backlog</p></li><li><p>Todo</p></li><li><p>In Progress</p></li><li><p>In Review</p></li><li><p>Finished</p></li></ul><p></p><p>Moving an issue updates its status automatically</p><p></p><h3>Suggested Improvement</h3><p>Improve the Kanban board by adding:</p><ul><li><p>Configurable card information</p></li><li><p>Option to show priority badges</p></li><li><p>Visible issue tags</p></li><li><p>Last updated information</p></li><li><p>Quick actions directly from cards</p></li></ul><p></p><h3>Expected Benefit</h3><p>A better Kanban experience will help teams understand project progress faster and reduce the time spent opening individual issues</p><p></p><h3>Additional Notes</h3><p>The improvements should maintain compatibility with the existing list view</p><p></p><p>Future possibilities:</p><ul><li><p>Custom Kanban columns</p></li><li><p>Swimlanes by priority or tag</p></li><li><p>Board sharing options</p></li></ul><p></p>',
+  },
+  {
+    id: uuidv4(),
+    title: 'Add comments and discussions inside issues',
+    description:
+      'Add a commenting system that allows users to discuss issues directly inside the issue page without using external communication tools',
+    status: 'todo',
+    priority: 'medium',
+    tag: 'feature',
+    template: 'feature-request',
+    createdAt: generateDateInPast(4),
+    content:
+      '<h1>Add comments and discussions inside issues</h1><p></p><p>Add a commenting system that allows users to discuss issues directly inside the issue page without using external communication tools</p><p></p><p>Comments should become part of the issue context and remain available throughout the entire project lifecycle</p><p></p><h3>Problem</h3><p>Issue descriptions contain requirements, but discussions about those requirements often happen somewhere else</p><p></p><p>A developer opening an older issue may understand what needs to be done but miss important decisions made during conversations</p><p></p><h3>Proposed Solution</h3><p>Add a comments section inside every issue</p><p></p><p>Users should be able to:</p><ul><li><p>Create comments</p></li><li><p>Edit their own comments</p></li><li><p>Delete comments</p></li><li><p>Reply to existing comments</p></li><li><p>Mention other users</p></li><li><p>View comment timestamps</p></li></ul><p></p><h3>Additional Notes</h3><p>Future improvements:</p><ul><li><p>Comment reactions</p></li><li><p>File attachments</p></li><li><p>Comment notifications</p></li><li><p>Ability to convert comments into tasks</p></li><li><p>Pin important comments</p></li></ul><p></p><p>Comments should follow the same permission rules as the issue itself</p>',
+  },
+  {
+    id: uuidv4(),
+    title: 'Add issue activity history timeline',
+    description:
+      'Create a complete activity timeline inside every issue that records important actions and changes throughout the issue lifecycle. The timeline should provide a clear history of what happened, who made changes, and when those changes occurred',
+    status: 'todo',
+    priority: 'low',
+    tag: 'feature',
+    template: 'feature-request',
+    createdAt: generateDateInPast(3),
+    content:
+      '<h1>Add issue activity history timeline</h1><p></p><p>Create a complete activity timeline inside every issue that records important actions and changes throughout the issue lifecycle. The timeline should provide a clear history of what happened, who made changes, and when those changes occurred</p><p></p><p>This will help teams understand issue progress without relying on external communication channels or manually documenting every update</p><p></p><h3>Problem</h3><p>When multiple team members work on the same issue, important changes can become difficult to track. A developer may update the status, a product manager may change the priority, and another team member may update the description or tags</p><p></p><p>Currently, users only see the current state of an issue and do not have a historical view of how it reached that state</p><p></p><h3>Proposed Solution</h3><p>Add an activity timeline section inside every issue</p><p></p><p>Each activity item should display:</p><ul><li><p>User who performed the action</p></li><li><p>Date and exact time</p></li><li><p>Type of action performed</p></li></ul><p></p><p></p><p>The timeline should appear below the rich text editor or inside a separate activity tab</p><p></p><h3>Additional Notes</h3><p>The activity history should be available for all issue views including:</p><ul><li><p>Kanban view</p></li><li><p>List view</p></li><li><p>Search results</p></li></ul>',
+  },
+  {
+    id: uuidv4(),
+    title: 'Improve issue filtering and filter management',
+    description:
+      'Improve the current issue filtering system to make finding specific issues faster when working with large projects',
+    status: 'in-progress',
+    priority: 'high',
+    tag: 'improvement',
+    template: 'improvement',
+    createdAt: generateDateInPast(4),
+    content:
+      '<h1>Improve issue filtering and filter management</h1><p></p><p>Improve the current issue filtering system to make finding specific issues faster when working with large projects</p><p></p><p>The current filtering system supports statuses, priorities, and tags, but users managing hundreds of issues need a more efficient way to combine and reuse filters</p><p></p><h3>Current Situation</h3><p>Users can filter issues using:</p><ul><li><p>Status</p></li><li><p>Priority</p></li><li><p>Tags</p></li></ul><p></p><p>However, users must manually select filters every time they return to the issue board</p><p></p><h3>Suggested Improvement</h3><p>Improve filtering by adding:</p><ul><li><p>Visible active filter indicators</p></li><li><p>Clear all filters button</p></li><li><p>Multiple selections inside each filter category</p></li><li><p>Saved filter combinations</p></li><li><p>Filter persistence when switching between list and kanban views</p></li></ul><p></p><h3>Expected Benefit</h3><p>Users will spend less time searching manually and more time managing work</p><p></p><p>This will especially help:</p><ul><li><p>Product managers reviewing priorities</p></li><li><p>Developers checking current work</p></li><li><p>Teams preparing sprint planning sessions</p></li></ul><p></p><h3>Additional Notes</h3><p>Saved filters could later become shareable between team members</p>',
+  },
+  {
+    id: uuidv4(),
+    title: 'Add reusable issue templates',
+    description:
+      'Allow users and teams to create reusable templates for common issue types to make issue creation faster and more consistent',
+    status: 'in-progress',
+    priority: 'medium',
+    tag: 'feature',
+    template: 'feature-request',
+    createdAt: generateDateInPast(3),
+    content:
+      '<h1>Add reusable issue templates</h1><p></p><p>Allow users and teams to create reusable templates for common issue types to make issue creation faster and more consistent</p><p></p><p>Many teams create similar issues repeatedly, such as bug reports, feature requests, technical improvements, and documentation tasks. Templates would reduce repetitive work and improve issue quality</p><p></p><h3>Problem</h3><p>Creating issues manually requires users to repeatedly enter the same structure, information, and formatting</p><p></p><h3>Proposed Solution</h3><p>Create an issue template system where users can define predefined issue structures</p><p></p><p>Users should be able to create templates containing:</p><ul><li><p>Default issue title</p></li><li><p>Default description content</p></li><li><p>Rich text formatting</p></li><li><p>Default status</p></li><li><p>Default priority</p></li><li><p>Default tags</p></li></ul><p></p><p>When creating a new issue, users should have an option to select a template before entering details.</p><p></p><h3>Additional Notes</h3><p>Templates could include:</p><ul><li><p>Personal templates</p></li><li><p>Workspace templates</p></li><li><p>Team shared templates</p></li></ul><p></p>',
+  },
+  {
+    id: uuidv4(),
+    title: 'Task completion state does not persist after refresh',
+    description:
+      'Completed tasks sometimes return to an incomplete state after refreshing the application',
+    status: 'in-progress',
     priority: 'medium',
     tag: 'bug',
-    template: 'clean',
-    createdAt: generateDateInPast(4),
-    content:
-      '<h1>Use Tags</h1><p></p><h2>Goal</h2><p>Allow users to add and manage tags on issues to help categorize, organize, and quickly find related tasks across projects.</p><p></p><h2>Key Points</h2><ul><li><p>Users should be able to create new tags on the fly and assign multiple tags to a single issue.</p></li><li><p>Provide a list of existing tags to choose from to maintain consistency and avoid duplicates.</p></li><li><p>Tags should be visible on issue cards and detail pages for easy identification.</p></li><li><p>Support filtering and searching issues by tags.</p></li><li><p>Allow users to edit or delete tags, with proper handling of tags already in use.</p></li><li><p>Consider color-coding tags to improve visual scanning.</p></li><li><p>Ensure tags sync correctly when users are offline and come back online.</p></li><li><p>Keep the tagging interface simple and intuitive to avoid clutter.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Add a tag input component with autocomplete suggestions based on existing tags.</p></li><li><p>Display tags as clickable badges on issues that can be removed or edited by users with permissions.</p></li><li><p>Integrate tag filtering into the issue list and search features.</p></li><li><p>Store tags locally for offline use and sync changes with the backend.</p></li><li><p>Provide a tag management page or modal for bulk editing and organizing tags.</p></li><li><p>Connect with backend APIs to create, update, delete, and fetch tags.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Research tagging UX patterns in project management tools.</p></li><li><p>Design the tagging UI for issue forms and issue lists.</p></li><li><p>Develop frontend components with offline support.</p></li><li><p>Coordinate with backend team to define tag-related APIs.</p></li><li><p>Test tagging functionality and syncing behavior.</p></li><li><p>Gather user feedback and refine the feature.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Verify cross-browser compatibility.</p></li><li><p>Keep accessibility in mind for tag controls.</p></li><li><p>Consider how tags interact with other filters and sorting options.</p></li></ul>',
-  },
-  {
-    id: uuidv4(),
-    title: 'Utilize Mobile Access',
-    description:
-      'Ensure users have a seamless and efficient experience accessing the issue tracking platform on mobile devices, whether through a mobile-optimized web app or native apps. This will allow users to manage issues, projects, and collaborate effectively on the go.',
-    status: 'in-review',
-    priority: 'medium',
-    tag: 'optimization',
-    template: 'clean',
+    template: 'bug-report',
     createdAt: generateDateInPast(5),
     content:
-      '<h1>Utilize Mobile Access</h1><p></p><h2>Goal</h2><p>Ensure users have a seamless and efficient experience accessing the issue tracking platform on mobile devices, whether through a mobile-optimized web app or native apps. This will allow users to manage issues, projects, and collaborate effectively on the go.</p><p></p><h2>Key Points</h2><ul><li><p>Mobile experience should be consistent with desktop in terms of available features and data, so users can switch between devices without losing context.</p></li><li><p>Prioritize simple, clear navigation and focused content, considering users often interact with mobile devices in hurried or distracted states.</p></li><li><p>Optimize UI elements for touch input: buttons, forms, and controls should be large enough and easy to use without errors.</p></li><li><p>Support offline access and syncing, so users can view and update issues even without a stable connection.</p></li><li><p>Leverage mobile-specific features where appropriate, such as push notifications, GPS, or camera for attachments.</p></li><li><p>Provide quick access to key actions like creating issues, updating status, and adding comments.</p></li><li><p>Ensure fast loading times and smooth performance on a variety of mobile devices and network conditions.</p></li><li><p>Make help and support easy to find within the mobile experience, with contextual guidance and tutorials if needed.</p></li><li><p>Test extensively across different mobile platforms, screen sizes, and browsers to ensure compatibility and accessibility.</p></li><li><p>Continuously gather user feedback and iterate to improve the mobile experience.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Develop a responsive web interface optimized for mobile screens or build native apps for iOS and Android.</p></li><li><p>Simplify navigation with bottom menus or hamburger menus to maximize screen space.</p></li><li><p>Implement offline caching and data sync mechanisms similar to desktop offline mode.</p></li><li><p>Use push notifications to alert users about important updates or reminders.</p></li><li><p>Design forms and interactive elements with mobile usability best practices in mind.</p></li><li><p>Provide onboarding and in-app help tailored for mobile users.</p></li><li><p>Monitor performance and usage analytics to identify pain points and opportunities.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Analyze user needs and behaviors specific to mobile usage.</p></li><li><p>Design mobile UI/UX mockups focusing on usability and feature parity.</p></li><li><p>Develop and test mobile-optimized interfaces or native apps.</p></li><li><p>Implement offline support and syncing for mobile.</p></li><li><p>Set up push notification infrastructure.</p></li><li><p>Conduct thorough testing on multiple devices and gather user feedback.</p></li><li><p>Iterate and improve based on real-world usage.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Follow accessibility standards and mobile best practices.</p></li><li><p>Coordinate with backend and security teams to ensure smooth data handling and secure authentication on mobile.</p></li><li><p>Coordinate with backend and security teams to ensure smooth data handling and secure authentication on mobile.</p></li></ul>',
+      '<h1>Task completion state does not persist after refresh</h1><p></p><p>Completed tasks sometimes return to an incomplete state after refreshing the application</p><p></p><h3>Expected Behavior</h3><p>When users check a task as completed, the completed state should be permanently saved</p><p></p><p>Refreshing the page should keep the task checked</p><p></p><h3>Actual Behavior</h3><p>Some completed tasks become unchecked after:</p><ul><li><p>Refreshing the browser</p></li><li><p>Closing and reopening the application</p></li><li><p>Switching between pages</p></li></ul><p></p><h3>Steps to Reproduce</h3><ol><li><p>Open the tasks section</p></li><li><p>Create a new task</p></li><li><p>Mark the task as completed</p></li><li><p>Refresh the application</p></li><li><p>Notice the task is incomplete again</p></li></ol><p></p><h3>Environment</h3><ul><li><p><strong>Version:</strong> 1.0.0</p></li><li><p><strong>Browser/App:</strong> Firefox 128</p></li><li><p><strong>Operating System:</strong> Windows 11</p></li><li><p><strong>Device:</strong> Laptop</p></li></ul><p></p><h3>Additional Notes</h3><p>The issue may be related to:</p><ul><li><p>Database update failures</p></li><li><p>Delayed synchronization</p></li><li><p>Frontend state not matching backend data</p></li></ul><p></p><p>Logs should be reviewed during reproduction</p>',
   },
   {
     id: uuidv4(),
-    title: 'Attach Files and Documents',
+    title: 'Design approval is blocking new Kanban improvements',
     description:
-      'Allow users to attach files and documents to issues, comments, and other relevant parts of the platform to provide additional context, evidence, or resources.',
-    status: 'finished',
+      'The implementation of the updated kanban board cannot continue because the final design decisions have not been approved',
+    status: 'in-review',
     priority: 'high',
-    tag: 'optimization',
-    template: 'clean',
+    tag: 'blocker',
+    template: 'blocker',
     createdAt: generateDateInPast(6),
     content:
-      '<h1>Attach Files and Documents</h1><p></p><h2>Goal</h2><p>Allow users to attach files and documents to issues, comments, and other relevant parts of the platform to provide additional context, evidence, or resources.</p><p></p><h2>Key Points</h2><ul><li><p>Support a variety of file types including images, PDFs, documents, spreadsheets, and more.</p></li><li><p>Enable easy attachment via drag-and-drop, file picker, or paste functionality.</p></li><li><p>Display attached files clearly within issues or comments, with previews for common file types like images.</p></li><li><p>Ensure uploaded files are securely stored and access is controlled according to project and user permissions.</p></li><li><p>When attaching images or files in markdown content, provide proper linking and rendering so they appear inline or as clickable links.</p></li><li><p>Consider privacy implications: files in public contexts may be accessible via anonymized URLs, so sensitive files should be protected or served from secure locations.</p></li><li><p>Support offline attachment drafting and syncing when back online.</p></li><li><p>Provide clear feedback during upload (progress indicators, success/failure messages).</p></li><li><p>Allow users to remove or replace attachments as needed.</p></li></ul><p></p><h2>Implementation</h2><ul><li><p>Implement drag-and-drop and file selection UI components for attaching files.</p></li><li><p>Store files on a secure backend or cloud storage with appropriate authentication.</p></li><li><p>Generate markdown-compatible links or embeds for attached files and images.</p></li><li><p>Show thumbnails or icons representing attached files within the UI.</p></li><li><p>Sync attachments with backend APIs, supporting offline caching and retries.</p></li><li><p>Handle file size limits and provide user-friendly error messages.</p></li><li><p>Coordinate with backend to ensure files are served securely and efficiently.</p></li></ul><p></p><h2>Next Steps</h2><ul><li><p>Research best practices for file attachment UX in issue tracking and collaboration tools.</p></li><li><p>Design UI for attaching, viewing, and managing files within issues and comments.</p></li><li><p>Develop frontend components with support for drag-and-drop, paste, and file picker.</p></li><li><p>Implement backend support for secure file storage and retrieval.</p></li><li><p>Test file uploads, previews, markdown rendering, and offline syncing.</p></li><li><p>Gather user feedback and iterate on the experience.</p></li></ul><p></p><p><strong>Reminders</strong></p><ul><li><p>Be mindful of browser compatibility and file handling limitations.</p></li><li><p>Coordinate with security teams to protect sensitive data.</p></li><li><p>Review privacy considerations especially for public or shared projects.</p></li></ul>',
+      "<h1>Design approval is blocking new Kanban improvements</h1><p></p><p>The implementation of the updated Kanban board cannot continue because the final design decisions have not been approved</p><p></p><h3>What's Blocked?</h3><p>Frontend development for the improved Kanban experience is currently paused</p><p></p><p>The team cannot finalize:</p><ul><li><p>Issue card layout</p></li><li><p>Drag-and-drop interactions</p></li><li><p>Filter placement</p></li><li><p>Column customization options</p></li></ul><p></p><p>Developers need the final design before completing the implementation</p><p></p><h3>Cause</h3><p>The design team has multiple possible solutions but the final direction has not been selected</p><p></p><p>Open questions include:</p><ul><li><p>Which issue information should appear on cards?</p></li><li><p>How should priority indicators look?</p></li><li><p>Should tags be displayed permanently or only on hover?</p></li><li><p>How should mobile behavior work?</p></li></ul><p></p><p>Without these decisions, development risks creating UI that requires major changes later</p><p></p><h3>Impact</h3><p>Affected areas:</p><ul><li><p>Kanban improvements</p></li><li><p>Issue card redesign</p></li><li><p>User interface consistency</p></li></ul><p></p><p>The frontend team cannot complete assigned tasks, and the sprint milestone may be delayed</p><p></p><p>Product planning is also affected because upcoming improvements depend on the new board structure</p><p></p><h3>Required Action</h3><p>A final design decision needs to be made</p><p></p><p>Required actions:</p><ul><li><p>Review current design options</p></li><li><p>Collect feedback from product and engineering</p></li><li><p>Select final approach</p></li><li><p>Provide updated design files</p></li><li><p>Confirm implementation requirements</p></li></ul><p></p><h3>Additional Notes</h3><p>Related materials:</p><ul><li><p>Existing Kanban prototype</p></li><li><p>Design discussion notes</p></li><li><p>User feedback from previous testing sessions</p></li></ul><p></p><p>Future improvements should consider:</p><ul><li><p>Accessibility</p></li><li><p>Different screen sizes</p></li><li><p>Large project boards</p></li></ul><p></p>",
+  },
+  {
+    id: uuidv4(),
+    title: 'Deleted issues remain visible in search results',
+    description:
+      'Deleted issues continue appearing inside the global search modal',
+    status: 'in-review',
+    priority: 'medium',
+    tag: 'bug',
+    template: 'bug-report',
+    createdAt: generateDateInPast(4),
+    content:
+      '<h1>Deleted issues remain visible in search results</h1><p></p><p>Deleted issues continue appearing inside the global search modal</p><p></p><h3>Expected Behavior</h3><p>When an issue is deleted, it should no longer appear in search results unless there is a dedicated restore or archive section</p><p></p><h3>Actual Behavior</h3><p>Deleted issues remain searchable and users can open outdated records</p><p></p><p>This creates confusion because users may interact with content that should no longer exist</p><p></p><h3>Steps to Reproduce</h3><ol><li><p>Create a new issue</p></li><li><p>Delete the issue</p></li><li><p>Open the global search modal</p></li><li><p>Search for the deleted issue title</p></li><li><p>Notice that the deleted issue still appears</p></li></ol><p></p><h3>Environment</h3><ul><li><p><strong>Version:</strong> 1.0.0</p></li><li><p><strong>Browser/App:</strong> Safari 17</p></li><li><p><strong>Operating System:</strong> macOS Sonoma</p></li><li><p><strong>Device:</strong> MacBook Pro</p></li></ul><p></p><h3>Additional Notes</h3><p>Possible solutions:</p><ul><li><p>Remove deleted records from search indexing</p></li><li><p>Add a deleted status</p></li><li><p>Create a trash section where users can restore items</p></li></ul><p></p><p>The same behavior should be reviewed for deleted tasks and drafts</p>',
+  },
+  {
+    id: uuidv4(),
+    title: 'Add issue templates for faster issue creation',
+    description:
+      'Allow users to create reusable issue templates that automatically fill in predefined titles, descriptions, tags, priorities, and statuses when creating new issues',
+    status: 'finished',
+    priority: 'urgent',
+    tag: 'feature',
+    template: 'feature-request',
+    createdAt: generateDateInPast(3),
+    content:
+      '<h1>Add issue templates for faster issue creation</h1><p></p><p>Allow users to create reusable issue templates that automatically fill in predefined titles, descriptions, tags, priorities, and statuses when creating new issues</p><p></p><h3>Problem</h3><p>Creating similar issues repeatedly requires users to manually enter the same information every time. Teams often follow common formats for bugs, feature requests, technical tasks, and improvements, which makes issue creation slower and inconsistent</p><p></p><p>This affects users who create many issues regularly and teams that need standardized issue documentation</p><p></p><h3>Proposed Solution</h3><p>Add a template system where users can create and manage custom issue templates</p><p></p><p>Users should be able to:</p><ul><li><p>Create templates with predefined title structures</p></li><li><p>Add default descriptions using the rich text editor</p></li><li><p>Set default status, priority, and tags</p></li><li><p>Select a template when creating a new issue</p></li><li><p>Edit the generated issue before saving</p></li></ul><p></p><p>Include default templates for common use cases such as bug reports, feature requests, and improvements</p><p></p><h3>Additional Notes</h3><p>Mockups, examples, links, related issues, or anything else that might help</p><p></p><p>Templates could be managed from preferences or workspace settings</p>',
   },
 ]
