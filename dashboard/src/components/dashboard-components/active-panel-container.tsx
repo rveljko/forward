@@ -6,7 +6,6 @@ type ActivePanelContainerProps = React.ComponentProps<typeof motion.div> & {
 
 export default function ActivePanelContainer({
   children,
-  className,
   ...props
 }: ActivePanelContainerProps) {
   return (

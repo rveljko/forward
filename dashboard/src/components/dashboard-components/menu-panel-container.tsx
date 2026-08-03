@@ -6,7 +6,6 @@ type MenuPanelContainerProps = React.ComponentProps<typeof motion.div> & {
 
 export default function MenuPanelContainer({
   children,
-  className,
   ...props
 }: MenuPanelContainerProps) {
   return (
