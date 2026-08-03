@@ -40,7 +40,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
 
     editor.commands.setContent(content, false)
     setNewContent(content)
-  }, [editor, draft])
+  }, [editor, draftId])
 
   useEffect(() => {
     if (debouncedContent) updateDraft(draftId, debouncedContent)
