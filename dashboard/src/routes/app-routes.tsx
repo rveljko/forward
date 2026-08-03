@@ -13,7 +13,7 @@ import TasksPageSkeleton from '@dashboard-pages/skeletons/tasks-page-skeleton'
 import DashboardLayout from '@layouts/dashboard-layout'
 import SettingsLayout from '@layouts/settings-layout'
 import { lazy, Suspense } from 'react'
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 const DraftPage = lazy(() => import('@dashboard-pages/draft-page'))
 const DraftsPage = lazy(() => import('@dashboard-pages/drafts-page'))
 const GuidePage = lazy(() => import('@dashboard-pages/guide-page'))
@@ -100,6 +100,7 @@ export default function AppRoutes() {
           }
         />
         <Route path="settings" element={<SettingsLayout />}>
+          <Route index element={<Navigate to="profile" replace />} />
           <Route
             path="profile"
             element={

@@ -308,7 +308,7 @@ export default function Sidebar() {
               </li>
               <li>
                 <NavigationLink
-                  to="/settings/profile"
+                  to="/settings"
                   leftIcon={<SettingsIcon />}
                   onClick={closeOpenedSidebarOnMobile}
                 >
