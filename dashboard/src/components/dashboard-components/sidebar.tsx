@@ -79,12 +79,12 @@ export default function Sidebar() {
         } as React.CSSProperties
       }
       initial={false}
-      animate={{ width: isOpened ? 256 : 62 }}
+      animate={{ width: isOpened ? 256 : 64 }}
       className={cn(
-        'h-full shrink-0 p-4',
+        'h-full shrink-0 border-x border-x-transparent p-4',
         preferences.sidebarStyle === 'transparent' && 'bg-neutral-100',
         preferences.sidebarStyle === 'sticky' &&
-          'border-r border-neutral-200 bg-neutral-50 inset-ring inset-ring-white',
+          'border-r border-r-neutral-200 bg-neutral-50 inset-ring inset-ring-white',
         preferences.sidebarStyle === 'floating' &&
           'rounded-(--border-radius) border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white'
       )}
