@@ -26,7 +26,7 @@ export default function IssuesListItemsList({
       )}
       {...props}
     >
-      <SortableContext items={issues}>
+      <SortableContext items={issues.map(({ id }) => id)}>
         <AnimatePresence mode="popLayout" initial={false}>
           {issues.map((issue) => (
             <motion.li
