@@ -27,15 +27,15 @@
 
 :root {
   interpolate-size: allow-keywords;
-  --brand-100: hsl(264, 84%, 93%);
-  --brand-200: hsl(264, 88%, 84%);
-  --brand-300: hsl(264, 80%, 75%);
-  --brand-400: hsl(264, 72%, 65%);
-  --brand-500: hsl(264, 62%, 55%);
-  --brand-600: hsl(264, 63%, 45%);
-  --brand-700: hsl(264, 76%, 35%);
-  --brand-800: hsl(264, 86%, 26%);
-  --brand-900: hsl(265, 95%, 16%);
+  --brand-100: oklch(0.92 0.04 303.75);
+  --brand-200: oklch(0.81 0.1 302.51);
+  --brand-300: oklch(0.72 0.15 301.2);
+  --brand-400: oklch(0.62 0.19 299.34);
+  --brand-500: oklch(0.54 0.21 297.22);
+  --brand-600: oklch(0.46 0.21 294.84);
+  --brand-700: oklch(0.38 0.19 292.3);
+  --brand-800: oklch(0.31 0.17 290.81);
+  --brand-900: oklch(0.23 0.12 292.51);
 }
 
 @theme {
