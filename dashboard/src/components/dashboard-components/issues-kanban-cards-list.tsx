@@ -23,7 +23,7 @@ export default function IssuesKanbanCardsList({
       className={cn('flex min-h-0 flex-1 flex-col gap-2', className)}
       {...props}
     >
-      <SortableContext items={issues}>
+      <SortableContext items={issues.map(({ id }) => id)}>
         <AnimatePresence mode="popLayout" initial={false}>
           {issues.map((issue) => (
             <motion.li
