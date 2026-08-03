@@ -30,7 +30,7 @@ export default function IssuesListItemsList({
         <AnimatePresence mode="popLayout" initial={false}>
           {issues.map((issue) => (
             <motion.li
-              layout={!isDragging}
+              layout={isDragging ? false : 'position'}
               key={issue.id}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
