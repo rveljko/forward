@@ -43,8 +43,10 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   }, [editor, draftId])
 
   useEffect(() => {
-    if (debouncedContent) updateDraft(draftId, debouncedContent)
-  }, [debouncedContent])
+    if (debouncedContent === content) return
+
+    updateDraft(draftId, debouncedContent)
+  }, [debouncedContent, content, draftId])
 
   if (!editor) return
 
