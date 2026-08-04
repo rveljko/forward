@@ -18,11 +18,9 @@ export default function GuideCard({
   return (
     <article className="relative overflow-hidden rounded-lg bg-white shadow-sm ring ring-neutral-900/10 hover:cursor-pointer hover:ring-neutral-900/20 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-black pointer-coarse:transition pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20">
       <div className="h-42 w-full overflow-hidden mask-linear-360 mask-linear-from-transparent mask-linear-to-black p-1 pb-0">
-        <img
-          src={thumbnailUrl}
-          alt=""
-          className="rounded-sm border border-white ring ring-neutral-200"
-        />
+        <div className="size-full rounded-sm border border-white ring ring-neutral-200">
+          <img src={thumbnailUrl} alt="" />
+        </div>
       </div>
       <div className="p-2">
         <h3>
