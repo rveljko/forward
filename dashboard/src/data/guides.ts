@@ -2,6 +2,7 @@ import { howToChangeYourPasswordGuide } from '@data/guides/how-to-change-your-pa
 import { howToChangeYourPreferencesGuide } from '@data/guides/how-to-change-your-preferences-guide'
 import { howToCreateANewDraftGuide } from '@data/guides/how-to-create-a-new-draft-guide'
 import { howToCreateANewIssueGuide } from '@data/guides/how-to-create-a-new-issue-guide'
+import { howToCreateANewTaskGuide } from '@data/guides/how-to-create-a-new-task-guide'
 import { howToToggleIntegrationsGuide } from '@data/guides/how-to-toggle-integrations-guide'
 import { howToUpdateUserInformationGuide } from '@data/guides/how-to-update-user-information-guide'
 import { IMAGE_PATH } from '@utils/constants'
@@ -10,6 +11,15 @@ import { Guide } from '@utils/types'
 import { v4 as uuidv4 } from 'uuid'
 
 export const guides: Guide[] = [
+  {
+    id: uuidv4(),
+    title: 'How to Create a New Task',
+    slug: 'how-to-create-a-new-task',
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-create-a-new-task.png`,
+    lastEdit: generateDateInPast(1),
+    tags: [{ text: 'Tasks', color: 'blue' }],
+    content: howToCreateANewTaskGuide,
+  },
   {
     id: uuidv4(),
     title: 'How to Create a New Issue',
