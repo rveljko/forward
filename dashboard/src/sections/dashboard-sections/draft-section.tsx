@@ -19,7 +19,7 @@ type DraftSectionProps = {
 }
 
 export default function DraftSection({ draftId }: DraftSectionProps) {
-  const { getDraftById, updateDraft } = useDrafts()
+  const { getDraftById, updateDraftContent } = useDrafts()
 
   const draft = getDraftById(draftId)
 
@@ -45,7 +45,7 @@ export default function DraftSection({ draftId }: DraftSectionProps) {
   useEffect(() => {
     if (debouncedContent === content) return
 
-    updateDraft(draftId, debouncedContent)
+    updateDraftContent(draftId, debouncedContent)
   }, [debouncedContent, content, draftId])
 
   if (!editor) return

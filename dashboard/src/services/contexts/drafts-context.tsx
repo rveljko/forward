@@ -27,7 +27,7 @@ type DraftsContextType = {
   getSortedDrafts: () => Draft[]
   getDraftById: (id: Draft['id']) => Draft
   createNewDraft: (newDraft: Draft) => void
-  updateDraft: (id: Draft['id'], content: Draft['content']) => void
+  updateDraftContent: (id: Draft['id'], content: Draft['content']) => void
   updateDraftCategory: (id: Draft['id'], category: Draft['category']) => void
   renameDraft: (id: Draft['id'], newTitle: Draft['title']) => void
   duplicateDraft: (id: Draft['id']) => void
@@ -131,7 +131,7 @@ export default function DraftsContextProvider({
     ])
   }
 
-  function updateDraft(id: Draft['id'], content: Draft['content']) {
+  function updateDraftContent(id: Draft['id'], content: Draft['content']) {
     const draft = getDraftById(id)
 
     setDrafts((prevDrafts) => [
@@ -192,7 +192,7 @@ export default function DraftsContextProvider({
         getSortedDrafts,
         getDraftById,
         createNewDraft,
-        updateDraft,
+        updateDraftContent,
         updateDraftCategory,
         renameDraft,
         duplicateDraft,
