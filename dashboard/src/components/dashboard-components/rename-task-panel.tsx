@@ -6,7 +6,7 @@ import { useTasks } from '@services/contexts/tasks-context'
 import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Task } from '@utils/types'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 type RenameTaskPanelProps = {
   taskId: Task['id']
@@ -20,8 +20,6 @@ export default function RenameTaskPanel({
   const { getTaskById, updateTaskTitle } = useTasks()
   const { title } = getTaskById(taskId)
   const [newTitle, setNewTitle] = useState(title)
-
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const isButtonDisabled = newTitle === title
 
@@ -49,10 +47,8 @@ export default function RenameTaskPanel({
           </FormField.Label>
           <FormField.Input
             id="title"
-            ref={inputRef}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            onFocus={() => inputRef.current?.select()}
           />
         </FormField>
       </div>

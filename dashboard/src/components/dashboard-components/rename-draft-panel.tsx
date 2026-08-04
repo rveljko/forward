@@ -6,7 +6,7 @@ import { useDrafts } from '@services/contexts/drafts-context'
 import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Draft } from '@utils/types'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 type RenameDraftPanelProps = {
   draftId: Draft['id']
@@ -20,8 +20,6 @@ export default function RenameDraftPanel({
   const { getDraftById, renameDraft } = useDrafts()
   const { title } = getDraftById(draftId)
   const [newTitle, setNewTitle] = useState(title)
-
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const isButtonDisabled = newTitle === title
 
@@ -49,10 +47,8 @@ export default function RenameDraftPanel({
           </FormField.Label>
           <FormField.Input
             id="title"
-            ref={inputRef}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            onFocus={() => inputRef.current?.select()}
           />
         </FormField>
       </div>

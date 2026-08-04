@@ -6,7 +6,7 @@ import { useIssues } from '@services/contexts/issues-context'
 import Button from '@ui/button'
 import { showToast } from '@utils/toasts'
 import { Issue } from '@utils/types'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 
 type RenameIssuePanelProps = {
   issueId: Issue['id']
@@ -20,8 +20,6 @@ export default function RenameIssuePanel({
   const { getIssueById, updateIssue } = useIssues()
   const issue = getIssueById(issueId)
   const [newTitle, setNewTitle] = useState(issue.title)
-
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const isButtonDisabled = newTitle === issue.title
 
@@ -49,10 +47,8 @@ export default function RenameIssuePanel({
           </FormField.Label>
           <FormField.Input
             id="title"
-            ref={inputRef}
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            onFocus={() => inputRef.current?.select()}
           />
         </FormField>
       </div>
