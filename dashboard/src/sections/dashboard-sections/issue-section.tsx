@@ -44,8 +44,10 @@ export default function IssueSection({ issueId }: IssueSectionProps) {
   }, [editor, issueId])
 
   useEffect(() => {
-    if (debouncedContent) updateIssue({ ...issue, content: debouncedContent })
-  }, [debouncedContent])
+    if (debouncedContent === issue.content) return
+
+    updateIssue({ ...issue, content: debouncedContent })
+  }, [debouncedContent, issue])
 
   if (!editor) return
 
