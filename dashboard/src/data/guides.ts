@@ -14,7 +14,7 @@ export const guides: Guide[] = [
     id: uuidv4(),
     title: 'How to Create a New Issue',
     slug: 'how-to-create-a-new-issue',
-    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-create-a-new-issue.png`,
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-create-a-new-issue.png`,
     lastEdit: generateDateInPast(1),
     tags: [{ text: 'Issues', color: 'cyan' }],
     content: howToCreateANewIssueGuide,
@@ -23,7 +23,7 @@ export const guides: Guide[] = [
     id: uuidv4(),
     title: 'How to Create a New Draft',
     slug: 'how-to-create-a-new-draft',
-    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-create-a-new-draft.png`,
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-create-a-new-draft.png`,
     lastEdit: generateDateInPast(3),
     tags: [{ text: 'Drafts', color: 'violet' }],
     content: howToCreateANewDraftGuide,
@@ -32,7 +32,7 @@ export const guides: Guide[] = [
     id: uuidv4(),
     title: 'How to Update User Information',
     slug: 'how-to-update-user-information',
-    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-update-user-information.png`,
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-update-user-information.png`,
     lastEdit: generateDateInPast(3),
     tags: [
       { text: 'Settings', color: 'sky' },
@@ -44,7 +44,7 @@ export const guides: Guide[] = [
     id: uuidv4(),
     title: 'How to Change Your Password',
     slug: 'how-to-change-your-password',
-    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-change-your-password.png`,
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-change-your-password.png`,
     lastEdit: generateDateInPast(4),
     tags: [
       { text: 'Settings', color: 'sky' },
@@ -56,7 +56,7 @@ export const guides: Guide[] = [
     id: uuidv4(),
     title: 'How to Change Your Preferences',
     slug: 'how-to-change-your-preferences',
-    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-change-your-preferences.png`,
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-change-your-preferences.png`,
     lastEdit: generateDateInPast(5),
     tags: [
       { text: 'Settings', color: 'sky' },
@@ -68,7 +68,7 @@ export const guides: Guide[] = [
     id: uuidv4(),
     title: 'How to Toggle Integrations',
     slug: 'how-to-toggle-integrations',
-    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-light-how-to-toggle-integrations.png`,
+    thumbnailUrl: `${IMAGE_PATH}guide-thumbnail-how-to-toggle-integrations.png`,
     lastEdit: generateDateInPast(5),
     tags: [
       { text: 'Settings', color: 'sky' },
