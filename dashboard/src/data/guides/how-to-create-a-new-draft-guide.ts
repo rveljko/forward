@@ -1,25 +1,21 @@
 export const howToCreateANewDraftGuide = `## How to Create a New Draft
 
-Creating drafts allows you to save your work in progress and return to it later. Follow these steps to create a new draft:
+Creating drafts allows you to save notes, ideas, and work in progress for future reference. Follow these steps to create a new draft:
 
-1. **Open Drafts Page:**  
+1. **Open the Drafts Page:**
    In the sidebar, click on the **Drafts** page
 
-2. **Click Create New Draft:**  
+2. **Open the Create New Draft Modal:**
    Click the **Create New Draft** button
 
-3. **New Draft Page Opens:**  
-   The new draft page will open, allowing you to start composing your draft
+3. **Enter Draft Details:**
+   * Type the **Title**
+   * Select a **Category** (e.g., General, Idea, Meeting, Inspiration)
 
-**Alternatively:**
+4. **Create the Draft:**
+   Click the **Create New Draft** button to create the draft
 
-4. **Open Search:**  
-   In the sidebar, click on the **Search** button
+5. **Confirmation:**
+   The modal will close, and a toast notification will appear in the top right corner confirming the draft has been created successfully
 
-5. **Select Create New Draft:**  
-   Click on **Create New Draft** from the search interface
-
-6. **New Draft Page Opens:**  
-   Upon success, the new draft page will open for you to begin editing
-
-By following these steps, you can easily create and manage your drafts for future use.`
+By following these steps, you can easily create drafts to organize your notes, ideas, and work in progress`

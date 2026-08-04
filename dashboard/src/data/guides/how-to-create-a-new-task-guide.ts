@@ -9,7 +9,7 @@ Tasks help you organize your work by keeping track of personal to-dos and smalle
    Click the **Create New Task** button
 
 3. **Enter the Task Title:**
-   The **Create New Task** modal will open. Type the **Task title** to describe your task
+   The **Create New Task** modal will open. Type the **title** to describe your task
 
 4. **Create the Task:**
    Click the **Create New Task** button to create the task
@@ -17,4 +17,4 @@ Tasks help you organize your work by keeping track of personal to-dos and smalle
 5. **Confirmation:**
    The modal will close, and a toast notification will appear in the top right corner confirming the task has been created successfully
 
-By following these steps, you can quickly create tasks to keep track of your work and stay organized.`
+By following these steps, you can quickly create tasks to keep track of your work and stay organized`

@@ -17,4 +17,4 @@ Easily manage your integrations to connect with the tools you use. Follow these 
 5. **Confirmation:**  
    A toast notification will appear in the top right corner confirming your integrations were updated successfully
 
-By managing your integrations, you can streamline your workflow and improve productivity.`
+By managing your integrations, you can streamline your workflow and improve productivity`

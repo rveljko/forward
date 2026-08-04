@@ -17,4 +17,4 @@ Keeping your user information up to date is important for accurate account manag
 5. **Confirmation:**  
    A toast notification will appear in the top right corner confirming that your user information has been updated successfully
 
-Following these steps ensures your profile information stays current and accurate.`
+Following these steps ensures your profile information stays current and accurate`

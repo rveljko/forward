@@ -17,4 +17,4 @@ Keeping your password secure is essential for protecting your account. Follow th
 5. **Confirmation:**  
    A toast notification will appear in the top right corner confirming your password was updated successfully
 
-By following these steps, you can easily maintain your account security.`
+By following these steps, you can easily maintain your account security`

@@ -17,4 +17,4 @@ Customize your experience by updating your preferences. Follow these steps:
 5. **Confirmation:**  
    A toast notification will appear in the top right corner confirming your preferences were updated successfully
 
-This helps tailor the application to your personal workflow and needs.`
+This helps tailor the application to your personal workflow and needs`
