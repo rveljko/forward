@@ -11,7 +11,7 @@ export default function GuidesSectionSkeleton() {
       <Divider />
       <Container className="py-8 md:py-16">
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--guide-card-width),100%),1fr))] gap-4">
-          {Array.from({ length: 9 }, (_, index) => index).map((_, index) => (
+          {Array.from({ length: 7 }, (_, index) => index).map((_, index) => (
             <Skeleton key={index} className="h-66" />
           ))}
         </div>
