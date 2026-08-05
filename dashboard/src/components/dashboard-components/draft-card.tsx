@@ -24,16 +24,16 @@ export default function DraftCard({
 
   return (
     <article
-      className="relative flex h-full flex-col overflow-hidden rounded-md border border-white bg-white shadow-sm ring ring-neutral-900/10 hover:cursor-pointer hover:ring-neutral-900/20 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-black pointer-coarse:transition pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20"
+      className="relative flex h-full flex-col overflow-hidden rounded-md bg-white shadow-sm ring ring-neutral-900/10 hover:cursor-pointer hover:ring-neutral-900/20 has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-black pointer-coarse:transition pointer-coarse:active:scale-99 pointer-coarse:active:ring-neutral-900/20"
       onContextMenu={(e) => {
         e.preventDefault()
         openModal()
       }}
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden rounded-t-md rounded-b-sm border border-white">
         <div
           className={cn(
-            'h-21 w-full rounded-b-sm transition-colors',
+            'h-21 w-full transition-colors',
             category === 'general' && 'bg-neutral-200',
             category === 'idea' && 'bg-sky-200',
             category === 'meeting' && 'bg-green-200',
