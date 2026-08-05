@@ -21,7 +21,7 @@ export default function DraftsSectionSkeleton() {
         <Container className="py-8 md:py-16">
           <div className="grid grid-cols-[repeat(auto-fit,minmax(min(var(--draft-card-width),100%),1fr))] gap-4">
             {Array.from({ length: 8 }, (_, index) => index).map((_, index) => (
-              <Skeleton key={index} className="h-43.5" />
+              <Skeleton key={index} className="h-44" />
             ))}
           </div>
         </Container>
