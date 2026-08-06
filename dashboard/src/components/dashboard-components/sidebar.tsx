@@ -84,7 +84,7 @@ export default function Sidebar() {
         'h-full shrink-0 border-x border-x-transparent p-4',
         preferences.sidebarStyle === 'transparent' && 'bg-neutral-100',
         preferences.sidebarStyle === 'sticky' &&
-          'border-r border-r-neutral-200 bg-neutral-50 inset-ring inset-ring-white',
+          `bg-neutral-50 inset-ring inset-ring-white ${preferences.isRightSideSidebar ? 'border-l border-l-neutral-200' : 'border-r border-r-neutral-200'}`,
         preferences.sidebarStyle === 'floating' &&
           'rounded-(--border-radius) border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white'
       )}
