@@ -8,6 +8,7 @@ import Button from '@ui/button'
 import Switch from '@ui/switch'
 import { showToast } from '@utils/toasts'
 import { CornerRoundnessLabel } from '@utils/types'
+import { AnimatePresence, motion } from 'motion/react'
 
 export default function PreferencesSection() {
   const { preferences, setPreferences, newPreferences, setNewPreferences } =
@@ -54,45 +55,54 @@ export default function PreferencesSection() {
         />
       </div>
       <Divider />
-      {newPreferences.areRoundedCorners && (
-        <>
-          <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
-            <h3 className="w-full max-w-50 font-medium">Corner Roundness</h3>
-            <Select
-              variant="secondary"
-              size="small"
-              value={newPreferences.cornerRoundness}
-              onChange={(e) =>
-                setNewPreferences({
-                  ...newPreferences,
-                  cornerRoundness: e.target.value as CornerRoundnessLabel,
-                })
-              }
-            >
-              {cornerRoundnesses.map(({ id, name, label }) => (
-                <Select.Option key={id} value={label}>
-                  {name}
-                </Select.Option>
-              ))}
-            </Select>
-          </div>
-          <Divider />
-        </>
-      )}
-      <Button
-        variant="primary"
-        size="large"
-        disabled={isButtonDisabled}
-        onClick={() => {
-          setPreferences(newPreferences)
-          showToast({
-            title: 'Preferences Updated',
-            description: 'Preferences saved successfully',
-          })
-        }}
-      >
-        Save Changes
-      </Button>
+      <AnimatePresence mode="popLayout" initial={false}>
+        {newPreferences.areRoundedCorners && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="space-y-4"
+          >
+            <div className="flex flex-col items-start gap-2 lg:flex-row lg:gap-16">
+              <h3 className="w-full max-w-50 font-medium">Corner Roundness</h3>
+              <Select
+                variant="secondary"
+                size="small"
+                value={newPreferences.cornerRoundness}
+                onChange={(e) =>
+                  setNewPreferences({
+                    ...newPreferences,
+                    cornerRoundness: e.target.value as CornerRoundnessLabel,
+                  })
+                }
+              >
+                {cornerRoundnesses.map(({ id, name, label }) => (
+                  <Select.Option key={id} value={label}>
+                    {name}
+                  </Select.Option>
+                ))}
+              </Select>
+            </div>
+            <Divider />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <motion.div layout="position">
+        <Button
+          variant="primary"
+          size="large"
+          disabled={isButtonDisabled}
+          onClick={() => {
+            setPreferences(newPreferences)
+            showToast({
+              title: 'Preferences Updated',
+              description: 'Preferences saved successfully',
+            })
+          }}
+        >
+          Save Changes
+        </Button>
+      </motion.div>
     </section>
   )
 }
