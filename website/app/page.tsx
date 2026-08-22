@@ -1,3 +1,4 @@
+import CategoriesSection from '@/sections/categories-section'
 import CtaSection from '@/sections/cta-section'
 import CustomersCarouselSection from '@/sections/customers-carousel-section'
 import DraftsSection from '@/sections/drafts-section'
@@ -20,6 +21,7 @@ export default function Home() {
       <IssuesSection />
       <TemplatesSection />
       <DraftsSection />
+      <CategoriesSection />
       <SecuritySection />
       <CtaSection />
     </>

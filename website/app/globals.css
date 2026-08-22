@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 :root {
+  interpolate-size: allow-keywords;
   --brand-100: hsl(264, 84%, 93%);
   --brand-200: hsl(264, 88%, 84%);
   --brand-300: hsl(264, 80%, 75%);
