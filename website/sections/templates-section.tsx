@@ -8,7 +8,7 @@ export default function TemplatesSection() {
   return (
     <Section className="divide-y divide-neutral-200">
       <TextPanel />
-      <DashboardPanel />
+      <TemplatesPanel />
     </Section>
   )
 }
@@ -42,10 +42,6 @@ function TextPanel() {
   )
 }
 
-function DashboardPanel() {
-  return (
-    <div className="p-3 md:p-4">
-      <TemplateShowcase />
-    </div>
-  )
+function TemplatesPanel() {
+  return <TemplateShowcase />
 }
