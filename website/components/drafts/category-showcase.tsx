@@ -127,10 +127,7 @@ type CategoryPanelProps = {
 function CategoryPanel({ activeCategoryIndex }: CategoryPanelProps) {
   return (
     <div className="size-full rounded-xl border border-neutral-200 bg-neutral-100 p-2 inset-ring inset-ring-white">
-      <motion.article
-        layout
-        className="rounded-sm border border-neutral-200 bg-neutral-50 p-4"
-      >
+      <article className="rounded-sm border border-neutral-200 bg-neutral-50 p-4">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={activeCategoryIndex}
@@ -142,7 +139,7 @@ function CategoryPanel({ activeCategoryIndex }: CategoryPanelProps) {
             {categories[activeCategoryIndex].content}
           </motion.div>
         </AnimatePresence>
-      </motion.article>
+      </article>
     </div>
   )
 }
