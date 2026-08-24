@@ -1,8 +1,8 @@
 import { ActivePanelIndex } from '@/components/dashboard/dashboard-controls'
+import DraftsDashboardPanel from '@/components/dashboard/panels/drafts-dashboard-panel'
 import IssuesDashboardPanel from '@/components/dashboard/panels/issues-dashboard-panel'
 import TasksDashboardPanel from '@/components/dashboard/panels/tasks-dashboard-panel'
 import Sidebar from '@/components/dashboard/sidebar'
-import DraftsPanel from '@/components/panels/drafts-panel'
 
 type DashboardProps = {
   activePanelIndex: ActivePanelIndex
@@ -19,7 +19,7 @@ export default function Dashboard({ activePanelIndex }: DashboardProps) {
         <div className="m-4 ml-0 w-full overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white">
           {activePanelIndex === 0 && <TasksDashboardPanel />}
           {activePanelIndex === 1 && <IssuesDashboardPanel />}
-          {activePanelIndex === 2 && <DraftsPanel />}
+          {activePanelIndex === 2 && <DraftsDashboardPanel />}
         </div>
       </div>
     </div>
