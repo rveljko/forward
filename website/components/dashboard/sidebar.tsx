@@ -1,3 +1,4 @@
+import CountBadge from '@/components/badge-count'
 import { ActivePanelIndex } from '@/components/dashboard/dashboard-controls'
 import Button from '@/components/ui/button'
 import Logo from '@/components/ui/logo'
@@ -58,6 +59,7 @@ export default function Sidebar({ activePanelIndex }: SidebarProps) {
             >
               <CheckboxIcon />
               Tasks
+              <CountBadge className="ml-auto">4</CountBadge>
             </span>
           </li>
           <li>
@@ -70,6 +72,7 @@ export default function Sidebar({ activePanelIndex }: SidebarProps) {
             >
               <FolderIcon />
               Issues
+              <CountBadge className="ml-auto">10</CountBadge>
             </span>
           </li>
           <li>
@@ -82,6 +85,7 @@ export default function Sidebar({ activePanelIndex }: SidebarProps) {
             >
               <BrainIcon />
               Drafts
+              <CountBadge className="ml-auto">8</CountBadge>
             </span>
           </li>
         </ul>
