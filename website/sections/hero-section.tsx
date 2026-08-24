@@ -1,4 +1,4 @@
-import DashboardControls from '@/components/dashboard-controls'
+import DashboardControls from '@/components/dashboard/dashboard-controls'
 import Button from '@/components/ui/button'
 import ChevronRightIcon from '@/icons/chevron-right-icon'
 import Section from '@/sections/section'

@@ -1,4 +1,4 @@
-import { ActivePanelIndex } from '@/components/dashboard-controls'
+import { ActivePanelIndex } from '@/components/dashboard/dashboard-controls'
 import DraftsPanel from '@/components/panels/drafts-panel'
 import IssuesPanel from '@/components/panels/issues-panel'
 import TasksPanel from '@/components/panels/tasks-panel'

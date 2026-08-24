@@ -1,6 +1,6 @@
 'use client'
 
-import Dashboard from '@/components/dashboard'
+import Dashboard from '@/components/dashboard/dashboard'
 import { useEffect, useRef, useState } from 'react'
 
 export type ActivePanelIndex = 0 | 1 | 2
