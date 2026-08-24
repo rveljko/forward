@@ -12,7 +12,7 @@ export default function TasksDashboardPanel() {
   return (
     <>
       <div className="p-4">
-        <span className="text-sm font-medium">Tasks</span>
+        <span className="font-medium">Tasks</span>
       </div>
       <Divider />
       <div className="flex flex-wrap items-center justify-between gap-2 p-4">
