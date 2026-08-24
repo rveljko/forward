@@ -4,13 +4,12 @@ import ArrowRightIcon from '@/icons/arrow-right-icon'
 import BrainIcon from '@/icons/brain-icon'
 import CalendarIcon from '@/icons/calendar-icon'
 import CheckboxIcon from '@/icons/checkbox-icon'
-import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
+import CircleHalfIcon from '@/icons/circle-half-icon'
 import FolderIcon from '@/icons/folder-icon'
-import ImprovementIssueTagIcon from '@/icons/improvement-issue-tag-icon'
 import LogoIcon from '@/icons/logo-icon'
-import PriorityHighIcon from '@/icons/priority-high-icon'
 import PriorityIcon from '@/icons/priority-icon'
+import PriorityMediumIcon from '@/icons/priority-medium-icon'
 import TagIcon from '@/icons/tag-icon'
 import UserIcon from '@/icons/user-icon'
 import Section from '@/sections/section'
@@ -148,16 +147,14 @@ function IssueInformationPanel() {
         <article className="max-w-63 rounded-lg bg-white shadow-sm ring ring-black/10">
           <header className="flex flex-col gap-2 border-b border-b-neutral-300 p-2.5">
             <div className="flex size-9 items-center justify-center rounded-lg border border-neutral-300 bg-white">
-              <CircleDashedIcon />
+              <CircleHalfIcon />
             </div>
             <h4 className="text-sm font-medium text-neutral-900">
-              Implement Notification System
+              Add reusable issue templates{' '}
             </h4>
             <p className="line-clamp-2 text-xs text-neutral-600">
-              Build a notification system that keeps users updated about
-              important events in their projects and issues. This should help
-              users stay on top of changes like new comments, status updates,
-              assignments, and deadlines.
+              Allow users and teams to create reusable templates for common
+              issue types to make issue creation faster and more consistent
             </p>
           </header>
           <div className="p-2.5">
@@ -207,10 +204,10 @@ function IssueInformationPanel() {
                 </div>
                 <div className="flex w-full max-w-20 items-center gap-1">
                   <span className="[&_svg]:size-4">
-                    <CircleDashedIcon />
+                    <CircleHalfIcon />
                   </span>
                   <span className="text-xs text-nowrap text-neutral-900">
-                    Backlog
+                    In Progress
                   </span>
                 </div>
               </li>
@@ -223,10 +220,10 @@ function IssueInformationPanel() {
                 </div>
                 <div className="flex w-full max-w-20 items-center gap-1">
                   <span className="[&_svg]:size-4">
-                    <PriorityHighIcon />
+                    <PriorityMediumIcon />
                   </span>
                   <span className="text-xs text-nowrap text-neutral-900">
-                    High
+                    Medium
                   </span>
                 </div>
               </li>
@@ -238,11 +235,11 @@ function IssueInformationPanel() {
                   <span className="text-xs text-neutral-600">Tag</span>
                 </div>
                 <div className="flex w-full max-w-20 items-center gap-1">
-                  <span className="[&>div]:size-4">
-                    <ImprovementIssueTagIcon />
-                  </span>
+                  <div className="flex size-4 items-center justify-center">
+                    <div className="size-2 rounded-full bg-violet-500" />
+                  </div>
                   <span className="text-xs text-nowrap text-neutral-900">
-                    Improvement
+                    Feature
                   </span>
                 </div>
               </li>
