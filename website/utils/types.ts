@@ -7,7 +7,12 @@ export type IssueStatusLabel =
 
 export type IssuePriorityLabel = 'no-priority' | 'low' | 'medium' | 'high'
 
-export type IssueTagLabel = 'bug' | 'improvement' | 'optimization'
+export type IssueTagLabel =
+  | 'feature'
+  | 'bug'
+  | 'improvement'
+  | 'optimization'
+  | 'blocker'
 
 export type Issue = {
   title: string
