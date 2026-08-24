@@ -12,7 +12,7 @@ export default function Dashboard({ activePanelIndex }: DashboardProps) {
   return (
     <div
       aria-hidden
-      className="pointer-events-none mx-auto h-144 w-full max-w-5xl rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-900 select-none"
+      className="pointer-events-none mx-auto h-144 w-full max-w-5xl rounded-lg border border-neutral-200 bg-neutral-100 text-neutral-900 inset-ring inset-ring-white select-none"
     >
       <div className="flex h-full">
         <Sidebar activePanelIndex={activePanelIndex} />
