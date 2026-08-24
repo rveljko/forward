@@ -21,7 +21,9 @@ export default function IssuesDashboardPanel() {
     <>
       <div className="flex items-center justify-between p-4">
         <span className="font-medium">Issues</span>
-        <LayoutSidebarRightIcon />
+        <span className="text-black">
+          <LayoutSidebarRightIcon />
+        </span>
       </div>
       <Divider />
       <div className="flex min-h-15.5 shrink-0 flex-wrap items-center justify-between gap-2 p-4">
@@ -53,12 +55,16 @@ export default function IssuesDashboardPanel() {
         <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <CircleDashedIcon />
+              <span className="text-black">
+                <CircleDashedIcon />
+              </span>
               <span className="font-medium text-neutral-900">Backlog</span>
             </div>
             <span className="text-neutral-600">1</span>
           </div>
-          <PlusIcon />
+          <span className="text-black">
+            <PlusIcon />
+          </span>
         </div>
         <div>
           <IssueItem
@@ -71,12 +77,16 @@ export default function IssuesDashboardPanel() {
         <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <CircleEmptyIcon />
+              <span className="text-black">
+                <CircleEmptyIcon />
+              </span>
               <span className="font-medium text-neutral-900">Todo</span>
             </div>
             <span className="text-neutral-600">3</span>
           </div>
-          <PlusIcon />
+          <span className="text-black">
+            <PlusIcon />
+          </span>
         </div>
         <div>
           <IssueItem
@@ -101,12 +111,16 @@ export default function IssuesDashboardPanel() {
         <div className="flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1">
-              <CircleHalfIcon />
+              <span className="text-black">
+                <CircleHalfIcon />
+              </span>
               <span className="font-medium text-neutral-900">In Progress</span>
             </div>
             <span className="text-neutral-600">3</span>
           </div>
-          <PlusIcon />
+          <span className="text-black">
+            <PlusIcon />
+          </span>
         </div>
         <div>
           <IssueItem
