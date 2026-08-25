@@ -1,6 +1,7 @@
 'use client'
 
 import Badge from '@/components/ui/badge'
+import Divider from '@/components/ui/divider'
 import AppWindowIcon from '@/icons/app-window-icon'
 import BrainIcon from '@/icons/brain-icon'
 import CalendarIcon from '@/icons/calendar-icon'
@@ -149,7 +150,7 @@ export default function GuidesCarousel() {
           )
         })}
       </ul>
-      <ul className="relative isolate h-150 w-full max-w-79 overflow-hidden">
+      <ul className="relative isolate h-150 w-full max-w-92 overflow-hidden">
         <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
         <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
         {guides.map(({ title, image, tags }, index) => {
@@ -172,7 +173,7 @@ export default function GuidesCarousel() {
             >
               <article
                 className={cn(
-                  'translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-black/10 transition-transform duration-(--transition-duration) @5xl:origin-right',
+                  'translate-y-[calc(200%+(var(--gap)*2))] scale-95 overflow-hidden rounded-lg bg-white opacity-0 shadow-sm ring ring-neutral-900/10 transition-transform duration-(--transition-duration) @5xl:origin-right',
                   isAfterPrevious &&
                     'translate-y-[calc(-200%-(var(--gap)*2))] opacity-100',
                   isPrevious &&
@@ -182,8 +183,8 @@ export default function GuidesCarousel() {
                     'translate-y-[calc(100%-2.5%+var(--gap))] opacity-100'
                 )}
               >
-                <div className="flex flex-col gap-2 border-b border-b-neutral-300 p-2">
-                  <div className="max-h-42 w-full max-w-75 overflow-hidden rounded-md border border-neutral-300 mask-linear-360 mask-linear-from-transparent mask-linear-to-black">
+                <div className="h-42 w-full overflow-hidden mask-linear-360 mask-linear-from-transparent mask-linear-to-black p-1 pb-0">
+                  <div className="size-full rounded-sm border border-white ring ring-neutral-200">
                     <Image
                       src={image}
                       alt=""
@@ -192,9 +193,9 @@ export default function GuidesCarousel() {
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="text-sm font-medium text-neutral-900">
-                    {title}
-                  </h3>
+                </div>
+                <div className="p-2">
+                  <h3 className="mb-1 block font-medium text-black">{title}</h3>
                   <ul className="flex items-center gap-1">
                     {tags.map(({ text, color }, index) => (
                       <li key={index}>
@@ -203,6 +204,7 @@ export default function GuidesCarousel() {
                     ))}
                   </ul>
                 </div>
+                <Divider />
                 <div className="p-2">
                   <span className="flex w-max items-center gap-1 text-xs text-neutral-600 [&_svg]:size-4">
                     <CalendarIcon />
