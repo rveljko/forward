@@ -60,7 +60,7 @@ function TypesPanel() {
     <div className="flex w-full overflow-hidden bg-[radial-gradient(circle,var(--color-neutral-200)_1px,transparent_1px)] bg-size-[--spacing(2.5)_--spacing(2.5)] px-6 py-8">
       <div className="m-auto">
         <div className="flex flex-col">
-          <div className="mx-auto mb-px flex size-16 items-center justify-center rounded-lg bg-white shadow-sm ring ring-black/10 [&_svg]:size-6">
+          <div className="mx-auto mb-px flex size-16 items-center justify-center rounded-lg bg-white shadow-sm ring ring-neutral-900/10 [&_svg]:size-6">
             <LogoIcon />
           </div>
           <div className="relative h-16">
@@ -76,30 +76,30 @@ function TypesPanel() {
           </div>
           <div className="mb-px flex gap-6">
             <div className="flex flex-col gap-px">
-              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
                 <CheckboxIcon />
                 <h3 className="text-sm font-medium text-neutral-900">Tasks</h3>
               </article>
               <div className="mx-auto h-6 w-px bg-neutral-300" />
-              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
                 <CheckboxIcon />
                 <h3 className="text-sm font-medium text-neutral-900">Task</h3>
               </article>
             </div>
             <div className="flex flex-col gap-px">
               <div className="mx-auto h-full w-px bg-neutral-300" />
-              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
                 <FolderIcon />
                 <h3 className="text-sm font-medium text-neutral-900">Issues</h3>
               </article>
             </div>
             <div className="flex flex-col gap-px">
-              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
                 <BrainIcon />
                 <h3 className="text-sm font-medium text-neutral-900">Drafts</h3>
               </article>
               <div className="mx-auto h-6 w-px bg-neutral-300" />
-              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+              <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
                 <BrainIcon />
                 <h3 className="text-sm font-medium text-neutral-900">Draft</h3>
               </article>
@@ -117,15 +117,15 @@ function TypesPanel() {
             </div>
           </div>
           <div className="flex gap-6">
-            <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+            <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
               <CircleEmptyIcon />
               <h3 className="text-sm font-medium text-neutral-900">Status</h3>
             </article>
-            <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+            <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
               <PriorityIcon />
               <h3 className="text-sm font-medium text-neutral-900">Priority</h3>
             </article>
-            <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+            <article className="flex w-25 items-center justify-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
               <TagIcon />
               <h3 className="text-sm font-medium text-neutral-900">Tag</h3>
             </article>
@@ -144,13 +144,13 @@ function IssueInformationPanel() {
           <div className="h-full border-r border-dashed border-r-neutral-200" />
           <div className="h-full border-r border-dashed border-r-neutral-200" />
         </div>
-        <article className="max-w-63 rounded-lg bg-white shadow-sm ring ring-black/10">
+        <article className="max-w-63 rounded-lg bg-white shadow-sm ring ring-neutral-900/10">
           <header className="flex flex-col gap-2 border-b border-b-neutral-300 p-2.5">
             <div className="flex size-9 items-center justify-center rounded-lg border border-neutral-300 bg-white">
               <CircleHalfIcon />
             </div>
             <h4 className="text-sm font-medium text-neutral-900">
-              Add reusable issue templates{' '}
+              Add reusable issue templates
             </h4>
             <p className="line-clamp-2 text-xs text-neutral-600">
               Allow users and teams to create reusable templates for common
