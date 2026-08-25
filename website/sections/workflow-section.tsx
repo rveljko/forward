@@ -52,7 +52,7 @@ function StepsPanel() {
   return (
     <div className="flex w-full overflow-hidden bg-[radial-gradient(circle,var(--color-neutral-200)_1px,transparent_1px)] bg-size-[--spacing(2.5)_--spacing(2.5)] px-4 py-8">
       <div className="m-auto">
-        <article className="flex w-max items-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-black/10">
+        <article className="flex w-max items-center gap-2 rounded-lg bg-white p-2.5 shadow-sm ring ring-neutral-900/10">
           <BulbIcon />
           <h3 className="text-xs font-medium text-neutral-900">
             New feature idea
@@ -62,7 +62,7 @@ function StepsPanel() {
           <ul className="flex flex-col gap-8">
             <li className="flex gap-px">
               <div className="h-2 w-4 shrink-0 translate-y-8.25 rounded-bl-full border-b border-l border-b-neutral-300 border-l-neutral-300" />
-              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-black/10">
+              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-neutral-900/10">
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleDashedIcon />
@@ -81,7 +81,7 @@ function StepsPanel() {
             </li>
             <li className="flex gap-px">
               <div className="h-2 w-4 shrink-0 translate-y-8.25 rounded-bl-full border-b border-l border-b-neutral-300 border-l-neutral-300" />
-              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-black/10">
+              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-neutral-900/10">
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleEmptyIcon />
@@ -100,7 +100,7 @@ function StepsPanel() {
             </li>
             <li className="flex gap-px">
               <div className="h-2 w-4 shrink-0 translate-y-8.25 rounded-bl-full border-b border-l border-b-neutral-300 border-l-neutral-300" />
-              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-black/10">
+              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-neutral-900/10">
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleHalfIcon />
@@ -117,7 +117,7 @@ function StepsPanel() {
             </li>
             <li className="flex gap-px">
               <div className="h-2 w-4 shrink-0 translate-y-8.25 rounded-bl-full border-b border-l border-b-neutral-300 border-l-neutral-300" />
-              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-black/10">
+              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-neutral-900/10">
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleThreeQuartersIcon />
@@ -136,7 +136,7 @@ function StepsPanel() {
             </li>
             <li className="flex gap-px">
               <div className="h-2 w-4 shrink-0 translate-y-8.25 rounded-bl-full border-b border-l border-b-neutral-300 border-l-neutral-300" />
-              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-black/10">
+              <article className="flex w-full flex-col rounded-lg bg-white shadow-sm ring ring-neutral-900/10">
                 <div className="flex w-full items-center justify-between border-b border-b-neutral-300 p-2.5">
                   <div className="flex items-center gap-2">
                     <CircleFullIcon />
