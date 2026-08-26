@@ -2,6 +2,7 @@ import PriorityHighIcon from '@/icons/priority-high-icon'
 import PriorityLowIcon from '@/icons/priority-low-icon'
 import PriorityMediumIcon from '@/icons/priority-medium-icon'
 import PriorityNoPriorityIcon from '@/icons/priority-no-priority-icon'
+import PriorityUrgentIcon from '@/icons/priority-urgent-icon'
 import { IssuePriorityLabel } from '@/utils/types'
 import { cn } from '@/utils/utils'
 
@@ -31,5 +32,7 @@ function getPriorityIcon(priority: IssuePriorityLabel) {
       return <PriorityMediumIcon />
     case 'high':
       return <PriorityHighIcon />
+    case 'urgent':
+      return <PriorityUrgentIcon />
   }
 }

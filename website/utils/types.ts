@@ -5,7 +5,12 @@ export type IssueStatusLabel =
   | 'in-review'
   | 'finished'
 
-export type IssuePriorityLabel = 'no-priority' | 'low' | 'medium' | 'high'
+export type IssuePriorityLabel =
+  | 'no-priority'
+  | 'low'
+  | 'medium'
+  | 'high'
+  | 'urgent'
 
 export type IssueTagLabel =
   | 'feature'
