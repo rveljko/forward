@@ -3,6 +3,7 @@ import IssueStatus from '@/components/issues/issue-status'
 import IssueTag from '@/components/issues/issue-tag'
 import Button from '@/components/ui/button'
 import Divider from '@/components/ui/divider'
+import Switcher from '@/components/ui/switcher'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
@@ -39,16 +40,12 @@ export default function IssuesDashboardPanel() {
             Sort
           </Button>
         </div>
-        <div className="flex w-max items-center rounded-sm bg-neutral-100 ring inset-ring ring-neutral-900/10 inset-ring-white">
-          <button className="flex items-center gap-1 rounded-sm bg-white px-1.5 py-1 text-sm font-medium text-black ring ring-neutral-300 transition-colors hover:cursor-pointer hover:text-black [&_svg]:size-4">
-            <ListIcon />
+        <Switcher>
+          <Switcher.Button isActive leftIcon={<ListIcon />}>
             List
-          </button>
-          <button className="flex items-center gap-1 rounded-sm px-1.5 py-1 text-sm font-medium text-neutral-600 transition-colors hover:cursor-pointer hover:text-black [&_svg]:size-4">
-            <KanbanIcon />
-            Kanban
-          </button>
-        </div>
+          </Switcher.Button>
+          <Switcher.Button leftIcon={<KanbanIcon />}>Kanban</Switcher.Button>
+        </Switcher>
       </div>
       <Divider />
       <div>
