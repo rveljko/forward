@@ -102,7 +102,7 @@ export default function GuidesCarousel() {
   }, [])
 
   return (
-    <div className="flex flex-col items-center gap-8 [--gap:--spacing(4)] [--transition-duration:1000ms] @5xl:flex-row">
+    <div className="pointer-events-none flex flex-col items-center gap-8 select-none [--gap:--spacing(4)] [--transition-duration:1000ms] @5xl:flex-row">
       <ul className="relative isolate h-38 w-full overflow-hidden">
         <div className="absolute top-0 z-1 h-8 w-full bg-linear-to-b from-white to-transparent" />
         <div className="absolute bottom-0 z-1 h-8 w-full bg-linear-to-t from-white to-transparent" />
