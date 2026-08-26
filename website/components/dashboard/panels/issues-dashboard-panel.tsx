@@ -143,7 +143,9 @@ function IssueItem({ title, status, priority, tag }: IssueItemProps) {
       <div className="flex items-center gap-2">
         <IssuePriority priority={priority} />
         <div className="flex items-center gap-1">
-          <IssueStatus status={status} />
+          <div className="flex h-7.5 shrink-0 items-center">
+            <IssueStatus status={status} />
+          </div>
           <span className="line-clamp-1 font-medium break-all">{title}</span>
         </div>
       </div>
