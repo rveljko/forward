@@ -43,7 +43,7 @@ export default function IssuesPanel() {
         </div>
       </div>
       <Divider />
-      <div className="scrollbar-none overflow-y-auto">
+      <div className="scrollbar-none overflow-y-auto @4xl/dashboard:scrollbar-thin">
         <div>
           <div className="sticky top-0 z-2 flex items-center justify-between border-b border-b-neutral-200 bg-white p-4">
             <div className="flex items-center gap-1">
@@ -53,13 +53,13 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <ul>
             <li>
               <IssueItem
-                title="Implement Notification System"
+                title="Add draft linking with issues and tasks"
                 status="backlog"
-                priority="high"
-                tag="improvement"
+                priority="low"
+                tag="feature"
               />
             </li>
           </ul>
@@ -73,10 +73,10 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <ul>
             <li>
               <IssueItem
-                title="Create and Report Issues"
+                title="Improve Kanban board organization and usability"
                 status="todo"
                 priority="high"
                 tag="improvement"
@@ -84,18 +84,18 @@ export default function IssuesPanel() {
             </li>
             <li>
               <IssueItem
-                title="Update Status"
+                title="Add comments and discussions inside issues"
                 status="todo"
                 priority="medium"
-                tag="bug"
+                tag="feature"
               />
             </li>
             <li>
               <IssueItem
-                title="Add Comments"
+                title="Add issue activity history timeline"
                 status="todo"
-                priority="medium"
-                tag="bug"
+                priority="low"
+                tag="feature"
               />
             </li>
           </ul>
@@ -109,10 +109,10 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <ul>
             <li>
               <IssueItem
-                title="Integrate with Other Tools"
+                title="Improve issue filtering and filter management"
                 status="in-progress"
                 priority="high"
                 tag="improvement"
@@ -120,18 +120,18 @@ export default function IssuesPanel() {
             </li>
             <li>
               <IssueItem
-                title="Set Priorities"
+                title="Add reusable issue templates"
                 status="in-progress"
                 priority="medium"
-                tag="bug"
+                tag="feature"
               />
             </li>
             <li>
               <IssueItem
-                title="Filter and Sort Issues"
+                title="Task completion state does not persist after refresh"
                 status="in-progress"
-                priority="low"
-                tag="optimization"
+                priority="medium"
+                tag="bug"
               />
             </li>
           </ul>
@@ -145,21 +145,21 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <ul>
             <li>
               <IssueItem
-                title="Use Tags"
+                title="Design approval is blocking new Kanban improvements"
                 status="in-review"
                 priority="high"
-                tag="bug"
+                tag="blocker"
               />
             </li>
             <li>
               <IssueItem
-                title="Utilize Mobile Access"
+                title="Deleted issues remain visible in search results"
                 status="in-review"
                 priority="medium"
-                tag="optimization"
+                tag="bug"
               />
             </li>
           </ul>
@@ -173,13 +173,13 @@ export default function IssuesPanel() {
             </div>
             <PlusIcon />
           </div>
-          <ul className="divide-y divide-neutral-200 last:border-b last:border-b-neutral-200">
+          <ul>
             <li>
               <IssueItem
-                title="Attach Files and Documents"
+                title="Add issue templates for faster issue creation"
                 status="finished"
-                priority="high"
-                tag="optimization"
+                priority="urgent"
+                tag="feature"
               />
             </li>
           </ul>
