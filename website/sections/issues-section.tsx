@@ -44,7 +44,7 @@ function TextPanel() {
 
 function DashboardPanel() {
   return (
-    <div className="p-6 md:p-8">
+    <div className="md:p-8 md:pb-0">
       <IssuesSectionPreview />
     </div>
   )

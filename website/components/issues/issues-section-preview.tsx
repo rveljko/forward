@@ -1,6 +1,6 @@
 'use client'
 
-import IssuesPanel from '@/components/panels/issues-panel'
+import IssuesPanel from '@/components/issues/issues-panel'
 import { cn } from '@/utils/utils'
 import { useState } from 'react'
 
@@ -12,7 +12,7 @@ export default function IssuesSectionPreview() {
   return (
     <div
       aria-label="Dashboard Issues page"
-      className="group relative flex h-150 w-full items-end rounded-t-xl bg-[radial-gradient(circle,var(--color-neutral-200)_1px,transparent_1px)] bg-size-[--spacing(1.5)_--spacing(1.5)] px-6 pt-6 ring inset-ring ring-neutral-900/10 inset-ring-white @4xl:px-12 @4xl:pt-12"
+      className="group relative flex h-150 w-full items-end bg-[radial-gradient(circle,var(--color-neutral-200)_1px,transparent_1px)] bg-size-[--spacing(1.5)_--spacing(1.5)] px-6 pt-6 md:rounded-t-xl md:border md:border-b-0 md:border-neutral-200 @4xl:px-12 @4xl:pt-12"
     >
       <div
         aria-hidden
