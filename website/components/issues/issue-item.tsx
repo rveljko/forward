@@ -20,18 +20,22 @@ export default function IssueItem({
   return (
     <article
       className={cn(
-        'relative flex items-center justify-between gap-2 p-4 hover:bg-white pointer-coarse:transition pointer-coarse:active:bg-white',
+        'relative flex items-center justify-between gap-2 border-b border-b-neutral-200 p-4 hover:bg-white pointer-coarse:transition pointer-coarse:active:bg-white',
         className
       )}
       {...props}
     >
-      <div className="flex items-center gap-1">
-        <IssuePriority priority={priority} className="mr-1" />
-        <IssueStatus status={status} />
-        <span className="line-clamp-1 text-sm font-medium break-all hover:cursor-pointer">
-          <span className="absolute inset-0" />
-          {title}
-        </span>
+      <div className="flex items-center gap-2">
+        <IssuePriority priority={priority} />
+        <div className="flex items-center gap-1">
+          <div className="flex h-7.5 shrink-0 items-center">
+            <IssueStatus status={status} />
+          </div>
+          <span className="line-clamp-1 text-sm font-medium break-all hover:cursor-pointer">
+            <span className="absolute inset-0" />
+            {title}
+          </span>
+        </div>
       </div>
       <div className="flex items-center gap-2">
         <div className="hidden items-center gap-2 @lg/dashboard:flex">
