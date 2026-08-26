@@ -21,12 +21,14 @@ function TextPanel() {
       <div className="flex flex-col gap-2">
         <Badge color="slate">Security</Badge>
         <Section.Heading2>
-          Keep data safe <br />
-          <span className="text-neutral-500">with full security</span>
+          Keep your work safe every <br />
+          <span className="text-neutral-500">
+            day with trusted protection built in
+          </span>
         </Section.Heading2>
         <Section.Paragraph>
-          Your data stays safe. We follow all the rules and handle security so
-          you focus on work
+          Your issues, drafts, and tasks stay protected, giving you confidence
+          your work remains private and always available
         </Section.Paragraph>
       </div>
       <Button href="/security" variant="link" rightIcon={<ArrowRightIcon />}>
