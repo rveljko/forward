@@ -12,6 +12,7 @@ import CircleHalfIcon from '@/icons/circle-half-icon'
 import CircleThreeQuartersIcon from '@/icons/circle-three-quarters-icon'
 import FilterIcon from '@/icons/filters-icon'
 import KanbanIcon from '@/icons/kanban-icon'
+import LayoutSidebarRightIcon from '@/icons/layout-sidebar-right-icon'
 import ListIcon from '@/icons/list-icon'
 import PlusIcon from '@/icons/plus-icon'
 import { AnimatePresence, motion } from 'motion/react'
@@ -27,8 +28,11 @@ export default function IssuesPanel({
 }: IssuesPanelProps) {
   return (
     <div className="isolate flex h-full flex-col overflow-y-hidden">
-      <div className="p-4">
+      <div className="flex items-center justify-between p-4">
         <span className="font-medium">Issues</span>
+        <Button variant="tertiary" className="-m-0.5 p-0.5">
+          <LayoutSidebarRightIcon />
+        </Button>
       </div>
       <Divider />
       <div className="flex min-h-15.5 shrink-0 flex-wrap items-center justify-between gap-2 p-4">
