@@ -11,8 +11,7 @@ export default function CtaSection() {
         <span className="text-neutral-500">now in minutes</span>
       </Section.Heading2>
       <Section.Paragraph className="mb-6 max-w-[34ch] text-center">
-        Click to get started. Set up your board in minutes. Start tracking
-        issues and tasks today
+        Click to get started. Start tracking issues, drafts, and tasks today
       </Section.Paragraph>
       <Button
         href="https://dashboard-forward-demo-app.netlify.app/issues"
