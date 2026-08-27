@@ -12,7 +12,7 @@ export default function SecurityDetailedSection() {
           Keep your work safe
           <span className="text-neutral-500"> and private everywhere</span>
         </Section.Heading1>
-        <Section.Paragraph className="mx-auto mb-8 max-w-[36ch] text-center text-pretty md:mb-16 @2xl:text-base">
+        <Section.Paragraph className="mx-auto mb-8 max-w-[36ch] text-center text-pretty md:mb-16">
           Data stays encrypted on your device. No servers, no leaks, total
           privacy control always
         </Section.Paragraph>
