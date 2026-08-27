@@ -9,7 +9,7 @@ export default function IntegrationsSection() {
           Connect your tools
           <span className="text-neutral-500"> without any limits</span>
         </Section.Heading1>
-        <Section.Paragraph className="mx-auto mb-8 max-w-[36ch] text-center text-pretty md:mb-16 @2xl:text-base">
+        <Section.Paragraph className="mx-auto mb-8 max-w-[36ch] text-center text-pretty md:mb-16">
           Link apps and services locally. No cloud sync, no accounts, full
           workflow control always
         </Section.Paragraph>
