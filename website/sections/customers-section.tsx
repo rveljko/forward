@@ -9,7 +9,7 @@ export default function CustomersSection() {
           Trusted by teams
           <span className="text-neutral-500"> across the globe</span>
         </Section.Heading1>
-        <Section.Paragraph className="mx-auto mb-8 max-w-[36ch] text-center text-pretty md:mb-16 @2xl:text-base">
+        <Section.Paragraph className="mx-auto mb-8 max-w-[36ch] text-center text-pretty md:mb-16">
           Solo users and small teams rely on us. Simple, secure, reliable, and
           built for real work always
         </Section.Paragraph>
