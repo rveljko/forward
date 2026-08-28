@@ -5,8 +5,17 @@ import { drafts } from '@/data/drafts'
 import ArrowsSortIcon from '@/icons/arrows-sort-icon'
 import FilterIcon from '@/icons/filters-icon'
 import WritingIcon from '@/icons/writing-icon'
+import { motion } from 'motion/react'
 
-export default function DraftsPanel() {
+type DraftsPanelProps = {
+  isNewDraftVisible: boolean
+  setIsNewDraftVisible: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export default function DraftsPanel({
+  isNewDraftVisible,
+  setIsNewDraftVisible,
+}: DraftsPanelProps) {
   return (
     <div className="flex h-full flex-col">
       <div className="p-4">
@@ -26,17 +35,40 @@ export default function DraftsPanel() {
             Sort
           </Button>
         </div>
-        <Button variant="brand" size="small" leftIcon={<WritingIcon />}>
+        <Button
+          variant="brand"
+          size="small"
+          leftIcon={<WritingIcon />}
+          onClick={() => {
+            if (isNewDraftVisible) return
+
+            setIsNewDraftVisible(true)
+          }}
+        >
           Create New Draft
         </Button>
       </div>
       <Divider />
       <div className="grow scrollbar-none overflow-y-auto px-4 py-8 @4xl/dashboard:scrollbar-thin">
         <ul className="mx-auto grid w-full max-w-200 grid-cols-[repeat(auto-fit,minmax(min(--spacing(55),100%),1fr))] gap-4">
+          {isNewDraftVisible && (
+            <motion.li
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <DraftCard
+                draft={{
+                  title: 'Curiosity turns challenges into new opportunities',
+                  category: 'inspiration',
+                  daysAgo: '0d ago',
+                }}
+              />
+            </motion.li>
+          )}
           {drafts.map((draft, index) => (
-            <li key={draft.title}>
+            <motion.li layout="position" key={draft.title}>
               <DraftCard draft={draft} key={index} />
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>
