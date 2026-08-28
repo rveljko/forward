@@ -35,7 +35,7 @@ export default function TasksDashboardPanel() {
       <Divider />
       <ul>
         {tasks.map((task) => (
-          <li key={task}>
+          <li key={task.title}>
             <TaskItem task={task} />
           </li>
         ))}
@@ -48,13 +48,13 @@ type TaskItemProps = {
   task: Task
 }
 
-function TaskItem({ task }: TaskItemProps) {
+function TaskItem({ task: { title } }: TaskItemProps) {
   return (
     <article className="relative flex justify-between gap-2 border-b border-neutral-200 p-4 hover:bg-white">
       <div className="flex items-center justify-center gap-2">
         <div className="size-3.5 rounded-sm bg-white inset-ring inset-ring-neutral-300" />
         <span className="line-clamp-1 font-medium break-all text-black">
-          {task}
+          {title}
         </span>
       </div>
       <div className="flex items-center gap-2">
