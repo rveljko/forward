@@ -26,7 +26,11 @@ export type Issue = {
   tag: IssueTagLabel
 }
 
-export type Task = string
+export type Task = {
+  title: string
+  isChecked: boolean
+  order: number
+}
 
 export type Draft = {
   title: string
