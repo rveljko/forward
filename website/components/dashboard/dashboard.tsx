@@ -16,7 +16,7 @@ export default function Dashboard({ activePanelIndex }: DashboardProps) {
     >
       <div className="flex h-full">
         <Sidebar activePanelIndex={activePanelIndex} />
-        <div className="m-4 ml-0 w-full overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white">
+        <div className="m-4 w-full overflow-hidden rounded-lg border border-neutral-200 bg-neutral-50 inset-ring inset-ring-white lg:ml-0">
           {activePanelIndex === 0 && <TasksDashboardPanel />}
           {activePanelIndex === 1 && <IssuesDashboardPanel />}
           {activePanelIndex === 2 && <DraftsDashboardPanel />}

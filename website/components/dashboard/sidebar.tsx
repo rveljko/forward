@@ -20,7 +20,7 @@ type SidebarProps = {
 
 export default function Sidebar({ activePanelIndex }: SidebarProps) {
   return (
-    <aside className="flex w-64 shrink-0 flex-col gap-4 p-4">
+    <aside className="hidden w-64 shrink-0 flex-col gap-4 p-4 lg:flex">
       <div className="flex items-center justify-between">
         <Logo />
         <span className="flex size-7 items-center justify-center text-black">
