@@ -44,8 +44,8 @@ export default function Header() {
         <nav
           className={`max-md:fixed max-md:inset-x-0 max-md:top-(--header-height) max-md:h-[calc(100%-var(--header-height))] max-md:overflow-y-auto max-md:border-t max-md:border-t-neutral-200 max-md:bg-white max-md:transition max-md:transition-discrete max-md:duration-300 max-md:starting:opacity-0 ${
             isHamburgerMenuOpen
-              ? 'max-md:block max-md:opacity-100'
-              : 'max-md:hidden max-md:opacity-0'
+              ? 'block opacity-100'
+              : 'hidden opacity-0 md:block md:opacity-100'
           } `}
         >
           <ul className="flex h-full flex-col md:flex-row md:items-center">
@@ -94,7 +94,7 @@ export default function Header() {
           variant="primary"
           size="small"
           rightIcon={<ChevronRightIcon />}
-          className="max-md:hidden"
+          className="hidden md:flex"
         >
           Get Started
         </Button>

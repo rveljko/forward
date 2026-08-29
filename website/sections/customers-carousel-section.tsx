@@ -3,8 +3,8 @@ import { customers } from '@/data/customers'
 export default function CustomersCarouselSection() {
   return (
     <section className="flex flex-col md:flex-row">
-      <div className="flex shrink-0 items-center justify-center py-6 max-md:border-b max-md:border-b-neutral-200 md:border-r md:border-r-neutral-200 md:p-8">
-        <h2 className="text-sm max-md:text-center">
+      <div className="flex shrink-0 items-center justify-center border-b border-b-neutral-200 py-6 md:border-r md:border-b-0 md:border-r-neutral-200 md:p-8">
+        <h2 className="text-center text-sm md:text-left">
           Trusted by companies <br /> of all sizes worldwide
         </h2>
       </div>
