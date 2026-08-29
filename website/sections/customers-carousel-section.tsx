@@ -1,8 +1,9 @@
 import { customers } from '@/data/customers'
+import Section from '@/sections/section'
 
 export default function CustomersCarouselSection() {
   return (
-    <section className="flex flex-col md:flex-row">
+    <Section className="md:flex-row">
       <div className="flex shrink-0 items-center justify-center border-b border-b-neutral-200 py-6 md:border-r md:border-b-0 md:border-r-neutral-200 md:p-8">
         <h2 className="text-center text-sm md:text-left">
           Trusted by companies <br /> of all sizes worldwide
@@ -31,6 +32,6 @@ export default function CustomersCarouselSection() {
           ))}
         </ul>
       </div>
-    </section>
+    </Section>
   )
 }

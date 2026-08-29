@@ -4,8 +4,16 @@ type SectionProps = React.ComponentPropsWithoutRef<'section'> & {
   children: React.ReactNode
 }
 
-export default function Section({ children, ...props }: SectionProps) {
-  return <section {...props}>{children}</section>
+export default function Section({
+  children,
+  className,
+  ...props
+}: SectionProps) {
+  return (
+    <section className={cn('flex flex-col', className)} {...props}>
+      {children}
+    </section>
+  )
 }
 
 Section.Heading1 = Heading1

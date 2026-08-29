@@ -11,7 +11,7 @@ import CircleFullIcon from '../icons/circle-full-icon'
 
 export default function WorkflowSection() {
   return (
-    <Section className="flex flex-col divide-neutral-200 @max-5xl:divide-y @5xl:h-177.5 @5xl:flex-row @5xl:divide-x">
+    <Section className="divide-neutral-200 @max-5xl:divide-y @5xl:h-177.5 @5xl:flex-row @5xl:divide-x">
       <div className="flex w-full flex-col divide-neutral-200 @max-3xl:divide-y @3xl:flex-row @3xl:divide-x">
         <TextPanel />
         <StepsPanel />
