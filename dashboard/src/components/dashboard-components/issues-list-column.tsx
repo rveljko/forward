@@ -1,6 +1,6 @@
 import IssuesColumnHeader from '@dashboard-components/issues-column-header'
 import IssuesListItemsList from '@dashboard-components/issues-list-items-list'
-import { useDroppable } from '@dnd-kit/core'
+import { useDndContext, useDroppable } from '@dnd-kit/core'
 import { useIssues } from '@services/contexts/issues-context'
 import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
@@ -19,10 +19,13 @@ export default function IssuesListColumn({
   const { name, icon: Icon } = getIssueStatus(status)
 
   const { setNodeRef } = useDroppable({ id: status })
+  const { active } = useDndContext()
+
+  const isDragging = active !== null
 
   return (
     <motion.div
-      layout
+      layout={!isDragging}
       className={cn('flex min-h-29 flex-col', className)}
       {...props}
     >
