@@ -4,10 +4,10 @@ import ArrowRightIcon from '@/icons/arrow-right-icon'
 import BulbIcon from '@/icons/bulb-icon'
 import CircleDashedIcon from '@/icons/circle-dashed-icon'
 import CircleEmptyIcon from '@/icons/circle-empty-icon'
+import CircleFullIcon from '@/icons/circle-full-icon'
 import CircleHalfIcon from '@/icons/circle-half-icon'
 import CircleThreeQuartersIcon from '@/icons/circle-three-quarters-icon'
 import Section from '@/sections/section'
-import CircleFullIcon from '../icons/circle-full-icon'
 
 export default function WorkflowSection() {
   return (
