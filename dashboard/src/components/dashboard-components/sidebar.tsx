@@ -98,22 +98,24 @@ export default function Sidebar() {
           <Link to="/issues" onClick={closeOpenedSidebarOnMobile}>
             <Logo hideText={!isOpened} />
           </Link>
-          <Button
-            variant="tertiary"
-            className="group -m- shrink-0 p-1 text-black"
-            onClick={() => setIsOpened((prev) => !prev)}
-          >
-            <span className="sr-only">Toggle Sidebar</span>
-            {preferences.isRightSideSidebar ? (
-              <LayoutSidebarRightIcon
-                className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:polygon(100%_0,100%_0,100%_100%,100%_100%)] [&_rect]:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]' : '[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'}`}
-              />
-            ) : (
-              <LayoutSidebarLeftIcon
-                className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:polygon(0_0,0_0,0_100%,0_100%)] [&_rect]:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]' : '[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'}`}
-              />
-            )}
-          </Button>
+          <motion.div layout>
+            <Button
+              variant="tertiary"
+              className="group -m- shrink-0 p-1 text-black"
+              onClick={() => setIsOpened((prev) => !prev)}
+            >
+              <span className="sr-only">Toggle Sidebar</span>
+              {preferences.isRightSideSidebar ? (
+                <LayoutSidebarRightIcon
+                  className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:polygon(100%_0,100%_0,100%_100%,100%_100%)] [&_rect]:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]' : '[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'}`}
+                />
+              ) : (
+                <LayoutSidebarLeftIcon
+                  className={`group-hover:[&_rect]:[clip-path:var(--clip-path)] pointer-coarse:group-active:[&_rect]:[clip-path:var(--clip-path)] ${isOpened ? '[--clip-path:polygon(0_0,0_0,0_100%,0_100%)] [&_rect]:[clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]' : '[--clip-path:polygon(0_0,100%_0,100%_100%,0_100%)]'}`}
+                />
+              )}
+            </Button>
+          </motion.div>
         </header>
         <motion.div
           layout
