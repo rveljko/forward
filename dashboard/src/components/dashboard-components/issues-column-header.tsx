@@ -1,10 +1,9 @@
 import CreateNewIssueModalButton from '@dashboard-components/create-new-issue-modal-button'
-import usePrevious from '@hooks/use-previous'
 import PlusIcon from '@icons/plus-icon'
+import NumberFlow from '@number-flow/react'
 import { useIssues } from '@services/contexts/issues-context'
 import { IssueStatusLabel } from '@utils/types'
 import { cn } from '@utils/utils'
-import CountUp from 'react-countup'
 
 type IssuesColumnHeaderProps = React.ComponentPropsWithoutRef<'div'> & {
   title: string
@@ -23,7 +22,6 @@ export default function IssuesColumnHeader({
 }: IssuesColumnHeaderProps) {
   const { getIssueStatus } = useIssues()
   const { name } = getIssueStatus(status)
-  const prevNumberOfIssues = usePrevious(numberOfIssues) ?? 0
 
   return (
     <div
@@ -35,11 +33,7 @@ export default function IssuesColumnHeader({
           {Icon}
           <h2 className="font-medium">{title}</h2>
         </div>
-        <CountUp
-          className="text-neutral-600"
-          start={prevNumberOfIssues}
-          end={numberOfIssues}
-        />
+        <NumberFlow value={numberOfIssues} className="text-neutral-600" />
       </div>
       <CreateNewIssueModalButton
         variant="tertiary"
