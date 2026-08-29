@@ -35,7 +35,7 @@ export default function DashboardControls() {
       <div className="relative isolate mb-8 px-4 after:absolute after:inset-x-0 after:top-1/2 after:-z-1 after:h-px after:-translate-y-1/2 after:bg-neutral-200">
         <div
           role="tablist"
-          className="mx-auto flex max-w-5xl divide-x divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200"
+          className="mx-auto flex max-w-5xl flex-col divide-y divide-neutral-200 overflow-hidden rounded-lg border border-neutral-200 @2xl:flex-row @2xl:divide-x @2xl:divide-y-0"
         >
           <button
             data-active={activePanelIndex === 0}
