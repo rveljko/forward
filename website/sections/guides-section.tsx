@@ -6,7 +6,7 @@ import Section from '@/sections/section'
 
 export default function GuidesSection() {
   return (
-    <Section className="divide-neutral-200 @max-3xl:divide-y @3xl:flex-row @3xl:divide-x">
+    <Section className="divide-neutral-200 divide-y @3xl:divide-y-0 @3xl:flex-row @3xl:divide-x">
       <TextPanel />
       <GuidesCarouselPanel />
     </Section>

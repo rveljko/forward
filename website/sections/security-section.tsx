@@ -8,7 +8,7 @@ import Section from '@/sections/section'
 
 export default function SecuritySection() {
   return (
-    <Section className="divide-neutral-200 @max-3xl:divide-y @3xl:h-100 @3xl:flex-row @3xl:divide-x">
+    <Section className="divide-y divide-neutral-200 @3xl:h-100 @3xl:flex-row @3xl:divide-x @3xl:divide-y-0">
       <TextPanel />
       <CertificatesPanel />
     </Section>
@@ -40,7 +40,7 @@ function TextPanel() {
 
 function CertificatesPanel() {
   return (
-    <ul className="flex flex-col divide-neutral-200 @max-3xl:divide-y @3xl:flex-row @3xl:divide-x">
+    <ul className="flex flex-col divide-y divide-neutral-200 @3xl:flex-row @3xl:divide-x @3xl:divide-y-0">
       <li className="flex items-center justify-center p-4 @3xl:p-8">
         <AicpaSoc2Certificate />
       </li>
