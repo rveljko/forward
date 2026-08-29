@@ -37,14 +37,23 @@ export default function TasksPanel({ tasks, setTasks }: TasksPanelProps) {
           size="small"
           leftIcon={<EditIcon />}
           onClick={() =>
-            setTasks((prevTasks) => [
-              {
-                title: 'Update changelog with recent improvements',
-                isChecked: false,
-                order: 1,
-              },
-              ...prevTasks,
-            ])
+            setTasks((prevTasks) => {
+              const isNewTaskAdded = prevTasks.some(
+                (task) =>
+                  task.title === 'Update changelog with recent improvements'
+              )
+
+              if (isNewTaskAdded) return prevTasks
+
+              return [
+                {
+                  title: 'Update changelog with recent improvements',
+                  isChecked: false,
+                  order: 1,
+                },
+                ...prevTasks,
+              ]
+            })
           }
         >
           Create New Task
