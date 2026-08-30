@@ -26,7 +26,7 @@ export default function IssuesListColumn({
   return (
     <motion.div
       layout={!isDragging}
-      className={cn('flex min-h-29 flex-col', className)}
+      className={cn('flex min-h-29.5 flex-col', className)}
       {...props}
     >
       <motion.div layout className="sticky top-0 z-10">
