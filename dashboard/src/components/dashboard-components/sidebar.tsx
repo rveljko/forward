@@ -90,18 +90,24 @@ export default function Sidebar() {
       )}
     >
       <div className="flex h-full flex-col gap-4">
-        <header
-          className={`flex items-center justify-between gap-2 ${
-            isOpened ? 'flex-row' : 'flex-col'
-          }`}
-        >
-          <Link to="/issues" onClick={closeOpenedSidebarOnMobile}>
-            <Logo hideText={!isOpened} />
-          </Link>
-          <motion.div layout>
+        <header className="flex items-center justify-between gap-2">
+          <AnimatePresence mode="popLayout" initial={false}>
+            {isOpened && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <Link to="/issues" onClick={closeOpenedSidebarOnMobile}>
+                  <Logo />
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <motion.div layout="position" transition={{ duration: 0.3 }}>
             <Button
               variant="tertiary"
-              className="group -m- shrink-0 p-1 text-black"
+              className="group shrink-0 p-1 text-black"
               onClick={() => setIsOpened((prev) => !prev)}
             >
               <span className="sr-only">Toggle Sidebar</span>
@@ -117,11 +123,8 @@ export default function Sidebar() {
             </Button>
           </motion.div>
         </header>
-        <motion.div
-          layout
-          className="flex h-full flex-col gap-1 overflow-x-hidden overflow-y-auto px-px"
-        >
-          <motion.div layout="position" className="space-y-1">
+        <div className="flex h-full flex-col gap-1 overflow-x-hidden overflow-y-auto px-px">
+          <div className="space-y-1">
             <Button
               variant="primary"
               size="small"
@@ -166,9 +169,9 @@ export default function Sidebar() {
                 )}
               </AnimatePresence>
             </Button>
-          </motion.div>
+          </div>
           <nav className="flex h-full flex-col justify-between gap-1">
-            <motion.ul layout="position" className="space-y-1">
+            <ul className="space-y-1">
               <li>
                 <NavigationLink
                   to="/tasks"
@@ -268,8 +271,8 @@ export default function Sidebar() {
                   </AnimatePresence>
                 </NavigationLink>
               </li>
-            </motion.ul>
-            <motion.ul layout="preserve-aspect" className="space-y-1">
+            </ul>
+            <ul className="space-y-1">
               <li>
                 <NavigationLink
                   to="/guides"
@@ -358,9 +361,9 @@ export default function Sidebar() {
                   </AnimatePresence>
                 </Button>
               </li>
-            </motion.ul>
+            </ul>
           </nav>
-        </motion.div>
+        </div>
       </div>
       <AnimatePresence>
         {isCreateNewIssueModalOpen && (
